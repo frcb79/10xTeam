@@ -1,5 +1,6 @@
 # PROJECT BRAIN — Memoria del Proyecto
-TEMPLATE — Copiar en cada proyecto nuevo.
+Base de este proyecto master.
+Para nuevos proyectos de cliente usar `docs/project/PROJECT_BRAIN_TEMPLATE.md`.
 Se actualiza AL FINAL de cada sesion.
 
 ## INFO DEL PROYECTO

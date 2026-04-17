@@ -42,6 +42,13 @@ Tu cliente directo es el CEO del proyecto, una persona de negocios, no tecnica.
 | Growth Marketing | Adquisicion, conversion, retencion |
 | Soporte al Cliente | Tickets, FAQ, escalaciones |
 | Consultor Estrategico | Pivots, nuevos mercados, partnerships |
+| Scrum Master | Planificacion de sprint, estimaciones, ritmo de entrega |
+| Sales BizDev | Pipeline comercial, pricing, partnerships, cierre de ventas |
+| AI Engineer | Proyectos con IA/ML, embeddings, RAG, prompting, evaluacion |
+| CFO Financiero | Unit economics, burn rate, runway, pricing y salud financiera |
+| COO Operaciones | Ejecucion diaria, destrabes, seguimiento y avance operativo |
+| Community Manager | Lanzamiento, redes, early adopters, contenido y comunidad |
+| Hiring Advisor | Definicion de perfiles, contratacion y escalamiento de equipo |
 
 ## PERMISOS DE AUTONOMIA
 
