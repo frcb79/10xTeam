@@ -1,143 +1,188 @@
-# 📖 CEO PROTOCOLO — La Biblia del CEO
-> Tu guía operativa maestra. Qué hacer exactamente en cada situación importante: inicio de proyecto, sumar un dev, entrega al cliente, cierre de sesión, actualización de aprendizajes y crisis.
+# CEO PROTOCOLO - Manual Maestro de Operacion
+> Unico documento oficial para operar el sistema con criterio de negocio.
+> Integra vision estrategica + ejecucion operativa.
+> Version: 2.0 | Fecha: 2026-04-17
 
 ---
 
-## 🚀 PROTOCOLO 1 — INICIO DE PROYECTO NUEVO
+## PROPOSITO
 
-### Antes de arrancar
-- [ ] Leer `docs/intake/DISCOVERY_PROTOCOL.md` completo
-- [ ] Activar al Orquestrador: "Nuevo proyecto: [nombre]. Corre el Discovery Protocol."
-- [ ] Definir stack con `docs/intake/TECH_STACK_ADVISOR.md`
-- [ ] Crear `docs/project/PROJECT_BRAIN.md` para este proyecto
-- [ ] Documentar primera decisión arquitectónica en `docs/project/DECISIONS.md`
+Este documento existe para que el sistema no dependa de memoria improvisada.
+Define como iniciar, ejecutar, entregar, cerrar, aprender y escalar proyectos.
 
-### Al arrancar el desarrollo
-- [ ] Activar rol 04_ARQUITECTO para diseño técnico inicial
-- [ ] Activar rol 02_PRODUCT_MANAGER para definir MVP y roadmap
-- [ ] Activar rol 03_UX_DISENADOR si hay interfaz de usuario
-- [ ] Crear repositorio en GitHub con la estructura estándar
-- [ ] Configurar entorno base: Supabase + Vercel + dominio
-
-### Resultado esperado al final de la semana 1
-PROJECT_BRAIN.md con: objetivo del proyecto, stack seleccionado, MVP definido, fase actual, próximos 3 pasos concretos.
+Principio rector:
+- No estamos usando una herramienta.
+- Estamos construyendo una firma que aprende con cada proyecto.
 
 ---
 
-## 👨‍💻 PROTOCOLO 2 — ONBOARDING DE UN DEV (humano o nueva IA)
+## ARQUITECTURA DEL SISTEMA
 
-### Primer contacto — compartir estos 4 documentos
-1. `docs/team/CEO_OS.md` — cómo soy, cómo trabajo, cómo comunicarme
-2. `docs/project/PROJECT_BRAIN.md` — contexto completo del proyecto activo
-3. `docs/autonomy/AI_PERMISSIONS.md` — qué puede hacer autónomamente vs qué necesita aprobación
-4. `docs/team/TEAM_LEARNINGS.md` — errores ya aprendidos, no repetirlos
+### Nivel 1 - Master (ai-team-os)
+- Conocimiento institucional permanente.
+- Roles, protocolos, reglas del CEO, aprendizajes universales.
 
-**Instrucción inicial:** "Lee estos 4 documentos. Pregunta lo que no entiendas antes de tocar código o tomar decisiones."
+### Nivel 2 - Proyecto cliente
+- Conocimiento especifico del encargo.
+- Estado del proyecto, decisiones, errores, changelog, codigo.
 
-### Primera semana de trabajo
-- [ ] Asignarle una tarea pequeña y bien definida para calibrar su estilo
-- [ ] Revisar su primer output antes de que toque algo crítico
-- [ ] Darle feedback explícito: qué hizo bien, qué ajustar
-- [ ] Documentar cualquier ajuste de estilo en TEAM_LEARNINGS.md
-
-### Red flags que requieren corrección inmediata
-- Empieza a hacer supuestos importantes sin preguntar
-- Propone cambios de arquitectura sin consultar al Arquitecto (rol 04)
-- No actualiza documentación después de hacer cambios
-- Ignora las reglas de AI_PERMISSIONS.md
+### Nivel 3 - Ecosistema
+- Flujo de aprendizaje entre proyectos a traves del Master.
+- Cada proyecto nuevo arranca mejor que el anterior.
 
 ---
 
-## 📦 PROTOCOLO 3 — ENTREGA AL CLIENTE
+## DISTINCION CLAVE DE MEMORIA
 
-### 48 horas antes
-- [ ] Correr checklist completo de `docs/project/PROMOTE_TO_MASTER.md`
-- [ ] QA end-to-end: activar rol 09_QA_TESTING
-- [ ] Revisión de seguridad: activar rol 07_SEGURIDAD
-- [ ] Confirmar que no hay API keys expuestas en el repositorio
-- [ ] Demo funcionando en producción (no en local)
-- [ ] Backup de base de datos si hay datos existentes
+Archivos de firma (Master):
+- `docs/team/CEO_OS.md`
+- `docs/team/TEAM_LEARNINGS.md`
+- roles y protocolos
 
-### Preparación de la presentación
-- [ ] Activar rol 10_DATA_ANALYTICS: métricas clave para mostrar
-- [ ] Activar rol 03_UX_DISENADOR: flujos que se van a demostrar
-- [ ] Preparar respuestas para las 3 objeciones más probables
-- [ ] Tener el "Plan B" listo si algo falla en el demo
+Archivos del proyecto (Cliente):
+- `docs/project/PROJECT_BRAIN.md`
+- `docs/project/ERROR_LOG.md`
+- `docs/project/DECISIONS.md`
+- `docs/project/CHANGELOG.md`
+- `docs/project/PROMOTE_TO_MASTER.md`
 
-### Post-entrega
-- [ ] Actualizar CHANGELOG.md con lo que se entregó y la versión
-- [ ] Documentar feedback del cliente en PROJECT_BRAIN.md
-- [ ] Registrar cualquier bug encontrado durante la demo en ERROR_LOG.md
-- [ ] Definir próximos pasos con el cliente en DECISIONS.md
+Regla:
+- `PROJECT_BRAIN.md` siempre es local al proyecto activo.
+- `TEAM_LEARNINGS.md` en el Master guarda aprendizaje acumulado de todos.
 
 ---
 
-## 🔒 PROTOCOLO 4 — CIERRE DE SESIÓN DE TRABAJO
+## PROTOCOLO 1 - INICIO DE PROYECTO NUEVO
 
-> Ejecutar SIEMPRE al terminar una sesión con la IA. Sin excepciones.
+Antes de arrancar:
+- Leer `docs/intake/DISCOVERY_PROTOCOL.md`.
+- Activar Orquestrador con: Nuevo proyecto: [nombre].
+- Definir stack con `docs/intake/TECH_STACK_ADVISOR.md`.
+- Crear/llenar `docs/project/PROJECT_BRAIN.md` del proyecto cliente.
+- Registrar decision inicial en `docs/project/DECISIONS.md`.
 
-**Comando al Orquestrador:** "Cerramos sesión."
-
-El Orquestrador debe verificar y actualizar:
-- [ ] PROJECT_BRAIN.md — qué se hizo, estado actual, próximo paso específico
-- [ ] CHANGELOG.md — cambios del día
-- [ ] ERROR_LOG.md — problemas encontrados (si los hubo)
-- [ ] DECISIONS.md — decisiones importantes tomadas (si las hubo)
-- [ ] TEAM_LEARNINGS.md — aprendizajes nuevos (si los hubo)
-
-**Plantilla de cierre rápido:**
-```
-SESIÓN: [fecha]
-PROYECTO: [nombre]
-✅ COMPLETADO: [qué se hizo]
-⏳ PENDIENTE: [qué quedó y por qué]
-🎯 PRÓXIMO PASO: [acción específica, no vaga]
-📝 NOTAS: [contexto para siguiente sesión]
-```
+Semana 1 debe terminar con:
+- Objetivo del proyecto claro.
+- MVP delimitado.
+- Stack definido.
+- Fase y proximos 3 pasos concretos.
 
 ---
 
-## 📚 PROTOCOLO 5 — ACTUALIZACIÓN DE APRENDIZAJES
+## PROTOCOLO 2 - ONBOARDING DE DEV (humano o IA)
 
-> Ejecutar cuando algo falla, cuando se descubre algo valioso, o mensualmente.
+Documentos obligatorios de entrada:
+1. `docs/team/CEO_OS.md`
+2. `docs/project/PROJECT_BRAIN.md`
+3. `docs/autonomy/AI_PERMISSIONS.md`
+4. `docs/team/TEAM_LEARNINGS.md`
 
-Formato de entrada en TEAM_LEARNINGS.md:
-```
-## [Fecha] — [Título del aprendizaje]
-**Contexto:** qué estábamos haciendo
-**Qué pasó:** el problema o descubrimiento
-**Aprendizaje:** qué hacer diferente
-**Aplica a:** [roles o situaciones donde aplicar este aprendizaje]
-```
+Instruccion base:
+- Lee todo y pregunta antes de tocar codigo o decisiones.
 
-Además:
-- Si es un error técnico → también documentar en ERROR_LOG.md
-- Si cambió una decisión de arquitectura → documentar en DECISIONS.md
-- Si el aprendizaje aplica a un rol → actualizar ese archivo de rol
-
----
-
-## ⚡ PROTOCOLO 6 — CRISIS / ALGO ESTÁ ROTO EN PRODUCCIÓN
-
-> Para cuando algo en producción falla o hay una emergencia real.
-
-**Paso 1:** PARA. No hagas más cambios hasta entender qué pasó.
-**Paso 2:** Activa rol 07_SEGURIDAD + 06_DEVOPS simultáneamente.
-**Paso 3:** Pregunta: "¿Qué cambió en las últimas 24 horas?" Revisa CHANGELOG.md.
-**Paso 4:** Verifica primero las variables de entorno — resuelven el 80% de los crashes post-deploy.
-**Paso 5:** Si no se resuelve en 15 minutos → rollback en Vercel.
-**Paso 6:** Documenta causa, síntoma y solución en ERROR_LOG.md.
-**Paso 7:** Post-mortem: ¿cómo evitamos que pase de nuevo?
+Calibracion primera semana:
+- Asignar tarea pequena.
+- Revisar primer output.
+- Dar feedback explicito.
+- Registrar ajustes en TEAM_LEARNINGS.
 
 ---
 
-## 🧭 BRÚJULA DE DECISIONES RÁPIDAS
+## PROTOCOLO 3 - ENTREGA AL CLIENTE
 
-Cuando no sabes qué hacer primero:
-```
-1. ¿Algo está roto en producción?          → Arréglalo AHORA (Protocolo 6)
-2. ¿Hay un cliente esperando algo?         → Entrégalo (Protocolo 3)
-3. ¿Hay un bloqueador en el equipo?        → Activa 18_COO_OPERACIONES
-4. ¿Hay deuda técnica crítica acumulada?   → Págala antes del próximo feature
-5. ¿Todo lo anterior está OK?              → Construye el siguiente feature
-```
+48 horas antes:
+- Correr `docs/project/PROMOTE_TO_MASTER.md` y checklist de liberacion.
+- Activar QA (rol 09) y Seguridad (rol 07).
+- Verificar cero secrets expuestos.
+- Confirmar demo funcional en produccion.
+
+Post-entrega:
+- Actualizar `CHANGELOG.md`.
+- Guardar feedback en `PROJECT_BRAIN.md`.
+- Registrar bugs en `ERROR_LOG.md`.
+- Definir siguientes pasos en `DECISIONS.md`.
+
+---
+
+## PROTOCOLO 4 - CIERRE DE SESION
+
+Trigger:
+- Cuando el CEO dice: cerramos.
+
+Actualizaciones minimas:
+- `PROJECT_BRAIN.md`
+- `ERROR_LOG.md` (si aplica)
+- `DECISIONS.md` (si aplica)
+- `CHANGELOG.md`
+- `TEAM_LEARNINGS.md` (si hubo aprendizaje)
+
+Plantilla de cierre:
+- Sesion: [fecha]
+- Completado: [lista]
+- Pendiente: [lista]
+- Proximo paso concreto: [accion]
+- Riesgos: [si aplica]
+
+---
+
+## PROTOCOLO 5 - APRENDIZAJES Y SYNC AL MASTER
+
+Cuando registrar aprendizaje:
+- Algo fallo.
+- Algo funciono muy bien.
+- Descubriste patron replicable.
+
+Regla de clasificacion:
+- Si aplica solo al cliente: se queda en su proyecto.
+- Si aplica a casi cualquier proyecto: va a `PROMOTE_TO_MASTER.md`.
+
+Trigger recomendado de sync:
+- 5+ aprendizajes pendientes, o
+- cierre de proyecto, o
+- instruccion del CEO.
+
+---
+
+## PROTOCOLO 6 - CRISIS EN PRODUCCION
+
+1. Detener cambios nuevos.
+2. Activar Seguridad + DevOps.
+3. Revisar que cambio en ultimas 24 horas.
+4. Revisar variables de entorno primero.
+5. Si no se resuelve rapido, rollback.
+6. Documentar causa y solucion en `ERROR_LOG.md`.
+7. Ejecutar post-mortem con accion preventiva.
+
+---
+
+## BRUJULA DE PRIORIDAD RAPIDA
+
+Si dudas que hacer primero:
+1. Produccion rota -> resolver ahora.
+2. Cliente esperando entrega -> entregar.
+3. Bloqueador operativo -> activar COO.
+4. Deuda critica -> corregir antes de escalar.
+5. Si todo estable -> siguiente feature.
+
+---
+
+## METRICAS DE SALUD DEL SISTEMA
+
+- Onboarding a nuevo proyecto menor a 10 minutos.
+- Menos preguntas repetidas al CEO con el tiempo.
+- Menos errores repetidos entre proyectos.
+- Syncs ejecutados de forma constante.
+- Recomendaciones proactivas del sistema al CEO.
+
+---
+
+## REGLAS DE ORO
+
+- No repetir errores ya documentados.
+- No operar sin actualizar memoria.
+- No escalar complejidad sin validacion de negocio.
+- Todo cambio importante debe dejar rastro documental.
+
+---
+
+Este archivo reemplaza y unifica cualquier version previa de protocolo CEO.
