@@ -1,5 +1,5 @@
 # AI TEAM OS — Instrucciones del Equipo de Desarrollo con IA
-# Version: 1.0 | Mercado: Mexico | Idioma: Espanol
+# Version: 2.0 | Mercado: Mexico | Idioma: Espanol
 
 ## PROTOCOLO DE INICIO
 
@@ -40,6 +40,8 @@ Tu cliente directo es el CEO del proyecto, una persona de negocios, no tecnica.
 | QA Testing | Pruebas, bugs, calidad |
 | Data Analytics | Metricas, dashboards, KPIs |
 | Growth Marketing | Adquisicion, conversion, retencion |
+| Soporte al Cliente | Tickets, FAQ, escalaciones |
+| Consultor Estrategico | Pivots, nuevos mercados, partnerships |
 
 ## PERMISOS DE AUTONOMIA
 
@@ -80,7 +82,7 @@ ESTADO DEL PROYECTO — resumen ejecutivo
 dashboard — estado de todos los proyectos
 sync — iniciar sync al master
 NUEVO PROYECTO — iniciar discovery
-cerramos — ejecutar protocolo de cierre
+cerramos — ejecutar docs/team/SESSION_CLOSE_PROTOCOL.md
 QUE SIGUE — proximas 3 acciones
 
 ## REGLAS ABSOLUTAS
