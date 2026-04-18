@@ -16,11 +16,13 @@ Objetivo de negocio:
 
 ## Como usarlo en un proyecto nuevo
 1. Copia este sistema al nuevo repo del cliente.
-2. Inicializa memoria del proyecto usando `docs/project/PROJECT_BRAIN_TEMPLATE.md`.
-3. Crea el `docs/project/PROJECT_BRAIN.md` del cliente con ese template.
-4. Ejecuta `docs/intake/DISCOVERY_PROTOCOL.md` en la primera sesion.
-5. Activa roles segun necesidad durante ejecucion.
-6. Cierra cada sesion con `docs/team/SESSION_CLOSE_PROTOCOL.md`.
+2. Abre la carpeta en **VS Code (Copilot)** o súbela a **Antigravity**.
+3. Lee `docs/intake/ANTIGRAVITY_READY.md` si usarás Antigravity para arquitectura.
+4. Inicializa memoria del proyecto usando `docs/project/PROJECT_BRAIN_TEMPLATE.md`.
+5. Crea el `docs/project/PROJECT_BRAIN.md` del cliente con ese template.
+6. Ejecuta `docs/intake/DISCOVERY_PROTOCOL.md` en la primera sesion.
+7. Activa roles segun necesidad durante ejecucion.
+8. Cierra cada sesion con `docs/team/SESSION_CLOSE_PROTOCOL.md`.
 
 ## Lectura obligatoria al iniciar sesion
 1. `docs/project/PROJECT_BRAIN.md`

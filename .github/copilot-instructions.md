@@ -63,7 +63,7 @@ SIEMPRE necesito aprobacion: deploy a produccion, cambios de seguridad, compromi
 Frontend: Next.js App Router + TypeScript strict + Tailwind CSS + shadcn/ui
 Backend: Supabase (PostgreSQL + Auth + Storage + RLS)
 Deploy: Vercel + Supabase Cloud
-IA: GitHub Copilot (dev) + Claude / GPT-4o (producto)
+IA: GitHub Copilot (Dev) + Antigravity (Architecture/Reasoning)
 Pagos MX: Conekta o Clip
 Pagos INT: Stripe
 Email: Resend

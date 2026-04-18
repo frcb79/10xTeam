@@ -7,7 +7,7 @@
 ## 🎯 QUÉ ES ESTE PROYECTO
 
 **ai-team-os** — Un sistema operativo de equipo de IA para Franco (CEO no técnico).
-Permite que cualquier IA (Copilot, Cursor, Claude) actúe como un equipo completo
+Permite que cualquier IA (Copilot, Antigravity, Claude) actúe como un equipo completo
 de profesionales con roles, protocolos y contexto persistente entre sesiones.
 
 Repo: https://github.com/frcb79/ai-team-os
@@ -44,6 +44,7 @@ Repo: https://github.com/frcb79/ai-team-os
 **Intake y Protocolos:**
 - `docs/intake/DISCOVERY_PROTOCOL.md` — Protocolo para iniciar cualquier proyecto nuevo
 - `docs/intake/TECH_STACK_ADVISOR.md` — Guía de stack tecnológico estándar
+- `docs/intake/ANTIGRAVITY_READY.md` — Manual para potenciar el sistema con Antigravity
 
 **Documentación de proyecto:**
 - `docs/project/PROJECT_BRAIN.md` — Memoria persistente del proyecto activo
@@ -95,7 +96,7 @@ Repo: https://github.com/frcb79/ai-team-os
 
 ## 🚀 CÓMO USAR EL SISTEMA EN CUALQUIER PROYECTO NUEVO
 
-1. Abrir nueva sesión en Cursor/Copilot
+1. Abrir nueva sesión en VS Code/Antigravity
 2. Cargar contexto: `docs/team/CEO_OS.md` + `docs/project/PROJECT_BRAIN.md`
 3. Decirle al Orquestrador: "Nuevo proyecto: [descripción]"
 4. El Orquestrador corre `DISCOVERY_PROTOCOL.md` para hacer las preguntas clave
