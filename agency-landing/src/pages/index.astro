@@ -1,0 +1,491 @@
+---
+import '../styles/global.css';
+
+// Welcome to Astro! Todo el JS aquí se ejecuta en el servidor (cero JS al cliente por defecto).
+const pageTitle = "Tu Equipo de Desarrollo 10x Más Eficiente";
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+    <meta name="description" content="Tu socio tecnológico ideal. Ofrecemos desarrollo web, apps móviles y equipos completos as-a-service, a una fracción del costo tradicional." />
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	</head>
+	<body>
+    <!-- Navbar MVP -->
+    <header class="navbar">
+      <div class="container navbar-container">
+        <div class="logo">
+          <span class="text-gradient">10xTeam</span>
+        </div>
+        <nav class="nav-links">
+          <a href="#servicios">Servicios</a>
+          <a href="#comparativo">Precios</a>
+          <a href="#metodologia">Método</a>
+        </nav>
+        <a href="#contacto" class="btn-primary">Agendar Llamada</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero container">
+        <div class="hero-content">
+          <div class="badge glass-panel">🔥 El secreto de las empresas que escalan</div>
+          <h1 class="hero-title">
+            Tu equipo de desarrollo de élite, a <span class="text-gradient">una fracción del costo</span>.
+          </h1>
+          <p class="hero-subtitle">
+            Somos el socio tecnológico ideal para empresas que necesitan plataformas robustas sin los altos costos de un equipo interno. Calidad, velocidad y continuidad garantizada.
+          </p>
+          <div class="hero-cta">
+            <a href="#contacto" class="btn-primary">Conoce nuestra oferta</a>
+            <a href="#comparativo" class="btn-secondary">Ver comparativo 10x</a>
+          </div>
+        </div>
+        <div class="hero-visual glass-panel">
+          <!-- Placeholder for a dynamic visualization or generated image -->
+          <div class="visual-placeholder">
+            <p>Visualización de Arquitectura</p>
+            <div class="mock-code">
+              <code>> Initializing elite squad...</code>
+              <code>> Deploying scalable infrastructure...</code>
+              <code>> Success. Ready for business.</code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Servicios Section -->
+      <section id="servicios" class="servicios container">
+        <div class="section-header text-center">
+          <div class="badge glass-panel">Lo que hacemos</div>
+          <h2>Ingeniería de software de nivel corporativo</h2>
+          <p class="text-muted">Cubrimos todo el ciclo de vida del producto. Sin excusas, sin retrasos.</p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card glass-panel">
+            <div class="service-icon">🌐</div>
+            <h3>Plataformas Web y SaaS</h3>
+            <p>Construimos sistemas robustos, escalables y orientados a la conversión y retención de usuarios.</p>
+          </div>
+          <div class="service-card glass-panel">
+            <div class="service-icon">📱</div>
+            <h3>Apps Móviles (iOS/Android)</h3>
+            <p>Aplicaciones nativas e híbridas diseñadas para ofrecer una experiencia de usuario impecable.</p>
+          </div>
+          <div class="service-card glass-panel">
+            <div class="service-icon">⚡</div>
+            <h3>Sistemas de Gestión & ERPs</h3>
+            <p>Automatizamos tu operación interna con software a la medida que reemplaza hojas de cálculo lentas.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Comparativo Section -->
+      <section id="comparativo" class="comparativo container">
+        <div class="section-header text-center">
+          <div class="badge glass-panel">El modelo 10x</div>
+          <h2>El costo real de crear software.</h2>
+          <p class="text-muted">Desarrollar internamente toma meses y drena tu presupuesto. Nosotros te damos la misma o mejor calidad a una fracción del costo.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- In-House Card -->
+          <div class="pricing-card in-house">
+            <div class="card-header">
+              <h3>Equipo In-House</h3>
+              <p>Tradicional</p>
+            </div>
+            <div class="card-price">
+              <span class="currency">$</span><span class="amount">15,000+</span><span class="period">/mes USD</span>
+            </div>
+            <ul class="features-list">
+              <li class="negative">✗ Larga curva de contratación (Meses)</li>
+              <li class="negative">✗ Pagar sueldos base, impuestos y hardware</li>
+              <li class="negative">✗ Riesgo de rotación de personal y pérdida de contexto</li>
+              <li class="negative">✗ Necesidad de contratar roles separados (Dev, QA, PM, DevOps)</li>
+              <li class="negative">✗ Entregas lentas, experimentación cara</li>
+            </ul>
+          </div>
+
+          <!-- 10xTeam Card -->
+          <div class="pricing-card tenx glass-panel">
+            <div class="card-badge">LA DECISIÓN INTELIGENTE</div>
+            <div class="card-header">
+              <h3>10xTeam as-a-Service</h3>
+              <p>Ágil y Premium</p>
+            </div>
+            <div class="card-price text-gradient">
+              <span class="currency">$</span><span class="amount">2,500</span><span class="period">/mes USD</span>
+            </div>
+            <ul class="features-list">
+              <li class="positive">✓ Listo para iniciar en 48 hrs</li>
+              <li class="positive">✓ 0 impuestos de nómina, 0 costos ocultos</li>
+              <li class="positive">✓ Continuidad garantizada por nuestro Master OS</li>
+              <li class="positive">✓ Tienes acceso a Dev, QA, UI y Arquitectos en un mismo costo</li>
+              <li class="positive">✓ Enfoque en velocidad de entrega (Time-to-Market)</li>
+            </ul>
+            <div style="margin-top: 2rem;">
+              <a href="#contacto" class="btn-primary" style="width: 100%; text-align: center;">Comenzar Ahora</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Metodología Section -->
+      <section id="metodologia" class="metodologia container">
+        <div class="section-header text-center">
+          <div class="badge glass-panel">Nuestro Proceso</div>
+          <h2>Velocidad sin sacrificar calidad</h2>
+        </div>
+        <div class="method-steps">
+          <div class="step">
+            <div class="step-number">01</div>
+            <h3>Discovery</h3>
+            <p>Entendemos tu modelo de negocio, no solo el código. Definimos el MVP en la primera sesión.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">02</div>
+            <h3>Setup & Arquitectura</h3>
+            <p>Desplegamos infraestructura escalable y asignamos a tu equipo 10xTeam en menos de 48 horas.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">03</div>
+            <h3>Entregas Semanales</h3>
+            <p>Operamos con sprints cortos. Verás avances reales, funcionales y testeables cada semana.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimoniales Section -->
+      <section id="testimonios" class="testimonios container">
+        <div class="section-header text-center">
+          <h2>Casos de Éxito</h2>
+          <p class="text-muted">Empresas que escalaron reduciendo sus costos de desarrollo.</p>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card glass-panel">
+            <p class="quote">"Gastamos fortunas tratando de armar un equipo interno. Con 10xTeam, tuvimos nuestro MVP web listo en 4 semanas por una fracción del presupuesto. Simplemente increíble."</p>
+            <div class="author">
+              <div class="author-info">
+                <h4>Carlos R.</h4>
+                <p>CEO, Startup Logística</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card glass-panel">
+            <p class="quote">"Nuestra plataforma e-commerce no aguantaba el tráfico. Su equipo reestructuró la arquitectura sin detener nuestras ventas. Son el brazo técnico que siempre quisimos tener."</p>
+            <div class="author">
+              <div class="author-info">
+                <h4>Laura M.</h4>
+                <p>Directora de Operaciones, RetailTech</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Final / Contacto -->
+      <section id="contacto" class="cta-final container text-center">
+        <div class="glass-panel cta-box">
+          <h2>¿Listo para dejar de pagar de más por desarrollo?</h2>
+          <p>Agenda una llamada de descubrimiento de 15 minutos directamente con nuestros arquitectos.</p>
+          <a href="mailto:hello@10xteam.com" class="btn-primary" style="margin-top: 2rem; font-size: 1.1rem; padding: 1rem 3rem;">Agendar Llamada Gratuita</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+      <div class="container">
+        <p class="text-muted">© 2026 10xTeam. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <style>
+      .navbar {
+        padding: 1.5rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(11, 15, 25, 0.8);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--glass-border);
+      }
+      .navbar-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+      .nav-links a {
+        font-weight: 500;
+        color: var(--text-muted);
+        transition: color 0.3s ease;
+      }
+      .nav-links a:hover {
+        color: var(--text-color);
+      }
+      
+      .hero {
+        padding: 6rem 1.5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        min-height: calc(100vh - 80px);
+      }
+      .badge {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin-bottom: 2rem;
+        color: var(--accent-primary);
+      }
+      .hero-title {
+        font-size: 4rem;
+        letter-spacing: -1px;
+        margin-bottom: 1.5rem;
+      }
+      .hero-subtitle {
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        margin-bottom: 3rem;
+        max-width: 90%;
+      }
+      .hero-cta {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+      }
+      .btn-secondary {
+        color: var(--text-color);
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+      .btn-secondary:hover {
+        color: var(--accent-primary);
+      }
+
+      .hero-visual {
+        height: 100%;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+      }
+      .visual-placeholder {
+        text-align: center;
+        color: var(--text-muted);
+      }
+      .mock-code {
+        margin-top: 2rem;
+        text-align: left;
+        background: rgba(0,0,0,0.5);
+        padding: 1.5rem;
+        border-radius: 8px;
+        font-family: monospace;
+        font-size: 0.875rem;
+      }
+      .mock-code code {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #10b981; /* Green terminal text */
+      }
+
+      .section-header {
+        margin-bottom: 4rem;
+        text-align: center;
+      }
+      .section-header h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      .comparativo {
+        padding: 8rem 1.5rem;
+      }
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+      }
+      .pricing-card {
+        padding: 3rem 2rem;
+        border-radius: 20px;
+        position: relative;
+      }
+      .in-house {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.05);
+      }
+      .tenx {
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 40px rgba(59, 130, 246, 0.1);
+        transform: scale(1.05);
+        z-index: 10;
+      }
+      .card-badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+        padding: 0.25rem 1rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+      .card-header h3 { font-size: 1.5rem; }
+      .card-header p { color: var(--text-muted); }
+      .card-price {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin: 1.5rem 0;
+        display: flex;
+        align-items: baseline;
+      }
+      .currency { font-size: 1.5rem; margin-right: 0.25rem; }
+      .period { font-size: 1rem; color: var(--text-muted); font-weight: 500; }
+      .features-list { list-style: none; padding: 0; }
+      .features-list li { margin-bottom: 1rem; font-size: 0.95rem; }
+      .negative { color: #f87171; }
+      .positive { color: #10b981; font-weight: 500; }
+
+      /* Servicios */
+      .servicios, .metodologia, .testimonios, .cta-final {
+        padding: 6rem 1.5rem;
+      }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+      .service-card {
+        padding: 2.5rem;
+        transition: transform 0.3s ease, background 0.3s ease;
+      }
+      .service-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255,255,255,0.06);
+      }
+      .service-icon {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      /* Metodología */
+      .method-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        position: relative;
+      }
+      .step {
+        text-align: left;
+      }
+      .step-number {
+        font-size: 4rem;
+        font-weight: 800;
+        color: rgba(59, 130, 246, 0.2);
+        margin-bottom: -1rem;
+        line-height: 1;
+      }
+      .step h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--accent-primary);
+      }
+
+      /* Testimoniales */
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+      }
+      .testimonial-card {
+        padding: 2.5rem;
+        position: relative;
+      }
+      .testimonial-card::before {
+        content: '"';
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 6rem;
+        color: rgba(255,255,255,0.05);
+        font-family: serif;
+        line-height: 1;
+      }
+      .quote {
+        font-size: 1.1rem;
+        font-style: italic;
+        margin-bottom: 2rem;
+        color: var(--text-color);
+        position: relative;
+        z-index: 1;
+      }
+      .author {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .author-info h4 { margin: 0; color: var(--accent-primary); }
+      .author-info p { margin: 0; font-size: 0.85rem; color: var(--text-muted); }
+
+      /* CTA Box */
+      .cta-box {
+        padding: 5rem 2rem;
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        border-radius: 20px;
+      }
+      .text-center { text-align: center; }
+
+      .footer {
+        padding: 3rem 1.5rem;
+        border-top: 1px solid var(--glass-border);
+        margin-top: 2rem;
+      }
+
+      @media (max-width: 992px) {
+        .hero {
+          grid-template-columns: 1fr;
+          text-align: center;
+          padding-top: 4rem;
+        }
+        .hero-subtitle {
+          margin: 0 auto 3rem auto;
+        }
+        .hero-cta {
+          justify-content: center;
+        }
+        .nav-links {
+          display: none; /* simple mobile menu hidden for MVP */
+        }
+        .pricing-grid { grid-template-columns: 1fr; }
+        .tenx { transform: scale(1); }
+      }
+    </style>
+	</body>
+</html>

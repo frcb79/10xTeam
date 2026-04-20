@@ -16,6 +16,7 @@ Se actualiza via sync desde cada proyecto al master.
 - Mantener convenciones consistentes de documentos facilita adopcion en nuevos repos.
 - Definir claramente activacion y reglas de cada rol mejora coordinacion entre areas.
 - En proyectos con IA, medir calidad y costo desde el inicio evita escalamiento ineficiente.
+- **En desarrollo de Landings:** Considerar SIEMPRE desde el día 1 la mejor tecnología para maximizar rendimiento de ADS, SEO y SEM. (Ej: SSR/SSG en vez de SPAs pesadas).
 
 ## ERRORES FRECUENTES — NO REPETIR
 - Empezar proyectos desde cero sin reutilizar aprendizajes previos.
