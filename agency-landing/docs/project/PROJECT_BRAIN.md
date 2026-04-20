@@ -48,10 +48,11 @@ Bloqueadores:
 ## RIESGOS ACTIVOS
 - (Ver `ERROR_LOG.md`) `npm` en Windows falla al escribir debido al motor de sincronización de Google Drive.
 
-## PROXIMOS 3 PASOS
-1. Ejecutar despliegue a Vercel con `npx vercel` o Github Import.
-2. Conectar dominio final a Vercel.
-3. Iniciar campañas de marketing/prueba.
+## PROXIMOS PASOS (Sesión de Mañana)
+1. **Research & Estrategia de Precios:** Investigar tabuladores reales y adecuados para LATAM/México (Modelo "Proyecto Llave en Mano" vs "Célula/Equipo Externo As-a-Service").
+2. **Rediseño del Copy:** Reescribir los textos de la página. El mensaje actual no es lo suficientemente claro. Debe separar y explicar perfectamente ambas opciones de servicio.
+3. **Refactor UI/UX:** Corregir el CSS para eliminar la saturación visual (elementos amontonados) y el "efecto zoom". Ajustar márgenes, padding y jerarquía visual para que se vea verdaderamente premium.
 
 ## HISTORIAL DE SESIONES
-2026-04-19 - Inicio de proyecto, Discovery y Setup técnico. Creación completa del UI (MVP). Cierre de sesión y traspaso para despliegue en Vercel.
+2026-04-19 - Inicio de proyecto, Discovery y Setup técnico. Creación del MVP inicial.
+2026-04-19 (Cierre) - El CEO indica que el MVP requiere refactorización. Problemas identificados: UI amontonada, copy confuso y precios por recalibrar. Estos puntos quedan como prioridad #1 para la próxima sesión.
