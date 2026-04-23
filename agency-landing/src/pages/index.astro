@@ -1,8 +1,6 @@
 ---
 import '../styles/global.css';
-
-// Welcome to Astro! Todo el JS aquí se ejecuta en el servidor (cero JS al cliente por defecto).
-const pageTitle = "Tu Equipo de Desarrollo 10x Más Eficiente";
+const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico para PyMEs";
 ---
 
 <html lang="es">
@@ -12,479 +10,491 @@ const pageTitle = "Tu Equipo de Desarrollo 10x Más Eficiente";
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
-    <meta name="description" content="Tu socio tecnológico ideal. Ofrecemos desarrollo web, apps móviles y equipos completos as-a-service, a una fracción del costo tradicional." />
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="description" content="Desarrollo de software a precio justo. MVP desde $1,999 USD o equipo dedicado desde $899/mes. 10x más rápido con IA multi-modelo. ¡Agenda tu discovery gratis!" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 	</head>
 	<body>
-    <!-- Navbar MVP -->
     <header class="navbar">
       <div class="container navbar-container">
-        <div class="logo">
-          <span class="text-gradient">10xTeam</span>
-        </div>
-        <nav class="nav-links">
+        <a href="#" class="logo"><span class="text-gradient">10xTeam</span></a>
+        <nav class="nav-links" id="nav-links">
           <a href="#servicios">Servicios</a>
-          <a href="#comparativo">Precios</a>
+          <a href="#precios">Precios</a>
           <a href="#metodologia">Método</a>
+          <a href="#testimonios">Casos</a>
         </nav>
-        <a href="#contacto" class="btn-primary">Agendar Llamada</a>
+        <a href="#contacto" class="btn-primary btn-nav">Agendar Llamada</a>
       </div>
     </header>
 
     <main>
-      <!-- Hero Section -->
-      <section class="hero container">
-        <div class="hero-content">
-          <div class="badge glass-panel">🔥 El secreto de las empresas que escalan</div>
-          <h1 class="hero-title">
-            Tu equipo de desarrollo de élite, a <span class="text-gradient">una fracción del costo</span>.
-          </h1>
-          <p class="hero-subtitle">
-            Somos el socio tecnológico ideal para empresas que necesitan plataformas robustas sin los altos costos de un equipo interno. Calidad, velocidad y continuidad garantizada.
-          </p>
-          <div class="hero-cta">
-            <a href="#contacto" class="btn-primary">Conoce nuestra oferta</a>
-            <a href="#comparativo" class="btn-secondary">Ver comparativo 10x</a>
+      <!-- ════ HERO ════ -->
+      <section class="hero">
+        <div class="container">
+          <div class="hero-title-area">
+            <div class="badge">⚡ El futuro del desarrollo es externalizado</div>
+            <h1>
+              <span class="title-part">Construimos tu software.</span>
+              <span class="text-gradient title-part">10x más rápido. 10x más económico.</span>
+            </h1>
           </div>
-        </div>
-        <div class="hero-visual glass-panel">
-          <!-- Placeholder for a dynamic visualization or generated image -->
-          <div class="visual-placeholder">
-            <p>Visualización de Arquitectura</p>
-            <div class="mock-code">
-              <code>> Initializing elite squad...</code>
-              <code>> Deploying scalable infrastructure...</code>
-              <code>> Success. Ready for business.</code>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Servicios Section -->
-      <section id="servicios" class="servicios container">
-        <div class="section-header text-center">
-          <div class="badge glass-panel">Lo que hacemos</div>
-          <h2>Ingeniería de software de nivel corporativo</h2>
-          <p class="text-muted">Cubrimos todo el ciclo de vida del producto. Sin excusas, sin retrasos.</p>
-        </div>
-        <div class="services-grid">
-          <div class="service-card glass-panel">
-            <div class="service-icon">🌐</div>
-            <h3>Plataformas Web y SaaS</h3>
-            <p>Construimos sistemas robustos, escalables y orientados a la conversión y retención de usuarios.</p>
-          </div>
-          <div class="service-card glass-panel">
-            <div class="service-icon">📱</div>
-            <h3>Apps Móviles (iOS/Android)</h3>
-            <p>Aplicaciones nativas e híbridas diseñadas para ofrecer una experiencia de usuario impecable.</p>
-          </div>
-          <div class="service-card glass-panel">
-            <div class="service-icon">⚡</div>
-            <h3>Sistemas de Gestión & ERPs</h3>
-            <p>Automatizamos tu operación interna con software a la medida que reemplaza hojas de cálculo lentas.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Comparativo Section -->
-      <section id="comparativo" class="comparativo container">
-        <div class="section-header text-center">
-          <div class="badge glass-panel">El modelo 10x</div>
-          <h2>El costo real de crear software.</h2>
-          <p class="text-muted">Desarrollar internamente toma meses y drena tu presupuesto. Nosotros te damos la misma o mejor calidad a una fracción del costo.</p>
-        </div>
-
-        <div class="pricing-grid">
-          <!-- In-House Card -->
-          <div class="pricing-card in-house">
-            <div class="card-header">
-              <h3>Equipo In-House</h3>
-              <p>Tradicional</p>
-            </div>
-            <div class="card-price">
-              <span class="currency">$</span><span class="amount">15,000+</span><span class="period">/mes USD</span>
-            </div>
-            <ul class="features-list">
-              <li class="negative">✗ Larga curva de contratación (Meses)</li>
-              <li class="negative">✗ Pagar sueldos base, impuestos y hardware</li>
-              <li class="negative">✗ Riesgo de rotación de personal y pérdida de contexto</li>
-              <li class="negative">✗ Necesidad de contratar roles separados (Dev, QA, PM, DevOps)</li>
-              <li class="negative">✗ Entregas lentas, experimentación cara</li>
-            </ul>
-          </div>
-
-          <!-- 10xTeam Card -->
-          <div class="pricing-card tenx glass-panel">
-            <div class="card-badge">LA DECISIÓN INTELIGENTE</div>
-            <div class="card-header">
-              <h3>10xTeam as-a-Service</h3>
-              <p>Ágil y Premium</p>
-            </div>
-            <div class="card-price text-gradient">
-              <span class="currency">$</span><span class="amount">2,500</span><span class="period">/mes USD</span>
-            </div>
-            <ul class="features-list">
-              <li class="positive">✓ Listo para iniciar en 48 hrs</li>
-              <li class="positive">✓ 0 impuestos de nómina, 0 costos ocultos</li>
-              <li class="positive">✓ Continuidad garantizada por nuestro Master OS</li>
-              <li class="positive">✓ Tienes acceso a Dev, QA, UI y Arquitectos en un mismo costo</li>
-              <li class="positive">✓ Enfoque en velocidad de entrega (Time-to-Market)</li>
-            </ul>
-            <div style="margin-top: 2rem;">
-              <a href="#contacto" class="btn-primary" style="width: 100%; text-align: center;">Comenzar Ahora</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Metodología Section -->
-      <section id="metodologia" class="metodologia container">
-        <div class="section-header text-center">
-          <div class="badge glass-panel">Nuestro Proceso</div>
-          <h2>Velocidad sin sacrificar calidad</h2>
-        </div>
-        <div class="method-steps">
-          <div class="step">
-            <div class="step-number">01</div>
-            <h3>Discovery</h3>
-            <p>Entendemos tu modelo de negocio, no solo el código. Definimos el MVP en la primera sesión.</p>
-          </div>
-          <div class="step">
-            <div class="step-number">02</div>
-            <h3>Setup & Arquitectura</h3>
-            <p>Desplegamos infraestructura escalable y asignamos a tu equipo 10xTeam en menos de 48 horas.</p>
-          </div>
-          <div class="step">
-            <div class="step-number">03</div>
-            <h3>Entregas Semanales</h3>
-            <p>Operamos con sprints cortos. Verás avances reales, funcionales y testeables cada semana.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Testimoniales Section -->
-      <section id="testimonios" class="testimonios container">
-        <div class="section-header text-center">
-          <h2>Casos de Éxito</h2>
-          <p class="text-muted">Empresas que escalaron reduciendo sus costos de desarrollo.</p>
-        </div>
-        <div class="testimonials-grid">
-          <div class="testimonial-card glass-panel">
-            <p class="quote">"Gastamos fortunas tratando de armar un equipo interno. Con 10xTeam, tuvimos nuestro MVP web listo en 4 semanas por una fracción del presupuesto. Simplemente increíble."</p>
-            <div class="author">
-              <div class="author-info">
-                <h4>Carlos R.</h4>
-                <p>CEO, Startup Logística</p>
+          <div class="hero-inner">
+            <div class="hero-content">
+              <div class="hero-description-area">
+                <div class="hero-text-side">
+                  <p class="hero-subtitle">
+                    “Construimos tu software en semanas no meses.” <br />
+                    “Equipo de élite + IA: 10x más rápido, 10x más barato.” <br />
+                    “Olvida los costos excesivos y la lentitud de contratar internamente. Te damos un equipo completo (Producto, Diseño, Dev, QA....) que empieza a trabajar en 48 hrs. Desde productos y prototipos funcionales hasta células y equipos dedicados.”
+                  </p>
+                  <div class="hero-cta">
+                    <a href="#contacto" class="btn-primary">Agenda tu Discovery Gratis →</a>
+                    <a href="#precios" class="btn-outline">Ver Precios</a>
+                  </div>
+                </div>
+                <div class="hero-stats-side">
+                  <div class="hero-proof">
+                    <div class="proof-item"><span class="proof-number">48h</span><span class="proof-label">para arrancar</span></div>
+                    <div class="proof-divider"></div>
+                    <div class="proof-item"><span class="proof-number">70%</span><span class="proof-label">menos costo</span></div>
+                    <div class="proof-divider"></div>
+                    <div class="proof-item"><span class="proof-number">10x</span><span class="proof-label">más eficiente</span></div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="testimonial-card glass-panel">
-            <p class="quote">"Nuestra plataforma e-commerce no aguantaba el tráfico. Su equipo reestructuró la arquitectura sin detener nuestras ventas. Son el brazo técnico que siempre quisimos tener."</p>
-            <div class="author">
-              <div class="author-info">
-                <h4>Laura M.</h4>
-                <p>Directora de Operaciones, RetailTech</p>
+            <div class="hero-visual">
+              <div class="terminal glass-panel">
+                <div class="terminal-header"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+                <div class="terminal-body">
+                  <code><span class="t-prompt">$</span> initializing <span class="t-accent">10xTeam</span> squad...</code>
+                  <code><span class="t-prompt">$</span> deploying <span class="t-accent">scalable</span> architecture...</code>
+                  <code><span class="t-prompt">$</span> running QA pipeline... <span class="t-success">✓ passed</span></code>
+                  <code><span class="t-prompt">$</span> shipping to production...</code>
+                  <code class="t-result"><span class="t-success">✓ MVP delivered in 4 weeks. $28,000 saved.</span></code>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- CTA Final / Contacto -->
-      <section id="contacto" class="cta-final container text-center">
-        <div class="glass-panel cta-box">
-          <h2>¿Listo para dejar de pagar de más por desarrollo?</h2>
-          <p>Agenda una llamada de descubrimiento de 15 minutos directamente con nuestros arquitectos.</p>
-          <a href="mailto:hello@10xteam.com" class="btn-primary" style="margin-top: 2rem; font-size: 1.1rem; padding: 1rem 3rem;">Agendar Llamada Gratuita</a>
+      <!-- ════ NUEVA SECCIÓN: MÉTODO 10X ════ -->
+      <section id="metodo-10x" class="section">
+        <div class="container">
+          <div class="section-header text-center">
+            <div class="badge">Nuestro Secreto</div>
+            <h2>¿Cómo hacemos que sea <span class="text-gradient">10x más rápido y más económico</span>?</h2>
+          </div>
+          <div class="services-grid method-grid">
+            <div class="service-card glass-panel">
+              <div class="service-icon">🧠</div>
+              <h3>IA Multi-Modelo</h3>
+              <p>Usamos los mejores modelos de IA según cada tarea: código, diseño, QA, documentación. No una sola IA, sino un equipo de IAs trabajando en paralelo. Automatizamos ~60% del trabajo repetitivo. Reducimos costos desorbitados y tiempos de espera sin sacrificar calidad.</p>
+            </div>
+            <div class="service-card glass-panel">
+              <div class="service-icon">⚙️</div>
+              <h3>Células Autónomas</h3>
+              <p>Cada proyecto tiene una célula con: Arquitecto de software, Analista de negocio, Desarrolladores (front/back), QA Engineer, UX/UI Designer, y un Tech Lead. Todos trabajan en sincronía sin depender de reuniones eternas.</p>
+            </div>
+            <div class="service-card glass-panel">
+              <div class="service-icon">📦</div>
+              <h3>Reutilización + Entregas frecuentes</h3>
+              <p>Nuestro backlog de componentes validados y patrones de arquitectura nos permite arrancar en 48h. Además, entregas cada 7 días con funcionalidades reales, no promesas.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════ SERVICIOS ════ -->
+      <section id="servicios" class="section">
+        <div class="container">
+          <div class="section-header text-center">
+            <div class="badge">Lo que hacemos</div>
+            <h2>Ingeniería de software<br />de nivel corporativo</h2>
+            <p class="subtitle">Cubrimos todo el ciclo de vida de tu producto digital. Sin excusas, sin retrasos.</p>
+          </div>
+          <div class="services-grid">
+            <div class="service-card glass-panel">
+              <div class="service-icon">🌐</div>
+              <h3>Plataformas Web & SaaS</h3>
+              <p>Sistemas robustos, escalables y orientados a conversión. Desde landing pages hasta plataformas complejas con dashboards y pagos.</p>
+            </div>
+            <div class="service-card glass-panel">
+              <div class="service-icon">📱</div>
+              <h3>Apps Móviles</h3>
+              <p>Aplicaciones nativas e híbridas para iOS y Android con experiencia de usuario impecable y rendimiento optimizado.</p>
+            </div>
+            <div class="service-card glass-panel">
+              <div class="service-icon">⚙️</div>
+              <h3>Sistemas & ERPs</h3>
+              <p>Automatiza tu operación interna con software a la medida que reemplaza hojas de cálculo y procesos manuales lentos.</p>
+            </div>
+            <div class="service-card glass-panel">
+              <div class="service-icon">🤖</div>
+              <h3>Integración con IA</h3>
+              <p>Potencia tu producto con inteligencia artificial: chatbots, automatización inteligente, análisis predictivo y más.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════ PRECIOS ════ -->
+      <section id="precios" class="section section-pricing">
+        <div class="container">
+          <div class="section-header text-center">
+            <div class="badge">Precios transparentes</div>
+            <h2>Elige cómo quieres trabajar con nosotros</h2>
+            <p class="subtitle">Tres modelos flexibles. 10x menos tiempo y 10x más accesibles que hacerlo In-House. Todos con calidad premium garantizada.</p>
+          </div>
+          <div class="pricing-grid">
+            <!-- Card 1: MVP -->
+            <div class="pricing-card glass-panel">
+              <div class="card-top">
+                <div class="plan-icon">🚀</div>
+                <h3>Lanza tu MVP</h3>
+                <p class="plan-desc">Proyecto Llave en Mano</p>
+              </div>
+              <div class="card-price">
+                <span class="from">Desde</span>
+                <div class="price-row"><span class="currency">$</span><span class="amount text-gradient">1,999</span><span class="unit">USD</span></div>
+                <span class="price-note">Pago único por proyecto</span>
+              </div>
+              <div class="card-body">
+                <ul class="features-list">
+                  <li class="positive">✓ Discovery + Diseño UI + Desarrollo</li>
+                  <li class="positive">✓ Entrega en 4-6 semanas</li>
+                  <li class="positive">✓ Despliegue incluido</li>
+                  <li class="positive">✓ Garantía: si no quedas satisfecho, te devolvemos tu dinero</li>
+                </ul>
+              </div>
+              <div class="card-footer">
+                <div class="card-compare">
+                  <span class="compare-label">Agencias Tradicionales</span>
+                  <span class="compare-value">$15,000 - $35,000+ USD</span>
+                </div>
+                <div class="card-compare inhouse">
+                  <span class="compare-label">In-House (4 meses)</span>
+                  <span class="compare-value">~$28,000+ USD</span>
+                </div>
+                <a href="#contacto" class="btn-outline btn-card">Cotizar mi proyecto →</a>
+              </div>
+            </div>
+            <!-- Card 2: Mantenimiento -->
+            <div class="pricing-card glass-panel featured">
+              <div class="card-badge-top">MÁS POPULAR</div>
+              <div class="card-top">
+                <div class="plan-icon">🔄</div>
+                <h3>Evolución Continua</h3>
+                <p class="plan-desc">Tu Equipo Fraccionado</p>
+              </div>
+              <div class="card-price">
+                <span class="from">Desde</span>
+                <div class="price-row"><span class="currency">$</span><span class="amount text-gradient">899</span><span class="unit">USD/mes</span></div>
+                <span class="price-note">Cancela cuando quieras</span>
+              </div>
+              <div class="card-body">
+                <ul class="features-list">
+                  <li class="positive">✓ Producto, Diseño y Desarrollo incluidos</li>
+                  <li class="positive">✓ Soporte técnico + resolución de bugs</li>
+                  <li class="positive">✓ Entregas quincenales de tus solicitudes</li>
+                  <li class="positive">✓ Cada 7 días recibes avances funcionales</li>
+                  <li class="positive">✓ Visión de negocio, no solo código</li>
+                </ul>
+                <p class="price-subnote">Sin contadores ni incertidumbre: defines prioridades y nosotros entregamos cada semana.</p>
+              </div>
+              <div class="card-footer">
+                <div class="card-compare">
+                  <span class="compare-label">Agencias Tradicionales</span>
+                  <span class="compare-value">$3,500 - $6,500 USD/mes</span>
+                </div>
+                <div class="card-compare inhouse">
+                  <span class="compare-label">1 Dev In-House</span>
+                  <span class="compare-value">+$2,800 USD/mes</span>
+                </div>
+                <a href="#contacto" class="btn-primary btn-card">Comenzar ahora →</a>
+              </div>
+            </div>
+            <!-- Card 3: Célula -->
+            <div class="pricing-card glass-panel">
+              <div class="card-top">
+                <div class="plan-icon">🏢</div>
+                <h3>Célula de Élite</h3>
+                <p class="plan-desc">Equipo Dedicado As-a-Service</p>
+              </div>
+              <div class="card-price">
+                <span class="from">Desde</span>
+                <div class="price-row"><span class="currency">$</span><span class="amount text-gradient">3,999</span><span class="unit">USD/mes</span></div>
+                <span class="price-note">Equipo completo dedicado</span>
+              </div>
+              <div class="card-body">
+                <ul class="features-list">
+                  <li class="positive">✓ PM + UI/UX + Dev Senior + QA</li>
+                  <li class="positive">✓ Sprints semanales con entregas reales</li>
+                  <li class="positive">✓ Escalable según necesidades</li>
+                  <li class="positive">✓ Continuidad garantizada por nuestro OS</li>
+                </ul>
+              </div>
+              <div class="card-footer">
+                <div class="card-compare">
+                  <span class="compare-label">Agencias Tradicionales</span>
+                  <span class="compare-value">$12,000 - $25,000 USD/mes</span>
+                </div>
+                <div class="card-compare inhouse">
+                  <span class="compare-label">Célula In-House</span>
+                  <span class="compare-value">+$14,000 USD/mes</span>
+                </div>
+                <a href="#contacto" class="btn-outline btn-card">Hablar con un arquitecto →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════ METODOLOGÍA ════ -->
+      <section id="metodologia" class="section">
+        <div class="container">
+          <div class="section-header text-center">
+            <div class="badge">Nuestro Proceso</div>
+            <h2>De la idea al producto<br />en semanas, no meses</h2>
+          </div>
+          <div class="method-steps">
+            <div class="step glass-panel">
+              <div class="step-number">01</div>
+              <h3>Discovery</h3>
+              <p>Entendemos tu negocio, definimos el alcance del MVP y evaluamos tiempos, etapas y entregables. Todo queda documentado.</p>
+            </div>
+            <div class="step glass-panel">
+              <div class="step-number">02</div>
+              <h3>Setup & Arquitectura</h3>
+              <p>Desplegamos infraestructura escalable y asignamos a tu célula 10xTeam en menos de 48 horas.</p>
+            </div>
+            <div class="step glass-panel">
+              <div class="step-number">03</div>
+              <h3>Entregas Semanales</h3>
+              <p>Sprints cortos con avances funcionales y testeables cada semana. Cero sorpresas al final.</p>
+            </div>
+            <div class="step glass-panel">
+              <div class="step-number">04</div>
+              <h3>Lanzamiento & Soporte</h3>
+              <p>Desplegamos a producción, monitoreamos métricas y te acompañamos con evolución continua.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════ TESTIMONIOS ════ -->
+      <section id="testimonios" class="section">
+        <div class="container">
+          <div class="section-header text-center">
+            <h2>Lo que dicen nuestros clientes</h2>
+            <p class="subtitle">Empresas que escalaron reduciendo sus costos de desarrollo con nosotros.</p>
+          </div>
+          <div class="testimonials-grid">
+            <div class="testimonial-card glass-panel">
+              <div class="stars">★★★★★</div>
+              <p class="quote">"Gastamos fortunas tratando de armar un equipo interno. Con 10xTeam, tuvimos nuestro MVP listo en 4 semanas por una fracción del presupuesto. Simplemente increíble."</p>
+              <div class="author"><h4>Carlos R.</h4><p>CEO, Empresa de Logística</p></div>
+            </div>
+            <div class="testimonial-card glass-panel">
+              <div class="stars">★★★★★</div>
+              <p class="quote">"Nuestra plataforma e-commerce no aguantaba el tráfico. Su equipo reestructuró la arquitectura sin detener nuestras ventas. Son el brazo técnico que siempre quisimos."</p>
+              <div class="author"><h4>Laura M.</h4><p>Dir. Operaciones, RetailTech</p></div>
+            </div>
+            <div class="testimonial-card glass-panel">
+              <div class="stars">★★★★★</div>
+              <p class="quote">"El plan de Evolución Continua nos cambió la vida. Antes pagábamos un dev que solo codificaba. Ahora tenemos visión de producto, diseño y desarrollo por menos dinero."</p>
+              <div class="author"><h4>Andrés P.</h4><p>Fundador, FinTech LATAM</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════ CTA / CONTACTO ════ -->
+      <section id="contacto" class="section">
+        <div class="container">
+          <div class="cta-box glass-panel text-center">
+            <h2>¿Listo para construir<br /><span class="text-gradient">sin pagar de más?</span></h2>
+            <p class="subtitle">Cuéntanos tu proyecto y te responderemos en menos de 24h.</p>
+            
+            <form action="#" method="POST" class="contact-form">
+              <div class="form-grid">
+                <input type="text" placeholder="Nombre completo" required />
+                <input type="email" placeholder="Correo electrónico" required />
+              </div>
+              <select required>
+                <option value="">¿Qué necesitas?</option>
+                <option value="mvp">MVP precio fijo</option>
+                <option value="evolucion">Equipo de evolución continua</option>
+                <option value="celula">Célula completa dedicada</option>
+              </select>
+              <button type="submit" class="btn-primary">Enviar Proyecto →</button>
+            </form>
+            
+            <p class="text-muted form-note">Sin compromiso. Te asesoramos en 15 min.</p>
+          </div>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer text-center">
-      <div class="container">
-        <p class="text-muted">© 2026 10xTeam. Todos los derechos reservados.</p>
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <span class="text-gradient footer-logo">10xTeam</span>
+          <p class="text-muted">© 2026 10xTeam. Todos los derechos reservados.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#">Términos y condiciones</a>
+          <a href="#">Aviso de Privacidad</a>
+        </div>
       </div>
     </footer>
 
     <style>
-      .navbar {
-        padding: 1.5rem 0;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        background: rgba(11, 15, 25, 0.8);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid var(--glass-border);
-      }
-      .navbar-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .logo {
-        font-size: 1.5rem;
-        font-weight: 800;
-        letter-spacing: -0.5px;
-      }
-      .nav-links {
-        display: flex;
-        gap: 2rem;
-      }
-      .nav-links a {
-        font-weight: 500;
-        color: var(--text-muted);
-        transition: color 0.3s ease;
-      }
-      .nav-links a:hover {
-        color: var(--text-color);
-      }
-      
-      .hero {
-        padding: 6rem 1.5rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
-        min-height: calc(100vh - 80px);
-      }
-      .badge {
-        display: inline-block;
-        padding: 0.5rem 1rem;
-        border-radius: 9999px;
-        font-size: 0.875rem;
-        font-weight: 500;
-        margin-bottom: 2rem;
-        color: var(--accent-primary);
-      }
-      .hero-title {
-        font-size: 4rem;
-        letter-spacing: -1px;
-        margin-bottom: 1.5rem;
-      }
-      .hero-subtitle {
-        font-size: 1.25rem;
-        color: var(--text-muted);
-        margin-bottom: 3rem;
-        max-width: 90%;
-      }
-      .hero-cta {
-        display: flex;
-        gap: 1.5rem;
-        align-items: center;
-      }
-      .btn-secondary {
-        color: var(--text-color);
-        font-weight: 600;
-        transition: color 0.3s ease;
-      }
-      .btn-secondary:hover {
-        color: var(--accent-primary);
-      }
+      /* ─── NAVBAR ─── */
+      .navbar{position:sticky;top:0;z-index:100;padding:1rem 0;background:rgba(7,10,18,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--glass-border)}
+      .navbar-container{display:flex;justify-content:space-between;align-items:center}
+      .logo{font-size:1.4rem;font-weight:900;letter-spacing:-0.5px}
+      .nav-links{display:flex;gap:2.5rem}
+      .nav-links a{font-weight:500;font-size:0.9rem;color:var(--text-muted);transition:color var(--transition-base)}
+      .nav-links a:hover{color:var(--text-color)}
+      .btn-nav{padding:0.6rem 1.5rem;font-size:0.85rem}
 
-      .hero-visual {
-        height: 100%;
-        min-height: 400px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
-      }
-      .visual-placeholder {
-        text-align: center;
-        color: var(--text-muted);
-      }
-      .mock-code {
-        margin-top: 2rem;
-        text-align: left;
-        background: rgba(0,0,0,0.5);
-        padding: 1.5rem;
-        border-radius: 8px;
-        font-family: monospace;
-        font-size: 0.875rem;
-      }
-      .mock-code code {
-        display: block;
-        margin-bottom: 0.5rem;
-        color: #10b981; /* Green terminal text */
-      }
+      /* ─── HERO ─── */
+      .hero{padding:6rem 0 4rem;min-height:90vh;display:flex;align-items:center}
+      .hero-title-area{margin-bottom:3rem}
+      .hero-inner{display:grid;grid-template-columns:1.2fr 0.8fr;gap:4rem;align-items:flex-start}
+      .hero h1{font-size:clamp(2.2rem,5vw,3.5rem);margin-bottom:0;line-height:1.2; letter-spacing: -1px; width: 100%;}
+      .title-part{display:block; white-space: nowrap;}
+      .hero-description-area{display:flex;gap:3rem;align-items:flex-start;margin-top:0}
+      .hero-text-side{flex:1.2}
+      .hero-stats-side{flex:0.8}
+      .hero-subtitle{font-size:1rem;color:var(--text-muted);margin-bottom:2rem;line-height:1.6}
+      .hero-cta{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-bottom:0}
+      .hero-proof{display:flex;flex-direction:column;gap:1.5rem;padding:1.5rem;background:rgba(255,255,255,0.03);border:1px solid var(--glass-border);border-radius:var(--radius-md)}
+      .proof-item{display:flex;flex-direction:column}
+      .proof-number{font-size:1.5rem;font-weight:800;color:var(--accent-primary)}
+      .proof-label{font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em}
+      .proof-divider{display:none}
 
-      .section-header {
-        margin-bottom: 4rem;
-        text-align: center;
-      }
-      .section-header h2 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-      }
-      .comparativo {
-        padding: 8rem 1.5rem;
-      }
-      .pricing-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-        align-items: center;
-      }
-      .pricing-card {
-        padding: 3rem 2rem;
-        border-radius: 20px;
-        position: relative;
-      }
-      .in-house {
-        background: rgba(255,255,255,0.02);
-        border: 1px solid rgba(255,255,255,0.05);
-      }
-      .tenx {
-        border-color: var(--accent-primary);
-        box-shadow: 0 0 40px rgba(59, 130, 246, 0.1);
-        transform: scale(1.05);
-        z-index: 10;
-      }
-      .card-badge {
-        position: absolute;
-        top: -12px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
-        padding: 0.25rem 1rem;
-        border-radius: 999px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 1px;
-      }
-      .card-header h3 { font-size: 1.5rem; }
-      .card-header p { color: var(--text-muted); }
-      .card-price {
-        font-size: 3.5rem;
-        font-weight: 800;
-        margin: 1.5rem 0;
-        display: flex;
-        align-items: baseline;
-      }
-      .currency { font-size: 1.5rem; margin-right: 0.25rem; }
-      .period { font-size: 1rem; color: var(--text-muted); font-weight: 500; }
-      .features-list { list-style: none; padding: 0; }
-      .features-list li { margin-bottom: 1rem; font-size: 0.95rem; }
-      .negative { color: #f87171; }
-      .positive { color: #10b981; font-weight: 500; }
+      /* Terminal */
+      .hero-visual{position:relative}
+      .terminal{padding:0;overflow:hidden;animation:float 6s ease-in-out infinite}
+      .terminal-header{display:flex;gap:6px;padding:1rem 1.2rem;border-bottom:1px solid var(--glass-border)}
+      .dot{width:10px;height:10px;border-radius:50%}
+      .dot.red{background:#f43f5e}.dot.yellow{background:#eab308}.dot.green{background:#10b981}
+      .terminal-body{padding:1.5rem;font-family:'Courier New',monospace;font-size:0.85rem;display:flex;flex-direction:column;gap:0.6rem}
+      .terminal-body code{display:block;color:var(--text-muted)}
+      .t-prompt{color:var(--accent-primary);margin-right:0.5rem}
+      .t-accent{color:var(--accent-secondary)}
+      .t-success{color:var(--accent-emerald)}
+      .t-result{margin-top:0.5rem;padding-top:0.75rem;border-top:1px solid var(--glass-border)}
 
-      /* Servicios */
-      .servicios, .metodologia, .testimonios, .cta-final {
-        padding: 6rem 1.5rem;
-      }
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-      }
-      .service-card {
-        padding: 2.5rem;
-        transition: transform 0.3s ease, background 0.3s ease;
-      }
-      .service-card:hover {
-        transform: translateY(-5px);
-        background: rgba(255,255,255,0.06);
-      }
-      .service-icon {
-        font-size: 3rem;
-        margin-bottom: 1.5rem;
-      }
-      
-      /* Metodología */
-      .method-steps {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 3rem;
-        position: relative;
-      }
-      .step {
-        text-align: left;
-      }
-      .step-number {
-        font-size: 4rem;
-        font-weight: 800;
-        color: rgba(59, 130, 246, 0.2);
-        margin-bottom: -1rem;
-        line-height: 1;
-      }
-      .step h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        color: var(--accent-primary);
-      }
+      /* ─── SERVICES & METHOD ─── */
+      .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem}
+      .method-grid{grid-template-columns:repeat(3, 1fr); margin-bottom: 4rem;}
+      .service-card{padding:2.5rem;transition:transform var(--transition-base),border-color var(--transition-base)}
+      .service-card:hover{transform:translateY(-4px);border-color:var(--glass-border-hover)}
+      .service-icon{font-size:2.5rem;margin-bottom:1.25rem}
+      .service-card h3{font-size:1.15rem;margin-bottom:0.75rem}
+      .service-card p{color:var(--text-muted);font-size:0.92rem;line-height:1.7}
 
-      /* Testimoniales */
-      .testimonials-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-      }
-      .testimonial-card {
-        padding: 2.5rem;
-        position: relative;
-      }
-      .testimonial-card::before {
-        content: '"';
-        position: absolute;
-        top: 20px;
-        right: 30px;
-        font-size: 6rem;
-        color: rgba(255,255,255,0.05);
-        font-family: serif;
-        line-height: 1;
-      }
-      .quote {
-        font-size: 1.1rem;
-        font-style: italic;
-        margin-bottom: 2rem;
-        color: var(--text-color);
-        position: relative;
-        z-index: 1;
-      }
-      .author {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-      .author-info h4 { margin: 0; color: var(--accent-primary); }
-      .author-info p { margin: 0; font-size: 0.85rem; color: var(--text-muted); }
+      /* ─── PRICING ─── */
+      .section-pricing{background:linear-gradient(180deg,transparent 0%,rgba(59,130,246,0.02) 50%,transparent 100%)}
+      .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:stretch}
+      .pricing-card{padding:2rem 1.5rem;display:grid;grid-template-rows: auto auto 1fr auto;position:relative;transition:border-color var(--transition-base),transform var(--transition-base)}
+      .pricing-card:hover{border-color:var(--glass-border-hover);transform:translateY(-4px)}
+      .pricing-card.featured{border-color:rgba(59,130,246,0.3);box-shadow:0 0 60px rgba(59,130,246,0.08)}
+      .card-badge-top{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent-primary),var(--accent-secondary));padding:0.3rem 1.2rem;border-radius:var(--radius-pill);font-size:0.7rem;font-weight:700;letter-spacing:1px;color:#fff;white-space:nowrap}
+      .card-top{margin-bottom:1.5rem}
+      .plan-icon{font-size:2rem;margin-bottom:0.75rem}
+      .card-top h3{font-size:1.35rem;margin-bottom:0.25rem}
+      .plan-desc{color:var(--text-muted);font-size:0.88rem}
+      .card-price{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--glass-border)}
+      .card-body{display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem}
+      .card-footer{display:flex;flex-direction:column;gap:0.5rem}
+      .card-price .from{font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em}
+      .price-row{display:flex;align-items:baseline;gap:0.15rem;margin:0.25rem 0}
+      .currency{font-size:1.4rem;font-weight:700}
+      .amount{font-size:2.5rem;font-weight:900;line-height:1}
+      .unit{font-size:0.85rem;color:var(--text-muted);margin-left:0.5rem;font-weight:500}
+      .price-note{font-size:0.78rem;color:var(--text-dim)}
+      .features-list{padding:0;margin-bottom:1.5rem;flex-grow:1}
+      .features-list li{margin-bottom:0.8rem;font-size:0.9rem;color:var(--text-muted)}
+      .positive{color:var(--accent-emerald) !important;font-weight:500}
+      .card-compare{background:rgba(255,255,255,0.03);border:1px solid var(--glass-border);border-radius:var(--radius-sm);padding:0.6rem 0.8rem;margin-bottom:0.5rem;display:flex;flex-direction:column;gap:0.1rem}
+      .card-compare.inhouse{background:rgba(244,63,94,0.04);border-color:rgba(244,63,94,0.1);margin-bottom:1.5rem}
+      .compare-label{font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.03em}
+      .compare-value{font-size:0.8rem;color:var(--text-muted);font-weight:600}
+      .inhouse .compare-value{color:var(--accent-rose)}
+      .price-subnote{font-size: 0.75rem; color: var(--text-dim); margin-bottom: 1.5rem;}
+      .btn-card{width:100%;text-align:center}
 
-      /* CTA Box */
-      .cta-box {
-        padding: 5rem 2rem;
-        background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-        border: 1px solid rgba(59, 130, 246, 0.2);
-        border-radius: 20px;
-      }
-      .text-center { text-align: center; }
+      /* ─── METHODOLOGY ─── */
+      .method-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+      .step{padding:2rem;position:relative;transition:border-color var(--transition-base)}
+      .step:hover{border-color:var(--glass-border-hover)}
+      .step-number{font-size:3rem;font-weight:900;line-height:1;margin-bottom:1rem;background:linear-gradient(135deg,rgba(59,130,246,0.25),rgba(139,92,246,0.15));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+      .step h3{font-size:1.1rem;margin-bottom:0.6rem;color:var(--accent-primary)}
+      .step p{font-size:0.9rem;color:var(--text-muted);line-height:1.7}
 
-      .footer {
-        padding: 3rem 1.5rem;
-        border-top: 1px solid var(--glass-border);
-        margin-top: 2rem;
-      }
+      /* ─── TESTIMONIALS ─── */
+      .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+      .testimonial-card{padding:2.5rem;transition:border-color var(--transition-base)}
+      .testimonial-card:hover{border-color:var(--glass-border-hover)}
+      .stars{color:#eab308;font-size:0.9rem;margin-bottom:1rem;letter-spacing:2px}
+      .quote{font-size:1rem;color:var(--text-color);line-height:1.8;margin-bottom:1.5rem;font-style:italic;opacity:0.9}
+      .author h4{font-size:0.95rem;color:var(--accent-primary);margin-bottom:0.1rem}
+      .author p{font-size:0.8rem;color:var(--text-muted)}
 
-      @media (max-width: 992px) {
-        .hero {
-          grid-template-columns: 1fr;
-          text-align: center;
-          padding-top: 4rem;
-        }
-        .hero-subtitle {
-          margin: 0 auto 3rem auto;
-        }
-        .hero-cta {
-          justify-content: center;
-        }
-        .nav-links {
-          display: none; /* simple mobile menu hidden for MVP */
-        }
-        .pricing-grid { grid-template-columns: 1fr; }
-        .tenx { transform: scale(1); }
+      /* ─── CONTACT FORM ─── */
+      .cta-box{padding:5rem 3rem;background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(139,92,246,0.08));border-color:rgba(59,130,246,0.15);border-radius:var(--radius-lg)}
+      .cta-box h2{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:1rem}
+      .cta-box .subtitle{margin-bottom:2.5rem}
+      .contact-form{max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;}
+      .form-grid{display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;}
+      .contact-form input, .contact-form select{
+        padding: 0.8rem 1.2rem;
+        background: rgba(0,0,0,0.3);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius-sm);
+        color: white;
+        font-family: inherit;
+      }
+      .contact-form select option { background: var(--bg-color); }
+      .form-note{margin-top: 1.5rem; font-size: 0.85rem;}
+
+      /* ─── FOOTER ─── */
+      .footer{padding:4rem 0;border-top:1px solid var(--glass-border);margin-top:2rem}
+      .footer-inner{display:flex;justify-content:space-between;align-items:center}
+      .footer-logo{font-weight:900;font-size:1.2rem; display: block; margin-bottom: 0.5rem;}
+      .footer-links{display: flex; gap: 2rem;}
+      .footer-links a{font-size: 0.85rem; color: var(--text-dim); transition: color 0.2s;}
+      .footer-links a:hover{color: var(--accent-primary);}
+
+      /* ─── RESPONSIVE ─── */
+      @media(max-width:1024px){
+        .hero-inner{grid-template-columns:1fr;text-align:center}
+        .hero h1{max-width:100%;margin-left:auto;margin-right:auto}
+        .title-part{display:inline; white-space: normal; margin-right: 0.5rem;}
+        @media(max-width:768px) { .title-part{display:block; margin-right:0;} }
+        .hero-description-area{flex-direction:column;gap:2rem;align-items:center;text-align:center}
+        .hero-subtitle{margin-left:auto;margin-right:auto}
+        .hero-cta{justify-content:center}
+        .hero-proof{flex-direction:row;justify-content:center;width:100%;max-width:600px}
+        .hero-visual{max-width:500px;margin:2rem auto 0}
+        .pricing-grid{grid-template-columns:1fr}
+        .method-grid, .method-steps{grid-template-columns:repeat(2,1fr)}
+        .testimonials-grid{grid-template-columns:1fr}
+      }
+      @media(max-width:768px){
+        .nav-links{display:none}
+        .hero{padding:5rem 0 3rem;min-height:auto}
+        .hero h1{font-size:2rem}
+        .method-grid, .method-steps, .form-grid{grid-template-columns:1fr}
+        .footer-inner{flex-direction:column;gap:2rem;text-align:center}
       }
     </style>
 	</body>
