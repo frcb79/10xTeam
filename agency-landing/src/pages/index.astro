@@ -10,7 +10,7 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
-    <meta name="description" content="Desarrollo de software a precio justo. MVP desde $1,499 USD o equipo dedicado desde $699/mes. 10x más rápido con IA multi-modelo. ¡Agenda tu discovery gratis!" />
+    <meta name="description" content="Desarrollo de software a precio justo. MVP desde $1,249 USD o equipo dedicado desde $799/mes. 10x más rápido con IA multi-modelo. ¡Agenda tu discovery gratis!" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -23,6 +23,7 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
           <a href="#servicios">Servicios</a>
           <a href="#precios">Precios</a>
           <a href="#metodologia">Método</a>
+          <a href="#nosotros">Nosotros</a>
           <a href="#testimonios">Casos</a>
         </nav>
         <a href="#contacto" class="btn-primary btn-nav">Agendar Llamada</a>
@@ -76,6 +77,28 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
           </div>
         </div>
       </section>
+      
+      <!-- ════ SECCIÓN: ESTADÍSTICAS ════ -->
+      <div class="stats-ribbon">
+        <div class="container stats-container">
+          <div class="stat-item">
+            <span class="stat-number">15+</span>
+            <span class="stat-label">Proyectos Exitosos</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">+35</span>
+            <span class="stat-label">Días ahorrados / proyecto</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">3-4</span>
+            <span class="stat-label">Semanas por MVP</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">$15k-$20k USD</span>
+            <span class="stat-label">Ahorro promedio por cliente</span>
+          </div>
+        </div>
+      </div>
 
       <!-- ════ NUEVA SECCIÓN: MÉTODO 10X ════ -->
       <section id="metodo-10x" class="section">
@@ -86,18 +109,24 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
           </div>
           <div class="services-grid method-grid">
             <div class="service-card glass-panel">
-              <div class="service-icon">🧠</div>
-              <h3>IA Multi-Modelo</h3>
+              <div class="card-title-hz">
+                <div class="service-icon">🧠</div>
+                <h3>IA Multi-Modelo</h3>
+              </div>
               <p>Usamos los mejores modelos de IA según cada tarea: código, diseño, QA, documentación. No una sola IA, sino un equipo de IAs trabajando en paralelo. Automatizamos ~60% del trabajo repetitivo. Reducimos costos desorbitados y tiempos de espera sin sacrificar calidad.</p>
             </div>
             <div class="service-card glass-panel">
-              <div class="service-icon">⚙️</div>
-              <h3>Células Autónomas</h3>
+              <div class="card-title-hz">
+                <div class="service-icon">⚙️</div>
+                <h3>Células Autónomas</h3>
+              </div>
               <p>Cada proyecto tiene una célula con: Arquitecto de software, Analista de negocio, Desarrolladores (front/back), QA Engineer, UX/UI Designer, y un Tech Lead. Todos trabajan en sincronía sin depender de reuniones eternas.</p>
             </div>
             <div class="service-card glass-panel">
-              <div class="service-icon">📦</div>
-              <h3>Reutilización + Entregas frecuentes</h3>
+              <div class="card-title-hz">
+                <div class="service-icon">📦</div>
+                <h3>Reutilización + Entregas frecuentes</h3>
+              </div>
               <p>Nuestro backlog de componentes validados y patrones de arquitectura nos permite arrancar en 48h. Además, entregas cada 7 días con funcionalidades reales, no promesas.</p>
             </div>
           </div>
@@ -114,23 +143,31 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
           </div>
           <div class="services-grid">
             <div class="service-card glass-panel">
-              <div class="service-icon">🌐</div>
-              <h3>Plataformas Web & SaaS</h3>
+              <div class="card-title-hz">
+                <div class="service-icon">🌐</div>
+                <h3>Plataformas Web & SaaS</h3>
+              </div>
               <p>Sistemas robustos, escalables y orientados a conversión. Desde landing pages hasta plataformas complejas con dashboards y pagos.</p>
             </div>
             <div class="service-card glass-panel">
-              <div class="service-icon">📱</div>
-              <h3>Apps Móviles</h3>
+              <div class="card-title-hz">
+                <div class="service-icon">📱</div>
+                <h3>Apps Móviles</h3>
+              </div>
               <p>Aplicaciones nativas e híbridas para iOS y Android con experiencia de usuario impecable y rendimiento optimizado.</p>
             </div>
             <div class="service-card glass-panel">
-              <div class="service-icon">⚙️</div>
-              <h3>Sistemas & ERPs</h3>
+              <div class="card-title-hz">
+                <div class="service-icon">⚙️</div>
+                <h3>Sistemas & ERPs</h3>
+              </div>
               <p>Automatiza tu operación interna con software a la medida que reemplaza hojas de cálculo y procesos manuales lentos.</p>
             </div>
             <div class="service-card glass-panel">
-              <div class="service-icon">🤖</div>
-              <h3>Integración con IA</h3>
+              <div class="card-title-hz">
+                <div class="service-icon">🤖</div>
+                <h3>Integración con IA</h3>
+              </div>
               <p>Potencia tu producto con inteligencia artificial: chatbots, automatización inteligente, análisis predictivo y más.</p>
             </div>
           </div>
@@ -157,7 +194,7 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
               </div>
               <div class="card-price">
                 <span class="from">Desde</span>
-                <div class="price-row"><span class="currency">$</span><span class="amount text-gradient">1,499</span><span class="unit">USD</span></div>
+                <div class="price-row"><span class="currency">$</span><span class="amount text-gradient">1,249</span><span class="unit">USD</span></div>
                 <span class="price-note">Pago único por proyecto</span>
               </div>
               <div class="card-body">
@@ -268,24 +305,59 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
           </div>
           <div class="method-steps">
             <div class="step glass-panel">
-              <div class="step-number">01</div>
-              <h3>Discovery</h3>
+              <div class="card-title-hz">
+                <div class="step-number">01</div>
+                <h3>Discovery</h3>
+              </div>
               <p>Entendemos tu negocio, definimos el alcance del MVP y evaluamos tiempos, etapas y entregables. Todo queda documentado.</p>
             </div>
             <div class="step glass-panel">
-              <div class="step-number">02</div>
-              <h3>Setup & Arquitectura</h3>
+              <div class="card-title-hz">
+                <div class="step-number">02</div>
+                <h3>Setup & Arquitectura</h3>
+              </div>
               <p>Desplegamos infraestructura escalable y asignamos a tu célula 10xTeam en menos de 48 horas.</p>
             </div>
             <div class="step glass-panel">
-              <div class="step-number">03</div>
-              <h3>Entregas Semanales</h3>
+              <div class="card-title-hz">
+                <div class="step-number">03</div>
+                <h3>Entregas Semanales</h3>
+              </div>
               <p>Sprints cortos con avances funcionales y testeables cada semana. Cero sorpresas al final.</p>
             </div>
             <div class="step glass-panel">
-              <div class="step-number">04</div>
-              <h3>Lanzamiento & Soporte</h3>
+              <div class="card-title-hz">
+                <div class="step-number">04</div>
+                <h3>Lanzamiento & Soporte</h3>
+              </div>
               <p>Desplegamos a producción, monitoreamos métricas y te acompañamos con evolución continua.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════ SECCIÓN: SOBRE NOSOTROS ════ -->
+      <section id="sobre-nosotros" class="section section-about">
+        <div class="container">
+          <div class="about-grid">
+            <div class="about-content">
+              <div class="badge">Nuestro Equipo</div>
+              <h2>Un equipo de apasionados,<br /><span class="text-gradient">sin fronteras</span></h2>
+              <p>Somos un equipo multidisciplinario de entusiastas de la tecnología distribuidos en <strong>México y Latinoamérica</strong>. Hemos trabajado en diversas industrias, empresas y regiones, aportando una visión global a soluciones locales.</p>
+              <p>Nuestra pasión es democratizar el software de nivel élite, poniéndolo al alcance de pequeñas empresas y emprendedores que buscan escalar sin los costos prohibitivos de las agencias tradicionales. Creemos que la distancia no es barrera para la excelencia.</p>
+              <div class="about-features">
+                <div class="a-feat"><span>🌎</span> Diversidad Regional</div>
+                <div class="a-feat"><span>🚀</span> ADN de Startup</div>
+                <div class="a-feat"><span>🛠️</span> Multi-Industria</div>
+              </div>
+            </div>
+            <div class="about-visual">
+              <div class="about-card-stack">
+                <div class="a-card glass-panel">🇲🇽 México</div>
+                <div class="a-card glass-panel">🇦🇷 Argentina</div>
+                <div class="a-card glass-panel">🇨🇴 Colombia</div>
+                <div class="a-card glass-panel">🇪🇨 Ecuador</div>
+              </div>
             </div>
           </div>
         </div>
@@ -490,9 +562,9 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
       @media(max-width:768px){ .modal-columns{grid-template-columns:1fr;} }
 
       /* Pricing Title Horizontal */
-      .card-title-hz{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.25rem;}
-      .card-title-hz .plan-icon{font-size:1.8rem;margin-bottom:0;}
-      .card-title-hz h3{font-size:1.35rem;margin-bottom:0;}
+      .card-title-hz{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem}
+      .card-title-hz .plan-icon, .card-title-hz .service-icon, .card-title-hz .step-number{font-size:2rem;margin-bottom:0;flex-shrink:0}
+      .card-title-hz h3{font-size:1.35rem;margin-bottom:0;line-height:1.2}
       
       .pricing-cta-bottom { margin-top: 3.5rem; }
       .btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem 2rem; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: var(--radius-pill); color: var(--text-color); font-weight: 600; font-size: 0.95rem; transition: all 0.3s ease; text-decoration: none; }
@@ -504,8 +576,7 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
       .method-grid{grid-template-columns:repeat(3, 1fr); margin-bottom: 4rem;}
       .service-card{padding:2.5rem;transition:transform var(--transition-base),border-color var(--transition-base)}
       .service-card:hover{transform:translateY(-4px);border-color:var(--glass-border-hover)}
-      .service-icon{font-size:2.5rem;margin-bottom:1.25rem}
-      .service-card h3{font-size:1.15rem;margin-bottom:0.75rem}
+      .service-card h3{font-size:1.15rem;margin-bottom:0}
       .service-card p{color:var(--text-muted);font-size:0.92rem;line-height:1.7}
 
       /* ─── PRICING ─── */
@@ -543,8 +614,8 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
       .method-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
       .step{padding:2rem;position:relative;transition:border-color var(--transition-base)}
       .step:hover{border-color:var(--glass-border-hover)}
-      .step-number{font-size:3rem;font-weight:900;line-height:1;margin-bottom:1rem;background:linear-gradient(135deg,rgba(59,130,246,0.25),rgba(139,92,246,0.15));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-      .step h3{font-size:1.1rem;margin-bottom:0.6rem;color:var(--accent-primary)}
+      .step-number{font-size:2.5rem;font-weight:900;line-height:1;background:linear-gradient(135deg,rgba(59,130,246,0.25),rgba(139,92,246,0.15));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+      .step h3{font-size:1.1rem;margin-bottom:0;color:var(--accent-primary)}
       .step p{font-size:0.9rem;color:var(--text-muted);line-height:1.7}
 
       /* ─── TESTIMONIALS ─── */
@@ -581,8 +652,35 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
       .footer-links a{font-size: 0.85rem; color: var(--text-dim); transition: color 0.2s;}
       .footer-links a:hover{color: var(--accent-primary);}
 
+      /* ─── STATS RIBBON ─── */
+      .stats-ribbon { background: rgba(59, 130, 246, 0.05); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 2rem 0; margin-top: -1px; }
+      .stats-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+      .stat-item { text-align: center; display: flex; flex-direction: column; gap: 0.25rem; }
+      .stat-number { font-size: 2rem; font-weight: 800; color: var(--accent-primary); line-height: 1; }
+      .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+      /* ─── ABOUT US ─── */
+      .section-about { overflow: hidden; }
+      .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+      .about-content p { color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.05rem; }
+      .about-features { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
+      .a-feat { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; font-weight: 600; color: var(--text-color); background: rgba(255,255,255,0.03); padding: 0.5rem 1rem; border-radius: var(--radius-pill); border: 1px solid var(--glass-border); }
+      .about-visual { position: relative; height: 300px; display: flex; align-items: center; justify-content: center; }
+      .about-card-stack { position: relative; width: 100%; max-width: 300px; }
+      .a-card { position: absolute; padding: 1rem 2rem; width: 100%; text-align: center; font-weight: 700; transform: rotate(var(--rot)); top: var(--top); left: var(--left); transition: all 0.3s ease; }
+      .a-card:nth-child(1) { --rot: -5deg; --top: 0; --left: 0; z-index: 4; }
+      .a-card:nth-child(2) { --rot: 3deg; --top: 40px; --left: 20px; z-index: 3; opacity: 0.8; }
+      .a-card:nth-child(3) { --rot: -2deg; --top: 80px; --left: -10px; z-index: 2; opacity: 0.6; }
+      .a-card:nth-child(4) { --rot: 6deg; --top: 120px; --left: 15px; z-index: 1; opacity: 0.4; }
+      .a-card:hover { transform: scale(1.05) rotate(0); z-index: 10; opacity: 1; border-color: var(--accent-primary); }
+
       /* ─── RESPONSIVE ─── */
       @media(max-width:1024px){
+        .stats-container { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .about-grid { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+        .about-features { justify-content: center; }
+        .about-visual { height: 250px; }
+        .about-card-stack { margin: 0 auto; }
         .hero-inner{grid-template-columns:1fr;text-align:center}
         .hero h1{max-width:100%;margin-left:auto;margin-right:auto}
         .title-part{display:inline; white-space: normal; margin-right: 0.5rem;}
