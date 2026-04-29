@@ -377,28 +377,26 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
         </div>
       </section>
 
-      <!-- ════ TESTIMONIOS ════ -->
-      <section id="testimonios" class="section">
+      <!-- ════ AUDITORÍA / PRUEBA DE VALOR ════ -->
+      <section id="prueba-valor" class="section section-audit">
         <div class="container">
-          <div class="section-header text-center">
-            <h2>Lo que dicen nuestros clientes</h2>
-            <p class="subtitle">Empresas que escalaron reduciendo sus costos de desarrollo con nosotros.</p>
-          </div>
-          <div class="testimonials-grid">
-            <div class="testimonial-card glass-panel">
-              <div class="stars">★★★★★</div>
-              <p class="quote">"Necesitábamos un portal B2B para nuestros proveedores. Un dev local nos cobraba $4,000 USD al mes solo por programar. 10xTeam armó el MVP completo (diseño y código) en 6 semanas por menos de la mitad. Nos gustó tanto el resultado que los mantuvimos con el plan de Evolución para ir agregando funciones cada mes."</p>
-              <div class="author"><h4>Mauricio S.</h4><p>Fundador, Distribución B2B</p></div>
+          <div class="audit-grid">
+            <div class="audit-content">
+              <div class="badge">Auditoría Gratuita</div>
+              <h2>Preferimos demostrarlo que contarlo.</h2>
+              <p class="audit-lead">Demostramos nuestra capacidad técnica trabajando en tu proyecto antes de cobrarte un solo centavo.</p>
+              <p>Cuéntanos tu idea o cuello de botella por escrito o agenda una llamada exploratoria de 15 minutos. En <strong>48 horas</strong> te entregaremos un Diagrama de Arquitectura Inicial y un Roadmap de ejecución para tu MVP. Si te convence nuestra visión, trabajamos juntos. Si no, te quedas con el documento. Cero compromisos.</p>
+              <div class="audit-cta-area">
+                <a href="#contacto" class="btn-primary">Quiero mi Roadmap en 48h →</a>
+              </div>
             </div>
-            <div class="testimonial-card glass-panel">
-              <div class="stars">★★★★★</div>
-              <p class="quote">"Teníamos un caos operando con Excel y cotizamos un sistema interno que nos tomaba 8 meses y $25,000 USD con una agencia tradicional. Aquí nos entregaron una primera versión funcional en 4 semanas. Ahorramos un 60% del presupuesto y ahora usamos su plan de $799/mes para darle mantenimiento."</p>
-              <div class="author"><h4>Valeria G.</h4><p>Dir. Operaciones, Empresa de Logística</p></div>
-            </div>
-            <div class="testimonial-card glass-panel">
-              <div class="stars">★★★★★</div>
-              <p class="quote">"Contratamos a un programador in-house, pero la app no avanzaba porque nos faltaba diseño y QA. Terminamos cancelando eso. Con 10xTeam, por casi el mismo costo, nos asignaron a un equipo completo que rescató el código y lanzó la app en mes y medio. Seguimos con ellos bajo su modelo mensual."</p>
-              <div class="author"><h4>Diego C.</h4><p>CEO, Startup HealthTech</p></div>
+            <div class="audit-visual">
+              <div class="audit-mockup glass-panel">
+                <img src="/architecture-mockup.png" alt="Architecture Roadmap Mockup" class="mockup-img" />
+                <div class="mockup-overlay">
+                  <span class="mockup-tag">Ejemplo de Entregable 10xTeam</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -633,14 +631,18 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
       .step h3{font-size:1.1rem;margin-bottom:0;color:var(--accent-primary)}
       .step p{font-size:0.9rem;color:var(--text-muted);line-height:1.7}
 
-      /* ─── TESTIMONIALS ─── */
-      .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-      .testimonial-card{padding:2.5rem;transition:border-color var(--transition-base)}
-      .testimonial-card:hover{border-color:var(--glass-border-hover)}
-      .stars{color:#eab308;font-size:0.9rem;margin-bottom:1rem;letter-spacing:2px}
-      .quote{font-size:1rem;color:var(--text-color);line-height:1.8;margin-bottom:1.5rem;font-style:italic;opacity:0.9}
-      .author h4{font-size:0.95rem;color:var(--accent-primary);margin-bottom:0.1rem}
-      .author p{font-size:0.8rem;color:var(--text-muted)}
+      /* ─── AUDIT SECTION ─── */
+      .section-audit { background: linear-gradient(180deg, rgba(59,130,246,0.02) 0%, transparent 100%); }
+      .audit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+      .audit-content p { color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.05rem; }
+      .audit-lead { font-size: 1.15rem; color: var(--text-color); margin-bottom: 1.5rem; }
+      .audit-cta-area { margin-top: 2.5rem; }
+      .audit-visual { position: relative; }
+      .audit-mockup { position: relative; padding: 0.5rem; border-radius: var(--radius-lg); overflow: hidden; }
+      .mockup-img { width: 100%; display: block; border-radius: var(--radius-md); filter: brightness(0.9) contrast(1.1); transition: filter 0.3s; }
+      .audit-mockup:hover .mockup-img { filter: brightness(1); }
+      .mockup-overlay { position: absolute; bottom: 1.5rem; right: 1.5rem; }
+      .mockup-tag { background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); padding: 0.5rem 1rem; border-radius: var(--radius-pill); font-size: 0.75rem; color: #fff; font-weight: 600; letter-spacing: 0.5px; border: 1px solid rgba(255,255,255,0.1); }
 
       /* ─── CONTACT FORM ─── */
       .cta-box{padding:5rem 3rem;background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(139,92,246,0.08));border-color:rgba(59,130,246,0.15);border-radius:var(--radius-lg)}
@@ -677,24 +679,25 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
 
       /* ─── ABOUT US ─── */
       .section-about { overflow: hidden; }
-      .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center; }
+      .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: flex-start; }
+      .about-content { padding-top: 1.5rem; }
       .about-content p { color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.05rem; }
       .about-countries { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2.5rem; }
       .country-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-      .country-badge { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); background: rgba(255,255,255,0.03); padding: 0.4rem 0.9rem; border-radius: var(--radius-pill); border: 1px solid var(--glass-border); }
+      .country-badge { font-size: 0.95rem; font-weight: 600; color: var(--text-color); background: rgba(59, 130, 246, 0.08); padding: 0.6rem 1.2rem; border-radius: var(--radius-pill); border: 1px solid rgba(59, 130, 246, 0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
       
-      .section-about .section-header { margin-bottom: 2.5rem; }
-      .about-visual { position: relative; height: 550px; display: flex; align-items: center; justify-content: center; }
-      .about-card-stack { position: relative; width: 100%; max-width: 320px; height: 420px; }
+      .section-about .section-header { margin-bottom: 0.5rem; }
+      .about-visual { position: relative; height: 650px; display: flex; align-items: center; justify-content: center; }
+      .about-card-stack { position: relative; width: 100%; max-width: 320px; height: 560px; }
       .a-card { position: absolute; padding: 1.25rem 1.5rem; width: 100%; text-align: left; font-weight: 700; transform: rotate(var(--rot)); top: var(--top); left: var(--left); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; align-items: center; gap: 0.75rem; cursor: default; }
       .a-card .icon { font-size: 1.4rem; }
       .a-card:nth-child(1) { --rot: -4deg; --top: 0px; --left: 0; z-index: 7; }
-      .a-card:nth-child(2) { --rot: 2deg; --top: 60px; --left: 20px; z-index: 6; opacity: 0.9; }
-      .a-card:nth-child(3) { --rot: -2deg; --top: 120px; --left: -15px; z-index: 5; opacity: 0.85; }
-      .a-card:nth-child(4) { --rot: 5deg; --top: 180px; --left: 10px; z-index: 4; opacity: 0.8; }
-      .a-card:nth-child(5) { --rot: -3deg; --top: 240px; --left: -5px; z-index: 3; opacity: 0.75; }
-      .a-card:nth-child(6) { --rot: 4deg; --top: 300px; --left: 15px; z-index: 2; opacity: 0.7; }
-      .a-card:nth-child(7) { --rot: -1deg; --top: 360px; --left: -10px; z-index: 1; opacity: 0.65; }
+      .a-card:nth-child(2) { --rot: 2deg; --top: 80px; --left: 20px; z-index: 6; opacity: 0.95; }
+      .a-card:nth-child(3) { --rot: -2deg; --top: 160px; --left: -15px; z-index: 5; opacity: 0.9; }
+      .a-card:nth-child(4) { --rot: 5deg; --top: 240px; --left: 10px; z-index: 4; opacity: 0.85; }
+      .a-card:nth-child(5) { --rot: -3deg; --top: 320px; --left: -5px; z-index: 3; opacity: 0.8; }
+      .a-card:nth-child(6) { --rot: 4deg; --top: 400px; --left: 15px; z-index: 2; opacity: 0.75; }
+      .a-card:nth-child(7) { --rot: -1deg; --top: 480px; --left: -10px; z-index: 1; opacity: 0.7; }
       .a-card:hover { transform: scale(1.1) translateY(-10px) rotate(0); z-index: 10; opacity: 1; border-color: var(--accent-primary); box-shadow: 0 15px 45px rgba(59, 130, 246, 0.3); }
 
       /* ─── RESPONSIVE ─── */
@@ -714,7 +717,7 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
         .hero-visual{max-width:500px;margin:2rem auto 0}
         .pricing-grid{grid-template-columns:1fr}
         .method-grid, .method-steps{grid-template-columns:repeat(2,1fr)}
-        .testimonials-grid{grid-template-columns:1fr}
+        .audit-grid{grid-template-columns:1fr}
       }
       @media(max-width:768px){
         .nav-links{display:none}
