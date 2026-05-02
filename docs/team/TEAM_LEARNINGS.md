@@ -5,12 +5,14 @@ Se actualiza via sync desde cada proyecto al master.
 - El CEO decide mejor cuando la explicacion inicia en negocio y no en tecnologia.
 - Traducir siempre decisiones a tiempo, dinero, riesgo y oportunidad reduce friccion.
 - Reportes cortos, directos y con recomendacion final clara aceleran ejecucion.
+- **Marketing Estratégico:** El cliente no compra "código", compra "certeza de negocio" y "ROI". Enfocar el copy en el activo, no en la herramienta.
 
 ## APRENDIZAJES DE PROCESO
 - No empezar una sesion sin leer PROJECT_BRAIN, ERROR_LOG, DECISIONS y CEO_OS.
 - Cada sesion debe cerrar con actualizacion de memoria para evitar perdida de contexto.
 - Estandarizar roles reduce dependencia de improvisacion entre proyectos.
 - Este sistema debe operar como activo vivo: cada proyecto aporta mejoras reutilizables.
+- **Protocolo de Intake:** Realizar un "Strategy Intake" antes del discovery técnico asegura que el desarrollo esté alineado con la oferta de mercado (Godfather Offer).
 
 ## APRENDIZAJES TECNICOS
 - Mantener convenciones consistentes de documentos facilita adopcion en nuevos repos.

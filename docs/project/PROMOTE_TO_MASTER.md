@@ -78,10 +78,16 @@ Cada entrada debe seguir este formato:
 Aquí se registran los aprendizajes listos pero aún no sincronizados al master.
 
 ```markdown
-- [FECHA] — [Título breve]
-  - Origen: [proyecto]
-  - Aprendizaje: [resumen]
-  - Aplicación: [dónde aplica]
+- [2026-05-02] — Framework de Marketing Estratégico (Sabri Suby)
+  - Origen: 10xTeam Landing
+  - Aprendizaje: Integración de "Godfather Offer" y "Mecanismo Único" para diferenciar desarrollo vs low-cost.
+  - Aplicación: Todos los proyectos que requieran landing o venta de servicios.
+
+- [2026-05-02] — Protocolo de Strategy Intake Automático
+  - Origen: 10xTeam Landing
+  - Aprendizaje: Obligatoriedad de definir marketing/oferta antes del discovery técnico.
+  - Aplicación: Proceso inicial de cualquier nuevo proyecto.
+
 ```
 
 ---
