@@ -20,7 +20,8 @@ Objetivo de negocio:
 3. Lee `docs/intake/ANTIGRAVITY_READY.md` si usarás Antigravity para arquitectura.
 4. Inicializa memoria del proyecto usando `docs/project/PROJECT_BRAIN_TEMPLATE.md`.
 5. Crea el `docs/project/PROJECT_BRAIN.md` del cliente con ese template.
-6. Ejecuta `docs/intake/DISCOVERY_PROTOCOL.md` en la primera sesion.
+6. **Ejecuta `docs/intake/PROJECT_STRATEGY_INTAKE.md` para definir la oferta y marketing.**
+7. Ejecuta `docs/intake/DISCOVERY_PROTOCOL.md` en la primera sesion.
 7. Activa roles segun necesidad durante ejecucion.
 8. Cierra cada sesion con `docs/team/SESSION_CLOSE_PROTOCOL.md`.
 
