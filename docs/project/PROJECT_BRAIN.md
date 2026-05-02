@@ -23,28 +23,21 @@ Deploy: GitHub (versionado del sistema)
 ## ESTADO ACTUAL
 Completado:
 - Estructura base del sistema (roles, protocolos, docs de proyecto, autonomia).
-- Expansion de roles operativos y estrategicos:
-	- 14_SCRUM_MASTER
-	- 15_SALES_BIZDEV
-	- 17_AI_ENGINEER
-	- 18_CFO_FINANCIERO
-	- 19_COO_OPERACIONES
-	- 20_COMMUNITY_MANAGER
-	- 21_HIRING_ADVISOR
-- Refuerzo de 10_DATA_ANALYTICS como rol estrategico de negocio para CEO y directivos.
-- Formalizacion del principio de memoria institucional acumulable entre proyectos.
+- Consolidación de la Landing Page 10xTeam con Astro en el repositorio maestro.
+- Integración de Marketing Estratégico: "Diagnóstico Estratégico" y flujo de Intake.
+- Sincronización y limpieza de archivos para evitar redundancias ("Clean State").
+- Implementación de templates legales y comerciales profesionales.
 
 En progreso:
-- Definir proceso estandar de extraccion de aprendizajes por proyecto hacia TEAM_LEARNINGS.
-- Preparar piloto real con cliente para validar el sistema extremo a extremo.
+- Refinamiento continuo de la conversión en la landing page.
+- Automatización de la extracción de aprendizajes hacia TEAM_LEARNINGS.
 
 Pendiente:
-- Ejecutar el sistema en un proyecto real usando DISCOVERY_PROTOCOL.
-- Medir impacto del sistema en tiempo de arranque, calidad y velocidad de entrega.
-- Establecer ritual de sync periodico de aprendizajes al repositorio maestro.
+- Lanzamiento oficial del piloto con cliente real.
+- Medición de KPIs de conversión tras cambios en pricing y oferta de valor.
 
 Bloqueadores:
-- Ninguno critico en este momento.
+- Ninguno.
 
 ## HISTORIAL
 2026-04-17 — Sesion inicial: creacion de estructura base del sistema.

@@ -1,6 +1,13 @@
 # CHANGELOG — Historial de Cambios
 Actualizar cada vez que se completa una feature.
 
+## 2026-05-02 — Consolidación de 10xTeam y Landing Agency
+- Integración de activos de marketing estratégico y protocolos de "Strategy Intake".
+- Implementación de sección "Auditoría Técnica Gratuita" y refinamiento de UI/UX.
+- Actualización de precios a $2,249 y sistema de "Diagnóstico Estratégico".
+- Sincronización total del repositorio maestro para evitar duplicados.
+- Creación de templates legales (Privacidad y Términos).
+
 ## [FECHA] — Setup inicial
 - Creacion del repositorio
 - Estructura inicial del proyecto
