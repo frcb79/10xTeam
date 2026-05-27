@@ -1,6 +1,14 @@
 # CHANGELOG — Historial de Cambios
 Actualizar cada vez que se completa una feature.
 
+## 2026-05-27 — Activacion de dominios .com.mx en produccion
+- Actualizacion de Vercel CLI y autenticacion de sesion para operacion de dominios.
+- Asignacion de dominio raiz y subdominios por deployment/proyecto:
+	- `10xteam.com.mx` y `www.10xteam.com.mx` al hub.
+	- `dev.10xteam.com.mx` a dev.
+	- `growth.10xteam.com.mx` a growth.
+- Validacion tecnica completa: DNS resuelto y respuesta HTTP 200 en los cuatro hosts.
+
 ## 2026-05-26 — Gobernanza de ejecucion: rol operativo y pendientes estrategicos
 - Alta del rol `Asistente Operativo` para captura de ideas, recordatorios y pendientes accionables.
 - Actualizacion de tabla de equipo en `.github/copilot-instructions.md` para activacion explicita del rol.

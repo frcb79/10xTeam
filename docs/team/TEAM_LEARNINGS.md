@@ -13,6 +13,7 @@ Se actualiza via sync desde cada proyecto al master.
 - Estandarizar roles reduce dependencia de improvisacion entre proyectos.
 - Este sistema debe operar como activo vivo: cada proyecto aporta mejoras reutilizables.
 - **Protocolo de Intake:** Realizar un "Strategy Intake" antes del discovery técnico asegura que el desarrollo esté alineado con la oferta de mercado (Godfather Offer).
+- En despliegue de dominios con Vercel: primero configurar y verificar DNS en el proveedor, despues asignar dominios/aliases a proyectos; hacerlo al reves genera errores y retrabajo.
 
 ## APRENDIZAJES TECNICOS
 - Mantener convenciones consistentes de documentos facilita adopcion en nuevos repos.
@@ -24,6 +25,7 @@ Se actualiza via sync desde cada proyecto al master.
 - Empezar proyectos desde cero sin reutilizar aprendizajes previos.
 - Crear roles sin criterios de activacion y sin reglas operativas.
 - Presentar metricas sin contexto de negocio ni accion recomendada.
+- Intentar cerrar asignaciones de dominio en Vercel antes de verificar DNS propagado y proyecto correcto.
 
 ## PATRONES QUE FUNCIONAN MUY BIEN
 - Framework comun de roles + protocolos + memoria de proyecto.
