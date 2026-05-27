@@ -6,6 +6,7 @@ Actualizar cada vez que se completa una feature.
 - Actualizacion de tabla de equipo en `.github/copilot-instructions.md` para activacion explicita del rol.
 - Definicion de criterio operativo: los pendientes estrategicos de growth se documentan en memoria de `growth.10xteam.com` y no en el master.
 - Inicio de implementacion del hub raiz `10xteam.com` con landing de enrutamiento a `dev.10xteam.com` y `growth.10xteam.com`.
+- Configuracion de produccion para el hub: `vercel.json` (redirects `/dev` y `/growth`, headers), `robots.txt`, `sitemap.xml` y metadatos OG/canonical.
 
 ## 2026-05-25 — Split dev/growth en mismo repositorio
 - Reorganizacion estructural de frontend en carpetas separadas:
