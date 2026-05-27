@@ -7,3 +7,5 @@
 | 2026-05-25 | **Estructura compartida:** Crear carpeta `shared` para activos reutilizables. | Reutilizar sin duplicar y mantener gobernanza clara entre proyectos. |
 | 2026-05-25 | **Wizard + endpoint interno:** usar `POST /api/icp/materials` como primer motor de salida. | Permite desacoplar UI del wizard de la logica de generacion y facilita integraciones futuras. |
 | 2026-05-25 | **Cobertura de canales en MVP:** LinkedIn, Instagram, Facebook, Email, WhatsApp y Ads. | Alinear el MVP con objetivo comercial de materiales multicanal desde una sola captura ICP. |
+| 2026-05-27 | **Gancho comercial del wizard:** entregar un PDF atractivo del ICP por correo y usarlo como puente a cita o cierre. | Convertir el wizard en lead magnet de alto valor para capturar demanda con menos friccion comercial. |
+| 2026-05-27 | **Plataforma privada para clientes:** habilitar login solo despues de contratacion para acceder a ICP, materiales y seguimiento. | Separar el valor gratuito del valor recurrente y facilitar retencion/upsell sin meter friccion al inicio. |

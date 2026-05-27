@@ -56,3 +56,10 @@ Captura de pendientes estrategicos para ejecucion por sprints semanales.
 - Estado: Pendiente
 - Objetivo: crear pagina raiz que dirija claramente a dev.10xteam.com y growth.10xteam.com.
 - Siguiente accion: definir arquitectura de mensajes del hub y wireframe de primera version.
+
+### 8) Gancho ICP gratis + login de plataforma de cliente
+- Prioridad: Alta
+- Owner: Product Manager + Sales BizDev + Full-Stack
+- Estado: Pendiente
+- Objetivo: convertir el wizard en lead magnet que envia un PDF atractivo de ICP por correo, captura cita o cierre, y habilita login cuando el cliente contrata.
+- Siguiente accion: definir contenido del PDF gratuito, campos obligatorios de captura, flujo de envio por correo, y estructura minima de la plataforma privada.

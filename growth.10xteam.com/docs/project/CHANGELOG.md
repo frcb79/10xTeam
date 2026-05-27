@@ -10,3 +10,4 @@
 - Endpoint `POST /api/icp/materials` para transformar salida ICP en materiales accionables.
 - Generador inicial de materiales multicanal: mensajes por canal, one-pager, pitch deck, guion de llamada y contenido social.
 - Backlog estrategico dedicado (`docs/project/BACKLOG.md`) para capturar requerimientos del CEO y operarlos por prioridad/owner.
+- Modelo inicial de funnel: PDF gratuito de ICP por correo, captura de lead, cita/cierre y login de plataforma privada para clientes contratados.

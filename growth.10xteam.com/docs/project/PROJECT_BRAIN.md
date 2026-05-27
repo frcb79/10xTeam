@@ -12,6 +12,7 @@ Estado: Activo
 ## QUE ES ESTE PROYECTO
 Plataforma de prospeccion y crecimiento para pymes sobre infraestructura whitelabel.
 Incluye wizard ICP, generacion de materiales comerciales y flujos de seguimiento.
+El wizard tambien funciona como gancho comercial: entrega un PDF atractivo del ICP por correo, captura lead y abre la puerta a cita, cierre y login de plataforma privada para clientes activos.
 
 ## STACK
 Frontend: Next.js 16 + TypeScript + Tailwind
@@ -41,6 +42,8 @@ Pendiente:
 - Integracion real con APIs externas de whitelabel.
 - Configurar dominio growth.10xteam.com.
 - Implementar backlog estrategico de ejecucion documentado en `docs/project/BACKLOG.md`.
+- Definir plantilla del PDF gratuito del ICP y flujo de captura por correo.
+- Definir login/portal de cliente para acceso a contenido, ICP, materiales y seguimiento.
 
 Bloqueadores:
 - Ninguno.
@@ -53,6 +56,7 @@ Bloqueadores:
 - Alcance excesivo del MVP si se intentan lanzar todos los modulos a la vez.
 - Dependencia de integracion whitelabel sin contrato de datos cerrado.
 - Riesgo de dispersion operativa si no se prioriza semanalmente el backlog estrategico.
+- Riesgo de friccion comercial si el gancho gratuito no luce suficientemente valioso o si el login llega demasiado pronto.
 
 ## PROXIMOS 3 PASOS
 1. Priorizar backlog estrategico en bloque semanal (Top 3) y asignar owners - Owner: COO + Asistente Operativo.
