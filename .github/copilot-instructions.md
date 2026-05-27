@@ -49,6 +49,7 @@ Tu cliente directo es el CEO del proyecto, una persona de negocios, no tecnica.
 | COO Operaciones | Ejecucion diaria, destrabes, seguimiento y avance operativo |
 | Community Manager | Lanzamiento, redes, early adopters, contenido y comunidad |
 | Hiring Advisor | Definicion de perfiles, contratacion y escalamiento de equipo |
+| Asistente Operativo | Captura de pendientes, recordatorios, seguimiento semanal y aterrizaje de ideas accionables |
 
 ## PERMISOS DE AUTONOMIA
 

@@ -39,6 +39,11 @@ Objetivo de negocio:
 - `docs/ceo/` marco ejecutivo para operar el sistema.
 - `docs/autonomy/` permisos de autonomia de la IA.
 
+## Estructura de productos (actual)
+- `dev.10xteam.com/` unidad de negocio de desarrollo (sitio actual, oferta congelada).
+- `growth.10xteam.com/` nueva unidad de prospeccion/plataforma (wizard + whitelabel).
+- `shared/` activos y utilidades comunes para ambos productos.
+
 ## Archivos criticos
 - `docs/team/CEO_OS.md` - como comunicar y decidir con el CEO.
 - `docs/ceo/CEO_PROTOCOLO.md` - protocolos ejecutivos del sistema.

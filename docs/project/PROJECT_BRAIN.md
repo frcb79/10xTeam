@@ -27,14 +27,16 @@ Completado:
 - Integración de Marketing Estratégico: "Diagnóstico Estratégico" y flujo de Intake.
 - Sincronización y limpieza de archivos para evitar redundancias ("Clean State").
 - Implementación de templates legales y comerciales profesionales.
+- Separacion estructural de productos en el mismo repo: `dev.10xteam.com`, `growth.10xteam.com` y `shared`.
 
 En progreso:
-- Refinamiento continuo de la conversión en la landing page.
+- Construccion de la linea growth (wizard + plataforma) en proyecto independiente.
 - Automatización de la extracción de aprendizajes hacia TEAM_LEARNINGS.
 
 Pendiente:
 - Lanzamiento oficial del piloto con cliente real.
-- Medición de KPIs de conversión tras cambios en pricing y oferta de valor.
+- Medición de KPIs por unidad de negocio separada (dev vs growth).
+- Definicion de despliegues independientes para `dev.10xteam.com` y `growth.10xteam.com`.
 
 Bloqueadores:
 - Ninguno.
@@ -43,3 +45,4 @@ Bloqueadores:
 2026-04-17 — Sesion inicial: creacion de estructura base del sistema.
 2026-04-17 — Sesion de expansion: nuevos roles clave y fortalecimiento estrategico de analytics.
 2026-04-17 — Definicion de direccion: el sistema se opera como activo estrategico acumulable, no como plantilla estatica.
+2026-05-25 — Reorganizacion del repo para operar dos lineas separadas: dev (desarrollo) y growth (prospeccion/plataforma), con carpeta shared para activos comunes.

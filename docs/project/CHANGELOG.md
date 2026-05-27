@@ -1,6 +1,19 @@
 # CHANGELOG — Historial de Cambios
 Actualizar cada vez que se completa una feature.
 
+## 2026-05-26 — Gobernanza de ejecucion: rol operativo y pendientes estrategicos
+- Alta del rol `Asistente Operativo` para captura de ideas, recordatorios y pendientes accionables.
+- Actualizacion de tabla de equipo en `.github/copilot-instructions.md` para activacion explicita del rol.
+- Definicion de criterio operativo: los pendientes estrategicos de growth se documentan en memoria de `growth.10xteam.com` y no en el master.
+
+## 2026-05-25 — Split dev/growth en mismo repositorio
+- Reorganizacion estructural de frontend en carpetas separadas:
+	- `dev.10xteam.com` para la linea de desarrollo (sitio actual).
+	- `growth.10xteam.com` para la nueva linea de prospeccion/plataforma.
+	- `shared` para activos reutilizables entre ambas lineas.
+- Inicializacion de `growth.10xteam.com` con Next.js + TypeScript + App Router.
+- Definicion de gobernanza: aprendizajes especificos se quedan en proyecto; solo patrones validados y reutilizables suben al master.
+
 ## 2026-05-02 — Consolidación de 10xTeam y Landing Agency
 - Integración de activos de marketing estratégico y protocolos de "Strategy Intake".
 - Implementación de sección "Auditoría Técnica Gratuita" y refinamiento de UI/UX.

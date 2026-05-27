@@ -8,3 +8,5 @@
 | 2026-04-20 | **Precios:** 3 modelos (MVP $1,999 / Evolución $899/mo / Célula $3,999/mo). | Cubrir desde startups que validan ideas hasta empresas que necesitan equipo continuo. Cada modelo es 10x más barato que In-House. |
 | 2026-04-20 | **Margen mínimo:** 70% bruto en todos los proyectos. | Asegurar rentabilidad alta para reinvertir en crecimiento y herramientas IA. |
 | 2026-04-20 | **Discovery Process:** Se creó documento operativo de evaluación de proyectos (DISCOVERY_PROCESS.md). | Estandarizar cotización, tiempos, etapas y criterios para cobrar sobre el precio base. |
+| 2026-05-25 | **Separacion de lineas:** El sitio de desarrollo se mantiene como producto independiente. | Evitar confundir oferta de desarrollo con la nueva linea growth/plataforma y proteger conversion del negocio actual. |
+| 2026-05-25 | **Ruta y dominio de dev:** Mover `agency-landing` a `dev.10xteam.com`. | Alinear estructura tecnica con dominio final y habilitar despliegue aislado por producto. |

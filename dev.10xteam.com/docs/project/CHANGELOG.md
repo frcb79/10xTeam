@@ -8,6 +8,10 @@
 - Naming establecido a **10xTeam**.
 - Memoria del proyecto (`PROJECT_BRAIN.md`) inicializada y actualizada.
 
+### Changed
+- Reorganizacion estructural del proyecto: carpeta movida de `agency-landing` a `dev.10xteam.com`.
+- Definicion operativa: la unidad de desarrollo queda separada de growth y mantiene su oferta actual sin rediseño.
+
 ## [0.2.0] - 2026-04-20
 ### Changed
 - **Refactor completo de UI/UX:** Nuevo sistema de diseño en `global.css` con más tokens, animaciones (float, fadeInUp, shimmer), y mejor jerarquía visual.

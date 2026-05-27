@@ -3,14 +3,16 @@ Plantilla para iniciar cualquier proyecto nuevo.
 Se actualiza al final de cada sesion.
 
 ## INFO DEL PROYECTO
-Nombre: Landing Page Agencia
+Nombre: dev.10xteam.com
 Cliente: Interno (Nuestra Agencia)
 Fecha inicio: 2026-04-19
-Fase: MVP v0.2
+Fase: Operacion estable
 Estado: Activo
 
 ## QUE ES ESTE PROYECTO
 Plataforma web para posicionar nuestra agencia de desarrollo. Resolvemos el problema de empresas no-tech que necesitan crear software pero no pueden pagar un equipo interno. Ofrecemos calidad superior, equipos as-a-service y proyectos llave en mano a una fracción del costo (10x más barato).
+
+Este proyecto queda congelado en su propuesta comercial actual para operar como la unidad de negocio de desarrollo bajo el subdominio `dev.10xteam.com`.
 
 ## STACK
 Frontend: Astro + Vanilla CSS (Glassmorphism & Dark Mode Premium)
@@ -32,14 +34,15 @@ Completado:
 - Estrategia de precios definida (MVP $1,999 / Evolución $899/mo / Célula $3,999/mo).
 - Documento operativo DISCOVERY_PROCESS.md creado (cuestionario, evaluación S/M/L/XL, cálculo de costos 70% margen, etapas de entrega).
 - Documentación sincronizada (CHANGELOG, ERROR_LOG, DECISIONS, PROJECT_BRAIN).
+- Reorganizacion de estructura: carpeta movida de `agency-landing` a `dev.10xteam.com`.
+- Separacion oficial de lineas: dev (desarrollo) y growth (prospeccion/plataforma) en carpetas independientes.
 
 En progreso:
-- Re-deploy en Vercel con los cambios v0.2.
+- Mantener estabilidad y continuidad operativa de la web de desarrollo.
 
 Pendiente:
-- Conectar dominio personalizado.
-- Formulario de contacto funcional.
-- Analytics (Google Analytics / Plausible).
+- Configurar mapeo final de dominio a `dev.10xteam.com`.
+- Ajustar pipeline de deploy independiente del proyecto growth.
 
 Bloqueadores:
 - `npm install` / `npx` en Windows falla al escribir debido al motor de sincronización de Google Drive. (Workaround: usar Vercel directamente o salir de Drive).
@@ -55,13 +58,12 @@ Bloqueadores:
 - (Ver `ERROR_LOG.md`) `npm` en Windows/Google Drive.
 
 ## PROXIMOS PASOS (Sesión 3)
-1. **Formulario de contacto:** Integrar un form funcional (Formspree o similar).
-2. **Refinar copy:** Iterar sobre los textos según feedback real de prospectos.
-3. **Analytics:** Configurar tracking de visitas y conversiones (Google Analytics / Plausible).
-4. **Generar assets visuales:** Crear imágenes/screenshots para redes sociales.
-5. **Conectar dominio personalizado.**
+1. **Dominio dev:** Conectar `dev.10xteam.com` al deploy actual.
+2. **Aislamiento de operaciones:** Confirmar variables y pipeline independientes de growth.
+3. **Mantenimiento:** Solo cambios menores de estabilidad; sin rediseño de oferta.
 
 ## HISTORIAL DE SESIONES
 2026-04-19 - Inicio de proyecto, Discovery y Setup técnico. Creación del MVP inicial.
 2026-04-19 (Cierre) - El CEO indica que el MVP requiere refactorización. Problemas identificados: UI amontonada, copy confuso y precios por recalibrar.
 2026-04-20 - Sesión de estrategia de precios y refactorización completa. Análisis de mercado (benchmarking global). Nuevos precios definidos (MVP $1,999 / Evolución $899/mo / Célula $3,999/mo). Refactor total de UI (Hero, Precios 3 columnas, Metodología 4 pasos, Testimonios). Creación de DISCOVERY_PROCESS.md operativo. Deploy exitoso a Vercel (https://10xteam.vercel.app).
+2026-05-25 - Reorganizacion estructural: proyecto movido a `dev.10xteam.com` y congelado como unidad de desarrollo. Se inicia separacion de `growth.10xteam.com` en carpeta independiente.
