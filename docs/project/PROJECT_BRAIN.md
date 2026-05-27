@@ -32,11 +32,12 @@ Completado:
 En progreso:
 - Construccion de la linea growth (wizard + plataforma) en proyecto independiente.
 - Automatización de la extracción de aprendizajes hacia TEAM_LEARNINGS.
+- Implementacion del hub raiz `10xteam.com` para direccionar trafico entre dev y growth.
 
 Pendiente:
 - Lanzamiento oficial del piloto con cliente real.
 - Medición de KPIs por unidad de negocio separada (dev vs growth).
-- Definicion de despliegues independientes para `dev.10xteam.com` y `growth.10xteam.com`.
+- Definicion de despliegues independientes para `10xteam.com`, `dev.10xteam.com` y `growth.10xteam.com`.
 
 Bloqueadores:
 - Ninguno.
@@ -46,3 +47,4 @@ Bloqueadores:
 2026-04-17 — Sesion de expansion: nuevos roles clave y fortalecimiento estrategico de analytics.
 2026-04-17 — Definicion de direccion: el sistema se opera como activo estrategico acumulable, no como plantilla estatica.
 2026-05-25 — Reorganizacion del repo para operar dos lineas separadas: dev (desarrollo) y growth (prospeccion/plataforma), con carpeta shared para activos comunes.
+2026-05-26 — Inicio de hub raiz `10xteam.com` para separar navegacion comercial por unidad de negocio.

@@ -40,6 +40,7 @@ Objetivo de negocio:
 - `docs/autonomy/` permisos de autonomia de la IA.
 
 ## Estructura de productos (actual)
+- `10xteam.com/` hub raiz con enrutamiento comercial hacia dev y growth.
 - `dev.10xteam.com/` unidad de negocio de desarrollo (sitio actual, oferta congelada).
 - `growth.10xteam.com/` nueva unidad de prospeccion/plataforma (wizard + whitelabel).
 - `shared/` activos y utilidades comunes para ambos productos.
