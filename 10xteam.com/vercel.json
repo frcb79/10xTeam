@@ -5,12 +5,12 @@
   "redirects": [
     {
       "source": "/dev",
-      "destination": "https://dev.10xteam.com",
+      "destination": "https://dev.10xteam.com.mx",
       "permanent": false
     },
     {
       "source": "/growth",
-      "destination": "https://growth.10xteam.com",
+      "destination": "https://growth.10xteam.com.mx",
       "permanent": false
     }
   ],
