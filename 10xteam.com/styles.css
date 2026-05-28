@@ -182,3 +182,222 @@ li {
     padding-top: 2.8rem;
   }
 }
+
+/* Services transfer block from growth html */
+.services-transfer {
+  margin-top: 1.25rem;
+  padding: 1.2rem 0 3rem;
+}
+
+.services-transfer-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.st-eyebrow {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #3b82f6;
+  margin: 0;
+}
+
+.st-display {
+  margin: 0.65rem 0 0;
+  font-family: "Fraunces", serif;
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.05;
+  color: #13110f;
+}
+
+.st-lead {
+  margin-top: 1rem;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 15px;
+  color: #2f2b27;
+  line-height: 1.7;
+}
+
+.st-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.st-service-card {
+  background: #111527;
+  border: 1px solid #1e2840;
+  border-radius: 24px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.st-service-card.st-growth::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #2563eb, #0ea5a0);
+}
+
+.st-service-card.st-dev::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #9333ea, #ec4899);
+}
+
+.st-service-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.st-service-name {
+  margin: 0;
+  font-family: "Fraunces", serif;
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: #f8f6f1;
+}
+
+.st-service-tagline {
+  margin: 6px 0 0;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.st-service-icon {
+  font-size: 40px;
+  flex-shrink: 0;
+}
+
+.st-service-desc {
+  margin: 0;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #1e2840;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 14px;
+  color: #c8d0e0;
+  line-height: 1.7;
+}
+
+.st-service-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 24px 0 28px;
+}
+
+.st-sf-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 13px;
+  color: #c8d0e0;
+}
+
+.st-sf-item::before {
+  content: "✓";
+  color: #0ea5a0;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.st-service-promise {
+  background: rgba(14, 165, 160, 0.08);
+  border: 1px solid rgba(14, 165, 160, 0.2);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 13px;
+  color: #5eead4;
+  margin-bottom: 24px;
+}
+
+.st-service-promise strong {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+}
+
+.st-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-radius: 12px;
+  padding: 18px 36px;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.st-btn-primary {
+  background: #2563eb;
+  color: #fff;
+  box-shadow: 0 0 32px rgba(37, 99, 235, 0.35);
+}
+
+.st-btn-primary:hover {
+  background: #3b82f6;
+  box-shadow: 0 0 40px rgba(37, 99, 235, 0.5);
+  transform: translateY(-1px);
+}
+
+.st-btn-outline {
+  background: transparent;
+  color: #f8f6f1;
+  border: 1px solid #2a3655;
+}
+
+.st-btn-outline:hover {
+  border-color: #3b82f6;
+  color: #93c5fd;
+}
+
+@media (max-width: 980px) {
+  .st-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .st-service-card {
+    padding: 28px 22px;
+  }
+
+  .st-service-features {
+    grid-template-columns: 1fr;
+  }
+
+  .st-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 18px;
+    font-size: 14px;
+  }
+}
