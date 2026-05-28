@@ -30,6 +30,8 @@ Completado:
 - Inicializacion de proyecto Next.js.
 - Separacion de estructura en el repo: dev, growth y shared.
 - Landing inicial de growth publicada en codigo base.
+- Landing visual canonica de growth servida desde `growth.10xteam_website.html` en la raiz del subdominio para conservar exactamente diseno, fuentes, colores y secciones del HTML aprobado.
+- Restauracion de la seccion "Nuestros servicios / Dos servicios, un mismo objetivo: 10x" dentro del HTML comercial de growth.
 - Wizard ICP implementado por pasos (negocio, cliente ideal, oferta, canales, resumen).
 - Endpoint interno `/api/icp/materials` para generar materiales por canal desde el output del wizard.
 - Generacion inicial de materiales: one-pager, pitch deck, guion comercial y contenido social.
@@ -40,7 +42,6 @@ En progreso:
 Pendiente:
 - Persistencia de resultados del wizard y versionado por cuenta.
 - Integracion real con APIs externas de whitelabel.
-- Configurar dominio growth.10xteam.com.
 - Implementar backlog estrategico de ejecucion documentado en `docs/project/BACKLOG.md`.
 - Definir plantilla del PDF gratuito del ICP y flujo de captura por correo.
 - Definir login/portal de cliente para acceso a contenido, ICP, materiales y seguimiento.
@@ -51,6 +52,7 @@ Bloqueadores:
 ## DECISIONES CLAVE DE NEGOCIO Y TECNICAS
 - 2026-05-25: Growth se desarrolla como producto separado de dev para evitar mezcla comercial y tecnica.
 - 2026-05-25: Se usa Next.js desde inicio para soportar landing + app wizard sin migracion posterior.
+- 2026-05-28: La raiz de growth sirve el HTML visual canonico mediante rewrite interno para preservar fidelidad visual exacta mientras el proyecto mantiene Next.js para evoluciones de plataforma.
 
 ## RIESGOS ACTIVOS
 - Alcance excesivo del MVP si se intentan lanzar todos los modulos a la vez.
@@ -67,3 +69,4 @@ Bloqueadores:
 2026-05-25 - Creacion de proyecto growth. Separacion oficial de unidades dev/growth en el repo.
 2026-05-25 - Implementacion base de landing + wizard ICP + endpoint de materiales por canal.
 2026-05-26 - Captura de requerimientos estrategicos del CEO en backlog dedicado para pasar a ejecucion continua.
+2026-05-28 - Restauracion de la seccion de servicios en el HTML comercial y despliegue de growth.10xteam.com.mx usando ese HTML como experiencia canonica del subdominio.

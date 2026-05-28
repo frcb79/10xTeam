@@ -34,6 +34,9 @@ En progreso:
 - Automatización de la extracción de aprendizajes hacia TEAM_LEARNINGS.
 - Implementacion del hub raiz `10xteam.com` para direccionar trafico entre dev y growth.
 
+Actualizacion reciente:
+- `growth.10xteam.com.mx` ya sirve el HTML comercial canonico aprobado, manteniendo intactos diseno, tipografias, colores y secciones; la mini seccion de servicios fue restaurada tras una eliminacion no deseada.
+
 Pendiente:
 - Lanzamiento oficial del piloto con cliente real.
 - Medición de KPIs por unidad de negocio separada (dev vs growth).
@@ -48,3 +51,4 @@ Bloqueadores:
 2026-04-17 — Definicion de direccion: el sistema se opera como activo estrategico acumulable, no como plantilla estatica.
 2026-05-25 — Reorganizacion del repo para operar dos lineas separadas: dev (desarrollo) y growth (prospeccion/plataforma), con carpeta shared para activos comunes.
 2026-05-26 — Inicio de hub raiz `10xteam.com` para separar navegacion comercial por unidad de negocio.
+2026-05-28 — Correccion de implementacion en growth: restauracion de la seccion de servicios y despliegue del HTML visual canonico en la raiz del subdominio.

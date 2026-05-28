@@ -9,6 +9,11 @@ Actualizar cada vez que se completa una feature.
 	- `growth.10xteam.com.mx` a growth.
 - Validacion tecnica completa: DNS resuelto y respuesta HTTP 200 en los cuatro hosts.
 
+## 2026-05-28 — Growth queda alineado al HTML visual aprobado
+- Restauracion de la mini seccion `Nuestros servicios / Dos servicios, un mismo objetivo: 10x` en el HTML comercial de growth.
+- Implementacion de rewrite interno para que la raiz de `growth.10xteam.com.mx` sirva `growth.10xteam_website.html` con el mismo diseno, colores, fuentes y secciones aprobadas.
+- Nuevo deploy y reasignacion del alias del subdominio a la version corregida, con validacion del texto restaurado en produccion.
+
 ## 2026-05-26 — Gobernanza de ejecucion: rol operativo y pendientes estrategicos
 - Alta del rol `Asistente Operativo` para captura de ideas, recordatorios y pendientes accionables.
 - Actualizacion de tabla de equipo en `.github/copilot-instructions.md` para activacion explicita del rol.
