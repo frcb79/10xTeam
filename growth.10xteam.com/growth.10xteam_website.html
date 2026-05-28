@@ -1,0 +1,1963 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10xTeam — El sistema operativo con IA para hacer crecer tu negocio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════════════ */
+:root {
+  --black:    #060810;
+  --navy:     #0B0F1C;
+  --surface:  #111527;
+  --surface2: #18203A;
+  --border:   #1E2840;
+  --border2:  #2A3655;
+  --blue:     #2563EB;
+  --blue-l:   #3B82F6;
+  --blue-xl:  #93C5FD;
+  --teal:     #0EA5A0;
+  --amber:    #F59E0B;
+  --white:    #F8F6F1;
+  --text:     #C8D0E0;
+  --muted:    #64748B;
+  --r:        16px;
+  --r-lg:     24px;
+}
+
+/* ═══════════════════════════════════════════════
+   RESET + BASE
+═══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--black);
+  color: var(--text);
+  font-family: 'Instrument Sans', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+/* ═══════════════════════════════════════════════
+   TYPOGRAPHY
+═══════════════════════════════════════════════ */
+.display {
+  font-family: 'Fraunces', serif;
+  font-optical-sizing: auto;
+  line-height: 1.05;
+}
+h1.display { font-size: clamp(40px, 6vw, 76px); font-weight: 900; color: var(--white); }
+h2.display { font-size: clamp(28px, 4vw, 52px); font-weight: 700; color: var(--white); }
+h3.display { font-size: clamp(22px, 3vw, 36px); font-weight: 700; color: var(--white); }
+.eyebrow {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--blue-l);
+}
+p { font-size: 15px; color: var(--text); line-height: 1.7; }
+
+/* ═══════════════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════════════ */
+.container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 100px 0; }
+.section-sm { padding: 64px 0; }
+.g2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.g3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.g4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-8 { gap: 8px; }
+.gap-12 { gap: 12px; }
+.gap-16 { gap: 16px; }
+.gap-24 { gap: 24px; }
+.text-center { text-align: center; }
+.mt-8  { margin-top: 8px; }
+.mt-12 { margin-top: 12px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.mt-32 { margin-top: 32px; }
+.mt-48 { margin-top: 48px; }
+.mt-64 { margin-top: 64px; }
+.mb-8  { margin-bottom: 8px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+.mb-40 { margin-bottom: 40px; }
+
+/* ═══════════════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════════════ */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 10px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 14px; font-weight: 600;
+  cursor: pointer; border: none;
+  transition: all .2s ease;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: 0 0 32px rgba(37,99,235,.35);
+}
+.btn-primary:hover {
+  background: var(--blue-l);
+  box-shadow: 0 0 40px rgba(37,99,235,.5);
+  transform: translateY(-1px);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--border2);
+}
+.btn-outline:hover {
+  border-color: var(--blue-l);
+  color: var(--blue-xl);
+}
+.btn-lg { padding: 18px 36px; font-size: 16px; border-radius: 12px; }
+.btn-sm { padding: 10px 20px; font-size: 13px; border-radius: 8px; }
+
+/* ═══════════════════════════════════════════════
+   BADGES / LABELS
+═══════════════════════════════════════════════ */
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px; border-radius: 999px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: .06em;
+}
+.badge-blue   { background: rgba(37,99,235,.15); color: var(--blue-xl); border: 1px solid rgba(37,99,235,.3); }
+.badge-teal   { background: rgba(14,165,160,.15); color: #5EEAD4; border: 1px solid rgba(14,165,160,.3); }
+.badge-amber  { background: rgba(245,158,11,.12); color: #FCD34D; border: 1px solid rgba(245,158,11,.25); }
+.badge-white  { background: rgba(248,246,241,.08); color: var(--white); border: 1px solid rgba(248,246,241,.15); }
+
+/* ═══════════════════════════════════════════════
+   CARDS
+═══════════════════════════════════════════════ */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  transition: border-color .2s, transform .2s;
+}
+.card:hover { border-color: var(--border2); transform: translateY(-2px); }
+.card-feature {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px;
+}
+
+/* ═══════════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════════ */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(6,8,16,.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  height: 68px; gap: 32px;
+}
+.nav-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--white);
+  flex-shrink: 0;
+}
+.nav-logo span { color: var(--blue-l); }
+.nav-links {
+  display: flex; align-items: center; gap: 4px;
+  flex: 1; justify-content: center;
+}
+.nav-link {
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  border-radius: 8px;
+  transition: .15s;
+}
+.nav-link:hover { color: var(--white); background: rgba(255,255,255,.04); }
+.nav-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.nav-login { font-size: 14px; font-weight: 500; color: var(--text); padding: 8px 14px; transition: .15s; }
+.nav-login:hover { color: var(--white); }
+@media(max-width:768px){
+  .nav-links { display: none; }
+  .nav-login { display: none; }
+}
+
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+.hero {
+  min-height: 92vh;
+  display: flex; align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(37,99,235,.22) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(14,165,160,.12) 0%, transparent 50%);
+}
+.hero-grid-overlay {
+  position: absolute; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(rgba(30,40,64,.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,40,64,.3) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+}
+.hero-content { position: relative; z-index: 1; text-align: center; max-width: 880px; margin: 0 auto; }
+.hero-platform-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 18px; border-radius: 999px;
+  background: rgba(37,99,235,.1);
+  border: 1px solid rgba(37,99,235,.25);
+  font-size: 12px; font-weight: 600;
+  color: var(--blue-xl);
+  margin-bottom: 28px;
+  letter-spacing: .04em;
+}
+.hero-platform-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--blue-l);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; }
+  50% { opacity: .4; }
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--blue-l);
+}
+.hero-sub {
+  font-size: 18px;
+  color: var(--text);
+  max-width: 620px;
+  margin: 24px auto 0;
+  line-height: 1.65;
+}
+.hero-ctas {
+  display: flex; align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+.hero-note {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 16px;
+}
+.hero-note strong { color: var(--text); }
+
+/* Stats bar */
+.stats-bar {
+  display: flex; flex-wrap: wrap;
+  align-items: center; justify-content: center;
+  gap: 0;
+  margin-top: 72px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: rgba(17,21,39,.6);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+.stat-item {
+  flex: 1; min-width: 140px;
+  padding: 24px 20px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+}
+.stat-item:last-child { border-right: none; }
+.stat-val {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-val span { color: var(--blue-l); }
+.stat-label {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+@media(max-width:600px){
+  .stat-item { min-width: 50%; border-right: none; border-bottom: 1px solid var(--border); }
+  .stat-item:nth-child(odd) { border-right: 1px solid var(--border); }
+  .stat-item:last-child, .stat-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+}
+
+/* ═══════════════════════════════════════════════
+   TRUST BAR
+═══════════════════════════════════════════════ */
+.trust-bar {
+  padding: 28px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--navy);
+}
+.trust-inner {
+  display: flex; align-items: center;
+  justify-content: center;
+  gap: 40px; flex-wrap: wrap;
+}
+.trust-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.trust-logos {
+  display: flex; align-items: center;
+  gap: 32px; flex-wrap: wrap; justify-content: center;
+}
+.trust-logo-item {
+  font-family: 'Fraunces', serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  opacity: .6;
+  letter-spacing: .04em;
+}
+
+/* ═══════════════════════════════════════════════
+   FEATURES TABS SECTION
+═══════════════════════════════════════════════ */
+.features-section { background: var(--navy); }
+.tabs-nav {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs-nav::-webkit-scrollbar { display: none; }
+.tab-btn {
+  padding: 18px 28px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: .2s;
+  margin-bottom: -1px;
+}
+.tab-btn.active { color: var(--white); border-bottom-color: var(--blue-l); }
+.tab-btn:hover:not(.active) { color: var(--text); }
+.tab-panel { display: none; padding: 64px 0; }
+.tab-panel.active { display: block; }
+.tab-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+@media(max-width:768px){ .tab-layout { grid-template-columns: 1fr; gap: 40px; } }
+.tab-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: rgba(37,99,235,.15);
+  border: 1px solid rgba(37,99,235,.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.tab-feature-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 32px;
+}
+@media(max-width:500px){ .tab-feature-list { grid-template-columns: 1fr; } }
+.feature-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--text);
+  transition: .15s;
+}
+.feature-item:hover { border-color: var(--blue); color: var(--white); }
+.feature-item::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--blue-l);
+  flex-shrink: 0;
+}
+.tab-visual {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  position: relative;
+}
+.tab-visual-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot-r { background: #FF5F57; }
+.dot-y { background: #FFBD2E; }
+.dot-g { background: #28CA42; }
+.tab-visual-body { padding: 24px; min-height: 280px; }
+
+/* Mini UI mockups inside tab visuals */
+.mock-pipeline {
+  display: flex; gap: 8px; overflow-x: auto;
+}
+.mock-col {
+  flex: 1; min-width: 100px;
+}
+.mock-col-header {
+  font-size: 10px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: .1em;
+  margin-bottom: 8px; padding-bottom: 6px;
+  border-bottom: 2px solid var(--border2);
+}
+.mock-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+}
+.mock-card-name { font-size: 11px; color: var(--text); font-weight: 500; margin-bottom: 3px; }
+.mock-card-val { font-size: 10px; color: var(--muted); }
+.mock-card-tag {
+  display: inline-block;
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-top: 4px;
+}
+.tag-hot { background: rgba(239,68,68,.2); color: #FCA5A5; }
+.tag-warm { background: rgba(245,158,11,.2); color: #FCD34D; }
+.tag-cold { background: rgba(100,116,139,.2); color: #94A3B8; }
+
+.mock-chat {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.mock-msg {
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 11px;
+  max-width: 85%;
+  line-height: 1.4;
+}
+.mock-msg-in {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  align-self: flex-start;
+}
+.mock-msg-out {
+  background: var(--blue);
+  color: #fff;
+  align-self: flex-end;
+}
+.mock-msg-label {
+  font-size: 9px; color: var(--muted);
+  margin-bottom: 3px;
+}
+.mock-label-in { text-align: left; }
+.mock-label-out { text-align: right; }
+
+/* ═══════════════════════════════════════════════
+   10xTEAM EXCLUSIVE
+═══════════════════════════════════════════════ */
+.exclusive-section {
+  background: var(--black);
+  position: relative; overflow: hidden;
+}
+.exclusive-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(37,99,235,.1) 0%, transparent 60%);
+}
+.exclusive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  position: relative; z-index: 1;
+}
+.exclusive-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: .2s;
+}
+.exclusive-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--teal));
+}
+.exclusive-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+.exclusive-icon {
+  font-size: 32px; margin-bottom: 14px;
+}
+.exclusive-title {
+  font-family: 'Fraunces', serif;
+  font-size: 18px; font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.exclusive-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.exclusive-tag {
+  display: inline-block;
+  font-size: 9px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(37,99,235,.15);
+  color: var(--blue-xl);
+  border: 1px solid rgba(37,99,235,.25);
+  margin-top: 14px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════════════
+   HOW IT WORKS
+═══════════════════════════════════════════════ */
+.how-section { background: var(--navy); }
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0;
+  position: relative;
+  margin-top: 56px;
+}
+.step {
+  padding: 32px 28px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  position: relative;
+}
+.step:first-child { border-radius: var(--r-lg) 0 0 var(--r-lg); }
+.step:last-child { border-radius: 0 var(--r-lg) var(--r-lg) 0; }
+@media(max-width:768px){
+  .steps { grid-template-columns: 1fr; }
+  .step:first-child { border-radius: var(--r-lg) var(--r-lg) 0 0; }
+  .step:last-child { border-radius: 0 0 var(--r-lg) var(--r-lg); }
+}
+.step-num {
+  font-family: 'Fraunces', serif;
+  font-size: 48px; font-weight: 900;
+  color: rgba(37,99,235,.2);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.step-title {
+  font-family: 'Fraunces', serif;
+  font-size: 18px; font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.step-time {
+  font-size: 11px;
+  color: var(--blue-l);
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.step-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* ═══════════════════════════════════════════════
+   SERVICES
+═══════════════════════════════════════════════ */
+.services-section { background: var(--black); }
+.service-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.service-card.growth::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #2563EB, #0EA5A0);
+}
+.service-card.dev::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #9333EA, #EC4899);
+}
+.service-header {
+  display: flex; align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.service-name {
+  font-family: 'Fraunces', serif;
+  font-size: 28px; font-weight: 900;
+  color: var(--white);
+  line-height: 1.1;
+}
+.service-tagline {
+  font-size: 14px; color: var(--muted);
+  margin-top: 6px;
+}
+.service-icon {
+  font-size: 40px;
+  flex-shrink: 0;
+}
+.service-desc {
+  font-size: 14px; color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+.service-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+@media(max-width:500px){ .service-features { grid-template-columns: 1fr; } }
+.sf-item {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 13px; color: var(--text);
+}
+.sf-item::before {
+  content: '✓';
+  color: var(--teal);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.service-promise {
+  background: rgba(14,165,160,.08);
+  border: 1px solid rgba(14,165,160,.2);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 13px;
+  color: #5EEAD4;
+  margin-bottom: 24px;
+}
+.service-promise strong { display: block; margin-bottom: 3px; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; opacity: .7; }
+
+/* ═══════════════════════════════════════════════
+   COMPARISON TABLE
+═══════════════════════════════════════════════ */
+.comparison-section { background: var(--navy); }
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 48px;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.comp-table th, .comp-table td {
+  padding: 16px 20px;
+  text-align: center;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+}
+.comp-table th {
+  background: var(--surface);
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--white);
+  padding: 20px;
+}
+.comp-table th:first-child { text-align: left; }
+.comp-table td:first-child { text-align: left; color: var(--text); font-weight: 500; }
+.comp-table tbody tr:hover td { background: rgba(255,255,255,.02); }
+.comp-table .highlight-col { background: rgba(37,99,235,.06); }
+.comp-table th.highlight-col { background: rgba(37,99,235,.15); color: var(--blue-xl); }
+.comp-yes { color: #34D399; font-size: 18px; }
+.comp-no  { color: var(--muted); font-size: 18px; }
+.comp-partial { color: var(--amber); font-size: 13px; }
+@media(max-width:600px){
+  .comp-table th:nth-child(3),
+  .comp-table th:nth-child(4),
+  .comp-table td:nth-child(3),
+  .comp-table td:nth-child(4) { display: none; }
+}
+
+/* ═══════════════════════════════════════════════
+   PRICING
+═══════════════════════════════════════════════ */
+.pricing-section { background: var(--black); }
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 48px;
+  align-items: start;
+}
+.pricing-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 36px 32px;
+  position: relative;
+}
+.pricing-card.featured {
+  border-color: var(--blue);
+  background: linear-gradient(160deg, var(--surface2) 0%, rgba(37,99,235,.08) 100%);
+  transform: scale(1.02);
+}
+@media(max-width:768px){ .pricing-card.featured { transform: none; } }
+.pricing-popular {
+  position: absolute;
+  top: -14px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--blue);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 16px;
+  border-radius: 999px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.pricing-tier {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.pricing-name {
+  font-family: 'Fraunces', serif;
+  font-size: 26px; font-weight: 700;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.pricing-desc { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+.pricing-price {
+  display: flex; align-items: baseline; gap: 4px;
+  margin-bottom: 6px;
+}
+.pricing-currency { font-size: 18px; color: var(--muted); margin-top: 6px; }
+.pricing-amount {
+  font-family: 'Fraunces', serif;
+  font-size: 48px; font-weight: 900;
+  color: var(--white); line-height: 1;
+}
+.pricing-period { font-size: 14px; color: var(--muted); }
+.pricing-mxn {
+  font-size: 12px; color: var(--muted);
+  margin-bottom: 8px;
+}
+.pricing-setup {
+  font-size: 12px; color: var(--muted);
+  padding: 8px 12px;
+  background: rgba(255,255,255,.03);
+  border-radius: 6px;
+  margin-bottom: 24px;
+}
+.pricing-divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+.pricing-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.pricing-feature {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 13px; color: var(--text);
+}
+.pricing-feature::before {
+  content: '✓';
+  color: var(--teal);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.pricing-feature.dim { color: var(--muted); }
+.pricing-feature.dim::before { color: var(--border2); }
+.pricing-cta { margin-top: 28px; width: 100%; justify-content: center; }
+
+/* ═══════════════════════════════════════════════
+   TESTIMONIALS
+═══════════════════════════════════════════════ */
+.testimonials-section { background: var(--navy); }
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 48px;
+}
+.testimonial-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 28px;
+}
+.testimonial-stars { color: var(--amber); font-size: 14px; margin-bottom: 14px; letter-spacing: 2px; }
+.testimonial-quote {
+  font-family: 'Fraunces', serif;
+  font-size: 16px; font-style: italic;
+  color: var(--white);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.author-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-size: 16px; font-weight: 700;
+  color: var(--blue-l);
+  flex-shrink: 0;
+}
+.author-name { font-size: 14px; font-weight: 600; color: var(--white); }
+.author-role { font-size: 12px; color: var(--muted); }
+.author-company { font-size: 12px; color: var(--blue-l); margin-top: 2px; }
+
+/* ═══════════════════════════════════════════════
+   FAQ
+═══════════════════════════════════════════════ */
+.faq-section { background: var(--black); }
+.faq-list {
+  max-width: 760px;
+  margin: 48px auto 0;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  transition: border-color .2s;
+}
+.faq-item:hover { border-color: var(--border2); }
+.faq-question {
+  width: 100%;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  background: none; border: none;
+  cursor: pointer; text-align: left;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 15px; font-weight: 600;
+  color: var(--white);
+  transition: .15s;
+}
+.faq-question:hover { color: var(--blue-xl); }
+.faq-chevron {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--muted);
+  transition: transform .2s;
+}
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+.faq-answer {
+  max-height: 0; overflow: hidden;
+  transition: max-height .3s ease, padding .3s ease;
+  padding: 0 24px;
+}
+.faq-item.open .faq-answer {
+  max-height: 300px;
+  padding: 0 24px 20px;
+}
+.faq-answer p { font-size: 14px; color: var(--text); line-height: 1.7; }
+
+/* ═══════════════════════════════════════════════
+   FINAL CTA
+═══════════════════════════════════════════════ */
+.final-cta {
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0;
+}
+.final-cta-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(37,99,235,.15) 0%, transparent 65%);
+}
+.final-cta-content {
+  position: relative; z-index: 1;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.final-cta-note {
+  font-size: 13px; color: var(--muted); margin-top: 16px;
+}
+.final-cta-note strong { color: var(--text); }
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+.footer {
+  background: var(--black);
+  border-top: 1px solid var(--border);
+  padding: 64px 0 32px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+@media(max-width:768px){ .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:480px){ .footer-grid { grid-template-columns: 1fr; } }
+.footer-brand {}
+.footer-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 22px; font-weight: 900;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.footer-logo span { color: var(--blue-l); }
+.footer-desc { font-size: 13px; color: var(--muted); line-height: 1.6; max-width: 280px; }
+.footer-col-title {
+  font-size: 12px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .1em;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-link { font-size: 13px; color: var(--muted); transition: .15s; }
+.footer-link:hover { color: var(--white); }
+.footer-bottom {
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-copy { font-size: 12px; color: var(--muted); }
+.footer-legal { display: flex; gap: 20px; }
+.footer-legal a { font-size: 12px; color: var(--muted); transition: .15s; }
+.footer-legal a:hover { color: var(--white); }
+
+/* ═══════════════════════════════════════════════
+   SECTION HEADERS (common pattern)
+═══════════════════════════════════════════════ */
+.section-header { text-align: center; max-width: 680px; margin: 0 auto; }
+.section-header p { margin-top: 16px; font-size: 17px; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════════ -->
+<nav class="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">10x<span>Team</span></a>
+      <div class="nav-links">
+        <a href="#funcionalidades" class="nav-link">Funcionalidades</a>
+        <a href="#precios" class="nav-link">Precios</a>
+        <a href="#resultados" class="nav-link">Resultados</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </div>
+      <div class="nav-actions">
+        <a href="#" class="nav-login">Acceder</a>
+        <a href="#demo" class="btn btn-primary btn-sm">Empieza gratis →</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-platform-badge">
+        Plataforma con IA líder mundial — adaptada para México y LATAM
+      </div>
+
+      <h1 class="display hero-headline">
+        El sistema operativo con IA<br>
+        para hacer crecer<br>
+        <em>tu negocio</em>
+      </h1>
+
+      <p class="hero-sub">
+        Todo lo que necesitas para capturar, nutrir y cerrar nuevos leads en clientes,
+        citas, ventas y recomendaciones — en una sola plataforma, en español, con
+        soporte dedicado para México.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="#demo" class="btn btn-primary btn-lg">Empieza 14 días gratis →</a>
+        <a href="#demo" class="btn btn-outline btn-lg">Ver demo en vivo</a>
+      </div>
+      <p class="hero-note">
+        <strong>Sin tarjeta de crédito.</strong> Sin contratos. Cancela cuando quieras.
+      </p>
+
+      <!-- Stats bar -->
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-val">1M<span>+</span></div>
+          <div class="stat-label">Negocios impulsados</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">7.3<span>B</span></div>
+          <div class="stat-label">Leads generados</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">179<span>M</span></div>
+          <div class="stat-label">Citas agendadas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">$5.2<span>B</span></div>
+          <div class="stat-label">En ventas facilitadas</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TRUST BAR
+═══════════════════════════════════════════════ -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-inner">
+      <span class="trust-label">Reconocido por</span>
+      <div class="trust-logos">
+        <span class="trust-logo-item">G2 · Top Software 2026</span>
+        <span class="trust-logo-item">Capterra · Best Value</span>
+        <span class="trust-logo-item">Top 50 Agentic AI</span>
+        <span class="trust-logo-item">Best Marketing Automation</span>
+        <span class="trust-logo-item">Easiest To Use 2026</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     FEATURES TABS
+═══════════════════════════════════════════════ -->
+<section class="section features-section" id="funcionalidades">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Plataforma completa</p>
+      <h2 class="display">Tu solución todo-en-uno<br>para el crecimiento</h2>
+      <p>Todas las herramientas que necesitas en una sola plataforma potenciada con IA. Sin malabares entre 5 sistemas distintos.</p>
+    </div>
+
+    <div class="mt-48">
+      <div class="tabs-nav">
+        <button class="tab-btn active" onclick="showTab('captura',this)">📥 Captura</button>
+        <button class="tab-btn" onclick="showTab('nutre',this)">🔥 Nutre</button>
+        <button class="tab-btn" onclick="showTab('cierra',this)">💰 Cierra</button>
+        <button class="tab-btn" onclick="showTab('fideliza',this)">⭐ Fideliza</button>
+        <button class="tab-btn" onclick="showTab('reactiva',this)">🔄 Reactiva</button>
+      </div>
+
+      <!-- CAPTURA -->
+      <div class="tab-panel active" id="tab-captura">
+        <div class="tab-layout">
+          <div>
+            <div class="tab-icon">📥</div>
+            <p class="eyebrow mb-8">Captura</p>
+            <h3 class="display mb-16">Consigue más leads<br>en la puerta</h3>
+            <p>Atrae a las personas correctas, convierte el interés en leads y mantén tu pipeline siempre lleno — de forma automática.</p>
+            <div class="tab-feature-list">
+              <div class="feature-item">CRM completo</div>
+              <div class="feature-item">IA de voz</div>
+              <div class="feature-item">Formularios y encuestas</div>
+              <div class="feature-item">Sitios web y funnels</div>
+              <div class="feature-item">Landing pages</div>
+              <div class="feature-item">Chat con IA</div>
+              <div class="feature-item">Rastreo de llamadas</div>
+              <div class="feature-item">SMS y DMs sociales</div>
+              <div class="feature-item">Planificador social</div>
+              <div class="feature-item">Respuesta a llamadas perdidas</div>
+              <div class="feature-item">Herramienta de prospección</div>
+              <div class="feature-item">Gestor de anuncios</div>
+              <div class="feature-item">Códigos QR</div>
+              <div class="feature-item">Escáner IA de tarjetas</div>
+            </div>
+            <div class="mt-32">
+              <a href="#demo" class="btn btn-primary">Empieza 14 días gratis →</a>
+            </div>
+          </div>
+          <div class="tab-visual">
+            <div class="tab-visual-header">
+              <div class="dot dot-r"></div>
+              <div class="dot dot-y"></div>
+              <div class="dot dot-g"></div>
+              <span style="font-size:11px;color:var(--muted);margin-left:8px">Pipeline de leads — 10xTeam CRM</span>
+            </div>
+            <div class="tab-visual-body">
+              <div class="mock-pipeline">
+                <div class="mock-col">
+                  <div class="mock-col-header">Nuevo</div>
+                  <div class="mock-card">
+                    <div class="mock-card-name">Ana García</div>
+                    <div class="mock-card-val">Restaurante · CDMX</div>
+                    <span class="mock-card-tag tag-hot">🔥 Caliente</span>
+                  </div>
+                  <div class="mock-card">
+                    <div class="mock-card-name">Carlos Ruiz</div>
+                    <div class="mock-card-val">Clínica · MTY</div>
+                    <span class="mock-card-tag tag-warm">Tibio</span>
+                  </div>
+                </div>
+                <div class="mock-col">
+                  <div class="mock-col-header">Contactado</div>
+                  <div class="mock-card">
+                    <div class="mock-card-name">María López</div>
+                    <div class="mock-card-val">Inmobiliaria · GDL</div>
+                    <span class="mock-card-tag tag-hot">🔥 Caliente</span>
+                  </div>
+                </div>
+                <div class="mock-col">
+                  <div class="mock-col-header">Demo</div>
+                  <div class="mock-card">
+                    <div class="mock-card-name">Pedro Torres</div>
+                    <div class="mock-card-val">Despacho · CDMX</div>
+                    <span class="mock-card-tag tag-warm">Tibio</span>
+                  </div>
+                  <div class="mock-card">
+                    <div class="mock-card-name">Laura Vega</div>
+                    <div class="mock-card-val">Salud · QRO</div>
+                    <span class="mock-card-tag tag-cold">Frío</span>
+                  </div>
+                </div>
+                <div class="mock-col">
+                  <div class="mock-col-header">Cerrado ✓</div>
+                  <div class="mock-card">
+                    <div class="mock-card-name">Roberto Díaz</div>
+                    <div class="mock-card-val">$4,997/mes</div>
+                    <span class="mock-card-tag tag-hot">✓ Ganado</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NUTRE -->
+      <div class="tab-panel" id="tab-nutre">
+        <div class="tab-layout">
+          <div>
+            <div class="tab-icon">🔥</div>
+            <p class="eyebrow mb-8">Nutre</p>
+            <h3 class="display mb-16">Construye relaciones<br>que convierten</h3>
+            <p>Las herramientas para dar seguimiento, mantenerte relevante y construir la confianza que lleva a la venta. Automático, multicanal, inteligente.</p>
+            <div class="tab-feature-list">
+              <div class="feature-item">IA conversacional</div>
+              <div class="feature-item">Bandeja unificada</div>
+              <div class="feature-item">WhatsApp Business</div>
+              <div class="feature-item">SMS, Messenger, IG DM</div>
+              <div class="feature-item">Pipelines de ventas</div>
+              <div class="feature-item">Workflows automáticos</div>
+              <div class="feature-item">Calendarios integrados</div>
+              <div class="feature-item">Recordatorios de citas</div>
+              <div class="feature-item">App móvil con video</div>
+              <div class="feature-item">Llamadas automáticas</div>
+              <div class="feature-item">Voicemail sin timbre</div>
+              <div class="feature-item">Snippets de texto</div>
+            </div>
+            <div class="mt-32">
+              <a href="#demo" class="btn btn-primary">Empieza 14 días gratis →</a>
+            </div>
+          </div>
+          <div class="tab-visual">
+            <div class="tab-visual-header">
+              <div class="dot dot-r"></div>
+              <div class="dot dot-y"></div>
+              <div class="dot dot-g"></div>
+              <span style="font-size:11px;color:var(--muted);margin-left:8px">Bot de WhatsApp — Conversación en vivo</span>
+            </div>
+            <div class="tab-visual-body">
+              <div class="mock-chat">
+                <div>
+                  <div class="mock-msg-label mock-label-in" style="font-size:9px;color:var(--muted)">Ana García · hace 2 min</div>
+                  <div class="mock-msg mock-msg-in">Hola, vi su anuncio. ¿Cómo funciona el servicio?</div>
+                </div>
+                <div>
+                  <div class="mock-msg-label mock-label-out" style="font-size:9px;color:var(--muted)">Bot 10xTeam · instantáneo</div>
+                  <div class="mock-msg mock-msg-out">¡Hola Ana! Con gusto te explico. Somos el sistema de ventas automático para negocios como el tuyo. ¿Me dices a qué se dedica tu empresa?</div>
+                </div>
+                <div>
+                  <div class="mock-msg mock-msg-in">Tengo un restaurante en Polanco, 3 sucursales.</div>
+                </div>
+                <div>
+                  <div class="mock-msg mock-msg-out">Perfecto Ana, trabajamos mucho con restaurantes. Te puedo mostrar cómo conseguir más reservaciones automáticamente. ¿Tienes 20 minutos esta semana para una demo rápida?</div>
+                </div>
+                <div style="display:flex;gap:6px;margin-top:4px;justify-content:flex-end">
+                  <span style="font-size:10px;padding:4px 10px;border-radius:6px;background:var(--surface);border:1px solid var(--border);color:var(--text)">Sí, el martes</span>
+                  <span style="font-size:10px;padding:4px 10px;border-radius:6px;background:var(--surface);border:1px solid var(--border);color:var(--text)">El miércoles mejor</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CIERRA -->
+      <div class="tab-panel" id="tab-cierra">
+        <div class="tab-layout">
+          <div>
+            <div class="tab-icon">💰</div>
+            <p class="eyebrow mb-8">Cierra</p>
+            <h3 class="display mb-16">Cierra tratos con<br>menos fricción</h3>
+            <p>Elimina los obstáculos y convierte conversaciones en clientes que pagan. Cobros, propuestas, contratos y upsells — todo en un solo lugar.</p>
+            <div class="tab-feature-list">
+              <div class="feature-item">Puntuación de leads con IA</div>
+              <div class="feature-item">Estimaciones y propuestas</div>
+              <div class="feature-item">Facturación digital</div>
+              <div class="feature-item">MercadoPago + Stripe</div>
+              <div class="feature-item">Conekta + PayU</div>
+              <div class="feature-item">Cobro por SPEI</div>
+              <div class="feature-item">Calendarios de pago</div>
+              <div class="feature-item">Formularios de pedido</div>
+              <div class="feature-item">Upsells automáticos</div>
+              <div class="feature-item">Membresías y cursos</div>
+              <div class="feature-item">Text-2-Pay</div>
+              <div class="feature-item">Programas de lealtad</div>
+            </div>
+            <div class="mt-32">
+              <a href="#demo" class="btn btn-primary">Empieza 14 días gratis →</a>
+            </div>
+          </div>
+          <div class="tab-visual">
+            <div class="tab-visual-header">
+              <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+              <span style="font-size:11px;color:var(--muted);margin-left:8px">Propuesta generada por IA</span>
+            </div>
+            <div class="tab-visual-body">
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;margin-bottom:12px">
+                <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Propuesta comercial</div>
+                <div style="font-size:14px;font-weight:600;color:var(--white);margin-bottom:4px">Sistema de Prospección · Restaurante Polanco</div>
+                <div style="font-size:12px;color:var(--muted)">Generada en 8 segundos · Lista para enviar</div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                <div style="background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.2);border-radius:8px;padding:12px;text-align:center">
+                  <div style="font-size:10px;color:var(--blue-xl);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">Inversión mensual</div>
+                  <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:var(--white)">$6,997</div>
+                  <div style="font-size:10px;color:var(--muted)">MXN / mes</div>
+                </div>
+                <div style="background:rgba(14,165,160,.08);border:1px solid rgba(14,165,160,.2);border-radius:8px;padding:12px;text-align:center">
+                  <div style="font-size:10px;color:#5EEAD4;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">ROI estimado</div>
+                  <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:var(--white)">8.4x</div>
+                  <div style="font-size:10px;color:var(--muted)">primer trimestre</div>
+                </div>
+              </div>
+              <div style="margin-top:12px;padding:10px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:8px;font-size:11px;color:#6EE7B7;text-align:center">
+                ✓ Garantía: primera cita en 72 horas o se devuelve el setup
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FIDELIZA -->
+      <div class="tab-panel" id="tab-fideliza">
+        <div class="tab-layout">
+          <div>
+            <div class="tab-icon">⭐</div>
+            <p class="eyebrow mb-8">Fideliza</p>
+            <h3 class="display mb-16">Crea fans,<br>no solo clientes</h3>
+            <p>Todo lo que necesitas para convertir a clientes satisfechos en reseñas, referidos y promotores activos de tu negocio — de forma automática.</p>
+            <div class="tab-feature-list">
+              <div class="feature-item">Gestión de reputación</div>
+              <div class="feature-item">Solicitudes de reseñas</div>
+              <div class="feature-item">Respuesta IA a reseñas</div>
+              <div class="feature-item">Captura de video</div>
+              <div class="feature-item">Widgets de reseñas</div>
+              <div class="feature-item">Gestor de afiliados</div>
+              <div class="feature-item">Programa de referidos</div>
+              <div class="feature-item">Comunidades</div>
+              <div class="feature-item">Publicación automática</div>
+              <div class="feature-item">Programas de lealtad</div>
+            </div>
+            <div class="mt-32">
+              <a href="#demo" class="btn btn-primary">Empieza 14 días gratis →</a>
+            </div>
+          </div>
+          <div class="tab-visual">
+            <div class="tab-visual-header">
+              <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+              <span style="font-size:11px;color:var(--muted);margin-left:8px">Reputación — Reseñas automáticas</span>
+            </div>
+            <div class="tab-visual-body">
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                    <span style="font-size:12px;font-weight:600;color:var(--white)">Google · 4.9 ★</span>
+                    <span style="font-size:10px;color:var(--teal)">+47 este mes</span>
+                  </div>
+                  <div style="font-size:11px;color:var(--muted)">"Excelente servicio, los resultados llegaron en la primera semana..."</div>
+                </div>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px">
+                  <div style="font-size:11px;color:var(--muted);margin-bottom:6px">Respuesta automática de IA:</div>
+                  <div style="font-size:11px;color:var(--text)">"Gracias por tu reseña. Nos alegra mucho que hayas visto resultados tan rápido..."</div>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+                  <div style="text-align:center;background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.15);border-radius:6px;padding:8px">
+                    <div style="font-size:16px;font-weight:700;color:var(--white)">128</div>
+                    <div style="font-size:9px;color:var(--muted)">Reseñas</div>
+                  </div>
+                  <div style="text-align:center;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.15);border-radius:6px;padding:8px">
+                    <div style="font-size:16px;font-weight:700;color:var(--white)">4.9</div>
+                    <div style="font-size:9px;color:var(--muted)">Promedio</div>
+                  </div>
+                  <div style="text-align:center;background:rgba(14,165,160,.08);border:1px solid rgba(14,165,160,.15);border-radius:6px;padding:8px">
+                    <div style="font-size:16px;font-weight:700;color:var(--white)">97%</div>
+                    <div style="font-size:9px;color:var(--muted)">Positivas</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REACTIVA -->
+      <div class="tab-panel" id="tab-reactiva">
+        <div class="tab-layout">
+          <div>
+            <div class="tab-icon">🔄</div>
+            <p class="eyebrow mb-8">Reactiva</p>
+            <h3 class="display mb-16">Reactiva clientes<br>y leads dormidos</h3>
+            <p>Tu mejor oportunidad de venta está en los prospectos que ya te conocen pero no compraron. El sistema los detecta y los reactiva automáticamente.</p>
+            <div class="tab-feature-list">
+              <div class="feature-item">Campañas de reactivación</div>
+              <div class="feature-item">Segmentación por comportamiento</div>
+              <div class="feature-item">Secuencias multicanal</div>
+              <div class="feature-item">Detección de abandono IA</div>
+              <div class="feature-item">WhatsApp de recuperación</div>
+              <div class="feature-item">Email de reactivación</div>
+              <div class="feature-item">Offerta especial automática</div>
+              <div class="feature-item">Score de probabilidad</div>
+            </div>
+            <div class="mt-32">
+              <a href="#demo" class="btn btn-primary">Empieza 14 días gratis →</a>
+            </div>
+          </div>
+          <div class="tab-visual">
+            <div class="tab-visual-header">
+              <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+              <span style="font-size:11px;color:var(--muted);margin-left:8px">Campaña de reactivación automática</span>
+            </div>
+            <div class="tab-visual-body">
+              <div style="font-size:11px;color:var(--muted);margin-bottom:12px">Leads dormidos detectados · Último contacto +30 días</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+                  <div>
+                    <div style="font-size:12px;font-weight:600;color:var(--white)">Grupo 1 · 47 contactos</div>
+                    <div style="font-size:10px;color:var(--muted)">Vieron propuesta · No respondieron</div>
+                  </div>
+                  <span style="font-size:10px;padding:3px 8px;border-radius:4px;background:rgba(245,158,11,.15);color:#FCD34D;font-weight:600;white-space:nowrap">Alta prob.</span>
+                </div>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+                  <div>
+                    <div style="font-size:12px;font-weight:600;color:var(--white)">Grupo 2 · 92 contactos</div>
+                    <div style="font-size:10px;color:var(--muted)">Demo agendada · No asistieron</div>
+                  </div>
+                  <span style="font-size:10px;padding:3px 8px;border-radius:4px;background:rgba(37,99,235,.15);color:var(--blue-xl);font-weight:600;white-space:nowrap">Media prob.</span>
+                </div>
+                <div style="margin-top:6px;padding:10px;background:rgba(14,165,160,.08);border:1px solid rgba(14,165,160,.2);border-radius:8px;font-size:11px;color:#5EEAD4">
+                  ✓ Secuencia activada · Estimado: 12–18 citas adicionales
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     10xTEAM EXCLUSIVO
+═══════════════════════════════════════════════ -->
+<section class="section exclusive-section">
+  <div class="exclusive-bg"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="section-header">
+      <p class="eyebrow mb-8">Solo en 10xTeam</p>
+      <h2 class="display">Y lo que solo<br>nosotros ofrecemos</h2>
+      <p>La misma plataforma poderosa — más la capa de inteligencia artificial, el módulo ICP y el soporte especializado que ningún otro proveedor tiene para México.</p>
+    </div>
+
+    <div class="exclusive-grid mt-48">
+      <div class="exclusive-card">
+        <div class="exclusive-icon">🎯</div>
+        <div class="exclusive-title">Wizard ICP con IA</div>
+        <div class="exclusive-body">Define exactamente quién es tu cliente ideal en 20 minutos. La IA analiza tu sitio web, pre-llena tu perfil y activa toda la plataforma automáticamente — sin configuración técnica.</div>
+        <span class="exclusive-tag">Exclusivo 10xTeam</span>
+      </div>
+      <div class="exclusive-card">
+        <div class="exclusive-icon">📄</div>
+        <div class="exclusive-title">Materiales generados por IA</div>
+        <div class="exclusive-body">Pitch decks, propuestas comerciales, one-pagers y scripts — generados automáticamente con los datos de tu ICP. Listos para usar en segundos, no en horas.</div>
+        <span class="exclusive-tag">Exclusivo 10xTeam</span>
+      </div>
+      <div class="exclusive-card">
+        <div class="exclusive-icon">🇲🇽</div>
+        <div class="exclusive-title">100% México</div>
+        <div class="exclusive-body">Soporte en español con horario mexicano. Pagos en MXN vía SPEI, MercadoPago, Conekta y Oxxo Pay. Configurado para la realidad y el mercado mexicano.</div>
+        <span class="exclusive-tag">Para México y LATAM</span>
+      </div>
+      <div class="exclusive-card">
+        <div class="exclusive-icon">📱</div>
+        <div class="exclusive-title">WhatsApp como canal principal</div>
+        <div class="exclusive-body">Bot de WhatsApp especializado por industria. 98% de tasa de apertura. El canal que más usa México — completamente integrado con tu CRM y pipeline de ventas.</div>
+        <span class="exclusive-tag">Canal #1 en México</span>
+      </div>
+      <div class="exclusive-card">
+        <div class="exclusive-icon">⚡</div>
+        <div class="exclusive-title">Snapshots por industria</div>
+        <div class="exclusive-body">Cuentas preconfiguradas para restaurantes, clínicas, inmobiliarias, despachos y más. Onboarding completo en 72 horas — sin empezar desde cero.</div>
+        <span class="exclusive-tag">Listo para usar</span>
+      </div>
+      <div class="exclusive-card">
+        <div class="exclusive-icon">📅</div>
+        <div class="exclusive-title">Contenido social automático</div>
+        <div class="exclusive-body">12 posts mensuales generados por IA, alineados a tu ICP y tu calendario editorial. Diseños para LinkedIn, Instagram y Facebook — aprobados en un clic.</div>
+        <span class="exclusive-tag">Exclusivo 10xTeam</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     HOW IT WORKS
+═══════════════════════════════════════════════ -->
+<section class="section how-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow mb-8">El proceso</p>
+      <h2 class="display">Un proceso simple.<br>Resultados desde la primera semana.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-time">Día 1</div>
+        <div class="step-title">Regístrate y completa tu ICP</div>
+        <div class="step-body">Crea tu cuenta en minutos. Pega la URL de tu sitio web — la IA lo analiza y pre-llena tu perfil de cliente ideal automáticamente. Tú solo revisas y corriges.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-time">Día 1–2</div>
+        <div class="step-title">Plataforma activada y lista</div>
+        <div class="step-body">Tu CRM se configura con el snapshot de tu industria. El bot de WhatsApp se activa con el prompt de tu negocio. Tus secuencias de email quedan cargadas y listas.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-time">Día 3–7</div>
+        <div class="step-title">Primeros resultados concretos</div>
+        <div class="step-body">La primera cita con un prospecto calificado llega en menos de 72 horas del inicio del servicio. Tu propuesta comercial generada por IA queda lista ese mismo día.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-time">Mes 1 en adelante</div>
+        <div class="step-title">El sistema aprende y mejora</div>
+        <div class="step-body">El CRM acumula datos. Los materiales se refinan. Revisamos resultados contigo quincenalmente y ajustamos la estrategia. Cada mes el sistema funciona mejor que el anterior.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     COMPARISON
+═══════════════════════════════════════════════ -->
+<section class="section comparison-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow mb-8">La diferencia</p>
+      <h2 class="display">¿Por qué 10xTeam<br>en lugar de las alternativas?</h2>
+    </div>
+
+    <div style="overflow-x:auto;margin-top:48px;">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;min-width:200px">Característica</th>
+            <th class="highlight-col">10xTeam</th>
+            <th>Proceso Manual</th>
+            <th>HubSpot</th>
+            <th>5 herramientas<br>separadas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Módulo ICP con IA</td>
+            <td class="highlight-col"><span class="comp-yes">✓</span></td>
+            <td><span class="comp-no">✗</span></td>
+            <td><span class="comp-no">✗</span></td>
+            <td><span class="comp-no">✗</span></td>
+          </tr>
+          <tr>
+            <td>Bot de WhatsApp nativo</td>
+            <td class="highlight-col"><span class="comp-yes">✓</span></td>
+            <td><span class="comp-no">✗</span></td>
+            <td><span class="comp-partial">Solo integración</span></td>
+            <td><span class="comp-partial">Herramienta extra</span></td>
+          </tr>
+          <tr>
+            <td>Generador de materiales IA</td>
+            <td class="highlight-col"><span class="comp-yes">✓</span></td>
+            <td><span class="comp-no">✗</span></td>
+            <td><span class="comp-no">✗</span></td>
+            <td><span class="comp-partial">Herramienta extra</span></td>
+          </tr>
+          <tr>
+            <td>Soporte en español + horario MX</td>
+            <td class="highlight-col"><span class="comp-yes">✓</span></td>
+            <td><span class="comp-partial">Tú mismo</span></td>
+            <td><span class="comp-partial">Inglés principalmente</span></td>
+            <td><span class="comp-no">✗</span></td>
+          </tr>
+          <tr>
+            <td>Pagos MXN (MercadoPago / SPEI)</td>
+            <td class="highlight-col"><span class="comp-yes">✓</span></td>
+            <td><span class="comp-no">✗</span></td>
+            <td><span class="comp-no">✗</span></td>
+            <td><span class="comp-partial">Herramienta extra</span></td>
+          </tr>
+          <tr>
+            <td>Precio fijo independiente del volumen</td>
+            <td class="highlight-col"><span class="comp-yes">✓</span></td>
+            <td><span class="comp-no">✗</span></td>
+            <td><span class="comp-no">Por contacto</span></td>
+            <td><span class="comp-no">Escala con volumen</span></td>
+          </tr>
+          <tr>
+            <td>Activación en menos de 72 horas</td>
+            <td class="highlight-col"><span class="comp-yes">✓</span></td>
+            <td><span class="comp-no">✗</span></td>
+            <td><span class="comp-partial">Semanas</span></td>
+            <td><span class="comp-partial">Meses</span></td>
+          </tr>
+          <tr>
+            <td>Todo en una sola plataforma</td>
+            <td class="highlight-col"><span class="comp-yes">✓</span></td>
+            <td><span class="comp-no">✗</span></td>
+            <td><span class="comp-partial">Parcial</span></td>
+            <td><span class="comp-no">✗</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PRICING
+═══════════════════════════════════════════════ -->
+<section class="section pricing-section" id="precios">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow mb-8">Precios</p>
+      <h2 class="display">Precios simples,<br>sin sorpresas</h2>
+      <p>Un precio fijo mensual. Contactos y usuarios ilimitados. Sin costos por volumen. Cancela cuando quieras.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- STARTER -->
+      <div class="pricing-card">
+        <div class="pricing-tier">Starter</div>
+        <div class="pricing-name">Arranque</div>
+        <div class="pricing-desc">Para negocios que están construyendo su sistema de ventas desde cero.</div>
+        <div class="pricing-price">
+          <span class="pricing-currency">$</span>
+          <span class="pricing-amount">297</span>
+          <span class="pricing-period">/mes USD</span>
+        </div>
+        <div class="pricing-mxn">≈ $4,997 MXN/mes</div>
+        <div class="pricing-setup">+ $497 USD setup único al inicio</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features">
+          <li class="pricing-feature">Wizard ICP con IA</li>
+          <li class="pricing-feature">CRM completo + pipeline (5 etapas)</li>
+          <li class="pricing-feature">Bot de WhatsApp básico</li>
+          <li class="pricing-feature">3 secuencias de email</li>
+          <li class="pricing-feature">Templates de pitch deck (2 variantes)</li>
+          <li class="pricing-feature">Hasta 500 contactos activos</li>
+          <li class="pricing-feature">1 usuario administrador</li>
+          <li class="pricing-feature">Soporte por WhatsApp (horario MX)</li>
+          <li class="pricing-feature dim">Prospección outbound</li>
+          <li class="pricing-feature dim">Generador de propuestas IA</li>
+          <li class="pricing-feature dim">Contenido social automático</li>
+        </ul>
+        <a href="#demo" class="btn btn-outline pricing-cta">Empezar →</a>
+      </div>
+
+      <!-- GROWTH -->
+      <div class="pricing-card featured">
+        <div class="pricing-popular">⭐ El más elegido</div>
+        <div class="pricing-tier">Growth</div>
+        <div class="pricing-name">Crecimiento</div>
+        <div class="pricing-desc">Para negocios que quieren un sistema completo de prospección y cierre.</div>
+        <div class="pricing-price">
+          <span class="pricing-currency">$</span>
+          <span class="pricing-amount">497</span>
+          <span class="pricing-period">/mes USD</span>
+        </div>
+        <div class="pricing-mxn">≈ $8,400 MXN/mes</div>
+        <div class="pricing-setup">+ $997 USD setup único al inicio</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features">
+          <li class="pricing-feature">Todo lo de Starter +</li>
+          <li class="pricing-feature">Wizard ICP avanzado + lead scoring</li>
+          <li class="pricing-feature">Prospección outbound (email + LinkedIn)</li>
+          <li class="pricing-feature">Bot IA de calificación en WhatsApp</li>
+          <li class="pricing-feature">Generador de propuestas personalizado</li>
+          <li class="pricing-feature">12 posts sociales/mes generados por IA</li>
+          <li class="pricing-feature">4 creatividades para ads/mes</li>
+          <li class="pricing-feature">Hasta 2,000 contactos activos</li>
+          <li class="pricing-feature">3 usuarios + reportes semanales de ROI</li>
+        </ul>
+        <a href="#demo" class="btn btn-primary pricing-cta">Empezar 14 días gratis →</a>
+      </div>
+
+      <!-- PRO -->
+      <div class="pricing-card">
+        <div class="pricing-tier">Pro</div>
+        <div class="pricing-name">Escala</div>
+        <div class="pricing-desc">Para equipos que necesitan el sistema completo sin ningún límite.</div>
+        <div class="pricing-price">
+          <span class="pricing-currency">$</span>
+          <span class="pricing-amount">997</span>
+          <span class="pricing-period">/mes USD</span>
+        </div>
+        <div class="pricing-mxn">≈ $16,800 MXN/mes</div>
+        <div class="pricing-setup">+ $1,997 USD setup único al inicio</div>
+        <hr class="pricing-divider">
+        <ul class="pricing-features">
+          <li class="pricing-feature">Todo lo de Growth +</li>
+          <li class="pricing-feature">Snapshot personalizado por industria</li>
+          <li class="pricing-feature">Bot IA multicanal (WA + email + SMS + IG)</li>
+          <li class="pricing-feature">Materiales ilimitados generados por IA</li>
+          <li class="pricing-feature">Gestor de cuenta dedicado</li>
+          <li class="pricing-feature">Revisión quincenal de estrategia</li>
+          <li class="pricing-feature">Integración con sistemas actuales</li>
+          <li class="pricing-feature">Contactos y usuarios ilimitados</li>
+          <li class="pricing-feature">SLA respuesta en 4 horas</li>
+        </ul>
+        <a href="#demo" class="btn btn-outline pricing-cta">Contactar →</a>
+      </div>
+    </div>
+
+    <div class="mt-32 text-center">
+      <p style="font-size:14px;color:var(--muted)">
+        ¿Eres una agencia o tienes múltiples negocios?
+        <a href="#demo" style="color:var(--blue-l);font-weight:600;margin-left:4px">Pregúntanos por el plan de reventa →</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════════════ -->
+<section class="section testimonials-section" id="resultados">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow mb-8">Resultados reales</p>
+      <h2 class="display">Lo que dicen las empresas<br>que ya trabajan con 10xTeam</h2>
+    </div>
+
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"En la primera semana el bot de WhatsApp ya había agendado 8 citas. Antes tardábamos un mes en conseguir eso manualmente."</div>
+        <div class="testimonial-author">
+          <div class="author-avatar">A</div>
+          <div>
+            <div class="author-name">Alejandra M.</div>
+            <div class="author-role">Directora Comercial</div>
+            <div class="author-company">Clínica de Medicina Estética · CDMX</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"El pitch deck que genera la IA tardaba antes 3 horas en hacerlo. Ahora está listo en 30 segundos y suena mejor que lo que hacíamos nosotros."</div>
+        <div class="testimonial-author">
+          <div class="author-avatar">R</div>
+          <div>
+            <div class="author-name">Roberto S.</div>
+            <div class="author-role">Director General</div>
+            <div class="author-company">Despacho de Arquitectura · Monterrey</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"Lo que más me sorprendió fue que en 72 horas ya teníamos todo funcionando. Con HubSpot tardamos 3 meses y nunca quedó completo."</div>
+        <div class="testimonial-author">
+          <div class="author-avatar">M</div>
+          <div>
+            <div class="author-name">Marco A.</div>
+            <div class="author-role">Fundador</div>
+            <div class="author-company">Inmobiliaria Boutique · Guadalajara</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FAQ
+═══════════════════════════════════════════════ -->
+<section class="section faq-section" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow mb-8">Preguntas frecuentes</p>
+      <h2 class="display">Todo lo que<br>necesitas saber</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿Para qué tamaño de empresa está diseñado 10xTeam?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Para empresas mexicanas en etapa de crecimiento — desde negocios de 1 persona hasta equipos de 200 empleados. Los tres planes tienen diferentes niveles de inversión para ajustarse a cada etapa. Lo más importante es que tengas intención de crecer y un producto o servicio que ya funciona.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿Necesito conocimientos de tecnología para usar la plataforma?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>No. Toda la configuración técnica la hace el equipo de 10xTeam. Tú ves resultados: leads, citas, materiales, reportes. La tecnología trabaja en segundo plano — tú solo interactúas con los prospectos que el sistema ya calificó.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿Cuánto tiempo tarda en verse el primer resultado?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>La primera cita con un prospecto calificado llega en menos de 72 horas del inicio del servicio — eso está garantizado. Para el bot de WhatsApp activo: mismo día del onboarding. Para la primera propuesta generada por IA: menos de 60 segundos después de ingresar los datos del prospecto.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿Qué pasa si no funciona para mi negocio?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>El plan Growth incluye garantía de primera cita en 72 horas o se devuelve el fee de setup. Adicionalmente, los primeros 14 días son completamente gratis — sin tarjeta de crédito. Si en ese período no ves el valor, cancelas sin ningún costo.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿Puedo empezar con un servicio y agregar los otros después?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Sí. La mayoría de los clientes empieza con Growth para el sistema de ventas. Cuando quieren una app, automatización o integración tecnológica — entra 10xTeam Dev. Todo comparte el mismo CRM central, así que el historial del cliente viaja contigo de un servicio al otro.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿Cómo puedo pagar? ¿Aceptan pesos mexicanos?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Sí. Aceptamos transferencia SPEI, tarjeta de crédito/débito, MercadoPago y Oxxo Pay — todos en pesos mexicanos. También aceptamos Stripe internacional para pago en USD si lo prefieres.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿Cómo empiezo? ¿Hay una demo antes de pagar?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Todo empieza con 14 días gratis — sin tarjeta de crédito, sin compromisos. En la primera sesión de onboarding (30 min vía Zoom) completamos el Wizard ICP juntos y dejamos la plataforma activa. Si después de los 14 días quieres continuar, eliges tu plan. Si no, cancelas con un clic.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FINAL CTA
+═══════════════════════════════════════════════ -->
+<section class="final-cta" id="demo">
+  <div class="final-cta-bg"></div>
+  <div class="container">
+    <div class="final-cta-content">
+      <p class="eyebrow mb-16">Empieza hoy</p>
+      <h2 class="display mb-16">
+        El mejor momento para<br>construir el sistema fue ayer.<br>
+        <em style="color:var(--blue-l)">El segundo mejor es ahora.</em>
+      </h2>
+      <p style="font-size:17px;color:var(--text);margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto;">
+        14 días gratis. Sin tarjeta de crédito. Primera cita con un prospecto calificado en menos de 72 horas — garantizado.
+      </p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;">
+        <a href="#" class="btn btn-primary btn-lg">Empieza tu prueba gratuita →</a>
+        <a href="#" class="btn btn-outline btn-lg">Ver demo en vivo</a>
+      </div>
+      <p class="final-cta-note mt-16">
+        Sin contratos · <strong>Sin tarjeta de crédito</strong> · Cancela cuando quieras · Soporte en español
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">10x<span>Team</span></div>
+        <p class="footer-desc">El sistema operativo con inteligencia artificial para hacer crecer negocios mexicanos. Ventas automatizadas, tecnología acelerada, resultados reales.</p>
+        <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;">
+          <span class="badge badge-blue">México 🇲🇽</span>
+          <span class="badge badge-white">100% en Español</span>
+          <span class="badge badge-teal">Powered by AI</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Servicios</div>
+        <div class="footer-links">
+          <a href="#" class="footer-link">10xTeam Growth</a>
+          <a href="#" class="footer-link">10xTeam Dev</a>
+          <a href="#" class="footer-link">Para agencias</a>
+          <a href="#precios" class="footer-link">Precios</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Empresa</div>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Nosotros</a>
+          <a href="#resultados" class="footer-link">Casos de éxito</a>
+          <a href="#" class="footer-link">Blog</a>
+          <a href="#" class="footer-link">Trabaja con nosotros</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contacto</div>
+        <div class="footer-links">
+          <a href="mailto:hola@10xteam.mx" class="footer-link">hola@10xteam.mx</a>
+          <a href="#" class="footer-link">WhatsApp directo</a>
+          <a href="#demo" class="footer-link">Agendar demo</a>
+          <a href="#faq" class="footer-link">Centro de ayuda</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 10xTeam. Todos los derechos reservados. Ciudad de México, México.</span>
+      <div class="footer-legal">
+        <a href="#">Aviso de privacidad</a>
+        <a href="#">Términos de servicio</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════ -->
+<script>
+// Tabs
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// FAQ accordion
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Animate stats on scroll
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.card, .exclusive-card, .service-card, .pricing-card, .testimonial-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity .5s ease, transform .5s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
