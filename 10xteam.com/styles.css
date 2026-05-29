@@ -218,10 +218,10 @@ body {
 .st-service-name {
   margin: 0;
   font-family: "Fraunces", serif;
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 900;
   line-height: 1.1;
-  color: #f8f6f1;
+  color: var(--blue-light);
 }
 
 .st-service-tagline {
@@ -232,6 +232,10 @@ body {
   color: var(--ink);
   max-width: 36ch;
   min-height: 2.9em;
+}
+
+.st-tagline-line {
+  display: block;
 }
 
 .st-service-icon {
@@ -370,6 +374,12 @@ body {
 
   .st-service-promise {
     min-height: 0;
+  }
+}
+
+@media (min-width: 981px) {
+  .st-tagline-line {
+    white-space: nowrap;
   }
 }
 
