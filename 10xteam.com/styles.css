@@ -177,10 +177,11 @@ body {
 }
 
 .st-service-card {
+  --st-card-inner-space: 40px;
   background: #111527;
   border: 1px solid #1e2840;
   border-radius: 24px;
-  padding: 40px;
+  padding: var(--st-card-inner-space);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -225,7 +226,7 @@ body {
 }
 
 .st-service-tagline {
-  margin: 14px 0 0;
+  margin: var(--st-card-inner-space) 0 0;
   font-family: "Instrument Sans", sans-serif;
   font-size: 18px;
   line-height: 1.45;
@@ -385,6 +386,7 @@ body {
 
 @media (max-width: 640px) {
   .st-service-card {
+    --st-card-inner-space: 28px;
     padding: 28px 22px;
   }
 
