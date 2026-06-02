@@ -282,9 +282,9 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
   align-items: center; justify-content: center;
   gap: 0;
   margin-top: 72px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(59,130,246,.22);
   border-radius: var(--r-lg);
-  background: rgba(17,21,39,.6);
+  background: linear-gradient(180deg, rgba(37,99,235,.08) 0%, rgba(14,165,160,.04) 100%);
   backdrop-filter: blur(12px);
   overflow: hidden;
 }
@@ -292,8 +292,10 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
   flex: 1; min-width: 140px;
   padding: 24px 20px;
   text-align: center;
-  border-right: 1px solid var(--border);
+  border-right: 1px solid rgba(59,130,246,.14);
+  background: rgba(255,255,255,.02);
 }
+.stat-item:nth-child(even) { background: rgba(37,99,235,.05); }
 .stat-item:last-child { border-right: none; }
 .stat-val {
   font-family: 'Fraunces', serif;
@@ -303,17 +305,16 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
   line-height: 1;
   margin-bottom: 4px;
 }
-.stat-val span { color: var(--blue-l); }
 .stat-label {
   font-size: 11px;
-  color: var(--muted);
+  color: #93A4C0;
   text-transform: uppercase;
   letter-spacing: .08em;
 }
 @media(max-width:600px){
-  .stat-item { min-width: 50%; border-right: none; border-bottom: 1px solid var(--border); }
-  .stat-item:nth-child(odd) { border-right: 1px solid var(--border); }
-  .stat-item:last-child, .stat-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+  .stat-item { min-width: 50%; border-right: none; border-bottom: 1px solid rgba(59,130,246,.14); }
+  .stat-item:nth-child(odd) { border-right: 1px solid rgba(59,130,246,.14); }
+  .stat-item:last-child { min-width: 100%; border-right: none; border-bottom: none; }
 }
 
 /* ═══════════════════════════════════════════════
@@ -321,9 +322,9 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
 ═══════════════════════════════════════════════ */
 .trust-bar {
   padding: 28px 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--navy);
+  border-top: 1px solid rgba(59,130,246,.2);
+  border-bottom: 1px solid rgba(59,130,246,.2);
+  background: linear-gradient(180deg, rgba(37,99,235,.10) 0%, rgba(11,15,28,1) 100%);
 }
 .trust-inner {
   display: flex; align-items: center;
@@ -332,8 +333,8 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
 }
 .trust-label {
   font-size: 12px;
-  font-weight: 600;
-  color: var(--muted);
+  font-weight: 700;
+  color: #B7C4DA;
   letter-spacing: .1em;
   text-transform: uppercase;
 }
@@ -345,8 +346,8 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
   font-family: 'Fraunces', serif;
   font-size: 13px;
   font-weight: 700;
-  color: var(--muted);
-  opacity: .6;
+  color: #D4DEEE;
+  opacity: .95;
   letter-spacing: .04em;
 }
 
@@ -947,7 +948,6 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
 }
 @media(max-width:768px){ .footer-grid { grid-template-columns: 1fr 1fr; } }
 @media(max-width:480px){ .footer-grid { grid-template-columns: 1fr; } }
-.footer-brand {}
 .footer-logo {
   font-family: 'Fraunces', serif;
   font-size: 22px; font-weight: 900;
@@ -1177,20 +1177,24 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
       <!-- Stats bar -->
       <div class="stats-bar">
         <div class="stat-item">
-          <div class="stat-val">1M<span>+</span></div>
-          <div class="stat-label">Negocios impulsados</div>
+          <div class="stat-val">+27%</div>
+          <div class="stat-label">Incremento en citas</div>
         </div>
         <div class="stat-item">
-          <div class="stat-val">7.3<span>B</span></div>
-          <div class="stat-label">Leads generados</div>
+          <div class="stat-val">+19%</div>
+          <div class="stat-label">Incremento en ventas</div>
         </div>
         <div class="stat-item">
-          <div class="stat-val">179<span>M</span></div>
-          <div class="stat-label">Citas agendadas</div>
+          <div class="stat-val">+14%</div>
+          <div class="stat-label">Ticket promedio</div>
         </div>
         <div class="stat-item">
-          <div class="stat-val">$5.2<span>B</span></div>
-          <div class="stat-label">En ventas facilitadas</div>
+          <div class="stat-val">+31%</div>
+          <div class="stat-label">Ventas por recuperacion</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">-43%</div>
+          <div class="stat-label">Ahorro en costos de stack</div>
         </div>
       </div>
 
@@ -1204,13 +1208,12 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
 <div class="trust-bar">
   <div class="container">
     <div class="trust-inner">
-      <span class="trust-label">Reconocido por</span>
+      <span class="trust-label">Ventajas de operacion</span>
       <div class="trust-logos">
-        <span class="trust-logo-item">G2 · Top Software 2026</span>
-        <span class="trust-logo-item">Capterra · Best Value</span>
-        <span class="trust-logo-item">Top 50 Agentic AI</span>
-        <span class="trust-logo-item">Best Marketing Automation</span>
-        <span class="trust-logo-item">Easiest To Use 2026</span>
+        <span class="trust-logo-item">Activacion inicial en 72 horas</span>
+        <span class="trust-logo-item">Soporte de primer nivel en espanol</span>
+        <span class="trust-logo-item">Onboarding guiado 1:1</span>
+        <span class="trust-logo-item">Todo listo para iniciar en 1 clic</span>
       </div>
     </div>
   </div>
