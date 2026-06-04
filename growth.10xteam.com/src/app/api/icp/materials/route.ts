@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
 import { generateIcpMaterials } from "@/lib/icp-materials";
 import type { WizardData } from "@/types/icp";
+import type { ICPCard } from "@/types/wizard.types";
+
+interface MaterialsRequestBody {
+  wizardData?: Partial<WizardData>;
+  icpCard?: ICPCard | null;
+}
 
 function isValidPayload(payload: Partial<WizardData>): payload is WizardData {
   return Boolean(
@@ -18,7 +24,9 @@ function isValidPayload(payload: Partial<WizardData>): payload is WizardData {
 
 export async function POST(request: Request) {
   try {
-    const payload = (await request.json()) as Partial<WizardData>;
+    const body = (await request.json()) as MaterialsRequestBody | Partial<WizardData>;
+    const payload = "wizardData" in body ? body.wizardData : body;
+    const icpCard = "icpCard" in body ? body.icpCard : null;
 
     if (!isValidPayload(payload)) {
       return NextResponse.json(
@@ -27,7 +35,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const materials = generateIcpMaterials(payload);
+    const materials = generateIcpMaterials(payload, icpCard);
     return NextResponse.json(materials);
   } catch {
     return NextResponse.json(

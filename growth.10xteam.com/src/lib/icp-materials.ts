@@ -1,4 +1,5 @@
 import type { GeneratedMaterials, WizardData } from "@/types/icp";
+import type { ICPCard } from "@/types/wizard.types";
 
 const channelLabels: Record<string, string> = {
   LinkedIn: "LinkedIn",
@@ -9,13 +10,20 @@ const channelLabels: Record<string, string> = {
   Ads: "Ads",
 };
 
-export function generateIcpMaterials(data: WizardData): GeneratedMaterials {
-  const icpSummary = `ICP objetivo: ${data.idealRole} en empresas de ${data.industry} (${data.employeeRange}) que hoy sufre "${data.mainPain}" y busca "${data.expectedOutcome}" con meta mensual de ${data.monthlyLeadGoal} leads calificados.`;
+export function generateIcpMaterials(data: WizardData, icpCard?: ICPCard | null): GeneratedMaterials {
+  const resolvedPain = icpCard?.mainPain ?? data.mainPain;
+  const resolvedOutcome = icpCard?.promise ?? data.expectedOutcome;
+  const resolvedMechanism =
+    icpCard?.uniqueMechanism ?? "sistema operativo de seguimiento comercial";
+  const resolvedTrigger = icpCard?.trigger ?? "cuando el pipeline pierde velocidad";
+
+  const icpSummary = `ICP objetivo: ${data.idealRole} en empresas de ${data.industry} (${data.employeeRange}) que hoy sufre "${resolvedPain}" y busca "${resolvedOutcome}" con meta mensual de ${data.monthlyLeadGoal} leads calificados. Trigger clave: ${resolvedTrigger}.`;
 
   const onePagerOutline = [
-    `Problema central: ${data.mainPain}`,
+    `Problema central: ${resolvedPain}`,
     `Impacto de no actuar: perdida de oportunidades en ${data.industry}`,
-    `Resultado prometido: ${data.expectedOutcome}`,
+    `Resultado prometido: ${resolvedOutcome}`,
+    `Mecanismo de diferenciacion: ${resolvedMechanism}`,
     `Canales prioritarios: ${data.preferredChannels.join(", ")}`,
     `Llamado a accion: agenda diagnostico para ${data.companyName}`,
   ];
@@ -30,10 +38,10 @@ export function generateIcpMaterials(data: WizardData): GeneratedMaterials {
   ];
 
   const callScript = [
-    `Apertura: "Hola, trabajo con empresas de ${data.industry} que hoy tienen este reto: ${data.mainPain}."`,
+    `Apertura: "Hola, trabajo con empresas de ${data.industry} que hoy tienen este reto: ${resolvedPain}."`,
     `Exploracion: "Que pasa hoy cuando un lead muestra interes y no compra en el primer contacto?"`,
-    `Reencuadre: "Nuestro foco no es solo generar mas leads; es convertir mejor con seguimiento inteligente."`,
-    `Propuesta: "Si te mostramos una ruta para ${data.expectedOutcome}, valdria una sesion de 20 minutos?"`,
+    `Reencuadre: "Nuestro foco no es solo generar mas leads; es convertir mejor con ${resolvedMechanism}."`,
+    `Propuesta: "Si te mostramos una ruta para ${resolvedOutcome}, valdria una sesion de 20 minutos?"`,
     "Cierre: agenda fecha y confirma decisores involucrados.",
   ];
 
@@ -44,7 +52,7 @@ export function generateIcpMaterials(data: WizardData): GeneratedMaterials {
         channel,
         {
           headline: `${label}: Mensaje para ${data.idealRole}`,
-          message: `Detectamos que en ${data.industry} muchas empresas pierden conversion por ${data.mainPain}. La propuesta es simple: alinear prospeccion + seguimiento para lograr ${data.expectedOutcome}.`,
+          message: `Detectamos que en ${data.industry} muchas empresas pierden conversion por ${resolvedPain}. La propuesta es simple: activar ${resolvedMechanism} para lograr ${resolvedOutcome}.`,
           cta: "Agenda diagnostico de 20 minutos",
           assets: [
             "One-pager de objeciones",
@@ -60,7 +68,7 @@ export function generateIcpMaterials(data: WizardData): GeneratedMaterials {
     {
       channel: "LinkedIn",
       title: `Tu problema no es volumen, es seguimiento`,
-      body: `Si tu equipo ya genera leads pero no cierra, el cuello de botella no es trafico: es proceso. En ${data.industry}, el primer ajuste es construir un flujo que convierta interes en citas reales.`,
+      body: `Si tu equipo ya genera leads pero no cierra, el cuello de botella no es trafico: es proceso. En ${data.industry}, el primer ajuste es construir un flujo que convierta interes en citas reales con ${resolvedMechanism}.`,
     },
     {
       channel: "Instagram",
@@ -70,7 +78,7 @@ export function generateIcpMaterials(data: WizardData): GeneratedMaterials {
     {
       channel: "Facebook",
       title: `Como pasar de ruido a pipeline en ${data.industry}`,
-      body: `Cuando defines ICP + mensaje + handoff comercial, la meta de ${data.monthlyLeadGoal} deja de ser una apuesta y se vuelve operacion.`,
+      body: `Cuando defines ICP + mensaje + handoff comercial, la meta de ${data.monthlyLeadGoal} deja de ser una apuesta y se vuelve operacion. Trigger de accion: ${resolvedTrigger}.`,
     },
   ];
 
