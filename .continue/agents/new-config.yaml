@@ -1,0 +1,9 @@
+# Continue workspace config lives in `.continue/config.yaml`.
+# Keep this file only as a pointer to avoid duplicate configuration.
+
+name: Config Pointer
+version: 1.0.0
+schema: v1
+
+rules:
+  - La configuracion activa de modelos esta en `.continue/config.yaml`.
