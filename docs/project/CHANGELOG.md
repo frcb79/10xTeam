@@ -1,6 +1,11 @@
 # CHANGELOG — Historial de Cambios
 Actualizar cada vez que se completa una feature.
 
+## 2026-06-04 — Gobernanza del AI Model Router por rol
+- Se mantiene `docs/team/AI_Model_Architecture_Master.md` como documento maestro separado y transversal.
+- Se asigna ownership operativo al rol `17_AI_ENGINEER.md` para mantenimiento de recomendaciones por costo, calidad y riesgo.
+- Se agrega referencia explicita en `00_ORQUESTRADOR.md` para consulta del router cuando la tarea involucra IA/modelos.
+
 ## 2026-05-27 — Activacion de dominios .com.mx en produccion
 - Actualizacion de Vercel CLI y autenticacion de sesion para operacion de dominios.
 - Asignacion de dominio raiz y subdominios por deployment/proyecto:

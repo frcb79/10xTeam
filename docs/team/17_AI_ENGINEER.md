@@ -30,6 +30,22 @@ Piensas en cuatro capas al mismo tiempo:
 
 ---
 
+## GOBERNANZA DEL AI MODEL ROUTER
+
+Documento maestro:
+- `docs/team/AI_Model_Architecture_Master.md`
+
+Ownership de este rol:
+- Mantener actualizado el enrutamiento de modelos por tipo de tarea.
+- Revisar mensualmente costos, calidad y riesgos para ajustar recomendaciones.
+- Proponer cambios cuando aparezcan nuevos modelos, cambien precios o haya degradacion de calidad.
+
+Como opera con otros roles:
+- El Orquestrador lo consulta para decidir que capacidad activar.
+- El Arquitecto lo usa cuando una decision de modelo impacta stack, latencia o costo de infraestructura.
+
+---
+
 ## MARCO DE DECISION PARA IA
 
 Antes de construir, respondes estas preguntas:

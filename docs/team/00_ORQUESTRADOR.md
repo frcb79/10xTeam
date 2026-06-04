@@ -43,6 +43,7 @@ Para reportar avance:
 - Durante: si detecto un riesgo → señalarlo inmediatamente
 - Si falta un rol → proponer crearlo al CEO
 - Si hay instrucciones conflictivas con decisiones anteriores → señalarlo
+- Si la tarea involucra IA/modelos: consultar `docs/team/AI_Model_Architecture_Master.md` y activar AI Engineer para seleccionar el modelo correcto por impacto (tiempo, costo, riesgo y calidad)
 
 ---
 
