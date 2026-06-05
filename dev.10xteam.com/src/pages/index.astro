@@ -720,18 +720,89 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
         .hero-description-area{flex-direction:column;gap:2rem;align-items:center;text-align:center}
         .hero-subtitle{margin-left:auto;margin-right:auto}
         .hero-cta{justify-content:center}
-        .hero-proof{flex-direction:row;justify-content:center;width:100%;max-width:600px}
+        
+        /* CORREGIDO: Nombre de clase correcto (.hero-proof -> .hero-proof-horizontal) y display: grid para que el 2x2 funcione en móvil */
+        .hero-proof-horizontal {
+          display: grid !important;
+          grid-template-columns: repeat(2, 1fr);
+          width: 100%;
+          max-width: 600px;
+          margin: 0 auto 2rem auto;
+          gap: 0.75rem;
+        }
+        
+        /* Evitar que el texto del hero quede limitado por flex: 1.2 */
+        .hero-text-side {
+          flex: none;
+          width: 100%;
+          max-width: 100%;
+        }
+
         .hero-visual{max-width:620px;margin:2rem auto 0}
         .pricing-grid{grid-template-columns:1fr}
         .method-grid, .method-steps{grid-template-columns:repeat(2,1fr)}
         .audit-grid{grid-template-columns:1fr}
+        
+        /* Centrar las filas de países correctamente */
+        .country-row {
+          justify-content: center;
+        }
       }
+      
       @media(max-width:768px){
+        .container {
+          padding: 0 1.25rem; /* Margen seguro de 20px a los lados */
+        }
         .nav-links{display:none}
         .hero{padding:5rem 0 3rem;min-height:auto}
         .hero h1{font-size:2rem}
         .method-grid, .method-steps, .form-grid{grid-template-columns:1fr}
-        .footer-inner{flex-direction:column;gap:2rem;text-align:center}
+        
+        .hero-proof-horizontal {
+          grid-template-columns: repeat(2, 1fr) !important;
+        }
+        .proof-item-hz {
+          padding: 0.5rem;
+        }
+        
+        /* Asegurar que el footer se centre completamente al apilarse */
+        .footer-inner {
+          flex-direction: column;
+          gap: 1.5rem;
+          text-align: center;
+        }
+        .footer-links {
+          justify-content: center;
+        }
+        
+        /* Forzar ancho completo en el formulario de contacto */
+        .contact-form input, 
+        .contact-form select, 
+        .contact-form textarea {
+          width: 100% !important;
+          box-sizing: border-box;
+        }
+      }
+      
+      /* Pantallas muy pequeñas (ej. iPhone SE, dispositivos plegables cerrados) */
+      @media(max-width:480px){
+        .container {
+          padding: 0 1rem; /* Margen de 16px, suficiente para que no toque el borde */
+        }
+        .hero h1 {
+          font-size: 1.75rem;
+        }
+        .proof-number-hz {
+          font-size: 1.25rem;
+        }
+        .proof-label-hz {
+          font-size: 0.65rem;
+        }
+        /* Hacer que el botón del navbar no se rompa en dos líneas */
+        .btn-nav {
+          padding: 0.5rem 1rem;
+          font-size: 0.8rem;
+        }
       }
     </style>
 	</body>

@@ -233,3 +233,79 @@ body::before {
     padding: 0 1.25rem;
   }
 }
+/* ... existing code ... */
+
+/* ─── CORRECCIONES RESPONSIVE MOBILE (FORZADAS) ─── */
+@media (max-width: 1024px) {
+  .hero-proof-horizontal {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    width: 100% !important;
+    max-width: 600px !important;
+    margin: 0 auto 2rem auto !important;
+    gap: 0.75rem !important;
+    padding: 1rem !important;
+  }
+  
+  .hero-text-side {
+    flex: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .country-row {
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem !important;
+  }
+  
+  .footer-inner {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 1.5rem !important;
+  }
+  
+  .footer-links {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 1rem !important;
+    align-items: center !important;
+  }
+  
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    width: 100% !important;
+    min-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem !important;
+  }
+  
+  .hero h1 {
+    font-size: 1.75rem !important;
+  }
+  
+  .proof-number-hz {
+    font-size: 1.25rem !important;
+  }
+  
+  .proof-label-hz {
+    font-size: 0.65rem !important;
+  }
+  
+  .btn-nav {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.8rem !important;
+    white-space: nowrap !important;
+  }
+}
