@@ -57,6 +57,7 @@ models:
       - edit
       - apply
 
+  # Gemini Flash es excelente y muy económico para autocompletar si quieres alternar
   - name: Gemini Flash
     provider: openai
     apiBase: https://openrouter.ai/api/v1
@@ -66,7 +67,9 @@ models:
       - chat
       - edit
       - apply
+      - autocomplete
 
+  # --- CONFIGURACIÓN DE QWEN OPTIMIZADA PARA AUTOCOMPLETAR ---
   - name: Qwen
     provider: openai
     apiBase: https://openrouter.ai/api/v1
@@ -76,6 +79,7 @@ models:
       - chat
       - edit
       - apply
+      - autocomplete
 
   - name: DeepSeek
     provider: openai

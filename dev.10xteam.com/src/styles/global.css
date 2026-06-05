@@ -224,88 +224,161 @@ body::before {
   100% { background-position: 200% 0; }
 }
 
-/* ─── Responsive ─── */
-@media (max-width: 768px) {
-  :root {
-    --section-gap: 3.5rem;
-  }
-  .container {
-    padding: 0 1.25rem;
-  }
-}
-/* ... existing code ... */
+/* =========================================
+   RESPONSIVE - CORRECCIONES MOBILE
+   ========================================= */
 
-/* ─── CORRECCIONES RESPONSIVE MOBILE (FORZADAS) ─── */
+/* ─── Tablets y abajo ─── */
 @media (max-width: 1024px) {
-  .hero-proof-horizontal {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    width: 100% !important;
-    max-width: 600px !important;
-    margin: 0 auto 2rem auto !important;
-    gap: 0.75rem !important;
-    padding: 1rem !important;
-  }
-  
-  .hero-text-side {
+  html body .hero-text-side.hero-text-side {
     flex: none !important;
     width: 100% !important;
     max-width: 100% !important;
   }
-  
-  .country-row {
+
+  html body .country-row.country-row {
     justify-content: center !important;
+  }
+
+  html body .about-countries.about-countries {
+    align-items: center !important;
+  }
+
+  /* Centrar imagen de abajo (Prueba de valor) como la del Hero */
+  html body .audit-visual.audit-visual {
+    max-width: 600px !important;
+    margin: 2rem auto 0 !important;
+  }
+  
+  html body .audit-mockup.audit-mockup {
+    margin: 0 auto !important;
   }
 }
 
+/* ─── Móviles ─── */
 @media (max-width: 768px) {
-  .container {
-    padding: 0 1.25rem !important;
+  :root {
+    --section-gap: 3.5rem;
   }
-  
-  .footer-inner {
+
+  html body .container.container {
+    padding: 0 1.25rem !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  html body .footer-inner.footer-inner {
     flex-direction: column !important;
     text-align: center !important;
     gap: 1.5rem !important;
+    align-items: center !important;
   }
-  
-  .footer-links {
+
+  html body .footer-links.footer-links {
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
-    gap: 1rem !important;
     align-items: center !important;
+    gap: 1rem !important;
   }
-  
-  .contact-form input,
-  .contact-form select,
-  .contact-form textarea {
+
+  html body .contact-form input,
+  html body .contact-form select,
+  html body .contact-form textarea {
     width: 100% !important;
     min-width: 100% !important;
     box-sizing: border-box !important;
   }
+
+  html body .form-grid.form-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  html body .proof-item-hz.proof-item-hz {
+    padding: 0.5rem !important;
+  }
+
+  /* 🛠️ CORRECCIÓN: Evitar amontonamiento de cards en "Capacidad Élite" */
+  html body .about-visual.about-visual {
+    height: auto !important;
+    margin-top: 2rem !important;
+  }
+  
+  html body .about-card-stack.about-card-stack {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  
+  html body .a-card.a-card {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    opacity: 1 !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+  
+  html body .a-card.a-card:hover {
+    transform: translateY(-5px) !important;
+  }
+  
+  /* Centrar todo el contenido de las secciones */
+  html body .section.section {
+    padding: 2rem 0 !important;
+  }
+  
+  html body .stats-container.stats-container {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  html body .about-grid.about-grid,
+  html body .audit-grid.audit-grid,
+  html body .method-steps.method-steps {
+    grid-template-columns: 1fr !important;
+  }
+  
+  html body .pricing-grid.pricing-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  html body .cta-box.cta-box {
+    padding: 3rem 1.5rem !important;
+  }
 }
 
+/* ─── Pantallas muy pequeñas (iPhone SE, Fold cerrado) ─── */
 @media (max-width: 480px) {
-  .container {
+  html body .container.container {
     padding: 0 1rem !important;
   }
-  
-  .hero h1 {
+
+  html body .hero.hero h1 {
     font-size: 1.75rem !important;
   }
-  
-  .proof-number-hz {
+
+  html body .proof-number-hz.proof-number-hz {
     font-size: 1.25rem !important;
   }
-  
-  .proof-label-hz {
+
+  html body .proof-label-hz.proof-label-hz {
     font-size: 0.65rem !important;
   }
-  
-  .btn-nav {
+
+  html body .btn-nav.btn-nav {
     padding: 0.5rem 1rem !important;
     font-size: 0.8rem !important;
     white-space: nowrap !important;
+  }
+
+  html body .cta-box.cta-box {
+    padding: 3rem 1.25rem !important;
   }
 }
