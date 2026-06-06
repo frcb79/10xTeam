@@ -28,9 +28,37 @@ body {
   font-family: "Instrument Sans", sans-serif;
 }
 
+.hero-cinematic {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.22);
+  filter: brightness(0.7) saturate(1.02);
+  animation: video-pullback 2.2s ease-out forwards;
+}
+
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 45%, rgba(6, 8, 16, 0.12) 0%, rgba(6, 8, 16, 0.45) 55%, rgba(6, 8, 16, 0.75) 100%),
+    linear-gradient(180deg, rgba(6, 8, 16, 0.2) 0%, rgba(6, 8, 16, 0.7) 100%);
+}
+
 .bg-grid {
   position: fixed;
   inset: 0;
+  z-index: -1;
   pointer-events: none;
   background-image:
     linear-gradient(rgba(30, 40, 64, 0.3) 1px, transparent 1px),
@@ -45,6 +73,11 @@ body {
   width: min(1120px, calc(100% - 2rem));
   margin-inline: auto;
   position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: content-reveal 820ms ease-out forwards;
+  animation-delay: 1.05s;
 }
 
 .topbar {
@@ -124,6 +157,30 @@ body {
   from {
     opacity: 0;
     transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes video-pullback {
+  0% {
+    transform: scale(1.22);
+    filter: brightness(0.78) saturate(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+    filter: brightness(0.62) saturate(1);
+  }
+}
+
+@keyframes content-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
   }
 
   to {
@@ -355,6 +412,18 @@ body {
 }
 
 @media (max-width: 880px) {
+  .hero-cinematic {
+    display: none;
+  }
+
+  .topbar,
+  .wrap,
+  .foot {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
   .topbar {
     flex-direction: column;
     align-items: stretch;
@@ -410,5 +479,21 @@ body {
 
   .st-display-line {
     white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cinematic {
+    display: none;
+  }
+
+  .topbar,
+  .wrap,
+  .foot,
+  .hero-video {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    filter: none;
   }
 }
