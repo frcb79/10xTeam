@@ -25,8 +25,8 @@ function isValidPayload(payload: Partial<WizardData>): payload is WizardData {
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as MaterialsRequestBody | Partial<WizardData>;
-    const payload = "wizardData" in body ? body.wizardData : body;
-    const icpCard = "icpCard" in body ? body.icpCard : null;
+    const payload: Partial<WizardData> =
+      "wizardData" in body ? (body.wizardData ?? {}) : (body as Partial<WizardData>);
 
     if (!isValidPayload(payload)) {
       return NextResponse.json(
@@ -35,7 +35,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const materials = generateIcpMaterials(payload, icpCard);
+    const materials = generateIcpMaterials(payload);
     return NextResponse.json(materials);
   } catch {
     return NextResponse.json(
