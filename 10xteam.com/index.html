@@ -28,13 +28,13 @@
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
+  <body class="intro-playing">
     <div class="hero-cinematic" aria-hidden="true">
       <video
+        id="heroVideoIntro"
         class="hero-video"
         autoplay
         muted
-        loop
         playsinline
         preload="metadata"
       >
@@ -141,7 +141,30 @@
     </footer>
 
     <script>
+      const bodyEl = document.body;
       document.getElementById("year").textContent = new Date().getFullYear();
+      const introVideo = document.getElementById("heroVideoIntro");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const isMobile = window.matchMedia("(max-width: 880px)").matches;
+
+      const finishIntro = () => {
+        if (!bodyEl.classList.contains("intro-complete")) {
+          bodyEl.classList.remove("intro-playing");
+          bodyEl.classList.add("intro-complete");
+        }
+      };
+
+      if (!introVideo || reduceMotion || isMobile) {
+        finishIntro();
+      } else {
+        introVideo.currentTime = 0;
+        const playPromise = introVideo.play();
+        if (playPromise && typeof playPromise.catch === "function") {
+          playPromise.catch(() => finishIntro());
+        }
+        introVideo.addEventListener("ended", finishIntro, { once: true });
+        setTimeout(finishIntro, 7000);
+      }
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
   </body>
