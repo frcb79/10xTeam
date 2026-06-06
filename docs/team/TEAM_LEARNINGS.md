@@ -6,7 +6,6 @@ Se actualiza via sync desde cada proyecto al master.
 - Traducir siempre decisiones a tiempo, dinero, riesgo y oportunidad reduce friccion.
 - Reportes cortos, directos y con recomendacion final clara aceleran ejecucion.
 - **Marketing Estratégico:** El cliente no compra "código", compra "certeza de negocio" y "ROI". Enfocar el copy en el activo, no en la herramienta.
-- En trials de productos con IA, abrir con una pantalla pre-ICP que prometa transformacion (kit inmediato + ajuste mensual) aumenta claridad comercial; usar rangos conservadores de impacto hasta contar con benchmarks auditados.
 
 ## APRENDIZAJES DE PROCESO
 - No empezar una sesion sin leer PROJECT_BRAIN, ERROR_LOG, DECISIONS y CEO_OS.

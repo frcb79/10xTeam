@@ -36,7 +36,6 @@ En progreso:
 
 Actualizacion reciente:
 - `growth.10xteam.com.mx` ya sirve el HTML comercial canonico aprobado, manteniendo intactos diseno, tipografias, colores y secciones; la mini seccion de servicios fue restaurada tras una eliminacion no deseada.
-- Se formalizo la gobernanza del enrutamiento de modelos IA: `docs/team/AI_Model_Architecture_Master.md` queda como documento maestro separado, con ownership del rol AI Engineer y consulta operativa desde Orquestrador.
 
 Pendiente:
 - Lanzamiento oficial del piloto con cliente real.
