@@ -9,6 +9,9 @@ export function CompleteScreen() {
   const step3 = state.answers.step3_b2b ?? state.answers.step3_b2c;
   const step4 = state.answers.step4;
   const step5 = state.answers.step5;
+  const idealClient = step3
+    ? ("primaryDecisionMaker" in step3 ? step3.primaryDecisionMaker : step3.ageRange)
+    : "Pendiente";
 
   return (
     <div className="mx-auto flex min-h-[80vh] max-w-6xl flex-col justify-center px-5 py-10 md:px-8">
@@ -36,7 +39,7 @@ export function CompleteScreen() {
               <ReportCard label="Ticket promedio" value={step2?.priceRange ?? "Pendiente"} />
               <ReportCard label="Margen" value={step2?.marginBand ?? "Pendiente"} />
               <ReportCard label="Frecuencia de compra" value={step2?.purchaseFrequency ?? "Pendiente"} />
-              <ReportCard label="Cliente ideal" value={step3?.primaryDecisionMaker ?? step3?.ageRange ?? "Pendiente"} />
+              <ReportCard label="Cliente ideal" value={idealClient} />
               <ReportCard label="Resultado" value={step3?.mainOutcome ?? "Pendiente"} />
               <ReportCard label="Dolor" value={step3?.mainPain ?? "Pendiente"} />
               <ReportCard label="Diferenciador" value={step4?.uniqueDifferentiator ?? "Pendiente"} />
