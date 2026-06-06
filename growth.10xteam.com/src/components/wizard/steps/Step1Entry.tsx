@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useWizard } from "@/hooks/useWizard";
 import { ICPScoreMeter } from "@/components/wizard/ICPScoreMeter";
+import type { PrefillConfidence } from "@/types/wizard.types";
 
 interface PrefillResponse {
   oneLiner: string;
@@ -10,7 +11,7 @@ interface PrefillResponse {
   mainPain: string;
   mainOutcome: string;
   differentiator: string;
-  confidence: Record<string, number>;
+  confidence: PrefillConfidence;
 }
 
 export function Step1Entry() {
