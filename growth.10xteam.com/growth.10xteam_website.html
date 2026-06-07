@@ -282,9 +282,9 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
   align-items: center; justify-content: center;
   gap: 0;
   margin-top: 72px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(59,130,246,.22);
   border-radius: var(--r-lg);
-  background: rgba(17,21,39,.6);
+  background: linear-gradient(180deg, rgba(37,99,235,.08) 0%, rgba(14,165,160,.04) 100%);
   backdrop-filter: blur(12px);
   overflow: hidden;
 }
@@ -292,8 +292,10 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
   flex: 1; min-width: 140px;
   padding: 24px 20px;
   text-align: center;
-  border-right: 1px solid var(--border);
+  border-right: 1px solid rgba(59,130,246,.14);
+  background: rgba(255,255,255,.02);
 }
+.stat-item:nth-child(even) { background: rgba(37,99,235,.05); }
 .stat-item:last-child { border-right: none; }
 .stat-val {
   font-family: 'Fraunces', serif;
@@ -303,17 +305,16 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
   line-height: 1;
   margin-bottom: 4px;
 }
-.stat-val span { color: var(--blue-l); }
 .stat-label {
   font-size: 11px;
-  color: var(--muted);
+  color: #93A4C0;
   text-transform: uppercase;
   letter-spacing: .08em;
 }
 @media(max-width:600px){
-  .stat-item { min-width: 50%; border-right: none; border-bottom: 1px solid var(--border); }
-  .stat-item:nth-child(odd) { border-right: 1px solid var(--border); }
-  .stat-item:last-child, .stat-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+  .stat-item { min-width: 50%; border-right: none; border-bottom: 1px solid rgba(59,130,246,.14); }
+  .stat-item:nth-child(odd) { border-right: 1px solid rgba(59,130,246,.14); }
+  .stat-item:last-child { min-width: 100%; border-right: none; border-bottom: none; }
 }
 
 /* ═══════════════════════════════════════════════
@@ -321,9 +322,9 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
 ═══════════════════════════════════════════════ */
 .trust-bar {
   padding: 28px 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--navy);
+  border-top: 1px solid rgba(59,130,246,.2);
+  border-bottom: 1px solid rgba(59,130,246,.2);
+  background: linear-gradient(180deg, rgba(37,99,235,.10) 0%, rgba(11,15,28,1) 100%);
 }
 .trust-inner {
   display: flex; align-items: center;
@@ -332,8 +333,8 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
 }
 .trust-label {
   font-size: 12px;
-  font-weight: 600;
-  color: var(--muted);
+  font-weight: 700;
+  color: #B7C4DA;
   letter-spacing: .1em;
   text-transform: uppercase;
 }
@@ -345,8 +346,8 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
   font-family: 'Fraunces', serif;
   font-size: 13px;
   font-weight: 700;
-  color: var(--muted);
-  opacity: .6;
+  color: #D4DEEE;
+  opacity: .95;
   letter-spacing: .04em;
 }
 
@@ -947,7 +948,6 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
 }
 @media(max-width:768px){ .footer-grid { grid-template-columns: 1fr 1fr; } }
 @media(max-width:480px){ .footer-grid { grid-template-columns: 1fr; } }
-.footer-brand {}
 .footer-logo {
   font-family: 'Fraunces', serif;
   font-size: 22px; font-weight: 900;
@@ -1128,7 +1128,7 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
 <nav class="nav">
   <div class="container">
     <div class="nav-inner">
-      <a href="https://10xteam.com.mx" class="nav-logo">10x<span>Team</span></a>
+      <a href="#" class="nav-logo">10x<span>Team</span></a>
       <div class="nav-links">
         <a href="#funcionalidades" class="nav-link">Funcionalidades</a>
         <a href="#precios" class="nav-link">Precios</a>
@@ -1152,19 +1152,18 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
   <div class="container">
     <div class="hero-content">
       <div class="hero-platform-badge">
-        Plataforma con IA líder mundial — adaptada para México y LATAM
+        Plataforma con IA líder — adaptada para México y LATAM
       </div>
 
       <h1 class="display hero-headline">
-        El sistema operativo con IA<br>
-        para hacer crecer<br>
-        <em>tu negocio</em>
+        El sistema más completo para<br>
+        <em>CRECER TU NEGOCIO</em>
       </h1>
 
       <p class="hero-sub">
-        Todo lo que necesitas para capturar, nutrir y cerrar nuevos leads en clientes,
-        citas, ventas y recomendaciones — en una sola plataforma, en español, con
-        soporte dedicado para México.
+        Convierte más prospectos en citas, ventas y recomendaciones con un sistema
+        integral de captura, seguimiento y cierre. Todo en una sola plataforma, en
+        español y con soporte dedicado para México.
       </p>
 
       <div class="hero-ctas">
@@ -1178,20 +1177,24 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
       <!-- Stats bar -->
       <div class="stats-bar">
         <div class="stat-item">
-          <div class="stat-val">1M<span>+</span></div>
-          <div class="stat-label">Negocios impulsados</div>
+          <div class="stat-val">+27%</div>
+          <div class="stat-label">Incremento en citas</div>
         </div>
         <div class="stat-item">
-          <div class="stat-val">7.3<span>B</span></div>
-          <div class="stat-label">Leads generados</div>
+          <div class="stat-val">+19%</div>
+          <div class="stat-label">Incremento en ventas</div>
         </div>
         <div class="stat-item">
-          <div class="stat-val">179<span>M</span></div>
-          <div class="stat-label">Citas agendadas</div>
+          <div class="stat-val">+14%</div>
+          <div class="stat-label">Ticket promedio</div>
         </div>
         <div class="stat-item">
-          <div class="stat-val">$5.2<span>B</span></div>
-          <div class="stat-label">En ventas facilitadas</div>
+          <div class="stat-val">+31%</div>
+          <div class="stat-label">Ventas por recuperacion</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">-43%</div>
+          <div class="stat-label">Ahorro en costos de stack</div>
         </div>
       </div>
 
@@ -1205,13 +1208,12 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
 <div class="trust-bar">
   <div class="container">
     <div class="trust-inner">
-      <span class="trust-label">Reconocido por</span>
+      <span class="trust-label">Ventajas de operacion</span>
       <div class="trust-logos">
-        <span class="trust-logo-item">G2 · Top Software 2026</span>
-        <span class="trust-logo-item">Capterra · Best Value</span>
-        <span class="trust-logo-item">Top 50 Agentic AI</span>
-        <span class="trust-logo-item">Best Marketing Automation</span>
-        <span class="trust-logo-item">Easiest To Use 2026</span>
+        <span class="trust-logo-item">Activacion inicial en 72 horas</span>
+        <span class="trust-logo-item">Soporte de primer nivel en espanol</span>
+        <span class="trust-logo-item">Onboarding guiado 1:1</span>
+        <span class="trust-logo-item">Todo listo para iniciar en 1 clic</span>
       </div>
     </div>
   </div>
@@ -1223,22 +1225,123 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
 <section class="section features-section" id="funcionalidades">
   <div class="container">
     <div class="section-header">
-      <p class="eyebrow">Plataforma completa</p>
+      <p class="eyebrow">SOLO CON 10xTeam</p>
       <h2 class="display">Tu solución todo-en-uno<br>para el crecimiento</h2>
       <p>Todas las herramientas que necesitas en una sola plataforma potenciada con IA. Sin malabares entre 5 sistemas distintos.</p>
     </div>
 
     <div class="mt-48">
       <div class="tabs-nav">
-        <button class="tab-btn active" onclick="showTab('captura',this)">📥 Captura</button>
+        <button class="tab-btn active" onclick="showTab('icp',this)">🎯 ICP</button>
+        <button class="tab-btn" onclick="showTab('crea',this)">🧠 Crea</button>
+        <button class="tab-btn" onclick="showTab('captura',this)">📥 Captura</button>
         <button class="tab-btn" onclick="showTab('nutre',this)">🔥 Nutre</button>
         <button class="tab-btn" onclick="showTab('cierra',this)">💰 Cierra</button>
         <button class="tab-btn" onclick="showTab('fideliza',this)">⭐ Fideliza</button>
         <button class="tab-btn" onclick="showTab('reactiva',this)">🔄 Reactiva</button>
+        <button class="tab-btn" onclick="showTab('soporte',this)">🤝 Soporte</button>
+      </div>
+
+      <!-- ICP -->
+      <div class="tab-panel active" id="tab-icp">
+        <div class="tab-layout">
+          <div>
+            <div class="tab-icon">🎯</div>
+            <p class="eyebrow mb-8">ICP</p>
+            <h3 class="display mb-16">ICP Wizard que encuentra<br>tu cliente ideal</h3>
+            <p>Define con precisión quién sí te compra, por qué compra y cómo hablarle para que marketing y ventas trabajen con foco desde el día uno.</p>
+            <div class="tab-feature-list">
+              <div class="feature-item">Diagnóstico guiado de negocio y oferta</div>
+              <div class="feature-item">Perfil del decisor principal e influenciadores</div>
+              <div class="feature-item">Dolor real en palabras del cliente</div>
+              <div class="feature-item">Detonadores de compra accionables</div>
+              <div class="feature-item">Mecanismo único y diferenciador</div>
+              <div class="feature-item">ICP Card lista para activar campañas</div>
+              <div class="feature-item">Puntaje de calidad ICP con mejoras sugeridas</div>
+              <div class="feature-item">Base para mensajes, contenido y bot</div>
+            </div>
+            <div class="mt-32">
+              <a href="#demo" class="btn btn-primary">Empieza 14 días gratis →</a>
+            </div>
+          </div>
+          <div class="tab-visual">
+            <div class="tab-visual-header">
+              <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+              <span style="font-size:11px;color:var(--muted);margin-left:8px">ICP Wizard — Diagnóstico en progreso</span>
+            </div>
+            <div class="tab-visual-body">
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                    <span style="font-size:12px;font-weight:600;color:var(--white)">ICP Score</span>
+                    <span style="font-size:10px;color:#6EE7B7">91/100</span>
+                  </div>
+                  <div style="font-size:11px;color:var(--muted)">Perfil claro, dolor específico y promesa medible en 90 días.</div>
+                </div>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px">
+                  <div style="font-size:11px;color:var(--muted);margin-bottom:6px">Decisor principal detectado</div>
+                  <div style="font-size:12px;color:var(--text)">Dueño/Director comercial · Empresas 10–50 empleados</div>
+                </div>
+                <div style="padding:10px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.25);border-radius:8px;font-size:11px;color:var(--blue-xl)">
+                  ✓ ICP Card generada y lista para activar materiales.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CREA -->
+      <div class="tab-panel" id="tab-crea">
+        <div class="tab-layout">
+          <div>
+            <div class="tab-icon">🧠</div>
+            <p class="eyebrow mb-8">Crea</p>
+            <h3 class="display mb-16">Material y contenido con AI,<br>listo para vender</h3>
+            <p>Convertimos tu ICP en piezas comerciales accionables para cada canal y etapa del funnel, con tono, argumentos y objeciones adaptadas a tu cliente ideal.</p>
+            <div class="tab-feature-list">
+              <div class="feature-item">Mensajes de prospección para WhatsApp, email y LinkedIn</div>
+              <div class="feature-item">One-pager comercial por segmento</div>
+              <div class="feature-item">Pitch deck con narrativa de problema, solución y ROI</div>
+              <div class="feature-item">Guiones de llamada y manejo de objeciones</div>
+              <div class="feature-item">Contenido mensual por etapa del funnel</div>
+              <div class="feature-item">Versiones para decisor e influenciadores</div>
+              <div class="feature-item">Publicación y activación automática: todo queda listo para subirse automáticamente a la plataforma con un clic.</div>
+            </div>
+            <div class="mt-32">
+              <a href="#demo" class="btn btn-primary">Empieza 14 días gratis →</a>
+            </div>
+          </div>
+          <div class="tab-visual">
+            <div class="tab-visual-header">
+              <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+              <span style="font-size:11px;color:var(--muted);margin-left:8px">Motor AI — Materiales listos</span>
+            </div>
+            <div class="tab-visual-body">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px">
+                  <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">Canales</div>
+                  <div style="font-size:14px;font-weight:700;color:var(--white)">6</div>
+                </div>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px">
+                  <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">Materiales</div>
+                  <div style="font-size:14px;font-weight:700;color:var(--white)">24</div>
+                </div>
+              </div>
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px;margin-bottom:10px">
+                <div style="font-size:11px;color:var(--muted);margin-bottom:6px">Estado de generación</div>
+                <div style="font-size:12px;color:var(--text)">Propuesta, pitch, scripts y secuencias: completado ✓</div>
+              </div>
+              <div style="padding:10px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:8px;font-size:11px;color:#6EE7B7">
+                ✓ Publicación automática disponible para activar en un clic.
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- CAPTURA -->
-      <div class="tab-panel active" id="tab-captura">
+      <div class="tab-panel" id="tab-captura">
         <div class="tab-layout">
           <div>
             <div class="tab-icon">📥</div>
@@ -1553,6 +1656,53 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
         </div>
       </div>
 
+      <!-- SOPORTE -->
+      <div class="tab-panel" id="tab-soporte">
+        <div class="tab-layout">
+          <div>
+            <div class="tab-icon">🤝</div>
+            <p class="eyebrow mb-8">Soporte</p>
+            <h3 class="display mb-16">Soporte en español<br>para ejecutar sin fricción</h3>
+            <p>No te dejamos solo con la herramienta. Te acompañamos en implementación, operación y mejora continua para que el sistema entregue resultados sostenibles.</p>
+            <div class="tab-feature-list">
+              <div class="feature-item">Onboarding operativo y configuración guiada</div>
+              <div class="feature-item">Acompañamiento para activar campañas y workflows</div>
+              <div class="feature-item">Soporte en español por canales directos</div>
+              <div class="feature-item">Seguimiento de incidencias con trazabilidad</div>
+              <div class="feature-item">Revisión periódica de métricas y recomendaciones</div>
+              <div class="feature-item">Priorización de mejoras por impacto comercial</div>
+              <div class="feature-item">Documentación clara para tu equipo</div>
+              <div class="feature-item">Alineación con operación de México y LATAM</div>
+            </div>
+            <div class="mt-32">
+              <a href="#demo" class="btn btn-primary">Empieza 14 días gratis →</a>
+            </div>
+          </div>
+          <div class="tab-visual">
+            <div class="tab-visual-header">
+              <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+              <span style="font-size:11px;color:var(--muted);margin-left:8px">Centro de soporte — Seguimiento activo</span>
+            </div>
+            <div class="tab-visual-body">
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px">
+                  <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">Ticket #3491</div>
+                  <div style="font-size:12px;color:var(--white);font-weight:600">Ajuste de flujo WhatsApp</div>
+                  <div style="font-size:11px;color:var(--muted)">Estado: en progreso · Prioridad: alta</div>
+                </div>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px">
+                  <div style="font-size:11px;color:var(--muted);margin-bottom:5px">Próxima revisión de performance</div>
+                  <div style="font-size:12px;color:var(--text)">Jueves 11:00 am · Optimización de cierre y reactivación</div>
+                </div>
+                <div style="padding:10px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.25);border-radius:8px;font-size:11px;color:var(--blue-xl)">
+                  ✓ Soporte activo en español con seguimiento operativo.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1797,7 +1947,7 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
           <td class="ftc-price-label">Precio total</td>
           <td></td>
           <td class="ftc-price-other">
-            <span class="ftc-price-other-val">$800–$2,000+/mes</span>
+            <span class="ftc-price-other-val">$900–$2.5K+/mes</span>
             <span style="font-size:10px;color:var(--muted)">Todas las herramientas por separado</span>
           </td>
           <td class="ftc-price-us">
@@ -1854,59 +2004,6 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
     </div>
   </div>
 </div>
-
-<!-- ═══════════════════════════════════════════
-     10xTEAM EXCLUSIVO
-═══════════════════════════════════════════════ -->
-<section class="section exclusive-section">
-  <div class="exclusive-bg"></div>
-  <div class="container" style="position:relative;z-index:1">
-    <div class="section-header">
-      <p class="eyebrow mb-8">Solo en 10xTeam</p>
-      <h2 class="display">Y lo que solo<br>nosotros ofrecemos</h2>
-      <p>La misma plataforma poderosa — más la capa de inteligencia artificial, el módulo ICP y el soporte especializado que ningún otro proveedor tiene para México.</p>
-    </div>
-
-    <div class="exclusive-grid mt-48">
-      <div class="exclusive-card">
-        <div class="exclusive-icon">🎯</div>
-        <div class="exclusive-title">Wizard ICP con IA</div>
-        <div class="exclusive-body">Define exactamente quién es tu cliente ideal en 20 minutos. La IA analiza tu sitio web, pre-llena tu perfil y activa toda la plataforma automáticamente — sin configuración técnica.</div>
-        <span class="exclusive-tag">Exclusivo 10xTeam</span>
-      </div>
-      <div class="exclusive-card">
-        <div class="exclusive-icon">📄</div>
-        <div class="exclusive-title">Materiales generados por IA</div>
-        <div class="exclusive-body">Pitch decks, propuestas comerciales, one-pagers y scripts — generados automáticamente con los datos de tu ICP. Listos para usar en segundos, no en horas.</div>
-        <span class="exclusive-tag">Exclusivo 10xTeam</span>
-      </div>
-      <div class="exclusive-card">
-        <div class="exclusive-icon">🇲🇽</div>
-        <div class="exclusive-title">100% México</div>
-        <div class="exclusive-body">Soporte en español con horario mexicano. Pagos en MXN vía SPEI, MercadoPago, Conekta y Oxxo Pay. Configurado para la realidad y el mercado mexicano.</div>
-        <span class="exclusive-tag">Para México y LATAM</span>
-      </div>
-      <div class="exclusive-card">
-        <div class="exclusive-icon">📱</div>
-        <div class="exclusive-title">WhatsApp como canal principal</div>
-        <div class="exclusive-body">Bot de WhatsApp especializado por industria. 98% de tasa de apertura. El canal que más usa México — completamente integrado con tu CRM y pipeline de ventas.</div>
-        <span class="exclusive-tag">Canal #1 en México</span>
-      </div>
-      <div class="exclusive-card">
-        <div class="exclusive-icon">⚡</div>
-        <div class="exclusive-title">Snapshots por industria</div>
-        <div class="exclusive-body">Cuentas preconfiguradas para restaurantes, clínicas, inmobiliarias, despachos y más. Onboarding completo en 72 horas — sin empezar desde cero.</div>
-        <span class="exclusive-tag">Listo para usar</span>
-      </div>
-      <div class="exclusive-card">
-        <div class="exclusive-icon">📅</div>
-        <div class="exclusive-title">Contenido social automático</div>
-        <div class="exclusive-body">12 posts mensuales generados por IA, alineados a tu ICP y tu calendario editorial. Diseños para LinkedIn, Instagram y Facebook — aprobados en un clic.</div>
-        <span class="exclusive-tag">Exclusivo 10xTeam</span>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ═══════════════════════════════════════════
      HOW IT WORKS
@@ -2298,7 +2395,7 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="https://10xteam.com.mx" class="footer-logo">10x<span>Team</span></a>
+        <div class="footer-logo">10x<span>Team</span></div>
         <p class="footer-desc">El sistema operativo con inteligencia artificial para hacer crecer negocios mexicanos. Ventas automatizadas, tecnología acelerada, resultados reales.</p>
         <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;">
           <span class="badge badge-blue">México 🇲🇽</span>
@@ -2327,7 +2424,7 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
       <div>
         <div class="footer-col-title">Contacto</div>
         <div class="footer-links">
-          <a href="mailto:hola@10xteam.mx" class="footer-link">hola@10xteam.mx</a>
+          <a href="mailto:hola@10xteam.com.mx" class="footer-link">hola@10xteam.com.mx</a>
           <a href="#" class="footer-link">WhatsApp directo</a>
           <a href="#demo" class="footer-link">Agendar demo</a>
           <a href="#faq" class="footer-link">Centro de ayuda</a>
