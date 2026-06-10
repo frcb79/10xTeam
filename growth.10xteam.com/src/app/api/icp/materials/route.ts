@@ -8,6 +8,10 @@ interface MaterialsRequestBody {
   icpCard?: ICPCard | null;
 }
 
+function isMaterialsRequestBody(value: unknown): value is MaterialsRequestBody {
+  return typeof value === "object" && value !== null && ("wizardData" in value || "icpCard" in value);
+}
+
 function isValidPayload(payload: Partial<WizardData>): payload is WizardData {
   return Boolean(
     payload.companyName &&
@@ -24,18 +28,18 @@ function isValidPayload(payload: Partial<WizardData>): payload is WizardData {
 
 export async function POST(request: Request) {
   try {
-    const body = (await request.json()) as MaterialsRequestBody | Partial<WizardData>;
-    const payload: Partial<WizardData> =
-      "wizardData" in body ? (body.wizardData ?? {}) : (body as Partial<WizardData>);
+    const body = (await request.json()) as unknown;
+    const payload = isMaterialsRequestBody(body) ? body.wizardData : (body as Partial<WizardData>);
+    const icpCard = isMaterialsRequestBody(body) ? body.icpCard : null;
 
-    if (!isValidPayload(payload)) {
+    if (!payload || !isValidPayload(payload)) {
       return NextResponse.json(
         { error: "Datos incompletos para generar materiales." },
         { status: 400 }
       );
     }
 
-    const materials = generateIcpMaterials(payload);
+    const materials = generateIcpMaterials(payload, icpCard);
     return NextResponse.json(materials);
   } catch {
     return NextResponse.json(

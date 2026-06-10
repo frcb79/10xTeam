@@ -1,4 +1,10 @@
+import Link from "next/link";
 import { IcpWizard } from "@/components/icp-wizard";
+import {
+  CLAIMS_DISCLAIMER,
+  CONSERVATIVE_IMPACT_CLAIMS,
+  PRE_ICP_VALUE_PILLARS,
+} from "@/lib/trial/claims";
 
 export default function Home() {
   return (
@@ -13,16 +19,15 @@ export default function Home() {
               Prospeccion inteligente para pymes B2B en Latam.
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-stone-300">
-              Activa tu ICP, genera materiales comerciales y ejecuta seguimiento multicanal en un solo flujo.
-              Sin ensamblar 5 herramientas ni depender de procesos manuales.
+              Entiende tu negocio, arma un kit comercial listo para salir y actualiza materiales cada mes según lo que mejor funciona.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#wizard"
+              <Link
+                href="/wizard"
                 className="rounded-full bg-cyan-300 px-5 py-2.5 text-sm font-semibold text-stone-950 transition hover:bg-cyan-200"
               >
                 Probar Wizard ICP
-              </a>
+              </Link>
               <a
                 href="#arquitectura"
                 className="rounded-full border border-stone-600 bg-stone-900 px-5 py-2.5 text-sm font-semibold text-stone-200 transition hover:border-stone-500"
@@ -43,6 +48,28 @@ export default function Home() {
             <p className="mt-5 rounded-xl border border-stone-800 bg-stone-900 p-3 text-sm text-stone-300">
               Base: whitelabel + capa propia de IA para ICP, materiales y contenido.
             </p>
+          </div>
+        </section>
+
+        <section className="grid gap-4 rounded-[2rem] border border-white/10 bg-slate-950/75 p-6 md:grid-cols-3 md:p-8">
+          {PRE_ICP_VALUE_PILLARS.map((pillar) => (
+            <article key={pillar.id} className="rounded-3xl border border-white/10 bg-white/5 p-5">
+              <p className="text-sm font-semibold text-stone-50">{pillar.title}</p>
+              <p className="mt-2 text-sm leading-6 text-stone-400">{pillar.description}</p>
+            </article>
+          ))}
+          <div className="rounded-3xl border border-emerald-300/20 bg-emerald-300/10 p-5 md:col-span-3">
+            <p className="text-xs uppercase tracking-[0.2em] text-emerald-200">Impacto estimado en negocios similares</p>
+            <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+              {CONSERVATIVE_IMPACT_CLAIMS.map((claim) => (
+                <div key={claim.id} className="rounded-2xl border border-emerald-300/20 bg-slate-950/70 p-4">
+                  <p className="text-xs uppercase tracking-[0.16em] text-emerald-200">{claim.metric}</p>
+                  <p className="mt-2 text-2xl font-semibold text-stone-50">{claim.range}</p>
+                  <p className="mt-1 text-sm leading-6 text-stone-300">{claim.detail}</p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 text-xs leading-6 text-emerald-100/85">{CLAIMS_DISCLAIMER}</p>
           </div>
         </section>
 
