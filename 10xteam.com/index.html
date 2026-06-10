@@ -144,25 +144,73 @@
       document.getElementById("year").textContent = new Date().getFullYear();
       const introVideo = document.getElementById("heroVideoIntro");
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const isMobile = window.matchMedia("(max-width: 880px)").matches;
+      const MAX_INTRO_MS = 7000;
+      const NEAR_END_WINDOW_MS = 1300;
+      let nearEndStarted = false;
+      let nearEndTimer;
+      let finishTimer;
+
+      const startNearEnd = () => {
+        if (nearEndStarted || bodyEl.classList.contains("intro-complete")) {
+          return;
+        }
+        nearEndStarted = true;
+        bodyEl.classList.add("intro-near-end");
+      };
+
+      const clearIntroTimers = () => {
+        clearTimeout(nearEndTimer);
+        clearTimeout(finishTimer);
+      };
+
+      const scheduleIntroStates = () => {
+        clearIntroTimers();
+        const durationMs =
+          Number.isFinite(introVideo?.duration) && introVideo.duration > 0
+            ? introVideo.duration * 1000
+            : MAX_INTRO_MS;
+        const introMs = Math.min(durationMs, MAX_INTRO_MS);
+        const nearEndAtMs = Math.max(350, introMs - NEAR_END_WINDOW_MS);
+
+        nearEndTimer = setTimeout(startNearEnd, nearEndAtMs);
+        finishTimer = setTimeout(finishIntro, introMs);
+      };
 
       const finishIntro = () => {
         if (!bodyEl.classList.contains("intro-complete")) {
+          clearIntroTimers();
           bodyEl.classList.remove("intro-playing");
+          bodyEl.classList.remove("intro-near-end");
           bodyEl.classList.add("intro-complete");
         }
       };
 
-      if (!introVideo || reduceMotion || isMobile) {
+      if (!introVideo || reduceMotion) {
         finishIntro();
       } else {
         introVideo.currentTime = 0;
+        if (introVideo.readyState >= 1) {
+          scheduleIntroStates();
+        } else {
+          introVideo.addEventListener("loadedmetadata", scheduleIntroStates, { once: true });
+        }
+
+        introVideo.addEventListener("timeupdate", () => {
+          if (
+            !nearEndStarted &&
+            Number.isFinite(introVideo.duration) &&
+            introVideo.duration > 0 &&
+            introVideo.currentTime >= introVideo.duration - 1.15
+          ) {
+            startNearEnd();
+          }
+        });
+
         const playPromise = introVideo.play();
         if (playPromise && typeof playPromise.catch === "function") {
           playPromise.catch(() => finishIntro());
         }
         introVideo.addEventListener("ended", finishIntro, { once: true });
-        setTimeout(finishIntro, 7000);
       }
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
