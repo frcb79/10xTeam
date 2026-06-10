@@ -1,6 +1,12 @@
 # CHANGELOG — Historial de Cambios
 Actualizar cada vez que se completa una feature.
 
+## 2026-06-10 — Hub 10xteam.com mejora de intro cinematico (opciones 1 y 2)
+- Implementacion de transicion de salida en dos fases para el video inicial del hub: estado intermedio `intro-near-end` (crossfade progresivo) y salida final `intro-complete`.
+- Nueva animacion cinematica de mascara/encogimiento del contenedor de video (`clip-path` + `transform`) para revelar contenido sin corte brusco.
+- Ajustes de mobile para evitar salto visual: el video ya no se desactiva por completo en <=880px, ahora usa framing y transicion mas corta/limpia.
+- Refactor de logica JS del intro para sincronizar estados con la duracion real del video (con fallback maximo de 7s y disparo temprano cerca del final).
+
 ## 2026-06-10 — Wizard de growth estabilizado y publicado
 - Rebuild del prewizard a componente React/TypeScript mantenible, reemplazando el enfoque fragil de HTML runtime injection dentro del flujo del wizard.
 - Rediseño de flujo principal en `growth.10xteam.com`: Fase 2 mas clara, Fase 3 por tipo de cliente, Fase 4 con copy metodologico mas comercial, Fase 6 economica, pantalla de procesamiento simplificada y resumen final horizontal.

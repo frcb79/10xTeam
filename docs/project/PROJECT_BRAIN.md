@@ -35,6 +35,7 @@ En progreso:
 - Implementacion del hub raiz `10xteam.com` para direccionar trafico entre dev y growth.
 
 Actualizacion reciente:
+- `10xteam.com` mejoro la experiencia visual del intro con transicion cinematica en dos fases (crossfade progresivo + encogimiento con mascara), incluyendo comportamiento responsive mas estable en mobile para eliminar efectos de corte y artefactos visuales.
 - `growth.10xteam.com.mx` ya sirve el HTML comercial canonico aprobado, manteniendo intactos diseno, tipografias, colores y secciones; la mini seccion de servicios fue restaurada tras una eliminacion no deseada.
 - `growth.10xteam.com` quedo con wizard operativo de 6 pasos mas consistente: prewizard en React tipado, rutas por tipo de cliente, fase economica final, pantalla de procesamiento y resumen final redisenados, mas bloque legacy de ICP estabilizado y publicado en `main`.
 
@@ -55,3 +56,4 @@ Bloqueadores:
 2026-05-26 — Inicio de hub raiz `10xteam.com` para separar navegacion comercial por unidad de negocio.
 2026-05-28 — Correccion de implementacion en growth: restauracion de la seccion de servicios y despliegue del HTML visual canonico en la raiz del subdominio.
 2026-06-10 — Rebuild y cierre operativo del wizard de growth: rediseño de pantallas clave, expansion de copy por industria, incorporacion de fase economica, estabilizacion del wizard legacy y limpieza final del repo con build verde y pushes a `main`.
+2026-06-10 — Mejora del hub `10xteam.com`: intro de video con salida cinematicamente suave (crossfade + mask shrink) y ajustes responsive en mobile para reducir efectos visuales extranos.
