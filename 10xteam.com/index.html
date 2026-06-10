@@ -144,11 +144,9 @@
       document.getElementById("year").textContent = new Date().getFullYear();
       const introVideo = document.getElementById("heroVideoIntro");
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const MAX_INTRO_MS = 7000;
-      const NEAR_END_WINDOW_MS = 1300;
+      const NEAR_END_WINDOW_MS = 3000;
       let nearEndStarted = false;
       let nearEndTimer;
-      let finishTimer;
 
       const startNearEnd = () => {
         if (nearEndStarted || bodyEl.classList.contains("intro-complete")) {
@@ -160,7 +158,6 @@
 
       const clearIntroTimers = () => {
         clearTimeout(nearEndTimer);
-        clearTimeout(finishTimer);
       };
 
       const scheduleIntroStates = () => {
@@ -168,12 +165,9 @@
         const durationMs =
           Number.isFinite(introVideo?.duration) && introVideo.duration > 0
             ? introVideo.duration * 1000
-            : MAX_INTRO_MS;
-        const introMs = Math.min(durationMs, MAX_INTRO_MS);
-        const nearEndAtMs = Math.max(350, introMs - NEAR_END_WINDOW_MS);
-
+            : 6500;
+        const nearEndAtMs = Math.max(250, durationMs - NEAR_END_WINDOW_MS);
         nearEndTimer = setTimeout(startNearEnd, nearEndAtMs);
-        finishTimer = setTimeout(finishIntro, introMs);
       };
 
       const finishIntro = () => {
@@ -210,7 +204,14 @@
         if (playPromise && typeof playPromise.catch === "function") {
           playPromise.catch(() => finishIntro());
         }
-        introVideo.addEventListener("ended", finishIntro, { once: true });
+        introVideo.addEventListener(
+          "ended",
+          () => {
+            introVideo.pause();
+            finishIntro();
+          },
+          { once: true }
+        );
       }
     </script>
     <script defer src="/_vercel/insights/script.js"></script>

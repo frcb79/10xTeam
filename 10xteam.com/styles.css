@@ -44,12 +44,11 @@ body {
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    rgba(6, 8, 16, 0.04) 0%,
-    rgba(6, 8, 16, 0.22) 56%,
-    rgba(6, 8, 16, 0.84) 100%
+    rgba(6, 8, 16, 0.08) 0%,
+    rgba(6, 8, 16, 0.3) 56%,
+    rgba(6, 8, 16, 0.9) 100%
   );
-  opacity: 0;
-  transition: opacity 700ms ease;
+  opacity: 1;
 }
 
 .hero-video {
@@ -177,59 +176,26 @@ body {
     filter 650ms ease;
 }
 
-body.intro-playing .bg-grid {
-  opacity: 0;
-}
-
+/* Contenido visible siempre sobre el video de fondo */
 body.intro-playing .wrap,
-body.intro-playing .foot {
-  opacity: 0;
-  transform: translateY(16px);
-  visibility: hidden;
-  pointer-events: none;
-}
-
+body.intro-playing .foot,
 body.intro-near-end .wrap,
-body.intro-near-end .foot {
-  opacity: 0.78;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateY(8px);
-  filter: blur(3px);
-}
-
-body.intro-near-end .hero-cinematic {
-  transform: none;
-}
-
-body.intro-near-end .hero-cinematic::after {
-  opacity: 0.66;
-}
-
-body.intro-near-end .hero-video {
-  opacity: 0.42;
-  transform: scale(1.03);
-  filter: brightness(0.62) saturate(0.96);
-}
-
+body.intro-near-end .foot,
 body.intro-complete .wrap,
 body.intro-complete .foot {
+  opacity: 1;
+  transform: none;
   visibility: visible;
   pointer-events: auto;
-  animation: content-reveal 820ms ease-out forwards;
   filter: none;
+  animation: none;
 }
 
+/* El video permanece como tapiz al terminar */
 body.intro-complete .hero-video,
 body.intro-complete .hero-cinematic {
-  opacity: 0;
-  transform: none;
-}
-
-body.intro-complete .hero-cinematic::after {
   opacity: 1;
 }
-
 @keyframes rise {
   from {
     opacity: 0;
@@ -285,6 +251,7 @@ body.intro-complete .hero-cinematic::after {
   text-transform: uppercase;
   color: var(--ink);
   margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .st-display {
@@ -294,6 +261,7 @@ body.intro-complete .hero-cinematic::after {
   font-weight: 700;
   line-height: 1.05;
   color: var(--blue-light);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
 }
 
 .st-display-line,
@@ -311,7 +279,9 @@ body.intro-complete .hero-cinematic::after {
   max-width: 900px;
   font-size: 1.2rem;
   line-height: 1.6;
-  color: #c8d0e0;
+  color: #ffffff;
+  font-weight: 500;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 1);
 }
 
 .st-cards {
@@ -324,14 +294,21 @@ body.intro-complete .hero-cinematic::after {
 
 .st-service-card {
   --st-card-inner-space: 40px;
-  background: #111527;
-  border: 1px solid #1e2840;
+  background-color: rgba(17, 21, 39, 0);
+  border: 1px solid rgba(30, 40, 64, 0);
   border-radius: 24px;
   padding: var(--st-card-inner-space);
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: background-color 3s ease-in-out, border-color 3s ease-in-out;
+}
+
+body.intro-near-end .st-service-card,
+body.intro-complete .st-service-card {
+  background-color: #111527;
+  border-color: #1e2840;
 }
 
 .st-service-card.st-growth::before {
@@ -489,49 +466,28 @@ body.intro-complete .hero-cinematic::after {
 }
 
 @media (max-width: 880px) {
+  .st-service-card {
+    transition: background-color 2.4s ease-in-out, border-color 2.4s ease-in-out;
+  }
+
   .hero-cinematic {
-    inset: 0 0 auto 0;
-    height: min(62vh, 560px);
+    position: fixed;
+    inset: 0;
+    height: 100%;
     z-index: -2;
   }
 
   .hero-video {
-    object-position: 50% 36%;
+    object-position: center center;
     transform: scale(1.1);
     filter: brightness(0.9) saturate(1);
     animation: video-pullback-mobile 1.4s ease-out forwards;
   }
 
   body.intro-playing .wrap,
-  body.intro-playing .foot {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(14px);
-    filter: blur(4px);
-  }
-
-  body.intro-playing .bg-grid {
-    opacity: 1;
-  }
-
+  body.intro-playing .foot,
   body.intro-near-end .wrap,
-  body.intro-near-end .foot {
-    opacity: 0.92;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(6px);
-    filter: blur(2px);
-  }
-
-  body.intro-near-end .hero-cinematic {
-    transform: none;
-  }
-
-  body.intro-near-end .hero-video {
-    opacity: 0.48;
-  }
-
+  body.intro-near-end .foot,
   body.intro-complete .wrap,
   body.intro-complete .foot {
     opacity: 1;
@@ -539,12 +495,16 @@ body.intro-complete .hero-cinematic::after {
     pointer-events: auto;
     transform: none;
     filter: none;
-    animation: content-reveal 520ms ease-out forwards;
+    animation: none;
+  }
+
+  body.intro-playing .bg-grid {
+    opacity: 1;
   }
 
   body.intro-complete .hero-video,
   body.intro-complete .hero-cinematic {
-    opacity: 0;
+    opacity: 1;
     transform: none;
   }
 
