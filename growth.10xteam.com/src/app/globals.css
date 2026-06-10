@@ -25,3 +25,13 @@ body {
 * {
   box-sizing: border-box;
 }
+
+.wizard-select {
+  color: #f5f5f4;
+  background-color: rgba(15, 23, 42, 0.55);
+}
+
+.wizard-select option {
+  color: #e7e5e4;
+  background-color: #0b1220;
+}

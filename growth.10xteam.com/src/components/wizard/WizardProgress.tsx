@@ -6,13 +6,14 @@ const LABELS: Record<WizardStep, string> = {
   3: "ICP",
   4: "Proceso",
   5: "Canales",
+  6: "Economia",
 };
 
 export function WizardProgress({ currentStep, completedSteps }: { currentStep: WizardStep; completedSteps: WizardStep[] }) {
-  const steps: WizardStep[] = [1, 2, 3, 4, 5];
+  const steps: WizardStep[] = [1, 2, 3, 4, 5, 6];
 
   return (
-    <div className="grid grid-cols-5 gap-2">
+    <div className="grid grid-cols-6 gap-2">
       {steps.map((step) => {
         const isCurrent = step === currentStep;
         const isDone = completedSteps.includes(step);

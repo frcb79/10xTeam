@@ -1,6 +1,6 @@
 export type ICPType = "b2b" | "b2c" | "mixed" | "freelancer";
 
-export type WizardStep = 1 | 2 | 3 | 4 | 5;
+export type WizardStep = 1 | 2 | 3 | 4 | 5 | 6;
 
 export type WizardStatus =
   | "idle"
@@ -19,7 +19,8 @@ export type ChannelType =
   | "email"
   | "youtube"
   | "tiktok"
-  | "twitter";
+  | "twitter"
+  | "custom";
 
 export type ContentFormat =
   | "text"
@@ -134,6 +135,7 @@ export interface Step4Answers {
 
 export interface ChannelConfig {
   channel: ChannelType;
+  customName?: string;
   activityLevel: "high" | "medium" | "low";
   useForProspecting: boolean;
   useForContent: boolean;
@@ -154,12 +156,71 @@ export interface Step5Answers {
   customFlows: CustomFlow[];
 }
 
+export type OwnerRole = "owner_operator" | "has_team" | "uses_agencies";
+
+export type ManualMarketingHours =
+  | "less_2hrs"
+  | "2_5hrs"
+  | "5_10hrs"
+  | "more_10hrs";
+
+export type LeadResponseTime =
+  | "under_5min"
+  | "5_30min"
+  | "30min_2hrs"
+  | "more_2hrs";
+
+export type SaleType =
+  | "one_time"
+  | "monthly_recurring"
+  | "annual_recurring"
+  | "package_renewal"
+  | "mixed";
+
+export type RenewalFrequency =
+  | "weekly"
+  | "monthly"
+  | "quarterly"
+  | "semiannual"
+  | "annual";
+
+export type MonthlyNewClients = "1_3" | "4_10" | "11_20" | "20_plus";
+
+export type AcquisitionCostBand =
+  | "under_500"
+  | "500_2000"
+  | "2000_8000"
+  | "over_8000"
+  | "unknown";
+
+export type GrossMarginBand =
+  | "under_20"
+  | "20_40"
+  | "40_60"
+  | "over_60"
+  | "prefer_not_say";
+
+export interface Step6EconomicsAnswers {
+  ownerRole: OwnerRole;
+  manualMarketingHours: ManualMarketingHours;
+  leadResponseTime: LeadResponseTime;
+  productDescription: string;
+  clientValue: string;
+  saleType: SaleType;
+  renewalFrequency: RenewalFrequency | null;
+  monthlyNewClients: MonthlyNewClients;
+  activeClients: string;
+  acquisitionCost: AcquisitionCostBand;
+  grossMargin: GrossMarginBand;
+}
+
 export interface WizardAnswers {
   step2: Step2Answers | null;
   step3_b2b: Step3B2BAnswers | null;
   step3_b2c: Step3B2CAnswers | null;
   step4: Step4Answers | null;
   step5: Step5Answers | null;
+  step6: Step6EconomicsAnswers | null;
 }
 
 export interface ICPQualityScore {
@@ -268,6 +329,7 @@ export type WizardAction =
   | { type: "UPDATE_STEP3_B2C"; payload: Step3B2CAnswers }
   | { type: "UPDATE_STEP4"; payload: Step4Answers }
   | { type: "UPDATE_STEP5"; payload: Step5Answers }
+  | { type: "UPDATE_STEP6"; payload: Step6EconomicsAnswers }
   | { type: "SET_ICP_SCORE"; payload: ICPQualityScore }
   | { type: "SET_GENERATED_OUTPUTS"; payload: GeneratedOutputs }
   | { type: "COMPLETE_STEP"; payload: WizardStep }

@@ -9,6 +9,7 @@ import { Step2Business } from "@/components/wizard/steps/Step2Business";
 import { Step3ICP } from "@/components/wizard/steps/Step3ICP";
 import { Step4Process } from "@/components/wizard/steps/Step4Process";
 import { Step5Channels } from "@/components/wizard/steps/Step5Channels";
+import { Step6Economics } from "@/components/wizard/steps/Step6Economics";
 
 const STEP_COMPONENTS = {
   1: Step1Entry,
@@ -16,9 +17,10 @@ const STEP_COMPONENTS = {
   3: Step3ICP,
   4: Step4Process,
   5: Step5Channels,
+  6: Step6Economics,
 } as const;
 
-export function WizardShell({ initialStep }: { initialStep: 1 | 2 | 3 | 4 | 5 }) {
+export function WizardShell({ initialStep }: { initialStep: 1 | 2 | 3 | 4 | 5 | 6 }) {
   const router = useRouter();
   const { state, goToStep } = useWizard();
 
@@ -54,7 +56,7 @@ export function WizardShell({ initialStep }: { initialStep: 1 | 2 | 3 | 4 | 5 })
             <h1 className="text-xl font-semibold text-stone-50 md:text-2xl">Construye tu cliente ideal</h1>
           </div>
           <span className="rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-xs text-cyan-100">
-            Paso {state.currentStep} de 5
+            Paso {state.currentStep} de 6
           </span>
         </div>
         <WizardProgress currentStep={state.currentStep} completedSteps={state.completedSteps} />

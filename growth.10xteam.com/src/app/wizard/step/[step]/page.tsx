@@ -5,9 +5,9 @@ export default async function WizardStepPage({ params }: { params: Promise<{ ste
   const { step } = await params;
   const stepNum = Number(step);
 
-  if (!Number.isInteger(stepNum) || stepNum < 1 || stepNum > 5) {
+  if (!Number.isInteger(stepNum) || stepNum < 1 || stepNum > 6) {
     redirect("/wizard/step/1");
   }
 
-  return <WizardShell initialStep={stepNum as 1 | 2 | 3 | 4 | 5} />;
+  return <WizardShell initialStep={stepNum as 1 | 2 | 3 | 4 | 5 | 6} />;
 }

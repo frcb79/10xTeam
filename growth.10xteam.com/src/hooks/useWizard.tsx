@@ -10,6 +10,7 @@ import type {
   Step3B2CAnswers,
   Step4Answers,
   Step5Answers,
+  Step6EconomicsAnswers,
   WizardAction,
   WizardState,
   WizardStep,
@@ -29,6 +30,7 @@ const initialState: WizardState = {
     step3_b2c: null,
     step4: null,
     step5: null,
+    step6: null,
   },
   icpScore: null,
   generatedOutputs: null,
@@ -66,6 +68,8 @@ function wizardReducer(state: WizardState, action: WizardAction): WizardState {
       return { ...state, answers: { ...state.answers, step4: action.payload } };
     case "UPDATE_STEP5":
       return { ...state, answers: { ...state.answers, step5: action.payload } };
+    case "UPDATE_STEP6":
+      return { ...state, answers: { ...state.answers, step6: action.payload } };
     case "SET_ICP_SCORE":
       return { ...state, icpScore: action.payload };
     case "SET_GENERATED_OUTPUTS":
@@ -99,6 +103,7 @@ interface WizardContextValue {
   updateStep3B2C: (data: Step3B2CAnswers) => void;
   updateStep4: (data: Step4Answers) => void;
   updateStep5: (data: Step5Answers) => void;
+  updateStep6: (data: Step6EconomicsAnswers) => void;
   setStatus: (status: WizardState["status"]) => void;
   setError: (error: string) => void;
   completeStep: (step: WizardStep) => void;
@@ -120,7 +125,7 @@ export function WizardProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const goNext = useCallback(() => {
-    if (state.currentStep < 5) {
+    if (state.currentStep < 6) {
       dispatch({ type: "COMPLETE_STEP", payload: state.currentStep });
       dispatch({ type: "SET_STEP", payload: (state.currentStep + 1) as WizardStep });
     }
@@ -148,6 +153,7 @@ export function WizardProvider({ children }: { children: React.ReactNode }) {
     updateStep3B2C: (data) => dispatch({ type: "UPDATE_STEP3_B2C", payload: data }),
     updateStep4: (data) => dispatch({ type: "UPDATE_STEP4", payload: data }),
     updateStep5: (data) => dispatch({ type: "UPDATE_STEP5", payload: data }),
+    updateStep6: (data) => dispatch({ type: "UPDATE_STEP6", payload: data }),
     setStatus: (status) => dispatch({ type: "SET_STATUS", payload: status }),
     setError: (error) => dispatch({ type: "SET_ERROR", payload: error }),
     completeStep: (step) => dispatch({ type: "COMPLETE_STEP", payload: step }),

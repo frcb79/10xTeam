@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
 import { useWizard } from "@/hooks/useWizard";
 import type { ChannelConfig, ContentFormat, CustomFlow, FunnelFlow } from "@/types/wizard.types";
 
@@ -46,12 +45,18 @@ const FLOW_OPTIONS: Array<{ value: FunnelFlow; label: string; description: strin
 ];
 
 export function Step5Channels() {
-  const router = useRouter();
-  const { state, updateStep5, goPrev, setStatus } = useWizard();
+  const { state, updateStep5, goPrev, goNext } = useWizard();
   const current = state.answers.step5;
+  const initialCustomChannels = (current?.activeChannels ?? [])
+    .filter((channel) => channel.channel === "custom" && channel.customName)
+    .map((channel) => channel.customName as string);
   const [selectedChannels, setSelectedChannels] = useState<string[]>(
-    current?.activeChannels?.map((channel) => channel.channel) ?? ["linkedin", "whatsapp"]
+    current?.activeChannels
+      ?.filter((channel) => channel.channel !== "custom")
+      .map((channel) => channel.channel) ?? ["linkedin", "whatsapp"]
   );
+  const [customChannels, setCustomChannels] = useState<string[]>(initialCustomChannels);
+  const [customChannelInput, setCustomChannelInput] = useState("");
   const [preferredContactMethod, setPreferredContactMethod] = useState<ChannelConfig["channel"]>(
     current?.preferredContactMethod ?? "whatsapp"
   );
@@ -63,8 +68,8 @@ export function Step5Channels() {
   const [customFlowGoal, setCustomFlowGoal] = useState("");
 
   const valid = useMemo(
-    () => selectedChannels.length > 0 && selectedFlows.length > 0,
-    [selectedChannels, selectedFlows]
+    () => selectedChannels.length + customChannels.length > 0 && selectedFlows.length > 0,
+    [selectedChannels, customChannels, selectedFlows]
   );
 
   const toggleChannel = (channel: string) => {
@@ -101,24 +106,43 @@ export function Step5Channels() {
     setSelectedFlows((prev) => (prev.includes("custom") ? prev : [...prev, "custom"]));
   };
 
+  const addCustomChannel = () => {
+    const value = customChannelInput.trim();
+    if (!value) return;
+    if (customChannels.some((channel) => channel.toLowerCase() === value.toLowerCase())) return;
+    setCustomChannels((prev) => [...prev, value]);
+    setCustomChannelInput("");
+  };
+
+  const removeCustomChannel = (channelName: string) => {
+    setCustomChannels((prev) => prev.filter((item) => item !== channelName));
+  };
+
   const handleContinue = () => {
     if (!valid) return;
 
     updateStep5({
-      activeChannels: selectedChannels.map((channel) => ({
-        channel: channel as ChannelConfig["channel"],
-        activityLevel: "medium",
-        useForProspecting: true,
-        useForContent: true,
-      })),
+      activeChannels: [
+        ...selectedChannels.map((channel) => ({
+          channel: channel as ChannelConfig["channel"],
+          activityLevel: "medium" as const,
+          useForProspecting: true,
+          useForContent: true,
+        })),
+        ...customChannels.map((channel) => ({
+          channel: "custom" as const,
+          customName: channel,
+          activityLevel: "medium" as const,
+          useForProspecting: true,
+          useForContent: true,
+        })),
+      ],
       preferredContactMethod,
       contentFormats: ["text" as ContentFormat],
       selectedFlows,
       customFlows,
     });
-
-    setStatus("processing");
-    router.push("/wizard/processing");
+    goNext();
   };
 
   return (
@@ -147,6 +171,40 @@ export function Step5Channels() {
                 </button>
               );
             })}
+          </div>
+
+          <div className="mt-5 rounded-2xl border border-white/10 bg-white/5 p-4">
+            <p className="text-xs uppercase tracking-[0.14em] text-cyan-200">Agregar canal prioritario</p>
+            <div className="mt-3 flex gap-2">
+              <input
+                value={customChannelInput}
+                onChange={(event) => setCustomChannelInput(event.target.value)}
+                placeholder="Ej. Telegram o Llamada telefónica"
+                className="w-full rounded-xl border border-white/10 bg-slate-950/60 px-3 py-2 text-sm text-stone-100 outline-none focus:border-cyan-300/60"
+              />
+              <button
+                type="button"
+                onClick={addCustomChannel}
+                className="rounded-xl border border-cyan-300/40 bg-cyan-300/10 px-3 py-2 text-xs font-semibold text-cyan-100"
+              >
+                Agregar
+              </button>
+            </div>
+
+            {customChannels.length > 0 && (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {customChannels.map((channel) => (
+                  <button
+                    key={channel}
+                    type="button"
+                    onClick={() => removeCustomChannel(channel)}
+                    className="rounded-full border border-teal-300/40 bg-teal-300/10 px-3 py-1 text-xs text-teal-100"
+                  >
+                    {channel} ×
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
@@ -222,7 +280,7 @@ export function Step5Channels() {
 
       <div className="mt-6 flex flex-wrap gap-3">
         <button type="button" onClick={goPrev} className="rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-stone-200">Atrás</button>
-        <button type="button" onClick={handleContinue} disabled={!valid} className="rounded-full bg-cyan-300 px-5 py-2.5 text-sm font-semibold text-stone-950 disabled:cursor-not-allowed disabled:opacity-50">Crear reporte</button>
+        <button type="button" onClick={handleContinue} disabled={!valid} className="rounded-full bg-cyan-300 px-5 py-2.5 text-sm font-semibold text-stone-950 disabled:cursor-not-allowed disabled:opacity-50">Continuar a economia</button>
       </div>
     </div>
   );
