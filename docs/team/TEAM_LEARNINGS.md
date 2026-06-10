@@ -15,6 +15,7 @@ Se actualiza via sync desde cada proyecto al master.
 - Este sistema debe operar como activo vivo: cada proyecto aporta mejoras reutilizables.
 - **Protocolo de Intake:** Realizar un "Strategy Intake" antes del discovery técnico asegura que el desarrollo esté alineado con la oferta de mercado (Godfather Offer).
 - En despliegue de dominios con Vercel: primero configurar y verificar DNS en el proveedor, despues asignar dominios/aliases a proyectos; hacerlo al reves genera errores y retrabajo.
+- Antes de cerrar una sesion, diferenciar entre archivos realmente modificados en Git y pestañas sucias del editor; validar con `git status` evita guardar de mas o descartar cambios importantes por error.
 
 ## APRENDIZAJES TECNICOS
 - Mantener convenciones consistentes de documentos facilita adopcion en nuevos repos.

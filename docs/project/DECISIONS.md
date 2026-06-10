@@ -48,5 +48,16 @@ Formato: Fecha / Decision / Opciones evaluadas / Decision final / Por que
 	- Reduce riesgo de mezclar aprendizajes generales del sistema con pendientes tacticos de una sola unidad.
 	- Facilita seguimiento por prioridad, owner y estado para pasar de idea a entrega.
 
+### 2026-06-10 / En growth, el wizard canonico debe vivir en componentes React tipados y no en injection HTML ad hoc
+- Opciones evaluadas:
+	- Opcion A: seguir resolviendo pantallas del wizard con HTML incrustado o logica suelta de parcheo visual.
+	- Opcion B: consolidar el flujo principal en componentes React/TypeScript con contratos claros de estado y validacion.
+- Decision final: Opcion B.
+- Por que:
+	- Reduce riesgo de romper el flujo comercial al tocar copy, rutas o validaciones.
+	- Hace mas barato iterar mensajes, pasos y ejemplos por industria sin reescribir implementaciones fragiles.
+	- Mejora trazabilidad tecnica y acelera QA antes de commit/push.
+	- Deja una base mas segura para conectar automatizaciones, scoring y materiales en siguientes fases.
+
 ## DECISIONES CAMBIADAS
 [Si alguna se revirtio, documentar con la razon]

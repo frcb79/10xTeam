@@ -36,14 +36,16 @@ En progreso:
 
 Actualizacion reciente:
 - `growth.10xteam.com.mx` ya sirve el HTML comercial canonico aprobado, manteniendo intactos diseno, tipografias, colores y secciones; la mini seccion de servicios fue restaurada tras una eliminacion no deseada.
+- `growth.10xteam.com` quedo con wizard operativo de 6 pasos mas consistente: prewizard en React tipado, rutas por tipo de cliente, fase economica final, pantalla de procesamiento y resumen final redisenados, mas bloque legacy de ICP estabilizado y publicado en `main`.
 
 Pendiente:
 - Lanzamiento oficial del piloto con cliente real.
 - Medición de KPIs por unidad de negocio separada (dev vs growth).
 - Definicion de despliegues independientes para `10xteam.com`, `dev.10xteam.com` y `growth.10xteam.com`.
+- Revision comercial final del wizard legacy y de la landing growth para decidir si se conserva, migra o retira el flujo duplicado `IcpWizard`.
 
 Bloqueadores:
-- Ninguno.
+- Ninguno tecnico. Riesgo actual: coexistencia de wizard nuevo y wizard legacy puede generar retrabajo comercial si no se define pronto cual queda como flujo canonico.
 
 ## HISTORIAL
 2026-04-17 — Sesion inicial: creacion de estructura base del sistema.
@@ -52,3 +54,4 @@ Bloqueadores:
 2026-05-25 — Reorganizacion del repo para operar dos lineas separadas: dev (desarrollo) y growth (prospeccion/plataforma), con carpeta shared para activos comunes.
 2026-05-26 — Inicio de hub raiz `10xteam.com` para separar navegacion comercial por unidad de negocio.
 2026-05-28 — Correccion de implementacion en growth: restauracion de la seccion de servicios y despliegue del HTML visual canonico en la raiz del subdominio.
+2026-06-10 — Rebuild y cierre operativo del wizard de growth: rediseño de pantallas clave, expansion de copy por industria, incorporacion de fase economica, estabilizacion del wizard legacy y limpieza final del repo con build verde y pushes a `main`.

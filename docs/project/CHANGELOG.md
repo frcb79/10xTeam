@@ -1,6 +1,14 @@
 # CHANGELOG — Historial de Cambios
 Actualizar cada vez que se completa una feature.
 
+## 2026-06-10 — Wizard de growth estabilizado y publicado
+- Rebuild del prewizard a componente React/TypeScript mantenible, reemplazando el enfoque fragil de HTML runtime injection dentro del flujo del wizard.
+- Rediseño de flujo principal en `growth.10xteam.com`: Fase 2 mas clara, Fase 3 por tipo de cliente, Fase 4 con copy metodologico mas comercial, Fase 6 economica, pantalla de procesamiento simplificada y resumen final horizontal.
+- Expansion de ejemplos y prompts por industria en salud, legal, financiero, restaurantes, retail, manufactura y ecommerce, con lenguaje orientado a Buyer Persona.
+- Nuevo dashboard pre-trial y utilidades de oportunidad economica para aterrizar valor potencial del negocio.
+- Estabilizacion del wizard legacy (`IcpWizard`) con prefill, scoring, generacion de ICP/materiales y correccion de contratos TypeScript para volver a build verde.
+- Publicacion en `main` de todos los bloques funcionales y limpieza del arbol de trabajo al cierre de sesion.
+
 ## 2026-05-27 — Activacion de dominios .com.mx en produccion
 - Actualizacion de Vercel CLI y autenticacion de sesion para operacion de dominios.
 - Asignacion de dominio raiz y subdominios por deployment/proyecto:
