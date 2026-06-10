@@ -37,6 +37,21 @@ body {
   transform-origin: center top;
 }
 
+.hero-cinematic::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(6, 8, 16, 0.04) 0%,
+    rgba(6, 8, 16, 0.22) 56%,
+    rgba(6, 8, 16, 0.84) 100%
+  );
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+
 .hero-video {
   position: absolute;
   inset: 0;
@@ -159,8 +174,7 @@ body {
   transition:
     opacity 650ms ease,
     transform 850ms cubic-bezier(0.2, 0.7, 0.15, 1),
-    filter 650ms ease,
-    clip-path 850ms cubic-bezier(0.2, 0.7, 0.15, 1);
+    filter 650ms ease;
 }
 
 body.intro-playing .bg-grid {
@@ -185,8 +199,11 @@ body.intro-near-end .foot {
 }
 
 body.intro-near-end .hero-cinematic {
-  transform: translateY(-4vh) scale(0.95);
-  clip-path: inset(0 0 24% 0 round 0 0 28px 28px);
+  transform: none;
+}
+
+body.intro-near-end .hero-cinematic::after {
+  opacity: 0.66;
 }
 
 body.intro-near-end .hero-video {
@@ -206,8 +223,11 @@ body.intro-complete .foot {
 body.intro-complete .hero-video,
 body.intro-complete .hero-cinematic {
   opacity: 0;
-  transform: translateY(-7vh) scale(0.92);
-  clip-path: inset(0 0 32% 0 round 0 0 34px 34px);
+  transform: none;
+}
+
+body.intro-complete .hero-cinematic::after {
+  opacity: 1;
 }
 
 @keyframes rise {
@@ -505,9 +525,7 @@ body.intro-complete .hero-cinematic {
   }
 
   body.intro-near-end .hero-cinematic {
-    height: min(48vh, 420px);
-    transform: translateY(-2vh) scale(0.98);
-    clip-path: inset(0 0 20% 0 round 0 0 20px 20px);
+    transform: none;
   }
 
   body.intro-near-end .hero-video {
@@ -527,8 +545,7 @@ body.intro-complete .hero-cinematic {
   body.intro-complete .hero-video,
   body.intro-complete .hero-cinematic {
     opacity: 0;
-    transform: translateY(-4vh) scale(0.98);
-    clip-path: inset(0 0 25% 0 round 0 0 22px 22px);
+    transform: none;
   }
 
   .topbar {
