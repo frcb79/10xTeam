@@ -44,9 +44,9 @@ body {
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    rgba(6, 8, 16, 0.08) 0%,
-    rgba(6, 8, 16, 0.3) 56%,
-    rgba(6, 8, 16, 0.9) 100%
+    rgba(6, 8, 16, 0.18) 0%,
+    rgba(6, 8, 16, 0.45) 56%,
+    rgba(6, 8, 16, 0.95) 100%
   );
   opacity: 1;
 }
@@ -59,7 +59,7 @@ body {
   object-fit: cover;
   object-position: center 50%;
   transform: scale(1.22);
-  filter: brightness(0.95) saturate(1.02);
+  filter: brightness(0.72) saturate(1.02);
   animation: video-pullback 2.2s ease-out forwards;
 }
 
