@@ -38,12 +38,14 @@ Actualizacion reciente:
 - `10xteam.com` mejoro la experiencia visual del intro con transicion cinematica en dos fases (crossfade progresivo + encogimiento con mascara), incluyendo comportamiento responsive mas estable en mobile para eliminar efectos de corte y artefactos visuales.
 - `growth.10xteam.com.mx` ya sirve el HTML comercial canonico aprobado, manteniendo intactos diseno, tipografias, colores y secciones; la mini seccion de servicios fue restaurada tras una eliminacion no deseada.
 - `growth.10xteam.com` quedo con wizard operativo de 6 pasos mas consistente: prewizard en React tipado, rutas por tipo de cliente, fase economica final, pantalla de procesamiento y resumen final redisenados, mas bloque legacy de ICP estabilizado y publicado en `main`.
+- `growth.10xteam.com` ahora enruta CTAs principales de la landing al wizard (`/wizard/step/1`) tanto en el HTML canonico como en el parche runtime de la ruta `growth-site`; adicionalmente, el dashboard pre-trial incluye vista previa temporal de `diagnostico-estrategico-10x-template.html` para operacion comercial inmediata.
 
 Pendiente:
 - Lanzamiento oficial del piloto con cliente real.
 - Medición de KPIs por unidad de negocio separada (dev vs growth).
 - Definicion de despliegues independientes para `10xteam.com`, `dev.10xteam.com` y `growth.10xteam.com`.
 - Revision comercial final del wizard legacy y de la landing growth para decidir si se conserva, migra o retira el flujo duplicado `IcpWizard`.
+- Siguiente paso inmediato para proxima sesion: implementar activacion automatica post-agendamiento (estado persistente `lead_created -> call_scheduled -> activated`, webhook de calendario, desbloqueo de modulos y notificacion interna al equipo).
 
 Bloqueadores:
 - Ninguno tecnico. Riesgo actual: coexistencia de wizard nuevo y wizard legacy puede generar retrabajo comercial si no se define pronto cual queda como flujo canonico.
@@ -57,3 +59,4 @@ Bloqueadores:
 2026-05-28 — Correccion de implementacion en growth: restauracion de la seccion de servicios y despliegue del HTML visual canonico en la raiz del subdominio.
 2026-06-10 — Rebuild y cierre operativo del wizard de growth: rediseño de pantallas clave, expansion de copy por industria, incorporacion de fase economica, estabilizacion del wizard legacy y limpieza final del repo con build verde y pushes a `main`.
 2026-06-10 — Mejora del hub `10xteam.com`: intro de video con salida cinematicamente suave (crossfade + mask shrink) y ajustes responsive en mobile para reducir efectos visuales extranos.
+2026-06-10 — Growth comercial: CTAs de landing alineados a `/wizard/step/1`, preview temporal de Diagnostico Estrategico en dashboard pre-trial y push a `main` para continuidad de activacion.

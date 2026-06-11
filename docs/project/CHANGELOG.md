@@ -1,6 +1,14 @@
 # CHANGELOG — Historial de Cambios
 Actualizar cada vez que se completa una feature.
 
+## 2026-06-10 — Growth: CTAs al wizard + preview de diagnostico en dashboard
+- En `growth.10xteam_website.html`, se actualizaron CTAs comerciales clave para dirigir al wizard (`/wizard/step/1`) en lugar de `#demo` o enlaces inactivos.
+- En `src/app/growth-site/route.ts`, se alineo el parche runtime para que nave, hero, tabs, pricing y footer dirijan a `/wizard/step/1`.
+- En `src/app/dashboard/page.tsx`, se agrego seccion temporal "Diagnostico Estrategico 10x (Preview)" con boton de apertura y `iframe` al HTML publico.
+- Se publico `public/diagnostico-estrategico-10x-template.html` para consumo directo desde el dashboard pre-trial.
+- Commit/push de cierre: `bd74d5e` en `main`.
+- Nota operativa para siguiente sesion: activar flujo post-agendamiento automatizado (estado + webhook + desbloqueo + notificacion interna).
+
 ## 2026-06-10 — Hub 10xteam.com mejora de intro cinematico (opciones 1 y 2)
 - Implementacion de transicion de salida en dos fases para el video inicial del hub: estado intermedio `intro-near-end` (crossfade progresivo) y salida final `intro-complete`.
 - Nueva animacion cinematica de mascara/encogimiento del contenedor de video (`clip-path` + `transform`) para revelar contenido sin corte brusco.
