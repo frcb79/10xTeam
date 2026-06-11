@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico Estratégico 10x — Clínica Dental Sonrisa Plus</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;600&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070709;--navy:#0C0D14;--s:#12141E;--s2:#181B28;
+  --bd:#1F2235;--bd2:#2A2E48;
+  --gold:#C9952A;--gold-l:#E8B84B;--gold-d:#1E1408;--gold-m:#6B4E15;
+  --teal:#0D9488;--teal-l:#2DD4BF;--teal-d:#061714;
+  --blue:#2563EB;--blue-l:#60A5FA;
+  --red:#DC2626;--green:#16A34A;
+  --white:#F5F2EC;--text:#B8C0CC;--muted:#5A6278;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+.nav{background:rgba(7,7,9,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:100;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--white)}
+.nav-logo em{font-style:italic;color:var(--gold-l)}
+.nav-links{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.nav-a{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.06em;padding:6px 11px;border-radius:5px;color:var(--muted);cursor:pointer;white-space:nowrap;transition:.15s;text-decoration:none}
+.nav-a:hover{color:var(--white);background:rgba(255,255,255,.05)}
+.nav-badge{font-family:'JetBrains Mono',monospace;font-size:9px;padding:4px 10px;border-radius:4px;background:rgba(201,149,42,.12);border:1px solid rgba(201,149,42,.3);color:var(--gold-l)}
+
+/* LAYOUT */
+.wrap{max-width:960px;margin:0 auto;padding:0 28px}
+
+/* COVER */
+.cover{min-height:88vh;display:flex;flex-direction:column;justify-content:flex-end;padding:60px 0 72px;position:relative;overflow:hidden;border-bottom:1px solid var(--bd)}
+.cover-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(31,34,53,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(31,34,53,.18) 1px,transparent 1px);background-size:52px 52px;mask-image:radial-gradient(ellipse 80% 90% at 50% 50%,black 20%,transparent 75%)}
+.cover-glow{position:absolute;top:0;left:0;right:0;height:60%;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(201,149,42,.14) 0%,transparent 65%)}
+.cover-inner{position:relative;z-index:1}
+.cover-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.cover-eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--gold-m),transparent)}
+.cover-title{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,7vw,88px);font-weight:700;color:var(--white);line-height:1.0;margin-bottom:8px}
+.cover-title em{font-style:italic;color:var(--gold-l)}
+.cover-client{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,32px);font-weight:400;color:var(--gold);margin-bottom:40px}
+.cover-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:48px}
+.c-chip{font-family:'JetBrains Mono',monospace;font-size:9px;padding:5px 12px;border:1px solid var(--bd2);border-radius:4px;color:var(--muted);letter-spacing:.06em}
+.cover-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:12px;overflow:hidden}
+@media(max-width:600px){.cover-kpis{grid-template-columns:repeat(2,1fr)}}
+.ckpi{background:var(--s);padding:20px 18px}
+.ckpi-val{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--white);line-height:1;margin-bottom:4px}
+.ckpi-val span{color:var(--gold-l)}
+.ckpi-label{font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+
+/* SECTIONS */
+.sec{padding:72px 0;border-bottom:1px solid var(--bd)}
+.sec-num{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.sec-num::after{content:'';width:40px;height:1px;background:var(--gold-m)}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,44px);font-weight:700;color:var(--white);line-height:1.1;margin-bottom:10px}
+.sec-sub{font-size:14px;color:var(--muted);max-width:640px;line-height:1.7;margin-bottom:36px}
+.method-ref{font-family:'JetBrains Mono',monospace;font-size:8px;padding:3px 9px;border-radius:3px;background:rgba(201,149,42,.08);border:1px solid rgba(201,149,42,.2);color:var(--gold);letter-spacing:.06em;margin-bottom:28px;display:inline-block}
+
+/* PULL QUOTE */
+.pull{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.8vw,28px);font-style:italic;color:var(--gold-l);border-left:3px solid var(--gold);padding:14px 0 14px 22px;margin:28px 0;line-height:1.4}
+
+/* CARDS */
+.card{background:var(--s);border:1px solid var(--bd);border-radius:14px;padding:24px 26px;margin-bottom:14px}
+.card.gold{border-top:2px solid var(--gold)}
+.card.teal{border-top:2px solid var(--teal)}
+.card.red{border-top:2px solid var(--red)}
+.card-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.cl-gold{color:var(--gold)}.cl-teal{color:var(--teal-l)}.cl-red{color:#FCA5A5}.cl-blue{color:var(--blue-l)}.cl-muted{color:var(--muted)}.cl-green{color:#86EFAC}
+.card-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--white);margin-bottom:6px;line-height:1.2}
+.card-body{font-size:13px;color:var(--muted);line-height:1.65}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+
+/* ICP LAYERS */
+.layers{display:flex;flex-direction:column;gap:0;border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+.layer{display:grid;grid-template-columns:44px 1fr;gap:0;border-bottom:1px solid var(--bd)}
+.layer:last-child{border-bottom:none}
+.layer-num{display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--white);writing-mode:horizontal-tb;background:var(--s)}
+.layer-content{padding:18px 22px;background:var(--s2)}
+.layer-name{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--white);margin-bottom:5px}
+.layer-body{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:8px}
+.layer-tags{display:flex;flex-wrap:wrap;gap:5px}
+.ltag{font-size:10px;padding:3px 9px;border-radius:3px;border:1px solid var(--bd2);color:var(--muted);background:var(--s)}
+.ltag.g{border-color:var(--gold-m);color:var(--gold);background:var(--gold-d)}
+.ltag.t{border-color:var(--teal);color:var(--teal-l);background:var(--teal-d)}
+
+/* BELIEF MAP */
+.belief-table{width:100%;border-collapse:collapse;font-size:12px;background:var(--s);border:1px solid var(--bd);border-radius:12px;overflow:hidden}
+.belief-table th{background:var(--s2);color:var(--muted);padding:9px 14px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid var(--bd)}
+.belief-table td{padding:12px 14px;border-bottom:1px solid var(--bd);color:var(--text);vertical-align:top;line-height:1.5}
+.belief-table tr:last-child td{border-bottom:none}
+.belief-table tr:hover td{background:rgba(255,255,255,.02)}
+.belief-table td.num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);font-weight:700;width:30px}
+.belief-table td.belief{font-weight:600;color:var(--white);width:200px}
+.belief-table td.asset{color:var(--teal-l)}
+
+/* TRUST JOURNEY */
+.journey{display:flex;gap:0;overflow-x:auto;margin-bottom:14px;border:1px solid var(--bd);border-radius:12px;overflow:hidden}
+.j-step{flex:1;min-width:110px;padding:16px 12px;text-align:center;border-right:1px solid var(--bd);background:var(--s);position:relative}
+.j-step:last-child{border-right:none}
+.j-step.active{background:rgba(201,149,42,.07);border-top:2px solid var(--gold)}
+.j-num{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);margin-bottom:6px;letter-spacing:.08em}
+.j-icon{font-size:22px;margin-bottom:6px}
+.j-name{font-size:11px;font-weight:600;color:var(--white);margin-bottom:4px;line-height:1.3}
+.j-desc{font-size:10px;color:var(--muted);line-height:1.35}
+
+/* MECHANISM */
+.mechanism{background:var(--gold-d);border:1px solid var(--gold-m);border-radius:14px;padding:28px 30px;margin-bottom:14px}
+.mechanism-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.mechanism-text{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.5vw,24px);color:var(--white);line-height:1.45;font-style:italic}
+.mechanism-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
+@media(max-width:600px){.mechanism-breakdown{grid-template-columns:1fr}}
+.mb-item{background:rgba(0,0,0,.3);border-radius:8px;padding:12px 14px}
+.mb-label{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px}
+.mb-body{font-size:11px;color:var(--text);line-height:1.5}
+
+/* OPPORTUNITY CALCULATOR */
+.calc{background:var(--s2);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+.calc-header{background:var(--s);padding:16px 22px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.calc-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--white)}
+.calc-badge{font-family:'JetBrains Mono',monospace;font-size:9px;padding:4px 10px;background:rgba(201,149,42,.15);border:1px solid var(--gold-m);color:var(--gold);border-radius:4px}
+.calc-body{padding:22px}
+.calc-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px solid var(--bd)}
+.calc-row:last-child{border-bottom:none;padding-top:16px}
+.calc-label{font-size:13px;color:var(--text)}
+.calc-val{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--white)}
+.calc-val.gold{color:var(--gold-l)}
+.calc-val.green{color:#4ADE80}
+.calc-val.red{color:#F87171}
+.calc-note{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-left:8px}
+.calc-total{background:rgba(201,149,42,.08);border-radius:10px;padding:16px 20px;margin-top:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.ct-label{font-size:13px;color:var(--gold)}
+.ct-val{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;color:var(--gold-l)}
+
+/* CONTENT STRATEGY */
+.lmf{height:28px;border-radius:4px;overflow:hidden;display:flex;margin-bottom:10px}
+.lmf-seg{display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:var(--white)}
+.strategy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.sg-item{background:var(--s);border:1px solid var(--bd);border-radius:10px;padding:14px 16px}
+.sg-seg{font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.sg-title{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px}
+.sg-body{font-size:11px;color:var(--muted);line-height:1.45}
+
+/* MATERIALS PREVIEW */
+.mat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.mat-card{background:var(--s);border:1px solid var(--bd);border-radius:10px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start}
+.mat-icon{font-size:20px;flex-shrink:0}
+.mat-name{font-size:12px;font-weight:600;color:var(--white);margin-bottom:3px}
+.mat-desc{font-size:10px;color:var(--muted);line-height:1.35}
+.mat-lock{display:inline-flex;align-items:center;gap:4px;font-family:'JetBrains Mono',monospace;font-size:8px;padding:2px 7px;border-radius:3px;margin-top:6px}
+.ml-free{background:rgba(13,148,136,.12);color:var(--teal-l);border:1px solid rgba(13,148,136,.25)}
+.ml-locked{background:rgba(201,149,42,.08);color:var(--gold);border:1px solid rgba(201,149,42,.2)}
+
+/* ROADMAP */
+.roadmap{display:flex;flex-direction:column;gap:0}
+.rm-item{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--bd)}
+.rm-item:last-child{border-bottom:none}
+.rm-left{display:flex;flex-direction:column;align-items:center;width:36px;flex-shrink:0}
+.rm-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.rm-dot.gold{background:var(--gold)}
+.rm-dot.teal{background:var(--teal)}
+.rm-dot.blue{background:var(--blue-l)}
+.rm-line{flex:1;width:1px;background:var(--bd2);margin:4px 0}
+.rm-period{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.rm-title{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--white);margin-bottom:6px}
+.rm-items{display:flex;flex-wrap:wrap;gap:5px}
+.rm-tag{font-size:10px;padding:3px 9px;border-radius:3px;border:1px solid var(--bd2);color:var(--muted)}
+
+/* BUYER PERSONA */
+.persona-card{background:var(--s2);border:1px solid var(--gold-m);border-radius:16px;overflow:hidden}
+.persona-header{background:linear-gradient(135deg,var(--gold-d),rgba(7,7,9,.8));padding:28px 30px;display:grid;grid-template-columns:80px 1fr;gap:20px;align-items:center;border-bottom:1px solid var(--bd)}
+.persona-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--gold-m),#3D2A0A);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;color:var(--gold-l);flex-shrink:0}
+.persona-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--white);margin-bottom:4px}
+.persona-role{font-size:13px;color:var(--gold);margin-bottom:10px}
+.persona-tags{display:flex;flex-wrap:wrap;gap:5px}
+.persona-tag{font-size:10px;padding:3px 9px;border-radius:3px;background:rgba(201,149,42,.12);border:1px solid rgba(201,149,42,.25);color:var(--gold)}
+.persona-body{padding:24px 30px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:600px){.persona-body{grid-template-columns:1fr}}
+.pf-label{font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:6px}
+.pf-text{font-size:13px;color:var(--text);line-height:1.65}
+.pf-quote{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--gold-l);border-left:2px solid var(--gold-m);padding-left:12px;margin-top:8px;line-height:1.45}
+
+/* PERSONNEL SAVINGS */
+.savings{background:var(--s2);border:1px solid var(--bd);border-radius:14px;padding:22px 24px}
+.sv-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--bd)}
+.sv-row:last-child{border-bottom:none}
+.sv-label{font-size:13px;color:var(--text)}
+.sv-cost{font-family:'JetBrains Mono',monospace;font-size:11px;color:#FCA5A5;text-decoration:line-through;opacity:.6;margin-right:8px}
+.sv-platform{font-family:'JetBrains Mono',monospace;font-size:11px;color:#4ADE80}
+.sv-saving{font-size:11px;color:#4ADE80;font-weight:600}
+
+/* CONFIDENTIAL STAMP */
+.confidential{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);opacity:.4;text-align:right;padding:32px 0 0}
+
+/* ── TU SEMANA: ANTES VS DESPUÉS ── */
+.week-table{width:100%;border-collapse:collapse;font-size:12px;background:var(--s);border:1px solid var(--bd);border-radius:12px;overflow:hidden}
+.week-table th{padding:10px 14px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid var(--bd)}
+.week-table th.th-day{background:var(--s2);color:var(--muted);width:90px}
+.week-table th.th-before{background:rgba(220,38,38,.08);color:#FCA5A5}
+.week-table th.th-after{background:rgba(13,148,136,.1);color:var(--teal-l)}
+.week-table td{padding:11px 14px;border-bottom:1px solid var(--bd);color:var(--text);vertical-align:top;line-height:1.5}
+.week-table tr:last-child td{border-bottom:none}
+.week-table td.day{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);font-weight:600;background:var(--s2)}
+.week-table td.before{color:#E8A0A0}
+.week-table td.after{color:#9FE8DC}
+.week-total{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap}
+.wt-box{flex:1;min-width:200px;border-radius:10px;padding:14px 16px}
+.wt-box.before{background:rgba(220,38,38,.06);border:1px solid rgba(220,38,38,.18)}
+.wt-box.after{background:rgba(13,148,136,.07);border:1px solid rgba(13,148,136,.2)}
+.wt-label{font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px}
+.wt-box.before .wt-label{color:#FCA5A5}
+.wt-box.after .wt-label{color:var(--teal-l)}
+.wt-val{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--white)}
+.wt-sub{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* ── TU STACK ── */
+.stack-table{width:100%;border-collapse:collapse;font-size:12px;background:var(--s);border:1px solid var(--bd);border-radius:12px;overflow:hidden}
+.stack-table th{background:var(--s2);color:var(--muted);padding:10px 14px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid var(--bd)}
+.stack-table td{padding:11px 14px;border-bottom:1px solid var(--bd);color:var(--text);vertical-align:middle;line-height:1.5}
+.stack-table tr:last-child td{border-bottom:none}
+.stack-table tr.total td{padding-top:14px;font-weight:600}
+.stack-cost{font-family:'JetBrains Mono',monospace;font-size:11px;color:#F87171;text-decoration:line-through;opacity:.65}
+.stack-included{font-family:'JetBrains Mono',monospace;font-size:11px;color:#4ADE80;font-weight:600}
+.stack-tool{font-size:10px;color:var(--muted)}
+
+/* ── ASÍ SUENA TU VOZ — sample materials ── */
+.voice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.voice-card{background:var(--s);border:1px solid var(--bd);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.voice-head{padding:12px 16px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:8px;background:var(--s2)}
+.voice-head-icon{font-size:14px}
+.voice-head-label{font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold)}
+.voice-body{padding:16px;flex:1}
+
+/* WhatsApp bubble mockup */
+.wa-mock{background:#0B141A;border-radius:10px;padding:14px;font-size:12px}
+.wa-bubble{background:#1F2C34;color:#E9EDEF;border-radius:8px 8px 8px 2px;padding:9px 12px;max-width:88%;line-height:1.5;margin-bottom:8px;position:relative}
+.wa-bubble.out{background:#005C4B;border-radius:8px 8px 2px 8px;margin-left:auto}
+.wa-time{font-size:9px;color:#8696A0;margin-top:4px;text-align:right}
+
+/* Instagram post mockup */
+.ig-mock{border-radius:10px;overflow:hidden;border:1px solid var(--bd2)}
+.ig-img{aspect-ratio:1/1;background:linear-gradient(135deg,var(--gold-d),#2A1C08);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold-l);font-size:15px;text-align:center;padding:20px;line-height:1.4}
+.ig-caption{padding:12px 14px;font-size:11px;color:var(--text);line-height:1.6;background:var(--s2)}
+.ig-caption strong{color:var(--white)}
+
+/* Email mockup */
+.email-mock{border:1px solid var(--bd2);border-radius:10px;overflow:hidden}
+.email-head{background:var(--s2);padding:10px 14px;border-bottom:1px solid var(--bd)}
+.email-field{font-size:10px;color:var(--muted);margin-bottom:2px}
+.email-field strong{color:var(--text);font-weight:500}
+.email-subject{font-size:12px;font-weight:600;color:var(--white);margin-top:4px}
+.email-body{padding:14px;font-size:11px;color:var(--text);line-height:1.7}
+.email-body p{margin-bottom:8px}
+.email-body p:last-child{margin-bottom:0}
+
+/* ── GARANTÍA — sección propia ── */
+.guarantee{background:linear-gradient(135deg,var(--teal-d) 0%,var(--s) 100%);border:1px solid rgba(13,148,136,.35);border-radius:18px;padding:36px;display:grid;grid-template-columns:120px 1fr;gap:28px;align-items:center}
+@media(max-width:600px){.guarantee{grid-template-columns:1fr;text-align:center;padding:28px 22px}}
+.guarantee-badge{width:120px;height:120px;border-radius:50%;border:2px solid var(--teal);display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(13,148,136,.08);flex-shrink:0;margin:0 auto}
+.guarantee-badge .num{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:700;color:var(--teal-l);line-height:1}
+.guarantee-badge .unit{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--teal-l);text-transform:uppercase;letter-spacing:.1em;margin-top:2px}
+.guarantee-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--white);margin-bottom:8px}
+.guarantee-body{font-size:13px;color:var(--text);line-height:1.7;max-width:560px}
+.guarantee-body strong{color:var(--teal-l)}
+
+/* PRINT / DIVIDERS */
+.div{border:none;border-top:1px solid var(--bd);margin:20px 0}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <span class="nav-logo">10x<em>Team</em></span>
+  <nav class="nav-links">
+    <a href="#resumen" class="nav-a">Resumen</a>
+    <a href="#icp" class="nav-a">ICP</a>
+    <a href="#persona" class="nav-a">Buyer Persona</a>
+    <a href="#beliefs" class="nav-a">Creencias</a>
+    <a href="#semana" class="nav-a">Tu Semana</a>
+    <a href="#trust" class="nav-a">Trust Journey</a>
+    <a href="#mecanismo" class="nav-a">Mecanismo</a>
+    <a href="#oportunidad" class="nav-a">Oportunidad</a>
+    <a href="#stack" class="nav-a">Tu Stack</a>
+    <a href="#contenido" class="nav-a">Contenido</a>
+    <a href="#materiales" class="nav-a">Materiales</a>
+    <a href="#voz" class="nav-a">Tu Voz</a>
+    <a href="#roadmap" class="nav-a">Roadmap</a>
+    <a href="#garantia" class="nav-a">Garantía</a>
+  </nav>
+  <span class="nav-badge">CONFIDENCIAL</span>
+</div>
+
+<div class="wrap">
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-grid"></div>
+  <div class="cover-glow"></div>
+  <div class="cover-inner">
+    <p class="cover-eyebrow">Diagnóstico Estratégico 10x · Tu negocio, analizado a fondo</p>
+    <h1 class="cover-title">
+      Diagnóstico<br>
+      <em>Estratégico 10x</em>
+    </h1>
+    <p class="cover-client">Clínica Dental Sonrisa Plus — CDMX</p>
+    <div class="cover-meta">
+      <span class="c-chip">Elaborado por 10xTeam</span>
+      <span class="c-chip">Junio 2026</span>
+      <span class="c-chip">Versión 1.0 · Activo</span>
+      <span class="c-chip">ICP Score: 88/100</span>
+      <span class="c-chip">Dr. Roberto Castañeda · Propietario</span>
+    </div>
+    <div class="cover-kpis">
+      <div class="ckpi">
+        <div class="ckpi-val">$11.2<span>M</span></div>
+        <div class="ckpi-label">Oportunidad anual estimada</div>
+      </div>
+      <div class="ckpi">
+        <div class="ckpi-val">4.8<span>x</span></div>
+        <div class="ckpi-label">ROI proyectado mes 1</div>
+      </div>
+      <div class="ckpi">
+        <div class="ckpi-val">+38<span>%</span></div>
+        <div class="ckpi-label">Clientes adicionales / mes</div>
+      </div>
+      <div class="ckpi">
+        <div class="ckpi-val">$41<span>K</span></div>
+        <div class="ckpi-label">MXN/mes en nómina reemplazada</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUMEN EJECUTIVO -->
+<section class="sec" id="resumen">
+  <div class="sec-num">01 · Resumen Ejecutivo</div>
+  <h2 class="sec-title">Lo que entendemos<br>de tu negocio</h2>
+  <span class="method-ref">Basado en: Metodología ICP 10xTeam v2.0 · Diagnóstico del Sistema</span>
+
+  <div class="pull">
+    "La Clínica Sonrisa Plus tiene la capacidad clínica para atraer a los mejores
+    pacientes de implantes en Polanco. Lo que falta es el sistema que los encuentra,
+    los califica y los lleva a la silla — de forma predecible y sin depender del azar."
+  </div>
+
+  <div class="g2">
+    <div class="card gold">
+      <p class="card-label cl-gold">El diagnóstico</p>
+      <p class="card-title">Lo que existe hoy</p>
+      <p class="card-body">La clínica genera 6–8 pacientes nuevos por mes, principalmente por referidos. La agenda tiene 4–6 huecos semanales sin llenar. No existe proceso de seguimiento para pacientes que consultaron pero no agendaron. El equipo atiende bien pero no prospecta activamente.</p>
+    </div>
+    <div class="card teal">
+      <p class="card-label cl-teal">La oportunidad</p>
+      <p class="card-title">Lo que es posible</p>
+      <p class="card-body">Con el sistema activo: 10–11 pacientes adicionales por mes en los primeros 60 días. La agenda llena al 85%+ en 4 semanas. Costo por paciente nuevo reduce de ~$1,400 MXN (costo estimado actual) a menos de $320 MXN. Ingreso adicional proyectado: ~$935,000 MXN en el primer año.</p>
+    </div>
+  </div>
+
+  <div class="savings" style="margin-top:14px">
+    <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px">Costo de nómina que reemplaza la plataforma</p>
+    <div class="sv-row">
+      <span class="sv-label">Content Creator / Copywriter de Marketing</span>
+      <div><span class="sv-cost">$22,000–$32,000 MXN/mes</span><span class="sv-saving">Incluido en el plan</span></div>
+    </div>
+    <div class="sv-row">
+      <span class="sv-label">Community Manager / Digital Marketing Exec</span>
+      <div><span class="sv-cost">$14,000–$20,000 MXN/mes</span><span class="sv-saving">Incluido en el plan</span></div>
+    </div>
+    <div class="sv-row">
+      <span class="sv-label">Herramientas separadas (CRM + email + scheduler + landing + propuestas)</span>
+      <div><span class="sv-cost">$8,000–$14,000 MXN/mes</span><span class="sv-saving">Todo en una plataforma</span></div>
+    </div>
+    <div class="sv-row" style="padding-top:14px;border-top:1px solid var(--bd)">
+      <span style="font-size:14px;font-weight:600;color:var(--white)">Total reemplazado por la plataforma</span>
+      <div>
+        <span class="sv-cost" style="font-size:14px">$44,000–$66,000 MXN/mes</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#4ADE80;font-weight:700">Plan desde $3,497 MXN/mes</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ICP CARD COMPLETA -->
+<section class="sec" id="icp">
+  <div class="sec-num">02 · El Perfil ICP Completo</div>
+  <h2 class="sec-title">Las 5 capas del<br>cliente ideal</h2>
+  <p class="sec-sub">Cada capa del ICP alimenta materiales específicos. Esta arquitectura garantiza que todo lo que se comunica apunta exactamente al prospecto correcto, en el momento correcto, con el mensaje correcto.</p>
+  <span class="method-ref">Metodología ICP 10xTeam v2.0 · 5 Capas · B2C + Mixto</span>
+
+  <div class="layers">
+
+    <div class="layer">
+      <div class="layer-num" style="background:rgba(201,149,42,.15);color:var(--gold-l)">1</div>
+      <div class="layer-content">
+        <div class="layer-name">Situacional — El detonador</div>
+        <div class="layer-body">El evento o circunstancia que activa la búsqueda de una solución dental de alto ticket. Saber esto define el timing exacto de cada mensaje de prospección.</div>
+        <div class="layer-tags">
+          <span class="ltag g">Terminó con prótesis removible que ya no le funciona</span>
+          <span class="ltag g">Foto de evento importante próximo (boda, graduación, cumpleaños)</span>
+          <span class="ltag g">Le dijeron que necesita implante y fue a 2+ consultas sin decidir</span>
+          <span class="ltag g">Amiga o familiar acaba de hacerse implantes con buen resultado</span>
+          <span class="ltag">Tenía cita en clínica anterior y canceló por precio o desconfianza</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div class="layer-num" style="background:rgba(37,99,235,.15);color:#93C5FD">2</div>
+      <div class="layer-content">
+        <div class="layer-name">Descriptiva — Quién es</div>
+        <div class="layer-body">Las características observables que permiten identificarla en una base de datos, en Meta Ads o en LinkedIn.</div>
+        <div class="layer-tags">
+          <span class="ltag">Mujer 38–60 años · CDMX (Polanco, Lomas, Del Valle, Interlomas)</span>
+          <span class="ltag">Profesionista activa o empresaria · ingresos familiares $80K–$250K MXN/mes</span>
+          <span class="ltag">Cuida mucho su imagen personal y la percepción que proyecta</span>
+          <span class="ltag">Decisora de la compra · Consulta con pareja pero decide sola</span>
+          <span class="ltag g">ICP Secundario: su pareja o familiar que la acompaña a la consulta</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div class="layer-num" style="background:rgba(147,51,234,.15);color:#C4B5FD">3</div>
+      <div class="layer-content">
+        <div class="layer-name">Psicográfica — Cómo piensa y siente</div>
+        <div class="layer-body">La capa más poderosa. Define el lenguaje emocional de todos los materiales — los ganchos, los miedos que se validan y las aspiraciones que se activan.</div>
+        <div class="layer-tags">
+          <span class="ltag g">Miedo: "Gastar $40,000 MXN y que no me quede bien o que falle"</span>
+          <span class="ltag g">Miedo profundo: "Que la gente se dé cuenta de que me lo hice"</span>
+          <span class="ltag">Aspiración: "Sonreír en fotos sin pensarlo dos veces"</span>
+          <span class="ltag">Aspiración: "Sentir que me veo igual que cuando era joven"</span>
+          <span class="ltag" style="border-color:#F87171;color:#F87171">ICP Alto Riesgo: Pacientes que comparan precios en 5+ clínicas simultáneamente</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div class="layer-num" style="background:rgba(13,148,136,.15);color:#2DD4BF">4</div>
+      <div class="layer-content">
+        <div class="layer-name">Conductual — Cómo compra y se comunica</div>
+        <div class="layer-body">Define los canales correctos, el formato de contenido que consume y el ritmo del proceso de decisión.</div>
+        <div class="layer-tags">
+          <span class="ltag t">WhatsApp primario · Instagram (consume reels de transformaciones)</span>
+          <span class="ltag t">Busca en Google, ve reseñas en Google Maps antes de llamar</span>
+          <span class="ltag">Ciclo de decisión: 1–4 semanas desde primera consulta hasta firmar</span>
+          <span class="ltag">Ve testimoniales en video · Sigue cuentas de odontología en Instagram</span>
+          <span class="ltag">Canal de cierre: siempre prefiere hablar antes de decidir</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div class="layer-num" style="background:rgba(22,163,74,.12);color:#86EFAC">5</div>
+      <div class="layer-content">
+        <div class="layer-name">Económica — El valor del intercambio</div>
+        <div class="layer-body">Define el tono de los argumentos de precio, la estructura de la propuesta y cómo se presenta el ROI en los materiales.</div>
+        <div class="layer-tags">
+          <span class="ltag">Inversión típica: $18,000–$55,000 MXN por caso (implante + corona)</span>
+          <span class="ltag">Paga de su propio bolsillo · Precio es señal de calidad, no barrera</span>
+          <span class="ltag t">Sensibilidad: NO precio bajo — SÍ confianza y resultado comprobado</span>
+          <span class="ltag">Decide sola en importes hasta $25K · Comenta con pareja en importes mayores</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Anti-ICP -->
+  <div class="card red" style="margin-top:14px">
+    <p class="card-label cl-red">Anti-ICP — a quién no escalar</p>
+    <p class="card-body">Pacientes que buscan el precio más bajo y llaman a 5+ clínicas para comparar. Personas con expectativas de resultado no realistas basadas en fotos de Instagram. Pacientes que ya tuvieron mala experiencia en otra clínica y llegan a la primera consulta con desconfianza activa. Pacientes sin disponibilidad de agenda flexible para las citas de seguimiento del tratamiento.</p>
+  </div>
+</section>
+
+<!-- BUYER PERSONA -->
+<section class="sec" id="persona">
+  <div class="sec-num">03 · El Buyer Persona</div>
+  <h2 class="sec-title">La persona,<br>no el perfil</h2>
+  <p class="sec-sub">El ICP describe quién es. El Buyer Persona revela cómo piensa, qué siente y qué necesita escuchar para actuar. Esta es la diferencia entre copy que informa y copy que mueve.</p>
+  <span class="method-ref">Basado en: Biblia de Crecimiento 10xTeam · Capas Psicográfica y Conductual</span>
+
+  <div class="persona-card">
+    <div class="persona-header">
+      <div class="persona-avatar">L</div>
+      <div>
+        <div class="persona-name">Laura Mendoza</div>
+        <div class="persona-role">Directora de empresa familiar · 47 años · Lomas de Chapultepec</div>
+        <div class="persona-tags">
+          <span class="persona-tag">Perfil representativo</span>
+          <span class="persona-tag">B2C · Decisora directa</span>
+          <span class="persona-tag">Alto ticket</span>
+          <span class="persona-tag">Ciclo 2–3 semanas</span>
+        </div>
+      </div>
+    </div>
+    <div class="persona-body">
+      <div>
+        <p class="pf-label">Un día en su vida</p>
+        <p class="pf-text">Laura empieza el día revisando WhatsApp antes de levantarse. Administra una empresa familiar con 22 empleados y dos hijos en universidad. Come con clientes dos veces por semana. Se cuida: gym 3 veces, faciales mensuales, ropa de marca discreta pero reconocible. No le falta dinero — le falta tiempo y le sobra preocupación por su imagen.</p>
+      </div>
+      <div>
+        <p class="pf-label">Lo que piensa pero nunca dice</p>
+        <p class="pf-text">Le preocupa envejecer visiblemente. Cada vez que sonríe en una foto revisa si se notan sus dientes. Ya fue a una clínica "más barata" y le salió mal — perdió dinero y confianza. Ahora quiere hacerlo bien pero tiene miedo de volver a equivocarse.</p>
+        <p class="pf-quote">"Quiero que cuando sonría en la foto de la boda de mi hija el próximo año, no esté pensando en mis dientes."</p>
+      </div>
+      <div>
+        <p class="pf-label">Lo que consume e influye en ella</p>
+        <p class="pf-text">Instagram: sigue a 3 clínicas de estética dental. Ve reels de transformaciones antes/después. Confía más en reseñas de Google que en publicidad. Su amiga cercana ya se hizo implantes — eso la activó. Busca "implantes dentales Polanco" en Google cuando está considerando la decisión.</p>
+      </div>
+      <div>
+        <p class="pf-label">Su visión en 12 meses</p>
+        <p class="pf-text">Quiere haber resuelto el tema dental de una vez — no seguir posponiéndolo. En el fondo quiere verse tan bien como se sentía hace 10 años. La sonrisa es parte de esa imagen. Si confía en el doctor y el proceso es cómodo, pagará lo que sea necesario.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUYER BELIEF MAP -->
+<section class="sec" id="beliefs">
+  <div class="sec-num">04 · El Buyer Belief Map</div>
+  <h2 class="sec-title">Las 8 creencias que<br>tu cliente necesita desarrollar</h2>
+  <p class="sec-sub">Antes de que Laura pueda comprar, necesita creer 8 cosas específicas. Cada creencia tiene un activo de confianza que la construye y una señal de comportamiento que indica que se desarrolló. Esta es la arquitectura de todo el contenido.</p>
+  <span class="method-ref">Basado en: B2B Trust Engine · Biblia de Crecimiento 10xTeam</span>
+
+  <table class="belief-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Creencia a desarrollar</th>
+        <th>Material que la construye</th>
+        <th>Señal de que ocurrió</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="num">01</td>
+        <td class="belief">Mi problema dental es urgente — no puedo seguir posponiendo</td>
+        <td>Post "El costo de esperar" · Email de detonador · Reel de consecuencias</td>
+        <td>Hace clic en el CTA de agendar</td>
+      </tr>
+      <tr>
+        <td class="num">02</td>
+        <td class="belief">El método que usé antes falló — no fue mi culpa</td>
+        <td>Contenido que explica por qué fallan los implantes baratos · Script bot</td>
+        <td>Pregunta sobre sus experiencias anteriores</td>
+      </tr>
+      <tr>
+        <td class="num">03</td>
+        <td class="belief">Esta categoría de solución (implante) es la correcta para mí</td>
+        <td>Post educativo · Reel "¿Eres candidata para implante?"</td>
+        <td>Responde el quiz de candidatura</td>
+      </tr>
+      <tr>
+        <td class="num">04</td>
+        <td class="belief">La tecnología de esta clínica hace que sea más seguro y exacto</td>
+        <td>Video del protocolo de guía quirúrgica digital · Post de tecnología</td>
+        <td>Pregunta por la tecnología específica</td>
+      </tr>
+      <tr>
+        <td class="num">05</td>
+        <td class="belief">El resultado va a verse natural — no van a darse cuenta</td>
+        <td>Casos antes/después con perfil similar al suyo · Testimoniales en video</td>
+        <td>Comparte o guarda el post de caso de éxito</td>
+      </tr>
+      <tr>
+        <td class="num">06</td>
+        <td class="belief">El proceso es menos complicado de lo que imagina</td>
+        <td>Video del procedimiento paso a paso · Post "Mitos del implante"</td>
+        <td>Pregunta cuántas citas requiere</td>
+      </tr>
+      <tr>
+        <td class="num">07</td>
+        <td class="belief">El precio está justificado — no es caro, es una inversión</td>
+        <td>Post "Costo de por vida vs implante" · Email con cálculo de ROI de la sonrisa</td>
+        <td>Pregunta por opciones de pago</td>
+      </tr>
+      <tr>
+        <td class="num">08</td>
+        <td class="belief">El Dr. Castañeda es el indicado — confío en él específicamente</td>
+        <td>Video del doctor explicando · Post de credenciales · Google Reviews</td>
+        <td>Agenda la consulta de diagnóstico</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- TU SEMANA: ANTES VS CON EL SISTEMA -->
+<section class="sec" id="semana">
+  <div class="sec-num">05 · Tu Semana</div>
+  <h2 class="sec-title">Tu semana hoy<br>vs <em>tu semana con el sistema</em></h2>
+  <p class="sec-sub">Esto no es sobre marketing — es sobre tu tiempo. Así es como cambia tu operación día a día, basado en lo que nos contaste sobre cómo funciona tu negocio hoy.</p>
+  <span class="method-ref">Basado en: tus respuestas del Bloque de Economía del Negocio</span>
+
+  <table class="week-table">
+    <thead>
+      <tr>
+        <th class="th-day">Día</th>
+        <th class="th-before">Tu negocio hoy</th>
+        <th class="th-after">Con 10xTeam</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="day">Lunes</td>
+        <td class="before">Revisas WhatsApp entre consultas. Respondes lo que alcanzas — algunos mensajes esperan horas.</td>
+        <td class="after">El asistente ya respondió y calificó a quienes escribieron en la madrugada. Tienes 2 citas nuevas en tu agenda.</td>
+      </tr>
+      <tr>
+        <td class="day">Martes</td>
+        <td class="before">Apartas 1–2 horas en la noche para pensar qué publicar. A veces no sale nada y se posterga.</td>
+        <td class="after">Los posts del mes ya están listos desde el día 1. Solo revisas y das "aprobar" — 5 minutos.</td>
+      </tr>
+      <tr>
+        <td class="day">Miércoles</td>
+        <td class="before">Un paciente que consultó hace 2 semanas y no agendó — nadie le dio seguimiento. Se enfría.</td>
+        <td class="after">Ese mismo paciente recibe un mensaje automático con el caso de éxito de alguien similar a él.</td>
+      </tr>
+      <tr>
+        <td class="day">Jueves</td>
+        <td class="before">Buscas en Canva una plantilla, escribes el texto, lo subes — 45 minutos para un solo post.</td>
+        <td class="after">El reel del mes ya tiene guión escrito. Solo lo grabas con el celular — 10 minutos.</td>
+      </tr>
+      <tr>
+        <td class="day">Viernes</td>
+        <td class="before">Llega un prospecto preguntando precio. No sabes bien qué responder sin sonar "vendedor".</td>
+        <td class="after">El asistente responde con el guion de objeciones ya calibrado a tu negocio — sin presión, sin sonar a script.</td>
+      </tr>
+      <tr>
+        <td class="day">Sábado</td>
+        <td class="before">Agenda con huecos. Te preguntas si valió la pena el gasto en publicidad de la semana.</td>
+        <td class="after">Revisas el dashboard: cuántos leads, cuántas citas, qué publicación generó más interés. 2 minutos.</td>
+      </tr>
+      <tr>
+        <td class="day">Domingo</td>
+        <td class="before">Descansas — pero el negocio también. Nada se mueve hasta el lunes.</td>
+        <td class="after">El asistente sigue activo. El sistema sigue respondiendo, calificando y agendando.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="week-total">
+    <div class="wt-box before">
+      <p class="wt-label">Tiempo invertido hoy</p>
+      <p class="wt-val">~7 hrs<span style="font-size:14px">/semana</span></p>
+      <p class="wt-sub">En tareas que no requieren tu criterio clínico</p>
+    </div>
+    <div class="wt-box after">
+      <p class="wt-label">Tiempo con el sistema</p>
+      <p class="wt-val">~30 min<span style="font-size:14px">/semana</span></p>
+      <p class="wt-sub">Revisar, aprobar y ver resultados</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="trust">
+  <div class="sec-num">06 · El Trust Journey</div>
+  <h2 class="sec-title">El camino de desconocida<br>a paciente de por vida</h2>
+  <span class="method-ref">B2B Trust Engine — Trust Loop de 7 Partes · Biblia de Crecimiento</span>
+
+  <div class="journey">
+    <div class="j-step">
+      <div class="j-num">PARTE 1</div>
+      <div class="j-icon">🎯</div>
+      <div class="j-name">La Creencia</div>
+      <div class="j-desc">Belief #1: "Tengo un problema que debo resolver ya"</div>
+    </div>
+    <div class="j-step active">
+      <div class="j-num">PARTE 2</div>
+      <div class="j-icon">📋</div>
+      <div class="j-name">El Activo</div>
+      <div class="j-desc">Quiz "¿Eres candidata?" + Reel antes/después similar</div>
+    </div>
+    <div class="j-step">
+      <div class="j-num">PARTE 3</div>
+      <div class="j-icon">📡</div>
+      <div class="j-name">Distribución</div>
+      <div class="j-desc">Instagram + Facebook + WhatsApp + Google</div>
+    </div>
+    <div class="j-step active">
+      <div class="j-num">PARTE 4</div>
+      <div class="j-icon">✋</div>
+      <div class="j-name">Captura</div>
+      <div class="j-desc">Responde al quiz · Salva el reel · Escribe al WhatsApp</div>
+    </div>
+    <div class="j-step">
+      <div class="j-num">PARTE 5</div>
+      <div class="j-icon">🔥</div>
+      <div class="j-name">Nurture</div>
+      <div class="j-desc">Secuencia de 4 mensajes / emails mientras decide</div>
+    </div>
+    <div class="j-step active">
+      <div class="j-num">PARTE 6</div>
+      <div class="j-icon">📊</div>
+      <div class="j-name">Scoring</div>
+      <div class="j-desc">Abre 3+ emails · Visita la página 2x · Pregunta precio</div>
+    </div>
+    <div class="j-step">
+      <div class="j-num">PARTE 7</div>
+      <div class="j-icon">🤝</div>
+      <div class="j-name">Handoff</div>
+      <div class="j-desc">"Vi que revisaste nuestros casos de implante 2 veces esta semana…"</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <p class="card-label cl-gold">El Handoff correcto vs el incorrecto</p>
+    <div class="g2" style="margin-top:10px;gap:10px">
+      <div style="background:rgba(220,38,38,.07);border:1px solid rgba(220,38,38,.2);border-radius:8px;padding:14px 16px">
+        <p style="font-size:10px;font-family:'JetBrains Mono',monospace;color:#FCA5A5;margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em">❌ Handoff débil</p>
+        <p style="font-size:13px;font-style:italic;color:var(--text)">"Hola, te escribo de la Clínica Sonrisa Plus. ¿Puedo contarte sobre nuestros implantes?"</p>
+      </div>
+      <div style="background:rgba(13,148,136,.07);border:1px solid rgba(13,148,136,.25);border-radius:8px;padding:14px 16px">
+        <p style="font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--teal-l);margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em">✓ Handoff poderoso</p>
+        <p style="font-size:13px;font-style:italic;color:var(--text)">"Laura, vi que guardaste nuestro reel del caso de implante en una sesión y buscaste nuestras reseñas de Google. Cuando alguien hace eso normalmente está evaluando si vale la pena la consulta. ¿Quieres que te cuente en 10 minutos cómo sería tu caso específicamente?"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MECANISMO ÚNICO -->
+<section class="sec" id="mecanismo">
+  <div class="sec-num">07 · El Mecanismo Único</div>
+  <h2 class="sec-title">La razón específica<br>por la que funciona</h2>
+  <p class="sec-sub">No es un beneficio. No es un adjetivo. Es el proceso concreto que produce el resultado de forma consistente cuando todo lo demás ha fallado.</p>
+  <span class="method-ref">Basado en: Sabri Suby · Biblia de Crecimiento 10xTeam · Anti-escepticismo</span>
+
+  <div class="mechanism">
+    <p class="mechanism-label">El Mecanismo Único — Clínica Dental Sonrisa Plus</p>
+    <p class="mechanism-text">
+      "A diferencia de las clínicas que realizan implantes con técnica convencional
+      — donde la precisión depende de la experiencia manual del operador y el riesgo de error
+      es mayor — en la Clínica Sonrisa Plus usamos el Protocolo de Implante en Una Sola Cita
+      con Tecnología de Guía Quirúrgica Digital, que planifica cada caso en 3D antes de
+      la cirugía y posiciona el implante con precisión milimétrica. La paciente entra sin
+      diente y sale con su corona ese mismo día."
+    </p>
+    <div class="mechanism-breakdown">
+      <div class="mb-item">
+        <p class="mb-label">Por qué fallan las alternativas</p>
+        <p class="mb-body">Las clínicas convencionales dependen de la habilidad manual. Las de bajo costo usan implantes de marcas sin respaldo clínico. El resultado es impredecible — y si algo falla, el costo de corregirlo supera el ahorro inicial.</p>
+      </div>
+      <div class="mb-item">
+        <p class="mb-label">Qué hace diferente el proceso</p>
+        <p class="mb-body">Planificación 3D previa · Guía quirúrgica impresa específica para el caso · Protocolo en una sola cita · Corona provisional colocada el mismo día · Seguimiento digital del proceso de osteointegración.</p>
+      </div>
+      <div class="mb-item">
+        <p class="mb-label">Por qué el resultado es consistente</p>
+        <p class="mb-body">La tecnología elimina las variables manuales. El resultado no depende de "que el doctor tenga buen día" — depende del protocolo. El mismo resultado en el caso 1 y en el caso 500.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULADORA DE OPORTUNIDAD -->
+<section class="sec" id="oportunidad">
+  <div class="sec-num">08 · La Calculadora de Oportunidad</div>
+  <h2 class="sec-title">Lo que está<br>en juego cada mes</h2>
+  <p class="sec-sub">Calculado con los datos reales del negocio. No estimaciones genéricas — la oportunidad específica de la Clínica Sonrisa Plus.</p>
+  <span class="method-ref">Basado en: Biblia de Crecimiento · Costo de Inacción · Datos F1–F8 del Wizard</span>
+
+  <div class="calc">
+    <div class="calc-header">
+      <p class="calc-title">Resumen de Oportunidad</p>
+      <span class="calc-badge">Datos del negocio · Junio 2026</span>
+    </div>
+    <div class="calc-body">
+      <div class="calc-row">
+        <span class="calc-label">Ticket promedio por caso de implante</span>
+        <span class="calc-val">$28,500 <span class="calc-note">MXN</span></span>
+      </div>
+      <div class="calc-row">
+        <span class="calc-label">Pacientes nuevos actuales por mes</span>
+        <span class="calc-val">7 <span class="calc-note">pacientes</span></span>
+      </div>
+      <div class="calc-row">
+        <span class="calc-label">Huecos en agenda por semana (sin llenar)</span>
+        <span class="calc-val red">5 <span class="calc-note">consultas perdidas</span></span>
+      </div>
+      <div class="calc-row">
+        <span class="calc-label">Valor de una semana con agenda llena al 85%</span>
+        <span class="calc-val">$85,500 <span class="calc-note">MXN adicionales</span></span>
+      </div>
+      <div class="calc-row">
+        <span class="calc-label">Costo de inacción (mensual)</span>
+        <span class="calc-val red">$114,000 <span class="calc-note">MXN que no entran</span></span>
+      </div>
+      <div class="calc-row">
+        <span class="calc-label">Costo de inacción (anual)</span>
+        <span class="calc-val red">$1,368,000 <span class="calc-note">MXN perdidos</span></span>
+      </div>
+      <div class="calc-row">
+        <span class="calc-label">Proyección mes 1 con el sistema (clientes adicionales)</span>
+        <span class="calc-val green">+3 pacientes<span class="calc-note"> = $85,500 MXN adicionales</span></span>
+      </div>
+      <div class="calc-row">
+        <span class="calc-label">Inversión en la plataforma (plan Pyme)</span>
+        <span class="calc-val">$3,497 <span class="calc-note">MXN/mes</span></span>
+      </div>
+    </div>
+    <div class="calc-total">
+      <div>
+        <p style="font-size:12px;color:var(--gold);margin-bottom:4px">ROI proyectado del primer mes</p>
+        <p style="font-size:12px;color:var(--muted)">$85,500 ingreso adicional ÷ $3,497 inversión</p>
+      </div>
+      <p class="ct-val">24.5<span style="font-size:20px">x</span></p>
+    </div>
+  </div>
+
+  <div class="pull" style="margin-top:28px">
+    "La pregunta no es si puedes pagar $3,497 MXN al mes.
+    La pregunta es cuánto te cuesta cada mes que no tienes el sistema:
+    <em>$114,000 MXN en consultas que no ocurren.</em>"
+  </div>
+</section>
+
+<!-- TU STACK ACTUAL VS 10XTEAM -->
+<section class="sec" id="stack">
+  <div class="sec-num">09 · Tu Stack de Herramientas</div>
+  <h2 class="sec-title">Lo que probablemente<br>ya estás <em>pagando por separado</em></h2>
+  <p class="sec-sub">La mayoría de los negocios arman su sistema de marketing con 5 a 8 herramientas distintas que no se hablan entre sí. 10xTeam las reemplaza todas — con la ventaja de que están conectadas y funcionan con tu ICP.</p>
+
+  <table class="stack-table">
+    <thead>
+      <tr>
+        <th>Función</th>
+        <th>Lo que usarías por separado</th>
+        <th>Costo aproximado</th>
+        <th>Con 10xTeam</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Programación de redes sociales</td>
+        <td class="stack-tool">Later, Hootsuite o similar</td>
+        <td><span class="stack-cost">$400–$700 MXN/mes</span></td>
+        <td><span class="stack-included">✓ Incluido</span></td>
+      </tr>
+      <tr>
+        <td>Email marketing y secuencias</td>
+        <td class="stack-tool">Mailchimp, ActiveCampaign</td>
+        <td><span class="stack-cost">$500–$900 MXN/mes</span></td>
+        <td><span class="stack-included">✓ Incluido</span></td>
+      </tr>
+      <tr>
+        <td>CRM y pipeline de ventas</td>
+        <td class="stack-tool">Pipedrive, HubSpot básico</td>
+        <td><span class="stack-cost">$700–$1,500 MXN/mes</span></td>
+        <td><span class="stack-included">✓ Incluido</span></td>
+      </tr>
+      <tr>
+        <td>Chatbot / atención automatizada</td>
+        <td class="stack-tool">ManyChat, Chatfuel</td>
+        <td><span class="stack-cost">$600–$1,200 MXN/mes</span></td>
+        <td><span class="stack-included">✓ Incluido</span></td>
+      </tr>
+      <tr>
+        <td>Generación de contenido</td>
+        <td class="stack-tool">Canva Pro + freelancer de copy</td>
+        <td><span class="stack-cost">$3,000–$5,000 MXN/mes</span></td>
+        <td><span class="stack-included">✓ Incluido</span></td>
+      </tr>
+      <tr>
+        <td>Agendamiento de citas</td>
+        <td class="stack-tool">Calendly, Acuity</td>
+        <td><span class="stack-cost">$200–$400 MXN/mes</span></td>
+        <td><span class="stack-included">✓ Incluido</span></td>
+      </tr>
+      <tr>
+        <td>Gestión de reseñas y reputación</td>
+        <td class="stack-tool">Birdeye, Podium</td>
+        <td><span class="stack-cost">$500–$900 MXN/mes</span></td>
+        <td><span class="stack-included">✓ Incluido</span></td>
+      </tr>
+      <tr class="total">
+        <td>Total mensual</td>
+        <td class="stack-tool">7 herramientas distintas, sin conectar entre sí</td>
+        <td><span class="stack-cost" style="font-size:14px">$5,900–$10,600 MXN/mes</span></td>
+        <td><span class="stack-included" style="font-size:14px">Una sola plataforma</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-teal" style="margin-top:14px">
+    <span class="callout-icon">🔗</span>
+    <div>
+      <div class="callout-title">La diferencia no es solo el costo — es que todo se habla entre sí</div>
+      <div class="callout-body">Cuando estas funciones viven en herramientas separadas, nadie las conecta: el bot no sabe qué dice el email, el CRM no sabe qué post generó el lead. En 10xTeam, cada pieza se construye desde el mismo ICP — por eso el mensaje es consistente sin importar por dónde te encuentre tu cliente.</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contenido">
+  <div class="sec-num">10 · Estrategia de Contenido</div>
+  <h2 class="sec-title">La Larger Market Formula<br>aplicada a tu negocio</h2>
+  <p class="sec-sub">La mayoría de las clínicas solo le hablan al 3% del mercado que está listo para comprar ahora. El sistema de 10xTeam te conecta con el 97% restante — que es donde está el verdadero crecimiento.</p>
+  <span class="method-ref">Basado en: Sabri Suby · Larger Market Formula · Biblia de Crecimiento 10xTeam</span>
+
+  <div class="lmf">
+    <div class="lmf-seg" style="width:3%;background:#0EA5A0">3%</div>
+    <div class="lmf-seg" style="width:17%;background:#2563EB">17%</div>
+    <div class="lmf-seg" style="width:20%;background:#C9952A">20%</div>
+    <div class="lmf-seg" style="width:60%;background:#2A2E48">60%</div>
+  </div>
+
+  <div class="strategy-grid">
+    <div class="sg-item" style="border-color:var(--teal)">
+      <p class="sg-seg" style="color:var(--teal-l)">3% — Lista para actuar</p>
+      <p class="sg-title">Demand Capture</p>
+      <p class="sg-body">Busca "implantes dentales Polanco" en Google ahora mismo. Bot de WhatsApp + Google Ads + Llamada a perdida con texto inmediato.</p>
+    </div>
+    <div class="sg-item" style="border-color:var(--blue-l)">
+      <p class="sg-seg" style="color:var(--blue-l)">17% — Evaluando</p>
+      <p class="sg-title">Consideración activa</p>
+      <p class="sg-body">Ya fue a consultas pero no decidió. Secuencia de nurture + testimoniales + diferenciador tecnológico + manejo de objeción de precio.</p>
+    </div>
+    <div class="sg-item" style="border-color:var(--gold)">
+      <p class="sg-seg" style="color:var(--gold)">20% — Consciente del problema</p>
+      <p class="sg-title">Activación</p>
+      <p class="sg-body">Sabe que necesita el implante pero no ha buscado. Instagram reels + casos antes/después + contenido sobre detonadores (eventos, fotos).</p>
+    </div>
+    <div class="sg-item">
+      <p class="sg-seg" style="color:var(--muted)">60% — No consciente</p>
+      <p class="sg-title">Siembra de conciencia</p>
+      <p class="sg-body">No sabe que el implante es urgente. Posts educativos sobre consecuencias de no reemplazar. Construye la creencia #1 del Belief Map.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MATERIALES GENERADOS -->
+<section class="sec" id="materiales">
+  <div class="sec-num">11 · Materiales Generados</div>
+  <h2 class="sec-title">Tu kit completo de<br>materiales de crecimiento</h2>
+  <p class="sec-sub">Cada pieza está construida con el ICP que acabamos de definir. No son templates genéricos — son materiales que hablan directamente al cliente ideal de la Clínica Sonrisa Plus.</p>
+
+  <div class="mat-grid">
+    <div class="mat-card">
+      <span class="mat-icon">🤖</span>
+      <div>
+        <p class="mat-name">Bot de WhatsApp</p>
+        <p class="mat-desc">Califica, responde y agenda 24/7</p>
+        <span class="mat-lock ml-free">✓ Activo desde el día 1</span>
+      </div>
+    </div>
+    <div class="mat-card">
+      <span class="mat-icon">📧</span>
+      <div>
+        <p class="mat-name">Secuencia de 5 emails fríos</p>
+        <p class="mat-desc">Para prospectos que no te conocen</p>
+        <span class="mat-lock ml-free">✓ Disponible en trial</span>
+      </div>
+    </div>
+    <div class="mat-card">
+      <span class="mat-icon">💬</span>
+      <div>
+        <p class="mat-name">Scripts de WhatsApp outbound</p>
+        <p class="mat-desc">3 toques para prospectos fríos</p>
+        <span class="mat-lock ml-free">✓ Disponible en trial</span>
+      </div>
+    </div>
+    <div class="mat-card">
+      <span class="mat-icon">📱</span>
+      <div>
+        <p class="mat-name">5 posts de Instagram/Facebook</p>
+        <p class="mat-desc">Educación + dolor + mecanismo</p>
+        <span class="mat-lock ml-free">✓ Disponible en trial</span>
+      </div>
+    </div>
+    <div class="mat-card">
+      <span class="mat-icon">📄</span>
+      <div>
+        <p class="mat-name">One-pager del servicio</p>
+        <p class="mat-desc">Para compartir por WhatsApp</p>
+        <span class="mat-lock ml-free">✓ Disponible en trial</span>
+      </div>
+    </div>
+    <div class="mat-card">
+      <span class="mat-icon">🎯</span>
+      <div>
+        <p class="mat-name">Script de manejo de objeciones</p>
+        <p class="mat-desc">Las 3 objeciones principales resueltas</p>
+        <span class="mat-lock ml-free">✓ Disponible en trial</span>
+      </div>
+    </div>
+    <div class="mat-card">
+      <span class="mat-icon">📊</span>
+      <div>
+        <p class="mat-name">Pitch deck de 10 slides</p>
+        <p class="mat-desc">Para presentaciones y demos</p>
+        <span class="mat-lock ml-locked">🔒 Se desbloquea con plan</span>
+      </div>
+    </div>
+    <div class="mat-card">
+      <span class="mat-icon">📝</span>
+      <div>
+        <p class="mat-name">Propuesta comercial</p>
+        <p class="mat-desc">Personalizada por tipo de caso</p>
+        <span class="mat-lock ml-locked">🔒 Se desbloquea con plan</span>
+      </div>
+    </div>
+    <div class="mat-card">
+      <span class="mat-icon">📅</span>
+      <div>
+        <p class="mat-name">30 posts mensuales completos</p>
+        <p class="mat-desc">Calendario editorial automatizado</p>
+        <span class="mat-lock ml-locked">🔒 Se desbloquea con plan</span>
+      </div>
+    </div>
+    <div class="mat-card">
+      <span class="mat-icon">🎬</span>
+      <div>
+        <p class="mat-name">4 guiones de reels</p>
+        <p class="mat-desc">30–60 segundos, listos para grabar</p>
+        <span class="mat-lock ml-locked">🔒 Se desbloquea con plan</span>
+      </div>
+    </div>
+    <div class="mat-card">
+      <span class="mat-icon">📢</span>
+      <div>
+        <p class="mat-name">Copy para Meta Ads</p>
+        <p class="mat-desc">3 variantes awareness + 2 retargeting</p>
+        <span class="mat-lock ml-locked">🔒 Se desbloquea con plan</span>
+      </div>
+    </div>
+    <div class="mat-card">
+      <span class="mat-icon">🔄</span>
+      <div>
+        <p class="mat-name">Secuencias de reactivación</p>
+        <p class="mat-desc">Leads dormidos días 30/60/90</p>
+        <span class="mat-lock ml-locked">🔒 Se desbloquea con plan</span>
+      </div>
+    </div>
+    <div class="mat-card">
+      <span class="mat-icon">⭐</span>
+      <div>
+        <p class="mat-name">Script de referidos</p>
+        <p class="mat-desc">Para pacientes satisfechos</p>
+        <span class="mat-lock ml-locked">🔒 Se desbloquea con plan</span>
+      </div>
+    </div>
+    <div class="mat-card">
+      <span class="mat-icon">📰</span>
+      <div>
+        <p class="mat-name">Newsletter mensual</p>
+        <p class="mat-desc">Para mantener relación con pacientes</p>
+        <span class="mat-lock ml-locked">🔒 Se desbloquea con plan</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;padding:18px 20px;background:rgba(13,148,136,.07);border:1px solid rgba(13,148,136,.2);border-radius:12px">
+    <p style="font-size:13px;font-weight:600;color:var(--teal-l);margin-bottom:6px">🔄 Actualización mensual automática — sin pedirlo</p>
+    <p style="font-size:12px;color:var(--muted);line-height:1.6">El día 1 de cada mes, el sistema genera automáticamente los 30 posts del nuevo mes, ajustados con base en lo que mejor funcionó el mes anterior. Sin hacer nada. Sin pedirlo. Los materiales de prospección también se actualizan si hay cambios en el ICP. Cada mes el sistema es más preciso que el anterior.</p>
+  </div>
+</section>
+
+<!-- ASÍ SUENA TU VOZ -->
+<section class="sec" id="voz">
+  <div class="sec-num">12 · Así Suena tu Voz</div>
+  <h2 class="sec-title">No son plantillas.<br><em>Esto ya está escrito para ti.</em></h2>
+  <p class="sec-sub">Estos son fragmentos reales generados con tu ICP — listos para usarse hoy mismo. Nada de esto dice "[nombre del paciente]" o "[tu servicio aquí]". El sistema ya sabe de quién hablamos y qué le importa.</p>
+  <span class="method-ref">Generado con: tu ICP Card + Prompt Maestro 10xTeam · Bloques 2, 8 y 9</span>
+
+  <div class="voice-grid">
+
+    <!-- Bot de WhatsApp -->
+    <div class="voice-card">
+      <div class="voice-head">
+        <span class="voice-head-icon">🤖</span>
+        <span class="voice-head-label">Tu asistente · Primer mensaje</span>
+      </div>
+      <div class="voice-body">
+        <div class="wa-mock">
+          <div class="wa-bubble">
+            ¡Hola! 😊 Gracias por escribirnos a Sonrisa Plus. Para orientarte mejor — ¿es para una consulta para ti o para alguien más?
+            <div class="wa-time">10:42</div>
+          </div>
+          <div class="wa-bubble out">
+            Es para mí. Me faltan dos dientes y ya me da pena sonreír en fotos 😅
+            <div class="wa-time">10:43 ✓✓</div>
+          </div>
+          <div class="wa-bubble">
+            Te entiendo perfecto, y qué bueno que diste el primer paso. Tenemos un protocolo donde el implante se coloca en una sola cita — entras sin diente y sales con tu corona provisional ese mismo día. ¿Te gustaría que te explique cómo evaluamos si eres candidata?
+            <div class="wa-time">10:43</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Post de Instagram -->
+    <div class="voice-card">
+      <div class="voice-head">
+        <span class="voice-head-icon">📸</span>
+        <span class="voice-head-label">Post · Instagram · Ángulo: Dolor</span>
+      </div>
+      <div class="voice-body">
+        <div class="ig-mock">
+          <div class="ig-img">"¿Cuántas fotos tienes<br>donde sales sin sonreír<br>de frente?"</div>
+          <div class="ig-caption">
+            <strong>No eres la única.</strong> Muchas de nuestras pacientes llegan diciendo lo mismo: "ya ni sonrío en las fotos como antes."<br><br>
+            Y casi siempre el problema no es tan grande como creen — pero sí es algo que se puede resolver más rápido de lo que imaginan.<br><br>
+            👉 Guarda este post si te identificas. En unos días te contamos cómo funciona el proceso, paso a paso.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email frío -->
+    <div class="voice-card">
+      <div class="voice-head">
+        <span class="voice-head-icon">📧</span>
+        <span class="voice-head-label">Email frío · Toque 1 de 5</span>
+      </div>
+      <div class="voice-body">
+        <div class="email-mock">
+          <div class="email-head">
+            <p class="email-field"><strong>Para:</strong> Prospecto — base de datos referidos</p>
+            <p class="email-subject">Lo de tu diente, ¿sigue pendiente?</p>
+          </div>
+          <div class="email-body">
+            <p>Hola [Nombre],</p>
+            <p>Sé que entre el trabajo y todo lo demás, lo del diente que falta se queda siempre para "después."</p>
+            <p>El problema es que entre más tiempo pasa, más se mueven los dientes de al lado — y lo que hoy es una solución sencilla, en un año puede complicarse.</p>
+            <p>¿Te late que platiquemos 10 minutos para ver qué tan sencillo sería en tu caso?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guion de reel -->
+    <div class="voice-card">
+      <div class="voice-head">
+        <span class="voice-head-icon">🎬</span>
+        <span class="voice-head-label">Guión de Reel · 30 seg · Mecanismo</span>
+      </div>
+      <div class="voice-body" style="font-size:12px;line-height:1.8;color:var(--text)">
+        <p><span style="color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:10px">0–3s</span> — Texto en pantalla: <strong style="color:var(--white)">"Implante dental en 1 sola cita. Así es como se hace."</strong></p>
+        <p><span style="color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:10px">4–15s</span> — Mostrar el escáner 3D: "Primero planeamos todo digitalmente — sabemos exactamente dónde va el implante antes de tocarte."</p>
+        <p><span style="color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:10px">16–25s</span> — Mostrar la guía quirúrgica: "Esta guía hace que la cirugía sea precisa al milímetro — por eso no necesitas varias citas."</p>
+        <p><span style="color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:10px">26–30s</span> — CTA: "¿Quieres saber si eres candidata? Escríbenos 'IMPLANTE' al WhatsApp."</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="sec" id="roadmap">
+  <div class="sec-num">13 · El Roadmap de 12 Meses</div>
+  <h2 class="sec-title">Lo que es posible<br>con el sistema activo</h2>
+  <p class="sec-sub">Proyecciones conservadoras basadas en el modelo de datos de negocios similares en el sector salud usando la plataforma 10xTeam.</p>
+
+  <div class="roadmap">
+    <div class="rm-item">
+      <div class="rm-left"><div class="rm-dot gold"></div><div class="rm-line"></div></div>
+      <div>
+        <p class="rm-period">Mes 1–2 · Activación</p>
+        <p class="rm-title">Primeras victorias rápidas</p>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.6">Bot activo desde el día 1. Primeras 3 citas adicionales en la semana 1 (garantizado). Agenda llena al 75–80% en el mes 2. Costo por paciente nuevo baja de ~$1,400 a ~$400 MXN.</p>
+        <div class="rm-items">
+          <span class="rm-tag">+3 pacientes/mes adicionales</span>
+          <span class="rm-tag">+$85,500 MXN/mes adicionales</span>
+          <span class="rm-tag">Bot 24/7 activo</span>
+          <span class="rm-tag">5 flujos de materiales activos</span>
+        </div>
+      </div>
+    </div>
+    <div class="rm-item">
+      <div class="rm-left"><div class="rm-dot teal"></div><div class="rm-line"></div></div>
+      <div>
+        <p class="rm-period">Mes 3–6 · Optimización</p>
+        <p class="rm-title">El sistema aprende y mejora</p>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.6">El CRM acumula datos. El bot mejora su calificación. Los posts con mejor engagement se replican. El ICP se ajusta con evidencia real de quién está convirtiendo. Agenda consistente al 85%+.</p>
+        <div class="rm-items">
+          <span class="rm-tag">Agenda 85%+ consistente</span>
+          <span class="rm-tag">ICP actualizado con datos reales</span>
+          <span class="rm-tag">+38% pacientes nuevos vs mes 1</span>
+          <span class="rm-tag">Programa de referidos activo</span>
+        </div>
+      </div>
+    </div>
+    <div class="rm-item">
+      <div class="rm-left"><div class="rm-dot blue"></div></div>
+      <div>
+        <p class="rm-period">Mes 7–12 · Crecimiento Compuesto</p>
+        <p class="rm-title">El sistema trabaja — tú atienes pacientes</p>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.6">La clínica tiene una máquina de adquisición que funciona sin intervención diaria. Los referidos generan el 30–35% de los nuevos pacientes. El equipo de recepción usa los scripts — la clínica vende sin que el doctor tenga que vender.</p>
+        <div class="rm-items">
+          <span class="rm-tag">+$935,000 MXN proyectado en el año</span>
+          <span class="rm-tag">CAC reducido 70% vs inicio</span>
+          <span class="rm-tag">Lista de espera para implantes</span>
+          <span class="rm-tag">Evaluación de segunda sucursal</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LA GARANTÍA -->
+<section class="sec" id="garantia">
+  <div class="sec-num">14 · La Garantía</div>
+  <h2 class="sec-title">El único riesgo<br><em>es no probarlo</em></h2>
+
+  <div class="guarantee">
+    <div class="guarantee-badge">
+      <span class="num">72</span>
+      <span class="unit">Horas</span>
+    </div>
+    <div>
+      <p class="guarantee-title">Tu primera cita calificada en 72 horas — o no pagas el setup</p>
+      <p class="guarantee-body">Desde el momento en que tu plataforma queda activa, tienes <strong>72 horas</strong> para recibir tu primera cita agendada por el sistema. Si no ocurre, te devolvemos el costo de activación por completo — sin preguntas, sin letras chiquitas.<br><br>
+      No es una garantía de "satisfacción" vaga. Es una métrica concreta, medible, que vive en tu propio dashboard. O el sistema produce desde el primer momento, o no nos quedamos con tu dinero por ponerlo en marcha.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding:48px 0 40px">
+  <div style="background:var(--s);border:1px solid var(--bd);border-radius:16px;padding:28px 30px">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--white);margin-bottom:8px">Este documento es solo el inicio.</p>
+    <p style="font-size:13px;color:var(--muted);line-height:1.7;max-width:640px;margin-bottom:20px">Lo que acabas de ver es lo que entendemos de tu negocio después de un wizard de 25 minutos. Imagina lo que podemos construir juntos después de 3, 6 y 12 meses de datos reales. El sistema se vuelve más preciso cada mes. Los materiales mejoran. El bot califica mejor. El costo por paciente baja. Y tú solo tienes que atender a los pacientes que ya llegaron listos.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
+      <div style="background:var(--gold-d);border:1px solid var(--gold-m);border-radius:8px;padding:10px 16px;text-align:center;flex:1;min-width:140px">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Tu plataforma</p>
+        <p style="font-size:13px;font-weight:600;color:var(--white)">Ya está configurada</p>
+        <p style="font-size:11px;color:var(--muted)">Lista para activarse hoy mismo</p>
+      </div>
+      <div style="background:rgba(13,148,136,.07);border:1px solid rgba(13,148,136,.2);border-radius:8px;padding:10px 16px;text-align:center;flex:1;min-width:140px">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--teal-l);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Tu prueba</p>
+        <p style="font-size:13px;font-weight:600;color:var(--white)">14 días completos</p>
+        <p style="font-size:11px;color:var(--muted)">Inician hoy, con todo ya listo</p>
+      </div>
+      <div style="background:rgba(37,99,235,.07);border:1px solid rgba(37,99,235,.2);border-radius:8px;padding:10px 16px;text-align:center;flex:1;min-width:140px">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--blue-l);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Actualización</p>
+        <p style="font-size:13px;font-weight:600;color:var(--white)">Materiales cada mes</p>
+        <p style="font-size:11px;color:var(--muted)">Automáticos, sin pedirlos, mejores cada vez</p>
+      </div>
+    </div>
+  </div>
+  <p class="confidential">Documento confidencial elaborado por 10xTeam · growth.10xteam.com.mx · Junio 2026</p>
+</section>
+
+</div><!-- /wrap -->
+</body>
+</html>

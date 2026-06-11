@@ -16,52 +16,53 @@ function applyGrowthPatches(html: string): string {
   );
 
   out = out.replace('href="#" class="nav-logo"', 'href="https://10xteam.com.mx" class="nav-logo"');
+  out = out.replace('href="#" class="nav-login"', 'href="/wizard/step/1" class="nav-login"');
   out = out.replace(
     'href="#demo" class="btn btn-primary btn-sm">Empieza gratis →</a>',
-    'href="javascript:void(0)" class="btn btn-primary btn-sm js-open-modal" data-source="nav-empieza" data-interest="Prueba gratis">Empieza gratis →</a>',
+    'href="/wizard/step/1" class="btn btn-primary btn-sm">Empieza gratis →</a>',
   );
   out = out.replace(
     'href="#demo" class="btn btn-primary btn-lg">Empieza 14 días gratis →</a>',
-    'href="javascript:void(0)" class="btn btn-primary btn-lg js-open-modal" data-source="hero-empieza" data-interest="Prueba gratis">Empieza 14 días gratis →</a>',
+    'href="/wizard/step/1" class="btn btn-primary btn-lg">Empieza 14 días gratis →</a>',
   );
   out = out.replace(
     'href="#demo" class="btn btn-outline btn-lg">Ver demo en vivo</a>',
-    'href="javascript:void(0)" class="btn btn-outline btn-lg js-open-modal" data-source="hero-demo" data-interest="Demo en vivo">Ver demo en vivo</a>',
+    'href="/wizard/step/1" class="btn btn-outline btn-lg">Ver demo en vivo</a>',
   );
 
   out = out.replaceAll(
     'href="#demo" class="btn btn-primary">Empieza 14 días gratis →</a>',
-    'href="javascript:void(0)" class="btn btn-primary js-open-modal" data-source="tab-cta" data-interest="Prueba gratis">Empieza 14 días gratis →</a>',
+    'href="/wizard/step/1" class="btn btn-primary">Empieza 14 días gratis →</a>',
   );
   out = out.replace(
     'href="#demo" class="btn btn-outline pricing-cta">Empezar →</a>',
-    'href="javascript:void(0)" class="btn btn-outline pricing-cta js-open-modal" data-source="pricing-starter" data-interest="Plan Starter">Empezar →</a>',
+    'href="/wizard/step/1" class="btn btn-outline pricing-cta">Empezar →</a>',
   );
   out = out.replace(
     'href="#demo" class="btn btn-primary pricing-cta">Empezar 14 días gratis →</a>',
-    'href="javascript:void(0)" class="btn btn-primary pricing-cta js-open-modal" data-source="pricing-growth" data-interest="Plan Growth">Empezar 14 días gratis →</a>',
+    'href="/wizard/step/1" class="btn btn-primary pricing-cta">Empezar 14 días gratis →</a>',
   );
   out = out.replace(
     'href="#demo" class="btn btn-outline pricing-cta">Contactar →</a>',
-    'href="javascript:void(0)" class="btn btn-outline pricing-cta js-open-modal" data-source="pricing-pro" data-interest="Plan Pro">Contactar →</a>',
+    'href="/wizard/step/1" class="btn btn-outline pricing-cta">Contactar →</a>',
   );
   out = out.replace(
     'href="#demo" style="color:var(--blue-l);font-weight:600;margin-left:4px">Pregúntanos por el plan de reventa →</a>',
-    'href="javascript:void(0)" class="js-open-modal" data-source="reventa" data-interest="Para agencias" style="color:var(--blue-l);font-weight:600;margin-left:4px">Pregúntanos por el plan de reventa →</a>',
+    'href="/wizard/step/1" style="color:var(--blue-l);font-weight:600;margin-left:4px">Pregúntanos por el plan de reventa →</a>',
   );
   out = out.replace(
     'href="#" class="btn btn-primary btn-lg">Empieza tu prueba gratuita →</a>',
-    'href="javascript:void(0)" class="btn btn-primary btn-lg js-open-modal" data-source="final-prueba" data-interest="Prueba gratis">Empieza tu prueba gratuita →</a>',
+    'href="/wizard/step/1" class="btn btn-primary btn-lg">Empieza tu prueba gratuita →</a>',
   );
   out = out.replace(
     'href="#" class="btn btn-outline btn-lg">Ver demo en vivo</a>',
-    'href="javascript:void(0)" class="btn btn-outline btn-lg js-open-modal" data-source="final-demo" data-interest="Demo en vivo">Ver demo en vivo</a>',
+    'href="/wizard/step/1" class="btn btn-outline btn-lg">Ver demo en vivo</a>',
   );
 
   out = out.replace('<span class="badge badge-blue">México 🇲🇽</span>', '');
   out = out.replace('href="#" class="footer-link">10xTeam Dev</a>', 'href="https://dev.10xteam.com.mx" class="footer-link">10xTeam Dev</a>');
-  out = out.replace('href="#" class="footer-link">Para agencias</a>', 'href="javascript:void(0)" class="footer-link js-open-modal" data-source="footer-agencias" data-interest="Para agencias">Para agencias</a>');
-  out = out.replace('href="#demo" class="footer-link">Agendar demo</a>', 'href="javascript:void(0)" class="footer-link js-open-modal" data-source="footer-agendar" data-interest="Agendar demo">Agendar demo</a>');
+  out = out.replace('href="#" class="footer-link">Para agencias</a>', 'href="/wizard/step/1" class="footer-link">Para agencias</a>');
+  out = out.replace('href="#demo" class="footer-link">Agendar demo</a>', 'href="/wizard/step/1" class="footer-link">Agendar demo</a>');
   out = out.replace(
     /\s*<div>\s*<div class="footer-col-title">Empresa<\/div>[\s\S]*?<\/div>\s*<\/div>\s*/,
     '\n',

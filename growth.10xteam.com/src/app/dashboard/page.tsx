@@ -50,6 +50,24 @@ export default function DashboardPreTrialPage() {
             Editar respuestas
           </Link>
         </div>
+
+        <section className="mt-10 space-y-4">
+          <h2 className="text-xl font-semibold text-stone-100">Diagnóstico Estratégico 10x (Preview)</h2>
+          <p className="text-sm text-stone-300">Esta vista es temporal hasta definir su ubicación final.</p>
+          <a
+            href="/diagnostico-estrategico-10x-template.html"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex rounded-full border border-cyan-300/40 bg-cyan-300/10 px-5 py-2.5 text-sm font-semibold text-cyan-100"
+          >
+            Abrir en nueva pestaña
+          </a>
+          <iframe
+            title="Diagnóstico Estratégico 10x"
+            src="/diagnostico-estrategico-10x-template.html"
+            className="w-full h-[75vh] rounded-2xl border border-white/10 bg-black"
+          />
+        </section>
       </div>
     </div>
   );
