@@ -2132,104 +2132,7 @@ p { font-size: 15px; color: var(--text); line-height: 1.7; }
 ═══════════════════════════════════════════════ -->
 <section class="section pricing-section" id="precios">
   <div class="container">
-    <div class="section-header">
-      <p class="eyebrow mb-8">Precios</p>
-      <h2 class="display">Precios simples,<br>sin sorpresas</h2>
-      <p>Un precio fijo mensual. Contactos y usuarios ilimitados. Sin costos por volumen. Cancela cuando quieras.</p>
-    </div>
-
-    <div class="pricing-grid">
-      <!-- STARTER -->
-      <div class="pricing-card">
-        <div class="pricing-tier">Starter</div>
-        <div class="pricing-name">Arranque</div>
-        <div class="pricing-desc">Para negocios que están construyendo su sistema de ventas desde cero.</div>
-        <div class="pricing-price">
-          <span class="pricing-currency">$</span>
-          <span class="pricing-amount">297</span>
-          <span class="pricing-period">/mes USD</span>
-        </div>
-        <div class="pricing-mxn">≈ $4,997 MXN/mes</div>
-        <div class="pricing-setup">+ $497 USD setup único al inicio</div>
-        <hr class="pricing-divider">
-        <ul class="pricing-features">
-          <li class="pricing-feature">Wizard ICP con IA</li>
-          <li class="pricing-feature">CRM completo + pipeline (5 etapas)</li>
-          <li class="pricing-feature">Bot de WhatsApp básico</li>
-          <li class="pricing-feature">3 secuencias de email</li>
-          <li class="pricing-feature">Templates de pitch deck (2 variantes)</li>
-          <li class="pricing-feature">Hasta 500 contactos activos</li>
-          <li class="pricing-feature">1 usuario administrador</li>
-          <li class="pricing-feature">Soporte por WhatsApp (horario MX)</li>
-          <li class="pricing-feature dim">Prospección outbound</li>
-          <li class="pricing-feature dim">Generador de propuestas IA</li>
-          <li class="pricing-feature dim">Contenido social automático</li>
-        </ul>
-        <a href="/wizard" class="btn btn-outline pricing-cta">Empezar →</a>
-      </div>
-
-      <!-- GROWTH -->
-      <div class="pricing-card featured">
-        <div class="pricing-popular">⭐ El más elegido</div>
-        <div class="pricing-tier">Growth</div>
-        <div class="pricing-name">Crecimiento</div>
-        <div class="pricing-desc">Para negocios que quieren un sistema completo de prospección y cierre.</div>
-        <div class="pricing-price">
-          <span class="pricing-currency">$</span>
-          <span class="pricing-amount">497</span>
-          <span class="pricing-period">/mes USD</span>
-        </div>
-        <div class="pricing-mxn">≈ $8,400 MXN/mes</div>
-        <div class="pricing-setup">+ $997 USD setup único al inicio</div>
-        <hr class="pricing-divider">
-        <ul class="pricing-features">
-          <li class="pricing-feature">Todo lo de Starter +</li>
-          <li class="pricing-feature">Wizard ICP avanzado + lead scoring</li>
-          <li class="pricing-feature">Prospección outbound (email + LinkedIn)</li>
-          <li class="pricing-feature">Bot IA de calificación en WhatsApp</li>
-          <li class="pricing-feature">Generador de propuestas personalizado</li>
-          <li class="pricing-feature">12 posts sociales/mes generados por IA</li>
-          <li class="pricing-feature">4 creatividades para ads/mes</li>
-          <li class="pricing-feature">Hasta 2,000 contactos activos</li>
-          <li class="pricing-feature">3 usuarios + reportes semanales de ROI</li>
-        </ul>
-        <a href="/wizard" class="btn btn-primary pricing-cta">Empezar 14 días gratis →</a>
-      </div>
-
-      <!-- PRO -->
-      <div class="pricing-card">
-        <div class="pricing-tier">Pro</div>
-        <div class="pricing-name">Escala</div>
-        <div class="pricing-desc">Para equipos que necesitan el sistema completo sin ningún límite.</div>
-        <div class="pricing-price">
-          <span class="pricing-currency">$</span>
-          <span class="pricing-amount">997</span>
-          <span class="pricing-period">/mes USD</span>
-        </div>
-        <div class="pricing-mxn">≈ $16,800 MXN/mes</div>
-        <div class="pricing-setup">+ $1,997 USD setup único al inicio</div>
-        <hr class="pricing-divider">
-        <ul class="pricing-features">
-          <li class="pricing-feature">Todo lo de Growth +</li>
-          <li class="pricing-feature">Snapshot personalizado por industria</li>
-          <li class="pricing-feature">Bot IA multicanal (WA + email + SMS + IG)</li>
-          <li class="pricing-feature">Materiales ilimitados generados por IA</li>
-          <li class="pricing-feature">Gestor de cuenta dedicado</li>
-          <li class="pricing-feature">Revisión quincenal de estrategia</li>
-          <li class="pricing-feature">Integración con sistemas actuales</li>
-          <li class="pricing-feature">Contactos y usuarios ilimitados</li>
-          <li class="pricing-feature">SLA respuesta en 4 horas</li>
-        </ul>
-        <a href="/wizard" class="btn btn-outline pricing-cta">Contactar →</a>
-      </div>
-    </div>
-
-    <div class="mt-32 text-center">
-      <p style="font-size:14px;color:var(--muted)">
-        ¿Eres una agencia o tienes múltiples negocios?
-        <a href="/wizard" style="color:var(--blue-l);font-weight:600;margin-left:4px">Pregúntanos por el plan de reventa →</a>
-      </p>
-    </div>
+    <div id="pricing-native-root" style="min-height: 600px;"></div>
   </div>
 </section>
 
@@ -2489,6 +2392,55 @@ document.querySelectorAll('.card, .exclusive-card, .service-card, .pricing-card,
   el.style.transition = 'opacity .5s ease, transform .5s ease';
   observer.observe(el);
 });
+
+// Native pricing embed from canonical file (without iframe)
+(function initNativePricingEmbed() {
+  const host = document.getElementById('pricing-native-root');
+  if (!host) return;
+
+  fetch('/pricing-canon', { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) throw new Error('pricing fetch failed');
+      return response.text();
+    })
+    .then(html => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const links = Array.from(doc.querySelectorAll('head link[rel="stylesheet"], head link[rel="preconnect"]'))
+        .map(link => link.outerHTML)
+        .join('');
+      const style = doc.querySelector('head style')?.textContent ?? '';
+      const scriptText = doc.querySelector('body script:last-of-type')?.textContent ?? '';
+
+      const bodyNodes = Array.from(doc.body.children)
+        .filter(node => node.tagName.toLowerCase() !== 'script')
+        .map(node => node.outerHTML)
+        .join('');
+
+      const shadow = host.attachShadow({ mode: 'open' });
+      shadow.innerHTML = `${links}<style>${style}</style>${bodyNodes}`;
+
+      // Route every primary CTA in pricing to wizard flow.
+      shadow.querySelectorAll('a.cta').forEach(anchor => {
+        anchor.setAttribute('href', '/wizard');
+      });
+
+      const docShim = {
+        querySelector: shadow.querySelector.bind(shadow),
+        querySelectorAll: shadow.querySelectorAll.bind(shadow),
+        getElementById: shadow.getElementById.bind(shadow),
+        addEventListener: shadow.addEventListener.bind(shadow),
+      };
+
+      if (scriptText.trim()) {
+        const runPricingScript = new Function('document', 'window', scriptText);
+        runPricingScript(docShim, window);
+      }
+    })
+    .catch(() => {
+      host.innerHTML = '<div class="card" style="text-align:center;">No pudimos cargar la sección de precios. Intenta recargar la página.</div>';
+    });
+})();
 </script>
 </body>
 </html>

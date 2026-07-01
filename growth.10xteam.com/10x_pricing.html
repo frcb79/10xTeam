@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10xTeam — Planes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0D12;--surface:#14171F;--surface-2:#1B1F2A;--border:#262B38;
+  --violet:#7B5CFF;--violet-dim:#5A41C9;--green:#3DDC97;
+  --text:#F2F1ED;--text-dim:#9A9CA8;--text-faint:#5F6373;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;}
+::selection{background:var(--violet);color:#fff;}
+
+/* HERO */
+.hero{padding:64px 24px 50px;text-align:center;background:radial-gradient(circle at 50% 0%,rgba(123,92,255,0.16),transparent 60%);}
+.eyebrow-row{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:18px;}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;color:var(--green);text-transform:uppercase;}
+.currency-select{position:relative;}
+.currency-btn{display:flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--border);color:var(--text-dim);font-family:'JetBrains Mono',monospace;font-size:12px;padding:6px 11px;border-radius:8px;cursor:pointer;}
+.currency-btn:hover{color:var(--text);border-color:#33394A;}
+.chev{font-size:9px;opacity:.6;}
+.currency-menu{position:absolute;left:50%;transform:translateX(-50%);top:calc(100% + 8px);background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;min-width:200px;display:none;z-index:20;box-shadow:0 12px 28px rgba(0,0,0,.4);}
+.currency-menu.open{display:block;}
+.currency-menu button{display:flex;width:100%;align-items:center;gap:9px;padding:11px 14px;background:none;border:none;color:var(--text-dim);font-size:13px;font-family:'Inter',sans-serif;text-align:left;cursor:pointer;}
+.currency-menu button:hover{background:var(--surface-2);color:var(--text);}
+.currency-menu button.active{color:var(--green);}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(32px,4.6vw,50px);line-height:1.1;letter-spacing:-0.02em;max-width:760px;margin:0 auto 18px;}
+.hero h1 span{color:var(--violet);}
+.hero p{color:var(--text-dim);font-size:17.5px;max-width:600px;margin:0 auto;}
+.sub-note{margin-top:14px;font-size:14px;color:var(--text-faint);}
+.sub-note b{color:var(--green);font-weight:600;}
+
+/* PROOF STRIP */
+.proof-strip{display:flex;justify-content:center;flex-wrap:wrap;margin:40px auto 0;max-width:820px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.proof-item{flex:1;min-width:180px;text-align:center;padding:22px 18px;border-right:1px solid var(--border);}
+.proof-item:last-child{border-right:none;}
+.proof-item .num{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:23px;color:var(--green);display:block;}
+.proof-item .lbl{font-size:12.5px;color:var(--text-faint);margin-top:4px;line-height:1.35;}
+
+/* PLANS */
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:56px 24px 24px;max-width:980px;margin:0 auto;align-items:stretch;}
+@media(max-width:780px){.plans{grid-template-columns:1fr;}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px 32px;position:relative;display:flex;flex-direction:column;}
+.card.featured{border-color:var(--violet-dim);background:linear-gradient(180deg,rgba(123,92,255,0.08),var(--surface) 40%);}
+.badge{position:absolute;top:-13px;left:32px;color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:999px;}
+.badge.b-green{background:var(--green);color:#08110D;}
+.badge.b-violet{background:var(--violet);}
+.plan-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:26px;margin-bottom:6px;}
+.plan-name .x{color:var(--violet);}
+.plan-tag{color:var(--text-dim);font-size:14.5px;margin-bottom:20px;min-height:44px;}
+
+/* PRICE BLOCK — see-all btn BEFORE price */
+.see-all-btn-top{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:rgba(123,92,255,0.12);border:1px solid var(--violet-dim);color:var(--text);font-size:13.5px;font-weight:600;padding:12px;border-radius:10px;cursor:pointer;margin-bottom:20px;transition:background .2s;}
+.see-all-btn-top:hover{background:rgba(123,92,255,0.22);}
+
+.billing-toggle{display:inline-flex;width:fit-content;background:var(--surface-2);border:1px solid var(--border);border-radius:999px;padding:3px;margin-bottom:16px;gap:2px;}
+.billing-toggle button{font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:500;padding:6px 13px;border-radius:999px;border:none;background:transparent;color:var(--text-dim);cursor:pointer;}
+.billing-toggle button.active{background:var(--violet);color:#fff;}
+.price-row{display:flex;align-items:baseline;gap:8px;}
+.price{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:40px;letter-spacing:-0.01em;}
+.price-period{color:var(--text-dim);font-size:14px;}
+.annual-perk{display:none;align-items:center;gap:7px;margin-top:8px;font-size:13px;color:var(--green);font-weight:500;min-height:20px;}
+.annual-perk.show{display:flex;}
+.annual-perk .dot{width:6px;height:6px;border-radius:50%;background:var(--green);}
+.setup{font-size:13px;color:var(--text-faint);margin-top:12px;padding-top:12px;border-top:1px solid var(--border);}
+.setup b{font-weight:500;color:var(--text-dim);}
+
+.divider{height:1px;background:var(--border);margin:22px 0 18px;}
+
+/* METER */
+.meter-group{margin-bottom:16px;}
+.meter-label{display:flex;justify-content:space-between;font-size:13px;color:var(--text-dim);margin-bottom:7px;}
+.meter-label b{color:var(--text);font-weight:600;}
+.meter-track{height:8px;border-radius:999px;background:var(--surface-2);overflow:hidden;border:1px solid var(--border);}
+.meter-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--violet),var(--green));}
+.meter-link-row{display:flex;justify-content:flex-end;margin-top:7px;}
+.meter-link{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--violet);background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;padding:0;}
+.meter-link:hover{color:var(--green);}
+
+/* CATEGORIES + DIFFS */
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px;}
+.cat-pill{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:12.5px;color:var(--text-dim);}
+.cat-pill b{display:block;color:var(--text);font-size:13px;font-weight:600;margin-bottom:2px;}
+.diff-list{list-style:none;flex-grow:1;}
+.diff-list li{display:flex;gap:10px;font-size:14px;color:var(--text-dim);padding:6px 0;}
+.diff-list li::before{content:"✦";color:var(--green);font-size:12px;margin-top:2px;flex-shrink:0;}
+.diff-list li b{color:var(--text);font-weight:500;}
+
+.card-footer{margin-top:auto;padding-top:18px;}
+.cta{display:block;width:100%;text-align:center;padding:14px 0;border-radius:11px;font-weight:600;font-size:15px;text-decoration:none;cursor:pointer;border:none;margin-top:10px;}
+.cta.primary{background:var(--green);color:#08110D;}
+.cta.ghost{background:transparent;border:1px solid var(--border);color:var(--text);}
+
+/* ADD-ONS */
+.addons-section{padding:64px 24px 24px;max-width:980px;margin:0 auto;}
+.section-head{margin-bottom:28px;}
+.eyebrow2{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--violet);text-transform:uppercase;margin-bottom:8px;display:block;}
+.section-head h2{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:600;}
+.addons-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:780px){.addons-grid{grid-template-columns:1fr;}}
+.addon-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px;}
+.addon-head{display:flex;align-items:center;gap:13px;margin-bottom:14px;}
+.addon-icon{width:38px;height:38px;border-radius:10px;background:rgba(123,92,255,0.12);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.addon-card h3{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;}
+.addon-card p{color:var(--text-dim);font-size:14px;margin-bottom:12px;}
+.addon-price{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--green);font-weight:600;margin-bottom:6px;}
+.addon-price-usd{font-size:12px;color:var(--text-faint);margin-bottom:12px;}
+.addon-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--violet);background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-weight:500;padding:0;}
+.addon-link:hover{color:var(--green);}
+.addon-card-highlight{border-color:var(--violet-dim);background:linear-gradient(160deg,rgba(123,92,255,0.07),var(--surface) 60%);position:relative;}
+.addon-popular-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.05em;color:#08110D;background:var(--green);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.addon-icon-green{background:rgba(61,220,151,0.1);}
+/* Third party note */
+.third-party-note{display:flex;gap:14px;margin-top:20px;background:var(--surface-2);border:1px solid var(--border);border-radius:14px;padding:18px 20px;}
+.tpn-icon{font-size:16px;color:var(--text-faint);flex-shrink:0;margin-top:2px;}
+.tpn-body{flex:1;}
+.tpn-body strong{font-size:13.5px;color:var(--text);display:block;margin-bottom:10px;}
+.tpn-items{display:flex;flex-direction:column;gap:7px;margin-bottom:10px;}
+.tpn-item{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.tpn-label{font-size:13px;color:var(--text-dim);}
+.tpn-price{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--green);white-space:nowrap;}
+.tpn-foot{font-size:12px;color:var(--text-faint);line-height:1.5;}
+
+/* VS SECTION */
+.vs-section{max-width:980px;margin:64px auto 0;padding:0 24px;}
+.vs-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:34px 36px;}
+.vs-card h3{font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:600;margin-bottom:18px;text-align:center;}
+.vs-table{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+@media(max-width:680px){.vs-table{grid-template-columns:1fr;}}
+.vs-col{background:var(--surface-2);border-radius:14px;padding:20px 22px;}
+.vs-col.us{border:1px solid rgba(61,220,151,0.3);}
+.vs-col-title{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px;color:var(--text-faint);}
+.vs-col.us .vs-col-title{color:var(--green);}
+.vs-col ul{list-style:none;}
+.vs-col li{font-size:13.5px;color:var(--text-dim);padding:5px 0;display:flex;gap:8px;}
+.vs-col.us li{color:var(--text);}
+.vs-col li::before{content:"–";color:var(--text-faint);}
+.vs-col.us li::before{content:"✓";color:var(--green);}
+
+/* FINAL CTA */
+.final-cta{text-align:center;padding:88px 24px 96px;}
+.final-cta h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,3.4vw,36px);font-weight:700;margin-bottom:14px;max-width:580px;margin-left:auto;margin-right:auto;}
+.final-cta p{color:var(--text-dim);margin-bottom:30px;}
+.final-cta .cta{display:inline-block;width:auto;padding:15px 38px;margin:0;}
+.trust-note{margin-top:18px;font-size:12.5px;color:var(--text-faint);}
+
+/* MODALS */
+.modal-overlay{position:fixed;inset:0;background:rgba(5,6,9,0.82);backdrop-filter:blur(4px);display:none;align-items:flex-start;justify-content:center;z-index:100;padding:40px 20px;overflow-y:auto;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:18px;max-width:880px;width:100%;padding:36px 38px 30px;}
+.modal.modal-narrow{max-width:680px;}
+.modal-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;}
+.modal-head h2{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;}
+.modal-head p{color:var(--text-dim);font-size:14px;margin-top:6px;max-width:520px;}
+.modal-close{background:var(--surface-2);border:1px solid var(--border);color:var(--text-dim);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:16px;flex-shrink:0;}
+.modal-close:hover{color:var(--text);}
+
+/* FEATURES MODAL */
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 28px;margin-top:24px;}
+@media(max-width:680px){.modal-grid{grid-template-columns:1fr;}}
+.mod-cat{border-top:1px solid var(--border);padding:16px 0;}
+.mod-cat h4{font-family:'Space Grotesk',sans-serif;font-size:14.5px;font-weight:600;margin-bottom:9px;color:var(--text);}
+.mod-cat ul{list-style:none;}
+.mod-cat li{font-size:12.8px;color:var(--text-dim);padding:3px 0;display:flex;gap:7px;}
+.mod-cat li::before{content:"·";color:var(--violet);font-weight:700;}
+.mod-cat.own li::before{content:"·";color:var(--green);}
+.own-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--green);border:1px solid rgba(61,220,151,0.35);background:rgba(61,220,151,0.08);padding:2px 7px;border-radius:999px;margin-left:7px;vertical-align:middle;}
+
+/* CREDITS MODAL */
+.credits-intro{margin-top:20px;font-size:14px;color:var(--text-dim);}
+.credits-plan-tabs{display:flex;gap:8px;margin-top:16px;margin-bottom:4px;}
+.credits-plan-tabs button{font-family:'JetBrains Mono',monospace;font-size:12px;padding:7px 16px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text-dim);cursor:pointer;}
+.credits-plan-tabs button.active{background:var(--violet);color:#fff;border-color:var(--violet);}
+.credit-view{display:none;}
+.credit-view.show{display:block;}
+.credit-table{margin-top:10px;border-top:1px solid var(--border);}
+.credit-row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--border);font-size:14px;gap:16px;}
+.credit-row .what{color:var(--text);flex:1;}
+.credit-row .what span{display:block;font-size:12px;color:var(--text-faint);margin-top:2px;}
+.credit-row .qty{font-family:'JetBrains Mono',monospace;color:var(--green);font-weight:600;white-space:nowrap;text-align:right;}
+.credit-row .qty small{display:block;font-size:11px;color:var(--text-faint);font-weight:400;}
+.credit-comparison{margin-top:16px;background:var(--surface-2);border-radius:12px;padding:18px 20px;}
+.credit-comparison h4{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;margin-bottom:12px;}
+.credit-compare-row{display:flex;justify-content:space-between;font-size:13.5px;padding:5px 0;}
+.credit-compare-row .label{color:var(--text-dim);}
+.credit-compare-row .val-bad{font-family:'JetBrains Mono',monospace;color:var(--text-faint);text-decoration:line-through;}
+.credit-compare-row .val-good{font-family:'JetBrains Mono',monospace;color:var(--green);font-weight:600;}
+.credit-foot{margin-top:14px;font-size:13px;color:var(--text-dim);border-top:1px solid var(--border);padding-top:14px;}
+.credit-foot b{color:var(--green);}
+
+/* SUPPORT MODAL */
+.support-tiers{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px;}
+@media(max-width:680px){.support-tiers{grid-template-columns:1fr;}}
+.tier-card{background:var(--surface-2);border:1px solid var(--border);border-radius:14px;padding:22px;position:relative;}
+.tier-card.highlight{border-color:var(--violet-dim);}
+.tier-popular{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green);border:1px solid rgba(61,220,151,0.4);background:rgba(61,220,151,0.08);padding:3px 9px;border-radius:999px;margin-bottom:10px;}
+.tier-name{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;margin-bottom:4px;}
+.tier-sub{font-size:12.5px;color:var(--text-faint);margin-bottom:16px;min-height:32px;}
+.tier-price-row{display:flex;align-items:baseline;gap:6px;margin-bottom:2px;}
+.tier-price{font-family:'JetBrains Mono',monospace;font-size:21px;font-weight:700;color:var(--green);}
+.tier-price .per{font-size:12px;color:var(--text-dim);font-weight:400;}
+.tier-price-usd{font-size:11.5px;color:var(--text-faint);margin-bottom:4px;}
+.tier-extra{font-size:11.5px;color:var(--text-faint);margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+.tier-card ul{list-style:none;}
+.tier-card li{font-size:13px;color:var(--text-dim);padding:5px 0;display:flex;gap:7px;}
+.tier-card li::before{content:"✦";color:var(--violet);font-size:10px;margin-top:3px;flex-shrink:0;}
+.support-note{margin-top:18px;font-size:12.5px;color:var(--text-dim);background:var(--surface-2);border-radius:10px;padding:13px 16px;}
+/* Modal currency mini-toggle */
+.modal-currency-toggle{display:inline-flex;background:var(--surface-2);border:1px solid var(--border);border-radius:999px;padding:3px;gap:2px;}
+.modal-currency-toggle button{font-family:'JetBrains Mono',monospace;font-size:11px;padding:5px 11px;border-radius:999px;border:none;background:transparent;color:var(--text-dim);cursor:pointer;}
+.modal-currency-toggle button.active{background:var(--violet);color:#fff;}
+.tier-curr-label{font-size:11.5px;color:var(--text-faint);margin-bottom:4px;}
+.tier-price{font-family:'JetBrains Mono',monospace;font-size:21px;font-weight:700;color:var(--green);}
+
+/* FOMO BAR */
+.fomo-bar{background:linear-gradient(90deg,rgba(123,92,255,0.18),rgba(61,220,151,0.12));border-bottom:1px solid var(--border);padding:11px 24px;text-align:center;font-size:13px;color:var(--text-dim);}
+.fomo-bar strong{color:var(--text);}
+.fomo-bar .fomo-count{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--green);font-size:15px;}
+.fomo-bar .fomo-total{font-family:'JetBrains Mono',monospace;color:var(--text-faint);font-size:13px;}
+.fomo-progress{height:3px;background:var(--border);margin-top:8px;max-width:360px;margin-left:auto;margin-right:auto;border-radius:999px;overflow:hidden;}
+.fomo-progress-fill{height:100%;background:linear-gradient(90deg,var(--violet),var(--green));border-radius:999px;transition:width 1s ease;}
+
+/* EARLY ADOPTER PRICE BLOCK */
+.price-intro-block{margin-bottom:4px;}
+.price-real{display:flex;align-items:baseline;gap:8px;margin-bottom:4px;}
+.price-real-num{font-family:'JetBrains Mono',monospace;font-size:17px;color:var(--text-faint);text-decoration:line-through;}
+.price-real-label{font-size:11.5px;color:var(--text-faint);}
+.price-early-badge{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.04em;color:var(--green);border:1px solid rgba(61,220,151,0.4);background:rgba(61,220,151,0.08);padding:3px 10px;border-radius:999px;margin-bottom:8px;}
+.price-guarantee{font-size:12px;color:var(--text-faint);margin-top:8px;}
+.price-guarantee b{color:var(--green);font-weight:500;}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="eyebrow-row">
+    <div class="eyebrow">10xTeam · Planes</div>
+    <div class="currency-select">
+      <button class="currency-btn" id="currency-btn">
+        <span id="currency-flag">🇲🇽</span>
+        <span id="currency-label">MXN</span>
+        <span class="chev">▾</span>
+      </button>
+      <div class="currency-menu" id="currency-menu">
+        <button class="active" data-currency="mxn">🇲🇽 México · MXN</button>
+        <button data-currency="usd">🇺🇸 Estados Unidos · USD</button>
+      </div>
+    </div>
+  </div>
+  <h1>Deja de pagar de más por menos. <span>Ten todo en un solo lugar.</span></h1>
+  <p>Prospección, ventas, contenido, soporte y cobro: el ciclo completo de tu negocio en una sola plataforma, no en seis herramientas que no se hablan entre sí.</p>
+  <div class="sub-note">Estamos tan seguros de que esto funciona, que tienes <b>14 días para comprobarlo</b> antes de pagar un peso.</div>
+  <div class="proof-strip">
+    <div class="proof-item"><span class="num">130+</span><div class="lbl">funcionalidades en una sola plataforma</div></div>
+    <div class="proof-item"><span class="num">6</span><div class="lbl">motores de IA trabajando para ti simultáneamente</div></div>
+    <div class="proof-item"><span class="num">9%</span><div class="lbl">de lo que pagarías hoy en herramientas + personal</div></div>
+    <div class="proof-item"><span class="num">0</span><div class="lbl">herramientas adicionales que contratar o aprender</div></div>
+  </div>
+</section>
+
+<!-- FOMO BAR -->
+<div class="fomo-bar">
+  <strong>Precio Early Adopter</strong> — <span class="fomo-count" id="fomo-count">127</span> <span class="fomo-total">/ 1,000 lugares tomados</span> · Precio garantizado de por vida mientras mantengas tu suscripción activa
+  <div class="fomo-progress"><div class="fomo-progress-fill" id="fomo-fill" style="width:12.7%"></div></div>
+</div>
+
+<!-- PLANS -->
+<div class="plans">
+
+  <!-- IGNITE -->
+  <div class="card featured">
+    <span class="badge b-violet">Más elegido</span>
+    <div class="plan-name"><span class="x">10x</span> Ignite</div>
+    <div class="plan-tag">Para el negocio que quiere eficientar y escalar sin pagar de más por plataformas sueltas.</div>
+
+    <button class="see-all-btn-top" data-open-modal="ignite">
+      ✦ Ver las 130+ funcionalidades incluidas
+    </button>
+
+    <div class="billing-toggle" data-billing-toggle>
+      <button class="active" data-billing="monthly">Mensual</button>
+      <button data-billing="annual">Anual</button>
+    </div>
+    <div class="price-intro-block">
+      <div class="price-real">
+        <span class="price-real-num" data-real-mxn="$2,990" data-real-usd="$199">$2,990</span>
+        <span class="price-real-label">MXN precio regular</span>
+      </div>
+      <span class="price-early-badge">🔒 Precio Early Adopter</span>
+    </div>
+    <div class="price-row">
+      <span class="price" data-price-mxn="$1,990" data-price-usd="$129">$1,990</span>
+      <span class="price-period">MXN / mes</span>
+    </div>
+    <div class="annual-perk" data-annual-perk><span class="dot"></span> Plan Anual — 2 meses sin costo</div>
+    <div class="price-guarantee">🔒 <b>Precio garantizado de por vida</b> mientras mantengas tu suscripción</div>
+    <div class="setup">Setup de activación: <b>$3,500 MXN</b> · <span class="usd-secondary" data-mxn="$3,500" data-usd="$229" style="display:none">USD $229</span> pago único</div>
+
+    <div class="divider"></div>
+
+    <div class="meter-group">
+      <div class="meter-label"><span>Crédito de IA incluido</span><b>$200 MXN/mes</b></div>
+      <div class="meter-track"><div class="meter-fill" style="width:22%"></div></div>
+      <div class="meter-link-row"><button class="meter-link" data-open-credits="ignite">Ver en qué se traduce este saldo →</button></div>
+    </div>
+    <div class="meter-group">
+      <div class="meter-label"><span>Sub-cuentas incluidas</span><b>1</b></div>
+      <div class="meter-track"><div class="meter-fill" style="width:25%"></div></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="cat-grid">
+      <div class="cat-pill"><b>🤖 Inteligencia Artificial</b>6 motores de IA</div>
+      <div class="cat-pill"><b>💬 Comunicación</b>10 canales unificados</div>
+      <div class="cat-pill"><b>⚡ Automatización</b>+100 triggers / acciones</div>
+      <div class="cat-pill"><b>📊 Ventas & Reportes</b>Pipelines + analytics</div>
+    </div>
+    <ul class="diff-list">
+      <li>Ciclo completo: <b>prospección → cierre → soporte → contenido</b></li>
+      <li>Usuarios <b>ilimitados</b> en tu cuenta</li>
+      <li>Sin cobros por activar redes sociales adicionales</li>
+      <li><b>Estrategia Growth 10xTeam</b> — metodologías probadas sobre GHL</li>
+    </ul>
+
+    <div class="card-footer">
+      <a href="#trial" class="cta ghost">Iniciar prueba de 14 días</a>
+    </div>
+  </div>
+
+  <!-- VORTEX -->
+  <div class="card">
+    <span class="badge b-green">Para agencias y multi-marca</span>
+    <div class="plan-name"><span class="x">10x</span> Vortex</div>
+    <div class="plan-tag">Para agencias, consultores o negocios que operan varias marcas o cuentas a la vez.</div>
+
+    <button class="see-all-btn-top" data-open-modal="vortex">
+      ✦ Ver las 130+ funcionalidades incluidas
+    </button>
+
+    <div class="billing-toggle" data-billing-toggle>
+      <button class="active" data-billing="monthly">Mensual</button>
+      <button data-billing="annual">Anual</button>
+    </div>
+    <div class="price-intro-block">
+      <div class="price-real">
+        <span class="price-real-num" data-real-mxn="$5,990" data-real-usd="$499">$5,990</span>
+        <span class="price-real-label">MXN precio regular</span>
+      </div>
+      <span class="price-early-badge">🔒 Precio Early Adopter</span>
+    </div>
+    <div class="price-row">
+      <span class="price" data-price-mxn="$3,990" data-price-usd="$349">$3,990</span>
+      <span class="price-period">MXN / mes</span>
+    </div>
+    <div class="annual-perk" data-annual-perk><span class="dot"></span> Plan Anual — 2 meses sin costo</div>
+    <div class="price-guarantee">🔒 <b>Precio garantizado de por vida</b> mientras mantengas tu suscripción</div>
+    <div class="setup">Setup de activación: <b>$7,500 MXN</b> · <span class="usd-secondary" data-mxn="$7,500" data-usd="$489" style="display:none">USD $489</span> pago único</div>
+
+    <div class="divider"></div>
+
+    <div class="meter-group">
+      <div class="meter-label"><span>Crédito de IA incluido</span><b>$700 MXN/mes</b></div>
+      <div class="meter-track"><div class="meter-fill" style="width:78%"></div></div>
+      <div class="meter-link-row"><button class="meter-link" data-open-credits="vortex">Ver en qué se traduce este saldo →</button></div>
+    </div>
+    <div class="meter-group">
+      <div class="meter-label"><span>Sub-cuentas incluidas</span><b>3</b></div>
+      <div class="meter-track"><div class="meter-fill" style="width:75%"></div></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="cat-grid">
+      <div class="cat-pill"><b>🤖 Inteligencia Artificial</b>6 motores de IA</div>
+      <div class="cat-pill"><b>💬 Comunicación</b>10 canales unificados</div>
+      <div class="cat-pill"><b>⚡ Automatización</b>+100 triggers / acciones</div>
+      <div class="cat-pill"><b>📊 Ventas & Reportes</b>Pipelines + analytics</div>
+    </div>
+    <ul class="diff-list">
+      <li>Todo lo de <b>10x Ignite</b>, multiplicado por cuenta</li>
+      <li>Usuarios <b>ilimitados</b> en cada sub-cuenta</li>
+      <li><b>Todas las redes sociales activas</b> en cada sub-cuenta — sin cobro extra</li>
+      <li><b>White-label incluido</b> — otros lo cobran como extra costoso</li>
+    </ul>
+
+    <div class="card-footer">
+      <a href="#trial" class="cta primary">Iniciar prueba de 14 días</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ADD-ONS -->
+<section class="addons-section">
+  <div class="section-head">
+    <span class="eyebrow2">Cuando tu operación crece</span>
+    <h2>Suma capacidad sin cambiar de plan</h2>
+  </div>
+  <div class="addons-grid">
+    <div class="addon-card">
+      <div class="addon-head">
+        <div class="addon-icon">＋</div>
+        <h3>Sub-cuentas adicionales</h3>
+      </div>
+      <p>Agrega más cuentas operativas conforme creces. Usuarios ilimitados y todas las redes sociales activas en cada una, sin configuración extra.</p>
+      <div class="addon-price addon-subcuenta-price">$1,190 MXN / mes</div>
+      <div class="addon-price-usd addon-subcuenta-usd">Incluye $200 MXN de crédito de IA</div>
+    </div>
+    <div class="addon-card addon-card-highlight">
+      <div class="addon-popular-badge">⭐ Lo más solicitado</div>
+      <div class="addon-head">
+        <div class="addon-icon addon-icon-green">◈</div>
+        <h3>Soporte y operación</h3>
+      </div>
+      <p>Desde resolver dudas puntuales, hasta que nuestro equipo deje la plataforma lista cada mes para que tú solo cierres y recibas ingresos.</p>
+      <button class="addon-link" data-open-support>Ver planes de soporte y precios →</button>
+    </div>
+  </div>
+
+</section>
+
+<!-- VS SECTION -->
+<section class="vs-section">
+  <div class="vs-card">
+    <h3>Lo que otros cobran caro, nosotros lo incluimos.</h3>
+    <div class="vs-table">
+      <div class="vs-col">
+        <div class="vs-col-title">Plataformas sueltas</div>
+        <ul>
+          <li>Pagas IA aparte, con tope de uso bajo</li>
+          <li>Una red social activa, las demás cuestan extra</li>
+          <li>White-label como add-on caro</li>
+          <li>Contratas personal para contenido y seguimiento</li>
+          <li>4 a 10 veces más caro por menos funciones</li>
+        </ul>
+      </div>
+      <div class="vs-col us">
+        <div class="vs-col-title">10xTeam</div>
+        <ul>
+          <li>6 motores de IA incluidos en el plan</li>
+          <li>Todas las redes sociales activas, sin costo extra</li>
+          <li>White-label incluido desde Vortex</li>
+          <li>Tu equipo se enfoca en cerrar, nosotros en operar</li>
+          <li>El ciclo completo del negocio en un solo lugar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="trial">
+  <h2>No nos creas. Compruébalo en 14 días.</h2>
+  <p>Sin compromiso de permanencia. Si no es lo que esperabas, no pagas.</p>
+  <a href="#" class="cta primary">Iniciar mi prueba gratuita</a>
+  <div class="trust-note">Tu activación se confirma en una llamada en vivo con nuestro equipo.</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     MODAL: FUNCIONALIDADES
+═══════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-features">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h2 id="modal-feat-title">Todo lo que incluye tu plan</h2>
+        <p>Una sola plataforma para todo el ciclo de tu negocio: desde encontrar al prospecto hasta cobrarle y fidelizarlo.</p>
+      </div>
+      <button class="modal-close" data-close>✕</button>
+    </div>
+    <div class="modal-grid">
+      <div class="mod-cat own">
+        <h4>🧠 Estrategia Growth 10xTeam <span class="own-tag">metodología propia</span></h4>
+        <ul>
+          <li>Wizard ICP completo en 5 pasos — perfil de cliente ideal con datos reales</li>
+          <li>Diagnóstico Estratégico 10x personalizado para cada prospecto</li>
+          <li>Prompt Maestro — enrutamiento inteligente entre modelos de IA</li>
+          <li>Actualización mensual del ICP con métricas reales del negocio</li>
+          <li>Metodología de prospección con Google Maps integrado</li>
+          <li>Findings Call guiada con documento de hallazgos WOW</li>
+          <li>Buyer Belief Map + Trust Journey de tu cliente ideal</li>
+          <li>Roadmap de crecimiento de 12 meses basado en tu sector</li>
+        </ul>
+      </div>
+      <div class="mod-cat">
+        <h4>👥 CRM & Contactos</h4>
+        <ul>
+          <li>Contactos ilimitados</li>
+          <li>Campos personalizados</li>
+          <li>Tags y segmentación avanzada</li>
+          <li>Smart lists con filtros</li>
+          <li>Historial completo por contacto</li>
+          <li>Acciones masivas (bulk actions)</li>
+          <li>Importación / exportación</li>
+          <li>Scoring de leads</li>
+          <li>DND por canal</li>
+        </ul>
+      </div>
+      <div class="mod-cat">
+        <h4>💬 Comunicación Multicanal</h4>
+        <ul>
+          <li>SMS bidireccional</li>
+          <li>Email con dominio propio</li>
+          <li>WhatsApp Business</li>
+          <li>Instagram DM y Facebook Messenger</li>
+          <li>Google Business Messages</li>
+          <li>Live Chat para tu web</li>
+          <li>Llamadas entrantes y salientes</li>
+          <li>Voicemail drops</li>
+          <li>Bandeja unificada</li>
+        </ul>
+      </div>
+      <div class="mod-cat">
+        <h4>📧 Email Marketing</h4>
+        <ul>
+          <li>Campañas masivas</li>
+          <li>Secuencias automatizadas</li>
+          <li>Editor drag & drop</li>
+          <li>Personalización dinámica</li>
+          <li>Pruebas A/B</li>
+          <li>Estadísticas de apertura y clics</li>
+        </ul>
+      </div>
+      <div class="mod-cat">
+        <h4>📱 Social Media Planner</h4>
+        <ul>
+          <li>Facebook, Instagram, LinkedIn, TikTok, X, Google Business</li>
+          <li>Programación de posts</li>
+          <li>Calendario editorial</li>
+          <li>Gestión de múltiples cuentas</li>
+          <li>Analytics por red social</li>
+        </ul>
+      </div>
+      <div class="mod-cat">
+        <h4>⚡ Automatizaciones</h4>
+        <ul>
+          <li>Constructor visual drag & drop</li>
+          <li>+100 triggers y +100 acciones</li>
+          <li>Lógica condicional</li>
+          <li>Webhooks y API REST</li>
+          <li>Integración Zapier y Make</li>
+        </ul>
+      </div>
+      <div class="mod-cat">
+        <h4>🏆 Ventas & Pipelines</h4>
+        <ul>
+          <li>Pipelines ilimitados</li>
+          <li>Vista Kanban y lista</li>
+          <li>Reportes de ingresos proyectados</li>
+          <li>Rotación y asignación automática de leads</li>
+        </ul>
+      </div>
+      <div class="mod-cat">
+        <h4>🌐 Funnels & Sitios Web</h4>
+        <ul>
+          <li>Constructor de funnels y sitios completos</li>
+          <li>Landing pages y blog</li>
+          <li>Formularios y encuestas</li>
+          <li>Dominios personalizados con SSL</li>
+        </ul>
+      </div>
+      <div class="mod-cat">
+        <h4>📅 Calendarios & Citas</h4>
+        <ul>
+          <li>Agendamiento online</li>
+          <li>Sincronización Google / Outlook</li>
+          <li>Round-robin de equipo</li>
+          <li>Pagos al agendar</li>
+        </ul>
+      </div>
+      <div class="mod-cat">
+        <h4>💳 Pagos & E-commerce</h4>
+        <ul>
+          <li>Facturas, estimados y links de pago</li>
+          <li>Suscripciones y pagos recurrentes</li>
+          <li>Firma electrónica</li>
+          <li>Stripe y PayPal integrados</li>
+        </ul>
+      </div>
+      <div class="mod-cat">
+        <h4>📄 Documentos & Propuestas</h4>
+        <ul>
+          <li>Propuestas comerciales</li>
+          <li>Contratos con e-signature</li>
+          <li>Seguimiento de apertura y firma</li>
+        </ul>
+      </div>
+      <div class="mod-cat">
+        <h4>⭐ Reputación & Reseñas</h4>
+        <ul>
+          <li>Solicitud automática de reseñas Google</li>
+          <li>Respuestas automáticas con IA</li>
+          <li>Widget de reseñas para tu web</li>
+          <li>Reportes de reputación</li>
+        </ul>
+      </div>
+      <div class="mod-cat">
+        <h4>🎓 Cursos & Membresías</h4>
+        <ul>
+          <li>Constructor de cursos online</li>
+          <li>Sitios de membresía</li>
+          <li>Drip content y quizzes</li>
+        </ul>
+      </div>
+      <div class="mod-cat">
+        <h4>🤖 Inteligencia Artificial (6 motores)</h4>
+        <ul>
+          <li>Conversation AI — bot de chat automático en todos los canales</li>
+          <li>Voice AI — agente de voz para llamadas (Retell)</li>
+          <li>Content AI — textos, emails, posts, copies</li>
+          <li>Reviews AI — respuestas automáticas a reseñas</li>
+          <li>Workflow AI — pasos de IA dentro de automatizaciones</li>
+          <li>Image AI — generación de imágenes</li>
+        </ul>
+      </div>
+      <div class="mod-cat">
+        <h4>📊 Reportes & Analytics</h4>
+        <ul>
+          <li>Dashboard personalizable</li>
+          <li>Atribución de conversiones</li>
+          <li>Analytics de funnels y redes sociales</li>
+          <li>Reportes de ingresos, llamadas y campañas</li>
+        </ul>
+      </div>
+      <div class="mod-cat">
+        <h4>📞 Sistema Telefónico</h4>
+        <ul>
+          <li>Números locales y toll-free</li>
+          <li>Grabación y transcripción de llamadas</li>
+          <li>IVR y power dialer</li>
+        </ul>
+      </div>
+      <div class="mod-cat">
+        <h4>🔗 Integraciones Nativas</h4>
+        <ul>
+          <li>Google, Facebook/Instagram Ads</li>
+          <li>Shopify, QuickBooks, Zoom</li>
+          <li>Zapier (+5,000 apps) y Make</li>
+        </ul>
+      </div>
+      <div class="mod-cat">
+        <h4>🛠️ Administración</h4>
+        <ul>
+          <li>Usuarios y permisos por rol — ilimitados</li>
+          <li id="feat-wl">Marca blanca (logo, colores, dominio)</li>
+          <li>Snapshots replicables entre cuentas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     MODAL: CRÉDITOS
+═══════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-credits">
+  <div class="modal modal-narrow">
+    <div class="modal-head">
+      <div>
+        <h2>¿En qué se traduce tu saldo de IA?</h2>
+        <p>Un negocio en operación normal usa un mix de estos servicios cada mes. Aquí comparamos lo que pagarías usando cada herramienta por separado vs. lo que ya incluye tu plan.</p>
+      </div>
+      <button class="modal-close" data-close>✕</button>
+    </div>
+    <div class="credits-plan-tabs">
+      <button class="active" data-tab="ignite">10x Ignite — $200 MXN</button>
+      <button data-tab="vortex">10x Vortex — $700 MXN</button>
+    </div>
+
+    <!-- IGNITE VIEW -->
+    <div class="credit-view show" id="tab-ignite">
+      <div class="credit-table">
+        <div class="credit-row">
+          <div class="what">Bot de conversación AI<span>Respuestas automáticas en chat, WhatsApp, SMS</span></div>
+          <div class="qty">~400 respuestas</div>
+        </div>
+        <div class="credit-row">
+          <div class="what">Mensajes de WhatsApp Business<span>Incluyendo cargo de Meta por conversación</span></div>
+          <div class="qty">~60 conversaciones</div>
+        </div>
+        <div class="credit-row">
+          <div class="what">Emails de campañas y seguimiento<span>Secuencias automáticas + envíos masivos</span></div>
+          <div class="qty">~4,000 emails</div>
+        </div>
+        <div class="credit-row">
+          <div class="what">Generación de contenido con IA<span>Copies, posts, emails, descripciones</span></div>
+          <div class="qty">~30 piezas</div>
+        </div>
+        <div class="credit-row">
+          <div class="what">Verificación de emails<span>Lista limpia antes de enviar campañas</span></div>
+          <div class="qty">~800 verificaciones</div>
+        </div>
+        <div class="credit-row">
+          <div class="what">Minutos de Voice AI<span>Agente de voz en llamadas</span></div>
+          <div class="qty">~15 minutos</div>
+        </div>
+      </div>
+      <div class="credit-comparison">
+        <h4>Si pagaras estas herramientas por separado:</h4>
+        <div class="credit-compare-row"><span class="label">Bot de chat externo (Tidio, ManyChat Pro)</span><span class="val-bad">$600+ MXN/mes</span></div>
+        <div class="credit-compare-row"><span class="label">Email marketing (Mailchimp, ActiveCampaign)</span><span class="val-bad">$400+ MXN/mes</span></div>
+        <div class="credit-compare-row"><span class="label">WhatsApp Business API</span><span class="val-bad">$350+ MXN/mes</span></div>
+        <div class="credit-compare-row"><span class="label">Herramienta de IA de contenido</span><span class="val-bad">$300+ MXN/mes</span></div>
+        <div class="credit-compare-row" style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border)"><span class="label" style="font-weight:600;color:var(--text)">Total por separado</span><span class="val-bad" style="font-size:15px">$1,650+ MXN/mes</span></div>
+        <div class="credit-compare-row"><span class="label" style="font-weight:600;color:var(--text)">Con 10xTeam</span><span class="val-good" style="font-size:15px">$200 MXN de saldo</span></div>
+      </div>
+      <div class="credit-foot">
+        <b>Si agotas el saldo, es buena señal:</b> significa que estás generando más actividad de lo normal. El excedente se carga automáticamente a tu método de pago al costo más bajo del mercado — sin que tu operación se detenga.
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border);font-size:11.5px;color:var(--text-faint);line-height:1.6;">
+          <strong style="color:var(--text-dim);display:block;margin-bottom:6px;">⚠ Costos variables de terceros</strong>
+          Estos cargos los establece directamente Meta/WhatsApp y se aplican además de tu plan.<br>
+          <span style="display:inline-flex;align-items:center;gap:6px;margin-top:5px;">· Conexión WhatsApp Business API: <span style="font-family:'JetBrains Mono',monospace;color:var(--green);">$200 MXN / mes · USD $10</span></span><br>
+          <span style="display:inline-flex;align-items:center;gap:6px;">· Mensajes de conversación (Meta): <span style="font-family:'JetBrains Mono',monospace;color:var(--green);">~$0.20–$1.00 MXN por conversación</span></span><br>
+          <span style="display:block;margin-top:6px;">Estos costos se cargan a tu crédito de IA incluido. Si lo excedes, el excedente se cobra automáticamente al costo real de Meta <strong style="color:var(--text-dim);">sin markup de nuestra parte</strong>.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- VORTEX VIEW -->
+    <div class="credit-view" id="tab-vortex">
+      <div class="credit-table">
+        <div class="credit-row">
+          <div class="what">Bot de conversación AI (3 cuentas)<span>Respuestas automáticas en todos los canales</span></div>
+          <div class="qty">~1,400 respuestas</div>
+        </div>
+        <div class="credit-row">
+          <div class="what">Mensajes de WhatsApp Business<span>Incluyendo cargo de Meta</span></div>
+          <div class="qty">~210 conversaciones</div>
+        </div>
+        <div class="credit-row">
+          <div class="what">Emails de campañas y seguimiento<span>Secuencias + envíos masivos en 3 cuentas</span></div>
+          <div class="qty">~14,000 emails</div>
+        </div>
+        <div class="credit-row">
+          <div class="what">Generación de contenido con IA<span>Copies, posts, emails, descripciones</span></div>
+          <div class="qty">~100 piezas</div>
+        </div>
+        <div class="credit-row">
+          <div class="what">Verificación de emails<span>Lista limpia en las 3 cuentas</span></div>
+          <div class="qty">~2,800 verificaciones</div>
+        </div>
+        <div class="credit-row">
+          <div class="what">Minutos de Voice AI<span>Agente de voz en llamadas</span></div>
+          <div class="qty">~50 minutos</div>
+        </div>
+      </div>
+      <div class="credit-comparison">
+        <h4>Si pagaras estas herramientas por separado (x3 cuentas):</h4>
+        <div class="credit-compare-row"><span class="label">Bot de chat externo × 3</span><span class="val-bad">$1,800+ MXN/mes</span></div>
+        <div class="credit-compare-row"><span class="label">Email marketing × 3</span><span class="val-bad">$1,200+ MXN/mes</span></div>
+        <div class="credit-compare-row"><span class="label">WhatsApp Business API × 3</span><span class="val-bad">$1,050+ MXN/mes</span></div>
+        <div class="credit-compare-row"><span class="label">Herramienta de IA de contenido</span><span class="val-bad">$300+ MXN/mes</span></div>
+        <div class="credit-compare-row" style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border)"><span class="label" style="font-weight:600;color:var(--text)">Total por separado</span><span class="val-bad" style="font-size:15px">$4,350+ MXN/mes</span></div>
+        <div class="credit-compare-row"><span class="label" style="font-weight:600;color:var(--text)">Con 10xTeam Vortex</span><span class="val-good" style="font-size:15px">$700 MXN de saldo</span></div>
+      </div>
+      <div class="credit-foot">
+        <b>Si agotas el saldo, es buena señal:</b> significa que tus 3 cuentas están generando volumen real. El excedente se carga automáticamente al costo más bajo del mercado — sin interrupciones.
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border);font-size:11.5px;color:var(--text-faint);line-height:1.6;">
+          <strong style="color:var(--text-dim);display:block;margin-bottom:6px;">⚠ Costos variables de terceros</strong>
+          Estos cargos los establece directamente Meta/WhatsApp y se aplican además de tu plan.<br>
+          <span style="display:inline-flex;align-items:center;gap:6px;margin-top:5px;">· Conexión WhatsApp Business API: <span style="font-family:'JetBrains Mono',monospace;color:var(--green);">$200 MXN / mes · USD $10 por cuenta</span></span><br>
+          <span style="display:inline-flex;align-items:center;gap:6px;">· Mensajes de conversación (Meta): <span style="font-family:'JetBrains Mono',monospace;color:var(--green);">~$0.20–$1.00 MXN por conversación</span></span><br>
+          <span style="display:block;margin-top:6px;">Estos costos se cargan a tu crédito de IA incluido. Si lo excedes, el excedente se cobra automáticamente al costo real de Meta <strong style="color:var(--text-dim);">sin markup de nuestra parte</strong>.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     MODAL: SOPORTE
+═══════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-support">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h2>Soporte y operación gestionada</h2>
+        <p>Tú decides cuánto quieres involucrarte. Nosotros nos adaptamos.</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="modal-currency-toggle" id="support-currency-toggle">
+          <button class="active" data-mcurrency="mxn">MXN</button>
+          <button data-mcurrency="usd">USD</button>
+        </div>
+        <button class="modal-close" data-close>✕</button>
+      </div>
+    </div>
+    <div class="support-tiers">
+      <div class="tier-card">
+        <div class="tier-name">Pack Esencial</div>
+        <div class="tier-sub">Para quien quiere resolver solo, con red de seguridad cuando la necesite.</div>
+        <div class="tier-price" data-smxn="$1,490" data-susd="$99">$1,490<span class="per"> /mes</span></div>
+        <div class="tier-curr-label">MXN</div>
+        <div class="tier-extra" data-smxn="10x Ignite · Vortex: $1,990 MXN/mes" data-susd="10x Ignite · Vortex: $129 USD/mes">10x Ignite · Vortex: $1,990 MXN/mes</div>
+        <ul>
+          <li>Soporte por chat en horario laboral</li>
+          <li>1 sesión mensual de revisión y dudas</li>
+          <li>Resolución de problemas técnicos</li>
+          <li>Guías y base de conocimiento accesible</li>
+        </ul>
+      </div>
+      <div class="tier-card highlight">
+        <div class="tier-popular">⭐ Altamente recomendado</div>
+        <div class="tier-name">Pack Operación</div>
+        <div class="tier-sub">Nuestro equipo opera tu plataforma cada mes. Tú solo atiendes, cierras y recibes ingresos — nosotros hacemos todo lo demás.</div>
+        <div class="tier-price" data-smxn="$2,490" data-susd="$169">$2,490<span class="per"> /mes</span></div>
+        <div class="tier-curr-label">MXN</div>
+        <div class="tier-extra" data-smxn="Ignite (1 cuenta) · Vortex (3 cuentas): $5,490 MXN/mes · Sub-cuenta extra: +$1,990 MXN/mes" data-susd="Ignite (1 cuenta) · Vortex (3 cuentas): $369 USD/mes · Sub-cuenta extra: +$139 USD/mes">Ignite (1 cuenta) · Vortex (3 cuentas): $5,490 MXN/mes · Sub-cuenta extra: +$1,990 MXN/mes</div>
+        <ul>
+          <li>Todo lo del Pack Esencial</li>
+          <li>Configuramos y actualizamos flujos y automatizaciones cada mes</li>
+          <li>Ajustamos campañas de email, SMS y WhatsApp con base en resultados</li>
+          <li>Mantenemos tus pipelines de ventas listos y al día</li>
+          <li>Revisamos y optimizamos el bot de IA mensualmente</li>
+          <li>Tú solo te enfocas en cerrar — nosotros operamos el resto</li>
+        </ul>
+      </div>
+    </div>
+    <div class="support-note">
+      El Diagnóstico Estratégico 10x y la actualización mensual de tu ICP ya están incluidos en la plataforma sin costo adicional.<br>
+      Hora de soporte suelta: <span class="support-hr-price" data-smxn="$1,500 MXN" data-susd="$99 USD">$1,500 MXN</span> — disponible si no tienes un pack activo.
+    </div>
+  </div>
+</div>
+
+<script>
+// ── FOMO Counter ──────────────────────────────────────────
+(function(){
+  const TOTAL=1000;
+  const LAUNCH_BASE=127; // starting count on launch day
+  const LAUNCH_DATE=new Date('2025-01-01'); // adjust to your real launch date
+  const today=new Date();
+  const daysSinceLaunch=Math.max(0,Math.floor((today-LAUNCH_DATE)/(1000*60*60*24)));
+
+  // Deterministic daily increment using date as seed (3–8 per day)
+  let simulated=LAUNCH_BASE;
+  for(let d=0;d<daysSinceLaunch;d++){
+    const seed=(LAUNCH_DATE.getTime()/86400000)+d;
+    const inc=3+Math.floor(((Math.sin(seed*9301+49297)*233280)%1+1)/2*6);
+    simulated=Math.min(simulated+inc,TOTAL);
+  }
+
+  const countEl=document.getElementById('fomo-count');
+  const fillEl=document.getElementById('fomo-fill');
+  if(countEl) countEl.textContent=simulated.toLocaleString();
+  if(fillEl) fillEl.style.width=(simulated/TOTAL*100).toFixed(1)+'%';
+})();
+
+// ── Main currency ─────────────────────────────────────────
+const cBtn=document.getElementById('currency-btn');
+const cMenu=document.getElementById('currency-menu');
+const cFlag=document.getElementById('currency-flag');
+const cLbl=document.getElementById('currency-label');
+let currentCurrency='mxn';
+
+cBtn.addEventListener('click',()=>cMenu.classList.toggle('open'));
+document.addEventListener('click',e=>{
+  if(!cBtn.contains(e.target)&&!cMenu.contains(e.target))cMenu.classList.remove('open');
+});
+
+cMenu.querySelectorAll('button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    cMenu.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    currentCurrency=btn.dataset.currency;
+    cMenu.classList.remove('open');
+    applyMainCurrency(currentCurrency);
+  });
+});
+
+function applyMainCurrency(cur){
+  const usd=cur==='usd';
+  cFlag.textContent=usd?'🇺🇸':'🇲🇽';
+  cLbl.textContent=usd?'USD':'MXN';
+
+  // Plan prices
+  document.querySelectorAll('[data-price-mxn]').forEach(p=>{
+    p.textContent=usd?p.dataset.priceUsd:p.dataset.priceMxn;
+  });
+  document.querySelectorAll('.price-period').forEach(p=>{
+    p.textContent=usd?'USD / mes':'MXN / mes';
+  });
+
+  // Struck-through "real" prices
+  document.querySelectorAll('.price-real-num').forEach(p=>{
+    p.textContent=usd?p.dataset.realUsd:p.dataset.realMxn;
+  });
+  document.querySelectorAll('.price-real-label').forEach(p=>{
+    p.textContent=usd?'USD regular price':'MXN precio regular';
+  });
+
+  // Setup
+  document.querySelectorAll('.usd-secondary').forEach(el=>{
+    el.style.display=usd?'inline':'none';
+  });
+
+  // Addon sub-account
+  const subPrice=document.querySelector('.addon-subcuenta-price');
+  const subUsd=document.querySelector('.addon-subcuenta-usd');
+  if(subPrice) subPrice.textContent=usd?'$89 USD / mes':'$1,190 MXN / mes';
+  if(subUsd) subUsd.textContent=usd?'Includes $13 USD AI credit':'Incluye $200 MXN de crédito de IA';
+}
+
+// ── Billing toggle ────────────────────────────────────────
+document.querySelectorAll('[data-billing-toggle]').forEach(toggle=>{
+  const card=toggle.closest('.card');
+  const perk=card.querySelector('[data-annual-perk]');
+  toggle.querySelectorAll('button').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      toggle.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      perk.classList.toggle('show',btn.dataset.billing==='annual');
+    });
+  });
+});
+
+// ── Modal helpers ─────────────────────────────────────────
+function openModal(id){document.getElementById(id).classList.add('open');}
+document.querySelectorAll('[data-close]').forEach(btn=>{
+  btn.addEventListener('click',()=>btn.closest('.modal-overlay').classList.remove('open'));
+});
+document.querySelectorAll('.modal-overlay').forEach(ov=>{
+  ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('open');});
+});
+
+// ── Features modal ────────────────────────────────────────
+document.querySelectorAll('[data-open-modal]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const plan=btn.dataset.openModal;
+    document.getElementById('modal-feat-title').textContent=
+      plan==='vortex'?'Todo lo que incluye 10x Vortex':'Todo lo que incluye 10x Ignite';
+    document.getElementById('feat-wl').textContent=
+      plan==='vortex'?'Marca blanca incluida (logo, colores, dominio)':'Marca blanca (disponible como add-on)';
+    openModal('modal-features');
+  });
+});
+
+// ── Credits modal ─────────────────────────────────────────
+document.querySelectorAll('[data-open-credits]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const plan=btn.dataset.openCredits;
+    document.querySelectorAll('.credit-view').forEach(v=>v.classList.remove('show'));
+    document.getElementById('tab-'+plan).classList.add('show');
+    document.querySelectorAll('.credits-plan-tabs button').forEach(b=>{
+      b.classList.toggle('active',b.dataset.tab===plan);
+    });
+    openModal('modal-credits');
+  });
+});
+document.querySelectorAll('.credits-plan-tabs button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.credits-plan-tabs button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.credit-view').forEach(v=>v.classList.remove('show'));
+    document.getElementById('tab-'+btn.dataset.tab).classList.add('show');
+  });
+});
+
+// ── Support modal + currency toggle ──────────────────────
+document.querySelectorAll('[data-open-support]').forEach(btn=>{
+  btn.addEventListener('click',()=>openModal('modal-support'));
+});
+
+function applyModalSupportCurrency(usd){
+  document.querySelectorAll('.tier-price[data-smxn]').forEach(el=>{
+    el.innerHTML=(usd?el.dataset.susd:el.dataset.smxn)+'<span class="per"> /mes</span>';
+  });
+  document.querySelectorAll('.tier-curr-label').forEach(el=>{
+    el.textContent=usd?'USD':'MXN';
+  });
+  document.querySelectorAll('.tier-extra[data-smxn]').forEach(el=>{
+    el.textContent=usd?el.dataset.susd:el.dataset.smxn;
+  });
+  document.querySelectorAll('.support-hr-price').forEach(el=>{
+    el.textContent=usd?el.dataset.susd:el.dataset.smxn;
+  });
+}
+
+const supportToggle=document.getElementById('support-currency-toggle');
+if(supportToggle){
+  supportToggle.querySelectorAll('button').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      supportToggle.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      applyModalSupportCurrency(btn.dataset.mcurrency==='usd');
+    });
+  });
+}
+</script>
+</body>
+</html>
