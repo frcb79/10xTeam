@@ -46,7 +46,7 @@ export function CompleteScreen() {
   const goToInternalDiagnostic = () => {
     const diagnostic = createDiagnosticFromWizardState(state);
     void persistCurrentDiagnostic(diagnostic).finally(() => {
-      router.push("/team/diagnosticos");
+      router.push("/team/access?next=/team/diagnosticos");
     });
   };
 
