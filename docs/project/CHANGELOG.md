@@ -1,6 +1,25 @@
 # CHANGELOG — Historial de Cambios
 Actualizar cada vez que se completa una feature.
 
+## 2026-06-30 — Growth: estabilidad Next 16 + pricing canonico nativo
+- Se corrigio fallo de build en `growth.10xteam.com` por conflicto `middleware.ts` + `proxy.ts` (Next 16): se consolido la logica en `src/proxy.ts` y se elimino `src/middleware.ts`.
+- Se ajusto `src/app/team/access/page.tsx` para cumplir prerender de Next 16 envolviendo `useSearchParams` con `Suspense`.
+- Build final verificado en verde con rutas activas, incluyendo `pricing-canon` y rutas internas de team protegidas.
+- Commits de estabilidad publicados en rama `feat/growth-wizard-ghl-mvp`:
+	- `d8b3978` fix(growth): restore Next16 compatibility by consolidating proxy and team access suspense.
+	- `b45643a` feat(growth): embed canonical pricing natively in landing without iframe.
+
+## 2026-06-30 — Growth: base de conexion GoHighLevel (OAuth)
+- Se creo bloque inicial de integracion OAuth para GHL con:
+	- `src/app/api/ghl/oauth/callback/route.ts`
+	- `src/app/api/ghl/oauth/refresh/route.ts`
+	- `src/app/api/ghl/oauth/status/route.ts`
+	- `src/lib/ghl/client.ts`
+	- `src/lib/ghl/session.ts`
+	- `src/types/ghl.types.ts`
+- Objetivo del bloque: habilitar intercambio de codigo, refresh y verificacion de estado de conexion para avanzar a webhooks/eventos en siguiente iteracion.
+- Commit publicado: `66b2a63`.
+
 ## 2026-06-10 — Growth: CTAs al wizard + preview de diagnostico en dashboard
 - En `growth.10xteam_website.html`, se actualizaron CTAs comerciales clave para dirigir al wizard (`/wizard/step/1`) en lugar de `#demo` o enlaces inactivos.
 - En `src/app/growth-site/route.ts`, se alineo el parche runtime para que nave, hero, tabs, pricing y footer dirijan a `/wizard/step/1`.

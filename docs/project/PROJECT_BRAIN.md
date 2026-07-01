@@ -35,6 +35,9 @@ En progreso:
 - Implementacion del hub raiz `10xteam.com` para direccionar trafico entre dev y growth.
 
 Actualizacion reciente:
+- `growth.10xteam.com` quedo estable en Next 16 al consolidar control de rutas en `proxy.ts` y retirar `middleware.ts` (evitando conflicto de build en produccion), manteniendo protegido `/team/*` con gate por passcode.
+- `growth.10xteam.com` incorporo bloque base de conexion con GoHighLevel (OAuth callback/refresh/status) para arrancar integraciones reales por cuenta.
+- `growth.10xteam.com` ya integra pricing canonico sin `iframe` en la landing principal, cargado de forma nativa desde fuente unica (`10x_pricing.html`) para acelerar cambios comerciales sin romper el resto del sitio.
 - `10xteam.com` mejoro la experiencia visual del intro con transicion cinematica en dos fases (crossfade progresivo + encogimiento con mascara), incluyendo comportamiento responsive mas estable en mobile para eliminar efectos de corte y artefactos visuales.
 - `growth.10xteam.com.mx` ya sirve el HTML comercial canonico aprobado, manteniendo intactos diseno, tipografias, colores y secciones; la mini seccion de servicios fue restaurada tras una eliminacion no deseada.
 - `growth.10xteam.com` quedo con wizard operativo de 6 pasos mas consistente: prewizard en React tipado, rutas por tipo de cliente, fase economica final, pantalla de procesamiento y resumen final redisenados, mas bloque legacy de ICP estabilizado y publicado en `main`.
@@ -45,7 +48,7 @@ Pendiente:
 - Medición de KPIs por unidad de negocio separada (dev vs growth).
 - Definicion de despliegues independientes para `10xteam.com`, `dev.10xteam.com` y `growth.10xteam.com`.
 - Revision comercial final del wizard legacy y de la landing growth para decidir si se conserva, migra o retira el flujo duplicado `IcpWizard`.
-- Siguiente paso inmediato para proxima sesion: implementar activacion automatica post-agendamiento (estado persistente `lead_created -> call_scheduled -> activated`, webhook de calendario, desbloqueo de modulos y notificacion interna al equipo).
+- Siguiente paso inmediato para proxima sesion: conectar entrypoint comercial a OAuth GHL (boton "Conectar GHL" + redirect controlado), persistir sesion/token en almacenamiento servidor y arrancar primer webhook de instalacion/evento para mover estado operativo (`wizard_completed -> call_pending -> activated`).
 
 Bloqueadores:
 - Ninguno tecnico. Riesgo actual: coexistencia de wizard nuevo y wizard legacy puede generar retrabajo comercial si no se define pronto cual queda como flujo canonico.
@@ -60,3 +63,4 @@ Bloqueadores:
 2026-06-10 — Rebuild y cierre operativo del wizard de growth: rediseño de pantallas clave, expansion de copy por industria, incorporacion de fase economica, estabilizacion del wizard legacy y limpieza final del repo con build verde y pushes a `main`.
 2026-06-10 — Mejora del hub `10xteam.com`: intro de video con salida cinematicamente suave (crossfade + mask shrink) y ajustes responsive en mobile para reducir efectos visuales extranos.
 2026-06-10 — Growth comercial: CTAs de landing alineados a `/wizard/step/1`, preview temporal de Diagnostico Estrategico en dashboard pre-trial y push a `main` para continuidad de activacion.
+2026-06-30 — Growth: correccion de build en Next 16 (proxy/middleware), cierre de base OAuth GHL y pricing canonico integrado en landing sin iframe, con build verde y rama sincronizada.
