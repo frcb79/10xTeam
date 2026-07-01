@@ -1,14 +1,18 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useWizard } from "@/hooks/useWizard";
 import { calculateOpportunity, formatCurrency } from "@/lib/utils/opportunity";
+import { createDiagnosticFromWizardState, saveCurrentDiagnostic } from "@/lib/diagnostic-storage";
+import type { DiagnosticRecord } from "@/types/diagnostic.types";
 
 const GHL_CALENDAR_URL =
   process.env.NEXT_PUBLIC_GHL_CALENDAR_URL ?? "https://calendar.10xteam.com.mx/activacion";
 
 export function CompleteScreen() {
   const { state, reset } = useWizard();
+  const router = useRouter();
   const step2 = state.answers.step2;
   const step3 = state.answers.step3_b2b ?? state.answers.step3_b2c;
   const step4 = state.answers.step4;
@@ -17,6 +21,34 @@ export function CompleteScreen() {
   const opportunity = calculateOpportunity(step6, step2?.priceRange);
   const clientIdeal =
     state.answers.step3_b2b?.primaryDecisionMaker ?? state.answers.step3_b2c?.ageRange ?? "Pendiente";
+
+  const persistCurrentDiagnostic = async (diagnostic: DiagnosticRecord) => {
+    saveCurrentDiagnostic(diagnostic);
+
+    try {
+      await fetch("/api/diagnostics/current", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ diagnostic }),
+      });
+    } catch {
+      // Keep local fallback when network/API is unavailable.
+    }
+  };
+
+  const goToActivation = () => {
+    const diagnostic = createDiagnosticFromWizardState(state);
+    void persistCurrentDiagnostic(diagnostic).finally(() => {
+      router.push("/activacion");
+    });
+  };
+
+  const goToInternalDiagnostic = () => {
+    const diagnostic = createDiagnosticFromWizardState(state);
+    void persistCurrentDiagnostic(diagnostic).finally(() => {
+      router.push("/team/access?next=/team/diagnosticos");
+    });
+  };
 
   return (
     <div className="mx-auto flex min-h-[80vh] max-w-6xl flex-col justify-center px-5 py-10 md:px-8">
@@ -127,12 +159,21 @@ export function CompleteScreen() {
               Agendar mi llamada
             </a>
 
-            <Link
-              href="/dashboard"
-              className="mt-3 block rounded-full border border-white/15 px-5 py-2.5 text-center text-sm font-semibold text-stone-200"
+            <button
+              type="button"
+              onClick={goToActivation}
+              className="mt-3 block w-full rounded-full border border-white/15 px-5 py-2.5 text-center text-sm font-semibold text-stone-200"
             >
-              Ver mi dashboard pre-trial
-            </Link>
+              Ver mi activación
+            </button>
+
+            <button
+              type="button"
+              onClick={goToInternalDiagnostic}
+              className="mt-3 block w-full rounded-full border border-cyan-300/30 bg-cyan-300/10 px-5 py-2.5 text-center text-sm font-semibold text-cyan-100"
+            >
+              Vista interna del diagnóstico
+            </button>
             <div className="mt-5 rounded-2xl border border-white/10 bg-slate-950/70 p-4">
               <p className="text-xs uppercase tracking-[0.18em] text-stone-400">Acciones de sesión</p>
               <div className="mt-3 flex flex-wrap gap-3">
