@@ -1,9 +1,10 @@
 "use client";
 
+import { Suspense } from "react";
 import { FormEvent, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function TeamAccessPage() {
+function TeamAccessContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [passcode, setPasscode] = useState("");
@@ -81,5 +82,13 @@ export default function TeamAccessPage() {
         </form>
       </div>
     </div>
+  );
+}
+
+export default function TeamAccessPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen" />}>
+      <TeamAccessContent />
+    </Suspense>
   );
 }
