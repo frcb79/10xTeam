@@ -23,7 +23,32 @@ export default function ActivacionPage() {
   const [diagnostic, setDiagnostic] = useState<DiagnosticRecord | null>(null);
 
   useEffect(() => {
-    setDiagnostic(loadCurrentDiagnostic());
+    let mounted = true;
+
+    const bootstrap = async () => {
+      try {
+        const response = await fetch("/api/diagnostics/current", { cache: "no-store" });
+        if (response.ok) {
+          const payload = (await response.json()) as { diagnostic: DiagnosticRecord | null };
+          if (mounted && payload.diagnostic) {
+            setDiagnostic(payload.diagnostic);
+            return;
+          }
+        }
+      } catch {
+        // Ignore and continue with local fallback.
+      }
+
+      if (mounted) {
+        setDiagnostic(loadCurrentDiagnostic());
+      }
+    };
+
+    void bootstrap();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   const preview = useMemo(() => {

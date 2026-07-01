@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useWizard } from "@/hooks/useWizard";
 import { calculateOpportunity, formatCurrency } from "@/lib/utils/opportunity";
 import { createDiagnosticFromWizardState, saveCurrentDiagnostic } from "@/lib/diagnostic-storage";
+import type { DiagnosticRecord } from "@/types/diagnostic.types";
 
 const GHL_CALENDAR_URL =
   process.env.NEXT_PUBLIC_GHL_CALENDAR_URL ?? "https://calendar.10xteam.com.mx/activacion";
@@ -21,16 +22,32 @@ export function CompleteScreen() {
   const clientIdeal =
     state.answers.step3_b2b?.primaryDecisionMaker ?? state.answers.step3_b2c?.ageRange ?? "Pendiente";
 
+  const persistCurrentDiagnostic = async (diagnostic: DiagnosticRecord) => {
+    saveCurrentDiagnostic(diagnostic);
+
+    try {
+      await fetch("/api/diagnostics/current", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ diagnostic }),
+      });
+    } catch {
+      // Keep local fallback when network/API is unavailable.
+    }
+  };
+
   const goToActivation = () => {
     const diagnostic = createDiagnosticFromWizardState(state);
-    saveCurrentDiagnostic(diagnostic);
-    router.push("/activacion");
+    void persistCurrentDiagnostic(diagnostic).finally(() => {
+      router.push("/activacion");
+    });
   };
 
   const goToInternalDiagnostic = () => {
     const diagnostic = createDiagnosticFromWizardState(state);
-    saveCurrentDiagnostic(diagnostic);
-    router.push("/team/diagnosticos");
+    void persistCurrentDiagnostic(diagnostic).finally(() => {
+      router.push("/team/diagnosticos");
+    });
   };
 
   return (
