@@ -38,6 +38,12 @@ Completado:
 
 En progreso:
 - Definicion de contrato de datos para integrar output del wizard con whitelabel.
+- Capa comercial de conversion del wizard: captura estructurada de competidores, gate de contacto previo a procesamiento y limpieza de CTAs hacia ruta canonica.
+- Trazabilidad operativa del funnel de activacion: estado `wizard_completed` al cierre y transicion a `call_pending` al disparar agenda.
+- Cierre del loop operativo de estado con base webhook GHL y controles manuales internos para mover a `call_booked` y `activated`.
+- Persistencia servidor de diagnosticos por `diagnosticId` en Supabase (con fallback a cookie mientras se activan variables/entorno).
+- Persistencia servidor de sesion GHL por `company/location` para reducir dependencia de cookie y mejorar continuidad operativa.
+- Lectura de estado GHL cross-device por `company/location` y trazabilidad de eventos webhook sobre sesiones conectadas.
 
 Pendiente:
 - Persistencia de resultados del wizard y versionado por cuenta.
@@ -45,6 +51,8 @@ Pendiente:
 - Implementar backlog estrategico de ejecucion documentado en `docs/project/BACKLOG.md`.
 - Definir plantilla del PDF gratuito del ICP y flujo de captura por correo.
 - Definir login/portal de cliente para acceso a contenido, ICP, materiales y seguimiento.
+- Backoffice para versionado/mejora de prompts, seleccion configurable de modelos AI por tipo de contenido y workflow de market intelligence.
+- Persistencia servidor de sesion/token GHL por company/location y webhook inicial para mover estado operativo (`wizard_completed -> call_pending -> call_booked -> activated`).
 
 Bloqueadores:
 - Ninguno.
@@ -70,3 +78,9 @@ Bloqueadores:
 2026-05-25 - Implementacion base de landing + wizard ICP + endpoint de materiales por canal.
 2026-05-26 - Captura de requerimientos estrategicos del CEO en backlog dedicado para pasar a ejecucion continua.
 2026-05-28 - Restauracion de la seccion de servicios en el HTML comercial y despliegue de growth.10xteam.com.mx usando ese HTML como experiencia canonica del subdominio.
+2026-07-01 - Inicio de implementacion comercial del nuevo plan: Step 4 con minimo 5 competidores estructurados, Step 6 con captura obligatoria de contacto y correccion de CTAs clave hacia `/wizard/step/1`.
+2026-07-01 - Se implemento transicion de estado en diagnostico actual (`wizard_completed -> call_pending`) desde resumen y activacion, junto con endpoint PATCH para persistencia en cookie y mejora del prompt ICP con contexto competitivo explicito.
+2026-07-01 - Se agrego endpoint base `POST /api/ghl/webhook` para mapear eventos de calendario/instalacion a estados (`call_booked`, `activated`) y controles operativos en `/team/diagnosticos` para mover estado manualmente mientras se completa persistencia servidor por cuenta.
+2026-07-01 - Se agrego capa de persistencia en Supabase para `diagnostic_records` (migracion + repositorio server), integrando `POST/PATCH /api/diagnostics/current` y webhook GHL por `diagnosticId` para actualizar estados de forma global fuera del navegador.
+2026-07-01 - Ajuste comercial puntual en pricing (hora suelta = `$1,990 MXN`) + nota en modal de funcionalidades sobre consumo de credito. Se avanzo persistencia de sesiones GHL en Supabase (`ghl_sessions`) conectada a callback/refresh OAuth.
+2026-07-01 - Se habilito `oauth/status` para leer conexion GHL desde Supabase por `companyId/locationId` (fallback cookie) y el webhook ahora actualiza heartbeat de sesion para observabilidad de integracion.

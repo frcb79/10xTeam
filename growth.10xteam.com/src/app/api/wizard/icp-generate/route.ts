@@ -55,16 +55,26 @@ export async function POST(request: Request) {
     let aiMeta: { provider: string; model: string; usage: unknown } | null = null;
 
     try {
+      const competitors = step4.mainCompetitors.slice(0, 10);
+
       const ai = await generateWithAI({
         task: "icp_generation",
         systemPrompt:
-          "Eres estratega B2B senior. Devuelve solo JSON valido sin markdown.",
+          "Eres estratega B2B senior. Devuelve solo JSON valido sin markdown. Usa el contexto de competencia para aterrizar el perfil, el trigger, el fear y el mecanismo con posicionamiento claro y accionable.",
         userPrompt: `Genera los campos faltantes de un ICP card y responde SOLO este JSON exacto:\n{\n  "archetypeName": "",\n  "profileDescription": "",\n  "trigger": "",\n  "topFear": "",\n  "previousSolutionsTried": "",\n  "promise": "",\n  "uniqueMechanism": ""\n}\n\nContexto del wizard:\n${JSON.stringify(
           {
             step2,
             step3,
-            step4,
+            step4: {
+              ...step4,
+              mainCompetitors: competitors,
+            },
             step5,
+            competitorGuidance: {
+              strengthsToProtect: "Que hacemos mejor que esas alternativas y por que importa para conversion.",
+              weaknessesToExploit: "Donde fallan las alternativas actuales en seguimiento, mensaje o ejecucion.",
+              strategicOpportunities: "Que estrategia de contenido y activacion conviene para diferenciarnos rapido.",
+            },
           },
           null,
           2

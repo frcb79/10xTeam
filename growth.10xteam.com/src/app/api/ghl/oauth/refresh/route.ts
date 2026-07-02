@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import { refreshAccessToken } from "@/lib/ghl/client";
 import { decodeGhlSession, encodeGhlSession, GHL_SESSION_COOKIE } from "@/lib/ghl/session";
+import { upsertGhlSession } from "@/lib/ghl/repository";
 
 export async function POST() {
   const clientId = process.env.GHL_CLIENT_ID;
@@ -38,8 +39,19 @@ export async function POST() {
       userType: "Company",
     });
 
-    const response = NextResponse.json({ ok: true, expiresAt: refreshed.expiresAt });
-    response.cookies.set(GHL_SESSION_COOKIE, encodeGhlSession(refreshed), {
+    const mergedSession = {
+      ...refreshed,
+      companyId: refreshed.companyId ?? existing.companyId,
+      locationId: refreshed.locationId ?? existing.locationId,
+      userId: refreshed.userId ?? existing.userId,
+      userType: refreshed.userType ?? existing.userType,
+      scope: refreshed.scope ?? existing.scope,
+    };
+
+    await upsertGhlSession(mergedSession);
+
+    const response = NextResponse.json({ ok: true, expiresAt: mergedSession.expiresAt });
+    response.cookies.set(GHL_SESSION_COOKIE, encodeGhlSession(mergedSession), {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",

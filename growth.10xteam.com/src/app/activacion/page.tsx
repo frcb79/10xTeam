@@ -2,8 +2,11 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { loadCurrentDiagnostic } from "@/lib/diagnostic-storage";
+import { loadCurrentDiagnostic, saveCurrentDiagnostic } from "@/lib/diagnostic-storage";
 import type { DiagnosticRecord } from "@/types/diagnostic.types";
+
+const GHL_CALENDAR_URL =
+  process.env.NEXT_PUBLIC_GHL_CALENDAR_URL ?? "https://calendar.10xteam.com.mx/activacion";
 
 function truncateText(value: string, max = 84): string {
   if (value.length <= max) return value;
@@ -21,6 +24,26 @@ function BlurredLine({ label, value }: { label: string; value: string }) {
 
 export default function ActivacionPage() {
   const [diagnostic, setDiagnostic] = useState<DiagnosticRecord | null>(null);
+
+  const handleScheduleCall = () => {
+    if (diagnostic) {
+      const updated: DiagnosticRecord = {
+        ...diagnostic,
+        status: "call_pending",
+      };
+
+      saveCurrentDiagnostic(updated);
+      setDiagnostic(updated);
+
+      void fetch("/api/diagnostics/current", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: "call_pending", diagnosticId: diagnostic.id }),
+      });
+    }
+
+    window.open(GHL_CALENDAR_URL, "_blank", "noopener,noreferrer");
+  };
 
   useEffect(() => {
     let mounted = true;
@@ -122,14 +145,13 @@ export default function ActivacionPage() {
               Agenda tu llamada para revisar el diagnóstico completo de tu negocio y activar todo el sistema.
             </p>
 
-            <a
-              href="https://calendar.10xteam.com.mx/activacion"
-              target="_blank"
-              rel="noreferrer"
+            <button
+              type="button"
+              onClick={handleScheduleCall}
               className="mt-5 block rounded-full bg-cyan-300 px-5 py-3 text-center text-sm font-semibold text-slate-950"
             >
               Agendar llamada de activación
-            </a>
+            </button>
 
             <a
               href="/diagnostico-estrategico-10x-template.html"

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { exchangeAuthorizationCode } from "@/lib/ghl/client";
 import { encodeGhlSession, GHL_SESSION_COOKIE } from "@/lib/ghl/session";
+import { upsertGhlSession } from "@/lib/ghl/repository";
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
@@ -32,6 +33,8 @@ export async function GET(request: Request) {
       redirectUri,
       userType: "Company",
     });
+
+    await upsertGhlSession(session);
 
     const response = NextResponse.redirect(new URL("/dashboard?ghl=connected", url.origin));
     response.cookies.set(GHL_SESSION_COOKIE, encodeGhlSession(session), {

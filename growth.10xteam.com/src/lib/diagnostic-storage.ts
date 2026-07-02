@@ -1,4 +1,4 @@
-import type { DiagnosticRecord } from "@/types/diagnostic.types";
+import type { DiagnosticRecord, DiagnosticStatus } from "@/types/diagnostic.types";
 import type { WizardState } from "@/types/wizard.types";
 import { calculateOpportunity } from "@/lib/utils/opportunity";
 
@@ -23,8 +23,13 @@ export function createDiagnosticFromWizardState(state: WizardState): DiagnosticR
 
   return {
     id: `diag_${randomId()}`,
-    status: "call_pending",
+    status: "wizard_completed",
     createdAt: new Date().toISOString(),
+    contact: {
+      name: safeString(step6?.ownerName),
+      email: safeString(step6?.ownerEmail),
+      phone: safeString(step6?.ownerPhone),
+    },
     businessName: safeString(step2?.businessName),
     industry: safeString(step2?.industry),
     oneLiner: safeString(step2?.oneLiner),
@@ -69,4 +74,17 @@ export function loadCurrentDiagnostic(): DiagnosticRecord | null {
   } catch {
     return null;
   }
+}
+
+export function updateCurrentDiagnosticStatus(status: DiagnosticStatus): DiagnosticRecord | null {
+  const current = loadCurrentDiagnostic();
+  if (!current) return null;
+
+  const updated: DiagnosticRecord = {
+    ...current,
+    status,
+  };
+
+  saveCurrentDiagnostic(updated);
+  return updated;
 }

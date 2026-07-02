@@ -786,7 +786,7 @@ function mapWizardAnswers(data: WizardData): WizardAnswers {
       topObjectionResolution: "Comparar costo de inaccion vs inversion",
       antiICP: "Clientes solo enfocados en precio",
       highRiskICP: "Clientes con expectativas irreales",
-      mainCompetitors: "Alternativas manuales y agencias genericas",
+      mainCompetitors: ["Alternativas manuales", "Agencias genericas"],
       whyChoseUs: "Ejecucion enfocada a conversion",
       whyCompetitorsFail: "Falta de seguimiento",
       uniqueDifferentiator: `Proceso comercial estandarizado para ${data.industry} con foco en ${data.expectedOutcome}`,

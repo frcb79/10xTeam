@@ -87,6 +87,9 @@ export function Step6Economics() {
   );
   const [productDescription, setProductDescription] = useState(current?.productDescription ?? "");
   const [clientValue, setClientValue] = useState(current?.clientValue ?? "");
+  const [ownerName, setOwnerName] = useState(current?.ownerName ?? "");
+  const [ownerEmail, setOwnerEmail] = useState(current?.ownerEmail ?? "");
+  const [ownerPhone, setOwnerPhone] = useState(current?.ownerPhone ?? "");
   const [saleType, setSaleType] = useState<SaleType>(current?.saleType ?? "one_time");
   const [renewalFrequency, setRenewalFrequency] = useState<RenewalFrequency | null>(
     current?.renewalFrequency ?? null
@@ -104,12 +107,26 @@ export function Step6Economics() {
 
   const renewalRequired = saleType !== "one_time";
   const valid = useMemo(() => {
+    const hasValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ownerEmail.trim());
+    const phoneDigits = ownerPhone.replace(/\D/g, "");
+
     return (
       productDescription.trim().length >= 8 &&
       clientValue.trim().length >= 1 &&
+      ownerName.trim().length >= 2 &&
+      hasValidEmail &&
+      phoneDigits.length >= 10 &&
       (!renewalRequired || renewalFrequency !== null)
     );
-  }, [clientValue, productDescription, renewalFrequency, renewalRequired]);
+  }, [
+    clientValue,
+    ownerEmail,
+    ownerName,
+    ownerPhone,
+    productDescription,
+    renewalFrequency,
+    renewalRequired,
+  ]);
 
   const handleContinue = () => {
     if (!valid) return;
@@ -120,6 +137,9 @@ export function Step6Economics() {
       leadResponseTime,
       productDescription: productDescription.trim(),
       clientValue: clientValue.trim(),
+      ownerName: ownerName.trim(),
+      ownerEmail: ownerEmail.trim(),
+      ownerPhone: ownerPhone.trim(),
       saleType,
       renewalFrequency: renewalRequired ? renewalFrequency : null,
       monthlyNewClients,
@@ -155,6 +175,34 @@ export function Step6Economics() {
             value={clientValue}
             onChange={(event) => setClientValue(event.target.value)}
             placeholder="Ej. 8500 o 5000-15000"
+            className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none focus:border-cyan-300/60"
+          />
+        </Field>
+
+        <Field label="Contacto de la cuenta (obligatorio)">
+          <input
+            value={ownerName}
+            onChange={(event) => setOwnerName(event.target.value)}
+            placeholder="Nombre completo"
+            className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none focus:border-cyan-300/60"
+          />
+        </Field>
+
+        <Field label="Email de trabajo (obligatorio)">
+          <input
+            type="email"
+            value={ownerEmail}
+            onChange={(event) => setOwnerEmail(event.target.value)}
+            placeholder="nombre@empresa.com"
+            className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none focus:border-cyan-300/60"
+          />
+        </Field>
+
+        <Field label="Telefono / WhatsApp (obligatorio)">
+          <input
+            value={ownerPhone}
+            onChange={(event) => setOwnerPhone(event.target.value)}
+            placeholder="Ej. 5512345678"
             className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none focus:border-cyan-300/60"
           />
         </Field>

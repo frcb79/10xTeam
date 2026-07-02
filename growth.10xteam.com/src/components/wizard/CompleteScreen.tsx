@@ -4,7 +4,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useWizard } from "@/hooks/useWizard";
 import { calculateOpportunity, formatCurrency } from "@/lib/utils/opportunity";
-import { createDiagnosticFromWizardState, saveCurrentDiagnostic } from "@/lib/diagnostic-storage";
+import {
+  createDiagnosticFromWizardState,
+  saveCurrentDiagnostic,
+  updateCurrentDiagnosticStatus,
+} from "@/lib/diagnostic-storage";
 import type { DiagnosticRecord } from "@/types/diagnostic.types";
 
 const GHL_CALENDAR_URL =
@@ -36,18 +40,54 @@ export function CompleteScreen() {
     }
   };
 
+  const updateDiagnosticStatus = async (diagnostic: DiagnosticRecord, status: DiagnosticRecord["status"]) => {
+    const updated: DiagnosticRecord = {
+      ...diagnostic,
+      status,
+    };
+
+    saveCurrentDiagnostic(updated);
+
+    try {
+      await fetch("/api/diagnostics/current", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status, diagnosticId: diagnostic.id }),
+      });
+    } catch {
+      // Keep local fallback when network/API is unavailable.
+    }
+
+    return updated;
+  };
+
+  const handleScheduleCall = () => {
+    const existing = updateCurrentDiagnosticStatus("call_pending");
+    const baseDiagnostic = existing ?? createDiagnosticFromWizardState(state);
+
+    void persistCurrentDiagnostic(baseDiagnostic)
+      .then(() => updateDiagnosticStatus(baseDiagnostic, "call_pending"))
+      .finally(() => {
+        window.open(GHL_CALENDAR_URL, "_blank", "noopener,noreferrer");
+      });
+  };
+
   const goToActivation = () => {
     const diagnostic = createDiagnosticFromWizardState(state);
-    void persistCurrentDiagnostic(diagnostic).finally(() => {
-      router.push("/activacion");
-    });
+    void persistCurrentDiagnostic(diagnostic)
+      .then(() => updateDiagnosticStatus(diagnostic, "call_pending"))
+      .finally(() => {
+        router.push("/activacion");
+      });
   };
 
   const goToInternalDiagnostic = () => {
     const diagnostic = createDiagnosticFromWizardState(state);
-    void persistCurrentDiagnostic(diagnostic).finally(() => {
-      router.push("/team/access?next=/team/diagnosticos");
-    });
+    void persistCurrentDiagnostic(diagnostic)
+      .then(() => updateDiagnosticStatus(diagnostic, "call_pending"))
+      .finally(() => {
+        router.push("/team/access?next=/team/diagnosticos");
+      });
   };
 
   return (
@@ -111,6 +151,7 @@ export function CompleteScreen() {
                 items={[
                   ["Objecion", step4?.topObjection ?? "Pendiente"],
                   ["Resolucion", step4?.topObjectionResolution ?? "Pendiente"],
+                  ["Competencia", step4?.mainCompetitors?.join(", ") ?? "Pendiente"],
                   ["Alternativas fallan", step4?.whyCompetitorsFail ?? "Pendiente"],
                   ["Diferenciador", step4?.uniqueDifferentiator ?? "Pendiente"],
                 ]}
@@ -150,14 +191,13 @@ export function CompleteScreen() {
               </div>
             )}
 
-            <a
-              href={GHL_CALENDAR_URL}
-              target="_blank"
-              rel="noreferrer"
+            <button
+              type="button"
+              onClick={handleScheduleCall}
               className="mt-5 block rounded-full bg-cyan-300 px-5 py-3 text-center text-sm font-semibold text-stone-950"
             >
               Agendar mi llamada
-            </a>
+            </button>
 
             <button
               type="button"

@@ -134,7 +134,21 @@ export function Step4Process() {
   );
   const [antiICP, setAntiICP] = useState(current?.antiICP ?? "");
   const [highRiskICP, setHighRiskICP] = useState(current?.highRiskICP ?? "");
-  const [mainCompetitors, setMainCompetitors] = useState(current?.mainCompetitors ?? "");
+  const [mainCompetitors, setMainCompetitors] = useState<string[]>(() => {
+    const initial = current?.mainCompetitors;
+    if (!initial) return Array.from({ length: 10 }, () => "");
+
+    const normalized = Array.isArray(initial)
+      ? initial
+      : initial
+          .split(/\n|,/)
+          .map((item) => item.trim())
+          .filter(Boolean);
+
+    const merged = Array.from({ length: 10 }, (_, index) => normalized[index] ?? "");
+    return merged;
+  });
+  const [competitorError, setCompetitorError] = useState<string | null>(null);
   const [whyCompetitorsFail, setWhyCompetitorsFail] = useState(
     current?.whyCompetitorsFail ?? "Falta de seguimiento consistente"
   );
@@ -143,6 +157,17 @@ export function Step4Process() {
   );
 
   const handleContinue = () => {
+    const competitorList = mainCompetitors
+      .map((item) => item.trim())
+      .filter(Boolean);
+
+    if (competitorList.length < 5) {
+      setCompetitorError("Necesitamos al menos 5 competidores para fortalecer el diagnostico.");
+      return;
+    }
+
+    setCompetitorError(null);
+
     updateStep4({
       salesCycleDuration,
       salesCycleNotes: "Ciclo definido para el MVP",
@@ -150,7 +175,7 @@ export function Step4Process() {
       topObjectionResolution,
       antiICP,
       highRiskICP,
-      mainCompetitors,
+      mainCompetitors: competitorList,
       whyChoseUs: "Metodo, seguimiento y ejecucion guiada",
       whyCompetitorsFail,
       uniqueDifferentiator,
@@ -194,10 +219,33 @@ export function Step4Process() {
           Perfil que parece ideal pero trae riesgo
           <textarea value={highRiskICP} onChange={(e) => setHighRiskICP(e.target.value)} className="mt-2 min-h-24 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none focus:border-cyan-300/60" placeholder="Ej. Negocio con urgencia extrema pero sin capacidad de ejecucion ni responsable interno claro." />
         </label>
-        <label className="block text-sm text-stone-300">
-          Con quien te comparan hoy
-          <textarea value={mainCompetitors} onChange={(e) => setMainCompetitors(e.target.value)} className="mt-2 min-h-24 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none focus:border-cyan-300/60" placeholder="Ej. Agencias genericas, freelancers por hora y operacion interna sin metodo." />
-        </label>
+        <div className="block text-sm text-stone-300">
+          <p>Con quien te comparan hoy (minimo 5)</p>
+          <p className="mt-2 text-xs leading-5 text-stone-400">
+            Escribe al menos 5 nombres de competidores o alternativas. Esto alimenta el analisis de fortalezas, debilidades y estrategia.
+          </p>
+          <div className="mt-3 grid gap-2 md:grid-cols-2">
+            {mainCompetitors.map((competitor, index) => (
+              <input
+                key={`competitor-${index}`}
+                value={competitor}
+                onChange={(event) => {
+                  setCompetitorError(null);
+                  setMainCompetitors((prev) => {
+                    const next = [...prev];
+                    next[index] = event.target.value;
+                    return next;
+                  });
+                }}
+                className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none focus:border-cyan-300/60"
+                placeholder={`Competidor ${index + 1}${index < 5 ? " (obligatorio)" : " (opcional)"}`}
+              />
+            ))}
+          </div>
+          {competitorError && (
+            <p className="mt-2 text-xs text-rose-300">{competitorError}</p>
+          )}
+        </div>
         <label className="block text-sm text-stone-300">
           Por que fallan esas alternativas
           <textarea value={whyCompetitorsFail} onChange={(e) => setWhyCompetitorsFail(e.target.value)} className="mt-2 min-h-24 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none focus:border-cyan-300/60" placeholder="Ej. Se enfocan en tacticas sueltas, no mueven creencias del comprador y no sostienen seguimiento por etapa." />

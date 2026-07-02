@@ -127,7 +127,7 @@ export interface Step4Answers {
   topObjectionResolution: string;
   antiICP: string;
   highRiskICP: string;
-  mainCompetitors: string;
+  mainCompetitors: string[];
   whyChoseUs: string;
   whyCompetitorsFail: string;
   uniqueDifferentiator: string;
@@ -206,6 +206,9 @@ export interface Step6EconomicsAnswers {
   leadResponseTime: LeadResponseTime;
   productDescription: string;
   clientValue: string;
+  ownerName: string;
+  ownerEmail: string;
+  ownerPhone: string;
   saleType: SaleType;
   renewalFrequency: RenewalFrequency | null;
   monthlyNewClients: MonthlyNewClients;
