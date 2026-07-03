@@ -138,12 +138,7 @@ export function Step4Process() {
     const initial = current?.mainCompetitors;
     if (!initial) return Array.from({ length: 10 }, () => "");
 
-    const normalized = Array.isArray(initial)
-      ? initial
-      : initial
-          .split(/\n|,/)
-          .map((item) => item.trim())
-          .filter(Boolean);
+    const normalized = Array.isArray(initial) ? initial : [];
 
     const merged = Array.from({ length: 10 }, (_, index) => normalized[index] ?? "");
     return merged;
