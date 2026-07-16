@@ -1,6 +1,19 @@
 # CHANGELOG — Historial de Cambios
 Actualizar cada vez que se completa una feature.
 
+## 2026-07-15 — Growth: logo oficial + contador Early Adopter a 2,000
+- Logo `Logo_10xteam.png` procesado y optimizado (2528x1684 → 320x213 px, 4.5 MB → 47.7 KB) con interpolación bicúbica de alta calidad.
+- Logo integrado en nav (32 px alto, `loading="eager"`) y footer (36 px alto, `loading="lazy"`) reemplazando el texto plano anterior.
+- Contador Early Adopter actualizado: capacidad 1,000 → **2,000**, base 127 → 254, incremento diario duplicado; textos en popup, barra FOMO y CTA final actualizados.
+- Build verde, desplegado a `https://growth.10xteam.com.mx` y verificado con HTTP 200 en logo y página.
+- Commits: `b845fb5` en `main`.
+
+## 2026-07-02 — Growth: nueva landing comercial en produccion
+- Landing completamente rediseñada (`growth.10xteam.nueva.website.html`) sustituye la anterior como fuente canónica.
+- Incluye: nav sticky, footer adaptado, selector MXN/USD mejorado con banderas, pestañas visuales en add-ons y packs de soporte, barras de progreso con contorno, tarjetas de testimonios alineadas, párrafos de 3 líneas controladas, icon de métrica actualizado, popup limpiado.
+- Fix de TypeScript en `Step4Process.tsx` para `mainCompetitors` evitando split sobre tipo `never`.
+- Commits: `8b9c7e4` en `main`.
+
 ## 2026-06-30 — Growth: estabilidad Next 16 + pricing canonico nativo
 - Se corrigio fallo de build en `growth.10xteam.com` por conflicto `middleware.ts` + `proxy.ts` (Next 16): se consolido la logica en `src/proxy.ts` y se elimino `src/middleware.ts`.
 - Se ajusto `src/app/team/access/page.tsx` para cumplir prerender de Next 16 envolviendo `useSearchParams` con `Suspense`.

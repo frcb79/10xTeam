@@ -48,7 +48,8 @@ Pendiente:
 - Medición de KPIs por unidad de negocio separada (dev vs growth).
 - Definicion de despliegues independientes para `10xteam.com`, `dev.10xteam.com` y `growth.10xteam.com`.
 - Revision comercial final del wizard legacy y de la landing growth para decidir si se conserva, migra o retira el flujo duplicado `IcpWizard`.
-- Siguiente paso inmediato para proxima sesion: conectar entrypoint comercial a OAuth GHL (boton "Conectar GHL" + redirect controlado), persistir sesion/token en almacenamiento servidor y arrancar primer webhook de instalacion/evento para mover estado operativo (`wizard_completed -> call_pending -> activated`).
+- Siguiente paso inmediato: conectar entrypoint comercial a OAuth GHL (boton "Conectar GHL" + redirect controlado), persistir sesion/token en Supabase por `companyId/locationId` y arrancar primer webhook `AppInstall` para mover estado operativo (`wizard_completed -> call_pending -> activated`).
+- Pendiente branding: el archivo fuente `Logo_10xteam.png` tiene dimensiones de board de branding (2528x1684); conviene pedir al diseñador un lockup solo del logo en SVG para maxima flexibilidad futura.
 
 Bloqueadores:
 - Ninguno tecnico. Riesgo actual: coexistencia de wizard nuevo y wizard legacy puede generar retrabajo comercial si no se define pronto cual queda como flujo canonico.
@@ -64,3 +65,5 @@ Bloqueadores:
 2026-06-10 — Mejora del hub `10xteam.com`: intro de video con salida cinematicamente suave (crossfade + mask shrink) y ajustes responsive en mobile para reducir efectos visuales extranos.
 2026-06-10 — Growth comercial: CTAs de landing alineados a `/wizard/step/1`, preview temporal de Diagnostico Estrategico en dashboard pre-trial y push a `main` para continuidad de activacion.
 2026-06-30 — Growth: correccion de build en Next 16 (proxy/middleware), cierre de base OAuth GHL y pricing canonico integrado en landing sin iframe, con build verde y rama sincronizada.
+2026-07-02 — Growth: landing comercial completamente rediseñada (`growth.10xteam.nueva.website.html`) publicada en produccion reemplazando la anterior; incluye nav, footer, selector de moneda mejorado, pestañas visuales en add-ons, barras de progreso con contorno visible y arreglos de alineacion de tarjetas. Fix de build en `Step4Process.tsx`.
+2026-07-15 — Growth: logo oficial `Logo_10xteam.png` integrado en nav y footer (optimizado de 4.5 MB a 47.7 KB, 320x213 px); contador Early Adopter actualizado de 1,000 a 2,000 lugares con calculo diario duplicado. Commits `b845fb5` en `main`, desplegado y verificado en produccion.
