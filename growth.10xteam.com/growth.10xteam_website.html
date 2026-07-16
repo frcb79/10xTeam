@@ -249,14 +249,17 @@ body {
   gap: 22px;
 }
 .tx-nav-logo {
-  font-family: var(--tx-font-display);
-  font-size: 23px;
-  font-weight: 700;
-  color: var(--tx-text);
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
-  letter-spacing: -0.02em;
+  flex-shrink: 0;
 }
-.tx-nav-logo span { color: var(--tx-violet); }
+.tx-nav-logo img {
+  height: 32px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
 .tx-nav-links {
   display: flex;
   align-items: center;
@@ -2076,13 +2079,16 @@ body {
   margin-bottom: 34px;
 }
 .tx-footer-logo {
-  font-family: var(--tx-font-display);
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--tx-text);
+  display: inline-flex;
+  align-items: center;
   margin-bottom: 10px;
 }
-.tx-footer-logo span { color: var(--tx-green); }
+.tx-footer-logo img {
+  height: 36px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
 .tx-footer-desc {
   max-width: 320px;
   font-size: 13px;
@@ -2192,7 +2198,7 @@ body {
 
 <nav class="tx-nav">
   <div class="tx-nav-inner">
-    <a class="tx-nav-logo" href="#top">10x<span>Team</span></a>
+    <a class="tx-nav-logo" href="#top"><img src="/logo-10xteam.png" alt="10xTeam" width="120" height="32" loading="eager"></a>
     <div class="tx-nav-links">
       <a href="#funcionalidades">Funcionalidades</a>
       <a href="#precios">Precios</a>
@@ -2220,7 +2226,7 @@ body {
     </h2>
     <p style="color:var(--tx-text-dim); font-size:15px; margin-bottom:6px;">El precio se queda congelado para siempre.</p>
     <div class="tx-fomo">
-      <div class="tx-fomo-count" id="popup-fomo-count">··· <span class="tx-fomo-suffix">de 1,000 lugares Early Adopter tomados</span></div>
+      <div class="tx-fomo-count" id="popup-fomo-count">··· <span class="tx-fomo-suffix">de 2,000 lugares Early Adopter tomados</span></div>
       <div class="tx-fomo-bar"><div class="tx-fomo-fill" id="popup-fomo-fill"></div></div>
     </div>
     <a href="#prueba" class="tx-cta-btn" style="margin-top:0;">Quiero mi lugar Early Adopter</a>
@@ -2673,7 +2679,7 @@ body {
 
 <!-- FOMO BAR (pricing) -->
 <div class="fomo-bar">
-  <strong>Precio Early Adopter</strong> — <span class="fomo-count" id="fomo-count">127</span> <span class="fomo-total">/ 1,000 lugares tomados</span> · Precio garantizado de por vida mientras mantengas tu suscripción activa
+  <strong>Precio Early Adopter</strong> — <span class="fomo-count" id="fomo-count">254</span> <span class="fomo-total">/ 2,000 lugares tomados</span> · Precio garantizado de por vida mientras mantengas tu suscripción activa
   <div class="fomo-progress"><div class="fomo-progress-fill" id="fomo-fill" style="width:12.7%"></div></div>
 </div>
 
@@ -2930,7 +2936,7 @@ body {
         <p class="tx-cta-sub">Estamos en fase de lanzamiento en México y LATAM. Si eres de los primeros en sumarte, tu precio actual queda congelado para siempre.</p>
 
         <div class="tx-fomo">
-          <div class="tx-fomo-count" id="tx-fomo-count">··· <span class="tx-fomo-suffix">de 1,000 lugares Early Adopter tomados</span></div>
+          <div class="tx-fomo-count" id="tx-fomo-count">··· <span class="tx-fomo-suffix">de 2,000 lugares Early Adopter tomados</span></div>
           <div class="tx-fomo-bar"><div class="tx-fomo-fill" id="tx-fomo-fill"></div></div>
         </div>
 
@@ -2958,7 +2964,7 @@ body {
   <div class="tx-footer-inner">
     <div class="tx-footer-grid">
       <div>
-        <div class="tx-footer-logo">10x<span>Team</span></div>
+        <div class="tx-footer-logo"><img src="/logo-10xteam.png" alt="10xTeam" width="120" height="36" loading="lazy"></div>
         <p class="tx-footer-desc">La plataforma todo-en-uno para crecer ventas, automatizar operación y escalar contenido en México y LATAM.</p>
         <div class="tx-footer-pill-row">
           <span class="tx-footer-pill tx-pill-green">México</span>
@@ -3338,8 +3344,8 @@ body {
         FOMO_LAUNCH_DATE = 2026-07-15.
      ───────────────────────────────────────────────────────────── */
   var FOMO_LAUNCH_DATE = new Date('2026-07-15');
-  var FOMO_BASE = 127;
-  var FOMO_MAX = 1000;
+  var FOMO_BASE = 254;
+  var FOMO_MAX = 2000;
 
   function getFomoCount() {
     var now = new Date();
@@ -3347,7 +3353,7 @@ body {
     var count = FOMO_BASE;
     for (var d = 0; d < daysElapsed; d++) {
       var seed = (FOMO_LAUNCH_DATE.getTime() / 86400000) + d;
-      var dailyIncrease = 3 + Math.floor(((Math.sin(seed * 9301 + 49297) * 233280) % 1 + 1) / 2 * 6);
+      var dailyIncrease = (3 + Math.floor(((Math.sin(seed * 9301 + 49297) * 233280) % 1 + 1) / 2 * 6)) * 2;
       count = Math.min(count + dailyIncrease, FOMO_MAX);
     }
     return count;
@@ -3369,7 +3375,7 @@ body {
     if (txCountEl && txFillEl) {
       var pct2 = Math.min(100, (target / FOMO_MAX) * 100);
       txFillEl.style.width = pct2 + '%';
-      txCountEl.innerHTML = target.toLocaleString('es-MX') + ' <span class="tx-fomo-suffix">de 1,000 lugares Early Adopter tomados</span>';
+      txCountEl.innerHTML = target.toLocaleString('es-MX') + ' <span class="tx-fomo-suffix">de 2,000 lugares Early Adopter tomados</span>';
     }
 
     // Popup
@@ -3378,7 +3384,7 @@ body {
     if (popCountEl && popFillEl) {
       var pct3 = Math.min(100, (target / FOMO_MAX) * 100);
       popFillEl.style.width = pct3 + '%';
-      popCountEl.innerHTML = target.toLocaleString('es-MX') + ' <span class="tx-fomo-suffix">de 1,000 lugares Early Adopter tomados</span>';
+      popCountEl.innerHTML = target.toLocaleString('es-MX') + ' <span class="tx-fomo-suffix">de 2,000 lugares Early Adopter tomados</span>';
     }
   }
 
