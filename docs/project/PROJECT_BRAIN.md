@@ -35,8 +35,10 @@ En progreso:
 - Implementacion del hub raiz `10xteam.com` para direccionar trafico entre dev y growth.
 
 Actualizacion reciente:
-- `growth.10xteam.com` quedo estable en Next 16 al consolidar control de rutas en `proxy.ts` y retirar `middleware.ts` (evitando conflicto de build en produccion), manteniendo protegido `/team/*` con gate por passcode.
-- `growth.10xteam.com` incorporo bloque base de conexion con GoHighLevel (OAuth callback/refresh/status) para arrancar integraciones reales por cuenta.
+- Logo aumentado 40% en todas las páginas de los 3 sitios (growth, dev, 10xteam.com) incluyendo nav, footer, pantallas legales, activation screen y diagnóstico template.
+- Logo transparente desplegado en todos los `public/` — reemplazó versión antigua con fondo negro.
+- Confirmado: los 3 proyectos Vercel NO auto-despliegan desde git push; requieren `vercel --prod --yes` con VERCEL_PROJECT_ID explícito desde repo root. IDs documentados en memoria de repo.
+- `growth.10xteam.com` incorporó bloque base de conexion con GoHighLevel (OAuth callback/refresh/status) para arrancar integraciones reales por cuenta.
 - `growth.10xteam.com` ya integra pricing canonico sin `iframe` en la landing principal, cargado de forma nativa desde fuente unica (`10x_pricing.html`) para acelerar cambios comerciales sin romper el resto del sitio.
 - `10xteam.com` mejoro la experiencia visual del intro con transicion cinematica en dos fases (crossfade progresivo + encogimiento con mascara), incluyendo comportamiento responsive mas estable en mobile para eliminar efectos de corte y artefactos visuales.
 - `growth.10xteam.com.mx` ya sirve el HTML comercial canonico aprobado, manteniendo intactos diseno, tipografias, colores y secciones; la mini seccion de servicios fue restaurada tras una eliminacion no deseada.

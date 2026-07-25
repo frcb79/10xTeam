@@ -1,6 +1,13 @@
 # CHANGELOG — Historial de Cambios
 Actualizar cada vez que se completa una feature.
 
+## 2026-07-25 — Logo +40% en todas las páginas + logo transparente en producción
+- Logo aumentado 40% (nav: 40px→56px, footer: 42px→59px, pantallas legales: 38px→53px) en los 6 archivos HTML/Astro de los 3 sitios.
+- Logo transparente (`Logo_10xteam.png` raíz de growth) reemplazó versión antigua con fondo negro en todos los `public/` (growth, dev, 10xteam.com).
+- Deploy forzado manualmente en los 3 proyectos Vercel — confirmado que NO auto-despliegan desde git push.
+- IDs de proyectos Vercel documentados en memoria de repo para uso futuro.
+- Archivos modificados: `growth.10xteam_website.html`, `10xteam_activation_screen.html`, `public/diagnostico-estrategico-10x-template.html`, `10xteam.com/index.html`, `10xteam.com/styles.css`, `dev.10xteam.com/src/pages/index.astro`, `privacidad.astro`, `terminos.astro`.
+
 ## 2026-07-15 — Growth: logo oficial + contador Early Adopter a 2,000
 - Logo `Logo_10xteam.png` procesado y optimizado (2528x1684 → 320x213 px, 4.5 MB → 47.7 KB) con interpolación bicúbica de alta calidad.
 - Logo integrado en nav (32 px alto, `loading="eager"`) y footer (36 px alto, `loading="lazy"`) reemplazando el texto plano anterior.
