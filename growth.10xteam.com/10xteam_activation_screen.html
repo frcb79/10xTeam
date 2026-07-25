@@ -21,8 +21,8 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-
 
 /* NAV */
 .nav{background:rgba(6,8,16,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd);padding:0 28px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-.logo{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:var(--white)}
-.logo em{font-style:italic;color:var(--blue-l)}
+.logo{display:inline-flex;align-items:center}
+.logo img{height:53px;width:auto;display:block;object-fit:contain}
 .nav-right{display:flex;align-items:center;gap:12px}
 .nav-biz{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
 .nav-biz strong{color:var(--text)}
@@ -132,7 +132,7 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-
 
 <!-- NAV -->
 <nav class="nav">
-  <span class="logo">10x<em>Team</em></span>
+  <span class="logo"><img src="/Logo_10xteam.png" alt="10xTeam" width="133" height="53"></span>
   <div style="display:flex;align-items:center;gap:16px">
     <div class="step-indicator">
       <span class="si-dot done" title="Wizard completado"></span>

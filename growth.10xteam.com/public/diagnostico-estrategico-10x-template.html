@@ -21,8 +21,8 @@ body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',sans-s
 
 /* NAV */
 .nav{background:rgba(7,7,9,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:100;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--white)}
-.nav-logo em{font-style:italic;color:var(--gold-l)}
+.nav-logo{display:inline-flex;align-items:center}
+.nav-logo img{height:53px;width:auto;display:block;object-fit:contain}
 .nav-links{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
 .nav-a{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.06em;padding:6px 11px;border-radius:5px;color:var(--muted);cursor:pointer;white-space:nowrap;transition:.15s;text-decoration:none}
 .nav-a:hover{color:var(--white);background:rgba(255,255,255,.05)}
@@ -273,7 +273,7 @@ body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',sans-s
 
 <!-- NAV -->
 <div class="nav">
-  <span class="nav-logo">10x<em>Team</em></span>
+  <span class="nav-logo"><img src="/Logo_10xteam.png" alt="10xTeam" width="133" height="53"></span>
   <nav class="nav-links">
     <a href="#resumen" class="nav-a">Resumen</a>
     <a href="#icp" class="nav-a">ICP</a>
