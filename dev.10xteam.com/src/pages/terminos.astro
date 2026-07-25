@@ -12,7 +12,7 @@ import '../styles/global.css';
 <body class="legal-page">
     <nav class="navbar">
         <div class="container nav-inner">
-            <a href="/" class="text-gradient logo">10xTeam</a>
+            <a href="/" class="logo"><img src="/Logo_10xteam.png" alt="10xTeam" width="133" height="53" /></a>
         </div>
     </nav>
 
@@ -47,6 +47,8 @@ import '../styles/global.css';
     </main>
 
     <style>
+        .logo { display: inline-flex; align-items: center; }
+        .logo img { height: 53px; width: auto; display: block; object-fit: contain; }
         .legal-page { background-color: var(--bg-color); color: var(--text-color); }
         .legal-content h3 { color: var(--accent-primary); margin-top: 2rem; margin-bottom: 0.5rem; }
         .legal-content p { margin-bottom: 1rem; }

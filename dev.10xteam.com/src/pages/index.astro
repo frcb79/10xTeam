@@ -18,7 +18,7 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
 	<body>
     <header class="navbar">
       <div class="container navbar-container">
-        <a href="https://10xteam.com.mx" class="logo"><span class="text-gradient">10xTeam</span></a>
+        <a href="https://10xteam.com.mx" class="logo"><img src="/Logo_10xteam.png" alt="10xTeam" width="140" height="56" /></a>
         <nav class="nav-links" id="nav-links">
           <a href="#servicios">Servicios</a>
           <a href="#precios">Precios</a>
@@ -485,7 +485,7 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
     <footer class="footer">
       <div class="container footer-inner">
         <div class="footer-brand">
-          <span class="text-gradient footer-logo">10xTeam</span>
+          <span class="footer-logo"><img src="/Logo_10xteam.png" alt="10xTeam" width="147" height="59" /></span>
           <p class="text-muted">© 2026 10xTeam. Todos los derechos reservados.</p>
         </div>
         <div class="footer-links">
@@ -521,7 +521,8 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
       /* ─── NAVBAR ─── */
       .navbar{position:sticky;top:0;z-index:100;padding:1rem 0;background:rgba(7,10,18,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--glass-border)}
       .navbar-container{display:grid;grid-template-columns:auto 1fr auto;align-items:center}
-      .logo{font-size:1.4rem;font-weight:900;letter-spacing:-0.5px}
+      .logo{display:inline-flex;align-items:center}
+      .logo img{height:56px;width:auto;display:block;object-fit:contain}
       .nav-links{display:flex;gap:2.5rem;justify-self:center}
       .nav-links a{font-weight:500;font-size:0.9rem;color:var(--text-muted);transition:color var(--transition-base)}
       .nav-links a:hover{color:var(--text-color)}
@@ -675,7 +676,8 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
       /* ─── FOOTER ─── */
       .footer{padding:4rem 0;border-top:1px solid var(--glass-border);margin-top:2rem}
       .footer-inner{display:flex;justify-content:space-between;align-items:center}
-      .footer-logo{font-weight:900;font-size:1.2rem; display: block; margin-bottom: 0.5rem;}
+      .footer-logo{display:block;margin-bottom:0.5rem;line-height:0}
+      .footer-logo img{height:59px;width:auto;display:block;object-fit:contain}
       .footer-links{display: flex; gap: 2rem;}
       .footer-links a{font-size: 0.85rem; color: var(--text-dim); transition: color 0.2s;}
       .footer-links a:hover{color: var(--accent-primary);}

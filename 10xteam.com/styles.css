@@ -96,22 +96,19 @@ body {
 }
 
 .brand {
-  font-family: "Fraunces", serif;
-  font-weight: 800;
-  font-size: 1.4rem;
-  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
 }
 
 .brand-link {
   text-decoration: none;
 }
 
-.brand-gradient {
-  background: linear-gradient(135deg, #34d399, #0ea5a0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+.brand img {
+  height: 56px;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .top-actions {
