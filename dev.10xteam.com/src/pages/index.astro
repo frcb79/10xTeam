@@ -414,21 +414,22 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
             <h2>¿Listo para construir<br /><span class="text-gradient">sin pagar de más?</span></h2>
             <p class="subtitle">Cuéntanos tu proyecto y te responderemos en menos de 24h.</p>
             
-            <form action="#" method="POST" class="contact-form">
+            <form id="contact-form" class="contact-form">
               <div class="form-grid">
-                <input type="text" placeholder="Nombre completo" required />
-                <input type="email" placeholder="Correo electrónico" required />
+                <input type="text" name="name" placeholder="Nombre completo" required />
+                <input type="email" name="email" placeholder="Correo electrónico" required />
               </div>
-              <select required>
+              <select name="serviceType" required>
                 <option value="">¿Qué necesitas?</option>
                 <option value="mvp">MVP precio fijo</option>
                 <option value="evolucion">Equipo de evolución continua</option>
                 <option value="celula">Célula completa dedicada</option>
               </select>
-              <textarea placeholder="Cuéntanos sobre tu proyecto o lo que buscas..." required></textarea>
+              <textarea name="message" placeholder="Cuéntanos sobre tu proyecto o lo que buscas..." required></textarea>
               <button type="submit" class="btn-primary">Enviar Proyecto →</button>
             </form>
-            
+            <p id="contact-form-status" class="text-muted form-note" role="status"></p>
+
             <p class="text-muted form-note">Sin compromiso. Te asesoramos en 15 min.</p>
           </div>
         </div>
@@ -514,6 +515,48 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
         
         modal.addEventListener('click', (e) => {
           if(e.target === modal) modal.classList.remove('active');
+        });
+      });
+    </script>
+    <script>
+      const CONTACT_ENDPOINT = 'https://growth.10xteam.com.mx/api/contact';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('contact-form');
+        const status = document.getElementById('contact-form-status');
+        if (!(form instanceof HTMLFormElement) || !status) return;
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const submitBtn = form.querySelector('button[type="submit"]');
+          const formData = new FormData(form);
+          const payload = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            serviceType: formData.get('serviceType'),
+            message: formData.get('message'),
+            source: 'dev_contact',
+          };
+
+          status.textContent = 'Enviando...';
+          if (submitBtn instanceof HTMLButtonElement) submitBtn.disabled = true;
+
+          try {
+            const response = await fetch(CONTACT_ENDPOINT, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+            });
+
+            if (!response.ok) throw new Error('request-failed');
+
+            status.textContent = 'Recibido. Te contactaremos en menos de 24h.';
+            form.reset();
+          } catch {
+            status.textContent = 'No pudimos enviar tu mensaje. Intenta de nuevo o escribenos directo.';
+          } finally {
+            if (submitBtn instanceof HTMLButtonElement) submitBtn.disabled = false;
+          }
         });
       });
     </script>

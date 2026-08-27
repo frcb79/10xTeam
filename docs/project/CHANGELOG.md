@@ -1,6 +1,21 @@
 # CHANGELOG — Historial de Cambios
 Actualizar cada vez que se completa una feature.
 
+## 2026-08-11 (2) — Credenciales Supabase/Gemini reales + fix de CTAs rotos y white-label en growth
+- Cargadas credenciales reales de Supabase (URL, anon key, service role key) y Gemini API key en `growth.10xteam.com/.env.local`.
+- Corregida la causa raiz de "ningun boton funciona" en la landing: `src/app/growth-site/route.ts` aplicaba parches de HTML contra markup viejo que ya no existe (`#demo`, `nav-logo`, `footer-link`, etc.). Reescrito `applyGrowthPatches()` para apuntar los 11 CTAs reales (`#trial`, `#prueba`, `#` sueltos) a `/wizard`.
+- Eliminadas 3 menciones visibles de GoHighLevel/Calendly (white-label): boton "Conectar con GoHighLevel" -> "Conectar mi cuenta" en `/dashboard` (y su mensaje de fallback ya no expone nombres de variables de entorno); alert() en `10xteam_activation_screen.html`; bullet de `10x_pricing.html` (editado directo porque `pricing-canon/route.ts` sirve el HTML sin parches).
+- Build verde verificado en growth.10xteam.com tras todos los cambios.
+- Pendiente (accion externa, no tecnica): ejecutar migraciones 10-13 contra el proyecto Supabase real y cargar las mismas variables en Vercel; alta de app GHL Marketplace; URL real de calendario.
+
+## 2026-08-11 — Ejecucion plan de lanzamiento: limpieza wizard legado + captura de leads dev
+- Eliminado wizard legado (`src/components/icp-wizard.tsx`) y su uso en `src/app/page.tsx` (confirmado codigo muerto: `src/proxy.ts` siempre reescribe "/" a "/growth-site").
+- Nuevo endpoint `POST /api/contact` en growth.10xteam.com con CORS restringido por origen (`CONTACT_ALLOWED_ORIGINS`), validacion de campos y persistencia en nueva tabla Supabase `contact_leads` (migracion `docs/project/migrations/13_create_contact_leads.sql`).
+- Formulario de contacto en `dev.10xteam.com/src/pages/index.astro` conectado via fetch a `https://growth.10xteam.com.mx/api/contact` (antes `action="#"`, no enviaba datos a ningun lado).
+- Agregado boton "Conectar con GoHighLevel" en `/dashboard` de growth, usando nuevo helper `src/lib/ghl/authorize.ts` que arma la URL de autorizacion OAuth desde `GHL_CLIENT_ID`/`GHL_REDIRECT_URI`; se corrigieron nombres de variables en `.env.local` (antes `GHL_API_KEY`/`GHL_AGENCY_ID`, no usadas por el codigo real de OAuth).
+- Build verde verificado en growth.10xteam.com (`npm run build`) y dev.10xteam.com (`npm run build`).
+- Pendiente (fuera del alcance de este cambio, requiere accion externa del CEO): credenciales reales de Supabase y de la app GHL (`GHL_CLIENT_ID`/`GHL_CLIENT_SECRET`), sin las cuales /api/contact y /dashboard "Conectar GHL" quedan funcionales en codigo pero inactivos en produccion.
+
 ## 2026-07-25 — Logo +40% en todas las páginas + logo transparente en producción
 - Logo aumentado 40% (nav: 40px→56px, footer: 42px→59px, pantallas legales: 38px→53px) en los 6 archivos HTML/Astro de los 3 sitios.
 - Logo transparente (`Logo_10xteam.png` raíz de growth) reemplazó versión antigua con fondo negro en todos los `public/` (growth, dev, 10xteam.com).

@@ -1,9 +1,12 @@
 import Link from "next/link";
+import { buildGhlAuthorizeUrl } from "@/lib/ghl/authorize";
 
 const GHL_CALENDAR_URL =
   process.env.NEXT_PUBLIC_GHL_CALENDAR_URL ?? "https://calendar.10xteam.com.mx/activacion";
 
 export default function DashboardPreTrialPage() {
+  const ghlAuthorizeUrl = buildGhlAuthorizeUrl();
+
   return (
     <div className="mx-auto min-h-screen w-full max-w-5xl px-5 py-10 md:px-8">
       <div className="rounded-[2rem] border border-white/10 bg-slate-950/85 p-8 shadow-[0_20px_60px_rgba(0,0,0,0.4)] md:p-10">
@@ -26,6 +29,19 @@ export default function DashboardPreTrialPage() {
           <StatusCard text="ICP basico visible en el dashboard" ready />
           <StatusCard text="Todo lo demas bloqueado hasta llamada" ready={false} />
         </div>
+
+        {ghlAuthorizeUrl ? (
+          <a
+            href={ghlAuthorizeUrl}
+            className="mt-6 block rounded-full border border-emerald-300/40 bg-emerald-300/10 px-6 py-3 text-center text-base font-semibold text-emerald-100"
+          >
+            Conectar mi cuenta
+          </a>
+        ) : (
+          <p className="mt-6 rounded-2xl border border-amber-300/30 bg-amber-300/10 p-4 text-sm text-amber-100">
+            Conexion de tu cuenta pendiente de configurar. Contacta a soporte para activarla.
+          </p>
+        )}
 
         <a
           href={GHL_CALENDAR_URL}

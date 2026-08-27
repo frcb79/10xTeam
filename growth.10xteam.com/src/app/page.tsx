@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { IcpWizard } from "@/components/icp-wizard";
 import {
   CLAIMS_DISCLAIMER,
   CONSERVATIVE_IMPACT_CLAIMS,
@@ -79,8 +78,6 @@ export default function Home() {
           <Pillar title="Outreach" text="Orquesta email, LinkedIn y WhatsApp con seguimiento automatizado." />
           <Pillar title="Seguimiento" text="Scoring y handoff comercial con contexto para cierre." />
         </section>
-
-        <IcpWizard />
       </main>
     </div>
   );
