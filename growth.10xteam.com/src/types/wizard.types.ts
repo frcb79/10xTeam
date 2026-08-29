@@ -337,4 +337,5 @@ export type WizardAction =
   | { type: "SET_GENERATED_OUTPUTS"; payload: GeneratedOutputs }
   | { type: "COMPLETE_STEP"; payload: WizardStep }
   | { type: "SET_ERROR"; payload: string }
+  | { type: "HYDRATE"; payload: WizardState }
   | { type: "RESET" };

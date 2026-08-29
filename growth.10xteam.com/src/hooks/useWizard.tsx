@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useReducer } from "react";
+import { createContext, useCallback, useContext, useEffect, useReducer, useState } from "react";
 import type {
   GeneratedOutputs,
   ICPQualityScore,
@@ -83,6 +83,8 @@ function wizardReducer(state: WizardState, action: WizardAction): WizardState {
       };
     case "SET_ERROR":
       return { ...state, error: action.payload, status: "error" };
+    case "HYDRATE":
+      return action.payload;
     case "RESET":
       return initialState;
     default:
@@ -117,8 +119,50 @@ interface WizardContextValue {
 
 const WizardContext = createContext<WizardContextValue | null>(null);
 
+const WIZARD_STORAGE_KEY = "growth.wizardState.v1";
+
+// Estados transitorios que no deben sobrevivir una recarga de pagina.
+const TRANSIENT_STATUSES: WizardState["status"][] = ["processing", "scraping", "complete", "error"];
+
+function sanitizePersistedState(parsed: WizardState): WizardState {
+  return {
+    ...initialState,
+    ...parsed,
+    status: TRANSIENT_STATUSES.includes(parsed.status) ? "in_progress" : parsed.status,
+    error: null,
+  };
+}
+
 export function WizardProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(wizardReducer, initialState);
+  const [hydrated, setHydrated] = useState(false);
+
+  // Hidratar el borrador guardado solo en cliente (despues del primer render
+  // para evitar mismatch de hidratacion SSR).
+  useEffect(() => {
+    try {
+      const raw = window.sessionStorage.getItem(WIZARD_STORAGE_KEY);
+      if (raw) {
+        dispatch({
+          type: "HYDRATE",
+          payload: sanitizePersistedState(JSON.parse(raw) as WizardState),
+        });
+      }
+    } catch {
+      // Storage corrupto o no disponible: se ignora y se arranca limpio.
+    }
+    setHydrated(true);
+  }, []);
+
+  // Persistir cada cambio del estado como borrador de sesion.
+  useEffect(() => {
+    if (!hydrated) return;
+    try {
+      window.sessionStorage.setItem(WIZARD_STORAGE_KEY, JSON.stringify(state));
+    } catch {
+      // Storage lleno o no disponible: no bloquear el flujo.
+    }
+  }, [hydrated, state]);
 
   const goToStep = useCallback((step: WizardStep) => {
     dispatch({ type: "SET_STEP", payload: step });
@@ -160,7 +204,14 @@ export function WizardProvider({ children }: { children: React.ReactNode }) {
     setGeneratedOutputs: (outputs) =>
       dispatch({ type: "SET_GENERATED_OUTPUTS", payload: outputs }),
     setICPScore: (score) => dispatch({ type: "SET_ICP_SCORE", payload: score }),
-    reset: () => dispatch({ type: "RESET" }),
+    reset: () => {
+      try {
+        window.sessionStorage.removeItem(WIZARD_STORAGE_KEY);
+      } catch {
+        // Storage no disponible: el reset en memoria basta.
+      }
+      dispatch({ type: "RESET" });
+    },
     canGoNext: state.status !== "processing" && state.status !== "error",
     isStepCompleted: (step) => state.completedSteps.includes(step),
     getStep3Component: () => {
