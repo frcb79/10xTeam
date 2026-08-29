@@ -1,6 +1,13 @@
 # CHANGELOG — Historial de Cambios
 Actualizar cada vez que se completa una feature.
 
+## 2026-08-28 — Wizard ICP: persistencia de borrador + prueba E2E completa en produccion
+- Fix critico: el wizard guardaba su estado solo en memoria (React Context); cualquier recarga borraba todas las respuestas y el diagnostico salia con todo "Pendiente". Ahora `WizardProvider` persiste `WizardState` en `sessionStorage` y lo hidrata al cargar (`src/hooks/useWizard.tsx`, accion `HYDRATE` en `src/types/wizard.types.ts`).
+- Estados transitorios (`processing`, `scraping`, `complete`, `error`) se sanitizan a `in_progress` al hidratar para no dejar al usuario atascado en la pantalla de procesamiento tras una recarga.
+- Prueba E2E real en https://growth.10xteam.com.mx: landing -> wizard 6 pasos (con recarga intencional en paso 5, datos sobrevivieron) -> procesamiento -> /wizard/complete con resumen completo -> /activacion con preview estrategico poblado -> registro `diag_9taqykah` creado en Supabase `diagnostic_records` con status `call_pending`, source `wizard`, datos de contacto reales.
+- Build verde, deploy a produccion, commit `25c7281` en `main`.
+- Pendiente conocido (no bloquea): contenido AI del ICP sale como mock mientras `AI_DEV_MODE=true` y las tareas core apuntan a Anthropic sin key; URL de calendario sigue siendo placeholder (`calendar.10xteam.com.mx` no resuelve) hasta tener el link real.
+
 ## 2026-08-11 (2) — Credenciales Supabase/Gemini reales + fix de CTAs rotos y white-label en growth
 - Cargadas credenciales reales de Supabase (URL, anon key, service role key) y Gemini API key en `growth.10xteam.com/.env.local`.
 - Corregida la causa raiz de "ningun boton funciona" en la landing: `src/app/growth-site/route.ts` aplicaba parches de HTML contra markup viejo que ya no existe (`#demo`, `nav-logo`, `footer-link`, etc.). Reescrito `applyGrowthPatches()` para apuntar los 11 CTAs reales (`#trial`, `#prueba`, `#` sueltos) a `/wizard`.

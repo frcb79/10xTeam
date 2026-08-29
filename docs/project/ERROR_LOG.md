@@ -6,6 +6,7 @@ Consultar SIEMPRE al inicio de sesion.
 [Ninguno al inicio del proyecto]
 
 ## ERRORES RESUELTOS
+- 2026-08-28 / Wizard ICP perdia todas las respuestas al recargar la pagina (estado solo en React Context, en memoria) / Se agrego persistencia del `WizardState` en `sessionStorage` con hidratacion post-mount en `WizardProvider` (accion nueva `HYDRATE`, sanitizando estados transitorios `processing`/`scraping`/`complete`/`error` a `in_progress`) / Los pasos guardan su estado global al presionar "Continuar"; una recarga conserva pasos confirmados y el paso actual. Verificado E2E en produccion con recarga intencional en paso 5 y registro real en `diagnostic_records`.
 - 2026-05-27 / Asignacion de dominios Vercel antes de DNS validado / Se configuraron registros DNS (`@`, `www`, `dev`, `growth`), se actualizo Vercel CLI, se reasignaron aliases al deployment correcto por proyecto y se verifico respuesta HTTP 200 en los cuatro hosts / Primero DNS, despues enlace de dominio por proyecto y validacion final.
 - 2026-06-10 / Drift de tipos entre el wizard legacy, el nuevo contrato `WizardAnswers` y la API de materiales / Se alinearon los guards del request, el tipo `PrefillConfidence` y el campo obligatorio `step6`, dejando `npm run build` nuevamente en verde / Cuando conviven un flujo legacy y uno nuevo, cada cambio de contrato debe propagarse al segundo antes de cerrar la sesion o el build se rompe al final.
 
