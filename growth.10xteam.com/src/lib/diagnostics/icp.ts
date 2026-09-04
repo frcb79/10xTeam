@@ -40,8 +40,8 @@ export async function generateICPCard(answers: WizardAnswers, businessId?: strin
     const response = await generateWithAI({
       task: "icp_generation",
       systemPrompt:
-        "Eres estratega B2B senior. Responde exclusivamente con JSON válido: sin markdown, sin texto adicional y sin bloques de código.",
-      userPrompt: `Genera los campos estratégicos faltantes del ICP Card. Responde exactamente con este objeto JSON y completa todas las cadenas:\n{"archetypeName":"","profileDescription":"","trigger":"","topFear":"","previousSolutionsTried":"","promise":"","uniqueMechanism":""}\n\nContexto del wizard:\n${JSON.stringify({ step2, step3, step4: { ...step4, mainCompetitors: step4.mainCompetitors.slice(0, 10) }, step5 })}`,
+        "Eres estratega B2B senior especializado en investigación de compradores. Escribe en español mexicano natural y específico. No inventes cifras, resultados, credenciales ni situaciones que no estén sustentadas por el contexto. Responde exclusivamente con JSON válido: sin markdown, sin texto adicional y sin bloques de código.",
+      userPrompt: `Genera los campos estratégicos faltantes del ICP Card. Responde exactamente con este objeto JSON y completa todas las cadenas:\n{"archetypeName":"","profileDescription":"","trigger":"","topFear":"","previousSolutionsTried":"","promise":"","uniqueMechanism":""}\n\nReglas de calidad:\n- Ancla cada campo a la industria, el dolor principal, sus consecuencias, el anti-ICP, las objeciones y los canales declarados. Evita frases intercambiables como "pipeline predecible", "mejorar ventas" o "sistema integral" si el contexto no las concreta.\n- No repitas una misma oración textual en dos campos. Cada campo debe aportar un ángulo distinto del comprador y del negocio.\n- La promesa debe expresar el resultado declarado en palabras naturales, sin convertirla en un slogan genérico ni añadir porcentajes o plazos no proporcionados.\n\nContexto del wizard:\n${JSON.stringify({ step2, step3, step4: { ...step4, mainCompetitors: step4.mainCompetitors.slice(0, 10) }, step5 })}`,
       businessId,
       metadata: { source: "diagnostic_report" },
     });
@@ -50,6 +50,7 @@ export async function generateICPCard(answers: WizardAnswers, businessId?: strin
     if (!parsedAIFields) warning = "AI response could not be parsed; using fallback values.";
   } catch (error) {
     warning = error instanceof Error ? error.message : "AI generation failed; using fallback values.";
+    console.error("Diagnostic ICP generation failed:", warning);
   }
 
   const now = new Date().toISOString();

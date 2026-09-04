@@ -22,10 +22,10 @@ export const AI_TASK_ROUTING: Record<AITask, AITaskConfig> = {
   icp_generation: {
     task: "icp_generation",
     provider: "anthropic",
-    model: "claude-sonnet-4-5",
+    model: "claude-opus-5",
     maxInputTokens: 4000,
     maxOutputTokens: 3000,
-    temperature: 0.3,
+    temperature: 0.4,
     description: "Generate ICP card",
   },
   icp_score: {
@@ -145,6 +145,15 @@ export const AI_TASK_ROUTING: Record<AITask, AITaskConfig> = {
     temperature: 0.5,
     description: "Generate WhatsApp outbound",
   },
+  diagnostic_narratives: {
+    task: "diagnostic_narratives",
+    provider: "anthropic",
+    model: "claude-opus-5",
+    maxInputTokens: 6000,
+    maxOutputTokens: 12000,
+    temperature: 0.5,
+    description: "Generate diagnostic narratives",
+  },
   posts_monthly: {
     task: "posts_monthly",
     provider: "google",
@@ -204,7 +213,7 @@ export function resolveTaskConfig(task: AITask): AITaskConfig {
   const base = AI_TASK_ROUTING[task];
   const runtime = parseDevModeConfig();
 
-  if (!runtime.devMode) return base;
+  if (!runtime.devMode || task === "icp_generation" || task === "diagnostic_narratives") return base;
 
   return {
     ...base,

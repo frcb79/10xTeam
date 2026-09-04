@@ -3,6 +3,7 @@ export type AIProvider = "anthropic" | "openai" | "google" | "deepseek";
 export type AIModel =
   | "claude-haiku-4-5"
   | "claude-sonnet-4-5"
+  | "claude-opus-5"
   | "gpt-4o-mini"
   | "gpt-4o"
   | "gemini-1.5-flash"
@@ -26,6 +27,7 @@ export type AITask =
   | "email_client"
   | "linkedin_messages"
   | "whatsapp_messages"
+  | "diagnostic_narratives"
   | "posts_monthly"
   | "post_single"
   | "ads_copy"

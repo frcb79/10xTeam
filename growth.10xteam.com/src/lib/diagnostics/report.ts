@@ -5,6 +5,58 @@ import { calculateOpportunity } from "@/lib/utils/opportunity";
 import type { DiagnosticNarratives, DiagnosticRecord, DiagnosticReport } from "@/types/diagnostic.types";
 import type { GeneratedOutputs, WizardAnswers } from "@/types/wizard.types";
 
+const NARRATIVE_QUALITY_REFERENCE = `Referencia de tono y profundidad, no de contenido para copiar:
+- Buyer persona: "Laura empieza el día revisando WhatsApp antes de levantarse. Administra una empresa familiar con 22 empleados y dos hijos en universidad. No le falta dinero: le falta tiempo y le sobra preocupación por su imagen."
+- Creencia: "El resultado va a verse natural; no van a darse cuenta." Se construye con casos antes/después de perfiles similares y la señal es que guarda o comparte ese caso.`;
+
+const NARRATIVE_OUTPUT_SCHEMA = {
+  type: "object",
+  properties: {
+    executiveSummary: { type: "string", description: "Non-empty executive summary sized to the specific evidence available in the diagnostic." },
+    buyerPersona: {
+      type: "object",
+      properties: {
+        name: { type: "string", description: "Non-empty plausible fictional name." },
+        role: { type: "string", description: "Non-empty buyer role." },
+        dayInLife: { type: "string", description: "Non-empty narrative scene sized to the evidence available in the diagnostic." },
+        unspokenThought: { type: "string", description: "Non-empty first-person thought grounded in the diagnostic." },
+        influences: { type: "string", description: "Non-empty description grounded in the diagnostic." },
+        twelveMonthVision: { type: "string", description: "Non-empty description grounded in the diagnostic." },
+      },
+      required: ["name", "role", "dayInLife", "unspokenThought", "influences", "twelveMonthVision"],
+      additionalProperties: false,
+    },
+    beliefMap: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          belief: { type: "string", description: "Non-empty buyer belief grounded in the diagnostic." },
+          asset: { type: "string", description: "Non-empty concrete asset grounded in the diagnostic." },
+          signal: { type: "string", description: "Non-empty observable buyer action grounded in the diagnostic." },
+        },
+        required: ["belief", "asset", "signal"],
+        additionalProperties: false,
+      },
+    },
+    voice: {
+      type: "object",
+      properties: {
+        whatsapp: { type: "string", description: "Non-empty conversational WhatsApp message grounded in the diagnostic." },
+        instagramHook: { type: "string", description: "Non-empty social hook grounded in the diagnostic." },
+        instagramCaption: { type: "string", description: "Non-empty human social caption grounded in the diagnostic." },
+        emailSubject: { type: "string", description: "Non-empty natural email subject grounded in the diagnostic." },
+        emailBody: { type: "string", description: "Non-empty personal email grounded in the diagnostic." },
+        reelScript: { type: "string", description: "Non-empty reel script with scene, on-screen text and useful turn grounded in the diagnostic." },
+      },
+      required: ["whatsapp", "instagramHook", "instagramCaption", "emailSubject", "emailBody", "reelScript"],
+      additionalProperties: false,
+    },
+  },
+  required: ["executiveSummary", "buyerPersona", "beliefMap", "voice"],
+  additionalProperties: false,
+} as const;
+
 export async function generateDiagnosticReport(
   answers: WizardAnswers,
   businessId?: string,
@@ -71,30 +123,59 @@ async function generateNarratives(
 
   try {
     const response = await generateWithAI({
-      // This task is routed to Gemini Flash in AI_DEV_MODE through the existing config.
-      task: "posts_monthly",
-      systemPrompt: "Eres estratega de crecimiento senior. Devuelve solo JSON valido, en espanol mexicano, concreto y sin promesas no verificables.",
-      userPrompt: `Crea narrativas para un diagnostico comercial usando exactamente este JSON: {"executiveSummary":"","buyerPersona":{"name":"","role":"","dayInLife":"","unspokenThought":"","influences":"","twelveMonthVision":""},"beliefMap":[{"belief":"","asset":"","signal":""}],"voice":{"whatsapp":"","instagramHook":"","instagramCaption":"","emailSubject":"","emailBody":"","reelScript":""}}. Genera 8 elementos en beliefMap. Contexto: ${JSON.stringify({ icpCard, answers, opportunity })}`,
+      task: "diagnostic_narratives",
+      systemPrompt: "Eres estratega de crecimiento y editor de marca senior. Devuelve solo JSON valido, en espanol mexicano, concreto y sin promesas no verificables. Tu estándar es un diagnóstico que suena investigado y escrito por una persona, nunca como una plantilla de IA o un manual de ventas. Antes de responder, revisa en silencio que cada campo cumpla las reglas y reescribe los que podrían aplicarse sin cambios a cualquier PyME.",
+      outputSchema: NARRATIVE_OUTPUT_SCHEMA,
+      userPrompt: `Crea narrativas para un diagnóstico comercial usando exactamente este JSON: {"executiveSummary":"","buyerPersona":{"name":"","role":"","dayInLife":"","unspokenThought":"","influences":"","twelveMonthVision":""},"beliefMap":[{"belief":"","asset":"","signal":""}],"voice":{"whatsapp":"","instagramHook":"","instagramCaption":"","emailSubject":"","emailBody":"","reelScript":""}}. Genera exactamente 8 elementos en beliefMap.
+
+    Reglas obligatorias:
+    1. Nunca repitas la misma oración textual en dos secciones. Si una idea central aparece en resumen ejecutivo, buyer persona, belief map, voz o cualquier otro campo, exprésala con lenguaje distinto y desde el propósito de esa sección.
+    2. Para cada una de las 8 creencias, usa específicamente industria, mainPain, mainPainConsequences y antiICP. Cada creencia debe sonar como un pensamiento de este prospecto, no como una lección universal de ventas. Cubre estos ocho ángulos, uno por fila y en este orden: (1) el costo cotidiano del dolor, (2) la consecuencia operativa declarada, (3) por qué fallaron las alternativas o competidores nombrados, (4) la tarea o punto de fricción que debe cambiar, (5) el costo de no actuar usando solo los datos disponibles, (6) una prueba concreta del mecanismo diferenciador, (7) la objeción económica declarada, (8) la condición de confianza para decidir excluyendo al anti-ICP. Cada activo debe nombrar una pieza concreta y útil para esta industria, por ejemplo una auditoría de conversaciones, una captura de un proceso, un guion o una comparación con las herramientas declaradas; cada señal debe ser una acción observable del prospecto. No escribas "estadísticas", "casos de éxito", "artículos", "testimonios" o "comparativas" sin especificar qué caso, pregunta, escena, dato o prueba contienen. Prohibido usar generalidades como "integrar procesos", "mejorar el rendimiento", "solución integral", "capacitación esencial", "crecimiento sostenido" o "seguimiento efectivo" salvo que el contexto las vuelva concretas.
+    3. Buyer persona: el nombre debe ser ficticio y plausible, nunca el nombre del dueño, contacto o usuario del wizard. En dayInLife escribe una escena de 3 a 5 oraciones con al menos dos detalles observables del contexto: industria, herramienta/canal declarado, momento del día, interacción, tarea o frustración reciente. Incluye tensión humana y una consecuencia de mainPainConsequences. Evita el esqueleto "revisa el pipeline y pierde oportunidades". No inventes datos biográficos, cifras, clientes, credenciales o situaciones específicas que el contexto no permita inferir razonablemente.
+    4. Voz: whatsapp, post social (instagramHook e instagramCaption), email y reel deben sonar como mensajes reales de una persona a otra. Ancla cada pieza a una situación concreta distinta extraída del diagnóstico: una tarea manual, canal, competidor, consecuencia, objeción o decisión del comprador. No reutilices la misma pregunta o argumento entre canales. No uses emojis de venta, exceso de signos de exclamación, hashtags genéricos, frases como "descubre cómo optimizar", "no dejes que", "cambiarlo todo", "buen seguimiento", "sistema integrado" o llamados publicitarios vacíos. El WhatsApp debe abrir una conversación sobre una situación puntual; el post debe partir de una observación que el comprador reconocería; el email debe incluir un asunto natural y un mensaje breve que parezca escrito uno a uno; el reel debe indicar una escena, texto en pantalla y giro útil, no sólo una pregunta retórica.
+    5. No copies literalmente ni la referencia ni el contexto. Usa la referencia solo para igualar profundidad, especificidad y naturalidad.
+    6. Control final silencioso: completa todos los campos con texto; entrega exactamente ocho creencias; ninguna oración completa debe repetirse entre executiveSummary, buyerPersona, beliefMap y voice; cada creencia debe mencionar o implicar un detalle exclusivo del contexto; y elimina cualquier frase que funcione igual para una clínica, restaurante, despacho y consultoría.
+    7. La longitud de cada sección debe reflejar la cantidad de información específica disponible en las respuestas del wizard, no un conteo de palabras fijo. Con pocos datos, sé breve y honesto: no rellenes con texto genérico. Con datos ricos, cubre todo el detalle disponible aunque la sección sea más larga que el ejemplo de referencia. No gastes el espacio repitiendo el contexto ni explicando tus decisiones.
+
+    ${NARRATIVE_QUALITY_REFERENCE}
+
+    Contexto del diagnóstico:
+    ${JSON.stringify({ icpCard, answers, opportunity })}`,
       businessId,
       metadata: { source: "diagnostic_report_narratives" },
     });
     return parseNarratives(response.content, fallback);
-  } catch {
+  } catch (error) {
+    console.error(
+      "Diagnostic narrative generation failed:",
+      error instanceof Error ? error.message : "Unknown AI generation error",
+    );
     return fallback;
   }
 }
 
 function parseNarratives(raw: string, fallback: DiagnosticNarratives): DiagnosticNarratives {
   try {
-    const parsed = JSON.parse(raw.replace(/^```json\s*/i, "").replace(/```\s*$/i, "").trim()) as Partial<DiagnosticNarratives>;
-    if (!parsed.buyerPersona || !Array.isArray(parsed.beliefMap) || !parsed.voice) return fallback;
+    const normalized = raw.replace(/^```json\s*/i, "").replace(/```\s*$/i, "").trim();
+    const start = normalized.indexOf("{");
+    const end = normalized.lastIndexOf("}");
+    const json = start >= 0 && end > start ? normalized.slice(start, end + 1) : normalized;
+    const parsed = JSON.parse(json) as Partial<DiagnosticNarratives>;
+    if (!parsed.buyerPersona || !Array.isArray(parsed.beliefMap) || !parsed.voice) {
+      console.error("Diagnostic narrative response did not match the expected JSON shape.");
+      return fallback;
+    }
     return {
       executiveSummary: parsed.executiveSummary || fallback.executiveSummary,
       buyerPersona: { ...fallback.buyerPersona, ...parsed.buyerPersona },
       beliefMap: parsed.beliefMap.length ? parsed.beliefMap.slice(0, 8).map((item, index) => ({ ...fallback.beliefMap[index], ...item })) : fallback.beliefMap,
       voice: { ...fallback.voice, ...parsed.voice },
     };
-  } catch {
+  } catch (error) {
+    console.error(
+      "Diagnostic narrative response could not be parsed:",
+      error instanceof Error ? error.message : "Unknown JSON parse error",
+    );
     return fallback;
   }
 }

@@ -1,6 +1,24 @@
 # CHANGELOG — Historial de Cambios
 Actualizar cada vez que se completa una feature.
 
+## 2026-09-04 — Diagnóstico Growth: Claude Opus 5 y respuesta estructurada
+- Se creó la tarea `diagnostic_narratives` y se configuró junto con `icp_generation` para usar Anthropic `claude-opus-5`, sin permitir que `AI_DEV_MODE` las redirija a otro proveedor.
+- El cliente Anthropic ya maneja el formato de Opus 5: omite `temperature`, extrae el bloque `text` posterior al razonamiento adaptativo y usa `output_config.format` con JSON Schema para las narrativas.
+- Las tareas estructuradas existentes del wizard conservan Haiku/Sonnet. Se documentó que el futuro provisioning/mapeo de datos hacia GHL usará también Haiku/Sonnet.
+- Prueba real guardada: `diag_6d7c200c12cb`, generada con el mismo contexto rico de Consultoria Comercial QA. Sus cuatro secciones llegaron completas y con JSON válido. Build de producción verde.
+
+## 2026-09-04 — Diagnóstico Growth: prompts de narrativa anclados al negocio
+- Reescritos los prompts de ICP y narrativas en `src/lib/diagnostics/icp.ts` y `src/lib/diagnostics/report.ts` sin cambiar contratos, cálculos ni HTML.
+- Se prohibió repetir oraciones entre secciones; el Belief Map debe cubrir dolor, consecuencia, alternativas, fricción operativa, costo de no actuar, mecanismo, precio y anti-ICP con activos y señales observables.
+- Buyer Persona ahora requiere una escena de 3 a 5 oraciones, detalles operativos observables y un nombre ficticio. Voz exige piezas conversacionales, sin hashtags, emojis de venta ni fórmulas publicitarias genéricas.
+- Se incorporó un few-shot breve de la referencia Clínica Sonrisa Plus únicamente como estándar de profundidad y tono. Validación con OpenAI `gpt-4o-mini` y build verde. Riesgo registrado: con inputs muy escuetos, este modelo aún puede generar prosa genérica; no se cambió proveedor ni se agregó lógica de reintento por mantener el alcance exclusivo de prompts.
+
+## 2026-09-04 — Calculadora de oportunidad: importes y unidades corregidos
+- Corregido el mapeo de la sección 08 del diagnóstico: `Costo de tiempo mensual` ahora usa `timeCostMonthly`, en lugar de reutilizar la oportunidad total mensual.
+- Prospectos y clientes se renderizan como conteos con `prospectos/mes` y `clientes/mes`; los valores económicos usan el formatter compartido `formatCurrency()` y la unidad `MXN`.
+- Corregida la sustitución de secciones HTML para no interpretar importes como `$15,000` o `$10,500` como referencias regex, preservando los montos completos.
+- Validado contra el diagnóstico persistido `Consultoria Gemini QA`: ticket `$15,000`, costo de tiempo `$10,500`, valor de prospectos perdidos `$30,000`, crecimiento `$15,000`, oportunidad total `$55,500`; build de Growth en verde.
+
 ## 2026-08-28 — Wizard ICP: persistencia de borrador + prueba E2E completa en produccion
 - Fix critico: el wizard guardaba su estado solo en memoria (React Context); cualquier recarga borraba todas las respuestas y el diagnostico salia con todo "Pendiente". Ahora `WizardProvider` persiste `WizardState` en `sessionStorage` y lo hidrata al cargar (`src/hooks/useWizard.tsx`, accion `HYDRATE` en `src/types/wizard.types.ts`).
 - Estados transitorios (`processing`, `scraping`, `complete`, `error`) se sanitizan a `in_progress` al hidratar para no dejar al usuario atascado en la pantalla de procesamiento tras una recarga.

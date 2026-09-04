@@ -25,6 +25,7 @@ const deepseek = process.env.DEEPSEEK_API_KEY
 const FALLBACK_PRICE_MAP: Record<string, { input: number; output: number }> = {
   "anthropic:claude-haiku-4-5": { input: 0.8, output: 4.0 },
   "anthropic:claude-sonnet-4-5": { input: 3.0, output: 15.0 },
+  "anthropic:claude-opus-5": { input: 5.0, output: 25.0 },
   "openai:gpt-4o-mini": { input: 0.15, output: 0.6 },
   "openai:gpt-4o": { input: 2.5, output: 10.0 },
   "google:gemini-1.5-flash": { input: 0.075, output: 0.3 },
@@ -41,10 +42,11 @@ export async function generateWithAI(params: {
   task: AITask;
   systemPrompt: string;
   userPrompt: string;
+  outputSchema?: Record<string, unknown>;
   businessId?: string;
   metadata?: Record<string, unknown>;
 }): Promise<AIResponse<string>> {
-  const { task, systemPrompt, userPrompt, businessId = "dev-local", metadata = {} } = params;
+  const { task, systemPrompt, userPrompt, outputSchema, businessId = "dev-local", metadata = {} } = params;
   const config = resolveTaskConfig(task);
 
   await refreshPricingFromDB();
@@ -77,12 +79,16 @@ export async function generateWithAI(params: {
       const response = await anthropic.messages.create({
         model: config.model,
         max_tokens: config.maxOutputTokens,
-        temperature: config.temperature,
+        ...(config.model === "claude-opus-5" ? {} : { temperature: config.temperature }),
+        ...(outputSchema ? { output_config: { format: { type: "json_schema" as const, schema: outputSchema } } } : {}),
         system: systemPrompt,
         messages: [{ role: "user", content: userPrompt }],
       });
       aiResponse = {
-        content: response.content[0]?.type === "text" ? response.content[0].text : "",
+        content: response.content
+          .filter((block) => block.type === "text")
+          .map((block) => block.text)
+          .join("\n"),
         usage: {
           inputTokens: response.usage.input_tokens,
           outputTokens: response.usage.output_tokens,

@@ -6,6 +6,16 @@ Consultar antes de cambiar algo que ya se decidio.
 
 Formato: Fecha / Decision / Opciones evaluadas / Decision final / Por que
 
+### 2026-09-04 / Enrutamiento de modelos por impacto comercial y tipo de trabajo
+- Opciones evaluadas:
+	- Opcion A: usar un único modelo económico para todo el wizard y el diagnóstico.
+	- Opcion B: usar `claude-opus-5` sólo para texto estratégico visible al prospecto y Haiku/Sonnet para tareas estructuradas y mecánicas.
+- Decision final: Opcion B.
+- Por que:
+	- El diagnóstico es el activo que el prospecto lee y donde la calidad editorial afecta directamente la confianza y la conversión.
+	- Clasificación, scoring, extracción y el futuro mapeo de campos hacia GHL no requieren razonamiento editorial premium.
+	- Mantiene el costo concentrado en la superficie de mayor valor comercial, sin comprometer estructura ni confiabilidad del resto del flujo.
+
 ### 2026-04-17 / El sistema se trata como activo estrategico reutilizable
 - Opciones evaluadas:
 	- Opcion A: usar este repo solo como plantilla estatica para copiar y pegar.
