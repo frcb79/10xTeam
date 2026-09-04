@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useWizard } from "@/hooks/useWizard";
 import { calculateOpportunity, formatCurrency } from "@/lib/utils/opportunity";
@@ -17,6 +18,7 @@ const GHL_CALENDAR_URL =
 export function CompleteScreen() {
   const { state, reset } = useWizard();
   const router = useRouter();
+  const hasGeneratedReport = useRef(false);
   const step2 = state.answers.step2;
   const step3 = state.answers.step3_b2b ?? state.answers.step3_b2c;
   const step4 = state.answers.step4;
@@ -25,6 +27,31 @@ export function CompleteScreen() {
   const opportunity = calculateOpportunity(step6, step2?.priceRange);
   const clientIdeal =
     state.answers.step3_b2b?.primaryDecisionMaker ?? state.answers.step3_b2c?.ageRange ?? "Pendiente";
+
+  useEffect(() => {
+    const hasRequiredAnswers = Boolean(
+      state.answers.step2 &&
+        (state.answers.step3_b2b || state.answers.step3_b2c) &&
+        state.answers.step4 &&
+        state.answers.step6,
+    );
+    if (!hasRequiredAnswers || hasGeneratedReport.current) return;
+    hasGeneratedReport.current = true;
+
+    void fetch("/api/diagnostics/generate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ answers: state.answers, generatedOutputs: state.generatedOutputs }),
+    })
+      .then(async (response) => {
+        if (!response.ok) return;
+        const payload = (await response.json()) as { diagnostic?: DiagnosticRecord };
+        if (payload.diagnostic) saveCurrentDiagnostic(payload.diagnostic);
+      })
+      .catch(() => {
+        // The existing summary fallback keeps the completion flow available.
+      });
+  }, [state.answers, state.generatedOutputs]);
 
   const persistCurrentDiagnostic = async (diagnostic: DiagnosticRecord) => {
     saveCurrentDiagnostic(diagnostic);

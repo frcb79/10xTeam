@@ -35,6 +35,8 @@ Completado:
 - Wizard ICP implementado por pasos (negocio, cliente ideal, oferta, canales, resumen).
 - Endpoint interno `/api/icp/materials` para generar materiales por canal desde el output del wizard.
 - Generacion inicial de materiales: one-pager, pitch deck, guion comercial y contenido social.
+- Diagnóstico Estratégico dinámico: `DiagnosticReport` unifica respuestas del wizard, `ICPCard`, oportunidad económica, materiales y narrativas; se persiste dentro del `payload` de `diagnostic_records` sin romper el pipeline de estados comercial.
+- Endpoint `POST /api/diagnostics/generate` y URL HTML única `GET /api/diagnostics/[id]/html`, renderizada desde la plantilla visual canónica con datos del negocio, ICP y oportunidad reales.
 
 En progreso:
 - Definicion de contrato de datos para integrar output del wizard con whitelabel.
@@ -46,7 +48,7 @@ En progreso:
 - Lectura de estado GHL cross-device por `company/location` y trazabilidad de eventos webhook sobre sesiones conectadas.
 
 Pendiente:
-- Persistencia de resultados del wizard y versionado por cuenta.
+- Reactivar opcionalmente el proyecto/clave de Gemini; mientras tanto OpenAI `gpt-4o-mini` está validado como proveedor real de desarrollo para Buyer Persona, Belief Map y voz.
 - Integracion real con APIs externas de whitelabel.
 - Implementar backlog estrategico de ejecucion documentado en `docs/project/BACKLOG.md`.
 - Definir plantilla del PDF gratuito del ICP y flujo de captura por correo.
@@ -55,7 +57,7 @@ Pendiente:
 - Persistencia servidor de sesion/token GHL por company/location y webhook inicial para mover estado operativo (`wizard_completed -> call_pending -> call_booked -> activated`).
 
 Bloqueadores:
-- Ninguno.
+- Google tiene suspendido el proyecto asociado a la clave de Gemini configurada. No bloquea el diagnóstico: OpenAI `gpt-4o-mini` está activo y validado localmente como proveedor de generación real.
 
 ## DECISIONES CLAVE DE NEGOCIO Y TECNICAS
 - 2026-05-25: Growth se desarrolla como producto separado de dev para evitar mezcla comercial y tecnica.
@@ -84,3 +86,4 @@ Bloqueadores:
 2026-07-01 - Se agrego capa de persistencia en Supabase para `diagnostic_records` (migracion + repositorio server), integrando `POST/PATCH /api/diagnostics/current` y webhook GHL por `diagnosticId` para actualizar estados de forma global fuera del navegador.
 2026-07-01 - Ajuste comercial puntual en pricing (hora suelta = `$1,990 MXN`) + nota en modal de funcionalidades sobre consumo de credito. Se avanzo persistencia de sesiones GHL en Supabase (`ghl_sessions`) conectada a callback/refresh OAuth.
 2026-07-01 - Se habilito `oauth/status` para leer conexion GHL desde Supabase por `companyId/locationId` (fallback cookie) y el webhook ahora actualiza heartbeat de sesion para observabilidad de integracion.
+2026-09-03 - Se construyó el diagnóstico dinámico end-to-end: generación ICP reutilizable, cálculo de oportunidad, `DiagnosticReport` persistido en Supabase y URL HTML por ID basada en la plantilla visual existente. Verificado localmente con `diag_6bfa7d2e98cb`.

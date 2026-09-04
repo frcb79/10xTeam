@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 ### Added
+- `DiagnosticReport` para unir respuestas completas del wizard, `ICPCard`, resultado de oportunidad, materiales y narrativas en un reporte persistible por ID.
+- `POST /api/diagnostics/generate`, que crea el ICP reutilizando la lógica existente, calcula oportunidad, guarda el reporte completo en `diagnostic_records.payload` y devuelve su ID/URL HTML.
+- `GET /api/diagnostics/[id]/html`, que transforma la plantilla de Diagnóstico Estratégico en un documento único por negocio sin modificar sus estilos.
+- Trigger automático en la pantalla final del wizard para generar y persistir el diagnóstico completo.
 - Setup inicial de Next.js con TypeScript, App Router y Tailwind.
 - Estructura de documentacion del proyecto growth (`PROJECT_BRAIN`, `DECISIONS`, `CHANGELOG`, `ERROR_LOG`).
 - Integracion del proyecto al modelo de repositorio con separacion dev/growth/shared.
@@ -24,6 +28,8 @@
 - Repositorio `src/lib/ghl/repository.ts` para upsert server-side de sesiones GHL.
 
 ### Changed
+- `AI_DEV_MODE` con `AI_DEV_PROVIDER=google` ahora intenta Gemini Flash real; si el proveedor falla, las narrativas del diagnóstico caen a contenido razonable y no dejan campos vacíos.
+- El reporte HTML sustituye el caso dental de referencia por datos de cualquier industria: resumen, ICP, Buyer Persona, Belief Map, semana, Trust Journey, mecanismo, oportunidad, materiales, voz y roadmap.
 - La raiz de `growth.10xteam.com.mx` ahora sirve el HTML comercial canonico (`growth.10xteam_website.html`) mediante rewrite interno, preservando exactamente diseno, colores, fuentes y secciones del archivo aprobado.
 - Se restauro la seccion `Nuestros servicios / Dos servicios, un mismo objetivo: 10x` y su enlace de navegacion en la landing comercial.
 - CTAs de `10x_pricing.html` y `10xteam_pre_wizard.html` alineados a ruta canonica `/wizard/step/1` para eliminar enlaces inactivos o inconsistentes.

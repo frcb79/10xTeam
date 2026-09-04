@@ -3,7 +3,7 @@ Documentar TODOS los errores y como se resolvieron.
 Consultar SIEMPRE al inicio de sesion.
 
 ## ERRORES ACTIVOS
-[Ninguno al inicio del proyecto]
+- 2026-09-03 / Google suspendió el proyecto asociado a la clave de Gemini configurada / Las llamadas a Gemini Flash devuelven 403; OpenAI `gpt-4o-mini` quedó configurado y validado como proveedor de desarrollo para ICP, Buyer Persona, Belief Map y voz, por lo que el wizard no queda bloqueado / Reactivar el proyecto de Google o reemplazar la clave por una activa si se quiere volver a usar Gemini.
 
 ## ERRORES RESUELTOS
 - 2026-08-28 / Wizard ICP perdia todas las respuestas al recargar la pagina (estado solo en React Context, en memoria) / Se agrego persistencia del `WizardState` en `sessionStorage` con hidratacion post-mount en `WizardProvider` (accion nueva `HYDRATE`, sanitizando estados transitorios `processing`/`scraping`/`complete`/`error` a `in_progress`) / Los pasos guardan su estado global al presionar "Continuar"; una recarga conserva pasos confirmados y el paso actual. Verificado E2E en produccion con recarga intencional en paso 5 y registro real en `diagnostic_records`.

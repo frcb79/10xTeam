@@ -1,4 +1,5 @@
-import type { WizardState } from "@/types/wizard.types";
+import type { GeneratedOutputs, ICPCard, WizardAnswers, WizardState } from "@/types/wizard.types";
+import type { OpportunityResult } from "@/lib/utils/opportunity";
 
 export type DiagnosticStatus =
   | "wizard_completed"
@@ -7,6 +8,41 @@ export type DiagnosticStatus =
   | "activated"
   | "trial_active"
   | "paid_active";
+
+export interface DiagnosticNarratives {
+  executiveSummary: string;
+  buyerPersona: {
+    name: string;
+    role: string;
+    dayInLife: string;
+    unspokenThought: string;
+    influences: string;
+    twelveMonthVision: string;
+  };
+  beliefMap: Array<{
+    belief: string;
+    asset: string;
+    signal: string;
+  }>;
+  voice: {
+    whatsapp: string;
+    instagramHook: string;
+    instagramCaption: string;
+    emailSubject: string;
+    emailBody: string;
+    reelScript: string;
+  };
+}
+
+export interface DiagnosticReport {
+  id: string;
+  createdAt: string;
+  answers: WizardAnswers;
+  icpCard: ICPCard;
+  opportunity: OpportunityResult;
+  generatedOutputs?: GeneratedOutputs | null;
+  narratives: DiagnosticNarratives;
+}
 
 export interface DiagnosticRecord {
   id: string;
@@ -32,4 +68,5 @@ export interface DiagnosticRecord {
   channels: string[];
   estimatedOpportunityMonthly: string;
   sourceState: Pick<WizardState, "icpScore">;
+  report?: DiagnosticReport;
 }

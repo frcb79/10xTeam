@@ -49,7 +49,9 @@ export async function generateWithAI(params: {
 
   await refreshPricingFromDB();
 
-  if (process.env.AI_DEV_MODE === "true") {
+  // Sin proveedor de desarrollo, conservar mocks para instalaciones locales sin credenciales.
+  // Con AI_DEV_PROVIDER configurado, ejecutar ese proveedor real para validar la experiencia.
+  if (process.env.AI_DEV_MODE === "true" && !process.env.AI_DEV_PROVIDER) {
     return {
       content: `[AI_DEV_MODE] task=${task} provider=${config.provider} model=${config.model}`,
       usage: { inputTokens: 0, outputTokens: 0, costUSD: 0 },
