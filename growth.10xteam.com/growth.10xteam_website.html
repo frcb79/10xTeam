@@ -2199,7 +2199,7 @@ body {
 
 <nav class="tx-nav">
   <div class="tx-nav-inner">
-    <a class="tx-nav-logo" href="#top"><img src="/Logo_10xteam.png" alt="10xTeam" width="140" height="56" loading="eager"></a>
+    <a class="tx-nav-logo" href="https://10xteam.com.mx"><img src="/Logo_10xteam.png" alt="10xTeam" width="140" height="56" loading="eager"></a>
     <div class="tx-nav-links">
       <a href="#funcionalidades">Funcionalidades</a>
       <a href="#precios">Precios</a>
@@ -3340,57 +3340,11 @@ body {
   "use strict";
 
   /* ─────────────────────────────────────────────────────────────
-     1. FOMO COUNTER – sincronizado para pricing, popup y CTA final
-        Usa el mismo algoritmo determinista (seno/coseno) con
-        FOMO_LAUNCH_DATE = 2026-07-15.
+     1. FOMO EARLY ACCESS
+        Los contadores se alimentan con registros reales desde
+        /api/waitlist. No se genera actividad simulada.
      ───────────────────────────────────────────────────────────── */
-  var FOMO_LAUNCH_DATE = new Date('2026-07-15');
-  var FOMO_BASE = 254;
-  var FOMO_MAX = 2000;
 
-  function getFomoCount() {
-    var now = new Date();
-    var daysElapsed = Math.max(0, Math.floor((now.getTime() - FOMO_LAUNCH_DATE.getTime()) / 86400000));
-    var count = FOMO_BASE;
-    for (var d = 0; d < daysElapsed; d++) {
-      var seed = (FOMO_LAUNCH_DATE.getTime() / 86400000) + d;
-      var dailyIncrease = (3 + Math.floor(((Math.sin(seed * 9301 + 49297) * 233280) % 1 + 1) / 2 * 6)) * 2;
-      count = Math.min(count + dailyIncrease, FOMO_MAX);
-    }
-    return count;
-  }
-
-  function renderFomo(target) {
-    // Pricing bar
-    var countEl = document.getElementById('fomo-count');
-    var fillEl = document.getElementById('fomo-fill');
-    if (countEl && fillEl) {
-      var pct = Math.min(100, (target / FOMO_MAX) * 100);
-      fillEl.style.width = pct + '%';
-      countEl.textContent = target.toLocaleString('es-MX');
-    }
-
-    // CTA final
-    var txCountEl = document.getElementById('tx-fomo-count');
-    var txFillEl = document.getElementById('tx-fomo-fill');
-    if (txCountEl && txFillEl) {
-      var pct2 = Math.min(100, (target / FOMO_MAX) * 100);
-      txFillEl.style.width = pct2 + '%';
-      txCountEl.innerHTML = target.toLocaleString('es-MX') + ' <span class="tx-fomo-suffix">de 2,000 lugares Early Adopter tomados</span>';
-    }
-
-    // Popup
-    var popCountEl = document.getElementById('popup-fomo-count');
-    var popFillEl = document.getElementById('popup-fomo-fill');
-    if (popCountEl && popFillEl) {
-      var pct3 = Math.min(100, (target / FOMO_MAX) * 100);
-      popFillEl.style.width = pct3 + '%';
-      popCountEl.innerHTML = target.toLocaleString('es-MX') + ' <span class="tx-fomo-suffix">de 2,000 lugares Early Adopter tomados</span>';
-    }
-  }
-
-  var fomoVal = getFomoCount();
-  renderFomo(fomoVal);
 
   /* ─────────────────────────────────────────────────────────────
      2. PESTAÑAS (Bloque 3)

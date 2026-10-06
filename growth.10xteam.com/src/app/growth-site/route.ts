@@ -3,7 +3,7 @@ import path from "node:path";
 
 const EARLY_ACCESS_STYLES = `
 <style>
-#welcome-popup{display:none!important}#early-access-modal[hidden]{display:none!important}.fomo-count{visibility:hidden}
+#welcome-popup{display:none!important}#early-access-modal[hidden]{display:none!important}#fomo-count,#tx-fomo-count,#popup-fomo-count{visibility:hidden}
 #early-access-modal{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:20px;background:rgba(4,6,12,.82);backdrop-filter:blur(12px)}
 .ea-card{position:relative;width:min(560px,100%);max-height:min(760px,92vh);overflow:auto;border:1px solid rgba(123,92,255,.32);border-radius:20px;background:#11141c;box-shadow:0 28px 100px rgba(0,0,0,.55);padding:28px}
 .ea-close{position:absolute;right:16px;top:14px;border:0;background:transparent;color:#8f98aa;font-size:22px;cursor:pointer}
@@ -68,10 +68,21 @@ const EARLY_ACCESS_MODAL = `
       recentEl.hidden=recent<1;
       if(recent>0)recentEl.textContent=recent+' '+(recent===1?'persona se registró':'personas se registraron')+' en las últimas 24 horas.';
     }
-    var oldCount=document.getElementById('fomo-count');
-    var oldFill=document.getElementById('fomo-fill');
-    if(oldCount){oldCount.textContent=total.toLocaleString('es-MX');oldCount.style.visibility='visible';}
-    if(oldFill)oldFill.style.width=Math.min(100,total/capacity*100)+'%';
+    [
+      ['fomo-count','fomo-fill',false],
+      ['tx-fomo-count','tx-fomo-fill',true],
+      ['popup-fomo-count','popup-fomo-fill',true]
+    ].forEach(function(ids){
+      var countNode=document.getElementById(ids[0]);
+      var fillNode=document.getElementById(ids[1]);
+      if(countNode){
+        countNode.innerHTML=ids[2]
+          ? total.toLocaleString('es-MX')+' <span class="tx-fomo-suffix">de '+capacity.toLocaleString('es-MX')+' lugares Early Adopter tomados</span>'
+          : total.toLocaleString('es-MX');
+        countNode.style.visibility='visible';
+      }
+      if(fillNode)fillNode.style.width=Math.min(100,total/capacity*100)+'%';
+    });
   }
 
   async function loadStats(){
