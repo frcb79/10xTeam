@@ -13,7 +13,7 @@ const EARLY_ACCESS_STYLES = `
 .ea-urgency{border:1px solid rgba(61,220,151,.20);border-radius:13px;background:rgba(61,220,151,.06);padding:14px;margin-bottom:18px}
 .ea-count{display:flex;justify-content:space-between;gap:16px;color:#dce3ee;font-size:13px}.ea-count strong{color:#3ddc97;font-family:var(--tx-font-mono)}
 .ea-bar{height:5px;margin-top:9px;border-radius:99px;background:#252a37;overflow:hidden}.ea-fill{height:100%;width:0;background:linear-gradient(90deg,#7b5cff,#3ddc97);transition:width .4s ease}
-.ea-recent{margin:8px 0 0;color:#8e98aa;font-size:12px}
+.ea-recent,.ea-stage-note{margin:8px 0 0;color:#8e98aa;font-size:12px;line-height:1.5}
 .ea-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.ea-field{display:flex;flex-direction:column;gap:6px}.ea-field.ea-full{grid-column:1/-1}.ea-field label{color:#aab3c2;font-size:12px;font-weight:600}.ea-field input{width:100%;border:1px solid #2a3040;border-radius:10px;background:#0b0d12;color:#fff;padding:12px 13px;font:inherit;outline:none}.ea-field input:focus{border-color:#7b5cff;box-shadow:0 0 0 3px rgba(123,92,255,.12)}
 .ea-consent{grid-column:1/-1;display:flex;align-items:flex-start;gap:9px;color:#7f899c;font-size:11px;line-height:1.5}.ea-consent input{margin-top:2px}.ea-consent a{color:#aab6ff}
 .ea-submit{grid-column:1/-1;border:0;border-radius:11px;background:linear-gradient(90deg,#7b5cff,#6d5dfc);color:#fff;padding:14px 16px;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 12px 36px rgba(123,92,255,.25)}.ea-submit:disabled{opacity:.6;cursor:wait}
@@ -27,10 +27,11 @@ const EARLY_ACCESS_MODAL = `
     <button class="ea-close" type="button" aria-label="Cerrar Early Access">×</button>
     <p class="ea-kicker">Early Access · Cupo limitado</p>
     <h2 id="ea-title">Asegura las condiciones que después ya no estarán disponibles.</h2>
-    <p class="ea-lead">Conoce 10xTeam Growth, reserva tu lugar Early Adopter y continúa directamente al wizard. El beneficio de lanzamiento termina cuando se agote el cupo.</p>
+    <p class="ea-lead">Solicita Early Access y continúa directamente al wizard. Las condiciones de lanzamiento desaparecen cuando esta etapa llega a su límite.</p>
     <div class="ea-urgency">
-      <div class="ea-count"><span>Lugares Early Adopter tomados</span><strong><span id="ea-taken">—</span> / 2,000</strong></div>
-      <div class="ea-bar" aria-hidden="true"><div class="ea-fill" id="ea-fill"></div></div>
+      <div class="ea-count"><span>Lugares Early Access</span><strong><span id="ea-taken">187</span> / 1,000</strong></div>
+      <div class="ea-bar" aria-hidden="true"><div class="ea-fill" id="ea-fill" style="width:18.7%"></div></div>
+      <p class="ea-stage-note">El acceso se está liberando progresivamente durante el lanzamiento. Los beneficios de esta etapa desaparecen al llegar al límite.</p>
       <p class="ea-recent" id="ea-recent" hidden></p>
     </div>
     <form class="ea-form" id="early-access-form">
@@ -57,14 +58,29 @@ const EARLY_ACCESS_MODAL = `
   var fillEl=document.getElementById('ea-fill');
   var recentEl=document.getElementById('ea-recent');
 
+  var CAMPAIGN_BASE=187;
+  var CAMPAIGN_CAPACITY=1000;
+  var CAMPAIGN_START=Date.parse('2026-10-05T06:00:00Z');
+
+  function getCampaignTotal(realTotal){
+    var days=Math.max(0,Math.floor((Date.now()-CAMPAIGN_START)/86400000));
+    var simulated=CAMPAIGN_BASE;
+    for(var d=0;d<days;d++){
+      var raw=Math.sin((d+1)*12.9898)*43758.5453;
+      var fraction=raw-Math.floor(raw);
+      simulated+=4+Math.floor(fraction*6);
+    }
+    return Math.min(CAMPAIGN_CAPACITY,simulated+Math.max(0,realTotal||0));
+  }
+
   function renderStats(data){
-    if(!data)return;
-    var total=Math.max(0,Number(data.total)||0);
-    var capacity=Math.max(1,Number(data.capacity)||2000);
+    var realTotal=Math.max(0,Number(data&&data.total)||0);
+    var total=getCampaignTotal(realTotal);
+    var capacity=CAMPAIGN_CAPACITY;
     if(takenEl)takenEl.textContent=total.toLocaleString('es-MX');
     if(fillEl)fillEl.style.width=Math.min(100,total/capacity*100)+'%';
     if(recentEl){
-      var recent=Math.max(0,Number(data.recent24h)||0);
+      var recent=Math.max(0,Number(data&&data.recent24h)||0);
       recentEl.hidden=recent<1;
       if(recent>0)recentEl.textContent=recent+' '+(recent===1?'persona se registró':'personas se registraron')+' en las últimas 24 horas.';
     }
@@ -77,7 +93,7 @@ const EARLY_ACCESS_MODAL = `
       var fillNode=document.getElementById(ids[1]);
       if(countNode){
         countNode.innerHTML=ids[2]
-          ? total.toLocaleString('es-MX')+' <span class="tx-fomo-suffix">de '+capacity.toLocaleString('es-MX')+' lugares Early Adopter tomados</span>'
+          ? total.toLocaleString('es-MX')+' <span class="tx-fomo-suffix">/ '+capacity.toLocaleString('es-MX')+' lugares</span>'
           : total.toLocaleString('es-MX');
         countNode.style.visibility='visible';
       }
@@ -120,6 +136,7 @@ const EARLY_ACCESS_MODAL = `
       if(submit){submit.disabled=false;submit.textContent='Quiero asegurar mi lugar →';}
     }
   });
+  renderStats({total:0,recent24h:0});
   loadStats();
 })();
 </script>`;

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createServiceClient } from "@/lib/supabase/service";
 
-const CAPACITY = 2000;
+const CAPACITY = 1000;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const SERVICE_TYPE = "growth_early_access";
 const SOURCE = "growth_contact";

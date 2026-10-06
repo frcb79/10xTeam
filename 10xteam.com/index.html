@@ -9,14 +9,14 @@
 <meta name="description" content="10xTeam combina Growth, inteligencia y desarrollo tecnológico para ayudar a empresas a captar demanda, convertir oportunidades, automatizar operaciones y construir productos digitales.">
 <link rel="canonical" href="https://10xteam.com.mx/">
 <meta property="og:title" content="10xTeam | Growth, Inteligencia y Desarrollo Tecnológico">
-<meta property="og:description" content="Tecnología para crecer y construir mejor. Conoce 10xTeam Growth y 10xTeam Dev.">
+<meta property="og:description" content="Para empresas y negocios que quieren escalar. Captamos demanda, construimos tecnología y escalamos negocios.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://10xteam.com.mx/">
 <meta property="og:site_name" content="10xTeam">
 <meta property="og:image" content="https://10xteam.com.mx/Logo_10xteam.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="10xTeam | Growth, Inteligencia y Desarrollo Tecnológico">
-<meta name="twitter:description" content="Tecnología para crecer y construir mejor.">
+<meta name="twitter:description" content="Captamos demanda. Construimos tecnología. Escalamos negocios.">
 <meta name="twitter:image" content="https://10xteam.com.mx/Logo_10xteam.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,9 +45,9 @@
 <main>
   <section class="hero wrap" aria-labelledby="hero-title">
     <div class="hero-copy">
-      <p class="hero-eyebrow">10xTeam · Growth + Technology</p>
-      <h1 id="hero-title">Tecnología para crecer y construir mejor.</h1>
-      <p class="hero-lead">10xTeam combina crecimiento, inteligencia y desarrollo tecnológico para ayudar a empresas a captar demanda, convertir oportunidades y construir la tecnología que necesitan para escalar.</p>
+      <p class="hero-eyebrow">Para empresas y negocios que quieren escalar.</p>
+      <h1 id="hero-title"><span class="hero-title-line">Captamos demanda.</span><span class="hero-title-line">Construimos tecnología.</span><span class="hero-title-line hero-title-accent">Escalamos negocios.</span></h1>
+      <p class="hero-lead">10xTeam combina Growth y Dev: un sistema para generar y convertir oportunidades, y tecnología para automatizar, operar y construir lo que el negocio necesita para crecer.</p>
       <a class="hero-discover" href="#soluciones">Explora nuestras soluciones <span aria-hidden="true">↓</span></a>
     </div>
   </section>
@@ -55,8 +55,8 @@
   <section class="services-transfer wrap" id="soluciones" aria-labelledby="solutions-title">
     <div class="services-transfer-header">
       <p class="st-eyebrow">Dos líneas. Una misma compañía.</p>
-      <h2 class="st-display" id="solutions-title">Crece mejor. Construye mejor.</h2>
-      <p class="st-lead">Growth convierte estrategia, demanda, seguimiento y datos en un sistema comercial. Dev construye productos, integraciones y automatizaciones que hacen posible una operación más eficiente y escalable.</p>
+      <h2 class="st-display" id="solutions-title">Growth convierte oportunidades. Dev construye capacidad.</h2>
+      <p class="st-lead">Un frente mueve demanda, ventas y seguimiento. El otro diseña productos, automatizaciones e integraciones. Juntos cubren lo que normalmente vive separado.</p>
     </div>
 
     <div class="st-cards">
@@ -119,7 +119,6 @@ const clearIntroTimers=()=>clearTimeout(nearEndTimer);
 const scheduleIntroStates=()=>{clearIntroTimers();const durationMs=Number.isFinite(introVideo?.duration)&&introVideo.duration>0?introVideo.duration*1000:6500;nearEndTimer=setTimeout(startNearEnd,Math.max(1200,durationMs-NEAR_END_WINDOW_MS));};
 const finishIntro=()=>{if(bodyEl.classList.contains("intro-complete"))return;clearIntroTimers();bodyEl.classList.remove("intro-playing","intro-near-end");bodyEl.classList.add("intro-complete");};
 if(!introVideo||reduceMotion){finishIntro();}else{
-  introVideo.currentTime=0;
   if(introVideo.readyState>=1)scheduleIntroStates();else introVideo.addEventListener("loadedmetadata",scheduleIntroStates,{once:true});
   introVideo.addEventListener("timeupdate",()=>{if(!nearEndStarted&&Number.isFinite(introVideo.duration)&&introVideo.duration>0&&introVideo.currentTime>=introVideo.duration-1.15)startNearEnd();});
   const playPromise=introVideo.play();if(playPromise&&typeof playPromise.catch==="function")playPromise.catch(finishIntro);
