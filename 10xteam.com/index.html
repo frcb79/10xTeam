@@ -32,11 +32,18 @@
   --text-muted: #94A3B8;
 }
 
+html, body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  position: relative;
+}
+
 .video-stage {
   position: fixed;
   inset: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: 0;
   overflow: hidden;
   background: radial-gradient(circle at center, #0c1428 0%, #060810 100%);
@@ -245,7 +252,7 @@ body.video-background-mode .existing-page-wrapper {
   }
 }
 
-/* Capa de textos cinemáticos sobre el video */
+/* Contenedor con perspectiva 3D para sensación de profundidad */
 .intro-cinematic-layer {
   position: fixed;
   inset: 0;
@@ -254,55 +261,115 @@ body.video-background-mode .existing-page-wrapper {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0 24px;
+  padding: 0 20px;
+  perspective: 1000px;
+  pointer-events: none;
+  overflow: hidden;
+  width: 100% !important;
+  max-width: 100vw !important;
+  box-sizing: border-box !important;
+}
+
+body.video-background-mode .intro-cinematic-layer {
+  opacity: 0;
   pointer-events: none;
   transition: opacity 0.8s ease;
 }
 
-body.video-background-mode .intro-cinematic-layer,
 body.video-background-mode .cinematic-step {
   opacity: 0 !important;
   pointer-events: none !important;
+  visibility: hidden !important;
 }
 
 .cinematic-step {
   position: absolute;
-  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 950px;
+  pointer-events: none;
   opacity: 0;
-  transform: translateY(12px) scale(0.98);
-  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  will-change: opacity, transform;
+  visibility: hidden;
+  transform-style: preserve-3d;
 }
 
 .cinematic-step.active {
-  opacity: 1 !important;
-  transform: translateY(0) scale(1) !important;
+  opacity: 1;
+  visibility: visible;
 }
 
-/* Estado de salida suave */
-.cinematic-step:not(.active) {
-  opacity: 0 !important;
-  transform: translateY(-8px) scale(0.99) !important;
-}
-
-/* Badges con alto contraste y fondo oscuro para máxima legibilidad */
-.step-badge {
+/* 1. BADGE: Nace en la profundidad de la luz y viaja al frente */
+.cinematic-step .step-badge {
   display: inline-block;
+  margin-bottom: 22px !important; /* Separación armónica y holgada */
+  padding: 8px 18px !important;
   font-family: monospace;
-  font-size: 0.76rem !important;
+  font-size: 0.82rem !important;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.14em !important;
-  padding: 6px 14px !important;
+  letter-spacing: 0.16em;
   border-radius: 999px;
   background: rgba(6, 8, 16, 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  margin-bottom: 8px !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  
+  /* Estado inicial a lo lejos */
+  opacity: 0;
+  transform: translateZ(-350px) scale(0.35);
+  filter: blur(14px);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 1.1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.cinematic-step.active .step-badge {
+  opacity: 1;
+  transform: translateZ(0) scale(1);
+  filter: blur(0px);
+}
+
+/* 2. TÍTULO: Sale 300ms después desde la luz y llega al frente */
+.cinematic-step .cinematic-title {
+  margin: 0 !important;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(2.2rem, 5.2vw, 4.4rem) !important;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  color: #FFFFFF;
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto;
+  
+  /* Estado inicial a lo lejos */
+  opacity: 0;
+  transform: translateZ(-450px) scale(0.3);
+  filter: blur(16px);
+  transition: transform 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.3s,
+              opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.3s,
+              filter 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+.cinematic-step.active .cinematic-title {
+  opacity: 1;
+  transform: translateZ(0) scale(1);
+  filter: blur(0px);
+}
+
+/* 3. SALIDA SUAVE HACIA ADELANTE (Desvaneciéndose hacia la cámara) */
+.cinematic-step.leaving .step-badge,
+.cinematic-step.leaving .cinematic-title {
+  opacity: 0 !important;
+  transform: translateZ(120px) scale(1.08) !important;
+  filter: blur(8px) !important;
+  transition: opacity 0.65s ease, transform 0.65s ease, filter 0.65s ease !important;
+}
+
+/* Badges con alto contraste y fondo oscuro para máxima legibilidad */
 .badge-green {
   color: #2EFFA7 !important;
   border: 1px solid rgba(46, 255, 167, 0.45);
@@ -319,18 +386,6 @@ body.video-background-mode .cinematic-step {
   color: #7DD3FC !important;
   border: 1px solid rgba(56, 189, 248, 0.45);
   text-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
-}
-
-.cinematic-title {
-  font-family: "Fraunces", Georgia, serif;
-  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
-  font-weight: 700;
-  line-height: 1.05 !important;
-  letter-spacing: -0.035em !important;
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-  color: #FFFFFF;
-  text-shadow: 0 12px 35px rgba(0, 0, 0, 0.9);
 }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"10xTeam","legalName":"CR Mexico Educativo, S.A. de C.V.","url":"https://10xteam.com.mx/","logo":"https://10xteam.com.mx/Logo_10xteam.png","email":"soporte@10xteam.com.mx"}</script>
@@ -480,11 +535,22 @@ let portalRevealed = false;
 function revealPortalImmediately() {
   if (portalRevealed) return;
   portalRevealed = true;
-  if (step1) step1.classList.remove('active');
-  if (step2) step2.classList.remove('active');
-  if (step3) step3.classList.remove('active');
+  if (step1) step1.classList.remove('active', 'leaving');
+  if (step2) step2.classList.remove('active', 'leaving');
+  if (step3) step3.classList.remove('active', 'leaving');
   document.body.classList.remove('intro-playing');
   document.body.classList.add('video-background-mode', 'intro-complete');
+}
+
+function setStepState(stepEl, isActive, isLeaving) {
+  if (!stepEl) return;
+  if (isActive) {
+    stepEl.classList.add('active');
+    if (isLeaving) stepEl.classList.add('leaving');
+    else stepEl.classList.remove('leaving');
+  } else {
+    stepEl.classList.remove('active', 'leaving');
+  }
 }
 
 // Fallbacks de seguridad si el navegador retarda o bloquea autoplay
@@ -501,38 +567,19 @@ if (video) {
     if (portalRevealed) return;
     const t = video.currentTime;
 
-    // Dock inferior visible a partir del segundo 1.2
-    if (t >= 1.2 && quickDock) {
-      quickDock.classList.add('visible');
-    }
+    if (t >= 1.2 && quickDock) quickDock.classList.add('visible');
 
-    // Acto 1: 0.4s a 2.9s
-    if (t >= 0.4 && t < 2.9) {
-      if (step1) step1.classList.add('active');
-      if (step2) step2.classList.remove('active');
-      if (step3) step3.classList.remove('active');
-    }
-    // Acto 2: 3.1s a 5.8s
-    else if (t >= 3.1 && t < 5.8) {
-      if (step1) step1.classList.remove('active');
-      if (step2) step2.classList.add('active');
-      if (step3) step3.classList.remove('active');
-    }
-    // Acto 3: 6.0s a 8.6s
-    else if (t >= 6.0 && t < 8.6) {
-      if (step1) step1.classList.remove('active');
-      if (step2) step2.classList.remove('active');
-      if (step3) step3.classList.add('active');
-    }
-    // Segundo 8.9+: Revelar el sitio existente intacto
-    else if (t >= 8.9) {
+    // Acto 1: Captamos demanda (0.4s a 2.9s)
+    setStepState(step1, t >= 0.4 && t < 2.9, t >= 2.5 && t < 2.9);
+
+    // Acto 2: Construimos tecnología (3.1s a 5.7s)
+    setStepState(step2, t >= 3.1 && t < 5.7, t >= 5.3 && t < 5.7);
+
+    // Acto 3: Escalamos negocios (5.9s a 8.6s)
+    setStepState(step3, t >= 5.9 && t < 8.6, t >= 8.2 && t < 8.6);
+
+    if (t >= 8.9) {
       revealPortalImmediately();
-    }
-    // Espacio de 0.2s entre actos (desvanecimiento suave)
-    else {
-      if (step1) step1.classList.remove('active');
-      if (step2) step2.classList.remove('active');
-      if (step3) step3.classList.remove('active');
     }
   });
 

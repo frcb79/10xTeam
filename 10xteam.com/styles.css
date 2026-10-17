@@ -3,7 +3,15 @@
   --blue:#2563eb;--blue-light:#60a5fa;--teal:#2dd4bf;--violet:#8b5cf6;--pink:#ec4899;--max:1160px;
   --bg-deep:#060810;--green-10x:#3DDC97;--purple-10x:#7B5CFF;--border-subtle:rgba(255,255,255,0.09);--text-main:#F4F6FB;--text-muted:#94A3B8;
 }
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--ink);background:var(--bg);font-family:"Instrument Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}a{color:inherit}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html, body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  position: relative;
+}
+body{margin:0;min-height:100vh;color:var(--ink);background:var(--bg);font-family:"Instrument Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit}
 .skip-link{position:fixed;left:1rem;top:1rem;z-index:100;transform:translateY(-180%);background:#fff;color:#05070d;padding:.7rem 1rem;border-radius:.65rem;font-weight:700;text-decoration:none}.skip-link:focus{transform:translateY(0)}
 .hero-cinematic{position:fixed;inset:0;z-index:-3;overflow:hidden;pointer-events:none;background:#080b14}.hero-cinematic::before,.hero-cinematic::after{content:"";position:absolute;inset:0;pointer-events:none}.hero-cinematic::before{z-index:1;background:radial-gradient(ellipse 58% 46% at 50% 34%,rgba(37,99,235,.14),transparent 72%),radial-gradient(ellipse 48% 38% at 72% 54%,rgba(45,212,191,.09),transparent 74%)}.hero-cinematic::after{z-index:2;background:linear-gradient(to bottom,rgba(6,8,16,.03) 0%,rgba(6,8,16,.13) 43%,rgba(6,8,16,.70) 79%,rgba(6,8,16,.93) 100%),radial-gradient(ellipse 94% 82% at 50% 42%,transparent 44%,rgba(3,5,10,.23) 100%)}
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;transform:scale(1.015);filter:brightness(.96) saturate(1.08) contrast(1.01);opacity:1;will-change:filter}
@@ -187,7 +195,7 @@ body.video-background-mode .existing-page-wrapper {
   }
 }
 
-/* Capa de textos cinemáticos sobre el video */
+/* Contenedor con perspectiva 3D para sensación de profundidad */
 .intro-cinematic-layer {
   position: fixed;
   inset: 0;
@@ -196,55 +204,115 @@ body.video-background-mode .existing-page-wrapper {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0 24px;
+  padding: 0 20px;
+  perspective: 1000px;
+  pointer-events: none;
+  overflow: hidden;
+  width: 100% !important;
+  max-width: 100vw !important;
+  box-sizing: border-box !important;
+}
+
+body.video-background-mode .intro-cinematic-layer {
+  opacity: 0;
   pointer-events: none;
   transition: opacity 0.8s ease;
 }
 
-body.video-background-mode .intro-cinematic-layer,
 body.video-background-mode .cinematic-step {
   opacity: 0 !important;
   pointer-events: none !important;
+  visibility: hidden !important;
 }
 
 .cinematic-step {
   position: absolute;
-  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 950px;
+  pointer-events: none;
   opacity: 0;
-  transform: translateY(12px) scale(0.98);
-  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  will-change: opacity, transform;
+  visibility: hidden;
+  transform-style: preserve-3d;
 }
 
 .cinematic-step.active {
-  opacity: 1 !important;
-  transform: translateY(0) scale(1) !important;
+  opacity: 1;
+  visibility: visible;
 }
 
-/* Estado de salida suave */
-.cinematic-step:not(.active) {
-  opacity: 0 !important;
-  transform: translateY(-8px) scale(0.99) !important;
-}
-
-/* Badges con alto contraste y fondo oscuro para máxima legibilidad */
-.step-badge {
+/* 1. BADGE: Nace en la profundidad de la luz y viaja al frente */
+.cinematic-step .step-badge {
   display: inline-block;
+  margin-bottom: 22px !important; /* Separación armónica y holgada */
+  padding: 8px 18px !important;
   font-family: monospace;
-  font-size: 0.76rem !important;
+  font-size: 0.82rem !important;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.14em !important;
-  padding: 6px 14px !important;
+  letter-spacing: 0.16em;
   border-radius: 999px;
   background: rgba(6, 8, 16, 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  margin-bottom: 8px !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  
+  /* Estado inicial a lo lejos */
+  opacity: 0;
+  transform: translateZ(-350px) scale(0.35);
+  filter: blur(14px);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 1.1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.cinematic-step.active .step-badge {
+  opacity: 1;
+  transform: translateZ(0) scale(1);
+  filter: blur(0px);
+}
+
+/* 2. TÍTULO: Sale 300ms después desde la luz y llega al frente */
+.cinematic-step .cinematic-title {
+  margin: 0 !important;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(2.2rem, 5.2vw, 4.4rem) !important;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  color: #FFFFFF;
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto;
+  
+  /* Estado inicial a lo lejos */
+  opacity: 0;
+  transform: translateZ(-450px) scale(0.3);
+  filter: blur(16px);
+  transition: transform 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.3s,
+              opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.3s,
+              filter 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+.cinematic-step.active .cinematic-title {
+  opacity: 1;
+  transform: translateZ(0) scale(1);
+  filter: blur(0px);
+}
+
+/* 3. SALIDA SUAVE HACIA ADELANTE (Desvaneciéndose hacia la cámara) */
+.cinematic-step.leaving .step-badge,
+.cinematic-step.leaving .cinematic-title {
+  opacity: 0 !important;
+  transform: translateZ(120px) scale(1.08) !important;
+  filter: blur(8px) !important;
+  transition: opacity 0.65s ease, transform 0.65s ease, filter 0.65s ease !important;
+}
+
+/* Badges con alto contraste y fondo oscuro para máxima legibilidad */
 .badge-green {
   color: #2EFFA7 !important;
   border: 1px solid rgba(46, 255, 167, 0.45);
@@ -263,16 +331,6 @@ body.video-background-mode .cinematic-step {
   text-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
 }
 
-.cinematic-title {
-  font-family: "Fraunces", Georgia, serif;
-  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
-  font-weight: 700;
-  line-height: 1.05 !important;
-  letter-spacing: -0.035em !important;
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-  color: #FFFFFF;
-  text-shadow: 0 12px 35px rgba(0, 0, 0, 0.9);
-}
+
 
 
