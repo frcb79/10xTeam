@@ -11,7 +11,7 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
 		<meta name="theme-color" content="#060810" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
-    <meta name="description" content="Desarrollo de software a precio justo. MVP desde $1,249 USD o equipo dedicado desde $799/mes. 10x más rápido con IA multi-modelo. ¡Agenda tu discovery gratis!" />
+    <meta name="description" content="Desarrollo de software a medida: proyectos desde $1,249 USD o 10x Dev Squad desde $2,499 USD/mes. Producto, diseño, desarrollo y QA. Agenda tu discovery gratis." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -184,7 +184,7 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
           <div class="section-header text-center">
             <div class="badge">Precios transparentes</div>
             <h2>Elige cómo quieres trabajar con nosotros</h2>
-            <p class="subtitle">Tres modelos flexibles. 10x menos tiempo y 10x más accesibles que hacerlo In-House. Todos con calidad premium garantizada.</p>
+            <p class="subtitle">Dos formas de construir: un proyecto llave en mano o una célula de producto que evoluciona contigo. Alcance y entregables definidos para cada necesidad.</p>
           </div>
           <div class="pricing-grid">
             <!-- Card 1: MVP -->
@@ -221,9 +221,8 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
                 <a href="#contacto" class="btn-outline btn-card">Cotizar mi proyecto →</a>
               </div>
             </div>
-            <!-- Card 2: Mantenimiento -->
-            <div class="pricing-card glass-panel featured">
-              <div class="card-badge-top">MÁS POPULAR</div>
+            <!-- Plan Fractional Team preservado para posible reutilización futura; no se muestra ni ofrece actualmente. -->
+            <div class="pricing-card glass-panel" hidden aria-hidden="true">
               <div class="card-top">
                 <div class="card-title-hz">
                   <div class="plan-icon">🔄</div>
@@ -257,27 +256,31 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
                 <a href="#contacto" class="btn-primary btn-card">Comenzar ahora →</a>
               </div>
             </div>
-            <!-- Card 3: Célula -->
-            <div class="pricing-card glass-panel">
+            <!-- Plan principal: célula de desarrollo / producto -->
+            <div class="pricing-card glass-panel featured">
+              <div class="card-badge-top">MÁS POPULAR</div>
               <div class="card-top">
                 <div class="card-title-hz">
                   <div class="plan-icon">🏢</div>
-                  <h3>Equipo Dedicado</h3>
+                  <h3>10x Dev Squad</h3>
                 </div>
-                <p class="plan-desc">Célula Éxclusiva As-a-Service</p>
+                <p class="plan-desc">Tu célula de producto y desarrollo a la medida</p>
               </div>
               <div class="card-price">
                 <span class="from">Desde</span>
                 <div class="price-row"><span class="currency">$</span><span class="amount text-gradient">2,499</span><span class="unit">USD/mes</span></div>
-                <span class="price-note">Equipo completo dedicado</span>
+                <span class="price-note">Célula multidisciplinaria · alcance a definir</span>
               </div>
               <div class="card-body">
                 <ul class="features-list">
-                  <li class="positive" style="font-weight:700;">✓ Todo lo de Evolución Continua, más:</li>
-                  <li class="positive">✓ PM + UI/UX + Dev Senior + QA exclusivos</li>
+                  <li class="positive">✓ Diseño y desarrollo continuo</li>
+                  <li class="positive">✓ Entregas de valor cada 14 días</li>
+                  <li class="positive">✓ Soporte técnico y resolución de bugs</li>
+                  <li class="positive">✓ PM + UI/UX + Dev Senior + QA</li>
                   <li class="positive">✓ Sprints semanales con tu dirección</li>
-                  <li class="positive">✓ Escalable de inmediato según necesidad</li>
+                  <li class="positive">✓ Escalable según necesidad</li>
                 </ul>
+                <p class="price-subnote">La composición del equipo, la capacidad y los entregables se definen en tu propuesta de trabajo.</p>
               </div>
               <div class="card-footer">
                 <div class="card-compare">
@@ -288,7 +291,7 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
                   <span class="compare-label">Célula In-House</span>
                   <span class="compare-value">+$14,000 USD/mes</span>
                 </div>
-                <a href="#contacto" class="btn-outline btn-card">Hablar con un arquitecto →</a>
+                <a href="#contacto" class="btn-primary btn-card">Hablar con un arquitecto →</a>
               </div>
             </div>
           </div>
@@ -423,8 +426,8 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
               <select name="serviceType" required>
                 <option value="">¿Qué necesitas?</option>
                 <option value="mvp">MVP precio fijo</option>
-                <option value="evolucion">Equipo de evolución continua</option>
-                <option value="celula">Célula completa dedicada</option>
+                <option value="evolucion" hidden disabled>Equipo de evolución continua (plan no disponible)</option>
+                <option value="celula">10x Dev Squad · célula de desarrollo</option>
               </select>
               <textarea name="message" placeholder="Cuéntanos sobre tu proyecto o lo que buscas..." required></textarea>
               <button type="submit" class="btn-primary">Enviar Proyecto →</button>
@@ -479,7 +482,7 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
             </div>
           </div>
           <div class="modal-footer">
-            <span class="text-gradient font-bold">Obtén tu célula de trabajo desde $799 USD/mes.</span>
+            <span class="text-gradient font-bold">Construye con 10x Dev Squad desde $2,499 USD/mes.</span>
           </div>
         </div>
       </div>
@@ -649,10 +652,10 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
 
       /* ─── PRICING ─── */
       .section-pricing{background:linear-gradient(180deg,transparent 0%,rgba(59,130,246,0.02) 50%,transparent 100%)}
-      .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:stretch}
+      .pricing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;align-items:stretch;max-width:1080px;margin-inline:auto}
       .pricing-card{padding:2rem 1.5rem;display:grid;grid-template-rows: auto auto 1fr auto;position:relative;transition:border-color var(--transition-base),transform var(--transition-base)}
       .pricing-card:hover{border-color:var(--glass-border-hover);transform:translateY(-4px)}
-      .pricing-card.featured{border-color:rgba(59,130,246,0.3);box-shadow:0 0 60px rgba(59,130,246,0.08)}
+      .pricing-card.featured{border-color:rgba(96,110,246,0.48);box-shadow:0 0 60px rgba(79,70,229,0.13)}.pricing-card[hidden]{display:none!important}
       .card-badge-top{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent-primary),var(--accent-secondary));padding:0.3rem 1.2rem;border-radius:var(--radius-pill);font-size:0.7rem;font-weight:700;letter-spacing:1px;color:#fff;white-space:nowrap}
       .card-top{margin-bottom:1.5rem}
       .plan-icon{font-size:2rem;margin-bottom:0.75rem}
