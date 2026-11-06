@@ -1,3 +1,4 @@
+import { teamToken, equalSecret } from "@/lib/onboarding/security";
 import { NextResponse } from "next/server";
 
 const TEAM_ACCESS_COOKIE = "team_access_v1";
@@ -18,12 +19,12 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!body.passcode || body.passcode !== expected) {
+    if (!body.passcode || !equalSecret(body.passcode, expected)) {
       return NextResponse.json({ error: "Invalid passcode." }, { status: 401 });
     }
 
     const response = NextResponse.json({ ok: true });
-    response.cookies.set(TEAM_ACCESS_COOKIE, "owner", {
+    response.cookies.set(TEAM_ACCESS_COOKIE, teamToken(), {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",

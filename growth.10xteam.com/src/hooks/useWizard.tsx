@@ -1,6 +1,8 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useReducer, useState } from "react";
+import { useOnboardingSession } from "./useOnboardingSession";
+import type { OnboardingDraft } from "@/lib/onboarding/schema";
 import type {
   GeneratedOutputs,
   ICPQualityScore,
@@ -93,6 +95,7 @@ function wizardReducer(state: WizardState, action: WizardAction): WizardState {
 }
 
 interface WizardContextValue {
+  remote: ReturnType<typeof useOnboardingSession>;
   state: WizardState;
   goToStep: (step: WizardStep) => void;
   goNext: () => void;
@@ -119,50 +122,25 @@ interface WizardContextValue {
 
 const WizardContext = createContext<WizardContextValue | null>(null);
 
-const WIZARD_STORAGE_KEY = "growth.wizardState.v1";
-
-// Estados transitorios que no deben sobrevivir una recarga de pagina.
-const TRANSIENT_STATUSES: WizardState["status"][] = ["processing", "scraping", "complete", "error"];
-
-function sanitizePersistedState(parsed: WizardState): WizardState {
-  return {
-    ...initialState,
-    ...parsed,
-    status: TRANSIENT_STATUSES.includes(parsed.status) ? "in_progress" : parsed.status,
-    error: null,
-  };
-}
-
 export function WizardProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(wizardReducer, initialState);
   const [hydrated, setHydrated] = useState(false);
-
-  // Hidratar el borrador guardado solo en cliente (despues del primer render
-  // para evitar mismatch de hidratacion SSR).
-  useEffect(() => {
-    try {
-      const raw = window.sessionStorage.getItem(WIZARD_STORAGE_KEY);
-      if (raw) {
-        dispatch({
-          type: "HYDRATE",
-          payload: sanitizePersistedState(JSON.parse(raw) as WizardState),
-        });
-      }
-    } catch {
-      // Storage corrupto o no disponible: se ignora y se arranca limpio.
-    }
+  const restore = useCallback((draft: OnboardingDraft) => {
+    dispatch({type:"HYDRATE",payload:{ ...initialState, currentStep:draft.currentStep as WizardStep,
+      answers:draft.answers, websiteUrl:draft.websiteUrl ?? null, icpType:draft.answers.step2?.icpType ?? null,
+      completedSteps:([1,2,3,4,5,6] as WizardStep[]).filter(step=>step<draft.currentStep) }});
     setHydrated(true);
-  }, []);
-
-  // Persistir cada cambio del estado como borrador de sesion.
+  },[]);
+  const remote = useOnboardingSession(restore);
+  const savedContext = remote.view?.session.draft.context;
+  const saveDraft = remote.saveDraft;
   useEffect(() => {
-    if (!hydrated) return;
-    try {
-      window.sessionStorage.setItem(WIZARD_STORAGE_KEY, JSON.stringify(state));
-    } catch {
-      // Storage lleno o no disponible: no bloquear el flujo.
-    }
-  }, [hydrated, state]);
+    if (!hydrated || !remote.view || remote.view.session.plan || remote.view.session.provision.createAttempted) return;
+    const timer=window.setTimeout(()=>{
+      void saveDraft({currentStep:state.currentStep,answers:state.answers,websiteUrl:state.websiteUrl,...(savedContext ? {context:savedContext}: {})}).catch(()=>{});
+    },350);
+    return ()=>window.clearTimeout(timer);
+  },[state.currentStep,state.answers,state.websiteUrl,hydrated,remote.view,savedContext,saveDraft]);
 
   const goToStep = useCallback((step: WizardStep) => {
     dispatch({ type: "SET_STEP", payload: step });
@@ -182,6 +160,7 @@ export function WizardProvider({ children }: { children: React.ReactNode }) {
   }, [state.currentStep]);
 
   const value: WizardContextValue = {
+    remote,
     state,
     goToStep,
     goNext,
@@ -204,14 +183,7 @@ export function WizardProvider({ children }: { children: React.ReactNode }) {
     setGeneratedOutputs: (outputs) =>
       dispatch({ type: "SET_GENERATED_OUTPUTS", payload: outputs }),
     setICPScore: (score) => dispatch({ type: "SET_ICP_SCORE", payload: score }),
-    reset: () => {
-      try {
-        window.sessionStorage.removeItem(WIZARD_STORAGE_KEY);
-      } catch {
-        // Storage no disponible: el reset en memoria basta.
-      }
-      dispatch({ type: "RESET" });
-    },
+    reset: () => dispatch({type:"RESET"}),
     canGoNext: state.status !== "processing" && state.status !== "error",
     isStepCompleted: (step) => state.completedSteps.includes(step),
     getStep3Component: () => {
@@ -221,7 +193,10 @@ export function WizardProvider({ children }: { children: React.ReactNode }) {
     },
   };
 
-  return <WizardContext.Provider value={value}>{children}</WizardContext.Provider>;
+  return <WizardContext.Provider value={value}>
+    {remote.message && <div role="alert" className="bg-amber-950 px-6 py-3 text-sm text-amber-100">{remote.message} <button className="underline" onClick={()=>window.location.reload()}>Reintentar</button></div>}
+    {hydrated || remote.message ? children : <p className="p-6">Recuperando tu registro…</p>}
+  </WizardContext.Provider>;
 }
 
 export function useWizard(): WizardContextValue {

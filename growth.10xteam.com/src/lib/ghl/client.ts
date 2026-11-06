@@ -26,9 +26,9 @@ export async function exchangeAuthorizationCode(input: {
     method: "POST",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: JSON.stringify({
+    body: new URLSearchParams({
       client_id: input.clientId,
       client_secret: input.clientSecret,
       grant_type: "authorization_code",
@@ -39,8 +39,8 @@ export async function exchangeAuthorizationCode(input: {
   });
 
   if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`GHL code exchange failed (${response.status}): ${errorText}`);
+
+    throw new Error(`GHL code exchange failed (${response.status})`);
   }
 
   const payload = (await response.json()) as GhlTokenResponse;
@@ -73,8 +73,8 @@ export async function refreshAccessToken(input: {
   });
 
   if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`GHL refresh failed (${response.status}): ${errorText}`);
+
+    throw new Error(`GHL refresh failed (${response.status})`);
   }
 
   const payload = (await response.json()) as GhlTokenResponse;

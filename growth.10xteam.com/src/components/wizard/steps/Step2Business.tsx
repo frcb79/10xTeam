@@ -159,7 +159,8 @@ const INDUSTRY_EXAMPLES: Record<string, { oneLiner: string[] }> = {
 
 export function Step2Business() {
   const { state, updateStep2, goPrev, goNext, setICPType } = useWizard();
-  const prefill = getPrefill();
+  const { remote } = useWizard();
+  const prefill = getPrefill(remote.view?.session.id);
   const [businessName, setBusinessName] = useState(state.answers.step2?.businessName ?? prefill.businessName ?? "");
   const [oneLiner, setOneLiner] = useState(state.answers.step2?.oneLiner ?? prefill.oneLiner ?? "");
   const [industry, setIndustry] = useState(state.answers.step2?.industry ?? prefill.industry ?? "");
@@ -316,11 +317,11 @@ export function Step2Business() {
   );
 }
 
-function getPrefill(): { businessName?: string; oneLiner?: string; industry?: string } {
+function getPrefill(sessionId?:string): { businessName?: string; oneLiner?: string; industry?: string } {
   if (typeof window === "undefined") return {};
 
   try {
-    const raw = sessionStorage.getItem("wizard_prefill");
+    const raw = sessionId ? sessionStorage.getItem("wizard_prefill:"+sessionId) : null;
     if (!raw) return {};
 
     const parsed = JSON.parse(raw) as {

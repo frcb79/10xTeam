@@ -75,7 +75,7 @@ const MARGIN_OPTIONS: Array<{ value: GrossMarginBand; label: string }> = [
 
 export function Step6Economics() {
   const router = useRouter();
-  const { state, updateStep6, goPrev, setStatus } = useWizard();
+  const { state, updateStep6, goPrev } = useWizard();
   const current = state.answers.step6;
 
   const [ownerRole, setOwnerRole] = useState<OwnerRole>(current?.ownerRole ?? "owner_operator");
@@ -148,8 +148,7 @@ export function Step6Economics() {
       grossMargin,
     });
 
-    setStatus("processing");
-    router.push("/wizard/processing");
+    router.push("/wizard/complete");
   };
 
   return (
