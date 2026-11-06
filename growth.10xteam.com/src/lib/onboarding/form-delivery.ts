@@ -1,3 +1,4 @@
+import { currentConnection } from "./connections";
 import type { OnboardingSession } from "./model";
 import { HttpError } from "./security";
 export type FormRoute = {
@@ -20,6 +21,7 @@ export function formDestination(
 ) {
   const formModule = session.plan?.modules.find((m) => m.id === "forms");
   if (
+    ["revoked", "failed"].includes(currentConnection(session, "forms")?.state ?? "") ||
     !route.enabled ||
     !session.owner_user_id ||
     session.provision.status !== "configured" ||

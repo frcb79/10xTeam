@@ -1,6 +1,5 @@
-import { generateDiagnosticReport } from "@/lib/diagnostics/report";
+import { strategicRecord } from "@/lib/onboarding/strategy";
 import { actor, requireSession, saveSession } from "@/lib/onboarding/store";
-import { requireCompleteAnswers } from "@/lib/onboarding/schema";
 import { sameOrigin } from "@/lib/onboarding/security";
 import { failure, json } from "@/lib/onboarding/http";
 export async function POST(request: Request) {
@@ -10,7 +9,7 @@ export async function POST(request: Request) {
     const s = await requireSession(a);
     const record =
       s.diagnostic ??
-      (await generateDiagnosticReport(requireCompleteAnswers(s.draft.answers)));
+      strategicRecord(s.draft);
     if (!s.diagnostic)
       await saveSession(
         s,

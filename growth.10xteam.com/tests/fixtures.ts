@@ -92,6 +92,7 @@ export const context = {
 };
 export const release: SnapshotRelease = {
   snapshotId: "synthetic-core",
+  reviewReference: "QA-synthetic-01",
   version: "v1",
   validated: true,
   noExternalActions: true,

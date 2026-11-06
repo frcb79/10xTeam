@@ -1,4 +1,4 @@
-import { renderDiagnosticHtml } from "@/lib/diagnostics/html";
+import { renderStrategy } from "@/lib/onboarding/strategy";
 import { actor, requireSession } from "@/lib/onboarding/store";
 import { failure } from "@/lib/onboarding/http";
 export async function GET(
@@ -7,10 +7,10 @@ export async function GET(
 ) {
   try {
     const { id } = await params;
-    const { diagnostic } = await requireSession(await actor());
-    if (diagnostic?.id !== id || !diagnostic.report)
+    const session = await requireSession(await actor());
+    if (session.diagnostic?.id !== id)
       return new Response("No encontrado.", { status: 404 });
-    return new Response(await renderDiagnosticHtml(diagnostic.report), {
+    return new Response(renderStrategy(session), {
       headers: {
         "Content-Type": "text/html; charset=utf-8",
         "Cache-Control": "private, no-store",

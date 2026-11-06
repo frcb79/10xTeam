@@ -9,6 +9,7 @@ import { HttpError } from "./security";
 export type SnapshotRelease = {
   snapshotId: string;
   version: string;
+  reviewReference: string;
   validated: true;
   noExternalActions: true;
   pipelineName: string;
@@ -17,6 +18,7 @@ export type SnapshotRelease = {
   calendarNames: string[];
 };
 export interface ProvisionProvider {
+  checkCreate?(session: OnboardingSession): Promise<void>;
   createLocation(
     session: OnboardingSession,
     release: SnapshotRelease,
@@ -51,7 +53,11 @@ export function provisionPrerequisites(
       409,
       "Inicia sesión y confirma el diagnóstico antes de configurar.",
     );
-  if (!release?.validated || !release.noExternalActions)
+  if (
+    !release?.validated ||
+    !release.noExternalActions ||
+    !release.reviewReference
+  )
     throw new HttpError(
       409,
       "Falta validar y registrar la plantilla de configuración de este negocio.",
@@ -59,6 +65,7 @@ export function provisionPrerequisites(
   const consent = s.plan.modules.find((m) => m.id === "crm")?.consent;
   if (
     !consent ||
+    consent.actorId !== s.owner_user_id ||
     consent.planVersion !== s.plan.version ||
     consent.scope !== "provision_core_no_paid_services"
   )
@@ -107,6 +114,7 @@ export async function provisionSession(
       409,
       "La versión aprobada de la plantilla cambió. Reconciliar antes de continuar.",
     );
+  if (!s.provision.locationId) await provider.checkCreate?.(s);
   let current = await save(
     s,
     {
@@ -115,17 +123,13 @@ export async function provisionSession(
       snapshotId: release.snapshotId,
       snapshotVersion: release.version,
       runId: randomUUID(),
+      createAttempted: true,
       lastError: undefined,
     },
     "provision_started",
   );
   try {
     if (!current.provision.locationId) {
-      current = await save(
-        current,
-        { ...current.provision, createAttempted: true },
-        "location_create_started",
-      );
       const locationId = await provider.createLocation(current, release);
       if (!locationId) throw new Error("location_missing");
       current = await save(

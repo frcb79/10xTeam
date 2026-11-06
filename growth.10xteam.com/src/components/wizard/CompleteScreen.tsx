@@ -1,4 +1,11 @@
 "use client";
+import {
+  assetPreview,
+  currentConnection,
+  services,
+  type ServiceId,
+} from "@/lib/onboarding/connections";
+import { ConnectionForm } from "./ConnectionForm";
 import Link from "next/link";
 import { useState } from "react";
 import { useWizard } from "@/hooks/useWizard";
@@ -56,7 +63,7 @@ export function CompleteScreen() {
   const prepare = async (context: BusinessContext) => {
     setBusy(true);
     try {
-      await remote.command("save", {
+      await remote.command("plan", {
         draft: {
           currentStep: 6,
           answers: state.answers,
@@ -64,7 +71,6 @@ export function CompleteScreen() {
           context,
         },
       });
-      await remote.command("plan");
       setEdit(false);
     } finally {
       setBusy(false);
@@ -145,8 +151,21 @@ export function CompleteScreen() {
           </section>
           <section className={panel}>
             <h2 className="text-xl font-semibold">Cómo trabajará tu negocio</h2>
-            <p className="mt-2">{plan.pipelineStages.join(" → ")}</p>
-            <p className="mt-2">{plan.workflows.join(" · ")}</p>
+            <dl className="mt-3 space-y-3">
+              {assetPreview(s).map((row) => (
+                <div key={row.name}>
+                  <dt className="font-semibold">
+                    {row.name} · {row.status}
+                  </dt>
+                  <dd>{row.detail}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-4">
+              Verificaciones de activación ·{" "}
+              {view.readiness.gates.filter((g) => g.passed).length} de{" "}
+              {view.readiness.gates.length} aplicables.
+            </p>
             <p className="mt-2">Conservaremos {s.draft.context?.preserve}.</p>
             <p className="mt-2">Prueba de entrega · {plan.coreTest}</p>
           </section>
@@ -156,6 +175,48 @@ export function CompleteScreen() {
               Elige qué incorporar. Los accesos de terceros se autorizan
               directamente con el proveedor.
             </p>
+            <details className="mt-3">
+              <summary>Autorización y prueba por servicio</summary>
+              <ul className="mt-2 space-y-2">
+                {(Object.keys(services) as ServiceId[]).map((id) => {
+                  const e = currentConnection(s, id);
+                  return (
+                    <li key={id}>
+                      {services[id][0]} ·{" "}
+                      {e
+                        ? {
+                            authorized: "Autorizado",
+                            connected: "Conectado",
+                            tested: "Probado",
+                            failed: "Revisar",
+                            revoked: "Revocado",
+                          }[e.state] +
+                          " · " +
+                          e.at.slice(0, 10) +
+                          " · " +
+                          e.scopes.join(", ")
+                        : "Sin autorización registrada"}{" "}
+                      · {services[id][1]}
+                    </li>
+                  );
+                })}
+              </ul>
+            </details>
+            {view.authenticated && s.provision.locationId && (
+              <ConnectionForm
+                busy={busy}
+                verify={false}
+                submit={(fields) =>
+                  void task(() =>
+                    remote.command("connection", {
+                      ...fields,
+                      locationId: s.provision.locationId,
+                      planVersion: plan.version,
+                    }),
+                  )
+                }
+              />
+            )}
             {plan.modules.map((m) => (
               <div key={m.id} className="mt-4 border-t border-white/10 pt-3">
                 <div className="flex flex-wrap items-center justify-between gap-2">

@@ -194,8 +194,8 @@ export function WizardProvider({ children }: { children: React.ReactNode }) {
   };
 
   return <WizardContext.Provider value={value}>
-    {remote.message && <div role="alert" className="bg-amber-950 px-6 py-3 text-sm text-amber-100">{remote.message} <button className="underline" onClick={()=>window.location.reload()}>Reintentar</button></div>}
-    {hydrated || remote.message ? children : <p className="p-6">Recuperando tu registro…</p>}
+    {remote.message && <div role="alert" className="bg-amber-950 px-6 py-3 text-sm text-amber-100">{remote.message} <button className="underline" onClick={()=>void remote.retry(hydrated).catch(()=>{})}>Reintentar</button></div>}
+    {hydrated ? children : <p className="p-6">Recuperando tu registro…</p>}
   </WizardContext.Provider>;
 }
 

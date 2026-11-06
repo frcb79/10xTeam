@@ -1,4 +1,4 @@
-import { generateDiagnosticReport } from "@/lib/diagnostics/report";
+import { strategicRecord } from "@/lib/onboarding/strategy";
 import { z } from "zod";
 import {
   actor,
@@ -35,7 +35,9 @@ function view(s: OnboardingSession, a: Actor) {
 export async function GET(request: Request) {
   try {
     const a = await actor();
-    const id = new URL(request.url).searchParams.get("id");
+    const params = new URL(request.url).searchParams;
+    if (params.has("businessId")) return json({ error: "Usa el identificador del registro de alta." }, 400);
+    const id = params.get("id");
     if (id) z.string().uuid().parse(id);
     return view(await requireSession(a, id ?? undefined), a);
   } catch (error) {
@@ -52,7 +54,7 @@ export async function POST(request: Request) {
     const next = await execute(s, a, command, {
       save: saveSession,
       startTrial: process.env.ONBOARDING_TRIAL_ENABLED === "true",
-      diagnostic: (draft) => generateDiagnosticReport(draft.answers),
+      diagnostic: async (draft) => strategicRecord(draft),
       enabled: enabled(),
       release: snapshotRelease,
       provider: () =>

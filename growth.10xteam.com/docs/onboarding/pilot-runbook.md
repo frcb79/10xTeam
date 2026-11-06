@@ -25,6 +25,8 @@ El alta invitada se recupera en el navegador que conserva su cookie. El acceso e
 
 ## Preparar una plantilla y su conexión
 
+Para vincular una LAB existente, incluir únicamente su ID en `GHL_LAB_LOCATION_IDS` y usar el panel del verificador asignado. Deben coincidir agencia, nombre y correo del titular. Para crear una location distinta se requieren `GHL_LOCATION_CREATION_ENABLED=true` y el ID exacto del registro aprobado en `GHL_APPROVED_CREATION_SESSION_IDS`. Revisar costo, titular y duplicados antes de habilitar estas variables.
+
 El catálogo `GHL_SNAPSHOT_RELEASES` es JSON mantenido por el operador. Cada entrada requiere un ID real de snapshot, una versión inmutable, el nombre del pipeline, nombres de formularios, workflows y calendarios y revisión documentada de que aplica sin envíos ni acciones de pago. Ejemplo estructural con identificadores ficticios:
 
 ```json
@@ -32,6 +34,7 @@ El catálogo `GHL_SNAPSHOT_RELEASES` es JSON mantenido por el operador. Cada ent
   "core-b2b": {
     "snapshotId": "ID_VERIFICADO_EN_LAB",
     "version": "lab-release-1",
+    "reviewReference": "FOLIO_DEL_MANIFIESTO_REVISADO",
     "validated": true,
     "noExternalActions": true,
     "pipelineName": "Ventas consultivas",

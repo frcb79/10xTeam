@@ -10,6 +10,7 @@ import {
 const releaseSchema = z.object({
   snapshotId: z.string().min(1),
   version: z.string().min(1),
+  reviewReference: z.string().regex(/^[a-zA-Z0-9_-]{4,80}$/),
   validated: z.literal(true),
   noExternalActions: z.literal(true),
   pipelineName: z.string().min(1),
@@ -46,7 +47,7 @@ type Payload = {
   email?: string;
   website?: string;
   contact?: { id: string; locationId: string };
-  locations?: { id: string; name?: string; email?: string }[];
+  locations?: Identity[];
   id?: string;
   companyId?: string;
   access_token?: string;
@@ -115,30 +116,65 @@ export class GhlProvisionProvider implements ProvisionProvider {
       );
     return response.json();
   }
+  async checkCreate(s: OnboardingSession) {
+    if (process.env.GHL_LOCATION_CREATION_ENABLED !== "true")
+      throw new HttpError(
+        409,
+        "La creación de cuentas requiere autorización específica. Vincula una LAB autorizada.",
+      );
+    const a = s.draft.answers;
+    if (
+      !process.env.GHL_APPROVED_CREATION_SESSION_IDS?.split(",")
+        .map((value) => value.trim())
+        .includes(s.id)
+    )
+      throw new HttpError(
+        403,
+        "Falta la autorización de creación para este negocio.",
+      );
+    const norm = (value?: string) => value?.trim().toLowerCase();
+    const host = (value?: string) => {
+      try {
+        return new URL(value ?? "").hostname.toLowerCase();
+      } catch {
+        return undefined;
+      }
+    };
+    const website = host(s.draft.context?.websiteUrl);
+    const pageSize = 10;
+    for (let skip = 0; skip < 10000; skip += pageSize) {
+      const query = new URLSearchParams({
+        companyId: this.companyId,
+        skip: String(skip),
+        limit: String(pageSize),
+      });
+      const { locations } = await this.request(
+        "/locations/search?" + query,
+        this.agencyToken,
+      );
+      if (!Array.isArray(locations)) break;
+      if (
+        locations.some(
+          (location) =>
+            norm(location.name) === norm(a.step2!.businessName) ||
+            norm(location.email) === norm(a.step6!.ownerEmail) ||
+            (website && website === host(location.website)),
+        )
+      )
+        throw new HttpError(
+          409,
+          "Ya existe una cuenta candidata. Revisa nombre, dominio y titular antes de crear.",
+        );
+      if (locations.length < pageSize) return;
+    }
+    throw new HttpError(
+      409,
+      "No se pudo verificar el inventario completo de la agencia.",
+    );
+  }
   async createLocation(s: OnboardingSession, release: SnapshotRelease) {
     const c = s.draft.context!;
     const a = s.draft.answers;
-    const existing = await this.request(
-      "/locations/search?" +
-        new URLSearchParams({
-          companyId: this.companyId,
-          email: a.step6!.ownerEmail,
-        }),
-      this.agencyToken,
-    );
-    if (!Array.isArray(existing.locations))
-      throw new HttpError(502, "No se pudo comprobar si existe el negocio.");
-    if (
-      existing.locations.some(
-        (location) =>
-          location.name?.trim().toLowerCase() ===
-          a.step2!.businessName.trim().toLowerCase(),
-      )
-    )
-      throw new HttpError(
-        409,
-        "Ya existe una cuenta candidata. Verificar y vincularla antes de volver a crear.",
-      );
     const result = await this.request("/locations/", this.agencyToken, "POST", {
       companyId: this.companyId,
       name: a.step2!.businessName,
@@ -229,9 +265,55 @@ export class GhlProvisionProvider implements ProvisionProvider {
     const read = (path: string) => this.request(path, token.access_token!);
     const root = `/locations/${encodeURIComponent(id)}/customValues`;
     const values = (await read(root)).customValues ?? [];
+    const query = `?locationId=${encodeURIComponent(id)}`;
+    const [p, f, w, c] = await Promise.all([
+      read(`/opportunities/pipelines${query}`),
+      read(`/forms/${query}`),
+      read(`/workflows/${query}`),
+      read(`/calendars/${query}`),
+    ]);
+    const pipelines = p.pipelines ?? [];
+    const matching = pipelines.filter((p) => p.name === release.pipelineName);
+    const pipeline = matching[0];
+    if (
+      matching.length !== 1 ||
+      !pipeline.id ||
+      JSON.stringify(pipeline.stages?.map((stage) => stage.name)) !==
+        JSON.stringify(s.plan!.pipelineStages)
+    )
+      throw new HttpError(
+        409,
+        "Las etapas del pipeline no corresponden al plan aprobado.",
+      );
+    const requireAssets = (names: string[], items: Item[]) =>
+      names.map((name) => {
+        const matches = items.filter((i) => i.name === name);
+        if (matches.length !== 1 || !matches[0].id)
+          throw new HttpError(
+            409,
+            "La plantilla todavía no terminó de cargar o requiere revisión de sus activos.",
+          );
+        return matches[0].id;
+      });
+    if (
+      s.plan!.archetype === "appointments"
+        ? release.calendarNames.length === 0
+        : release.formNames.length === 0
+    )
+      throw new HttpError(
+        409,
+        "La plantilla no incluye el activo principal del negocio.",
+      );
+    const assets = {
+      pipelines: [pipeline.id],
+      forms: requireAssets(release.formNames, f.forms ?? []),
+      workflows: requireAssets(release.workflowNames, w.workflows ?? []),
+      calendars: requireAssets(release.calendarNames, c.calendars ?? []),
+    };
     // Only namespaced placeholders from the approved snapshot, and only empty or previously managed values.
     // Existing client changes require a separate, explicit change request.
     const managedValues: Record<string, string> = {};
+    const changes: { id: string; name: string; value: string }[] = [];
     for (const [name, value] of expectedCustomValues(s.plan!)) {
       const matches = values.filter((v) => v.name === name);
       if (matches.length !== 1)
@@ -251,13 +333,16 @@ export class GhlProvisionProvider implements ProvisionProvider {
           "Existe una personalización previa. Se requiere revisión antes de reemplazarla.",
         );
       if (current.value !== value)
-        await this.request(
-          `${root}/${encodeURIComponent(current.id)}`,
-          token.access_token,
-          "PUT",
-          { name, value },
-        );
+        changes.push({ id: current.id, name, value });
       managedValues[name] = value;
+    }
+    for (const { id: fieldId, name, value } of changes) {
+      await this.request(
+        `${root}/${encodeURIComponent(fieldId)}`,
+        token.access_token,
+        "PUT",
+        { name, value },
+      );
     }
     const verified = (await read(root)).customValues ?? [];
     if (
@@ -270,52 +355,6 @@ export class GhlProvisionProvider implements ProvisionProvider {
         502,
         "La personalización aún no se refleja en el proveedor.",
       );
-    const query = `?locationId=${encodeURIComponent(id)}`;
-    const [p, f, w, c] = await Promise.all([
-      read(`/opportunities/pipelines${query}`),
-      read(`/forms/${query}`),
-      read(`/workflows/${query}`),
-      read(`/calendars/${query}`),
-    ]);
-    const pipelines = p.pipelines ?? [];
-    const pipeline = pipelines.find((p) => p.name === release.pipelineName);
-    if (
-      !pipeline ||
-      s.plan!.pipelineStages.some(
-        (stage) => !pipeline.stages?.some((s) => s.name === stage),
-      )
-    )
-      throw new HttpError(
-        409,
-        "Las etapas del pipeline no corresponden al plan aprobado.",
-      );
-    const requireAssets = (names: string[], items: Item[]) =>
-      names.map((name) => {
-        const matches = items.filter((i) => i.name === name);
-        if (matches.length !== 1)
-          throw new HttpError(
-            409,
-            "La plantilla todavía no terminó de cargar o requiere revisión de sus activos.",
-          );
-        return matches[0].id;
-      });
-    if (
-      s.plan!.archetype === "appointments"
-        ? release.calendarNames.length === 0
-        : release.formNames.length === 0
-    )
-      throw new HttpError(
-        409,
-        "La plantilla no incluye el activo principal del negocio.",
-      );
-    return {
-      managedValues,
-      assets: {
-        pipelines: [pipeline.id],
-        forms: requireAssets(release.formNames, f.forms ?? []),
-        workflows: requireAssets(release.workflowNames, w.workflows ?? []),
-        calendars: requireAssets(release.calendarNames, c.calendars ?? []),
-      },
-    };
+    return { managedValues, assets };
   }
 }

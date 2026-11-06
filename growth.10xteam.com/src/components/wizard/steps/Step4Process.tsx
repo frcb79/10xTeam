@@ -127,8 +127,8 @@ export function Step4Process() {
   const current = state.answers.step4;
   const industry = state.answers.step2?.industry ?? "otro";
   const examples = INDUSTRY_EXAMPLES[industry] ?? INDUSTRY_EXAMPLES.otro;
-  const [salesCycleDuration, setSalesCycleDuration] = useState(current?.salesCycleDuration ?? "1-4_weeks");
-  const [topObjection, setTopObjection] = useState(current?.topObjection ?? "Precio");
+  const [salesCycleDuration, setSalesCycleDuration] = useState(current?.salesCycleDuration ?? "unknown");
+  const [topObjection, setTopObjection] = useState(current?.topObjection ?? "");
   const [topObjectionResolution, setTopObjectionResolution] = useState(
     current?.topObjectionResolution ?? ""
   );
@@ -144,7 +144,7 @@ export function Step4Process() {
     return merged;
   });
   const [whyCompetitorsFail, setWhyCompetitorsFail] = useState(
-    current?.whyCompetitorsFail ?? "Falta de seguimiento consistente"
+    current?.whyCompetitorsFail ?? ""
   );
   const [uniqueDifferentiator, setUniqueDifferentiator] = useState(
     current?.uniqueDifferentiator ?? ""
@@ -157,13 +157,13 @@ export function Step4Process() {
 
     updateStep4({
       salesCycleDuration,
-      salesCycleNotes: "Ciclo definido para el MVP",
+      salesCycleNotes: current?.salesCycleNotes ?? "",
       topObjection,
       topObjectionResolution,
       antiICP,
       highRiskICP,
       mainCompetitors: competitorList,
-      whyChoseUs: "Metodo, seguimiento y ejecucion guiada",
+      whyChoseUs: current?.whyChoseUs ?? "",
       whyCompetitorsFail,
       uniqueDifferentiator,
     });
@@ -181,7 +181,7 @@ export function Step4Process() {
         <label className="block text-sm text-stone-300">
           Ciclo de venta
           <select value={salesCycleDuration} onChange={(e) => setSalesCycleDuration(e.target.value as typeof salesCycleDuration)} className="wizard-select mt-2 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none focus:border-cyan-300/60">
-            <option value="same_day">Mismo día</option>
+            <option value="unknown">Por confirmar</option><option value="same_day">Mismo día</option>
             <option value="1-7_days">1-7 días</option>
             <option value="1-4_weeks">1-4 semanas</option>
             <option value="1-3_months">1-3 meses</option>

@@ -105,9 +105,32 @@ export function useOnboardingSession(
         canonical(previous?.session.draft) === canonical(draft)
       )
         return previous;
-      return command("save", { draft });
+      return command("save", { draft, autosave: true });
     },
     [command],
   );
-  return { view, message, command, saveDraft, open };
+  const retry = async (wasHydrated: boolean) => {
+    try {
+      await queue.current;
+      const previous = current.current;
+      const fresh = await sendCommand({ action: "open" });
+      if (
+        previous &&
+        (fresh.session.id !== previous.session.id ||
+          fresh.session.version !== previous.session.version)
+      ) {
+        setMessage(
+          "El registro cambió en otra sesión. Copia tus cambios pendientes antes de recargar.",
+        );
+        return;
+      }
+      apply(fresh);
+      if (!wasHydrated) onRestore(fresh.session.draft);
+    } catch (e) {
+      setMessage(
+        e instanceof Error ? e.message : "No se pudo recuperar el registro.",
+      );
+    }
+  };
+  return { view, message, command, saveDraft, open, retry };
 }

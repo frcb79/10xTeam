@@ -10,6 +10,7 @@ import { conditionalQuestions } from "@/lib/onboarding/plan";
 const fieldClass =
   "mt-2 block w-full rounded-xl border border-white/20 bg-slate-900 p-3 text-stone-100";
 const options = {
+  journey: { self: "Por mi cuenta", assisted: "Con mi asesor en llamada" },
   goal: {
     leads: "Conseguir prospectos",
     sales: "Convertir oportunidades",
@@ -35,6 +36,7 @@ const options = {
   language: { es: "Español", en: "English" },
 };
 const channels = {
+  calendar: "Agenda",
   email: "Correo",
   whatsapp: "WhatsApp",
   social: "Redes sociales",
@@ -66,7 +68,7 @@ export function BusinessContextForm({
       {label}
       <select
         className={fieldClass}
-        value={data[key]}
+        value={data[key] ?? "self"}
         onChange={(e) => set(key, e.target.value as never)}
       >
         {Object.entries(options[key]).map(([v, label]) => (
@@ -99,7 +101,7 @@ export function BusinessContextForm({
         className={fieldClass}
         required={required}
         maxLength={key === "timezone" ? 120 : 2000}
-        value={data[key]}
+        value={data[key] ?? "self"}
         onChange={(e) => set(key, e.target.value)}
       />
     </label>
@@ -129,6 +131,7 @@ export function BusinessContextForm({
       }}
     >
       <div className="grid gap-5 md:grid-cols-2">
+        {choose("journey", "¿Cómo estás completando el alta?")}
         {choose("goal", "¿Qué resultado quieres conseguir primero?")}
         {choose("bottleneck", "¿Dónde se detiene la venta?")}
         {input(

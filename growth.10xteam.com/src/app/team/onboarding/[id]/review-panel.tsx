@@ -1,4 +1,5 @@
 "use client";
+import { ConnectionForm } from "@/components/wizard/ConnectionForm";
 import { useState } from "react";
 import { sendCommand, type SessionView } from "@/hooks/useOnboardingSession";
 export function ReviewPanel({ initial }: { initial: SessionView }) {
@@ -86,6 +87,54 @@ export function ReviewPanel({ initial }: { initial: SessionView }) {
           Registrar evidencia
         </button>
       </form>
+      {s.plan && s.provision.locationId && (
+        <ConnectionForm
+          busy={busy}
+          verify
+          submit={(fields) =>
+            void submit("connection", {
+              ...fields,
+              locationId: s.provision.locationId,
+              planVersion: s.plan!.version,
+            })
+          }
+        />
+      )}
+      {view.executionEnabled &&
+        s.plan &&
+        !s.provision.createAttempted &&
+        !s.provision.locationId && (
+          <form
+            className="grid gap-2"
+            onSubmit={(e) => {
+              e.preventDefault();
+              void submit(
+                "bind_lab",
+                Object.fromEntries(new FormData(e.currentTarget)),
+              );
+            }}
+          >
+            <label>
+              Location LAB autorizada{" "}
+              <input
+                name="locationId"
+                required
+                className="rounded bg-slate-800 p-2"
+              />
+            </label>
+            <label>
+              Folio de aprobación{" "}
+              <input
+                name="reference"
+                required
+                className="rounded bg-slate-800 p-2"
+              />
+            </label>
+            <button disabled={busy}>
+              Verificar identidad y vincular LAB existente
+            </button>
+          </form>
+        )}
       {view.executionEnabled && s.plan && (
         <button
           disabled={busy}

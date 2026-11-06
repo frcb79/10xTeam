@@ -89,13 +89,17 @@ test("one location cannot be assigned to two BAs; initial records have no trial 
     /duplicate key/,
   );
   assert.equal(
-    (await db.query("select trial_ends_at from businesses where id=$1", [ba]))
-      .rows[0].trial_ends_at,
+    (
+      await db.query<{ trial_ends_at: string | null }>(
+        "select trial_ends_at from businesses where id=$1",
+        [ba],
+      )
+    ).rows[0].trial_ends_at,
     null,
   );
   assert.equal(
     (
-      await db.query(
+      await db.query<{ commercial_trial_started_at: string | null }>(
         "select commercial_trial_started_at from onboarding_sessions where id=$1",
         [ba],
       )
@@ -107,9 +111,10 @@ test("trial ledger starts once even if the functional-ready event is retried", a
   const start = "2026-11-05T12:00:00Z";
   let version = Number(
     (
-      await db.query("select version from onboarding_sessions where id=$1", [
-        ba,
-      ])
+      await db.query<{ version: number }>(
+        "select version from onboarding_sessions where id=$1",
+        [ba],
+      )
     ).rows[0].version,
   );
   for (const time of [start, "2026-11-07T00:00:00Z"]) {
@@ -119,7 +124,7 @@ test("trial ledger starts once even if the functional-ready event is retried", a
     );
   }
   const row = (
-    await db.query(
+    await db.query<{ commercial_trial_started_at: string; days: string }>(
       "select commercial_trial_started_at, extract(epoch from commercial_trial_ends_at-commercial_trial_started_at)/86400 as days from onboarding_sessions where id=$1",
       [ba],
     )
@@ -146,8 +151,11 @@ test("AI reservations reject no consent, other owner and competing requests over
   assert.equal(requests.filter((r) => r.status === "fulfilled").length, 1);
   assert.equal(
     Number(
-      (await db.query("select sum(cost_usd) as cost from ai_usage")).rows[0]
-        .cost,
+      (
+        await db.query<{ cost: string }>(
+          "select sum(cost_usd) as cost from ai_usage",
+        )
+      ).rows[0].cost,
     ),
     0.6,
   );
@@ -160,8 +168,11 @@ test("form queue is empty before opt-in, scoped per source and deduplicates repe
     );
   const count = async () =>
     Number(
-      (await db.query("select count(*) as n from onboarding_form_outbox"))
-        .rows[0].n,
+      (
+        await db.query<{ n: string }>(
+          "select count(*) as n from onboarding_form_outbox",
+        )
+      ).rows[0].n,
     );
   await insert("dev_contact");
   assert.equal(await count(), 0);

@@ -101,7 +101,7 @@ export function buildPlan(
     add(
       "acquisition",
       "Probar una fuente de prospectos con encaje",
-      `${business.businessName} ofrece ${business.oneLiner}. El cliente definido necesita: ${icp.mainPain}. Objetivo declarado: ${c.target90Days}.`,
+      `La oferta declarada orienta la selección de prospectos. ${business.oneLiner}`,
       archetype === "b2b"
         ? "Definir una lista pequeña de empresas del mercado declarado, verificar encaje y preparar acercamientos sujetos a autorización; medir conversaciones calificadas."
         : "Probar una oferta para el público declarado mediante contenido, referidos o formulario; registrar origen y calidad antes de ampliar inversión.",
@@ -131,7 +131,7 @@ export function buildPlan(
     add(
       "followup",
       "Asignar cada oportunidad y su siguiente tarea",
-      `Tiempo de respuesta declarado: ${a.step6!.leadResponseTime}. Ciclo comercial: ${a.step4!.salesCycleDuration}.`,
+      `El negocio priorizó mejorar el seguimiento. Mediremos el tiempo entre la recepción del prospecto y la primera respuesta.`,
       "Crear tareas internas y responsables por etapa. Los mensajes requieren permiso y canal probado.",
       "Tiempo hasta primera respuesta; oportunidades sin siguiente tarea",
       ["step6.leadResponseTime", "step4.salesCycleDuration"],
@@ -148,7 +148,7 @@ export function buildPlan(
   add(
     "conversion",
     "Medir el avance entre etapas",
-    `La objeción declarada es: ${a.step4!.topObjection || "pendiente"}. Conversión actual: ${c.conversionPercent === null ? "desconocida" : `${c.conversionPercent}%`}.`,
+    `${a.step4!.topObjection ? "Objeción declarada · " + a.step4!.topObjection : "Falta identificar la principal objeción de compra."} ${c.conversionPercent === null ? "La conversión está pendiente de medir." : `Conversión declarada · ${c.conversionPercent}%.`}`,
     "Registrar motivos de pérdida y probar una respuesta a la objeción con evidencia del negocio.",
     "Oportunidades ganadas / oportunidades calificadas",
     ["step4.topObjection", "context.conversionPercent"],
@@ -190,19 +190,24 @@ export function buildPlan(
     for (const [key, value] of Object.entries(fields ?? {})) {
       if (["ownerEmail", "ownerPhone", "ownerName"].includes(key)) continue;
       const inferred =
-        group === "step3" &&
-        ["mixed", "freelancer"].includes(business.icpType) &&
-        ![
-          "primaryDecisionMaker",
-          "mainPain",
-          "mainOutcome",
-          "ageRange",
-        ].includes(key);
+        (group === "step5" &&
+          ["preferredContactMethod", "contentFormats"].includes(key)) ||
+        (group === "step3" &&
+          ![
+            "primaryDecisionMaker",
+            "mainPain",
+            "mainOutcome",
+            "ageRange",
+          ].includes(key));
       const missing =
         value === null ||
         value === "" ||
         value === "unknown" ||
-        value === "Pendiente";
+        (typeof value === "string" &&
+          /por confirmar|pendiente de confirmar/i.test(value)) ||
+        value === "Pendiente" ||
+        value === "prefer_not_say" ||
+        (Array.isArray(value) && !value.length);
       facts.push({
         key: group + "." + key,
         value,

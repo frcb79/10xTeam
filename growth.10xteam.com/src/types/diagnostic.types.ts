@@ -66,7 +66,7 @@ export interface DiagnosticRecord {
     differentiator: string;
   };
   channels: string[];
-  estimatedOpportunityMonthly: string;
-  sourceState: Pick<WizardState, "icpScore">;
+  estimatedOpportunityMonthly?: string;
+  sourceState?: Pick<WizardState, "icpScore">;
   report?: DiagnosticReport;
 }

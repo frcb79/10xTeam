@@ -25,7 +25,7 @@ const b2b = z.object({
       }),
     )
     .max(10),
-  companySizeRange: z.enum([
+  companySizeRange: z.enum(["unknown",
     "1-5",
     "6-20",
     "21-50",
@@ -77,7 +77,7 @@ export const answersSchema = z.object({
   step3_b2c: b2c.nullable(),
   step4: z
     .object({
-      salesCycleDuration: z.enum([
+      salesCycleDuration: z.enum(["unknown",
         "same_day",
         "1-7_days",
         "1-4_weeks",
@@ -156,14 +156,14 @@ export const answersSchema = z.object({
     .nullable(),
   step6: z
     .object({
-      ownerRole: z.enum(["owner_operator", "has_team", "uses_agencies"]),
-      manualMarketingHours: z.enum([
+      ownerRole: z.enum(["unknown","owner_operator", "has_team", "uses_agencies"]),
+      manualMarketingHours: z.enum(["unknown",
         "less_2hrs",
         "2_5hrs",
         "5_10hrs",
         "more_10hrs",
       ]),
-      leadResponseTime: z.enum([
+      leadResponseTime: z.enum(["unknown",
         "under_5min",
         "5_30min",
         "30min_2hrs",
@@ -184,7 +184,7 @@ export const answersSchema = z.object({
       renewalFrequency: z
         .enum(["weekly", "monthly", "quarterly", "semiannual", "annual"])
         .nullable(),
-      monthlyNewClients: z.enum(["1_3", "4_10", "11_20", "20_plus"]),
+      monthlyNewClients: z.enum(["unknown","1_3", "4_10", "11_20", "20_plus"]),
       activeClients: short,
       acquisitionCost: z.enum([
         "under_500",
@@ -226,6 +226,7 @@ export const modeSchema = z.enum([
 export type ModuleMode = z.infer<typeof modeSchema>;
 export const contextSchema = z
   .object({
+    journey: z.enum(["self", "assisted"]).optional(),
     goal: z.enum(["leads", "sales", "appointments", "retention"]),
     target90Days: text.min(5),
     monthlyLeads: z.number().int().min(0).max(1e7).nullable(),
@@ -268,8 +269,8 @@ export const contextSchema = z
         .refine((v) => new URL(v).protocol === "https:", "Usa https"),
     ]),
     requiredChannels: z
-      .array(z.enum(["email", "whatsapp", "social", "payments", "ai"]))
-      .max(5),
+      .array(z.enum(["calendar", "email", "whatsapp", "social", "payments", "ai"]))
+      .max(6),
   })
   .superRefine((v, ctx) => {
     if (v.goal === "appointments" && !v.calendarHosts.trim())

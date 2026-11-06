@@ -326,6 +326,11 @@ test("provider contract writes namespaced empty fields, reads back, preserves cu
     return Response.json(payload);
   };
   const p = new GhlProvisionProvider("fixture", "fixture-agency", fake);
+  await assert.rejects(
+    p.configure(s, { ...release, formNames: ["missing"] }),
+    /activos/,
+  );
+  assert.equal(puts, 0);
   const result = await p.configure(s, release);
   assert.equal(result.managedValues?.["10x_offer"], answers.step2!.oneLiner);
   const count = puts;
@@ -427,4 +432,95 @@ test("existing form maps both Dev offers only to its approved location", () => {
   assert.throws(() =>
     formDestination(s, route, { ...lead, source: "growth_contact" }),
   );
+});
+
+test("connection verification requires current consent, location, scope and a successful read before testing", async () => {
+  const s = session();
+  s.provision = { status: "configured", locationId: "approved-lab" };
+  const h = stateful(s);
+  const base = {
+    action: "connection" as const,
+    id: ba,
+    locationId: "approved-lab",
+    planVersion: 1,
+    service: "forms" as const,
+    scopes: ["forms.readonly"],
+    reference: "QA-forms-42",
+  };
+  const run = (
+    state: "authorized" | "connected" | "tested" | "revoked",
+    user = actor,
+    override = {},
+  ) =>
+    execute(
+      h.state,
+      user,
+      { ...base, state, version: h.state.version, ...override },
+      h.deps,
+    );
+  const operator = { ...actor, operator: true };
+  await assert.rejects(run("connected", operator), /autorización/);
+  await run("authorized");
+  await assert.rejects(
+    run("connected", operator, { locationId: "another-lab" }),
+    /versión/,
+  );
+  await assert.rejects(
+    run("connected", operator, { scopes: ["contacts.write"] }),
+    /alcance/,
+  );
+  await assert.rejects(run("tested", operator), /Comprueba/);
+  await run("connected", operator);
+  await run("tested", operator);
+  await run("revoked");
+  await assert.rejects(run("connected", operator), /autorización/);
+  assert.equal(h.state.plan?.connections?.length, 4);
+  assert.equal(h.state.functional_ready_at, null);
+});
+
+test("the diagnostic keeps unknown figures, escapes customer input and shows actual evidence only", async () => {
+  const { strategicRecord, renderStrategy } = await import(
+    "../src/lib/onboarding/strategy"
+  );
+  const { assetPreview } = await import("../src/lib/onboarding/connections");
+  const s = session();
+  s.draft.answers.step2!.businessName = "<script>alert(1)</script>";
+  s.diagnostic = strategicRecord(s.draft);
+  assert.equal(s.diagnostic.estimatedOpportunityMonthly, undefined);
+  const html = renderStrategy(s);
+  assert.match(html, /&lt;script&gt;/);
+  assert.doesNotMatch(html, /<script>|Costo de no actuar/);
+  assert.match(html, /Días 31 a 90/);
+  assert.ok(
+    assetPreview(s).every((row) =>
+      ["Propuesto", "Preparado"].includes(row.status),
+    ),
+  );
+});
+
+test("a delayed autosave cannot erase the context or plan after explicit completion", async () => {
+  const h = stateful();
+  const draft = structuredClone(h.state.draft);
+  const stale = { ...draft, context: undefined };
+  const planned = await execute(
+    h.state,
+    actor,
+    { action: "plan", id: ba, version: h.state.version, draft },
+    h.deps,
+  );
+  const after = await execute(
+    planned,
+    actor,
+    {
+      action: "save",
+      id: ba,
+      version: planned.version,
+      draft: stale,
+      autosave: true,
+    },
+    h.deps,
+  );
+  assert.deepEqual(after, planned);
+  assert.ok(after.draft.context);
+  assert.ok(after.plan);
 });

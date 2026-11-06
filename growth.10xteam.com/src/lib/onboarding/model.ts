@@ -1,3 +1,4 @@
+import type { ConnectionEvent } from "./connections";
 import type { DiagnosticRecord } from "@/types/diagnostic.types";
 import type { ModuleId, ModuleMode, OnboardingDraft } from "./schema";
 
@@ -54,6 +55,7 @@ export type BusinessMemory = {
   };
 };
 export type ConfigurationPlan = {
+  connections?: ConnectionEvent[];
   version: number;
   archetype: "b2b" | "consumer" | "appointments";
   snapshotKey: string;
@@ -159,13 +161,25 @@ export function readiness(session: OnboardingSession) {
         m.consent?.actorId === session.owner_user_id &&
         m.consent?.planVersion === session.plan?.version,
     );
+  const latestConnections = new Map(
+    (session.plan?.connections ?? [])
+      .filter(
+        (e) =>
+          e.planVersion === session.plan?.version &&
+          e.locationId === session.provision.locationId,
+      )
+      .map((e) => [e.service, e.state]),
+  );
   const ready = Boolean(
     consents &&
       session.owner_user_id &&
       session.plan &&
       session.provision.locationId &&
       session.provision.status === "configured" &&
-      gates.every((g) => g.passed),
+      gates.every((g) => g.passed) &&
+      ![...latestConnections.values()].some(
+        (state) => state === "failed" || state === "revoked",
+      ),
   );
   return {
     status:

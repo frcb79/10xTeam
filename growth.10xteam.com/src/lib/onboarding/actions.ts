@@ -1,5 +1,7 @@
+import { currentConnection, type ConnectionEvent } from "./connections";
 import { buildPlan } from "./plan";
 import {
+  ownsSession,
   readiness,
   globalGates,
   type Actor,
@@ -46,6 +48,8 @@ export async function execute(
   cmd: Exclude<Command, { action: "open" }>,
   deps: ActionDependencies,
 ) {
+  if (!ownsSession(a, s) && !(a.operator && a.userId))
+    throw new HttpError(403, "Se requiere acceso al negocio.");
   if (s.id !== cmd.id || s.version !== cmd.version)
     throw new HttpError(409, "El registro cambió. Recarga antes de continuar.");
   if (s.provision.status === "running" && cmd.action !== "reconcile")
@@ -61,7 +65,14 @@ export async function execute(
   if (
     s.owner_user_id &&
     s.owner_user_id !== a.userId &&
-    !["evidence", "ready", "reconcile", "provision"].includes(cmd.action)
+    ![
+      "evidence",
+      "ready",
+      "reconcile",
+      "provision",
+      "connection",
+      "bind_lab",
+    ].includes(cmd.action)
   )
     throw new HttpError(
       403,
@@ -72,6 +83,7 @@ export async function execute(
     deps.save(s, patch, event, actorId);
   switch (cmd.action) {
     case "save":
+      if (cmd.autosave && s.plan) return s;
       return save(
         {
           draft: cmd.draft,
@@ -83,11 +95,12 @@ export async function execute(
         "draft_saved",
       );
     case "plan": {
-      if (!s.draft.context)
+      const draft = cmd.draft ?? s.draft;
+      if (!draft.context)
         throw new HttpError(400, "Completa objetivos y continuidad.");
       let plan;
       try {
-        plan = buildPlan(s.id, s.draft.answers, s.draft.context, s.version + 1);
+        plan = buildPlan(s.id, draft.answers, draft.context, s.version + 1);
       } catch {
         throw new HttpError(
           400,
@@ -95,10 +108,10 @@ export async function execute(
         );
       }
       const diagnostic = deps.diagnostic
-        ? await deps.diagnostic(s.draft)
+        ? await deps.diagnostic(draft)
         : s.diagnostic;
       return save(
-        { plan, diagnostic, evidence: [], functional_ready_at: null },
+        { draft, plan, diagnostic, evidence: [], functional_ready_at: null },
         "plan_generated",
       );
     }
@@ -176,6 +189,53 @@ export async function execute(
         release!,
       );
     }
+    case "bind_lab": {
+      if (
+        !a.userId ||
+        !a.operator ||
+        !s.plan ||
+        !process.env.GHL_LAB_LOCATION_IDS?.split(",")
+          .map((x) => x.trim())
+          .includes(cmd.locationId)
+      )
+        throw new HttpError(
+          403,
+          "Se requiere una LAB habilitada y un verificador asignado.",
+        );
+      const release = deps.release(s.plan.snapshotKey);
+      provisionPrerequisites(s, deps.enabled, release);
+      if (s.provision.locationId || s.provision.createAttempted)
+        throw new HttpError(
+          409,
+          "El registro ya está vinculado o espera reconciliación.",
+        );
+      await deps.provider().verifyLocation(cmd.locationId, s);
+      return save(
+        {
+          provision: {
+            status: "waiting_provider",
+            locationId: cmd.locationId,
+            createAttempted: true,
+            snapshotId: release!.snapshotId,
+            snapshotVersion: release!.version,
+          },
+          evidence: [
+            ...s.evidence,
+            {
+              gate: "lab_binding",
+              kind: "real",
+              outcome: "pass",
+              reference: cmd.reference,
+              actorId: a.userId,
+              recordedAt: new Date().toISOString(),
+              locationId: cmd.locationId,
+              planVersion: s.plan.version,
+            },
+          ],
+        },
+        "lab_bound",
+      );
+    }
     case "reconcile": {
       if (!a.operator || !deps.enabled || !s.plan)
         throw new HttpError(
@@ -214,6 +274,65 @@ export async function execute(
           ],
         },
         "location_reconciled",
+      );
+    }
+    case "connection": {
+      if (
+        !s.plan ||
+        !a.userId ||
+        cmd.planVersion !== s.plan.version ||
+        cmd.locationId !== s.provision.locationId
+      )
+        throw new HttpError(
+          409,
+          "Revisa el negocio, la cuenta y la versión del plan.",
+        );
+      const ownerDecision =
+        cmd.state === "authorized" || cmd.state === "revoked";
+      if (ownerDecision ? a.userId !== s.owner_user_id : !a.operator)
+        throw new HttpError(
+          403,
+          "Esta decisión requiere al titular o al verificador asignado.",
+        );
+      const prior = currentConnection(s, cmd.service);
+      if (
+        !ownerDecision &&
+        (!prior ||
+          ["failed", "revoked"].includes(prior.state) ||
+          cmd.scopes.some((scope) => !prior.scopes.includes(scope)))
+      )
+        throw new HttpError(
+          409,
+          "Falta autorización vigente para este alcance.",
+        );
+      if (
+        cmd.state === "tested" &&
+        prior?.state !== "connected" &&
+        prior?.state !== "tested"
+      )
+        throw new HttpError(
+          409,
+          "Comprueba la conexión antes de su prueba funcional.",
+        );
+      const entry: ConnectionEvent = {
+        service: cmd.service,
+        state: cmd.state,
+        scopes: cmd.scopes,
+        locationId: cmd.locationId,
+        planVersion: cmd.planVersion,
+        reference: cmd.reference,
+        actorId: a.userId,
+        at: new Date().toISOString(),
+      };
+      return save(
+        {
+          plan: {
+            ...s.plan,
+            connections: [...(s.plan.connections ?? []), entry],
+          },
+          functional_ready_at: null,
+        },
+        "connection_" + cmd.state,
       );
     }
     case "evidence": {
