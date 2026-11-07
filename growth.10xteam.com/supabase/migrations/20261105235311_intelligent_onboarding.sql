@@ -21,7 +21,8 @@ create index onboarding_owner_idx on public.onboarding_sessions(owner_user_id, u
 create unique index onboarding_location_idx on public.onboarding_sessions ((provision->>'locationId')) where provision->>'locationId' is not null;
 alter table public.onboarding_sessions enable row level security;
 revoke all on public.onboarding_sessions from public, anon, authenticated;
-grant all on public.onboarding_sessions to service_role;
+revoke all on public.onboarding_sessions from service_role;
+grant select, insert, update on public.onboarding_sessions to service_role;
 
 create table public.onboarding_events (
   id uuid primary key default gen_random_uuid(),
@@ -35,6 +36,7 @@ create table public.onboarding_events (
 );
 alter table public.onboarding_events enable row level security;
 revoke all on public.onboarding_events from public, anon, authenticated;
+revoke all on public.onboarding_events from service_role;
 grant select, insert on public.onboarding_events to service_role;
 
 -- CAS and audit append are one transaction, including provisioning lock acquisition.
@@ -75,7 +77,8 @@ create table public.onboarding_credentials (
 );
 alter table public.onboarding_credentials enable row level security;
 revoke all on public.onboarding_credentials from public, anon, authenticated;
-grant all on public.onboarding_credentials to service_role;
+revoke all on public.onboarding_credentials from service_role;
+grant select, insert, update on public.onboarding_credentials to service_role;
 
 create table public.onboarding_oauth_states (
   nonce_hash text primary key,
@@ -86,7 +89,8 @@ create table public.onboarding_oauth_states (
 );
 alter table public.onboarding_oauth_states enable row level security;
 revoke all on public.onboarding_oauth_states from public, anon, authenticated;
-grant all on public.onboarding_oauth_states to service_role;
+revoke all on public.onboarding_oauth_states from service_role;
+grant select, insert, update on public.onboarding_oauth_states to service_role;
 
 create table public.onboarding_webhooks (
   digest text primary key,
@@ -96,27 +100,11 @@ create table public.onboarding_webhooks (
 );
 alter table public.onboarding_webhooks enable row level security;
 revoke all on public.onboarding_webhooks from public, anon, authenticated;
+revoke all on public.onboarding_webhooks from service_role;
 grant select, insert on public.onboarding_webhooks to service_role;
 
--- Fix legacy public policies; no ownership is inferred for historical rows.
-do $$ declare t text; p record;
-begin
-  foreach t in array array['wizard_drafts','diagnostic_records','ghl_sessions'] loop
-    if to_regclass('public.' || t) is not null then
-      for p in select policyname from pg_policies where schemaname='public' and tablename=t loop
-        execute format('drop policy %I on public.%I', p.policyname, t);
-      end loop;
-      execute format('revoke all on public.%I from public, anon, authenticated',t);
-      execute format('grant all on public.%I to service_role',t);
-    end if;
-  end loop;
-  if to_regclass('public.businesses') is not null then
-    drop policy if exists "Service role can manage businesses" on public.businesses;
-    -- No new commercial clock from row creation. Historical timestamps are retained for reconciliation.
-    alter table public.businesses alter column trial_ends_at drop default;
-    revoke insert, update, delete on public.businesses from anon, authenticated;
-  end if;
-end $$;
+-- P0 manages existing ACLs and policies. Preserve historical trial timestamps.
+alter table public.businesses alter column trial_ends_at drop default;
 
 -- The operator allowlist alone is insufficient. Each reviewer needs an explicit assignment.
 create table public.onboarding_reviewers (
@@ -125,7 +113,8 @@ create table public.onboarding_reviewers (
 );
 alter table public.onboarding_reviewers enable row level security;
 revoke all on public.onboarding_reviewers from public, anon, authenticated;
-grant all on public.onboarding_reviewers to service_role;
+revoke all on public.onboarding_reviewers from service_role;
+grant select on public.onboarding_reviewers to service_role;
 
 create table public.onboarding_ai_budgets (
   business_id uuid primary key references public.businesses(id),
@@ -135,8 +124,8 @@ create table public.onboarding_ai_budgets (
 );
 alter table public.onboarding_ai_budgets enable row level security;
 revoke all on public.onboarding_ai_budgets from public, anon, authenticated;
-grant all on public.onboarding_ai_budgets to service_role;
-revoke insert, update, delete on public.ai_usage from public, anon, authenticated;
+revoke all on public.onboarding_ai_budgets from service_role;
+grant select, update (expires_at) on public.onboarding_ai_budgets to service_role;
 create function public.reserve_10x_ai(p_business uuid,p_user uuid,p_provider text,p_model text,p_task text,p_max_cost numeric)
 returns uuid language plpgsql security invoker set search_path='' as $$
 declare cap numeric; used numeric; reservation uuid; mon text := to_char(now() at time zone 'UTC','YYYY-MM');
@@ -169,22 +158,25 @@ create table public.onboarding_form_outbox (
   id uuid primary key default gen_random_uuid(),
   lead_id uuid not null unique references public.contact_leads(id),
   source text not null, session_id uuid not null references public.onboarding_sessions(id),
-  location_id text not null, identity_email text not null,
+  location_id text not null, identity_email text not null, offer_key text not null,
   status text not null default 'pending' check(status in ('pending','sending','done','review')),
   provider_contact_id text, updated_at timestamptz not null default now(),
-  unique(session_id,location_id,identity_email)
+  unique(session_id,location_id,identity_email,offer_key)
 );
 alter table public.onboarding_form_routes enable row level security;
 alter table public.onboarding_form_outbox enable row level security;
-revoke all on public.onboarding_form_routes,public.onboarding_form_outbox,public.contact_leads from public,anon,authenticated;
-grant all on public.onboarding_form_routes,public.onboarding_form_outbox,public.contact_leads to service_role;
+revoke all on public.onboarding_form_routes,public.onboarding_form_outbox from public,anon,authenticated;
+revoke all on public.onboarding_form_routes,public.onboarding_form_outbox from service_role;
+grant select on public.onboarding_form_routes to service_role;
+grant select, insert, update on public.onboarding_form_outbox to service_role;
 create index onboarding_form_queue_idx on public.onboarding_form_outbox(session_id,updated_at) where status='pending';
 create function public.queue_onboarding_lead() returns trigger language plpgsql security invoker set search_path='' as $$
 begin
-  insert into public.onboarding_form_outbox(lead_id,source,session_id,location_id,identity_email)
-    select new.id,new.source,r.session_id,r.location_id,lower(trim(new.email))
+  insert into public.onboarding_form_outbox(lead_id,source,session_id,location_id,identity_email,offer_key)
+    select new.id,new.source,r.session_id,r.location_id,lower(trim(new.email)),coalesce(new.service_type,'')
     from public.onboarding_form_routes r join public.onboarding_sessions s on s.id=r.session_id
-    where r.source=new.source and r.enabled and s.provision->>'locationId'=r.location_id and s.provision->>'status'='configured'
+    where (new.source <> 'dev_contact' or new.service_type in ('mvp','celula'))
+    and new.service_type is distinct from 'growth_early_access' and r.source=new.source and r.enabled and s.provision->>'locationId'=r.location_id and s.provision->>'status'='configured'
     and exists(select 1 from jsonb_array_elements(s.plan->'modules') m where m->>'id'='forms' and m->>'mode' in ('connect','create')
       and m->'consent'->>'actorId'=s.owner_user_id::text and m->'consent'->>'scope'='prepare_forms_no_paid_services'
       and m->'consent'->>'planVersion'=s.plan->>'version')

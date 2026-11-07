@@ -38,6 +38,13 @@ export type SaveProvision = (
   event: string,
 ) => Promise<OnboardingSession>;
 
+export function allowedLab(id: string) {
+  return (process.env.GHL_LAB_LOCATION_IDS ?? "")
+    .split(",")
+    .map((value) => value.trim())
+    .includes(id);
+}
+
 export function provisionPrerequisites(
   s: OnboardingSession,
   enabled: boolean,
@@ -138,7 +145,20 @@ export async function provisionSession(
         "location_created",
       );
     }
-    await provider.verifyLocation(current.provision.locationId!, current);
+    const id = current.provision.locationId!;
+    const lab = current.evidence.some(
+      (e) =>
+        e.gate === "lab_binding" &&
+        e.kind === "real" &&
+        e.outcome === "pass" &&
+        e.locationId === id &&
+        e.planVersion === current.plan?.version,
+    );
+    if (lab && !allowedLab(id))
+      throw new HttpError(403, "La LAB dejó de estar autorizada.");
+    // verifyLocation always verifies the exact location and its agency. A reusable LAB
+    // is assigned by an operator; a commercial location must match the business too.
+    await provider.verifyLocation(id, lab ? undefined : current);
     const configured = await provider.configure(current, release);
     return await save(
       current,

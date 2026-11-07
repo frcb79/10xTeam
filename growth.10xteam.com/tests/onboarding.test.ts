@@ -524,3 +524,73 @@ test("a delayed autosave cannot erase the context or plan after explicit complet
   assert.ok(after.draft.context);
   assert.ok(after.plan);
 });
+
+test("an expressly assigned reusable LAB verifies the agency and exact location without using a commercial identity", async () => {
+  const saved = process.env.GHL_LAB_LOCATION_IDS;
+  process.env.GHL_LAB_LOCATION_IDS = "fixture-lab";
+  try {
+    const h = stateful();
+    const operator = { ...actor, operator: true };
+    const observed: Array<{ id: string; customer: boolean }> = [];
+    const provider = h.deps.provider();
+    provider.verifyLocation = async (id, expected) => {
+      observed.push({ id, customer: !!expected });
+    };
+    const deps = { ...h.deps, provider: () => provider };
+    await execute(
+      h.state,
+      actor,
+      {
+        action: "approve_core",
+        id: ba,
+        version: h.state.version,
+        accepted: true,
+      },
+      deps,
+    );
+    await execute(
+      h.state,
+      operator,
+      {
+        action: "evidence",
+        id: ba,
+        version: h.state.version,
+        gate: "contract",
+        kind: "real",
+        outcome: "pass",
+        reference: "QA-pilot-authority",
+      },
+      deps,
+    );
+    const bind = (locationId: string) =>
+      execute(
+        h.state,
+        operator,
+        {
+          action: "bind_lab",
+          id: ba,
+          version: h.state.version,
+          locationId,
+          reference: "QA-pilot-authority",
+        },
+        deps,
+      );
+    await assert.rejects(bind("another-lab"), /LAB/);
+    await bind("fixture-lab");
+    await execute(
+      h.state,
+      operator,
+      { action: "provision", id: ba, version: h.state.version },
+      deps,
+    );
+    assert.equal(h.creates, 0);
+    assert.deepEqual(observed, [
+      { id: "fixture-lab", customer: false },
+      { id: "fixture-lab", customer: false },
+    ]);
+    await assert.rejects(bind("another-lab"));
+  } finally {
+    if (saved === undefined) delete process.env.GHL_LAB_LOCATION_IDS;
+    else process.env.GHL_LAB_LOCATION_IDS = saved;
+  }
+});

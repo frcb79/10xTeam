@@ -10,6 +10,7 @@ import {
 import type { Command } from "./commands";
 import { HttpError } from "./security";
 import {
+  allowedLab,
   provisionPrerequisites,
   provisionSession,
   type ProvisionProvider,
@@ -190,14 +191,7 @@ export async function execute(
       );
     }
     case "bind_lab": {
-      if (
-        !a.userId ||
-        !a.operator ||
-        !s.plan ||
-        !process.env.GHL_LAB_LOCATION_IDS?.split(",")
-          .map((x) => x.trim())
-          .includes(cmd.locationId)
-      )
+      if (!a.userId || !a.operator || !s.plan || !allowedLab(cmd.locationId))
         throw new HttpError(
           403,
           "Se requiere una LAB habilitada y un verificador asignado.",
@@ -209,7 +203,7 @@ export async function execute(
           409,
           "El registro ya está vinculado o espera reconciliación.",
         );
-      await deps.provider().verifyLocation(cmd.locationId, s);
+      await deps.provider().verifyLocation(cmd.locationId);
       return save(
         {
           provision: {

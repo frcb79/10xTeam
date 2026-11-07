@@ -161,10 +161,10 @@ test("AI reservations reject no consent, other owner and competing requests over
   );
 });
 test("form queue is empty before opt-in, scoped per source and deduplicates repeated email", async () => {
-  const insert = (source: string) =>
+  const insert = (source: string, offer = "mvp") =>
     db.query(
-      "insert into contact_leads(name,email,source,service_type) values ('Prueba','synthetic@example.test',$1,'mvp')",
-      [source],
+      "insert into contact_leads(name,email,source,service_type) values ('Prueba','synthetic@example.test',$1,$2)",
+      [source, offer],
     );
   const count = async () =>
     Number(
@@ -195,6 +195,17 @@ test("form queue is empty before opt-in, scoped per source and deduplicates repe
   await insert("dev_contact");
   await insert("dev_contact");
   assert.equal(await count(), 1);
+  await insert("dev_contact", "celula");
+  await insert("dev_contact", "celula");
+  await insert("dev_contact", "evolucion");
+  assert.equal(await count(), 2);
+  const { rows } = await db.query(
+    "select offer_key,location_id from onboarding_form_outbox order by offer_key",
+  );
+  assert.deepEqual(rows, [
+    { offer_key: "celula", location_id: "test-loc" },
+    { offer_key: "mvp", location_id: "test-loc" },
+  ]);
 });
 test("one-time OAuth state and identified webhook replay are consumed once", async () => {
   await db.query(
