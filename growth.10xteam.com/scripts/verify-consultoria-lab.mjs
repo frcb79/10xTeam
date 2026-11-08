@@ -48,3 +48,21 @@ const { contact } = await read("/contacts/mxgKhfWfeC9p6RcBDjQY", "synthetic-cont
 assert.ok(contact?.locationId === locationId && contact?.email === "qa-dev-20261107@example.test",
   "Synthetic contact mismatch");
 console.log("LAB_QA_CONTACT_MATCH", true);
+
+const filters = new URLSearchParams({ locationId, contactId: contact.id, limit: "100" });
+const { opportunities } = await read("/opportunities/search?" + filters, "qa-opportunities");
+assert.ok(Array.isArray(opportunities), "Missing opportunity list");
+const expectedOffers = ["QA Dev · Llave en Mano · 20261107", "QA Dev · Dev Squad · 20261107"];
+for (const name of expectedOffers) {
+  const matches = opportunities.filter(item => item.name === name &&
+    (item.contactId ?? item.contact?.id) === contact.id && item.locationId === locationId);
+  assert.equal(matches.length, 1, "Missing or duplicated QA opportunity");
+}
+console.log("LAB_QA_DISTINCT_OFFERS", expectedOffers.length);
+
+const { tasks } = await read("/contacts/" + contact.id + "/tasks", "qa-tasks");
+assert.ok(Array.isArray(tasks), "Missing task list");
+const followUp = tasks.filter(task => task.title === "QA Dev · Revisar solicitud · 20261107" &&
+  (!task.contactId || task.contactId === contact.id));
+assert.equal(followUp.length, 1, "Missing or duplicated QA follow-up");
+console.log("LAB_QA_FOLLOW_UP", followUp.length);
