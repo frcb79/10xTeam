@@ -2,7 +2,7 @@ import { db } from "@/lib/onboarding/store";
 import { equalSecret, HttpError } from "@/lib/onboarding/security";
 import { failure, json } from "@/lib/onboarding/http";
 import { formDestination } from "@/lib/onboarding/form-delivery";
-import { GhlProvisionProvider } from "@/lib/ghl/provision-provider";
+import { configuredProvider } from "@/lib/ghl/provision-provider";
 import type { OnboardingSession } from "@/lib/onboarding/model";
 
 export async function POST(request: Request) {
@@ -65,10 +65,7 @@ export async function POST(request: Request) {
         r.data,
         l.data,
       );
-      const provider = new GhlProvisionProvider(
-        process.env.GHL_AGENCY_ACCESS_TOKEN ?? "",
-        process.env.GHL_COMPANY_ID ?? "",
-      );
+      const provider = configuredProvider();
       const contactId = await provider.upsertFormContact(target);
       const done = await client
         .from("onboarding_form_outbox")

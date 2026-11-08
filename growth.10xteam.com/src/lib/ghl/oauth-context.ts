@@ -10,6 +10,7 @@ export function assertBoundLocation(
     !companyId ||
     !session.provision.locationId ||
     token.userType !== "Location" ||
+    token.scope?.trim() !== "locations.readonly" ||
     token.companyId !== companyId ||
     token.locationId !== session.provision.locationId ||
     !token.accessToken ||

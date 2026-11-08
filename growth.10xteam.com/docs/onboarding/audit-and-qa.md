@@ -46,3 +46,14 @@ Secciones 65–70: se implementaron selección de release, bloqueo por versión,
 | Integración remota | Pendiente. Para aprobar la primera alta real faltan entorno activo, credenciales/roles, catálogo de snapshots verificado, caso completo en LAB y ruteo confirmado del formulario. |
 
 El informe de oportunidad y las recomendaciones son estimaciones por validar con ventas y datos del negocio. Los resultados sintéticos sirven para aceptar el código en revisión. La autorización para operar el primer cliente requiere las verificaciones externas del [manual](pilot-runbook.md).
+
+## Matriz P0 vigente · 8 de noviembre de 2026
+
+| Superficie | Prueba y resultado | Alcance |
+|---|---|---|
+| PostgreSQL aislado | Ida, reversión con las nueve tablas vacías y reaplicación de 053/054. Con una sesión presente se abortó la reversión y se conservaron sesión e índice. Se conservaron el lead preexistente y la denegación de lectura anónima. | Base descartable, datos sintéticos |
+| Roles | SELECT, INSERT, UPDATE, DELETE y TRUNCATE denegados según ACL; dos titulares sólo leen su propio negocio y consumo. | Base aislada, 16 tablas |
+| Código de proveedor | Scope exacto de lectura en callback y refresh. Credencial LAB rechaza otra location, alta de subcuentas y configuración incompleta incluso si hay bearer de agencia. | Proveedor simulado |
+| Navegador | Formulario Astro compilado → Next → PostgREST → cola Dev, ambas ofertas y una repetición; recuperación de diagnóstico y rechazo entre negocios. | Chromium en loopback |
+| HighLevel Consultoría | Un contacto QA con DND, dos oportunidades por producto y una tarea comprobados manualmente. El segundo producto fallaba por la preferencia de oportunidades múltiples. Después del ajuste, ambas tarjetas persistieron. | Interfaz real de GHL |
+| API de HighLevel y resultado comercial | Sin callback, refresh, webhook real, lectura API de activos, notificación o indicador automático verificados. | Bloqueado por configuración, activos y autorización |

@@ -353,9 +353,12 @@ test("OAuth tokens cannot be decrypted for another BA; company and location must
     userType: "Location",
     accessToken: "dummy",
     refreshToken: "dummy",
+    scope: "locations.readonly",
     expiresAt: s.created_at,
   };
   assert.doesNotThrow(() => assertBoundLocation(s, token, "agency"));
+  for (const scope of [undefined, "contacts.write", "locations.readonly contacts.write"])
+    assert.throws(() => assertBoundLocation(s, { ...token, scope }, "agency"));
   assert.throws(() =>
     assertBoundLocation(s, { ...token, locationId: "another" }, "agency"),
   );
@@ -593,4 +596,41 @@ test("an expressly assigned reusable LAB verifies the agency and exact location 
     if (saved === undefined) delete process.env.GHL_LAB_LOCATION_IDS;
     else process.env.GHL_LAB_LOCATION_IDS = saved;
   }
+});
+
+test("LAB credential validates agency and location, blocks cross-location and account creation before I/O", async (t) => {
+  const { configuredProvider } = await import("../src/lib/ghl/provision-provider");
+  const settings = {
+    GHL_LAB_ACCESS_TOKEN: "fixture-lab-token",
+    GHL_LAB_LOCATION_ID: "fixture-location",
+    GHL_LAB_LOCATION_IDS: "fixture-location",
+    GHL_COMPANY_ID: "fixture-agency",
+    GHL_AGENCY_ACCESS_TOKEN: "unused-agency-fixture",
+  };
+  const previous = { ...process.env };
+  Object.assign(process.env, settings);
+  t.after(() => {
+    for (const key of Object.keys(settings)) {
+      if (previous[key] === undefined) delete process.env[key];
+      else process.env[key] = previous[key];
+    }
+  });
+  const calls: string[] = [];
+  const provider = configuredProvider(async (url, init) => {
+    const path = new URL(String(url)).pathname;
+    calls.push(path);
+    assert.equal(new Headers(init?.headers).get("authorization"), "Bearer fixture-lab-token");
+    if (path === "/locations/fixture-location")
+      return Response.json({ location: { id: "fixture-location", companyId: "fixture-agency" } });
+    assert.equal(path, "/contacts/upsert");
+    return Response.json({ contact: { id: "test-contact", locationId: "fixture-location" } });
+  });
+  const contact = { locationId: "fixture-location", email: "qa@example.test", name: "QA", source: "dev_contact", customFields: [] };
+  assert.equal(await provider.upsertFormContact(contact), "test-contact");
+  await assert.rejects(provider.upsertFormContact({ ...contact, locationId: "growth" }), /limitada/);
+  await assert.rejects(provider.checkCreate(session()), /autorización/);
+  await assert.rejects(provider.createLocation(session(), release), /existente/);
+  assert.deepEqual(calls, ["/locations/fixture-location", "/contacts/upsert"]);
+  delete process.env.GHL_LAB_ACCESS_TOKEN;
+  assert.throws(() => configuredProvider(), /credencial/);
 });

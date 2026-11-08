@@ -24,6 +24,9 @@ export async function exchangeAuthorizationCode(input: {
 }): Promise<GhlOAuthSession> {
   const response = await fetch(GHL_OAUTH_BASE_URL, {
     method: "POST",
+    redirect: "error",
+    cache: "no-store",
+    signal: AbortSignal.timeout(12_000),
     headers: {
       Accept: "application/json",
       "Content-Type": "application/x-www-form-urlencoded",
@@ -39,7 +42,6 @@ export async function exchangeAuthorizationCode(input: {
   });
 
   if (!response.ok) {
-
     throw new Error(`GHL code exchange failed (${response.status})`);
   }
 
@@ -65,6 +67,9 @@ export async function refreshAccessToken(input: {
 
   const response = await fetch(GHL_OAUTH_BASE_URL, {
     method: "POST",
+    redirect: "error",
+    cache: "no-store",
+    signal: AbortSignal.timeout(12_000),
     headers: {
       Accept: "application/json",
       "Content-Type": "application/x-www-form-urlencoded",
@@ -73,7 +78,6 @@ export async function refreshAccessToken(input: {
   });
 
   if (!response.ok) {
-
     throw new Error(`GHL refresh failed (${response.status})`);
   }
 

@@ -33,6 +33,8 @@ export async function GET(request: Request) {
     if (error || !data)
       throw new HttpError(403, "La autorización expiró o ya se utilizó.");
     const s = await requireSession(a, data.session_id);
+    if (a.userId !== s.owner_user_id)
+      throw new HttpError(403, "Se requiere acceso del titular.");
     const token = await exchangeAuthorizationCode({
       ...config,
       code: url.searchParams.get("code")!,

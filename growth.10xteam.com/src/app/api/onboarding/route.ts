@@ -17,7 +17,7 @@ import {
 import { readJson, sameOrigin } from "@/lib/onboarding/security";
 import { failure, json } from "@/lib/onboarding/http";
 import {
-  GhlProvisionProvider,
+  configuredProvider,
   snapshotRelease,
 } from "@/lib/ghl/provision-provider";
 
@@ -57,11 +57,7 @@ export async function POST(request: Request) {
       diagnostic: async (draft) => strategicRecord(draft),
       enabled: enabled(),
       release: snapshotRelease,
-      provider: () =>
-        new GhlProvisionProvider(
-          process.env.GHL_AGENCY_ACCESS_TOKEN ?? "",
-          process.env.GHL_COMPANY_ID ?? "",
-        ),
+      provider: configuredProvider,
     });
     return view(next, a);
   } catch (error) {

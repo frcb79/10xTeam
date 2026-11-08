@@ -87,3 +87,20 @@ Supabase registró la migración de seguridad con la versión **20261107134052**
 Se verificaron en la interfaz autenticada de HighLevel tres LAB activas. La de Consultoría tiene cuatro etapas, un formulario, la lista vacía de Custom Values y la pantalla inicial de workflows. Marketing Agency aparece en el catálogo; su guía contempla SMS masivos, anuncios y Voice AI. La selección de activos para el piloto sigue pendiente. La lista de aplicaciones instaladas en Consultoría mostró cero y las pantallas de integraciones privadas de la agencia y de la LAB estaban vacías.
 
 Prueba manual en Consultoría: un contacto sintético con DND en todos los canales, una oportunidad Llave en Mano y una tarea vinculada, comprobados en sus listados. Después del intento de crear Dev Squad y recargar el pipeline sólo figuraba Llave en Mano. El correo sintético no apareció en la búsqueda de Clínica BA1. La comprobación directa en Growth y la de notificación interna siguen pendientes. La sesión interactiva permite revisar el CRM; la integración automática requiere autorización OAuth y configuración de servidor LAB. NO-GO para crear Dev.
+
+## Cierre del 8 de noviembre de 2026
+
+**NO-GO para crear la location definitiva de Dev.** Este corte actualiza la evidencia del 7 de noviembre.
+
+| Requisito | Estado actual | Evidencia / condición de cierre |
+|---|---|---|
+| Permisos y datos históricos | Implementado en producción | Historial hasta 20261107134052. Siguen presentes 20 diagnósticos. El acceso anónimo continúa cerrado. |
+| Migraciones de onboarding y waitlist | Probado localmente · pendiente de autorización | Cero colisiones de nombres y cero grupos de duplicados aplicables en la consulta previa. La reversión conjunta se ensayó en base vacía y se bloqueó con datos de onboarding. |
+| Formulario Dev y persistencia | Probado localmente | Chromium, formulario comercial compilado, Next y PostgREST. Dos ofertas y un reenvío dejaron dos trabajos en Dev y cero en Growth. |
+| Oportunidad por producto sobre un solo contacto | Probado en GHL, manual | Consultoría rechazó Dev Squad como duplicada. En Configuración → Objetos → Oportunidades se habilitó permitir varias oportunidades por contacto. Tras recarga hay dos oportunidades de MX$0 en Nuevo prospecto bajo el mismo contacto QA, una por oferta. Se mantuvo la deduplicación de contactos. Una tarea interna vinculada se verificó manualmente. |
+| Selección del snapshot y personalización | Bloqueado | Marketing Agency sigue como candidato de catálogo. Consultoría tiene cuatro etapas y faltan Calificación, los Custom Values del plan y un workflow interno revisado. No se importó el snapshot. |
+| OAuth, refresh, webhooks y credencial de LAB | Implementado · probado localmente | La autorización del titular exige exactamente locations.readonly. El adaptador admite credencial de una sola LAB y bloquea otra location antes de llamar al proveedor. Falta ejecutar la autorización, renovar y recibir una firma emitida por GHL. |
+| Formulario → CRM → notificación → indicador | Bloqueado | El worker confirma el upsert del contacto. Las oportunidades, tareas y notificación de cada oferta dependen del workflow. Faltan el destinatario interno, dos operaciones con sus IDs y el indicador releído en CRM. El contador manual del tablero verifica sólo las dos tarjetas de la LAB. |
+| Aislamiento en proveedor y FUNCTIONAL_READY | Bloqueado | Clínica BA1 devolvió cero para el correo sintético. La ausencia en Growth y el recorrido automático completo siguen pendientes. El evaluador rechazó evidencia simulada y de otra location en QA. |
+
+El procedimiento vigente para el acceso de LAB y la aprobación separada de base está en el [checklist operativo](pilot-runbook.md#ensayo-en-consultoría-y-aprobación-de-base). La [reversión SQL preparada](revert-pending-onboarding.sql) preserva el P0 ya instalado.

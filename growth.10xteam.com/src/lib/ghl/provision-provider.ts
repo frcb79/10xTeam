@@ -2,6 +2,7 @@ import { z } from "zod";
 import type { OnboardingSession } from "@/lib/onboarding/model";
 import { HttpError } from "@/lib/onboarding/security";
 import {
+  allowedLab,
   expectedCustomValues,
   type ProvisionProvider,
   type SnapshotRelease,
@@ -60,13 +61,28 @@ type Payload = {
   calendars?: Item[];
 };
 
+// A location credential is sufficient for an existing LAB. Never fall back to an
+// agency credential when LAB configuration is incomplete or its binding changes.
+export function configuredProvider(fetcher: typeof fetch = fetch) {
+  const company = process.env.GHL_COMPANY_ID ?? "";
+  const token = process.env.GHL_LAB_ACCESS_TOKEN;
+  const location = process.env.GHL_LAB_LOCATION_ID;
+  if (token !== undefined || location !== undefined) {
+    if (!token || !location || !allowedLab(location))
+      throw new HttpError(503, "Revisa la credencial y la location autorizada de LAB.");
+    return new GhlProvisionProvider(token, company, fetcher, location);
+  }
+  return new GhlProvisionProvider(process.env.GHL_AGENCY_ACCESS_TOKEN ?? "", company, fetcher);
+}
+
 export class GhlProvisionProvider implements ProvisionProvider {
   constructor(
-    private readonly agencyToken: string,
+    private readonly accessToken: string,
     private readonly companyId: string,
     private readonly fetcher: typeof fetch = fetch,
+    private readonly labLocation?: string,
   ) {
-    if (!agencyToken || !companyId)
+    if (!accessToken || !companyId)
       throw new HttpError(503, "La conexión de configuración está pendiente.");
   }
   private async request(
@@ -116,8 +132,23 @@ export class GhlProvisionProvider implements ProvisionProvider {
       );
     return response.json();
   }
+  private checkDestination(id: string) {
+    if (this.labLocation && (id !== this.labLocation || !allowedLab(id)))
+      throw new HttpError(403, "La credencial de LAB está limitada a su location.");
+  }
+  private async locationToken(id: string) {
+    this.checkDestination(id);
+    if (this.labLocation) return this.accessToken;
+    const grant = await this.request(
+      "/oauth/locationToken", this.accessToken, "POST",
+      new URLSearchParams({ companyId: this.companyId, locationId: id }),
+    );
+    if (!grant.access_token || grant.locationId !== id)
+      throw new HttpError(403, "No se pudo comprobar el acceso al negocio.");
+    return grant.access_token;
+  }
   async checkCreate(s: OnboardingSession) {
-    if (process.env.GHL_LOCATION_CREATION_ENABLED !== "true")
+    if (this.labLocation || process.env.GHL_LOCATION_CREATION_ENABLED !== "true")
       throw new HttpError(
         409,
         "La creación de cuentas requiere autorización específica. Vincula una LAB autorizada.",
@@ -150,7 +181,7 @@ export class GhlProvisionProvider implements ProvisionProvider {
       });
       const { locations } = await this.request(
         "/locations/search?" + query,
-        this.agencyToken,
+        this.accessToken,
       );
       if (!Array.isArray(locations)) break;
       if (
@@ -173,9 +204,10 @@ export class GhlProvisionProvider implements ProvisionProvider {
     );
   }
   async createLocation(s: OnboardingSession, release: SnapshotRelease) {
+    if (this.labLocation) throw new HttpError(403, "La LAB sólo permite vincular la cuenta existente.");
     const c = s.draft.context!;
     const a = s.draft.answers;
-    const result = await this.request("/locations/", this.agencyToken, "POST", {
+    const result = await this.request("/locations/", this.accessToken, "POST", {
       companyId: this.companyId,
       name: a.step2!.businessName,
       email: a.step6!.ownerEmail,
@@ -193,9 +225,10 @@ export class GhlProvisionProvider implements ProvisionProvider {
     return id;
   }
   async verifyLocation(id: string, expected?: OnboardingSession) {
+    this.checkDestination(id);
     const r = await this.request(
       `/locations/${encodeURIComponent(id)}`,
-      this.agencyToken,
+      this.accessToken,
     );
     if (
       (r.location?.id ?? r.id) !== id ||
@@ -231,20 +264,10 @@ export class GhlProvisionProvider implements ProvisionProvider {
     customFields: { id: string; field_value: string }[];
   }) {
     await this.verifyLocation(payload.locationId);
-    const token = await this.request(
-      "/oauth/locationToken",
-      this.agencyToken,
-      "POST",
-      new URLSearchParams({
-        companyId: this.companyId,
-        locationId: payload.locationId,
-      }),
-    );
-    if (!token.access_token || token.locationId !== payload.locationId)
-      throw new HttpError(403, "Destino de contacto inválido.");
+    const token = await this.locationToken(payload.locationId);
     const result = await this.request(
       "/contacts/upsert",
-      token.access_token,
+      token,
       "POST",
       payload,
     );
@@ -254,15 +277,8 @@ export class GhlProvisionProvider implements ProvisionProvider {
   }
   async configure(s: OnboardingSession, release: SnapshotRelease) {
     const id = s.provision.locationId!;
-    const token = await this.request(
-      "/oauth/locationToken",
-      this.agencyToken,
-      "POST",
-      new URLSearchParams({ companyId: this.companyId, locationId: id }),
-    );
-    if (!token.access_token || token.locationId !== id)
-      throw new HttpError(403, "No se pudo comprobar el acceso al negocio.");
-    const read = (path: string) => this.request(path, token.access_token!);
+    const token = await this.locationToken(id);
+    const read = (path: string) => this.request(path, token);
     const root = `/locations/${encodeURIComponent(id)}/customValues`;
     const values = (await read(root)).customValues ?? [];
     const query = `?locationId=${encodeURIComponent(id)}`;
@@ -339,7 +355,7 @@ export class GhlProvisionProvider implements ProvisionProvider {
     for (const { id: fieldId, name, value } of changes) {
       await this.request(
         `${root}/${encodeURIComponent(fieldId)}`,
-        token.access_token,
+        token,
         "PUT",
         { name, value },
       );
