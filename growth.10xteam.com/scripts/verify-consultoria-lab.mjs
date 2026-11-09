@@ -7,7 +7,7 @@ assert.equal(process.env.GHL_LAB_LOCATION_ID, locationId);
 assert.equal(process.env.GHL_LAB_LOCATION_IDS, locationId);
 assert.ok(process.env.GHL_LAB_ACCESS_TOKEN, "LAB credential missing");
 
-async function read(path, label) {
+async function read(path, label, inspectAvailability = false) {
   const response = await fetch(new URL(path, "https://services.leadconnectorhq.com"), {
     headers: {
       Authorization: "Bearer " + process.env.GHL_LAB_ACCESS_TOKEN,
@@ -18,6 +18,13 @@ async function read(path, label) {
     signal: AbortSignal.timeout(12_000),
   });
   console.log("LAB_QA_HTTP", label, response.status);
+  if (inspectAvailability && [401, 403, 404].includes(response.status)) {
+    const body = await response.json().catch(() => ({}));
+    const code = body.code ?? body.error?.code;
+    console.log("LAB_QA_BLOCKED", label, response.status,
+      typeof code === "string" && /^[A-Z0-9_]{1,100}$/.test(code) ? code : "availability_or_scope");
+    return null;
+  }
   assert.equal(response.status, 200, label);
   return response.json();
 }
@@ -28,6 +35,8 @@ assert.equal(location.id, locationId);
 assert.ok(location.companyId, "Missing agency binding");
 if (process.env.GHL_COMPANY_ID) assert.equal(location.companyId, process.env.GHL_COMPANY_ID);
 console.log("LAB_QA_LOCATION_MATCH", true);
+// Agency identifier is configuration metadata, never a token or client secret.
+console.log("LAB_QA_COMPANY_ID", location.companyId);
 
 const query = "?locationId=" + locationId;
 const collections = [
@@ -66,3 +75,22 @@ const followUp = tasks.filter(task => task.title === "QA Dev · Revisar solicitu
   (!task.contactId || task.contactId === contact.id));
 assert.equal(followUp.length, 1, "Missing or duplicated QA follow-up");
 console.log("LAB_QA_FOLLOW_UP", followUp.length);
+
+// Additional read-only preflight for the product field and workflow authoring.
+// A denial is reported as a blocker; it never counts as a passed integration.
+const fields = await read("/locations/" + locationId + "/customFields?model=contact", "product-fields", true);
+if (fields) {
+  assert.ok(Array.isArray(fields.customFields), "Invalid custom field response");
+  console.log("LAB_QA_PRODUCT_FIELDS", JSON.stringify(fields.customFields
+    .filter(field => field.name === "10x_service" || field.fieldKey === "contact.10x_service")
+    .map(field => ({ id: field.id, name: field.name, dataType: field.dataType }))));
+}
+const catalog = await read("/workflows/step-types" + query +
+  "&types=opportunity,task,internal,contact_created,field&limit=20", "workflow-authoring", true);
+if (catalog) {
+  assert.equal(catalog.locationId, locationId, "Workflow catalog location mismatch");
+  assert.ok(Array.isArray(catalog.stepTypes), "Invalid workflow catalog");
+  console.log("LAB_QA_WORKFLOW_TYPES", JSON.stringify(catalog.stepTypes
+    .map(step => ({ type: step.type, kind: step.kind,
+      fields: step.fields?.map(field => ({ field: field.field, required: field.required })) }))));
+}

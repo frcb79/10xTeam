@@ -129,3 +129,23 @@ Se crearon ONBOARDING_ENCRYPTION_KEY (Secret) y ONBOARDING_PUBLIC_ORIGIN sólo p
 
 
 Verificación real desde Vercel Preview cb20235 (READY, despliegue dpl_CN1zVVqDZSR7uBPdfNrofC52xCj7): lectura de onboarding_sessions con service_role HTTP 200; nueve lecturas anónimas de tablas nuevas, dos DELETE anónimos (onboarding_sessions y contact_leads) y un PATCH anónimo denegados con 401/403 y SQLSTATE 42501. Los intentos de mutación también usaron un UUID sintético inexistente. No se crearon ni borraron registros. Las nueve lecturas de HighLevel Consultoría volvieron a pasar con HTTP 200: location, pipelines, formulario, workflows, calendarios, Custom Values, contacto QA, dos oportunidades diferenciadas y tarea. Los registros GHL siguen siendo los de la prueba manual previa, no del flujo automático. Build, 28/28 tests, lint y TypeScript aprobados; sin despliegue de producción.
+
+
+## Diagnóstico real recibido · 9 de noviembre, 13:12 CDMX
+
+El titular completó los seis pasos y preparó el diagnóstico en la Preview. Supabase confirmó la sesión propia `0b624aa6-7db1-46f2-b713-29481273c1ab`, versión de plan 9, negocio 10xTeam Dev, diagnóstico persistido y arquetipo core-b2b. CRM y forms son requeridos; agenda, correo, WhatsApp, redes, pagos e IA están pospuestos. Sin location vinculada, consentimientos de ejecución ni evidencia funcional registrada. No copiar respuestas privadas, teléfono ni economía del titular al repositorio. No volver a pedir que complete el cuestionario.
+
+El titular solicita cerrar primero el piloto y diferir la reducción de longitud del Wizard y UX/UI. No hay cambios de interfaz en esta revisión.
+
+Configuración concreta a validar en Consultoría antes de activar:
+- Pipeline existente 10x LAB — Ventas Consultoría. Etapas esperadas, en orden: Nuevo prospecto, Calificación, Diagnóstico, Propuesta, Decisión. Conservar las oportunidades QA existentes.
+- Formulario existente Form 0: verificar su ID; conservar el HTML comercial y ejecutar el ensayo mediante el backend de Preview autorizado.
+- Seis Custom Values de plantilla vacíos antes de personalizar: 10x_business_name, 10x_offer, 10x_ideal_customer, 10x_primary_goal, 10x_brand_voice y 10x_preserve. Los valores salen del plan 9 del titular, no de fixtures.
+- Un Custom Field de contacto 10x_service con opciones Llave en Mano y 10x Dev Squad; capturar ID real para la ruta. Custom Fields y Custom Values son superficies distintas.
+- Workflow interno Asignación y tarea interna para nuevo prospecto. Debe procesar ambas ofertas para un mismo contacto y conservar dos oportunidades diferenciadas, sin duplicar oportunidad ni tarea al repetir. Probar recepción inicial y cambio de oferta, restricciones a source dev_contact y correo sintético. No usar sólo Contact Created para ambas ofertas.
+- Una tarea de seguimiento por oferta y una notificación de prueba sólo al destinatario ya autorizado soporte@10xteam.com.mx. Valor de oportunidades de QA: cero. DND en todos los canales para los contactos de prueba; no teléfono de prospecto.
+- Releer contacto, oportunidades, tareas, resultado de notificación e indicador; reconciliar errores inciertos antes de reintentar. No asignar FUNCTIONAL_READY con inventario o registros manuales como sustitutos del recorrido automático.
+
+Pendiente de aprobación específica por la regla del titular sobre permisos: añadir fcb@10xteam.com.mx a ONBOARDING_OPERATOR_USER_IDS sólo en la Preview de esta rama y asignarlo en onboarding_reviewers sólo a su propia sesión. No dar acceso a otras altas ni a otras locations. La API de aplicación seguirá validando titular, asignación y versión. Registrar autorización de piloto y consentimientos por el flujo existente después de aprobar el alcance; no fabricarlos mediante SQL.
+
+El manifiesto de snapshot permanece sin aprobar y no se configura GHL_SNAPSHOT_RELEASES como validated hasta comprobar ID real, contenido, activos y ausencia de acciones externas. Marketing Agency no se importa automáticamente. Los endpoints v3 de creación/validación de workflows tienen disponibilidad limitada; comprobar GET step-types con el token actual antes de pedir un permiso de escritura que podría ser insuficiente.
