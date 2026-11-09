@@ -104,3 +104,12 @@ Prueba manual en Consultoría: un contacto sintético con DND en todos los canal
 | Aislamiento en proveedor y FUNCTIONAL_READY | Bloqueado | Clínica BA1 devolvió cero para el correo sintético. La ausencia en Growth y el recorrido automático completo siguen pendientes. El evaluador rechazó evidencia simulada y de otra location en QA. |
 
 El procedimiento vigente para el acceso de LAB y la aprobación separada de base está en el [checklist operativo](pilot-runbook.md#ensayo-en-consultoría-y-aprobación-de-base). La [reversión SQL preparada](revert-pending-onboarding.sql) preserva el P0 ya instalado.
+
+
+## Actualización del 9 de noviembre · entorno acordado
+
+El titular acepta usar Supabase 10xteam existente con Vercel Preview y Consultoría LAB para este piloto. Staging permanente y pagos de infraestructura quedan diferidos. La consulta remota confirmó 052 aplicada, 053/054 pendientes, RLS en las siete tablas y 20 diagnósticos conservados; cero leads, negocios, sesiones GHL y usuarios Auth. No se ejecutó DDL.
+
+La versión 053 es el único cambio de base que se solicita ahora. La 054 de waitlist Growth queda diferida. La prueba específica de 053 sola cubre alta de lead mediante service_role sin ruta activa, ausencia de encolado, preservación exacta del diagnóstico sintético, reversión sin el índice de 054, rechazo de reversión con datos y reaplicación. Es PostgreSQL embebido local, no Supabase alojado ni prueba real de GHL. El [procedimiento y aprobación exacta](pilot-runbook.md#decisión-vigente--9-de-noviembre-de-2026) mantienen la exigencia de respaldo verificado antes de aplicar.
+
+Las credenciales OAuth fueron guardadas por el titular en Vercel; esto no demuestra autorización, refresh ni webhook. Las nueve lecturas reales previas de Consultoría verificaron registros creados manualmente. El ciclo automático y la notificación siguen pendientes. NO-GO para crear Dev; PR #1 permanece en borrador y sin merge.

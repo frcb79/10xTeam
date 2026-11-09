@@ -57,3 +57,10 @@ El informe de oportunidad y las recomendaciones son estimaciones por validar con
 | Navegador | Formulario Astro compilado → Next → PostgREST → cola Dev, ambas ofertas y una repetición; recuperación de diagnóstico y rechazo entre negocios. | Chromium en loopback |
 | HighLevel Consultoría | Un contacto QA con DND, dos oportunidades por producto y una tarea comprobados manualmente. El segundo producto fallaba por la preferencia de oportunidades múltiples. Después del ajuste, ambas tarjetas persistieron. | Interfaz real de GHL |
 | API de HighLevel y resultado comercial | Sin callback, refresh, webhook real, lectura API de activos, notificación o indicador automático verificados. | Bloqueado por configuración, activos y autorización |
+
+
+## QA incremental · 9 de noviembre
+
+053 sola, con 054 ausente: migración y reversión en PostgreSQL embebido. El backend service_role inserta leads sin una ruta activa y la cola permanece vacía; el diagnóstico histórico sintético se conserva íntegro. La reversión conserva el lead y las restricciones del P0, restaura el default y permite reaplicar 053. Con una sesión presente, rechaza la reversión sin perderla. No se aplicaron migraciones remotas. Consultar el runbook para el entorno online acordado y la aprobación individual de 053.
+
+Resultado de esta revisión: **28/28 pruebas automatizadas**, lint y TypeScript aprobados. No se repitieron las tres pruebas de Chromium previas, pues no cambió código de aplicación ni el formulario. No se atribuye este ensayo SQL a HighLevel real.
