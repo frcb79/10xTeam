@@ -22,7 +22,7 @@ import {
 } from "../src/lib/onboarding/provision";
 import { GhlProvisionProvider } from "../src/lib/ghl/provision-provider";
 import { verifiedEvent } from "../src/lib/ghl/webhook";
-import { assertBoundLocation } from "../src/lib/ghl/oauth-context";
+import { assertBoundLocation, validOAuthReturn } from "../src/lib/ghl/oauth-context";
 import { seal, unseal } from "../src/lib/onboarding/security";
 import { publicIPv4 } from "../src/lib/onboarding/public-website";
 import { formDestination } from "../src/lib/onboarding/form-delivery";
@@ -633,4 +633,17 @@ test("LAB credential validates agency and location, blocks cross-location and ac
   assert.deepEqual(calls, ["/locations/fixture-location", "/contacts/upsert"]);
   delete process.env.GHL_LAB_ACCESS_TOKEN;
   assert.throws(() => configuredProvider(), /credencial/);
+});
+
+test("white-label and legacy callbacks require the same origin and exact path", () => {
+  const origin = "https://lab.example.test";
+  for (const path of ["/api/connections/callback", "/api/ghl/oauth/callback"])
+    assert.equal(validOAuthReturn(origin + path, origin + "/api/ghl/oauth/start"), true);
+  for (const value of [
+    "https://other.example.test/api/connections/callback",
+    origin + "/api/connections/callback?next=other",
+    origin + "/api/connections/callback/",
+    origin + "/other",
+  ])
+    assert.equal(validOAuthReturn(value, origin + "/api/ghl/oauth/start"), false);
 });

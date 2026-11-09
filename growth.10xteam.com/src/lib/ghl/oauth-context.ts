@@ -42,3 +42,9 @@ export function oauthSettings() {
     );
   return { clientId, clientSecret, redirectUri };
 }
+
+export function validOAuthReturn(redirectUri: string, requestUrl: string) {
+  return ["/api/connections/callback", "/api/ghl/oauth/callback"].some(
+    (path) => redirectUri === new URL(path, requestUrl).href,
+  );
+}

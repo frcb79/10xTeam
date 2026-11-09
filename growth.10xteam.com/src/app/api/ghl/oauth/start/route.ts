@@ -15,13 +15,12 @@ import {
 } from "@/lib/onboarding/security";
 import { json, failure } from "@/lib/onboarding/http";
 import { buildGhlAuthorizeUrl } from "@/lib/ghl/authorize";
-import { oauthSettings } from "@/lib/ghl/oauth-context";
+import { oauthSettings, validOAuthReturn } from "@/lib/ghl/oauth-context";
 export async function POST(request: Request) {
   try {
     sameOrigin(request);
     const config = oauthSettings();
-    const expected = new URL("/api/ghl/oauth/callback", request.url).href;
-    if (config.redirectUri !== expected)
+    if (!validOAuthReturn(config.redirectUri, request.url))
       throw new HttpError(503, "Revisar el retorno autorizado de la conexión.");
     const { id } = z
       .object({ id: z.string().uuid() })
