@@ -85,3 +85,19 @@ La lectura real del campo por API devolvió 401 con la credencial actual. GET /w
 Antes de habilitar a un verificador se cerró un hueco en la comprobación por alta: la inclusión global del usuario en la allowlist ya no le permite verificar sus otras altas propias sin asignación. API GET/POST y pantalla de revisión calculan operator con una consulta server-side a onboarding_reviewers para el ID y usuario exactos. Sin asignación, sin rol global, con invitado o con error de consulta se deniega la facultad de verificación; el titular conserva sus acciones normales. No se escribió ninguna asignación ni se concedieron permisos todavía. 29/29 pruebas locales, lint y TypeScript aprobados. La nueva prueba cubre titular allowlisted sin asignar, otra alta, otro usuario, invitado, asignación válida y fallo de consulta.
 
 El alta real sigue siendo la versión 9 del titular, con diagnóstico y plan persistidos, sin location vinculada ni autorización de ejecución. Snapshot aprobado, workflow, OAuth/refresh/webhook y ciclo completo siguen pendientes. La reducción de longitud y UX/UI están diferidas por indicación del titular. Mantener 054 pendiente y no crear Dev ni desplegar producción.
+
+
+## Evidencia diferenciada al cierre de esta ejecución · 9 de noviembre
+
+| Comprobación | Entorno y resultado | Límite |
+|---|---|---|
+| Diagnóstico y plan del titular | Preview/Supabase reales, plan 9 persistido | Sin permiso de ejecución ni location vinculada |
+| Agencia/location, pipeline y personalización | Preview 429dafd READY, lecturas GHL 200; 5 etapas ordenadas y 6 Custom Values | Los valores siguen vacíos |
+| Aislamiento de Data API | Base alojada: 9 lecturas, 2 DELETE y 1 PATCH anónimos denegados | Sin mutación de registros |
+| Workflow interno | UI real: borrador 8c72488f-4f86-4cfd-902c-f2c8d50ffcd5 guardado y releído; filtro QA+source, búsqueda previa, oportunidad, tarea y aviso interno | No publicado, no ejecutado, recepción no probada |
+| Campo de producto | UI real, contact.10x_service, ID wLVPrSyDs6x5ZUfKABYv | API de lectura 401 con token actual |
+| Autoría por API | Real 403 WORKFLOW_API_NOT_ENABLED_FOR_LOCATION | No solicitar scope de escritura como solución supuesta |
+| Verificador por alta y SQL propuesto | 30/30 tests locales totales, lint y TypeScript; asignación exacta/idempotente y rechazo de titular/plan/location incorrectos | Ningún permiso concedido en línea |
+| Ciclo formulario→CRM→tarea→aviso→indicador | Pendiente real | Registros QA manuales y mocks no acreditan FUNCTIONAL_READY |
+
+Sin cambios en producción, cuentas nuevas, precios, campañas, comunicaciones comerciales, cobros ni UX/UI. PR #1 sigue borrador; snapshot, OAuth/refresh y webhook siguen sin validar.

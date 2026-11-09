@@ -134,3 +134,12 @@ La lectura real del campo por API devolvió 401 con la credencial actual. GET /w
 Antes de habilitar a un verificador se cerró un hueco en la comprobación por alta: la inclusión global del usuario en la allowlist ya no le permite verificar sus otras altas propias sin asignación. API GET/POST y pantalla de revisión calculan operator con una consulta server-side a onboarding_reviewers para el ID y usuario exactos. Sin asignación, sin rol global, con invitado o con error de consulta se deniega la facultad de verificación; el titular conserva sus acciones normales. No se escribió ninguna asignación ni se concedieron permisos todavía. 29/29 pruebas locales, lint y TypeScript aprobados. La nueva prueba cubre titular allowlisted sin asignar, otra alta, otro usuario, invitado, asignación válida y fallo de consulta.
 
 El alta real sigue siendo la versión 9 del titular, con diagnóstico y plan persistidos, sin location vinculada ni autorización de ejecución. Snapshot aprobado, workflow, OAuth/refresh/webhook y ciclo completo siguen pendientes. La reducción de longitud y UX/UI están diferidas por indicación del titular. Mantener 054 pendiente y no crear Dev ni desplegar producción.
+
+
+## Continuación verificada · 9 de noviembre
+
+El titular ya completó el Wizard: no repetir cuestionario ni solicitar credenciales. Diagnóstico y plan 9 persistidos. Preview 429dafd READY incorpora verificador limitado a asignación exacta; inventario GHL, cinco etapas y seis Custom Values comprobados por lecturas reales.
+
+En Consultoría se guardó el workflow interno `8c72488f-4f86-4cfd-902c-f2c8d50ffcd5` como borrador: contacto creado/cambio de oferta, filtro de correo sintético Y origen dev_contact, búsqueda de oportunidad por producto y creación sólo si no existe, tarea y notificación dirigida únicamente al correo de soporte autorizado. Configuración releída después de recarga. Ninguna ejecución, publicación o recepción de aviso acreditada; aún faltan las pruebas de concurrencia y recuperación de pasos posteriores a la creación.
+
+Siguiente bloqueo de autorización: permiso de verificador para fcb exclusivamente en esta alta, con SQL exacto y reversión en grant-dev-lab-reviewer.sql; no aplicado. Pruebas aisladas 30/30, lint y TypeScript aprobados. El consentimiento del titular, snapshot B2B, vinculación, OAuth/refresh, webhook y ensayo completo siguen pendientes. 054 no aprobada; no crear Dev ni fusionar/desplegar producción. Dictamen: NO-GO para creación definitiva.
