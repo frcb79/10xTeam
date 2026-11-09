@@ -64,3 +64,10 @@ El informe de oportunidad y las recomendaciones son estimaciones por validar con
 053 sola, con 054 ausente: migración y reversión en PostgreSQL embebido. El backend service_role inserta leads sin una ruta activa y la cola permanece vacía; el diagnóstico histórico sintético se conserva íntegro. La reversión conserva el lead y las restricciones del P0, restaura el default y permite reaplicar 053. Con una sesión presente, rechaza la reversión sin perderla. No se aplicaron migraciones remotas. Consultar el runbook para el entorno online acordado y la aprobación individual de 053.
 
 Resultado de esta revisión: **28/28 pruebas automatizadas**, lint y TypeScript aprobados. No se repitieron las tres pruebas de Chromium previas, pues no cambió código de aplicación ni el formulario. No se atribuye este ensayo SQL a HighLevel real.
+
+
+### Base alojada después de la aprobación específica
+
+Aplicado únicamente el SQL 053, registrado por Supabase como **20261109173128 / intelligent_onboarding**. La versión 054 continúa pendiente. Respaldo lógico privado de siete tablas y restauración verificados en PostgreSQL embebido antes de aplicar. La comprobación remota conservó los 20 diagnósticos por digest, las nueve tablas nuevas permanecen vacías con RLS y ACL cerradas y ninguna ruta de envío activa. Archivo de migración renombrado al historial real para prevenir reaplicación. No se revirtió producción.
+
+Pendiente: identidad Auth del titular (cero usuarios existentes), OAuth/refresh/webhook real, snapshot B2B revisado y operación comercial automática. El navegador requiere sesión Vercel para abrir la Preview. El PR queda abierto en borrador y el dictamen para crear Dev sigue siendo NO-GO.

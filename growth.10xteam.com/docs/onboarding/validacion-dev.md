@@ -113,3 +113,10 @@ El titular acepta usar Supabase 10xteam existente con Vercel Preview y Consultor
 La versión 053 es el único cambio de base que se solicita ahora. La 054 de waitlist Growth queda diferida. La prueba específica de 053 sola cubre alta de lead mediante service_role sin ruta activa, ausencia de encolado, preservación exacta del diagnóstico sintético, reversión sin el índice de 054, rechazo de reversión con datos y reaplicación. Es PostgreSQL embebido local, no Supabase alojado ni prueba real de GHL. El [procedimiento y aprobación exacta](pilot-runbook.md#decisión-vigente--9-de-noviembre-de-2026) mantienen la exigencia de respaldo verificado antes de aplicar.
 
 Las credenciales OAuth fueron guardadas por el titular en Vercel; esto no demuestra autorización, refresh ni webhook. Las nueve lecturas reales previas de Consultoría verificaron registros creados manualmente. El ciclo automático y la notificación siguen pendientes. NO-GO para crear Dev; PR #1 permanece en borrador y sin merge.
+
+
+### Base alojada después de la aprobación específica
+
+Aplicado únicamente el SQL 053, registrado por Supabase como **20261109173128 / intelligent_onboarding**. La versión 054 continúa pendiente. Respaldo lógico privado de siete tablas y restauración verificados en PostgreSQL embebido antes de aplicar. La comprobación remota conservó los 20 diagnósticos por digest, las nueve tablas nuevas permanecen vacías con RLS y ACL cerradas y ninguna ruta de envío activa. Archivo de migración renombrado al historial real para prevenir reaplicación. No se revirtió producción.
+
+Pendiente: identidad Auth del titular (cero usuarios existentes), OAuth/refresh/webhook real, snapshot B2B revisado y operación comercial automática. El navegador requiere sesión Vercel para abrir la Preview. El PR queda abierto en borrador y el dictamen para crear Dev sigue siendo NO-GO.

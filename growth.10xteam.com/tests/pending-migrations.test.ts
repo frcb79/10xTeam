@@ -8,7 +8,7 @@ test("053 alone preserves legacy data and unconfigured form intake, and rolls ba
   try {
     await db.exec("insert into diagnostic_records(id,status,business_name,payload) values ('qa-legacy','draft','Synthetic business','{}')");
     const before = (await db.query("select * from diagnostic_records where id='qa-legacy'")).rows;
-    await db.exec(await readFile("supabase/migrations/20261107134053_intelligent_onboarding.sql", "utf8"));
+    await db.exec(await readFile("supabase/migrations/20261109173128_intelligent_onboarding.sql", "utf8"));
     assert.deepEqual((await db.query("select * from diagnostic_records where id='qa-legacy'")).rows, before);
     await db.exec("set role service_role; insert into contact_leads(name,email,source,service_type) values ('QA','053@example.test','dev_contact','mvp'); reset role");
     assert.deepEqual((await db.query("select count(*)::int as queued from onboarding_form_outbox")).rows, [{ queued: 0 }]);
@@ -27,7 +27,7 @@ test("053 alone preserves legacy data and unconfigured form intake, and rolls ba
       (select count(*)::int from contact_leads where email='053@example.test') as leads,
       (select column_default like '%14 days%' from information_schema.columns where table_schema='public' and table_name='businesses' and column_name='trial_ends_at') as restored`)).rows,
       [{ removed: true, deferred: true, anonymous: false, server_delete: false, leads: 1, restored: true }]);
-    await db.exec(await readFile("supabase/migrations/20261107134053_intelligent_onboarding.sql", "utf8"));
+    await db.exec(await readFile("supabase/migrations/20261109173128_intelligent_onboarding.sql", "utf8"));
     await db.exec("set role service_role; insert into contact_leads(name,email) values ('QA','reapply-053@example.test'); reset role");
   } finally {
     await db.close();
@@ -53,7 +53,7 @@ test("rollback preserves P0 and legacy leads, refuses active onboarding, and per
       (select count(*)::int from contact_leads where email='rollback@example.test') as retained,
       (select column_default like '%14 days%' from information_schema.columns where table_schema='public' and table_name='businesses' and column_name='trial_ends_at') as restored`)).rows,
       [{ removed: true, index_removed: true, anonymous: false, retained: 1, restored: true }]);
-    for (const file of ["20261107134053_intelligent_onboarding.sql", "20261107134054_limit_legacy_mutations.sql"]) {
+    for (const file of ["20261109173128_intelligent_onboarding.sql", "20261107134054_limit_legacy_mutations.sql"]) {
       await db.exec(await readFile("supabase/migrations/" + file, "utf8"));
     }
     assert.deepEqual((await db.query("select count(*)::int as sessions from onboarding_sessions")).rows, [{ sessions: 0 }]);
