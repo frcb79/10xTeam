@@ -5,6 +5,7 @@ import { createServiceClient } from "@/lib/supabase/service";
 import { emptyDraft } from "./schema";
 import { ownsSession, type Actor, type OnboardingSession } from "./model";
 import { hash, HttpError } from "./security";
+import { scopeReviewer } from "./reviewer";
 
 const COOKIE = "10x_onboarding_v1";
 export const cookieOptions = {
@@ -103,6 +104,18 @@ export async function getSession(
     }
   }
   return null;
+}
+export async function actorForSession(a: Actor, sessionId: string) {
+  return scopeReviewer(a, sessionId, async (id, userId) => {
+    const { data, error } = await db()
+      .from("onboarding_reviewers")
+      .select("session_id,user_id")
+      .eq("session_id", id)
+      .eq("user_id", userId)
+      .maybeSingle();
+    if (error) throw new HttpError(503, "No se pudo verificar la asignación del operador.");
+    return data;
+  });
 }
 export async function requireSession(a: Actor, id?: string) {
   const s = await getSession(a, id);

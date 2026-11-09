@@ -2,6 +2,7 @@ import { strategicRecord } from "@/lib/onboarding/strategy";
 import { z } from "zod";
 import {
   actor,
+  actorForSession,
   openSession,
   requireSession,
   saveSession,
@@ -39,7 +40,8 @@ export async function GET(request: Request) {
     if (params.has("businessId")) return json({ error: "Usa el identificador del registro de alta." }, 400);
     const id = params.get("id");
     if (id) z.string().uuid().parse(id);
-    return view(await requireSession(a, id ?? undefined), a);
+    const s = await requireSession(a, id ?? undefined);
+    return view(s, await actorForSession(a, s.id));
   } catch (error) {
     return failure(error);
   }
@@ -49,9 +51,13 @@ export async function POST(request: Request) {
     sameOrigin(request);
     const command = commandSchema.parse(await readJson(request));
     const a = await actor();
-    if (command.action === "open") return view(await openSession(a), a);
+    if (command.action === "open") {
+      const s = await openSession(a);
+      return view(s, await actorForSession(a, s.id));
+    }
     const s = await requireSession(a, command.id);
-    const next = await execute(s, a, command, {
+    const scoped = await actorForSession(a, s.id);
+    const next = await execute(s, scoped, command, {
       save: saveSession,
       startTrial: process.env.ONBOARDING_TRIAL_ENABLED === "true",
       diagnostic: async (draft) => strategicRecord(draft),
@@ -59,7 +65,7 @@ export async function POST(request: Request) {
       release: snapshotRelease,
       provider: configuredProvider,
     });
-    return view(next, a);
+    return view(next, scoped);
   } catch (error) {
     return failure(error);
   }

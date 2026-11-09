@@ -50,6 +50,18 @@ for (const [key, path] of collections) {
   const data = await read(path, key);
   assert.ok(Array.isArray(data[key]), "Invalid response for " + key);
   console.log("LAB_QA_COUNT", key, data[key].length);
+  if (key === "pipelines") {
+    const matching = data[key].filter(item => item.name === "10x LAB — Ventas Consultoría");
+    assert.equal(matching.length, 1);
+    assert.deepEqual(matching[0].stages?.map(stage => stage.name),
+      ["Nuevo prospecto", "Calificación", "Diagnóstico", "Propuesta", "Decisión"]);
+    console.log("LAB_QA_PIPELINE_STAGES", "5 exact stages, ordered");
+  }
+  if (key === "customValues") {
+    const expected = ["10x_business_name", "10x_offer", "10x_ideal_customer", "10x_primary_goal", "10x_brand_voice", "10x_preserve"];
+    for (const name of expected) assert.equal(data[key].filter(item => item.name === name).length, 1);
+    console.log("LAB_QA_CUSTOM_VALUES", expected.length);
+  }
 }
 
 // This ID belongs exclusively to the synthetic contact from the manual QA.

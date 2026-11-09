@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { actor, requireSession, publicSession } from "@/lib/onboarding/store";
+import { actor, actorForSession, requireSession, publicSession } from "@/lib/onboarding/store";
 import { readiness } from "@/lib/onboarding/model";
 import { ReviewPanel } from "./review-panel";
 
@@ -12,6 +12,7 @@ export default async function OnboardingReview({
   if (!a.operator) notFound();
   const { id } = await params;
   const session = await requireSession(a, id);
+  if (!(await actorForSession(a, session.id)).operator) notFound();
   return (
     <ReviewPanel
       initial={{
