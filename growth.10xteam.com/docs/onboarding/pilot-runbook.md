@@ -23,6 +23,14 @@ El alta invitada se recupera en el navegador que conserva su cookie. El acceso e
 4. Mantener apagados `GHL_PROVISIONING_ENABLED`, `GHL_OAUTH_ENABLED`, `ONBOARDING_FORM_SYNC_ENABLED`, `ONBOARDING_TRIAL_ENABLED` y `AI_PAID_EXECUTION_ENABLED` durante el ensayo local. Para cada operación externa se requiere autorización para la cuenta, el entorno y el alcance correspondientes.
 5. Ejecutar `npm ci`, `npm test`, `npm run lint` y `npm run build` desde Growth. La prueba `npm run test:browser` usa una instancia **local** de la aplicación con la migración y una base desechable accesible por PostgREST. Configurar `WIZARD_TEST_URL` al origen local. Usar Chromium instalado por Playwright o `WIZARD_CHROMIUM_PATH`. La suite rechaza dominios externos.
 
+### Sesión QA legítima (sin suplantación)
+
+La sesión real de Dev (plan 9) es **de solo lectura** para este ensayo. Para probar LAB, crear otra sesión con una cuenta Auth QA independiente mediante el Wizard. El titular QA debe confirmar por sí mismo los consentimientos en la interfaz autenticada. La autorización contractual o de piloto debe ser comprobada por un verificador asignado; nunca registrar una simulación como evidencia `real`.
+
+`scripts/prepare-lab-qa-session.mjs` es ahora **únicamente un preflight de lectura**. Requiere `ONBOARDING_QA_SESSION_ID` de una sesión creada previamente y se niega a utilizar la sesión Dev o su mismo titular. Comprueba campos y evidencia registrada sin crear usuarios, sesiones, consents ni vínculos. Sus indicadores `*Recorded` no prueban por sí solos que exista autorización legítima: eso exige revisión del titular/verificador. Sólo después de esa verificación se permite invocar, por separado, `bind_lab` (que termina en `waiting_provider`) y `provision` (que debe verificarse en `configured`). Ningún script debe usar una credencial de servicio para simular la identidad de un titular.
+
+La reversión del aislamiento LAB también tiene **dos transacciones**: primero desactiva y confirma la ruta; sólo después evalúa si existen trabajos pendientes y, cuando no los hay, elimina la columna y restaura el trigger anterior. Si la segunda fase se aborta, la ruta permanece desactivada. No ejecutar estos SQL en el Supabase compartido sin autorización separada.
+
 ## Preparar una plantilla y su conexión
 
 Para vincular una LAB existente, incluir únicamente su ID en `GHL_LAB_LOCATION_IDS` y usar el panel del verificador asignado. Verificar el identificador exacto de la LAB y su agencia. El operador asignado documenta el vínculo con ese negocio. Para una location comercial también deben coincidir nombre y correo del titular. Para crear una location distinta se requieren `GHL_LOCATION_CREATION_ENABLED=true` y el ID exacto del registro aprobado en `GHL_APPROVED_CREATION_SESSION_IDS`. Revisar costo, titular y duplicados antes de habilitar estas variables.
