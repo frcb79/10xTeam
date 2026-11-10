@@ -608,12 +608,16 @@ test("an expressly assigned reusable LAB verifies the agency and exact location 
       );
     await assert.rejects(bind("another-lab"), /LAB/);
     await bind("fixture-lab");
+    assert.equal(h.state.provision.status, "waiting_provider",
+      "Binding an existing LAB is not evidence that configuration has finished");
     await execute(
       h.state,
       operator,
       { action: "provision", id: ba, version: h.state.version },
       deps,
     );
+    assert.equal(h.state.provision.status, "configured",
+      "A separate provider verification/configuration must complete before form routing");
     assert.equal(h.creates, 0);
     assert.deepEqual(observed, [
       { id: "fixture-lab", customer: false },
