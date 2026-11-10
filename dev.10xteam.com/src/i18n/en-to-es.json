@@ -135,5 +135,10 @@
   "Fast": "Inicio",
   "Kickoff": "ágil",
   "Defined": "Entregables",
-  "Deliverables": "definidos"
+  "Deliverables": "definidos",
+  "Expert Team": "Equipo experto",
+  "Projects delivered": "Proyectos realizados",
+  "Estimated weeks per MVP": "Semanas estimadas para un MVP",
+  "Days per delivery cycle": "Días por ciclo de entregas",
+  "Additional in-house hires required": "Contrataciones internas necesarias"
 }
