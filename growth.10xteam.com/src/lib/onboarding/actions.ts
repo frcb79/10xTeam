@@ -197,6 +197,8 @@ export async function execute(
           "Se requiere una LAB habilitada y un verificador asignado.",
         );
       const release = deps.release(s.plan.snapshotKey);
+      if (release?.kind !== "existing_lab" || release.locationId !== cmd.locationId)
+        throw new HttpError(409, "LAB requiere un inventario validado, no un ID de snapshot inventado.");
       provisionPrerequisites(s, deps.enabled, release);
       if (s.provision.locationId || s.provision.createAttempted)
         throw new HttpError(
@@ -210,8 +212,9 @@ export async function execute(
             status: "waiting_provider",
             locationId: cmd.locationId,
             createAttempted: true,
-            snapshotId: release!.snapshotId,
-            snapshotVersion: release!.version,
+            snapshotVersion: release.version,
+            assetMode: "existing_lab",
+            assetReference: release.inventoryReference,
           },
           evidence: [
             ...s.evidence,

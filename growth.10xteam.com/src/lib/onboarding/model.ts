@@ -76,8 +76,10 @@ export type ProvisionState = {
     | "manual_review"
     | "configured";
   locationId?: string;
-  snapshotId?: string;
+  snapshotId?: string; // real importable snapshot only; never an inventory alias
   snapshotVersion?: string;
+  assetMode?: "snapshot" | "existing_lab";
+  assetReference?: string;
   lastError?: string;
   runId?: string;
   createAttempted?: boolean;

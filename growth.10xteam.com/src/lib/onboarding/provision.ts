@@ -7,7 +7,6 @@ import type {
 import { HttpError } from "./security";
 
 export type SnapshotRelease = {
-  snapshotId: string;
   version: string;
   reviewReference: string;
   validated: true;
@@ -16,7 +15,10 @@ export type SnapshotRelease = {
   workflowNames: string[];
   formNames: string[];
   calendarNames: string[];
-};
+} & (
+  | { kind?: "snapshot"; snapshotId: string }
+  | { kind: "existing_lab"; locationId: string; inventoryReference: string }
+);
 export interface ProvisionProvider {
   checkCreate?(session: OnboardingSession): Promise<void>;
   createLocation(
@@ -69,6 +71,12 @@ export function provisionPrerequisites(
       409,
       "Falta validar y registrar la plantilla de configuración de este negocio.",
     );
+  if (
+    release?.kind === "existing_lab" &&
+    (!allowedLab(release.locationId) ||
+      (s.provision.locationId && s.provision.locationId !== release.locationId))
+  )
+    throw new HttpError(403, "La referencia de activos LAB no corresponde a la subcuenta autorizada.");
   const consent = s.plan.modules.find((m) => m.id === "crm")?.consent;
   if (
     !consent ||
@@ -112,14 +120,23 @@ export async function provisionSession(
       409,
       "Requiere reconciliación: comprobar la operación anterior antes de volver a configurar.",
     );
+  const existingLab = release.kind === "existing_lab";
+  const sourceMode = existingLab ? "existing_lab" : "snapshot";
+  const expectedSnapshotId = existingLab ? undefined : release.snapshotId;
   if (
-    s.provision.snapshotId &&
-    (s.provision.snapshotId !== release.snapshotId ||
-      s.provision.snapshotVersion !== release.version)
+    existingLab &&
+    (!s.provision.locationId || s.provision.locationId !== release.locationId ||
+      !allowedLab(release.locationId))
+  )
+    throw new HttpError(409, "Vincula primero la LAB existente aprobada; no se creará otra location.");
+  if (
+    (s.provision.assetMode && s.provision.assetMode !== sourceMode) ||
+    (s.provision.snapshotId && s.provision.snapshotId !== expectedSnapshotId) ||
+    (s.provision.snapshotVersion && s.provision.snapshotVersion !== release.version)
   )
     throw new HttpError(
       409,
-      "La versión aprobada de la plantilla cambió. Reconciliar antes de continuar.",
+      "La versión o procedencia de activos aprobada cambió. Reconciliar antes de continuar.",
     );
   if (!s.provision.locationId) await provider.checkCreate?.(s);
   let current = await save(
@@ -127,8 +144,10 @@ export async function provisionSession(
     {
       ...s.provision,
       status: "running",
-      snapshotId: release.snapshotId,
+      snapshotId: expectedSnapshotId,
       snapshotVersion: release.version,
+      assetMode: sourceMode,
+      assetReference: existingLab ? release.inventoryReference : release.reviewReference,
       runId: randomUUID(),
       createAttempted: true,
       lastError: undefined,

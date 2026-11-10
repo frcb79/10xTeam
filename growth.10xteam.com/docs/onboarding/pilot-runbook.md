@@ -35,7 +35,7 @@ La reversión del aislamiento LAB también tiene **dos transacciones**: primero 
 
 Para vincular una LAB existente, incluir únicamente su ID en `GHL_LAB_LOCATION_IDS` y usar el panel del verificador asignado. Verificar el identificador exacto de la LAB y su agencia. El operador asignado documenta el vínculo con ese negocio. Para una location comercial también deben coincidir nombre y correo del titular. Para crear una location distinta se requieren `GHL_LOCATION_CREATION_ENABLED=true` y el ID exacto del registro aprobado en `GHL_APPROVED_CREATION_SESSION_IDS`. Revisar costo, titular y duplicados antes de habilitar estas variables.
 
-El catálogo `GHL_SNAPSHOT_RELEASES` es JSON mantenido por el operador. Cada entrada requiere un ID real de snapshot, una versión inmutable, el nombre del pipeline, nombres de formularios, workflows y calendarios y revisión documentada de que aplica sin envíos ni acciones de pago. Ejemplo estructural con identificadores ficticios:
+El catálogo `GHL_SNAPSHOT_RELEASES` es JSON mantenido por el operador. Hay dos tipos de release **distintos**: `kind: "snapshot"` con un `snapshotId` REAL e importable para futuras altas, y `kind: "existing_lab"` con `locationId` e `inventoryReference` para comprobar activos que **ya existen** en una subcuenta autorizada. El segundo no importa snapshots, no crea locations y debe vincularse antes de configurar. Ambos exigen versión inmutable, pipeline, formularios, workflows, calendarios y revisión documentada sin envíos ni cargos. Ejemplo estructural para una release de snapshot con ID ficticio:
 
 ```json
 {
@@ -52,6 +52,8 @@ El catálogo `GHL_SNAPSHOT_RELEASES` es JSON mantenido por el operador. Cada ent
   }
 }
 ```
+
+Para una LAB existente, la entrada `core-b2b` usaría `kind: "existing_lab"`, `locationId: "Be3Voe6UoPjiAawaQUCK"`, `inventoryReference` como folio de inventario revisado, y los nombres de activos existentes (pipeline `10x LAB — Ventas Consultoría`, workflow interno en borrador y formulario `Form 0`). **No incluir `snapshotId`**. No marcar `validated: true` hasta revisar el flujo interno, las cinco etapas, el alcance de la credencial y ausencia de acciones externas. En LAB, `bind_lab` deja `waiting_provider`; `provision` debe verificar activos y confirmar `configured` antes de habilitar una ruta. La operación de personalizar Custom Values escribe en GHL y necesita aprobación específica.
 
 Las claves base son `core-b2b`, `core-consumer` y `core-appointments`. Retención usa `retention-<arquetipo>` y requiere su prueba propia. Crear un catálogo con validaciones reales antes de habilitar escritura. Revisar que el snapshot contenga las etapas declaradas en el plan y estos campos personalizados de tipo **Custom Value**, nombrados exactamente como las claves: `10x_business_name`, `10x_offer`, `10x_ideal_customer`, `10x_primary_goal`, `10x_brand_voice` y `10x_preserve`. Dejar los valores de la plantilla vacíos. Un valor preexistente diferente requiere revisión. Validar en LAB las acciones y las condiciones de cada flujo, las reglas condicionales del formulario y los widgets de medición.
 

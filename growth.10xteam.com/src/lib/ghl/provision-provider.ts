@@ -8,8 +8,7 @@ import {
   type SnapshotRelease,
 } from "@/lib/onboarding/provision";
 
-const releaseSchema = z.object({
-  snapshotId: z.string().min(1),
+const releaseAssetsSchema = z.object({
   version: z.string().min(1),
   reviewReference: z.string().regex(/^[a-zA-Z0-9_-]{4,80}$/),
   validated: z.literal(true),
@@ -19,6 +18,15 @@ const releaseSchema = z.object({
   formNames: z.array(z.string().min(1)),
   calendarNames: z.array(z.string().min(1)),
 });
+// Never represent an inventory of an existing LAB as an importable snapshot.
+const releaseSchema = z.union([
+  releaseAssetsSchema.extend({ kind: z.literal("snapshot").optional(), snapshotId: z.string().min(1) }).strict(),
+  releaseAssetsSchema.extend({
+    kind: z.literal("existing_lab"),
+    locationId: z.string().regex(/^[a-zA-Z0-9_-]{5,100}$/),
+    inventoryReference: z.string().regex(/^[a-zA-Z0-9_-]{4,80}$/),
+  }).strict(),
+]);
 export function snapshotRelease(key: string): SnapshotRelease | undefined {
   try {
     const catalog = z
@@ -204,6 +212,8 @@ export class GhlProvisionProvider implements ProvisionProvider {
     );
   }
   async createLocation(s: OnboardingSession, release: SnapshotRelease) {
+    if (release.kind === "existing_lab")
+      throw new HttpError(403, "El inventario de LAB no es un snapshot importable; no permite crear locations.");
     if (this.labLocation) throw new HttpError(403, "La LAB sólo permite vincular la cuenta existente.");
     const c = s.draft.context!;
     const a = s.draft.answers;

@@ -567,7 +567,13 @@ test("an expressly assigned reusable LAB verifies the agency and exact location 
     provider.verifyLocation = async (id, expected) => {
       observed.push({ id, customer: !!expected });
     };
-    const deps = { ...h.deps, provider: () => provider };
+    const labRelease = {
+      ...release,
+      kind: "existing_lab" as const,
+      locationId: "fixture-lab",
+      inventoryReference: "fixture-lab-inventory-01",
+    };
+    const deps = { ...h.deps, release: () => labRelease, provider: () => provider };
     await execute(
       h.state,
       actor,
@@ -618,6 +624,9 @@ test("an expressly assigned reusable LAB verifies the agency and exact location 
     );
     assert.equal(h.state.provision.status, "configured",
       "A separate provider verification/configuration must complete before form routing");
+    assert.equal(h.state.provision.assetMode, "existing_lab");
+    assert.equal(h.state.provision.snapshotId, undefined,
+      "A LAB inventory must not be stored as an importable snapshot ID");
     assert.equal(h.creates, 0);
     assert.deepEqual(observed, [
       { id: "fixture-lab", customer: false },
@@ -628,6 +637,23 @@ test("an expressly assigned reusable LAB verifies the agency and exact location 
     if (saved === undefined) delete process.env.GHL_LAB_LOCATION_IDS;
     else process.env.GHL_LAB_LOCATION_IDS = saved;
   }
+});
+
+test("existing LAB inventory cannot silently create a new location", async () => {
+  const h = stateful();
+  const labRelease = {
+    ...release,
+    kind: "existing_lab" as const,
+    locationId: "fixture-lab",
+    inventoryReference: "fixture-lab-inventory-01",
+  };
+  const saved = (s: OnboardingSession, p: OnboardingSession["provision"], e: string) =>
+    h.deps.save(s, { provision: p }, e, "test");
+  await assert.rejects(
+    provisionSession(h.state, h.deps.provider(), saved, labRelease),
+    /Vincula primero la LAB/,
+  );
+  assert.equal(h.creates, 0);
 });
 
 test("LAB credential validates agency and location, blocks cross-location and account creation before I/O", async (t) => {
