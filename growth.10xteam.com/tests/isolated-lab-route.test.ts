@@ -176,6 +176,16 @@ test("isolated LAB route requires explicit synthetic authorized_emails, rejects 
       "Rollback must fail if there are pending jobs for the LAB",
     );
     await db.exec("rollback;");
+    const stillDisabled = await db.query(
+      "select enabled from onboarding_form_routes where location_id = 'Be3Voe6UoPjiAawaQUCK'",
+    );
+    assert.equal(stillDisabled.rows[0]?.enabled, false,
+      "LAB route must remain disabled even when rollback aborts on pending work");
+    const isolationStillPresent = await db.query(
+      "select column_name from information_schema.columns where table_name = 'onboarding_form_routes' and column_name = 'authorized_emails'",
+    );
+    assert.equal(isolationStillPresent.rows.length, 1,
+      "Isolation must remain installed if rollback phase 2 aborts");
 
     // 10b. After processing jobs to done, revertSql succeeds, disables LAB route, and drops columns
     await db.query("update onboarding_form_outbox set status = 'done' where location_id = 'Be3Voe6UoPjiAawaQUCK'");
