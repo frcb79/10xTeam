@@ -1,13 +1,18 @@
 -- Reversal of isolate-test-form-routes
 -- Target: Supabase 10xteam (rasnxpsmzmdyradclxtb)
--- Preflight: disables the LAB route and verifies no pending/sending outbox jobs exist.
+-- Two-phase reversal: durably disables LAB first; then checks pending jobs before removing isolation.
 
+-- Phase 1 MUST commit independently. A failed preflight in phase 2
+-- must never re-enable a LAB route by rolling back its deactivation.
 begin;
-
--- 1. Disable the LAB route immediately before altering any isolation rules
 update public.onboarding_form_routes
 set enabled = false
 where location_id = 'Be3Voe6UoPjiAawaQUCK';
+commit;
+
+-- Phase 2 may abort when jobs are pending; phase 1 remains committed.
+-- If it aborts, ROLLBACK only phase 2 before investigating pending jobs.
+begin;
 
 -- 2. Verify that no pending or in-flight outbox jobs remain for the LAB
 do $$
