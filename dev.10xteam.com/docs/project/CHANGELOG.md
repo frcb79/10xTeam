@@ -1,6 +1,11 @@
 # CHANGELOG - Historial de Cambios
 
 ## [Unreleased]
+### Changed
+- **Estructura comercial simplificada:** Precios actualizados a 2 planes principales: MVP ($1,890 USD pago único) y Squad ($2,790 USD/mes), eliminando el plan intermedio y centrando el grid de precios.
+- **Geolocalización y adaptación por país:** Implementado script con detección vía `api.country.is` y fallback por zona horaria. Los precios se desacoplan del idioma y se rigen estrictamente por país (`data-price-mx` vs `data-price-intl`).
+- **Selector de idioma en Navbar:** Agregado botón de cambio de idioma (`ES` / `EN`) que traduce dinámicamente elementos `[data-es][data-en]` sin alterar los precios asignados por región.
+- Formulario de contacto y modal de salarios alineados a los 2 planes (MVP y Squad).
 ### Added
 - Setup inicial de Astro.
 - Estilos globales (`global.css`) con tema Dark Mode y Glassmorphism.

@@ -11,7 +11,7 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
 		<meta name="theme-color" content="#060810" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
-    <meta name="description" content="Desarrollo de software a medida: proyectos desde $1,249 USD o 10x Dev Squad desde $2,499 USD/mes. Producto, diseño, desarrollo y QA. Agenda tu discovery gratis." />
+    <meta name="description" content="Desarrollo de software a medida: proyectos desde $3,900 USD o 10x Dev Squad desde $4,900 USD/mes. Precios base de arranque según alcance. Agenda tu discovery gratis." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -21,13 +21,19 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
       <div class="container navbar-container">
         <a href="https://10xteam.com.mx" class="logo"><img src="/Logo_10xteam.png" alt="10xTeam" width="140" height="56" /></a>
         <nav class="nav-links" id="nav-links">
-          <a href="#servicios">Servicios</a>
-          <a href="#precios">Precios</a>
-          <a href="#metodologia">Método</a>
-          <a href="#nosotros">Nosotros</a>
-          <a href="#testimonios">Casos</a>
+          <a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a>
+          <a href="#precios" data-es="Precios" data-en="Pricing">Precios</a>
+          <a href="#metodologia" data-es="Método" data-en="Method">Método</a>
+          <a href="#nosotros" data-es="Nosotros" data-en="About">Nosotros</a>
+          <a href="#testimonios" data-es="Casos" data-en="Cases">Casos</a>
         </nav>
-        <a href="#contacto" class="btn-primary btn-nav">Agendar Llamada</a>
+        <div class="nav-actions">
+          <button id="lang-toggle-btn" class="lang-toggle-btn" type="button" aria-label="Cambiar idioma">
+            <span class="globe-icon">🌐</span>
+            <span id="lang-indicator">ES</span>
+          </button>
+          <a href="#contacto" class="btn-primary btn-nav" data-es="Agendar Llamada" data-en="Book a Call">Agendar Llamada</a>
+        </div>
       </div>
     </header>
 
@@ -182,9 +188,9 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
       <section id="precios" class="section section-pricing">
         <div class="container">
           <div class="section-header text-center">
-            <div class="badge">Precios transparentes</div>
-            <h2>Elige cómo quieres trabajar con nosotros</h2>
-            <p class="subtitle">Dos formas de construir: un proyecto llave en mano o una célula de producto que evoluciona contigo. Alcance y entregables definidos para cada necesidad.</p>
+            <div class="badge" data-es="Precios transparentes" data-en="Transparent Pricing">Precios transparentes</div>
+            <h2 data-es="Elige cómo quieres trabajar con nosotros" data-en="Choose How to Work With Us">Elige cómo quieres trabajar con nosotros</h2>
+            <p class="subtitle" data-es="Dos formas de construir: un proyecto llave en mano o una célula de producto que evoluciona contigo. Alcance y entregables definidos para cada necesidad." data-en="Two ways to build: a turnkey project or a product squad that evolves with you. Defined scope and deliverables for every need.">Dos formas de construir: un proyecto llave en mano o una célula de producto que evoluciona contigo. Alcance y entregables definidos para cada necesidad.</p>
           </div>
           <div class="pricing-grid">
             <!-- Card 1: MVP -->
@@ -194,42 +200,43 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
                   <div class="plan-icon">🚀</div>
                   <h3>Llave en Mano</h3>
                 </div>
-                <p class="plan-desc">Desarrollo desde cero o MVP</p>
+                <p class="plan-desc" data-es="Desarrollo desde cero o MVP" data-en="Ground-up development or MVP">Desarrollo desde cero o MVP</p>
               </div>
               <div class="card-price">
-                <span class="from">Desde</span>
-                <div class="price-row"><span class="currency">$</span><span class="amount text-gradient">1,249</span><span class="unit">USD</span></div>
-                <span class="price-note">Pago único por proyecto</span>
+                <span class="from" data-es="Desde" data-en="Starting at">Desde</span>
+                <div class="price-row"><span class="currency">$</span><span class="amount text-gradient">3,900</span><span class="unit">USD</span></div>
+                <span class="price-note" data-es="Precio base por proyecto · alcance a definir" data-en="Starting price per project · scope to be defined">Precio base por proyecto · alcance a definir</span>
               </div>
               <div class="card-body">
-                <p class="pricing-value-statement">De tu idea a un producto listo para dar el siguiente paso.</p>
-                <p class="pricing-value-lead">Estrategia inicial, diseño y desarrollo para convertir lo esencial de tu proyecto en una solución funcional, sin complicaciones.</p>
-                <p class="pricing-value-description">Entendemos lo que necesitas lograr, definimos contigo las prioridades y construimos una primera versión útil para validar, operar o lanzar.</p>
-                <p class="pricing-value-highlight">Una solución bien definida, construida para evolucionar.</p>
+                <p class="pricing-value-statement" data-es="De tu idea a un producto listo para dar el siguiente paso." data-en="From your idea to a product ready to take the next step.">De tu idea a un producto listo para dar el siguiente paso.</p>
+                <p class="pricing-value-lead" data-es="Estrategia inicial, diseño y desarrollo para convertir lo esencial de tu proyecto en una solución funcional, sin complicaciones." data-en="Initial strategy, design and development to turn the essentials of your project into a functional solution, hassle-free.">Estrategia inicial, diseño y desarrollo para convertir lo esencial de tu proyecto en una solución funcional, sin complicaciones.</p>
+                <p class="pricing-value-description" data-es="Entendemos lo que necesitas lograr, definimos contigo las prioridades y construimos una primera versión útil para validar, operar o lanzar." data-en="We understand what you need to achieve, define priorities with you and build a first useful version to validate, operate or launch.">Entendemos lo que necesitas lograr, definimos contigo las prioridades y construimos una primera versión útil para validar, operar o lanzar.</p>
+                <p class="pricing-value-highlight" data-es="Una solución bien definida, construida para evolucionar." data-en="A well-defined solution, built to evolve.">Una solución bien definida, construida para evolucionar.</p>
                 <ul class="features-list">
-                  <li class="positive">✓ Discovery y definición del alcance</li>
-                  <li class="positive">✓ Objetivos de negocio y prioridades del MVP</li>
-                  <li class="positive">✓ Diseño UX/UI de los flujos esenciales</li>
-                  <li class="positive">✓ Desarrollo de funcionalidades acordadas</li>
-                  <li class="positive">✓ Pruebas funcionales y ajustes de entrega</li>
-                  <li class="positive">✓ Despliegue incluido</li>
-                  <li class="positive">✓ Entrega estimada en 2–4 semanas, según alcance</li>
-                  <li class="positive">✓ Garantía: si no quedas satisfecho, te devolvemos tu dinero</li>
+                  <li class="positive" data-es="✓ Discovery y definición del alcance" data-en="✓ Discovery and scope definition">✓ Discovery y definición del alcance</li>
+                  <li class="positive" data-es="✓ Objetivos de negocio y prioridades del MVP" data-en="✓ Business goals and MVP priorities">✓ Objetivos de negocio y prioridades del MVP</li>
+                  <li class="positive" data-es="✓ Diseño UX/UI de los flujos esenciales" data-en="✓ UX/UI design of essential flows">✓ Diseño UX/UI de los flujos esenciales</li>
+                  <li class="positive" data-es="✓ Desarrollo de funcionalidades acordadas" data-en="✓ Development of agreed features">✓ Desarrollo de funcionalidades acordadas</li>
+                  <li class="positive" data-es="✓ Pruebas funcionales y ajustes de entrega" data-en="✓ Functional testing and delivery adjustments">✓ Pruebas funcionales y ajustes de entrega</li>
+                  <li class="positive" data-es="✓ Despliegue incluido" data-en="✓ Deployment included">✓ Despliegue incluido</li>
+                  <li class="positive" data-es="✓ Entrega estimada en 2–4 semanas, según alcance" data-en="✓ Estimated delivery in 2–4 weeks, based on scope">✓ Entrega estimada en 2–4 semanas, según alcance</li>
+                  <li class="positive" data-es="✓ Garantía: si no quedas satisfecho, te devolvemos tu dinero" data-en="✓ Guarantee: satisfaction or your money back">✓ Garantía: si no quedas satisfecho, te devolvemos tu dinero</li>
                 </ul>
-                <p class="price-subnote">El precio inicial, los tiempos y los entregables dependen del alcance definido en la propuesta.</p>
+                <p class="price-subnote" data-es="El precio inicial, los tiempos y los entregables dependen del alcance definido en la propuesta." data-en="Initial pricing, timelines and deliverables depend on the scope defined in the proposal.">El precio inicial, los tiempos y los entregables dependen del alcance definido en la propuesta.</p>
               </div>
               <div class="card-footer">
                 <div class="card-compare">
-                  <span class="compare-label">Agencias Tradicionales</span>
+                  <span class="compare-label" data-es="Agencias Tradicionales" data-en="Traditional Agencies">Agencias Tradicionales</span>
                   <span class="compare-value">$15,000 - $35,000+ USD</span>
                 </div>
                 <div class="card-compare inhouse">
-                  <span class="compare-label">In-House (4 meses)</span>
+                  <span class="compare-label" data-es="In-House (4 meses)" data-en="In-House (4 months)">In-House (4 meses)</span>
                   <span class="compare-value">~$28,000+ USD</span>
                 </div>
-                <a href="#contacto" class="btn-outline btn-card">Cotizar mi proyecto →</a>
+                <a href="#contacto" class="btn-outline btn-card" data-es="Cotizar mi proyecto →" data-en="Quote my project →">Cotizar mi proyecto →</a>
               </div>
             </div>
+
             <!-- Plan Fractional Team preservado para posible reutilización futura; no se muestra ni ofrece actualmente. -->
             <div class="pricing-card glass-panel" hidden aria-hidden="true">
               <div class="card-top">
@@ -265,48 +272,49 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
                 <a href="#contacto" class="btn-primary btn-card">Comenzar ahora →</a>
               </div>
             </div>
+
             <!-- Plan principal: célula de desarrollo / producto -->
             <div class="pricing-card glass-panel featured">
-              <div class="card-badge-top">MÁS POPULAR</div>
+              <div class="card-badge-top" data-es="MÁS POPULAR" data-en="MOST POPULAR">MÁS POPULAR</div>
               <div class="card-top">
                 <div class="card-title-hz">
                   <div class="plan-icon">🏢</div>
                   <h3>10x Dev Squad</h3>
                 </div>
-                <p class="plan-desc">Tu célula de producto y desarrollo a la medida</p>
+                <p class="plan-desc" data-es="Tu célula de producto y desarrollo a la medida" data-en="Your custom product and development squad">Tu célula de producto y desarrollo a la medida</p>
               </div>
               <div class="card-price">
-                <span class="from">Desde</span>
-                <div class="price-row"><span class="currency">$</span><span class="amount text-gradient">2,499</span><span class="unit">USD/mes</span></div>
-                <span class="price-note">Célula multidisciplinaria · alcance a definir</span>
+                <span class="from" data-es="Desde" data-en="Starting at">Desde</span>
+                <div class="price-row"><span class="currency">$</span><span class="amount text-gradient">4,900</span><span class="unit">USD/mes</span></div>
+                <span class="price-note" data-es="Precio base mensual · célula a la medida" data-en="Starting monthly price · tailored squad">Precio base mensual · célula a la medida</span>
               </div>
               <div class="card-body">
-                <p class="pricing-value-statement">Mucho más que un equipo de desarrollo.</p>
-                <p class="pricing-value-lead">Estrategia de negocio, producto, diseño, ingeniería e inteligencia artificial trabajando para hacer crecer tu empresa. Sin contratar y sin coordinar un equipo.</p>
-                <p class="pricing-value-description">Nuestro Dev Squad entiende tus objetivos, analiza oportunidades, propone soluciones y convierte las mejores ideas en productos digitales que evolucionan con tu negocio.</p>
-                <p class="pricing-value-highlight">Tu equipo de estrategia y tecnología, en un solo lugar.</p>
+                <p class="pricing-value-statement" data-es="Mucho más que un equipo de desarrollo." data-en="Much more than a development team.">Mucho más que un equipo de desarrollo.</p>
+                <p class="pricing-value-lead" data-es="Estrategia de negocio, producto, diseño, ingeniería e inteligencia artificial trabajando para hacer crecer tu empresa. Sin contratar y sin coordinar un equipo." data-en="Business strategy, product, design, engineering and AI working to grow your business. Without hiring or managing a team.">Estrategia de negocio, producto, diseño, ingeniería e inteligencia artificial trabajando para hacer crecer tu empresa. Sin contratar y sin coordinar un equipo.</p>
+                <p class="pricing-value-description" data-es="Nuestro Dev Squad entiende tus objetivos, analiza oportunidades, propone soluciones y convierte las mejores ideas en productos digitales que evolucionan con tu negocio." data-en="Our Dev Squad understands your goals, analyzes opportunities, proposes solutions and turns the best ideas into digital products that evolve with your business.">Nuestro Dev Squad entiende tus objetivos, analiza oportunidades, propone soluciones y convierte las mejores ideas en productos digitales que evolucionan con tu negocio.</p>
+                <p class="pricing-value-highlight" data-es="Tu equipo de estrategia y tecnología, en un solo lugar." data-en="Your strategy and technology team, all in one place.">Tu equipo de estrategia y tecnología, en un solo lugar.</p>
                 <ul class="features-list">
-                  <li class="positive">✓ Estrategia de negocio y visión de producto</li>
-                  <li class="positive">✓ Product Management y roadmap estratégico</li>
-                  <li class="positive">✓ Diseño UX/UI y desarrollo continuo</li>
-                  <li class="positive">✓ Ingeniería, arquitectura e integraciones</li>
-                  <li class="positive">✓ Entregas de valor cada 14 días</li>
-                  <li class="positive">✓ QA, soporte técnico y resolución de bugs</li>
-                  <li class="positive">✓ Especialistas en IA, datos e industria según necesidad</li>
-                  <li class="positive">✓ Evolución tecnológica pensada para el futuro</li>
+                  <li class="positive" data-es="✓ Estrategia de negocio y visión de producto" data-en="✓ Business strategy and product vision">✓ Estrategia de negocio y visión de producto</li>
+                  <li class="positive" data-es="✓ Product Management y roadmap estratégico" data-en="✓ Product Management and strategic roadmap">✓ Product Management y roadmap estratégico</li>
+                  <li class="positive" data-es="✓ Diseño UX/UI y desarrollo continuo" data-en="✓ UX/UI design and continuous development">✓ Diseño UX/UI y desarrollo continuo</li>
+                  <li class="positive" data-es="✓ Ingeniería, arquitectura e integraciones" data-en="✓ Engineering, architecture and integrations">✓ Ingeniería, arquitectura e integraciones</li>
+                  <li class="positive" data-es="✓ Entregas de valor cada 14 días" data-en="✓ Value delivery every 14 days">✓ Entregas de valor cada 14 días</li>
+                  <li class="positive" data-es="✓ QA, soporte técnico y resolución de bugs" data-en="✓ QA, technical support and bug fixes">✓ QA, soporte técnico y resolución de bugs</li>
+                  <li class="positive" data-es="✓ Especialistas en IA, datos e industria según necesidad" data-en="✓ AI, data and industry specialists as needed">✓ Especialistas en IA, datos e industria según necesidad</li>
+                  <li class="positive" data-es="✓ Evolución tecnológica pensada para el futuro" data-en="✓ Technological evolution built for the future">✓ Evolución tecnológica pensada para el futuro</li>
                 </ul>
-                <p class="price-subnote">La composición del equipo, su dedicación y los entregables se definen según las necesidades y el alcance del proyecto.</p>
+                <p class="price-subnote" data-es="La composición del equipo, su dedicación y los entregables se definen según las necesidades y el alcance del proyecto." data-en="Team composition, dedication and deliverables are defined according to project needs and scope.">La composición del equipo, su dedicación y los entregables se definen según las necesidades y el alcance del proyecto.</p>
               </div>
               <div class="card-footer">
                 <div class="card-compare">
-                  <span class="compare-label">Agencias Tradicionales</span>
+                  <span class="compare-label" data-es="Agencias Tradicionales" data-en="Traditional Agencies">Agencias Tradicionales</span>
                   <span class="compare-value">$12,000 - $25,000 USD/mes</span>
                 </div>
                 <div class="card-compare inhouse">
-                  <span class="compare-label">Célula In-House</span>
+                  <span class="compare-label" data-es="Célula In-House" data-en="In-House Squad">Célula In-House</span>
                   <span class="compare-value">+$14,000 USD/mes</span>
                 </div>
-                <a href="#contacto" class="btn-primary btn-card">Diseñemos tu estrategia tecnológica →</a>
+                <a href="#contacto" class="btn-primary btn-card" data-es="Diseñemos tu estrategia tecnológica →" data-en="Let's design your tech strategy →">Diseñemos tu estrategia tecnológica →</a>
               </div>
             </div>
           </div>
@@ -439,10 +447,9 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
                 <input type="email" name="email" placeholder="Correo electrónico" required />
               </div>
               <select name="serviceType" required>
-                <option value="">¿Qué necesitas?</option>
-                <option value="mvp">MVP precio fijo</option>
-                <option value="evolucion" hidden disabled>Equipo de evolución continua (plan no disponible)</option>
-                <option value="celula">10x Dev Squad · célula de desarrollo</option>
+                <option value="" data-es="¿Qué necesitas?" data-en="What do you need?">¿Qué necesitas?</option>
+                <option value="mvp" data-es="MVP / Proyecto Llave en Mano (desde $3,900 USD)" data-en="MVP / Turnkey Project (starting at $3,900 USD)">MVP / Proyecto Llave en Mano (desde $3,900 USD)</option>
+                <option value="squad" data-es="10x Dev Squad · célula dedicada (desde $4,900 USD/mes)" data-en="10x Dev Squad · dedicated cell (starting at $4,900 USD/mo)">10x Dev Squad · célula dedicada (desde $4,900 USD/mes)</option>
               </select>
               <textarea name="message" placeholder="Cuéntanos sobre tu proyecto o lo que buscas..." required></textarea>
               <button type="submit" class="btn-primary">Enviar Proyecto →</button>
@@ -497,7 +504,37 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
             </div>
           </div>
           <div class="modal-footer">
-            <span class="text-gradient font-bold">Construye con 10x Dev Squad desde $2,499 USD/mes.</span>
+            <span class="text-gradient font-bold" data-es="Construye con 10x Dev Squad desde $4,900 USD/mes." data-en="Build with 10x Dev Squad starting at $4,900 USD/mo.">Construye con 10x Dev Squad desde $4,900 USD/mes.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════ MODAL DE AGENCIAS (WHITE-LABEL PARTNERSHIP) ════ -->
+      <div id="agency-modal" class="modal-backdrop">
+        <div class="modal-content glass-panel" style="max-width: 680px;">
+          <button id="close-agency-modal" class="modal-close" aria-label="Cerrar modal">&times;</button>
+          <div class="modal-header">
+            <div class="badge" style="margin-bottom: 0.75rem;">Wholesale Engineering Partner</div>
+            <h2 style="font-size: 1.6rem; margin-bottom: 0.75rem;">White-Label Dev for Agencies</h2>
+            <p style="font-size: 0.95rem; line-height: 1.65; color: var(--text-color); margin-bottom: 1.5rem; border-left: 2px solid var(--accent-primary); padding: 0.75rem 1rem; background: rgba(59, 130, 246, 0.05); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
+              At dev.10xteam, we act as your silent, white-label engineering arm in the CST time zone. We run a specialized AI-accelerated software studio. Instead of billing unpredictable hourly rates, we give agencies an elastic engineering team (architecture, full-stack code, and AI automation) under a simple wholesale model.
+            </p>
+          </div>
+          <div class="modal-body">
+            <form id="agency-form" class="contact-form">
+              <input type="hidden" name="detected_country" id="agency-detected-country" value="" />
+              <div class="form-grid">
+                <input type="text" name="agencyName" placeholder="Agency Name / Empresa *" required />
+                <input type="text" name="contactName" placeholder="Contact Person *" required />
+              </div>
+              <div class="form-grid">
+                <input type="email" name="email" placeholder="Work Email *" required />
+                <input type="tel" name="phone" placeholder="WhatsApp / Phone (optional)" />
+              </div>
+              <textarea name="message" placeholder="Tell us about your pipeline, current engineering bottlenecks or project needs..." rows="3" required></textarea>
+              <button type="submit" class="btn-primary" style="width: 100%;">Apply for Wholesale Partnership →</button>
+            </form>
+            <p id="agency-form-status" class="text-muted form-note" style="margin-top: 1rem; text-align: center;" role="status"></p>
           </div>
         </div>
       </div>
@@ -509,6 +546,7 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
           <p class="text-muted">© 2026 10xTeam. Todos los derechos reservados.</p>
         </div>
         <div class="footer-links">
+          <a href="#" class="open-agency-modal footer-agency-link">Agencies</a>
           <a href="/terminos">Términos y condiciones</a>
           <a href="/privacidad">Aviso de Privacidad</a>
         </div>
@@ -516,67 +554,172 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
     </footer>
 
     <script>
+      // ─── MODALES (Salarios y Agencias) ───
       document.addEventListener('DOMContentLoaded', () => {
-        const modal = document.getElementById('salary-modal');
-        const openBtns = document.querySelectorAll('.open-salary-modal');
-        const closeBtn = document.getElementById('close-modal');
+        // Modal Salarios
+        const salaryModal = document.getElementById('salary-modal');
+        const openSalaryBtns = document.querySelectorAll('.open-salary-modal');
+        const closeSalaryBtn = document.getElementById('close-modal');
         
-        openBtns.forEach(btn => {
+        openSalaryBtns.forEach(btn => {
           btn.addEventListener('click', (e) => {
             e.preventDefault();
-            modal.classList.add('active');
+            salaryModal?.classList.add('active');
           });
         });
         
-        closeBtn.addEventListener('click', () => {
-          modal.classList.remove('active');
+        closeSalaryBtn?.addEventListener('click', () => {
+          salaryModal?.classList.remove('active');
         });
         
-        modal.addEventListener('click', (e) => {
-          if(e.target === modal) modal.classList.remove('active');
+        salaryModal?.addEventListener('click', (e) => {
+          if (e.target === salaryModal) salaryModal.classList.remove('active');
+        });
+
+        // Modal Agencias
+        const agencyModal = document.getElementById('agency-modal');
+        const openAgencyBtns = document.querySelectorAll('.open-agency-modal');
+        const closeAgencyBtn = document.getElementById('close-agency-modal');
+
+        openAgencyBtns.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            agencyModal?.classList.add('active');
+          });
+        });
+
+        closeAgencyBtn?.addEventListener('click', () => {
+          agencyModal?.classList.remove('active');
+        });
+
+        agencyModal?.addEventListener('click', (e) => {
+          if (e.target === agencyModal) agencyModal.classList.remove('active');
         });
       });
     </script>
     <script>
       const CONTACT_ENDPOINT = 'https://growth.10xteam.com.mx/api/contact';
 
-      document.addEventListener('DOMContentLoaded', () => {
-        const form = document.getElementById('contact-form');
-        const status = document.getElementById('contact-form-status');
-        if (!(form instanceof HTMLFormElement) || !status) return;
-
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          const submitBtn = form.querySelector('button[type="submit"]');
-          const formData = new FormData(form);
-          const payload = {
-            name: formData.get('name'),
-            email: formData.get('email'),
-            serviceType: formData.get('serviceType'),
-            message: formData.get('message'),
-            source: 'dev_contact',
-          };
-
-          status.textContent = 'Enviando...';
-          if (submitBtn instanceof HTMLButtonElement) submitBtn.disabled = true;
-
-          try {
-            const response = await fetch(CONTACT_ENDPOINT, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload),
-            });
-
-            if (!response.ok) throw new Error('request-failed');
-
-            status.textContent = 'Recibido. Te contactaremos en menos de 24h.';
-            form.reset();
-          } catch {
-            status.textContent = 'No pudimos enviar tu mensaje. Intenta de nuevo o escribenos directo.';
-          } finally {
-            if (submitBtn instanceof HTMLButtonElement) submitBtn.disabled = false;
+      // ─── GEOLOCALIZACIÓN EN SEGUNDO PLANO (LEAD INTELLIGENCE) ───
+      // Detecta procedencia para enriquecer leads; NO altera precios visuales.
+      let detectedCountry = 'Desconocido';
+      async function detectVisitorLocation() {
+        try {
+          const res = await fetch('https://api.country.is/');
+          const data = await res.json();
+          if (data && data.country) {
+            detectedCountry = data.country;
+            localStorage.setItem('10x_visitor_country', data.country);
           }
-        });
+        } catch {
+          const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+          detectedCountry = tz || 'No disponible';
+          localStorage.setItem('10x_visitor_country', detectedCountry);
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        detectVisitorLocation();
+
+        // ─── FORMULARIO GENERAL DE CONTACTO ───
+        const contactForm = document.getElementById('contact-form');
+        const contactStatus = document.getElementById('contact-form-status');
+        if (contactForm instanceof HTMLFormElement && contactStatus) {
+          contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const formData = new FormData(contactForm);
+            const country = localStorage.getItem('10x_visitor_country') || detectedCountry;
+            const payload = {
+              name: formData.get('name'),
+              email: formData.get('email'),
+              serviceType: formData.get('serviceType'),
+              message: `[PAÍS: ${country}]\n${formData.get('message')}`,
+              source: 'dev_contact',
+            };
+
+            contactStatus.textContent = 'Enviando...';
+            if (submitBtn instanceof HTMLButtonElement) submitBtn.disabled = true;
+
+            try {
+              const response = await fetch(CONTACT_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+              });
+
+              if (!response.ok) throw new Error('request-failed');
+
+              contactStatus.textContent = 'Recibido. Te contactaremos en menos de 24h.';
+              contactForm.reset();
+            } catch {
+              contactStatus.textContent = 'No pudimos enviar tu mensaje. Intenta de nuevo o escríbenos directo.';
+            } finally {
+              if (submitBtn instanceof HTMLButtonElement) submitBtn.disabled = false;
+            }
+          });
+        }
+
+        // ─── FORMULARIO EXCLUSIVO DE AGENCIAS (WHITE-LABEL) ───
+        const agencyForm = document.getElementById('agency-form');
+        const agencyStatus = document.getElementById('agency-form-status');
+        if (agencyForm instanceof HTMLFormElement && agencyStatus) {
+          agencyForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = agencyForm.querySelector('button[type="submit"]');
+            const formData = new FormData(agencyForm);
+            const agencyName = formData.get('agencyName');
+            const contactName = formData.get('contactName');
+            const email = formData.get('email');
+            const phone = formData.get('phone') || 'No provisto';
+            const message = formData.get('message');
+            const country = localStorage.getItem('10x_visitor_country') || detectedCountry;
+
+            const payload = {
+              name: `${contactName} (${agencyName})`,
+              email: email,
+              phone: phone,
+              serviceType: 'agency_wholesale',
+              message: `[SOLICITUD AGENCIA WHITE-LABEL]\n[PAÍS DETECTADO: ${country}]\n[AGENCIA: ${agencyName}]\n[CONTACTO: ${contactName}]\n[TEL/WHATSAPP: ${phone}]\n[NOTAS / PIPELINE]:\n${message}`,
+              source: 'agency_partner_lead',
+            };
+
+            agencyStatus.textContent = 'Enviando solicitud de alianza...';
+            if (submitBtn instanceof HTMLButtonElement) submitBtn.disabled = true;
+
+            try {
+              const response = await fetch(CONTACT_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+              });
+
+              if (!response.ok) throw new Error('request-failed');
+
+              agencyStatus.textContent = 'Solicitud recibida con éxito. Te contactaremos al correo para coordinar los detalles de la alianza.';
+              agencyForm.reset();
+            } catch {
+              agencyStatus.textContent = 'Hubo un error al procesar tu solicitud. Por favor intenta de nuevo o escríbenos a fcb@10xteam.com.mx.';
+            } finally {
+              if (submitBtn instanceof HTMLButtonElement) submitBtn.disabled = false;
+            }
+          });
+        }
+
+        // ─── SELECTOR OPCIONAL DE IDIOMA EN NAVBAR (ES / EN) ───
+        const langBtn = document.getElementById('lang-toggle-btn');
+        if (langBtn) {
+          langBtn.addEventListener('click', () => {
+            const currentLang = document.documentElement.lang || 'es';
+            const nextLang = (currentLang === 'es') ? 'en' : 'es';
+            document.documentElement.lang = nextLang;
+            const indicator = document.getElementById('lang-indicator');
+            if (indicator) indicator.textContent = nextLang.toUpperCase();
+            document.querySelectorAll('[data-es][data-en]').forEach(el => {
+              el.innerHTML = (nextLang === 'es') ? el.getAttribute('data-es') : el.getAttribute('data-en');
+            });
+          });
+        }
       });
     </script>
     <style>
@@ -588,7 +731,11 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
       .nav-links{display:flex;gap:2.5rem;justify-self:center}
       .nav-links a{font-weight:500;font-size:0.9rem;color:var(--text-muted);transition:color var(--transition-base)}
       .nav-links a:hover{color:var(--text-color)}
-      .btn-nav{padding:0.6rem 1.5rem;font-size:0.85rem;justify-self:end}
+      .nav-actions{display:flex;align-items:center;gap:0.75rem;justify-self:end}
+      .lang-toggle-btn{display:inline-flex;align-items:center;gap:0.35rem;background:rgba(255,255,255,0.04);border:1px solid var(--glass-border);color:var(--text-muted);border-radius:var(--radius-pill);padding:0.45rem 0.85rem;font-size:0.78rem;font-weight:700;letter-spacing:0.5px;cursor:pointer;transition:all var(--transition-base)}
+      .lang-toggle-btn:hover{color:var(--text-color);border-color:var(--accent-primary);background:rgba(59,130,246,0.1)}
+      .lang-toggle-btn .globe-icon{font-size:0.85rem}
+      .btn-nav{padding:0.6rem 1.5rem;font-size:0.85rem}
 
       /* ─── HERO ─── */
       .hero{padding:2.5rem 0 5rem;min-height:85vh;display:flex;align-items:center}
@@ -666,41 +813,40 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
       .service-card p{color:var(--text-muted);font-size:0.92rem;line-height:1.7}
 
       /* ─── PRICING ─── */
-      .section-pricing{background:linear-gradient(180deg,transparent 0%,rgba(59,130,246,0.02) 50%,transparent 100%)}
+      .section-pricing{background:linear-gradient(180deg,transparent 0%,rgba(59,130,246,.02) 50%,transparent 100%)}
       .pricing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;align-items:stretch;max-width:1080px;margin-inline:auto}
-      .pricing-card{padding:2rem 1.5rem;display:grid;grid-template-rows: auto auto 1fr auto;position:relative;transition:border-color var(--transition-base),transform var(--transition-base)}
+      .pricing-card{padding:2rem 1.5rem;display:grid;grid-template-rows:auto auto 1fr auto;position:relative;transition:border-color var(--transition-base),transform var(--transition-base)}
       .pricing-card:hover{border-color:var(--glass-border-hover);transform:translateY(-4px)}
-      .pricing-card.featured{border-color:rgba(96,110,246,0.48);box-shadow:0 0 60px rgba(79,70,229,0.13)}.pricing-card[hidden]{display:none!important}
-      .card-badge-top{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent-primary),var(--accent-secondary));padding:0.3rem 1.2rem;border-radius:var(--radius-pill);font-size:0.7rem;font-weight:700;letter-spacing:1px;color:#fff;white-space:nowrap}
+      .pricing-card.featured{border-color:#606ef67a;box-shadow:0 0 60px #4f46e521}
+      .pricing-card[hidden]{display:none!important}
+      .card-badge-top{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent-primary),var(--accent-secondary));padding:.3rem 1.2rem;border-radius:var(--radius-pill);font-size:.7rem;font-weight:700;letter-spacing:1px;color:#fff;white-space:nowrap}
       .card-top{margin-bottom:1.5rem}
-      .plan-icon{font-size:2rem;margin-bottom:0.75rem}
-      .card-top h3{font-size:1.35rem;margin-bottom:0.25rem}
-      .plan-desc{color:var(--text-muted);font-size:0.88rem}
+      .plan-icon{font-size:2rem;margin-bottom:.75rem}
+      .card-top h3{font-size:1.35rem;margin-bottom:.25rem}
+      .plan-desc{color:var(--text-muted);font-size:.88rem}
       .card-price{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--glass-border)}
       .card-body{display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem}
-      .card-footer{display:flex;flex-direction:column;gap:0.5rem}
-      .card-price .from{font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em}
-      .price-row{display:flex;align-items:baseline;gap:0.15rem;margin:0.25rem 0}
+      .section-pricing .pricing-card .card-body{gap:.9rem}
+      .pricing-value-statement{margin:0;font-size:1.05rem;line-height:1.4;color:var(--text-color);font-weight:800}
+      .pricing-value-lead{margin:0;font-size:.95rem;line-height:1.65;color:var(--text-color);font-weight:700}
+      .pricing-value-description{margin:0;font-size:.91rem;line-height:1.7;color:var(--text-muted)}
+      .pricing-value-highlight{margin:0;font-size:.94rem;line-height:1.55;color:var(--text-color);font-weight:700}
+      .pricing-card .features-list{margin:0;padding:0;list-style:none}
+      .pricing-card .features-list li{margin-bottom:.72rem;font-size:.87rem;line-height:1.5}
+      .card-footer{display:flex;flex-direction:column;gap:.5rem}
+      .card-price .from{font-size:.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em}
+      .price-row{display:flex;align-items:baseline;gap:.15rem;margin:.25rem 0}
       .currency{font-size:1.4rem;font-weight:700}
       .amount{font-size:2.5rem;font-weight:900;line-height:1}
-      .unit{font-size:0.85rem;color:var(--text-muted);margin-left:0.5rem;font-weight:500}
-      .price-note{font-size:0.78rem;color:var(--text-dim)}
-      .features-list{padding:0;margin-bottom:1.5rem;flex-grow:1}
-      .features-list li{margin-bottom:0.8rem;font-size:0.9rem;color:var(--text-muted)}
-      .positive{color:var(--accent-emerald) !important;font-weight:500}
-      .card-compare{background:rgba(255,255,255,0.03);border:1px solid var(--glass-border);border-radius:var(--radius-sm);padding:0.6rem 0.8rem;margin-bottom:0.5rem;display:flex;flex-direction:column;gap:0.1rem}
-      .card-compare.inhouse{background:rgba(244,63,94,0.04);border-color:rgba(244,63,94,0.1);margin-bottom:1.5rem}
-      .compare-label{font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.03em}
-      .compare-value{font-size:0.8rem;color:var(--text-muted);font-weight:600}
+      .unit{font-size:.85rem;color:var(--text-muted);margin-left:.5rem;font-weight:500}
+      .price-note{font-size:.78rem;color:var(--text-dim)}
+      .positive{color:var(--accent-emerald)!important;font-weight:500}
+      .card-compare{background:#ffffff08;border:1px solid var(--glass-border);border-radius:var(--radius-sm);padding:.6rem .8rem;margin-bottom:.5rem;display:flex;flex-direction:column;gap:.1rem}
+      .card-compare.inhouse{background:#f43f5e0a;border-color:#f43f5e1a;margin-bottom:1.5rem}
+      .compare-label{font-size:.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.03em}
+      .compare-value{font-size:.8rem;color:var(--text-muted);font-weight:600}
       .inhouse .compare-value{color:var(--accent-rose)}
-      .price-subnote{font-size:0.77rem;color:var(--text-dim);line-height:1.65;margin:0 0 0.5rem;font-style:italic}
-      .pricing-value-statement{margin:0;font-size:1.05rem;line-height:1.4;color:var(--text-color);font-weight:800}
-      .pricing-value-lead{margin:0;font-size:0.95rem;line-height:1.65;color:var(--text-color);font-weight:700}
-      .pricing-value-description{margin:0;font-size:0.91rem;line-height:1.7;color:var(--text-muted)}
-      .pricing-value-highlight{margin:0;font-size:0.94rem;line-height:1.55;color:var(--text-color);font-weight:700}
-      .pricing-card .features-list{margin:0;padding:0;list-style:none}
-      .pricing-card .features-list li{margin-bottom:0.72rem;font-size:0.87rem;line-height:1.5}
-      .section-pricing .pricing-card .card-body{gap:0.9rem}
+      .price-subnote{font-size:.77rem;color:var(--text-dim);line-height:1.65;margin:0 0 .5rem;font-style:italic}
       .section-pricing .pricing-card .card-footer{margin-top:auto}
       .section-pricing .pricing-card .btn-card{display:flex;justify-content:center;align-items:center;min-height:48px;line-height:1.35}
       .btn-card{width:100%;text-align:center}
@@ -749,9 +895,11 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
       .footer-inner{display:flex;justify-content:space-between;align-items:center}
       .footer-logo{display:block;margin-bottom:0.5rem;line-height:0}
       .footer-logo img{height:59px;width:auto;display:block;object-fit:contain}
-      .footer-links{display: flex; gap: 2rem;}
+      .footer-links{display: flex; gap: 2rem; align-items: center;}
       .footer-links a{font-size: 0.85rem; color: var(--text-dim); transition: color 0.2s;}
       .footer-links a:hover{color: var(--accent-primary);}
+      .footer-agency-link{color: var(--accent-primary) !important; font-weight: 600; text-decoration: underline; text-underline-offset: 4px;}
+      .footer-agency-link:hover{color: #fff !important;}
 
       /* ─── STATS RIBBON ─── */
       .stats-ribbon { background: rgba(59, 130, 246, 0.05); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 2rem 0; margin-top: -1px; }
