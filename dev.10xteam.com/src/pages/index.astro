@@ -60,10 +60,10 @@ const pageTitle = "10xTeam Dev | Custom Software, AI & Flexible Engineering";
                     Access the specialists your project needs without the cost and complexity of building an entire in-house team. A smarter, more flexible way to turn ideas into scalable technology.
                   </p>
                   <div class="hero-proof-horizontal">
-                    <div class="proof-item-hz"><span class="proof-label-hz text-gradient font-bold" style="font-size:1.1rem; line-height: 1.2;">Experts + AI</span></div>
-                    <div class="proof-item-hz"><span class="proof-label-hz text-gradient font-bold" style="font-size:1.1rem; line-height: 1.2;">Fast Kickoff</span></div>
+                    <div class="proof-item-hz"><span class="proof-number-hz">Experts</span><span class="proof-label-hz">+ AI</span></div>
+                    <div class="proof-item-hz"><span class="proof-number-hz">Fast</span><span class="proof-label-hz">Kickoff</span></div>
+                    <div class="proof-item-hz"><span class="proof-number-hz">Defined</span><span class="proof-label-hz">Deliverables</span></div>
                     <div class="proof-item-hz"><span class="proof-number-hz">Up to 50%</span><span class="proof-label-hz">Potential Savings</span></div>
-                    <div class="proof-item-hz"><span class="proof-label-hz text-gradient font-bold" style="font-size:1.1rem; line-height: 1.2;">Defined Deliverables</span></div>
                   </div>
                   <div class="hero-cta">
                     <a href="#contacto" class="btn-primary">Tell Us About Your Project →</a>
@@ -843,6 +843,8 @@ const pageTitle = "10xTeam Dev | Custom Software, AI & Flexible Engineering";
       .hero-cta{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-bottom:0}
       .hero-subheading{font-size:1.5rem; font-weight: 600; margin-top: 0.5rem; color: var(--accent-secondary);}
       .hero-proof-horizontal{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding:1.5rem;background:rgba(255,255,255,0.03);border:1px solid var(--glass-border);border-radius:var(--radius-md);margin-bottom:2rem;}
+      .hero-proof-horizontal .proof-number-hz,
+      .hero-proof-horizontal .proof-label-hz{white-space:nowrap;}
       .proof-item-hz{display:flex;flex-direction:column;align-items:center;text-align:center; justify-content: center;}
       .proof-icon{font-size:1.8rem; margin-bottom: 0.2rem;}
       .proof-number-hz{font-size:1.5rem;font-weight:800;color:var(--accent-primary);line-height:1.2;}
@@ -1045,6 +1047,7 @@ const pageTitle = "10xTeam Dev | Custom Software, AI & Flexible Engineering";
         .audit-grid{grid-template-columns:1fr}
       }
       @media(max-width:768px){
+        .hero-proof-horizontal{grid-template-columns:repeat(2,minmax(0,1fr));}
         .nav-links{display:none}
         .navbar-container{grid-template-columns:auto auto}
         .hero{padding:5rem 0 3rem;min-height:auto}
