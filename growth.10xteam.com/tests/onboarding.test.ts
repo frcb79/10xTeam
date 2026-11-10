@@ -435,6 +435,25 @@ test("existing form maps both Dev offers only to its approved location", () => {
   assert.throws(() =>
     formDestination(s, route, { ...lead, source: "growth_contact" }),
   );
+  process.env.GHL_LAB_LOCATION_IDS = "lab-location";
+  const labSession = { ...s, provision: { status: "configured", locationId: "lab-location" } } as typeof s;
+  assert.throws(
+    () =>
+      formDestination(
+        labSession,
+        { ...route, location_id: "lab-location" },
+        { ...lead, email: "real-customer@company.com" },
+      ),
+    /Una location LAB solo puede recibir correos de prueba sintéticos/,
+  );
+  assert.equal(
+    formDestination(
+      labSession,
+      { ...route, location_id: "lab-location" },
+      { ...lead, email: "qa@example.test" },
+    ).email,
+    "qa@example.test",
+  );
 });
 
 test("connection verification requires current consent, location, scope and a successful read before testing", async () => {

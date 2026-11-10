@@ -1,5 +1,6 @@
 import { currentConnection } from "./connections";
 import type { OnboardingSession } from "./model";
+import { allowedLab } from "./provision";
 import { HttpError } from "./security";
 export type FormRoute = {
   source: string;
@@ -7,6 +8,8 @@ export type FormRoute = {
   location_id: string;
   service_field_id: string;
   enabled: boolean;
+  authorized_emails?: string[];
+  test_filter?: string | null;
 };
 export type FormLead = {
   name: string;
@@ -45,6 +48,26 @@ export function formDestination(
       : lead.service_type;
   if (!service)
     throw new HttpError(409, "Revisa la oferta antes de sincronizar.");
+  if (
+    allowedLab(route.location_id) &&
+    !lead.email.trim().toLowerCase().endsWith(".test")
+  ) {
+    throw new HttpError(
+      403,
+      "Una location LAB solo puede recibir correos de prueba sintéticos (.test).",
+    );
+  }
+  if (
+    allowedLab(route.location_id) &&
+    route.authorized_emails &&
+    route.authorized_emails.length > 0 &&
+    !route.authorized_emails.includes(lead.email.trim().toLowerCase())
+  ) {
+    throw new HttpError(
+      403,
+      "El correo no figura en la lista de correos autorizados para esta LAB.",
+    );
+  }
   return {
     locationId: route.location_id,
     email: lead.email.trim().toLowerCase(),
