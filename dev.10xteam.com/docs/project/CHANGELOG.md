@@ -1,11 +1,20 @@
 # CHANGELOG - Historial de Cambios
 
 ## [Unreleased]
+### Added
+- **Integración Web3Forms para entrega de leads a `fcb@10xteam.com.mx`:**
+  - Formulario Wholesale de Agencias (`#agency-modal`): envía correo inmediato con subject `[LEAD AGENCIA DEV] Solicitud Wholesale: {agencyName} ({country})`, datos de contacto, país detectado y requerimientos.
+  - Formulario general de contacto (`#contact-form`): envía correo con subject `[LEAD DEV PROYECTO] Nuevo proyecto de {name} ({country})`.
+  - Espejo asíncrono hacia `https://growth.10xteam.com.mx/api/contact` para persistencia en base de datos Supabase.
+  - Protección honeypot (`botcheck`) contra spam.
+- **Enlace y Modal exclusivo "Agencies" en Footer:** White-label wholesale engineering partner copy y formulario de solicitud.
+- **Telemetría silenciosa de país:** Detección de país vía `api.country.is` con fallback de timezone sin alterar precios en pantalla.
+
 ### Changed
-- **Estructura comercial simplificada:** Precios actualizados a 2 planes principales: MVP ($1,890 USD pago único) y Squad ($2,790 USD/mes), eliminando el plan intermedio y centrando el grid de precios.
-- **Geolocalización y adaptación por país:** Implementado script con detección vía `api.country.is` y fallback por zona horaria. Los precios se desacoplan del idioma y se rigen estrictamente por país (`data-price-mx` vs `data-price-intl`).
-- **Selector de idioma en Navbar:** Agregado botón de cambio de idioma (`ES` / `EN`) que traduce dinámicamente elementos `[data-es][data-en]` sin alterar los precios asignados por región.
-- Formulario de contacto y modal de salarios alineados a los 2 planes (MVP y Squad).
+- **Estructura comercial internacional base:** Precios unificados a tarifas base internacionales:
+  - MVP (Llave en Mano): Desde **$3,900 USD** (precio base de arranque por proyecto).
+  - 10x Dev Squad: Desde **$4,900 USD/mes** (precio base mensual · célula a la medida).
+- **Selector de idioma en Navbar:** Botón de cambio de idioma (`ES` / `EN`) con traducción dinámica por atributos `data-es` y `data-en`.
 ### Added
 - Setup inicial de Astro.
 - Estilos globales (`global.css`) con tema Dark Mode y Glassmorphism.

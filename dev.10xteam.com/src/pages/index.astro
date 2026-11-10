@@ -442,6 +442,11 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
             <p class="subtitle">Cuéntanos tu proyecto y te responderemos en menos de 24h.</p>
             
             <form id="contact-form" class="contact-form">
+              <input type="hidden" name="access_key" value="fb41fe9d-42b5-4fa1-9a08-05e436321c6d" />
+              <input type="hidden" name="subject" value="[LEAD PROYECTO DEV] Nuevo proyecto" />
+              <input type="hidden" name="from_name" value="dev.10xteam Leads" />
+              <input type="hidden" name="detected_country" id="contact-detected-country" value="" />
+              <input type="checkbox" name="botcheck" class="hidden" style="display:none;" />
               <div class="form-grid">
                 <input type="text" name="name" placeholder="Nombre completo" required />
                 <input type="email" name="email" placeholder="Correo electrónico" required />
@@ -522,7 +527,11 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
           </div>
           <div class="modal-body">
             <form id="agency-form" class="contact-form">
+              <input type="hidden" name="access_key" value="fb41fe9d-42b5-4fa1-9a08-05e436321c6d" />
+              <input type="hidden" name="subject" value="[LEAD AGENCIA DEV] Nueva solicitud Wholesale" />
+              <input type="hidden" name="from_name" value="dev.10xteam Wholesale" />
               <input type="hidden" name="detected_country" id="agency-detected-country" value="" />
+              <input type="checkbox" name="botcheck" class="hidden" style="display:none;" />
               <div class="form-grid">
                 <input type="text" name="agencyName" placeholder="Agency Name / Empresa *" required />
                 <input type="text" name="contactName" placeholder="Contact Person *" required />
@@ -599,6 +608,8 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
     </script>
     <script>
       const CONTACT_ENDPOINT = 'https://growth.10xteam.com.mx/api/contact';
+      const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
+      const WEB3FORMS_KEY = 'fb41fe9d-42b5-4fa1-9a08-05e436321c6d';
 
       // ─── GEOLOCALIZACIÓN EN SEGUNDO PLANO (LEAD INTELLIGENCE) ───
       // Detecta procedencia para enriquecer leads; NO altera precios visuales.
@@ -630,30 +641,47 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const formData = new FormData(contactForm);
             const country = localStorage.getItem('10x_visitor_country') || detectedCountry;
-            const payload = {
-              name: formData.get('name'),
-              email: formData.get('email'),
-              serviceType: formData.get('serviceType'),
-              message: `[PAÍS: ${country}]\n${formData.get('message')}`,
-              source: 'dev_contact',
-            };
+            const name = formData.get('name') || '';
+            const email = formData.get('email');
+            const serviceType = formData.get('serviceType') || 'No especificado';
+            const message = formData.get('message');
+
+            formData.set('access_key', WEB3FORMS_KEY);
+            formData.set('subject', `[LEAD DEV PROYECTO] Nuevo proyecto de ${name} (${country})`);
+            formData.set('from_name', '10x Dev Leads');
+            formData.set('detected_country', country);
 
             contactStatus.textContent = 'Enviando...';
             if (submitBtn instanceof HTMLButtonElement) submitBtn.disabled = true;
 
             try {
-              const response = await fetch(CONTACT_ENDPOINT, {
+              const response = await fetch(WEB3FORMS_ENDPOINT, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload),
+                body: formData,
               });
 
-              if (!response.ok) throw new Error('request-failed');
+              const result = await response.json();
+              if (response.ok && result.success) {
+                contactStatus.textContent = 'Recibido. Te contactaremos en menos de 24h.';
+                contactForm.reset();
 
-              contactStatus.textContent = 'Recibido. Te contactaremos en menos de 24h.';
-              contactForm.reset();
+                // Respaldo en backend interno Supabase / growth
+                fetch(CONTACT_ENDPOINT, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    name,
+                    email,
+                    serviceType,
+                    message: `[PAÍS: ${country}]\n${message}`,
+                    source: 'dev_contact',
+                  }),
+                }).catch(() => {});
+              } else {
+                throw new Error(result.message || 'request-failed');
+              }
             } catch {
-              contactStatus.textContent = 'No pudimos enviar tu mensaje. Intenta de nuevo o escríbenos directo.';
+              contactStatus.textContent = 'No pudimos enviar tu mensaje. Intenta de nuevo o escríbenos a fcb@10xteam.com.mx.';
             } finally {
               if (submitBtn instanceof HTMLButtonElement) submitBtn.disabled = false;
             }
@@ -668,36 +696,48 @@ const pageTitle = "10xTeam – Equipo de desarrollo élite 10x más económico p
             e.preventDefault();
             const submitBtn = agencyForm.querySelector('button[type="submit"]');
             const formData = new FormData(agencyForm);
-            const agencyName = formData.get('agencyName');
-            const contactName = formData.get('contactName');
+            const agencyName = formData.get('agencyName') || 'Agencia';
+            const contactName = formData.get('contactName') || 'Contacto';
             const email = formData.get('email');
             const phone = formData.get('phone') || 'No provisto';
             const message = formData.get('message');
             const country = localStorage.getItem('10x_visitor_country') || detectedCountry;
 
-            const payload = {
-              name: `${contactName} (${agencyName})`,
-              email: email,
-              phone: phone,
-              serviceType: 'agency_wholesale',
-              message: `[SOLICITUD AGENCIA WHITE-LABEL]\n[PAÍS DETECTADO: ${country}]\n[AGENCIA: ${agencyName}]\n[CONTACTO: ${contactName}]\n[TEL/WHATSAPP: ${phone}]\n[NOTAS / PIPELINE]:\n${message}`,
-              source: 'agency_partner_lead',
-            };
+            formData.set('access_key', WEB3FORMS_KEY);
+            formData.set('subject', `[LEAD AGENCIA DEV] Solicitud Wholesale: ${agencyName} (${country})`);
+            formData.set('from_name', 'dev.10xteam Wholesale');
+            formData.set('detected_country', country);
 
             agencyStatus.textContent = 'Enviando solicitud de alianza...';
             if (submitBtn instanceof HTMLButtonElement) submitBtn.disabled = true;
 
             try {
-              const response = await fetch(CONTACT_ENDPOINT, {
+              const response = await fetch(WEB3FORMS_ENDPOINT, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload),
+                body: formData,
               });
 
-              if (!response.ok) throw new Error('request-failed');
+              const result = await response.json();
+              if (response.ok && result.success) {
+                agencyStatus.textContent = 'Solicitud recibida con éxito. Te contactaremos al correo para coordinar los detalles de la alianza.';
+                agencyForm.reset();
 
-              agencyStatus.textContent = 'Solicitud recibida con éxito. Te contactaremos al correo para coordinar los detalles de la alianza.';
-              agencyForm.reset();
+                // Respaldo en backend interno Supabase / growth
+                fetch(CONTACT_ENDPOINT, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    name: `${contactName} (${agencyName})`,
+                    email,
+                    phone: phone !== 'No provisto' ? phone : undefined,
+                    serviceType: 'agency_wholesale',
+                    message: `[SOLICITUD AGENCIA WHITE-LABEL]\n[PAÍS DETECTADO: ${country}]\n[AGENCIA: ${agencyName}]\n[CONTACTO: ${contactName}]\n[TEL/WHATSAPP: ${phone}]\n[NOTAS / PIPELINE]:\n${message}`,
+                    source: 'agency_partner_lead',
+                  }),
+                }).catch(() => {});
+              } else {
+                throw new Error(result.message || 'request-failed');
+              }
             } catch {
               agencyStatus.textContent = 'Hubo un error al procesar tu solicitud. Por favor intenta de nuevo o escríbenos a fcb@10xteam.com.mx.';
             } finally {
