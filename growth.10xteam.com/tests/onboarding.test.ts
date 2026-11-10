@@ -122,7 +122,7 @@ function stateful(initial = session()) {
         creates++;
         return "fixture-location";
       },
-      async verifyLocation() {},
+      async verifyLocation() { },
       async configure() {
         configs++;
         return { managedValues: {}, assets: { pipelines: ["pipeline"] } };
@@ -295,12 +295,12 @@ test("provider contract writes namespaced empty fields, reads back, preserves cu
         ? { access_token: "fixture", locationId: "fixture-location" }
         : path.endsWith("/customValues")
           ? {
-              customValues: [...map].map(([name, value]) => ({
-                id: name,
-                name,
-                value,
-              })),
-            }
+            customValues: [...map].map(([name, value]) => ({
+              id: name,
+              name,
+              value,
+            })),
+          }
           : path.includes("/customValues/")
             ? (puts++,
               map.set(
@@ -310,14 +310,14 @@ test("provider contract writes namespaced empty fields, reads back, preserves cu
               {})
             : path === "/opportunities/pipelines"
               ? {
-                  pipelines: [
-                    {
-                      id: "pipeline",
-                      name: "Ventas",
-                      stages: s.plan!.pipelineStages.map((name) => ({ name })),
-                    },
-                  ],
-                }
+                pipelines: [
+                  {
+                    id: "pipeline",
+                    name: "Ventas",
+                    stages: s.plan!.pipelineStages.map((name) => ({ name })),
+                  },
+                ],
+              }
               : path === "/forms/"
                 ? { forms: [{ name: "Solicitud", id: "form" }] }
                 : path === "/workflows/"
@@ -442,6 +442,15 @@ test("existing form maps both Dev offers only to its approved location", () => {
       formDestination(
         labSession,
         { ...route, location_id: "lab-location" },
+        { ...lead, email: "qa@example.test" },
+      ),
+    /Una ruta LAB requiere una lista explícita de correos autorizados/,
+  );
+  assert.throws(
+    () =>
+      formDestination(
+        labSession,
+        { ...route, location_id: "lab-location", authorized_emails: ["qa@example.test"] },
         { ...lead, email: "real-customer@company.com" },
       ),
     /Una location LAB solo puede recibir correos de prueba sintéticos/,
@@ -449,7 +458,7 @@ test("existing form maps both Dev offers only to its approved location", () => {
   assert.equal(
     formDestination(
       labSession,
-      { ...route, location_id: "lab-location" },
+      { ...route, location_id: "lab-location", authorized_emails: ["qa@example.test"] },
       { ...lead, email: "qa@example.test" },
     ).email,
     "qa@example.test",

@@ -48,25 +48,25 @@ export function formDestination(
       : lead.service_type;
   if (!service)
     throw new HttpError(409, "Revisa la oferta antes de sincronizar.");
-  if (
-    allowedLab(route.location_id) &&
-    !lead.email.trim().toLowerCase().endsWith(".test")
-  ) {
-    throw new HttpError(
-      403,
-      "Una location LAB solo puede recibir correos de prueba sintéticos (.test).",
-    );
-  }
-  if (
-    allowedLab(route.location_id) &&
-    route.authorized_emails &&
-    route.authorized_emails.length > 0 &&
-    !route.authorized_emails.includes(lead.email.trim().toLowerCase())
-  ) {
-    throw new HttpError(
-      403,
-      "El correo no figura en la lista de correos autorizados para esta LAB.",
-    );
+  if (allowedLab(route.location_id)) {
+    if (!route.authorized_emails || route.authorized_emails.length === 0) {
+      throw new HttpError(
+        403,
+        "Una ruta LAB requiere una lista explícita de correos autorizados.",
+      );
+    }
+    if (!lead.email.trim().toLowerCase().endsWith(".test")) {
+      throw new HttpError(
+        403,
+        "Una location LAB solo puede recibir correos de prueba sintéticos (.test).",
+      );
+    }
+    if (!route.authorized_emails.includes(lead.email.trim().toLowerCase())) {
+      throw new HttpError(
+        403,
+        "El correo no figura en la lista de correos autorizados para esta LAB.",
+      );
+    }
   }
   return {
     locationId: route.location_id,

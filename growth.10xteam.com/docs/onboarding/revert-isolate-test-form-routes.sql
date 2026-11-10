@@ -1,14 +1,35 @@
 -- Reversal of isolate-test-form-routes
 -- Target: Supabase 10xteam (rasnxpsmzmdyradclxtb)
+-- Preflight: disables the LAB route and verifies no pending/sending outbox jobs exist.
 
 begin;
 
-alter table public.onboarding_form_routes
-  drop constraint if exists check_lab_authorized_emails;
+-- 1. Disable the LAB route immediately before altering any isolation rules
+update public.onboarding_form_routes
+set enabled = false
+where location_id = 'Be3Voe6UoPjiAawaQUCK';
 
-alter table public.onboarding_form_routes
-  drop column if exists authorized_emails;
+-- 2. Verify that no pending or in-flight outbox jobs remain for the LAB
+do $$
+declare
+  pending_count integer;
+begin
+  select count(*) into pending_count
+  from public.onboarding_form_outbox
+  where location_id = 'Be3Voe6UoPjiAawaQUCK'
+    and status in ('pending', 'sending');
 
+  if pending_count > 0 then
+    raise exception 'No se puede revertir el aislamiento: existen % trabajos pendientes o en ejecucion para la LAB', pending_count;
+  end if;
+end $$;
+
+-- 3. Drop trigger, validation function, and column
+drop trigger if exists trg_validate_lab_form_route on public.onboarding_form_routes;
+drop function if exists public.validate_lab_form_route();
+alter table public.onboarding_form_routes drop column if exists authorized_emails;
+
+-- 4. Restore original trigger function
 create or replace function public.queue_onboarding_lead() returns trigger language plpgsql security invoker set search_path='' as $$
 begin
   insert into public.onboarding_form_outbox(lead_id,source,session_id,location_id,identity_email,offer_key)

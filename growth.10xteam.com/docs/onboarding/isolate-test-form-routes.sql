@@ -8,19 +8,30 @@ begin;
 alter table public.onboarding_form_routes
   add column if not exists authorized_emails text[] not null default '{}';
 
--- 2. Constraint: Consultoria LAB routes MUST have at least one authorized email if enabled
-alter table public.onboarding_form_routes
-  drop constraint if exists check_lab_authorized_emails;
+-- 2. Validation trigger: Consultoria LAB routes MUST have at least one authorized email if enabled,
+-- and every authorized email MUST be strictly synthetic (ending in .test)
+create or replace function public.validate_lab_form_route() returns trigger language plpgsql as $$
+begin
+  if new.location_id = 'Be3Voe6UoPjiAawaQUCK' and new.enabled then
+    if new.authorized_emails is null or cardinality(new.authorized_emails) = 0 then
+      raise exception 'check_lab_authorized_emails: Una ruta de Consultoria LAB habilitada requiere al menos un correo autorizado.';
+    end if;
+    if exists (
+      select 1 from unnest(new.authorized_emails) as email
+      where lower(trim(email)) not like '%.test' or length(trim(email)) < 6
+    ) then
+      raise exception 'check_lab_authorized_emails: Todos los correos autorizados para Consultoria LAB deben ser sinteticos (.test).';
+    end if;
+  end if;
+  return new;
+end $$;
 
-alter table public.onboarding_form_routes
-  add constraint check_lab_authorized_emails
-  check (
-    location_id <> 'Be3Voe6UoPjiAawaQUCK'
-    or not enabled
-    or cardinality(authorized_emails) > 0
-  );
+drop trigger if exists trg_validate_lab_form_route on public.onboarding_form_routes;
+create trigger trg_validate_lab_form_route
+  before insert or update on public.onboarding_form_routes
+  for each row execute function public.validate_lab_form_route();
 
--- 3. Update trigger function queue_onboarding_lead to enforce authorized_emails for Consultoria LAB
+-- 3. Update trigger function queue_onboarding_lead to enforce synthetic authorized_emails for Consultoria LAB
 create or replace function public.queue_onboarding_lead() returns trigger language plpgsql security invoker set search_path='' as $$
 begin
   insert into public.onboarding_form_outbox(lead_id,source,session_id,location_id,identity_email,offer_key)
@@ -32,9 +43,12 @@ begin
     and r.enabled 
     and s.provision->>'locationId'=r.location_id 
     and s.provision->>'status'='configured'
-    -- Mandatory isolation: for Consultoria LAB, email MUST be explicitly listed in authorized_emails
+    -- Mandatory isolation: for Consultoria LAB, email MUST be synthetic (.test) AND explicitly listed in authorized_emails
     and (
-      (r.location_id = 'Be3Voe6UoPjiAawaQUCK' and lower(trim(new.email)) = any(r.authorized_emails))
+      (r.location_id = 'Be3Voe6UoPjiAawaQUCK'
+       and cardinality(r.authorized_emails) > 0
+       and lower(trim(new.email)) = any(r.authorized_emails)
+       and lower(trim(new.email)) like '%.test')
       or
       (r.location_id <> 'Be3Voe6UoPjiAawaQUCK' and (cardinality(r.authorized_emails) = 0 or lower(trim(new.email)) = any(r.authorized_emails)))
     )
