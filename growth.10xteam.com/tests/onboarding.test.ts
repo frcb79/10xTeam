@@ -741,7 +741,7 @@ test("quickstart requires QA allowlist and authenticated owner; does not provisi
     process.env.ONBOARDING_QA_SESSION_ID = other;
     await assert.rejects(execute(h.state, actor, cmd, h.deps), /QA/);
     process.env.ONBOARDING_QA_SESSION_ID = ba;
-    await assert.rejects(execute(h.state, { ...actor, userId: other }, cmd, h.deps), /QA/);
+    await assert.rejects(execute(h.state, { ...actor, userId: other }, cmd, h.deps), /acceso al negocio/);
     const result = await execute(h.state, actor, cmd, h.deps);
     assert.equal(result.plan?.version, result.version);
     assert.equal(result.provision.status, "not_started");
