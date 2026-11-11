@@ -75,6 +75,7 @@ export default function PlatformPreview({input,report}:{
   const model=useMemo(()=>buildReport(input),[input]);
   const [module,setModule]=useState<ModuleId>("report");
   const [activation,setActivation]=useState(false);
+  const [activationPreview,setActivationPreview]=useState(false);
   const [plan,setPlan]=useState<PlanId>("growth");
   const [exit,setExit]=useState(false);
   const [reason,setReason]=useState("");
@@ -160,6 +161,29 @@ export default function PlatformPreview({input,report}:{
               Iniciar 14 días y registrar tarjeta · Próximamente
             </button>
             <p className="mt-3 text-xs text-[#7B6B92]">No recogemos datos bancarios ni creamos subcuentas en esta demostración.</p>
+            <button onClick={()=>setActivationPreview(v=>!v)} aria-expanded={activationPreview}
+              className="mt-5 rounded-xl border border-[#BCA8F0] bg-white px-5 py-3 text-sm font-semibold text-[#6D4CC9] hover:bg-[#F5F0FF]">
+              {activationPreview?"Ocultar recorrido de preparación":"Ver cómo prepararemos tu cuenta después del pago"}
+            </button>
+            {activationPreview&&<div className="mt-5 rounded-2xl border border-[#E4DDF4] bg-white p-5">
+              <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#7050CD]">Simulación · Ninguna cuenta se está configurando</p>
+              <h3 className="mt-2 text-xl font-semibold text-[#302642]">Así sería tu arranque personalizado</h3>
+              <div className="mt-4 space-y-3">
+                {[
+                  ["01","Verificamos tu pago y permisos","Sólo con confirmación del proveedor y autorización del titular."],
+                  ["02","Preparamos tu proceso de venta",model.stages.join(" → ")],
+                  ["03","Validamos las automatizaciones",model.workflowCandidates.map(w=>w.purpose).join(" · ")],
+                  ["04","Comprobamos tu primera oportunidad","Un lead sintético, una tarea y una medición antes de abrir canales reales."],
+                ].map(([number,title,description])=><div className="flex gap-3 rounded-xl border border-[#EAE5F1] p-3" key={number}>
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#F0EBFF] text-xs font-bold text-[#6A4BCE]">{number}</span>
+                  <div><p className="text-sm font-semibold text-[#2E2440]">{title}</p>
+                    <p className="mt-1 text-xs leading-5 text-[#7B7186]">{description}</p>
+                  </div>
+                </div>)}
+              </div>
+              <p className="mt-4 text-sm font-semibold text-[#463575]">Cuando todo esté verificado te guiaremos a CRM, captación y Mi Inteligencia 10x.</p>
+              <p className="mt-2 text-xs leading-5 text-[#857B92]">El alta real puede tomar más de unos segundos; mostraremos su estado real, sin fingir una activación instantánea.</p>
+            </div>}
           </div>
           <button className="text-sm font-semibold text-[#7351CF] underline underline-offset-4" onClick={()=>setActivation(false)}>← Volver a explorar mi plataforma</button>
         </div>:<>
