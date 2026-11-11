@@ -149,7 +149,7 @@ export class GhlProvisionProvider implements ProvisionProvider {
     this.checkDestination(id);
     if (this.labLocation) return this.accessToken;
     const grant = await this.request(
-      "/oauth/locationToken", this.accessToken, "POST",
+      "/oauth/location-token", this.accessToken, "POST",
       new URLSearchParams({ companyId: this.companyId, locationId: id }),
     );
     if (!grant.access_token || grant.locationId !== id)

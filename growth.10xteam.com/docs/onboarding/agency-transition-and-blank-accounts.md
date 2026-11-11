@@ -34,3 +34,11 @@ Fuentes oficiales:
 - https://marketplace.gohighlevel.com/docs/ghl/opportunities/create-pipeline/
 - https://marketplace.gohighlevel.com/docs/ghl/locations/create-custom-value/
 - https://marketplace.gohighlevel.com/docs/ghl/forms/forms/
+
+## Credenciales y rutas al cambiar de agencia
+
+- El modo **LAB** del adaptador se activa cuando existe `GHL_LAB_ACCESS_TOKEN` o `GHL_LAB_LOCATION_ID`. Para dar de alta cuentas en la **agencia definitiva**, crear un entorno Preview de agencia controlado donde **ambos estén ausentes** y utilizar un token OAuth **de agencia**; no reutilizar el token de LAB. Nunca mezclar tokens o IDs de agencia vieja y nueva.
+- `GHL_COMPANY_ID` debe corresponder exactamente al token de agencia. La obtención del token de location usa la ruta oficial **v3** `POST /oauth/location-token` (con guion), no la ruta histórica `/oauth/locationToken`.
+- Los planes sin derecho a `locations.write` no podrán ejecutar creación de subcuentas por API. HighLevel documenta esa API como **Agency Pro US$497**.
+- Mantener `GHL_PROVISIONING_ENABLED` y `GHL_LOCATION_CREATION_ENABLED` ausentes/desactivados hasta consentimiento expreso por sesión, verificación del inventario y validación de costo.
+- No replicar secretos sin scope por rama: en Vercel, `GHL_CLIENT_ID` y `GHL_CLIENT_SECRET` tienen dos entradas Preview (una general y otra de la rama del piloto). Conservar la rama y retirar las generales por la interfaz, después de revisar que no se utilizan en otras ramas. Sin tocar Production.

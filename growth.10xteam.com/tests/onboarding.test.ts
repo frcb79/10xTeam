@@ -292,7 +292,7 @@ test("provider contract writes namespaced empty fields, reads back, preserves cu
     const u = new URL(String(url));
     const path = u.pathname;
     const payload =
-      path === "/oauth/locationToken"
+      path === "/oauth/location-token"
         ? { access_token: "fixture", locationId: "fixture-location" }
         : path.endsWith("/customValues")
           ? {
