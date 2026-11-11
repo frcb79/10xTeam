@@ -1,3 +1,5 @@
+import { selectWorkflowBlueprints, type WorkflowBlueprint } from "./workflow-blueprints";
+
 // 10xteam Growth OS — motor de escenarios del Reporte Estratégico.
 // Supuestos declarados de modelación; NO son benchmarks ni promesas de ingresos.
 export type Currency = "MXN" | "USD";
@@ -40,6 +42,7 @@ export type Report = {
   pillars: {label:string; state:string; signal:string}[];
   scenarios: Record<ThreeScenarios,ReportScenario>;
   recommendations: Recommendation[];
+  workflowCandidates: WorkflowBlueprint[];
   stages: string[];
 };
 const profiles:Record<Sector,{
@@ -177,7 +180,7 @@ export function buildReport(input:ReportInput):Report {
     input,startsWithoutLeads,roleHourlyReference:rate[input.currency][input.role],
     assumptions:{closeRatePercent,avgSale,hourly:rate[input.currency][input.role],targetProspects:scenarios.central.estimatedProspectsMonth},
     inferred,audiences:p.audiences,buyingTrigger:p.trigger,friction:p.friction,acquisition:p.acquisition,
-    growthThesis:signal,pillars,recommendations:recs,scenarios,stages:p.stages
+    growthThesis:signal,pillars,recommendations:recs,workflowCandidates:selectWorkflowBlueprints(input.sector,input.goal,!startsWithoutLeads),scenarios,stages:p.stages
   };
 }
 function startStartsTarget(current:number,target:number){return current===0?target:current;}

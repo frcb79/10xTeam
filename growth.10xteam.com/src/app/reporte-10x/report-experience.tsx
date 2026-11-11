@@ -184,6 +184,13 @@ function ProspectReport({input,onEdit}: {input:ReportInput;onEdit:()=>void}){
               </div>
             </div>)}
           </div>
+          <div className="mt-6 border-t border-[#E2E9E2] pt-5">
+            <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#537666]">Automatizaciones propuestas para tu perfil</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {report.workflowCandidates.map(w=><span key={w.id} className="rounded-full bg-[#E9F4ED] px-3 py-2 text-xs font-medium text-[#255843]">{w.purpose} · Borrador</span>)}
+            </div>
+            <p className="mt-3 text-xs text-[#77877D]">Se revisarán en GHL antes de activarlas. No hay comunicaciones externas autorizadas.</p>
+          </div>
         </div>
         <div className="rounded-[1.4rem] border border-[#D5E5D9] bg-[#EAF3E9] p-6 md:p-8">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#23664E]">Capacidad del equipo</p>
