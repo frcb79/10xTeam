@@ -1,0 +1,32 @@
+name: Growth Onboarding QA
+
+on:
+  push:
+    branches:
+      - feat/intelligent-onboarding-pilot
+    paths:
+      - 'growth.10xteam.com/**'
+      - '.github/workflows/growth-onboarding-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: growth.10xteam.com
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: growth.10xteam.com/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Unit and contract tests
+        run: npm test
