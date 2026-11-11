@@ -37,3 +37,12 @@ test("WOW rejects implausible negative or non-finite input", () => {
   assert.throws(()=>estimateWow({ ...wowDefaults, conversionPercent: 101 }));
   assert.throws(()=>estimateWow({ ...wowDefaults, averageTicket: Number.NaN }));
 });
+
+test("WOW estimates gross contribution only with an explicitly selected gross margin", () => {
+  const unknown=estimateWow(wowDefaults);
+  assert.equal(unknown.scenarios.base.incrementalGrossProfit, null);
+  const known=estimateWow({ ...wowDefaults, grossMarginPercent: 40 });
+  assert.equal(known.scenarios.base.incrementalGrossSales, 7500);
+  assert.equal(known.scenarios.base.incrementalGrossProfit, 3000);
+  assert.throws(()=>estimateWow({ ...wowDefaults, grossMarginPercent: 110 }));
+});

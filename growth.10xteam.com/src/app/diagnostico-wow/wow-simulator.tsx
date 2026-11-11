@@ -189,6 +189,25 @@ export default function WowSimulator() {
                   <SummaryMetric title="Potencial anual, si se mantiene el escenario base" amount={money(base.incrementalGrossSales * 12, values.currency)}
                     subtitle="Ventas brutas; no son utilidad ni pronóstico garantizado" />
                 </div>
+                <div className="rounded-2xl border border-white/15 bg-slate-900/70 p-6">
+                  <label className="block space-y-2">
+                    <span className="text-sm font-semibold">¿Conoces tu margen bruto? (Opcional)</span>
+                    <span className="block text-xs text-slate-400">Sólo para estimar contribución bruta adicional, no utilidad neta.</span>
+                    <select className={field} value={values.grossMarginPercent ?? "unknown"}
+                      onChange={e => set("grossMarginPercent", e.target.value === "unknown" ? null : Number(e.target.value))}>
+                      <option value="unknown">No lo sé — no calcular ganancias</option>
+                      {[10, 20, 30, 40, 50, 60, 70, 80].map(v => <option key={v} value={v}>{v}% de margen bruto</option>)}
+                    </select>
+                  </label>
+                  {base.incrementalGrossProfit !== null && <div className="mt-5">
+                    <p className="text-sm text-slate-300">Contribución bruta adicional aproximada / mes</p>
+                    <p className="mt-1 text-2xl font-semibold text-white">{money(base.incrementalGrossProfit, values.currency)}</p>
+                    <p className="mt-2 text-xs text-slate-400">
+                      {money(low.incrementalGrossProfit ?? 0, values.currency)}–{money(high.incrementalGrossProfit ?? 0, values.currency)};
+                      antes de costos fijos, marketing, licencias, IA e impuestos. No es utilidad neta.
+                    </p>
+                  </div>}
+                </div>
                 <div className="rounded-3xl border border-white/10 bg-slate-900/70 p-6">
                   <h3 className="text-lg font-semibold">Lo primero que configuraría Growth OS</h3>
                   <ol className="mt-4 space-y-3 text-sm leading-6 text-slate-300">
@@ -221,7 +240,8 @@ export default function WowSimulator() {
                   <p className="mt-2">
                     Estos son escenarios exploratorios, no benchmarks verificados ni promesas de resultado.
                     El tiempo liberado no es ahorro de efectivo salvo que realmente reduzca un costo;
-                    las ventas brutas no son margen ni utilidad; no se deben sumar como beneficio neto.
+                    las ventas brutas no son utilidad; la contribución bruta opcional no descuenta gastos fijos ni adquisición.
+                    No se deben sumar indicadores heterogéneos como beneficio neto.
                     Antes de contratar hay que validar tus métricas y los costos de herramientas, IA y canales.
                   </p>
                 </div>

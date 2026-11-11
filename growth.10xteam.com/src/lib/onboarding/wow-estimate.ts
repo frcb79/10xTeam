@@ -13,6 +13,7 @@ export type WowInputs = {
   conversionPercent: number | null;
   averageTicket: number | null;
   loadedHourlyCost: number | null;
+  grossMarginPercent: number | null;
 };
 
 export const wowDefaults: WowInputs = {
@@ -24,6 +25,7 @@ export const wowDefaults: WowInputs = {
   conversionPercent: null,
   averageTicket: null,
   loadedHourlyCost: null,
+  grossMarginPercent: null,
 };
 
 export const wowScenarioAssumptions = {
@@ -35,6 +37,7 @@ export type WowScenario = {
   hoursFreed: number;
   equivalentTimeValue: number;
   incrementalGrossSales: number;
+  incrementalGrossProfit: number | null;
   incrementalDeals: number;
 };
 export type WowEstimate = {
@@ -97,6 +100,7 @@ export function estimateWow(input: WowInputs): WowEstimate {
   if (input.conversionPercent !== null) assertRange(input.conversionPercent, 0, 100, "conversión");
   if (input.averageTicket !== null) assertRange(input.averageTicket, 0, 1e9, "ticket");
   if (input.loadedHourlyCost !== null) assertRange(input.loadedHourlyCost, 0, 1e7, "costo por hora");
+  if (input.grossMarginPercent !== null) assertRange(input.grossMarginPercent, 0, 100, "margen bruto");
   if (!assumedNumbers[input.currency]) throw new Error("Moneda no soportada");
   if (!recommendationByBottleneck[input.bottleneck] || !verticalGuidance[input.industry])
     throw new Error("Perfil de negocio no soportado");
@@ -121,6 +125,9 @@ export function estimateWow(input: WowInputs): WowEstimate {
       hoursFreed: round1(hoursFreed),
       equivalentTimeValue: roundMoney(hoursFreed * loadedHourlyCost),
       incrementalGrossSales: roundMoney(incrementalDeals * averageTicket),
+      incrementalGrossProfit: input.grossMarginPercent === null
+        ? null
+        : roundMoney(incrementalDeals * averageTicket * input.grossMarginPercent / 100),
       incrementalDeals: round1(incrementalDeals),
     };
   }
