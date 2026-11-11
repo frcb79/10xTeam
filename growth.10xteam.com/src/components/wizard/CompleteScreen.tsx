@@ -77,6 +77,9 @@ export function CompleteScreen() {
     }
   };
   const plan = s?.plan;
+  const quickLabPlan = plan?.memory.facts.some(
+    (fact) => fact.key === "plan_mode" && fact.value === "qa_quickstart",
+  ) ?? false;
   return (
     <main className="mx-auto max-w-5xl space-y-6 px-5 py-10 text-stone-100">
       <header>
@@ -359,7 +362,9 @@ export function CompleteScreen() {
                     )
                   }
                 >
-                  Autorizar alta de cuenta y plantilla sin servicios de pago
+                  {quickLabPlan
+                    ? "Autorizar preparación del CRM en Consultoría LAB, sin crear otra cuenta ni contratar servicios"
+                    : "Autorizar alta de cuenta y plantilla sin servicios de pago"}
                 </button>
               )}
             {view.authenticated &&
