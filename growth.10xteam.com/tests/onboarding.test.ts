@@ -758,3 +758,80 @@ test("quickstart requires QA allowlist and authenticated owner; does not provisi
     else process.env.ONBOARDING_QA_SESSION_ID = envId;
   }
 });
+
+test("snapshot-free release creates a blank account once, but never calls it configured", async () => {
+  const h = stateful();
+  const source = h.state;
+  const blank = {
+    kind: "blank" as const,
+    reviewReference: "qa-blank-review-1",
+    validated: true as const,
+    noExternalActions: true as const,
+    version: "blank-v1",
+    pipelineName: "Ventas",
+    workflowNames: ["Asignación"],
+    formNames: ["Solicitud"],
+    calendarNames: [],
+  };
+  let created = 0;
+  let configured = 0;
+  let verified = 0;
+  const provider = {
+    createLocation: async () => {
+      created += 1;
+      return "fixture-blank-location";
+    },
+    verifyLocation: async () => { verified += 1; },
+    configure: async () => {
+      configured += 1;
+      return { managedValues: {}, assets: { pipelines: ["fixture-pipeline"] } };
+    },
+  };
+  const save = (s: OnboardingSession, provision: OnboardingSession["provision"], event: string) =>
+    h.deps.save(s, { provision }, event, "test");
+  const initial = await provisionSession(source, provider, save, blank);
+  assert.equal(initial.provision.status, "waiting_provider");
+  assert.equal(initial.provision.assetMode, "blank");
+  assert.equal(initial.provision.snapshotId, undefined);
+  assert.equal(initial.provision.locationId, "fixture-blank-location");
+  assert.equal(created, 1);
+  assert.equal(configured, 0);
+  assert.equal(verified, 1);
+  assert.equal(initial.provision.createAttempted, true);
+  const resumed = await provisionSession(initial, provider, save, blank);
+  assert.equal(resumed.provision.status, "configured");
+  assert.equal(created, 1);
+  assert.equal(configured, 1);
+  assert.equal(verified, 2);
+});
+
+test("snapshot-free GHL location POST omits snapshotId; missing business owner fails before I/O", async () => {
+  const source = session();
+  const releaseBlank = {
+    kind: "blank" as const,
+    reviewReference: "qa-blank-review-1",
+    validated: true as const,
+    noExternalActions: true as const,
+    version: "blank-v1",
+    pipelineName: "Ventas",
+    workflowNames: ["Asignación"],
+    formNames: ["Solicitud"],
+    calendarNames: [],
+  };
+  const sent: Array<Record<string, unknown>> = [];
+  const fake = (async (_request: RequestInfo | URL, init?: RequestInit) => {
+    sent.push(JSON.parse(String(init?.body)));
+    return Response.json({ id: "new-synthetic-location" });
+  }) as typeof fetch;
+  const provider = new GhlProvisionProvider("synthetic-token", "synthetic-company", fake);
+  const id = await provider.createLocation(source, releaseBlank);
+  assert.equal(id, "new-synthetic-location");
+  assert.equal(sent.length, 1);
+  assert.equal(sent[0].companyId, "synthetic-company");
+  assert.equal(sent[0].name, source.draft.answers.step2?.businessName);
+  assert.ok(!("snapshotId" in sent[0]));
+  const noOwner = structuredClone(source);
+  noOwner.draft.answers.step6 = null;
+  await assert.rejects(provider.createLocation(noOwner, releaseBlank), /identidad completa/);
+  assert.equal(sent.length, 1);
+});

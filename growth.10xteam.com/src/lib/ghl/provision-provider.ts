@@ -26,6 +26,7 @@ const releaseSchema = z.union([
     locationId: z.string().regex(/^[a-zA-Z0-9_-]{5,100}$/),
     inventoryReference: z.string().regex(/^[a-zA-Z0-9_-]{4,80}$/),
   }).strict(),
+  releaseAssetsSchema.extend({ kind: z.literal("blank") }).strict(),
 ]);
 export function snapshotRelease(key: string): SnapshotRelease | undefined {
   try {
@@ -162,6 +163,11 @@ export class GhlProvisionProvider implements ProvisionProvider {
         "La creación de cuentas requiere autorización específica. Vincula una LAB autorizada.",
       );
     const a = s.draft.answers;
+    if (!a.step2?.businessName?.trim() || !a.step6?.ownerEmail?.trim() || !s.draft.context)
+      throw new HttpError(
+        409,
+        "Faltan nombre, correo del titular y contexto para crear una subcuenta.",
+      );
     if (
       !process.env.GHL_APPROVED_CREATION_SESSION_IDS?.split(",")
         .map((value) => value.trim())
@@ -215,16 +221,20 @@ export class GhlProvisionProvider implements ProvisionProvider {
     if (release.kind === "existing_lab")
       throw new HttpError(403, "El inventario de LAB no es un snapshot importable; no permite crear locations.");
     if (this.labLocation) throw new HttpError(403, "La LAB sólo permite vincular la cuenta existente.");
-    const c = s.draft.context!;
+    const c = s.draft.context;
     const a = s.draft.answers;
+    if (!c || !a.step2?.businessName?.trim() || !a.step6?.ownerEmail?.trim())
+      throw new HttpError(409, "Falta identidad completa para crear una subcuenta.");
+    const snapshotFields =
+      release.kind === "blank" ? {} : { snapshotId: release.snapshotId };
     const result = await this.request("/locations/", this.accessToken, "POST", {
       companyId: this.companyId,
-      name: a.step2!.businessName,
-      email: a.step6!.ownerEmail,
+      name: a.step2.businessName,
+      email: a.step6.ownerEmail,
       country: c.country,
       timezone: c.timezone,
       website: c.websiteUrl || undefined,
-      snapshotId: release.snapshotId,
+      ...snapshotFields,
     });
     const id = result.id ?? result.location?.id;
     if (!id)

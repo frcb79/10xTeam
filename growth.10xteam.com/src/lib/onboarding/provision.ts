@@ -18,6 +18,7 @@ export type SnapshotRelease = {
 } & (
   | { kind?: "snapshot"; snapshotId: string }
   | { kind: "existing_lab"; locationId: string; inventoryReference: string }
+  | { kind: "blank" }
 );
 export interface ProvisionProvider {
   checkCreate?(session: OnboardingSession): Promise<void>;
@@ -121,8 +122,9 @@ export async function provisionSession(
       "Requiere reconciliación: comprobar la operación anterior antes de volver a configurar.",
     );
   const existingLab = release.kind === "existing_lab";
-  const sourceMode = existingLab ? "existing_lab" : "snapshot";
-  const expectedSnapshotId = existingLab ? undefined : release.snapshotId;
+  const blank = release.kind === "blank";
+  const sourceMode = existingLab ? "existing_lab" : blank ? "blank" : "snapshot";
+  const expectedSnapshotId = existingLab || blank ? undefined : release.snapshotId;
   if (
     existingLab &&
     (!s.provision.locationId || s.provision.locationId !== release.locationId ||
@@ -178,6 +180,20 @@ export async function provisionSession(
     // verifyLocation always verifies the exact location and its agency. A reusable LAB
     // is assigned by an operator; a commercial location must match the business too.
     await provider.verifyLocation(id, lab ? undefined : current);
+    if (blank && !s.provision.locationId) {
+      // A blank location is intentionally NOT operational. The external location
+      // was created exactly once; real assets must be prepared and then verified.
+      // Retrying "provision" with the saved location cannot repeat creation.
+      return await save(
+        current,
+        {
+          ...current.provision,
+          status: "waiting_provider",
+          lastError: "Cuenta creada vacía. Faltan pipeline, formularios y workflows validados; no está lista para operar.",
+        },
+        "blank_location_created_assets_pending",
+      );
+    }
     const configured = await provider.configure(current, release);
     return await save(
       current,

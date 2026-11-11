@@ -78,7 +78,7 @@ export type ProvisionState = {
   locationId?: string;
   snapshotId?: string; // real importable snapshot only; never an inventory alias
   snapshotVersion?: string;
-  assetMode?: "snapshot" | "existing_lab";
+  assetMode?: "snapshot" | "existing_lab" | "blank";
   assetReference?: string;
   lastError?: string;
   runId?: string;
