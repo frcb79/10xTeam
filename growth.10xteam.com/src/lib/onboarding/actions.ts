@@ -1,5 +1,6 @@
 import { currentConnection, type ConnectionEvent } from "./connections";
 import { buildPlan } from "./plan";
+import { buildQuickPlan } from "./quick-plan";
 import {
   ownsSession,
   readiness,
@@ -114,6 +115,33 @@ export async function execute(
       return save(
         { draft, plan, diagnostic, evidence: [], functional_ready_at: null },
         "plan_generated",
+      );
+    }
+    case "quick_plan": {
+      // QA-only fast-path: use genuine Step 2 answers; assumptions stay inferred.
+      // Neither the command nor a preview implies permission to configure assets.
+      if (
+        !a.userId ||
+        s.owner_user_id !== a.userId ||
+        process.env.ONBOARDING_QA_QUICK_PLAN_ENABLED !== "true" ||
+        process.env.ONBOARDING_QA_SESSION_ID !== s.id
+      )
+        throw new HttpError(403, "La ruta rápida sólo está autorizada para el registro QA.");
+      if (s.plan || s.provision.createAttempted)
+        throw new HttpError(409, "Ya existe un plan o una configuración iniciada para este registro.");
+      const business = s.draft.answers.step2;
+      if (!business)
+        throw new HttpError(409, "Completa primero la información básica del negocio.");
+      const { plan, context } = buildQuickPlan(s.id, business, cmd.goal, s.version + 1);
+      return save(
+        {
+          draft: { ...s.draft, context },
+          plan,
+          diagnostic: null,
+          evidence: [],
+          functional_ready_at: null,
+        },
+        "quick_plan_generated",
       );
     }
     case "module": {

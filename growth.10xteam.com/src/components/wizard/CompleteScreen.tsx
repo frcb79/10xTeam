@@ -102,7 +102,17 @@ export function CompleteScreen() {
           {error}
         </p>
       )}
-      {!state.answers.step6 ? (
+      {plan?.memory.facts.some((fact) => fact.key === "plan_mode" && fact.value === "qa_quickstart") && (
+        <section className={panel} role="note">
+          <h2 className="font-semibold">Plan preliminar basado en tu industria</h2>
+          <p className="mt-2 text-sm text-stone-300">
+            Se utilizaron tus respuestas iniciales y recomendaciones estándar.
+            Perfil del comprador, canales, volumen y métricas siguen por confirmar.
+            Ninguna configuración, envío ni servicio de pago se activa por mostrar este plan.
+          </p>
+        </section>
+      )}
+      {!state.answers.step6 && !plan ? (
         <section className={panel}>
           <p>Completa el diagnóstico para obtener tu plan.</p>
           <Link
@@ -407,7 +417,7 @@ export function CompleteScreen() {
               de marcarlo verificado. Si necesitas ayuda, comparte con tu
               responsable esta referencia: {s.id}.
             </details>
-            {!s.provision.createAttempted && (
+            {!s.provision.createAttempted && state.answers.step6 && (
               <button
                 className="mt-3 text-cyan-300 underline"
                 onClick={() => setEdit(true)}

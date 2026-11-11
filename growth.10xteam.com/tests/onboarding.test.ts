@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { generateKeyPairSync, sign, randomBytes } from "node:crypto";
 import { buildPlan, conditionalQuestions } from "../src/lib/onboarding/plan";
+import { buildQuickPlan } from "../src/lib/onboarding/quick-plan";
 import {
   ownsSession,
   readiness,
@@ -704,4 +705,56 @@ test("white-label and legacy callbacks require the same origin and exact path", 
     origin + "/other",
   ])
     assert.equal(validOAuthReturn(value, origin + "/api/ghl/oauth/start"), false);
+});
+
+test("quickstart stays explicitly provisional, never invents six-step customer answers", () => {
+  const result = buildQuickPlan(ba, answers.step2!, "leads", 3);
+  assert.equal(result.plan.snapshotKey, "core-b2b");
+  assert.equal(result.plan.memory.businessAccountId, ba);
+  assert.equal(result.plan.memory.facts.find((f) => f.key === "step2.businessName")?.status, "confirmed");
+  assert.equal(result.plan.memory.facts.find((f) => f.key === "context.preserve")?.status, "inferred");
+  assert.equal(result.plan.memory.facts.find((f) => f.key === "plan_mode")?.value, "qa_quickstart");
+  assert.ok(result.plan.memory.unknowns.length >= 4);
+  assert.ok(result.plan.memory.recommendations.every((r) =>
+    r.evidenceKeys.every((k) => result.plan.memory.facts.some((f) => f.key === k))
+  ));
+  assert.ok(result.plan.modules.every((m) => !m.consent));
+  assert.deepEqual(result.plan.modules.filter((m) => m.required).map((m) => m.id), ["crm", "forms"]);
+  assert.equal(result.plan.memory.agentPolicy.paidAI, "disabled");
+  assert.equal(result.context.requiredChannels.length, 0);
+  assert.doesNotThrow(() => contextSchema.parse(result.context));
+});
+test("quickstart requires QA allowlist and authenticated owner; does not provision or create evidence", async () => {
+  const s = session();
+  s.draft = {
+    currentStep: 2,
+    answers: { step2: structuredClone(answers.step2), step3_b2b: null, step3_b2c: null, step4: null, step5: null, step6: null },
+  };
+  s.plan = null;
+  s.evidence = [];
+  const h = stateful(s);
+  const envEnabled = process.env.ONBOARDING_QA_QUICK_PLAN_ENABLED;
+  const envId = process.env.ONBOARDING_QA_SESSION_ID;
+  const cmd = { action: "quick_plan" as const, id: ba, version: s.version, goal: "leads" as const, acceptedAssumptions: true as const };
+  try {
+    process.env.ONBOARDING_QA_QUICK_PLAN_ENABLED = "true";
+    process.env.ONBOARDING_QA_SESSION_ID = other;
+    await assert.rejects(execute(h.state, actor, cmd, h.deps), /QA/);
+    process.env.ONBOARDING_QA_SESSION_ID = ba;
+    await assert.rejects(execute(h.state, { ...actor, userId: other }, cmd, h.deps), /QA/);
+    const result = await execute(h.state, actor, cmd, h.deps);
+    assert.equal(result.plan?.version, result.version);
+    assert.equal(result.provision.status, "not_started");
+    assert.equal(result.diagnostic, null);
+    assert.deepEqual(result.evidence, []);
+    assert.equal(h.creates, 0);
+    assert.equal(h.configs, 0);
+    assert.equal(result.draft.answers.step3_b2b, null);
+    await assert.rejects(execute(h.state, actor, { ...cmd, version: h.state.version }, h.deps), /plan/);
+  } finally {
+    if (envEnabled === undefined) delete process.env.ONBOARDING_QA_QUICK_PLAN_ENABLED;
+    else process.env.ONBOARDING_QA_QUICK_PLAN_ENABLED = envEnabled;
+    if (envId === undefined) delete process.env.ONBOARDING_QA_SESSION_ID;
+    else process.env.ONBOARDING_QA_SESSION_ID = envId;
+  }
 });

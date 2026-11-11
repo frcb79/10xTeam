@@ -20,6 +20,12 @@ export const commandSchema = z.discriminatedUnion("action", [
       draft: draftSchema.optional(),
     })
     .strict(),
+  z.object({
+    ...base,
+    action: z.literal("quick_plan"),
+    goal: z.enum(["leads", "sales"]),
+    acceptedAssumptions: z.literal(true),
+  }).strict(),
   z
     .object({
       ...base,
