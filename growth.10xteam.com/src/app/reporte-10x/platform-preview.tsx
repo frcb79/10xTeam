@@ -25,8 +25,8 @@ export const moduleCatalog: ReadonlyArray<{
 ] as const;
 
 export const previewPlans = [
-  {id:"growth",label:"10x Growth",priceMXN:1990,setupMXN:3500,subaccounts:1,aiCreditMXN:200,description:"Una empresa, todas las capacidades principales."},
-  {id:"scale",label:"10x Scale",priceMXN:3990,setupMXN:7500,subaccounts:3,aiCreditMXN:700,description:"Tres negocios o marcas con mayor capacidad incluida."},
+  {id:"growth",label:"10x Growth",priceMXN:1990,priceUSD:129,setupMXN:3500,setupUSD:229,subaccounts:1,aiCreditMXN:200,description:"Una empresa, todas las capacidades principales."},
+  {id:"scale",label:"10x Scale",priceMXN:3990,priceUSD:349,setupMXN:7500,setupUSD:489,subaccounts:3,aiCreditMXN:700,description:"Tres negocios o marcas con mayor capacidad incluida."},
 ] as const;
 type PlanId = (typeof previewPlans)[number]["id"];
 
@@ -81,9 +81,7 @@ export default function PlatformPreview({input,report}:{
   const [surveyAcknowledged,setSurveyAcknowledged]=useState(false);
   const current=moduleCatalog.find(m=>m.id===module)!;
   const selectedPlan=previewPlans.find(p=>p.id===plan)!;
-  const selectedPrice=input.currency==="MXN"?
-    money(selectedPlan.priceMXN,"MXN"):
-    "Precio en USD por confirmar";
+  const selectedPrice=money(input.currency==="MXN"?selectedPlan.priceMXN:selectedPlan.priceUSD,input.currency);
   const showReport=module==="report";
 
   return <div className="min-h-screen bg-[#F7F7FA] text-[#26213A]">
@@ -143,11 +141,11 @@ export default function PlatformPreview({input,report}:{
               <p className="text-lg font-semibold text-[#33284E]">{p.label}</p>
               <p className="mt-2 text-sm leading-6 text-[#776D85]">{p.description}</p>
               <p className="mt-5 text-2xl font-bold tracking-tight text-[#39275D]">
-                {input.currency==="MXN"?money(p.priceMXN,"MXN"):"USD por confirmar"}
+                {money(input.currency==="MXN"?p.priceMXN:p.priceUSD,input.currency)}
                 <span className="ml-1 text-xs font-normal text-[#756B80]">/ mes</span>
               </p>
               <p className="mt-2 text-xs text-[#81798B]">{p.subaccounts} {p.subaccounts===1?"negocio":"negocios"} · Crédito IA publicado: {money(p.aiCreditMXN,"MXN")}/mes</p>
-              <p className="mt-1 text-xs text-[#81798B]">Setup anunciado: {money(p.setupMXN,"MXN")} (momento de cobro por definir)</p>
+              <p className="mt-1 text-xs text-[#81798B]">Setup anunciado: {money(input.currency==="MXN"?p.setupMXN:p.setupUSD,input.currency)} (momento de cobro por definir)</p>
             </button>)}
           </div>
           <div className="rounded-2xl border border-[#D9D1F1] bg-[#F3EEFF] p-6">
@@ -238,6 +236,7 @@ export default function PlatformPreview({input,report}:{
         {surveyAcknowledged&&<p className="mt-3 text-xs text-[#806B94]">Has indicado «{reason||"Sin respuesta"}». No se ha enviado a nadie.</p>}
         <div className="mt-6 flex flex-wrap gap-3">
           <button onClick={()=>setSurveyAcknowledged(true)} className="rounded-xl bg-[#7250E4] px-5 py-3 text-sm font-semibold text-white">Confirmar mi elección</button>
+          <a href="https://growth.10xteam.com.mx/" className="rounded-xl border border-[#E1DBED] px-5 py-3 text-sm font-semibold text-[#55446A]">Salir sin activar</a>
           <button onClick={()=>{setExit(false);setSurveyAcknowledged(false);}} className="rounded-xl border border-[#E1DBED] px-5 py-3 text-sm font-semibold">Seguir explorando</button>
         </div>
       </div>
