@@ -240,9 +240,13 @@ function ProspectReport({input,onEdit}: {input:ReportInput;onEdit:()=>void}){
       </section>
 
       <footer className="pb-8 text-center text-[11px] leading-5 text-[#788A80]">
-        Estimaciones orientativas basadas en respuestas seleccionadas e hipótesis de modelación.
-        No equivalen a estudios particulares de tu empresa, promesas de resultados, ingresos netos ni ahorro efectivo.
-        Los escenarios dependen de conseguir prospectos, convertirlos y validar los costos reales.
+        Estimaciones orientativas construidas con respuestas y supuestos de simulación; no son promesas de resultados
+        ni ahorros de efectivo. Los escenarios dependen de captación, conversión y costos reales.
+        Referencias generales sobre productividad comercial:{" "}
+        <a className="underline" target="_blank" rel="noreferrer" href="https://www.salesforce.com/news/stat-library/all-stats/">Salesforce, State of Sales</a>
+        {" "}y{" "}
+        <a className="underline" target="_blank" rel="noreferrer" href="https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier">McKinsey, potencial de IA</a>.
+        Los porcentajes del simulador y valores por hora son hipótesis de 10xteam; no se atribuyen a estos estudios.
       </footer>
     </main>
   </div>;
