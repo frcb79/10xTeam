@@ -315,7 +315,7 @@ export default function ReportExperience(){
         <span className="text-xs font-medium text-[#6A7F73]">Análisis inicial · Sin registro ni compromiso</span>
       </div>
     </header>
-    {screen==="report"?<ProspectReport input={input} onEdit={()=>setScreen("questions")}/>:
+    
     <main className="mx-auto max-w-5xl px-5 pb-20 pt-12 md:px-8 md:pt-20">
       <div className="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
         <section className="lg:sticky lg:top-10">
@@ -375,6 +375,6 @@ export default function ReportExperience(){
           </p>
         </section>
       </div>
-    </main>}
+    </main>
   </div>;
 }
