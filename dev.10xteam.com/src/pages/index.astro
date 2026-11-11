@@ -413,7 +413,7 @@ const pageTitle = "10xTeam Dev | Custom Software, AI & Flexible Engineering";
           <div class="audit-grid">
             <div class="audit-content">
               <div class="badge">FREE STRATEGIC PROJECT ASSESSMENT</div>
-              <h2>Before Investing in Technology,<br /><span class="text-gradient">Discover the Right Path Forward.</span></h2>
+              <h2>Before Investing in Technology,<span class="text-gradient audit-heading-bottom">Discover the Right Path Forward.</span></h2>
               <p class="audit-lead"><strong>Great software starts with the right decisions.</strong></p>
               <p>Tell us what you're looking to build, which business challenge you need to solve, or what new opportunity you're exploring.</p>
               <p>Our team will review your idea from both a business and technology perspective, helping you identify priorities, potential challenges, and a practical approach to development.</p>
@@ -430,7 +430,7 @@ const pageTitle = "10xTeam Dev | Custom Software, AI & Flexible Engineering";
               </div>
             </div>
             <div class="audit-visual">
-              <div class="audit-mockup glass-panel">
+              <div class="audit-mockup">
                 <img src="/desk_business_diagram.png" alt="Business Desk Diagram" class="mockup-img" />
               </div>
             </div>
@@ -443,7 +443,7 @@ const pageTitle = "10xTeam Dev | Custom Software, AI & Flexible Engineering";
         <div class="container">
           <div class="cta-box glass-panel text-center">
             <h2>Ready to Build<br /><span class="text-gradient">Without Overpaying?</span></h2>
-            <p class="subtitle">Tell us about your project. We'll respond within 24 hours.</p>
+            <p class="subtitle" data-es="Cuéntanos qué estás buscando desarrollar y te responderemos dentro de las primeras 24 horas." data-en="Tell us what you're looking to build, and we'll get back to you within 24 hours.">Tell us what you're looking to build, and we'll get back to you within 24 hours.</p>
             
             <form id="contact-form" class="contact-form">
               <input type="hidden" name="access_key" value="fb41fe9d-42b5-4fa1-9a08-05e436321c6d" />
@@ -453,19 +453,19 @@ const pageTitle = "10xTeam Dev | Custom Software, AI & Flexible Engineering";
               <input type="checkbox" name="botcheck" class="hidden" style="display:none;" />
               <div class="form-grid">
                 <input type="text" name="name" placeholder="Full name" data-placeholder-en="Full name" data-placeholder-es="Nombre completo" required />
-                <input type="email" name="email" placeholder="Work email" data-placeholder-en="Work email" data-placeholder-es="Correo electrónico" required />
+                <input type="email" name="email" placeholder="Work email" data-placeholder-en="Work email" data-placeholder-es="Correo de trabajo" required />
               </div>
               <select name="serviceType" required>
                 <option value="" data-es="¿Qué necesitas?" data-en="What do you need?">What do you need?</option>
                 <option value="mvp" data-es="MVP / Proyecto Llave en Mano (desde $3,900 USD)" data-en="MVP / Turnkey Project (starting at $3,900 USD)">MVP / Turnkey Project (starting at $3,900 USD)</option>
-                <option value="squad" data-es="10x Dev Squad · célula dedicada (desde $4,900 USD/mes)" data-en="10x Dev Squad · dedicated cell (starting at $4,900 USD/mo)">10x Dev Squad · dedicated cell (starting at $4,900 USD/mo)</option>
+                <option value="squad" data-es="10x Dev Squad · equipo flexible (desde $4,900 USD/mes)" data-en="10x Dev Squad · flexible team (starting at $4,900 USD/mo)">10x Dev Squad · flexible team (starting at $4,900 USD/mo)</option>
               </select>
-              <textarea name="message" placeholder="Tell us about your project or what you need..." data-placeholder-en="Tell us about your project or what you need..." data-placeholder-es="Cuéntanos sobre tu proyecto o lo que buscas..." required></textarea>
-              <button type="submit" class="btn-primary">Submit My Project →</button>
+              <textarea name="message" placeholder="Tell us about your project or what you need..." data-placeholder-en="Tell us about your project, idea, or what you need..." data-placeholder-es="Cuéntanos sobre tu proyecto, necesidad o idea..." required></textarea>
+              <button type="submit" class="btn-primary" data-es="Enviar mi proyecto →" data-en="Submit My Project →">Submit My Project →</button>
             </form>
             <p id="contact-form-status" class="text-muted form-note" role="status"></p>
 
-            <p class="text-muted form-note">No obligation. Let's talk through your needs in 15 minutes.</p>
+            <p class="text-muted form-note" data-es="Sin compromiso. Podemos ayudarte a encontrar la mejor forma de avanzar." data-en="No obligation. We’ll help you find the best path forward.">No obligation. We’ll help you find the best path forward.</p>
           </div>
         </div>
       </section>
@@ -958,14 +958,16 @@ const pageTitle = "10xTeam Dev | Custom Software, AI & Flexible Engineering";
 
       /* ─── AUDIT SECTION ─── */
       .section-audit { background: linear-gradient(180deg, rgba(59,130,246,0.02) 0%, transparent 100%); }
-      .audit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+      .audit-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.12fr); gap: 2.25rem; align-items: center; }
+      .audit-content h2 { line-height: 1.17; }
+      .audit-heading-bottom { display: block; margin-top: 0.35em; }
       .audit-content p { color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.05rem; }
       .audit-lead { font-size: 1.15rem; color: var(--text-color); margin-bottom: 1.5rem; }
       .audit-cta-area { margin-top: 2.5rem; }
       .audit-visual { position: relative; }
-      .audit-mockup { position: relative; padding: 0.5rem; border-radius: var(--radius-lg); overflow: hidden; }
-      .mockup-img { width: 100%; display: block; border-radius: var(--radius-md); filter: brightness(0.9) contrast(1.1); transition: filter 0.3s; }
-      .audit-mockup:hover .mockup-img { filter: brightness(1); }
+      .audit-mockup { position: relative; padding: 0; border: 0; border-radius: 0; overflow: visible; background: transparent; box-shadow: none; }
+      .mockup-img { width: 100%; height: auto; display: block; border: 0; border-radius: 0; filter: none; }
+
       .mockup-overlay { position: absolute; bottom: 1.5rem; right: 1.5rem; }
       .mockup-tag { background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); padding: 0.5rem 1rem; border-radius: var(--radius-pill); font-size: 0.75rem; color: #fff; font-weight: 600; letter-spacing: 0.5px; border: 1px solid rgba(255,255,255,0.1); }
 
