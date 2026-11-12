@@ -1,116 +1,15 @@
-import { createServiceClient } from "@/lib/supabase/service";
+import { actor, db } from "@/lib/onboarding/store";
 import type { AIModel, AIProvider, AITask } from "@/types/ai.types";
 
-export async function trackAIUsage(params: {
-  businessId: string;
-  provider: AIProvider;
-  model: AIModel;
-  task: AITask;
-  inputTokens: number;
-  outputTokens: number;
-  costUSD: number;
-  metadata?: Record<string, unknown>;
-}) {
-  const supabase = createServiceClient();
-  if (!supabase) return;
-
-  const month = new Date().toISOString().slice(0, 7);
-
-  await supabase.from("ai_usage").insert({
-    business_id: params.businessId,
-    provider: params.provider,
-    model: params.model,
-    task: params.task,
-    input_tokens: params.inputTokens,
-    output_tokens: params.outputTokens,
-    cost_usd: params.costUSD,
-    month,
-    metadata: params.metadata ?? {},
-  });
+export async function reserveAIUsage(input: { businessId:string; provider:AIProvider; model:AIModel; task:AITask; maxCost:number }) {
+  if(process.env.AI_PAID_EXECUTION_ENABLED!=="true" || !/^[a-f0-9-]{36}$/i.test(input.businessId) || !Number.isFinite(input.maxCost) || input.maxCost<=0) throw new Error("El uso de IA de pago requiere un presupuesto autorizado.");
+  const {userId}=await actor(); if(!userId)throw new Error("Se requiere un titular autenticado.");
+  const {data,error}=await db().rpc("reserve_10x_ai",{p_business:input.businessId,p_user:userId,p_provider:input.provider,p_model:input.model,p_task:input.task,p_max_cost:input.maxCost});
+  if(error||typeof data!=="string")throw new Error("No hay presupuesto autorizado disponible.");
+  return data;
 }
-
-export async function checkUsageLimit(businessId: string): Promise<{
-  canProceed: boolean;
-  currentCostUSD: number;
-  limitUSD: number;
-  isOverage: boolean;
-  message: string;
-}> {
-  const supabase = createServiceClient();
-  if (!supabase) {
-    return {
-      canProceed: true,
-      currentCostUSD: 0,
-      limitUSD: 999,
-      isOverage: false,
-      message: "Supabase service disabled, usage checks skipped.",
-    };
-  }
-
-  const month = new Date().toISOString().slice(0, 7);
-
-  const { data: business } = await supabase
-    .from("businesses")
-    .select("plan")
-    .eq("id", businessId)
-    .single();
-
-  const plan = business?.plan ?? "trial";
-
-  const { data: allowance } = await supabase
-    .from("plan_ai_allowances")
-    .select("*")
-    .eq("plan", plan)
-    .single();
-
-  if (!allowance) {
-    return {
-      canProceed: true,
-      currentCostUSD: 0,
-      limitUSD: 999,
-      isOverage: false,
-      message: "Plan allowance config missing.",
-    };
-  }
-
-  const { data: usageRows } = await supabase
-    .from("ai_usage")
-    .select("cost_usd")
-    .eq("business_id", businessId)
-    .eq("month", month);
-
-  const currentCostUSD = (usageRows ?? []).reduce((sum, row) => {
-    return sum + Number(row.cost_usd ?? 0);
-  }, 0);
-
-  const monthlyAllowance = Number(allowance.monthly_allowance_usd ?? 0);
-  const hardLimitUSD = Number(allowance.hard_limit_usd ?? 9999);
-
-  if (currentCostUSD < monthlyAllowance) {
-    return {
-      canProceed: true,
-      currentCostUSD,
-      limitUSD: monthlyAllowance,
-      isOverage: false,
-      message: "Within plan allowance",
-    };
-  }
-
-  if (!allowance.hard_limit && currentCostUSD < hardLimitUSD) {
-    return {
-      canProceed: true,
-      currentCostUSD,
-      limitUSD: hardLimitUSD,
-      isOverage: true,
-      message: "Overage mode enabled",
-    };
-  }
-
-  return {
-    canProceed: false,
-    currentCostUSD,
-    limitUSD: hardLimitUSD,
-    isOverage: true,
-    message: "Monthly AI limit reached",
-  };
+export async function settleAIUsage(id:string,businessId:string,inputTokens:number,outputTokens:number,cost:number) {
+  if(!Number.isFinite(cost)||cost<=0||inputTokens<=0||outputTokens<0)throw new Error("Consumo pendiente de conciliación.");
+  const {data,error}=await db().from("ai_usage").update({input_tokens:inputTokens,output_tokens:outputTokens,cost_usd:cost,metadata:{reservation_status:"settled"}}).eq("id",id).eq("business_id",businessId).eq("metadata->>reservation_status","reserved").select("id").maybeSingle();
+  if(error||!data)throw new Error("Consumo pendiente de conciliación.");
 }

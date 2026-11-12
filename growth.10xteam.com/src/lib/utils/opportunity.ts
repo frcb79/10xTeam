@@ -17,34 +17,34 @@ export interface OpportunityResult {
   additionalClientsMonthly: number;
 }
 
-const HOURS_PER_MONTH: Record<ManualMarketingHours, number> = {
+const HOURS_PER_MONTH: Record<Exclude<ManualMarketingHours, "unknown">, number> = {
   less_2hrs: 4,
   "2_5hrs": 14,
   "5_10hrs": 30,
   more_10hrs: 52,
 };
 
-const HOURLY_RATE: Record<OwnerRole, number> = {
+const HOURLY_RATE: Record<Exclude<OwnerRole, "unknown">, number> = {
   owner_operator: 750,
   has_team: 350,
   uses_agencies: 200,
 };
 
-const LEAD_LOSS_RATE: Record<LeadResponseTime, number> = {
+const LEAD_LOSS_RATE: Record<Exclude<LeadResponseTime, "unknown">, number> = {
   under_5min: 0.05,
   "5_30min": 0.15,
   "30min_2hrs": 0.5,
   more_2hrs: 0.7,
 };
 
-const BASE_MONTHLY_CLIENTS: Record<MonthlyNewClients, number> = {
+const BASE_MONTHLY_CLIENTS: Record<Exclude<MonthlyNewClients, "unknown">, number> = {
   "1_3": 2,
   "4_10": 7,
   "11_20": 15,
   "20_plus": 24,
 };
 
-const GROWTH_POTENTIAL: Record<MonthlyNewClients, number> = {
+const GROWTH_POTENTIAL: Record<Exclude<MonthlyNewClients, "unknown">, number> = {
   "1_3": 0.5,
   "4_10": 0.38,
   "11_20": 0.25,
@@ -63,7 +63,7 @@ export function calculateOpportunity(
   economics: Step6EconomicsAnswers | null,
   step2PriceRange?: string | null
 ): OpportunityResult | null {
-  if (!economics) return null;
+  if (!economics || economics.manualMarketingHours === "unknown" || economics.ownerRole === "unknown" || economics.leadResponseTime === "unknown" || economics.monthlyNewClients === "unknown") return null;
 
   const ticketValue = parseTicketValue(economics.clientValue, step2PriceRange);
   if (!ticketValue || ticketValue <= 0) return null;

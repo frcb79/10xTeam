@@ -15,12 +15,14 @@ import type {
 } from "@/types/wizard.types";
 
 const OWNER_ROLE_OPTIONS: Array<{ value: OwnerRole; label: string }> = [
+  { value: "unknown", label: "Por confirmar" },
   { value: "owner_operator", label: "Yo vendo y opero" },
   { value: "has_team", label: "Tengo equipo comercial" },
   { value: "uses_agencies", label: "Me apoyo en agencias/proveedores" },
 ];
 
 const MANUAL_MARKETING_OPTIONS: Array<{ value: ManualMarketingHours; label: string }> = [
+  { value: "unknown", label: "Por confirmar" },
   { value: "less_2hrs", label: "Menos de 2 horas por semana" },
   { value: "2_5hrs", label: "Entre 2 y 5 horas por semana" },
   { value: "5_10hrs", label: "Entre 5 y 10 horas por semana" },
@@ -28,6 +30,7 @@ const MANUAL_MARKETING_OPTIONS: Array<{ value: ManualMarketingHours; label: stri
 ];
 
 const RESPONSE_TIME_OPTIONS: Array<{ value: LeadResponseTime; label: string }> = [
+  { value: "unknown", label: "Por confirmar" },
   { value: "under_5min", label: "Menos de 5 minutos" },
   { value: "5_30min", label: "Entre 5 y 30 minutos" },
   { value: "30min_2hrs", label: "Entre 30 minutos y 2 horas" },
@@ -51,6 +54,7 @@ const RENEWAL_OPTIONS: Array<{ value: RenewalFrequency; label: string }> = [
 ];
 
 const MONTHLY_CLIENT_OPTIONS: Array<{ value: MonthlyNewClients; label: string }> = [
+  { value: "unknown", label: "Por confirmar" },
   { value: "1_3", label: "1-3 clientes al mes" },
   { value: "4_10", label: "4-10 clientes al mes" },
   { value: "11_20", label: "11-20 clientes al mes" },
@@ -75,15 +79,15 @@ const MARGIN_OPTIONS: Array<{ value: GrossMarginBand; label: string }> = [
 
 export function Step6Economics() {
   const router = useRouter();
-  const { state, updateStep6, goPrev, setStatus } = useWizard();
+  const { state, updateStep6, goPrev } = useWizard();
   const current = state.answers.step6;
 
-  const [ownerRole, setOwnerRole] = useState<OwnerRole>(current?.ownerRole ?? "owner_operator");
+  const [ownerRole, setOwnerRole] = useState<OwnerRole>(current?.ownerRole ?? "unknown");
   const [manualMarketingHours, setManualMarketingHours] = useState<ManualMarketingHours>(
-    current?.manualMarketingHours ?? "2_5hrs"
+    current?.manualMarketingHours ?? "unknown"
   );
   const [leadResponseTime, setLeadResponseTime] = useState<LeadResponseTime>(
-    current?.leadResponseTime ?? "30min_2hrs"
+    current?.leadResponseTime ?? "unknown"
   );
   const [productDescription, setProductDescription] = useState(current?.productDescription ?? "");
   const [clientValue, setClientValue] = useState(current?.clientValue ?? "");
@@ -95,7 +99,7 @@ export function Step6Economics() {
     current?.renewalFrequency ?? null
   );
   const [monthlyNewClients, setMonthlyNewClients] = useState<MonthlyNewClients>(
-    current?.monthlyNewClients ?? "1_3"
+    current?.monthlyNewClients ?? "unknown"
   );
   const [activeClients, setActiveClients] = useState(current?.activeClients ?? "");
   const [acquisitionCost, setAcquisitionCost] = useState<AcquisitionCostBand>(
@@ -112,14 +116,12 @@ export function Step6Economics() {
 
     return (
       productDescription.trim().length >= 8 &&
-      clientValue.trim().length >= 1 &&
       ownerName.trim().length >= 2 &&
       hasValidEmail &&
       phoneDigits.length >= 10 &&
       (!renewalRequired || renewalFrequency !== null)
     );
   }, [
-    clientValue,
     ownerEmail,
     ownerName,
     ownerPhone,
@@ -148,16 +150,15 @@ export function Step6Economics() {
       grossMargin,
     });
 
-    setStatus("processing");
-    router.push("/wizard/processing");
+    router.push("/wizard/complete");
   };
 
   return (
     <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 md:p-8">
       <p className="text-xs uppercase tracking-[0.22em] text-cyan-300">Paso 6 · Economia del negocio</p>
-      <h2 className="mt-3 text-3xl font-semibold text-stone-50">Esta fase aterriza tu potencial de crecimiento.</h2>
+      <h2 className="mt-3 text-3xl font-semibold text-stone-50">Tu oferta y la operación comercial</h2>
       <p className="mt-3 max-w-3xl text-sm leading-6 text-stone-300">
-        Cerramos con la oportunidad real de tu negocio.
+        Puedes dejar el valor del cliente pendiente hasta tener datos.
       </p>
 
       <div className="mt-6 grid gap-4 md:grid-cols-2">
@@ -346,7 +347,7 @@ export function Step6Economics() {
           disabled={!valid}
           className="rounded-full bg-cyan-300 px-5 py-2.5 text-sm font-semibold text-stone-950 disabled:cursor-not-allowed disabled:opacity-50"
         >
-          Calcular oportunidad y crear reporte
+          Continuar a objetivos y diagnóstico
         </button>
       </div>
     </div>

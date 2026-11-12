@@ -10,3 +10,5 @@
 | 2026-05-27 | **Gancho comercial del wizard:** entregar un PDF atractivo del ICP por correo y usarlo como puente a cita o cierre. | Convertir el wizard en lead magnet de alto valor para capturar demanda con menos friccion comercial. |
 | 2026-05-27 | **Plataforma privada para clientes:** habilitar login solo despues de contratacion para acceder a ICP, materiales y seguimiento. | Separar el valor gratuito del valor recurrente y facilitar retencion/upsell sin meter friccion al inicio. |
 | 2026-05-28 | **HTML visual como fuente canonica del subdominio:** servir `growth.10xteam_website.html` en `/` mediante rewrite interno. | El CEO pidio mantener exactamente el diseno, colores, fuentes y secciones del HTML aprobado; esta ruta conserva fidelidad visual sin abandonar Next.js para la evolucion futura de la plataforma. |
+
+- 2026-11-06 · Unidad de alta, evidencia y permisos por BA. Separar la creación de una location, la comprobación de sus activos y la entrega funcional. Una operación de creación con resultado incierto pasa a reconciliación. La selección de una función conserva la decisión del titular y su siguiente acción.

@@ -1,3 +1,4 @@
+import { publicWebsite } from "@/lib/onboarding/public-website";
 import { NextResponse } from "next/server";
 
 interface ScrapeRequestBody {
@@ -24,26 +25,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const response = await fetch(normalized, {
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (compatible; 10xteam-bot/1.0; +https://growth.10xteam.com)",
-        Accept: "text/html,application/xhtml+xml",
-      },
-      signal: AbortSignal.timeout(10_000),
-      cache: "no-store",
-    });
-
-    if (!response.ok) {
-      return NextResponse.json(
-        {
-          error: `Could not scrape website. HTTP ${response.status}.`,
-        },
-        { status: 502 }
-      );
-    }
-
-    const html = await response.text();
+    const html = await publicWebsite(normalized);
     const title = matchTagContent(html, /<title[^>]*>([\s\S]*?)<\/title>/i);
     const description = matchTagContent(
       html,

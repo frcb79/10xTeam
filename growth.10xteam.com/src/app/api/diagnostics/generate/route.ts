@@ -1,24 +1,28 @@
-import { NextResponse } from "next/server";
-import { generateDiagnosticReport } from "@/lib/diagnostics/report";
-import type { GeneratedOutputs, WizardAnswers } from "@/types/wizard.types";
-
-interface GenerateDiagnosticBody {
-  answers?: WizardAnswers;
-  businessId?: string;
-  generatedOutputs?: GeneratedOutputs | null;
-}
-
+import { strategicRecord } from "@/lib/onboarding/strategy";
+import { actor, requireSession, saveSession } from "@/lib/onboarding/store";
+import { sameOrigin } from "@/lib/onboarding/security";
+import { failure, json } from "@/lib/onboarding/http";
 export async function POST(request: Request) {
   try {
-    const body = (await request.json()) as GenerateDiagnosticBody;
-    if (!body.answers) return NextResponse.json({ error: "Wizard answers are required." }, { status: 400 });
-
-    const diagnostic = await generateDiagnosticReport(body.answers, body.businessId, body.generatedOutputs);
-    return NextResponse.json({ diagnostic, diagnosticId: diagnostic.id, htmlUrl: `/api/diagnostics/${diagnostic.id}/html` });
+    sameOrigin(request);
+    const a = await actor();
+    const s = await requireSession(a);
+    const record =
+      s.diagnostic ??
+      strategicRecord(s.draft);
+    if (!s.diagnostic)
+      await saveSession(
+        s,
+        { diagnostic: record },
+        "diagnostic_generated",
+        a.userId ?? "guest:" + s.id,
+      );
+    return json({
+      diagnostic: record,
+      diagnosticId: record.id,
+      htmlUrl: "/api/diagnostics/" + record.id + "/html",
+    });
   } catch (error) {
-    return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Could not generate diagnostic report." },
-      { status: 500 },
-    );
+    return failure(error);
   }
 }

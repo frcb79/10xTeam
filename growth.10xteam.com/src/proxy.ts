@@ -1,3 +1,4 @@
+import { validTeamToken } from "@/lib/onboarding/security";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
@@ -7,7 +8,7 @@ export function proxy(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
 
   if (pathname.startsWith("/team") && !pathname.startsWith("/team/access")) {
-    const hasTeamAccess = request.cookies.get(TEAM_ACCESS_COOKIE)?.value === "owner";
+    const hasTeamAccess = validTeamToken(request.cookies.get(TEAM_ACCESS_COOKIE)?.value);
     if (!hasTeamAccess) {
       const loginUrl = new URL("/team/access", request.url);
       loginUrl.searchParams.set("next", `${pathname}${search}`);

@@ -87,3 +87,6 @@ Bloqueadores:
 2026-07-01 - Ajuste comercial puntual en pricing (hora suelta = `$1,990 MXN`) + nota en modal de funcionalidades sobre consumo de credito. Se avanzo persistencia de sesiones GHL en Supabase (`ghl_sessions`) conectada a callback/refresh OAuth.
 2026-07-01 - Se habilito `oauth/status` para leer conexion GHL desde Supabase por `companyId/locationId` (fallback cookie) y el webhook ahora actualiza heartbeat de sesion para observabilidad de integracion.
 2026-09-03 - Se construyó el diagnóstico dinámico end-to-end: generación ICP reutilizable, cálculo de oportunidad, `DiagnosticReport` persistido en Supabase y URL HTML por ID basada en la plantilla visual existente. Verificado localmente con `diag_6bfa7d2e98cb`.
+
+### Wizard de alta inteligente
+La rama del piloto añade persistencia por BA, diagnóstico y plan con continuidad, provisioning condicionado a autorización y QA, y preparación de la captura desde el formulario existente. Estado y pasos de operación en [la guía del piloto](../onboarding/pilot-runbook.md). La validación de una location real se realiza en LAB antes del primer cliente.

@@ -127,8 +127,8 @@ export function Step4Process() {
   const current = state.answers.step4;
   const industry = state.answers.step2?.industry ?? "otro";
   const examples = INDUSTRY_EXAMPLES[industry] ?? INDUSTRY_EXAMPLES.otro;
-  const [salesCycleDuration, setSalesCycleDuration] = useState(current?.salesCycleDuration ?? "1-4_weeks");
-  const [topObjection, setTopObjection] = useState(current?.topObjection ?? "Precio");
+  const [salesCycleDuration, setSalesCycleDuration] = useState(current?.salesCycleDuration ?? "unknown");
+  const [topObjection, setTopObjection] = useState(current?.topObjection ?? "");
   const [topObjectionResolution, setTopObjectionResolution] = useState(
     current?.topObjectionResolution ?? ""
   );
@@ -136,16 +136,15 @@ export function Step4Process() {
   const [highRiskICP, setHighRiskICP] = useState(current?.highRiskICP ?? "");
   const [mainCompetitors, setMainCompetitors] = useState<string[]>(() => {
     const initial = current?.mainCompetitors;
-    if (!initial) return Array.from({ length: 10 }, () => "");
+    if (!initial) return ["", "", ""];
 
     const normalized = Array.isArray(initial) ? initial : [];
 
-    const merged = Array.from({ length: 10 }, (_, index) => normalized[index] ?? "");
+    const merged = Array.from({ length: Math.max(3,normalized.length) }, (_, index) => normalized[index] ?? "");
     return merged;
   });
-  const [competitorError, setCompetitorError] = useState<string | null>(null);
   const [whyCompetitorsFail, setWhyCompetitorsFail] = useState(
-    current?.whyCompetitorsFail ?? "Falta de seguimiento consistente"
+    current?.whyCompetitorsFail ?? ""
   );
   const [uniqueDifferentiator, setUniqueDifferentiator] = useState(
     current?.uniqueDifferentiator ?? ""
@@ -156,22 +155,15 @@ export function Step4Process() {
       .map((item) => item.trim())
       .filter(Boolean);
 
-    if (competitorList.length < 5) {
-      setCompetitorError("Necesitamos al menos 5 competidores para fortalecer el diagnostico.");
-      return;
-    }
-
-    setCompetitorError(null);
-
     updateStep4({
       salesCycleDuration,
-      salesCycleNotes: "Ciclo definido para el MVP",
+      salesCycleNotes: current?.salesCycleNotes ?? "",
       topObjection,
       topObjectionResolution,
       antiICP,
       highRiskICP,
       mainCompetitors: competitorList,
-      whyChoseUs: "Metodo, seguimiento y ejecucion guiada",
+      whyChoseUs: current?.whyChoseUs ?? "",
       whyCompetitorsFail,
       uniqueDifferentiator,
     });
@@ -189,7 +181,7 @@ export function Step4Process() {
         <label className="block text-sm text-stone-300">
           Ciclo de venta
           <select value={salesCycleDuration} onChange={(e) => setSalesCycleDuration(e.target.value as typeof salesCycleDuration)} className="wizard-select mt-2 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none focus:border-cyan-300/60">
-            <option value="same_day">Mismo día</option>
+            <option value="unknown">Por confirmar</option><option value="same_day">Mismo día</option>
             <option value="1-7_days">1-7 días</option>
             <option value="1-4_weeks">1-4 semanas</option>
             <option value="1-3_months">1-3 meses</option>
@@ -215,9 +207,9 @@ export function Step4Process() {
           <textarea value={highRiskICP} onChange={(e) => setHighRiskICP(e.target.value)} className="mt-2 min-h-24 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none focus:border-cyan-300/60" placeholder="Ej. Negocio con urgencia extrema pero sin capacidad de ejecucion ni responsable interno claro." />
         </label>
         <div className="block text-sm text-stone-300">
-          <p>Con quien te comparan hoy (minimo 5)</p>
+          <p>¿Con quién te comparan hoy? (opcional)</p>
           <p className="mt-2 text-xs leading-5 text-stone-400">
-            Escribe al menos 5 nombres de competidores o alternativas. Esto alimenta el analisis de fortalezas, debilidades y estrategia.
+            Incluye las alternativas que tus clientes realmente consideran.
           </p>
           <div className="mt-3 grid gap-2 md:grid-cols-2">
             {mainCompetitors.map((competitor, index) => (
@@ -225,7 +217,6 @@ export function Step4Process() {
                 key={`competitor-${index}`}
                 value={competitor}
                 onChange={(event) => {
-                  setCompetitorError(null);
                   setMainCompetitors((prev) => {
                     const next = [...prev];
                     next[index] = event.target.value;
@@ -233,13 +224,11 @@ export function Step4Process() {
                   });
                 }}
                 className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none focus:border-cyan-300/60"
-                placeholder={`Competidor ${index + 1}${index < 5 ? " (obligatorio)" : " (opcional)"}`}
+                placeholder={`Competidor ${index + 1}`}
               />
             ))}
           </div>
-          {competitorError && (
-            <p className="mt-2 text-xs text-rose-300">{competitorError}</p>
-          )}
+
         </div>
         <label className="block text-sm text-stone-300">
           Por que fallan esas alternativas
