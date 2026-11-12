@@ -3,9 +3,9 @@ import { selectWorkflowBlueprints, type WorkflowBlueprint } from "./workflow-blu
 // 10xteam Growth OS — motor de escenarios del Reporte Estratégico.
 // Supuestos declarados de modelación; NO son benchmarks ni promesas de ingresos.
 export type Currency = "MXN" | "USD";
-export type Sector = "consultoria" | "profesionales" | "financiero" | "comercio" | "citas" | "otros";
-export type Goal = "captacion" | "seguimiento" | "eficiencia" | "conversion";
-export type Channel = "referidos" | "web" | "redes" | "whatsapp" | "anuncios" | "ninguno";
+export type Sector = "consultoria" | "profesionales" | "financiero" | "comercio" | "citas" | "otros" | "agencias" | "inmobiliario" | "automotriz" | "salud" | "restaurantes" | "educacion" | "servicios_locales";
+export type Goal = "captacion" | "seguimiento" | "eficiencia" | "conversion" | "citas" | "reactivacion" | "contenido" | "calificacion";
+export type Channel = "referidos" | "web" | "redes" | "whatsapp" | "anuncios" | "prospeccion" | "ninguno";
 export type Role = "fundador" | "director" | "ventas" | "operaciones";
 
 export type ReportInput = {
@@ -14,7 +14,10 @@ export type ReportInput = {
   leads: number;
   manualHoursWeek: number;
   role: Role;
+  // Se usan porcentajes solo cuando la persona los conoce; suma = 100.
+  roleMix?: Partial<Record<Role, number>>;
   channel: Channel;
+  channelMix?: Partial<Record<Exclude<Channel,"ninguno">, number>>;
   avgSale: number | null;
   closeRate: number | null;
   currency: Currency;
@@ -32,7 +35,10 @@ export type Report = {
   input: ReportInput;
   startsWithoutLeads: boolean;
   roleHourlyReference: number;
-  assumptions: {closeRatePercent: number; avgSale: number; hourly: number; targetProspects: number};
+  roleShare: Record<Role, number>;
+  channelSummary: string;
+  channelShare: Partial<Record<Exclude<Channel,"ninguno">, number>>;
+    assumptions: {closeRatePercent: number; avgSale: number; hourly: number; targetProspects: number};
   inferred: string[];
   audiences: string[];
   buyingTrigger: string;
@@ -89,6 +95,62 @@ const profiles:Record<Sector,{
     stages:["Interés","Solicitud","Cita","Atención","Continuidad"],
     coreModule:"Agenda y confirmaciones autorizadas",
   },
+  agencias:{
+    audiences:["Empresas que requieren adquisición rentable y constante","Marcas que necesitan campañas conectadas a ventas"],
+    trigger:"Una meta de pipeline, generación de demanda o posicionamiento medible",
+    friction:"Demostrar atribución de resultados y velocidad de respuesta",
+    acquisition:"Prospección B2B, alianzas, contenido demostrable y referidos",
+    stages:["Entrada","Brief","Diagnóstico","Propuesta","Contrato"],
+    coreModule:"Calificación comercial y tablero de rendimiento de campañas"
+  },
+  inmobiliario:{
+    audiences:["Compradores comparando propiedades y financiamiento","Propietarios con intención de vender o rentar"],
+    trigger:"Una oportunidad de inmueble, cambio de casa o inversión",
+    friction:"Citas, tiempos de contacto y calificación de presupuesto",
+    acquisition:"Portales, referidos, redes y búsqueda local",
+    stages:["Lead","Calificación","Visita","Oferta","Cierre"],
+    coreModule:"Seguimiento de visitas y oportunidades por inmueble"
+  },
+  automotriz:{
+    audiences:["Compradores que comparan vehículos y planes","Clientes actuales con intención de renovación"],
+    trigger:"Cambio de vehículo, oferta o necesidad de financiamiento",
+    friction:"Cita de prueba, cotización, disponibilidad y objeciones",
+    acquisition:"Campañas, inventario disponible y referidos",
+    stages:["Interés","Calificación","Cotización","Prueba","Venta"],
+    coreModule:"Seguimiento de cotizaciones y pruebas de manejo"
+  },
+  salud:{
+    audiences:["Pacientes que solicitan una primera consulta","Pacientes recurrentes que necesitan continuidad"],
+    trigger:"Una necesidad de consulta o tratamiento específico",
+    friction:"Tiempos de respuesta, disponibilidad y confianza profesional",
+    acquisition:"Búsqueda local, reseñas y referidos",
+    stages:["Consulta","Contacto","Cita","Atención","Seguimiento"],
+    coreModule:"Citas y recordatorios con consentimiento; no automatizar datos clínicos"
+  },
+  restaurantes:{
+    audiences:["Comensales de la zona que buscan una experiencia","Clientes frecuentes y grupos con reservaciones"],
+    trigger:"Una comida, evento o reserva con fecha definida",
+    friction:"Descubrimiento, disponibilidad y cancelaciones",
+    acquisition:"Reseñas, búsqueda local, redes y referidos",
+    stages:["Interés","Reserva","Confirmación","Visita","Regreso"],
+    coreModule:"Reservaciones, confirmaciones y fidelización"
+  },
+  educacion:{
+    audiences:["Familias que comparan alternativas de aprendizaje","Profesionales que buscan desarrollar habilidades"],
+    trigger:"Inscripción, cambio de programa o actualización profesional",
+    friction:"Comparación de programas, becas y tiempos de respuesta",
+    acquisition:"Búsqueda, sesiones informativas, referidos y contenido educativo",
+    stages:["Consulta","Orientación","Visita","Inscripción","Seguimiento"],
+    coreModule:"Seguimiento de interesados e inscripciones"
+  },
+  servicios_locales:{
+    audiences:["Hogares con necesidades inmediatas","Empresas que contratan proveedores recurrentes"],
+    trigger:"Urgencia, mantenimiento preventivo o recomendación",
+    friction:"Disponibilidad, cotización y confianza",
+    acquisition:"Google, referencias locales, WhatsApp y reseñas",
+    stages:["Solicitud","Diagnóstico","Cotización","Servicio","Recompra"],
+    coreModule:"Cotizaciones y confirmaciones de servicio"
+  },
   otros:{
     audiences:["Compradores con una necesidad inmediata", "Clientes repetitivos de mayor valor"],
     trigger:"La necesidad de resolver un problema de manera confiable",
@@ -115,14 +177,18 @@ const safe=(n:number,min:number,max:number,name:string)=>{
 };
 export const defaultReportInput:ReportInput={
   sector:"consultoria",goal:"seguimiento",leads:50,manualHoursWeek:6,
-  role:"fundador",channel:"referidos",avgSale:null,closeRate:null,currency:"MXN",
+  role:"fundador",roleMix:{fundador:100},channel:"referidos",channelMix:{referidos:100},avgSale:null,closeRate:null,currency:"MXN",
 };
 
 const actions:Record<Goal,Recommendation>={
   captacion:{title:"Crear una entrada constante de oportunidades",detail:"Definir segmentos, mensajes y captación por fuentes con consentimiento y métricas.",module:"Prospección + captación",kind:"configuration"},
   seguimiento:{title:"Que ningún prospecto quede olvidado",detail:"Asignar responsable, etapa y siguiente tarea. Los mensajes externos requieren revisión.",module:"Pipeline + tareas",kind:"native_recipe"},
   eficiencia:{title:"Recuperar horas para vender más",detail:"Reducir captura doble, clasificación y reportes manuales antes de automatizar tareas críticas.",module:"Formularios + automatización interna",kind:"native_recipe"},
-  conversion:{title:"Convertir mejor cada oportunidad",detail:"Registrar objeciones, medir el avance y establecer seguimientos útiles.",module:"Pipeline + propuestas",kind:"native_recipe"}
+  conversion:{title:"Convertir mejor cada oportunidad",detail:"Registrar objeciones, medir el avance y establecer seguimientos útiles.",module:"Pipeline + propuestas",kind:"native_recipe"},
+  citas:{title:"Conseguir y confirmar más citas",detail:"Reducir fricción para agendar y preparar recordatorios con consentimiento.",module:"Agenda + seguimiento",kind:"native_recipe"},
+  reactivacion:{title:"Volver a conversar con clientes elegibles",detail:"Identificar clientes inactivos con permiso vigente y preparar mensajes para su revisión.",module:"Segmentación + recuperación",kind:"needs_review"},
+  contenido:{title:"Crear contenido que apoye la venta",detail:"Definir mensajes, campañas y materiales con revisión antes de publicar.",module:"Marketing + IA asistida",kind:"configuration"},
+  calificacion:{title:"Distinguir prospectos con mayor intención",detail:"Preparar preguntas de calificación y prioridades para el equipo comercial.",module:"Formularios + CRM",kind:"configuration"}
 };
 const pillars:{label:string;state:string;signal:string}[]=[
   {label:"Atracción",state:"A diagnosticar",signal:"Canal y segmentos prioritarios"},
@@ -138,6 +204,25 @@ export function buildReport(input:ReportInput):Report {
   if(input.closeRate!==null)safe(input.closeRate,0,100,"conversión");
   const p=profiles[input.sector];
   if(!p||!rate[input.currency]?.[input.role]||!actions[input.goal])throw new Error("Perfil inválido");
+  const roles:Role[]=["fundador","director","ventas","operaciones"];
+  const roleShare=Object.fromEntries(roles.map(r=>[r,input.roleMix?.[r]??(input.roleMix?0:r===input.role?100:0)])) as Record<Role,number>;
+  for(const v of Object.values(roleShare))safe(v,0,100,"responsable");
+  if(Math.abs(Object.values(roleShare).reduce((a,b)=>a+b,0)-100)>0.001)throw new Error("La distribución de responsables debe sumar 100%.");
+  const hourly=roles.reduce((sum,r)=>sum+roleShare[r]/100*rate[input.currency][r],0);
+  const sourceKeys:Exclude<Channel,"ninguno">[]=["referidos","web","redes","whatsapp","anuncios","prospeccion"];
+  const channelShare:Partial<Record<Exclude<Channel,"ninguno">,number>>=
+    input.channelMix??(input.channel==="ninguno"?{}:{[input.channel]:100});
+  for(const key of Object.keys(channelShare)){
+    if(!sourceKeys.includes(key as Exclude<Channel,"ninguno">))throw new Error("Canal no reconocido.");
+  }
+  for(const v of Object.values(channelShare))safe(v,0,100,"canal");
+  const channelSum=Object.values(channelShare).reduce((a,b)=>a+b,0);
+  if(input.leads>0&&Math.abs(channelSum-100)>0.001)throw new Error("Las fuentes deben sumar 100%.");
+  const labels:Record<Exclude<Channel,"ninguno">,string>={
+    referidos:"Referidos",web:"Web",redes:"Redes",whatsapp:"WhatsApp",anuncios:"Publicidad",prospeccion:"Prospección directa"
+  };
+  const channelSummary=input.leads===0?"Todavía no hay una fuente constante registrada":
+    sourceKeys.filter(k=>(channelShare[k]??0)>0).map(k=>labels[k]+" "+channelShare[k]+"%").join(" · ");
   const startsWithoutLeads=input.leads===0;
   const inferred:string[]=[];
   const avgSale=input.avgSale??saleAssumption[input.currency];
@@ -157,7 +242,7 @@ export function buildReport(input:ReportInput):Report {
       : input.leads*closeRatePercent/100*avgSale*cfg.uplift;
     scenarios[key]={
       recoveredHoursMonth:decimal(recovered),
-      capacityValueMonth:round(recovered*rate[input.currency][input.role]),
+      capacityValueMonth:round(recovered*hourly),
       grossSalesOpportunityMonth:round(grossSales),
       estimatedProspectsMonth:projected,
       conditional:true,
@@ -177,8 +262,8 @@ export function buildReport(input:ReportInput):Report {
     recs[0]={title:"Tu primer motor de prospección",detail:"Construir una primera fuente de clientes potenciales, probar mensajes con consentimiento y medir conversaciones útiles. Los volúmenes que ves son objetivos hipotéticos, no prospectos ya conseguidos.",module:"Captación + segmentación",kind:"configuration"};
   }
   return {
-    input,startsWithoutLeads,roleHourlyReference:rate[input.currency][input.role],
-    assumptions:{closeRatePercent,avgSale,hourly:rate[input.currency][input.role],targetProspects:scenarios.central.estimatedProspectsMonth},
+    input,startsWithoutLeads,roleHourlyReference:hourly,roleShare,channelSummary,channelShare,
+    assumptions:{closeRatePercent,avgSale,hourly,targetProspects:scenarios.central.estimatedProspectsMonth},
     inferred,audiences:p.audiences,buyingTrigger:p.trigger,friction:p.friction,acquisition:p.acquisition,
     growthThesis:signal,pillars,recommendations:recs,workflowCandidates:selectWorkflowBlueprints(input.sector,input.goal,!startsWithoutLeads),scenarios,stages:p.stages
   };
