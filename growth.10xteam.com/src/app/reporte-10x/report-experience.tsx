@@ -151,7 +151,7 @@ function ProspectReport({input,onEdit}: {input:ReportInput;onEdit:()=>void}){
         <div className="relative max-w-4xl">
           <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#7250E4]">Reporte Estratégico 10xteam · Visión inicial</p>
           <h1 className="mt-4 text-4xl font-semibold leading-[1.12] tracking-[-0.045em] text-[#17362F] md:text-[3.4rem]">
-            Tu próximo crecimiento necesita un sistema, no más tareas.
+            Una estrategia de crecimiento para {sectorNames[input.sector].toLowerCase()}. 
           </h1>
           <p className="mt-5 max-w-3xl text-lg leading-7 text-[#6C637C]">{report.growthThesis}</p>
           <div className="mt-6 flex flex-wrap gap-2">
@@ -277,8 +277,101 @@ function ProspectReport({input,onEdit}: {input:ReportInput;onEdit:()=>void}){
         </div>
       </section>
 
+
+      <section className={panel+" p-6 md:p-9"}>
+        <SectionHeader eyebrow="05 / Diagnóstico comercial">Las oportunidades que investigaríamos primero</SectionHeader>
+        <p className="mb-6 max-w-4xl text-sm leading-6 text-[#6B617D]">
+          No inventamos una puntuación para tu empresa. Esta es una hipótesis inicial a partir de tu industria,
+          prioridad, mezcla de canales y horas declaradas. Se irá confirmando con datos de uso reales.
+        </p>
+        <div className="grid gap-4 md:grid-cols-2">
+          {[
+            {k:"01",title:"Atracción de compradores adecuados",signal:report.channelSummary,
+              action:"Identificar fuentes repetibles y separar consultas de oportunidades calificadas."},
+            {k:"02",title:"Velocidad y seguimiento",signal:report.friction,
+              action:"Asignar responsables, tareas y medir el tiempo hasta la primera respuesta."},
+            {k:"03",title:"Conversión y experiencia comercial",signal:report.buyingTrigger,
+              action:"Crear etapas claras, guiar conversaciones y dar continuidad a propuestas."},
+            {k:"04",title:"Productividad y uso de IA",signal:formatNumber(base.recoveredHoursMonth)+" horas mensuales liberables en escenario base",
+              action:"Automatizar tareas administrativas y dar más tiempo a prospección y atención."},
+          ].map(item=><div key={item.k} className="rounded-2xl border border-[#E8E2F2] bg-[#FCFAFF] p-5">
+            <p className="text-xs font-bold tracking-[0.14em] text-[#7250E4]">ÁREA {item.k}</p>
+            <h3 className="mt-2 text-lg font-semibold text-[#302742]">{item.title}</h3>
+            <p className="mt-3 text-sm leading-6 text-[#615970]">{item.signal}</p>
+            <p className="mt-4 border-t border-[#ECE4F5] pt-3 text-xs leading-5 text-[#755F91]"><strong>Acción sugerida:</strong> {item.action}</p>
+          </div>)}
+        </div>
+      </section>
+
+      <section className={panel+" p-6 md:p-9"}>
+        <SectionHeader eyebrow="06 / Ecosistema Growth OS">Mucho más que un CRM: tu sistema comercial completo</SectionHeader>
+        <p className="mb-6 max-w-4xl text-sm leading-6 text-[#6B617D]">
+          Estas son capacidades y módulos que podrías aprovechar progresivamente. Las conexiones externas,
+          el consumo de IA y ciertas funciones pueden requerir activación o costos de proveedores.
+          Ninguna aparece aquí como ya configurada en tu negocio.
+        </p>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            ["Prospección","Segmentos, fuentes, campañas de captación y criterios de calificación"],
+            ["CRM y pipelines","Contactos, oportunidades, responsables y próximas acciones"],
+            ["Automatizaciones","Tareas, reglas y workflows para cada etapa"],
+            ["WhatsApp y conversaciones","Atención multicanal y bandeja de mensajes tras conexión"],
+            ["Email marketing","Plantillas, campañas y seguimiento con dominio autorizado"],
+            ["IA y asistentes","Borradores, respuestas, calificación y agentes con límites"],
+            ["Citas y calendarios","Reservas, disponibilidad, confirmaciones y recordatorios"],
+            ["Sitios y formularios","Landing pages, captación, formularios y encuestas"],
+            ["Contenido y redes","Planeación, publicaciones y seguimiento de resultados"],
+            ["Reactivación de clientes","Segmentación y campañas responsables para contactos elegibles"],
+            ["Reputación y reseñas","Solicitudes y seguimiento de opiniones con consentimiento"],
+            ["Analítica y reportes","Fuentes, conversiones, oportunidades, actividad y adopción"]
+          ].map(([title,description],i)=><div key={title} className="rounded-2xl border border-[#E7E2EE] bg-[#FBFAFE] p-5">
+            <span className="text-xs font-bold text-[#8563D7]">{String(i+1).padStart(2,"0")}</span>
+            <h3 className="mt-2 text-sm font-semibold text-[#342848]">{title}</h3>
+            <p className="mt-2 text-xs leading-5 text-[#756B85]">{description}</p>
+          </div>)}
+        </div>
+        <p className="mt-5 text-xs leading-5 text-[#7D7489]">Tu primera versión se enfocará en las áreas de mayor prioridad. No todas las integraciones son necesarias para comenzar.</p>
+      </section>
+
+      <section className={panel+" p-6 md:p-9"}>
+        <SectionHeader eyebrow="07 / Acompañamiento inteligente">Mi Inteligencia 10x aprenderá de tu negocio</SectionHeader>
+        <div className="grid gap-4 md:grid-cols-3">
+          {[
+            ["Hoy","Entendemos tu sector, prioridad y proceso de compra probable, sin pedirte un formulario interminable."],
+            ["Durante la prueba","Podrás completar tu oferta, objeciones, horarios y canales desde la plataforma, cuando lo necesites."],
+            ["Cada mes","El sistema podrá sugerir ajustes con base en datos autorizados de prospección, conversión y uso."]
+          ].map(([title,description],i)=><div key={title} className="rounded-2xl bg-[#F3EEFF] p-5">
+            <p className="text-xs font-bold text-[#7654CB]">ETAPA {i+1}</p>
+            <h3 className="mt-3 font-semibold text-[#36284D]">{title}</h3>
+            <p className="mt-2 text-sm leading-6 text-[#6E607E]">{description}</p>
+          </div>)}
+        </div>
+        <div className="mt-5 rounded-2xl bg-[#F9F6FF] p-5 text-sm text-[#514469]">
+          <strong>Una muestra para {sectorNames[input.sector].toLowerCase()}:</strong> prepararíamos
+          tu primer guion de calificación, el mensaje de respuesta inicial y las preguntas que ayudan a identificar compradores reales.
+          El contenido se podrá revisar antes de activar campañas, bots o envíos.
+        </div>
+      </section>
+
+      <section className={panel+" p-6 md:p-9"}>
+        <SectionHeader eyebrow="08 / Hoja de ruta">De tus primeros 14 días a una operación en crecimiento</SectionHeader>
+        <div className="grid gap-3 md:grid-cols-4">
+          {[
+            ["Días 1–2","Base funcional","Cuenta real, etapas y un primer formulario probado."],
+            ["Días 3–5","Conectar","Conexión voluntaria de los canales prioritarios y capacitación breve."],
+            ["Días 6–10","Optimizar","Revisar tareas, calificar oportunidades y ajustar automatizaciones."],
+            ["Días 11–14","Decidir","Mostrar actividad real, métricas iniciales y propuesta de continuidad."]
+          ].map(([when,title,description])=><div key={when} className="rounded-xl border border-[#E7E0EF] p-4">
+            <p className="text-xs font-bold text-[#7353C7]">{when}</p>
+            <h3 className="mt-2 text-base font-semibold text-[#342849]">{title}</h3>
+            <p className="mt-2 text-xs leading-5 text-[#756D82]">{description}</p>
+          </div>)}
+        </div>
+        <p className="mt-5 text-xs text-[#83768E]">Secuencia propuesta; la activación real depende de permisos, servicios conectados y validaciones funcionales.</p>
+      </section>
+
       <section className="rounded-[1.4rem] bg-[#292345] p-7 text-white md:p-10">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#D5C5FF]">05 / Tu ruta inicial</p>
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#D5C5FF]">09 / Tu ruta inicial</p>
         <h2 className="mt-3 text-3xl font-semibold tracking-tight">Los primeros 30 días, con prioridades claras.</h2>
         <div className="mt-7 grid gap-4 md:grid-cols-3">
           {[
