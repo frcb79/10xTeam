@@ -132,9 +132,9 @@ export default function PlatformPreview({input,report}:{
             <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#7454C7]">Activación / Vista de producto</p>
             <h1 className="mt-2 text-3xl font-semibold tracking-tight">Elige cómo quieres comenzar</h1>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-[#6B6476]">
-              Ya exploraste la plataforma y tu reporte. La próxima etapa propuesta es una prueba de 14 días;
-              antes de activarla mostraremos las condiciones, la fecha del primer cobro y, si corresponde,
-              la cuota de implementación. Esta demostración todavía no puede iniciar suscripciones.
+              Ya exploraste la plataforma y tu reporte. La siguiente etapa propuesta es una prueba real de 14 días sin tarjeta;
+              antes de activarla verificaremos tu correo, mostraremos las condiciones y, si corresponde,
+              la cuota de implementación. Esta Preview no crea cuentas, pero el flujo final sí lo hará en la agencia autorizada.
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
@@ -153,27 +153,28 @@ export default function PlatformPreview({input,report}:{
             </button>)}
           </div>
           <div className="rounded-2xl border border-[#D9D1F1] bg-[#F3EEFF] p-6">
-            <h2 className="text-xl font-semibold">Prueba de 14 días · Diseño comercial, no activada</h2>
+            <h2 className="text-xl font-semibold">14 días sin tarjeta · Activación real pendiente de integración</h2>
             <p className="mt-3 text-sm leading-6 text-[#625577]">
-              Seleccionaste {selectedPlan.label} ({selectedPrice}/mes de referencia). La página pública
-              actual todavía anuncia prueba sin tarjeta, mientras que el flujo que estamos diseñando
-              propone registrar la tarjeta antes de activar. Debemos unificar la oferta y aprobar
-              checkout, cobros, cancelación y tratamiento del setup antes de habilitar esta etapa.
+              Seleccionaste {selectedPlan.label} ({selectedPrice}/mes de referencia). Para iniciar los 14 días,
+              verificaremos tu correo y confirmaremos condiciones. Después crearemos tu subcuenta real
+              y te enviaremos el acceso para establecer tu contraseña. No se solicitará tarjeta en ese momento.
+              Al finalizar la prueba te ofreceremos elegir cómo pagar; sin autorización, no habrá cobro automático.
+              Debemos aprobar los términos, los límites gratuitos y la suspensión por vencimiento antes de publicar.
             </p>
             <button disabled className="mt-5 cursor-not-allowed rounded-xl bg-[#BEB3D7] px-5 py-3 text-sm font-semibold text-white" title="Checkout en desarrollo">
-              Iniciar 14 días y registrar tarjeta · Próximamente
+              Iniciar 14 días sin tarjeta · Registro en preparación
             </button>
-            <p className="mt-3 text-xs text-[#7B6B92]">No recogemos datos bancarios ni creamos subcuentas en esta demostración.</p>
+            <p className="mt-3 text-xs text-[#7B6B92]">Esta pantalla no envía correos ni crea subcuentas. El registro real se habilitará al conectar la nueva agencia.</p>
             <button onClick={()=>setActivationPreview(v=>!v)} aria-expanded={activationPreview}
               className="mt-5 rounded-xl border border-[#BCA8F0] bg-white px-5 py-3 text-sm font-semibold text-[#6D4CC9] hover:bg-[#F5F0FF]">
-              {activationPreview?"Ocultar recorrido de preparación":"Ver cómo prepararemos tu cuenta después del pago"}
+              {activationPreview?"Ocultar recorrido de preparación":"Ver cómo prepararemos tu cuenta después de verificar el correo"}
             </button>
             {activationPreview&&<div className="mt-5 rounded-2xl border border-[#E4DDF4] bg-white p-5">
               <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#7050CD]">Simulación · Ninguna cuenta se está configurando</p>
               <h3 className="mt-2 text-xl font-semibold text-[#302642]">Así sería tu arranque personalizado</h3>
               <div className="mt-4 space-y-3">
                 {[
-                  ["01","Verificamos tu pago y permisos","Sólo con confirmación del proveedor y autorización del titular."],
+                  ["01","Verificamos tu correo y autorizaciones","Con identidad verificada, aceptación de condiciones y una prueba por negocio elegible."],
                   ["02","Preparamos tu proceso de venta",model.stages.join(" → ")],
                   ["03","Validamos las automatizaciones",model.workflowCandidates.map(w=>w.purpose).join(" · ")],
                   ["04","Comprobamos tu primera oportunidad","Un lead sintético, una tarea y una medición antes de abrir canales reales."],
@@ -184,7 +185,7 @@ export default function PlatformPreview({input,report}:{
                   </div>
                 </div>)}
               </div>
-              <p className="mt-4 text-sm font-semibold text-[#463575]">Cuando todo esté verificado te guiaremos a CRM, captación y Mi Inteligencia 10x.</p>
+              <p className="mt-4 text-sm font-semibold text-[#463575]">Cuando todo esté verificado, te enviaremos el enlace de acceso real a CRM, captación y Mi Inteligencia 10x.</p>
               <p className="mt-2 text-xs leading-5 text-[#857B92]">El alta real puede tomar más de unos segundos; mostraremos su estado real, sin fingir una activación instantánea.</p>
             </div>}
           </div>
