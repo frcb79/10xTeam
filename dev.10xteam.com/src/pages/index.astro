@@ -560,8 +560,8 @@ const pageTitle = "10xTeam Dev | Custom Software, AI & Flexible Engineering";
         </div>
         <div class="footer-links">
           <a href="#" class="open-agency-modal footer-agency-link">Agencies</a>
-          <a href="/terminos">Terms & Conditions</a>
-          <a href="/privacidad">Privacy Policy</a>
+          <a href="https://10xteam.com.mx/legal/terms" data-href-en="https://10xteam.com.mx/legal/terms" data-href-es="https://10xteam.com.mx/legal/terminos">Terms & Conditions</a>
+          <a href="https://10xteam.com.mx/legal/privacy" data-href-en="https://10xteam.com.mx/legal/privacy" data-href-es="https://10xteam.com.mx/legal/aviso">Privacy Policy</a>
         </div>
       </div>
     </footer>
@@ -793,6 +793,9 @@ const pageTitle = "10xTeam Dev | Custom Software, AI & Flexible Engineering";
           });
           document.querySelectorAll('[data-placeholder-en][data-placeholder-es]').forEach(el => {
             el.setAttribute('placeholder', el.getAttribute(locale === 'es' ? 'data-placeholder-es' : 'data-placeholder-en') || '');
+          });
+          document.querySelectorAll('a[data-href-en][data-href-es]').forEach(el => {
+            el.setAttribute('href', el.getAttribute(locale === 'es' ? 'data-href-es' : 'data-href-en') || '');
           });
           const indicator = document.getElementById('lang-indicator');
           if (indicator) indicator.textContent = locale.toUpperCase();
