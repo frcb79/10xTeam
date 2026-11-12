@@ -179,7 +179,7 @@ test("isolated LAB route requires explicit synthetic authorized_emails, rejects 
     const stillDisabled = await db.query(
       "select enabled from onboarding_form_routes where location_id = 'Be3Voe6UoPjiAawaQUCK'",
     );
-    assert.equal(stillDisabled.rows[0] && (rows[0] as {enabled:boolean}).enabled, false,
+    assert.equal((stillDisabled.rows[0] as {enabled:boolean} | undefined)?.enabled, false,
       "LAB route must remain disabled even when rollback aborts on pending work");
     const isolationStillPresent = await db.query(
       "select column_name from information_schema.columns where table_name = 'onboarding_form_routes' and column_name = 'authorized_emails'",
@@ -200,7 +200,7 @@ test("isolated LAB route requires explicit synthetic authorized_emails, rejects 
     const labRoute = await db.query(
       "select enabled from onboarding_form_routes where location_id = 'Be3Voe6UoPjiAawaQUCK'",
     );
-    assert.equal(labRoute.rows[0] && (rows[0] as {enabled:boolean}).enabled, false, "LAB route must be disabled after rollback");
+    assert.equal((labRoute.rows[0] as {enabled:boolean} | undefined)?.enabled, false, "LAB route must be disabled after rollback");
   } finally {
     await db.close();
   }
