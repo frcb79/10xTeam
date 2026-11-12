@@ -15,20 +15,32 @@ const sectorNames:Record<Sector,string>={
   financiero:"Créditos, seguros y servicios financieros",
   comercio:"Comercio y productos",
   citas:"Servicios que se venden con cita",
-  otros:"Otros negocios"
+  agencias:"Agencias de marketing y servicios digitales",
+  inmobiliario:"Inmobiliarias y asesores de bienes raíces",
+  automotriz:"Agencias, distribuidores y asesores automotrices",
+  salud:"Clínicas, consultorios y bienestar",
+  restaurantes:"Restaurantes, cafeterías y hospitalidad",
+  educacion:"Escuelas, academias y cursos",
+  servicios_locales:"Servicios locales y mantenimiento",
+  otros:"Otro negocio"
 };
 const goalNames:Record<Goal,string>={
   captacion:"Necesito conseguir más prospectos",
   seguimiento:"Quiero que no se pierdan oportunidades",
   eficiencia:"Quiero liberar tiempo del equipo",
-  conversion:"Quiero cerrar más ventas"
+  conversion:"Quiero cerrar más ventas",
+  citas:"Quiero conseguir y confirmar citas",
+  reactivacion:"Quiero recuperar clientes inactivos",
+  contenido:"Quiero mejorar campañas y contenido",
+  calificacion:"Quiero distinguir prospectos de calidad"
 };
 const channelNames:Record<Channel,string>={
   referidos:"Referidos y recomendaciones",
   web:"Sitio web y formularios",
   redes:"Redes sociales",
   whatsapp:"WhatsApp y mensajes",
-  anuncios:"Publicidad",
+  anuncios:"Publicidad pagada",
+  prospeccion:"Prospección directa",
   ninguno:"Todavía no tengo un canal constante"
 };
 const roleNames:Record<Role,string>={
@@ -56,6 +68,57 @@ function Selector<T extends string|number>({title,hint,value,onChange,items}:{
     {items.map(([v,label])=><option key={String(v)} value={v}>{label}</option>)}
   </select>
 </label>;}
+const roleKeys=["fundador","director","ventas","operaciones"] as const;
+const sourceKeys=["referidos","web","redes","whatsapp","anuncios","prospeccion"] as const;
+type SourceKey=typeof sourceKeys[number];
+function redistribute<K extends string>(keys:readonly K[],current:Partial<Record<K,number>>,changed:K,next:number):Record<K,number>{
+  const amount=Math.max(0,Math.min(100,Math.round(next/5)*5));
+  const result={} as Record<K,number>;
+  result[changed]=amount;
+  const others=keys.filter(x=>x!==changed);
+  const rest=100-amount;
+  const weights=others.map(k=>current[k]??0);
+  const total=weights.reduce((a,b)=>a+b,0);
+  let allocated=0;
+  others.forEach((k,i)=>{
+    const portion=i===others.length-1?rest-allocated:
+      total>0?Math.floor(rest*weights[i]/total/5)*5:
+      i===0?rest:0;
+    result[k]=portion;
+    allocated+=portion;
+  });
+  return result;
+}
+function ShareEditor<K extends string>({title,help,keys,labels,mix,onChange,presets}:{
+  title:string;help:string;keys:readonly K[];labels:Record<K,string>;
+  mix:Partial<Record<K,number>>;onChange:(next:Record<K,number>)=>void;
+  presets:Array<{label:string;values:Partial<Record<K,number>>}>;
+}){
+  return <fieldset className="rounded-2xl border border-[#E8E1F3] bg-[#FBFAFE] p-4">
+    <legend className="px-1 text-sm font-semibold text-[#423653]">{title}</legend>
+    <p className="text-xs leading-5 text-[#82788E]">{help}</p>
+    <div className="mt-3 flex flex-wrap gap-2">
+      {presets.map(p=><button type="button" key={p.label} onClick={()=>onChange(Object.fromEntries(keys.map(k=>[k,p.values[k]??0])) as Record<K,number>)}
+        className="rounded-full border border-[#D6CBF4] bg-white px-3 py-2 text-xs font-semibold text-[#6D52B4] hover:bg-[#F2EBFF]">{p.label}</button>)}
+    </div>
+    <details className="mt-3 rounded-xl border border-[#E2DAEE] bg-white p-3">
+      <summary className="cursor-pointer text-sm font-semibold text-[#7051CE]">Ajustar porcentajes por {keys.length===4?"responsable":"fuente"}</summary>
+      <p className="mt-2 text-xs text-[#877C93]">Los porcentajes se distribuyen automáticamente para sumar 100%.</p>
+      <div className="mt-3 space-y-3">
+        {keys.map(k=><label className="grid grid-cols-[minmax(0,1fr)_48px] items-center gap-3" key={k}>
+          <div className="min-w-0">
+            <span className="text-xs font-semibold text-[#443652]">{labels[k]}</span>
+            <input type="range" className="mt-1 block w-full accent-[#7250E4]" min={0} max={100} step={5}
+              aria-label={labels[k]+" porcentaje"} value={mix[k]??0}
+              onChange={e=>onChange(redistribute(keys,mix,k,Number(e.target.value)))}/>
+          </div>
+          <span className="text-right text-xs font-semibold text-[#7050CC]">{mix[k]??0}%</span>
+        </label>)}
+      </div>
+      <div className="mt-4 text-right text-xs font-bold text-[#7250E4]">Total: {keys.reduce((a,k)=>a+(mix[k]??0),0)}%</div>
+    </details>
+  </fieldset>;
+}
 function Kpi({label,value,context,tone}:{
   label:string;value:string;context:string;tone:"teal"|"blue"|"sand"
 }){
@@ -117,7 +180,7 @@ function ProspectReport({input,onEdit}: {input:ReportInput;onEdit:()=>void}){
           <Kpi tone="teal" label="Tiempo que podrías recuperar" value={formatNumber(a.recoveredHoursMonth)+" h/mes"}
             context={"Capacidad para prospección, atención y tareas estratégicas."}/>
           <Kpi tone="blue" label="Valor equivalente de ese tiempo" value={formatMoney(a.capacityValueMonth,input.currency)}
-            context={"Referencia económica del rol: "+roleNames[input.role]+". No es ahorro de nómina automático."}/>
+            context={"Valor de capacidad ponderado entre las personas que hacen esas tareas. No es ahorro de nómina automático."}/>
           <Kpi tone="sand"
             label={zero?"Escenario de primeras ventas":"Posibles ventas adicionales"}
             value={formatMoney(a.grossSalesOpportunityMonth,input.currency)}
@@ -153,7 +216,7 @@ function ProspectReport({input,onEdit}: {input:ReportInput;onEdit:()=>void}){
         <div className="mt-4 rounded-2xl border border-[#DAE8DC] bg-[#F8FCF8] p-5">
           <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#527565]">Canales sugeridos para probar</p>
           <p className="mt-2 text-base font-semibold text-[#392B62]">{report.acquisition}</p>
-          <p className="mt-2 text-xs text-[#607569]">Tu canal declarado: {channelNames[input.channel]}. No se asumen campañas activas ni datos obtenidos de terceros.</p>
+          <p className="mt-2 text-xs text-[#607569]">Fuentes declaradas: {report.channelSummary}. No se asumen campañas activas ni datos de terceros.</p>
         </div>
       </section>
 
@@ -197,7 +260,7 @@ function ProspectReport({input,onEdit}: {input:ReportInput;onEdit:()=>void}){
         <div className="rounded-[1.4rem] border border-[#D5E5D9] bg-[#F2EDF9] p-6 md:p-8">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#23664E]">Capacidad del equipo</p>
           <h3 className="mt-3 text-2xl font-semibold text-[#35294D]">El tiempo del fundador también tiene valor.</h3>
-          <p className="mt-4 text-sm leading-6 text-[#496758]">Si recuperamos {formatNumber(base.recoveredHoursMonth)} horas al mes, el valor equivalente cambia según quién hoy hace ese trabajo.</p>
+          <p className="mt-4 text-sm leading-6 text-[#496758]">Con {formatNumber(base.recoveredHoursMonth)} horas mensuales potencialmente liberables, el valor cambia según quién realiza el trabajo. Tu cálculo pondera la participación de cada rol.</p>
           <div className="mt-5 space-y-3">
             {(["operaciones","ventas","director","fundador"] as const).map(role=>{
               const tariff:Record<Currency,Record<Role,number>>={
@@ -263,22 +326,28 @@ export default function ReportExperience(){
     if(screen!=="analysis")return;
     // Displays actual locally computed result stages; does not claim remote AI.
     const timers=[
-      window.setTimeout(()=>setAnalysisStep(1),350),
-      window.setTimeout(()=>setAnalysisStep(2),760),
-      window.setTimeout(()=>setAnalysisStep(3),1150),
-      window.setTimeout(()=>setScreen("platform"),1750),
+      window.setTimeout(()=>setAnalysisStep(1),2200),
+      window.setTimeout(()=>setAnalysisStep(2),4400),
+      window.setTimeout(()=>setAnalysisStep(3),6800),
+      window.setTimeout(()=>setScreen("platform"),9500),
     ];
     return ()=>timers.forEach(window.clearTimeout);
   },[screen]);
   const set=<K extends keyof ReportInput>(k:K,value:ReportInput[K])=>setInput(v=>({...v,[k]:value}));
   const sales=input.currency==="MXN"?[5000,15000,35000,75000,150000]:[250,900,2500,5000,12000];
+  const setLeads=(v:number)=>setInput(prev=>({
+    ...prev,leads:v,channel:v===0?"ninguno":prev.channel==="ninguno"?"referidos":prev.channel,
+    channelMix:v===0?{}:prev.leads===0?{referidos:100}:prev.channelMix
+  }));
+  const roleMix=input.roleMix??{[input.role]:100};
+  const channelMix=input.channelMix??(input.channel==="ninguno"?{}:{[input.channel]:100});
   if(screen==="platform")return <PlatformPreview input={input} report={
     <ProspectReport input={input} onEdit={()=>{setScreen("questions");window.scrollTo(0,0);}}/>
   }/>;
   if(screen==="analysis")return <div className="flex min-h-screen items-center justify-center bg-[#F8F7FC] px-5 text-[#28213F]">
     <main className="w-full max-w-xl rounded-3xl border border-[#E5DDF4] bg-white p-8 shadow-[0_22px_80px_#62558C11] md:p-11" role="status" aria-live="polite">
       <div className="inline-flex rounded-xl bg-[#241E3D] px-4 py-2">
-        <Image src="/Logo_10xteam.png" alt="10xteam" width={124} height={48} className="h-9 w-auto object-contain"/>
+        <Image src="/Logo_10xteam.png" alt="10xteam" width={124} height={48} className="h-9 w-auto object-contain mix-blend-screen"/>
       </div>
       <p className="mt-8 text-xs font-bold uppercase tracking-[0.2em] text-[#7859C8]">Preparando tu experiencia</p>
       <h1 className="mt-3 text-3xl font-semibold tracking-tight">Tu negocio, visto desde otra perspectiva.</h1>
@@ -309,7 +378,7 @@ export default function ReportExperience(){
     <header className="border-b border-[#E4E8E0] bg-white/90">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-5 md:px-8">
         <Link href="/" className="flex items-center gap-3">
-          <span className="rounded-xl bg-[#231B3B] px-3 py-1.5"><Image src="/Logo_10xteam.png" alt="10xteam" width={128} height={50} className="h-8 w-auto object-contain" priority/></span>
+          <span className="rounded-xl bg-black px-3 py-1.5"><Image src="/Logo_10xteam.png" alt="10xteam" width={128} height={50} className="h-8 w-auto object-contain mix-blend-screen" priority/></span>
           <span className="text-xs font-semibold uppercase tracking-[0.12em] text-[#806E9A]">Growth OS</span>
         </Link>
         <span className="text-xs font-medium text-[#6A7F73]">Análisis inicial · Sin registro ni compromiso</span>
@@ -352,13 +421,44 @@ export default function ReportExperience(){
             <Selector title="2. ¿Qué te gustaría mejorar primero?" value={input.goal}
               onChange={v=>set("goal",v)} items={Object.entries(goalNames) as [Goal,string][]}/>
             <Selector title="3. ¿Cuántos prospectos recibes aproximadamente al mes?" value={input.leads}
-              onChange={v=>set("leads",v)} items={[[0,"Todavía no tengo prospectos"],[10,"1–20"],[50,"21–80"],[125,"81–200"],[300,"Más de 200"]]}/>
-            <Selector title="4. ¿Cuántas horas a la semana dedican a tareas repetitivas?" hint="Seguimiento manual, capturas, recordatorios y coordinación." value={input.manualHoursWeek}
-              onChange={v=>set("manualHoursWeek",v)} items={[[2,"1–3 horas"],[6,"4–8 horas"],[12,"9–15 horas"],[20,"Más de 15 horas"]]}/>
-            <Selector title="5. ¿Quién realiza principalmente esas tareas?" value={input.role}
-              onChange={v=>set("role",v)} items={Object.entries(roleNames) as [Role,string][]}/>
-            <Selector title="6. ¿De dónde llegan hoy tus oportunidades?" value={input.channel}
-              onChange={v=>set("channel",v)} items={Object.entries(channelNames) as [Channel,string][]}/>
+              onChange={setLeads} items={[[0,"Todavía no tengo prospectos"],[10,"1–20"],[50,"21–80"],[125,"81–200"],[300,"Más de 200"]]}/>
+            <div>
+              <Selector title="4. ¿Cuántas horas semanales invierte tu equipo en tareas repetitivas?" hint="Suma el tiempo de todas las personas involucradas, no por prospecto." value={input.manualHoursWeek}
+                onChange={v=>set("manualHoursWeek",v)} items={[[0,"Casi nada"],[2,"1–3 horas"],[6,"4–8 horas"],[12,"9–15 horas"],[20,"16–25 horas"],[35,"Más de 25 horas"]]}/>
+              <details className="mt-2 rounded-xl border border-[#E7E2F1] bg-[#F8F5FE] px-4 py-3 text-xs text-[#766A89]">
+                <summary className="cursor-pointer font-semibold text-[#6F50CE]">ⓘ ¿Qué tiempo debo incluir? (toca para ver ejemplos)</summary>
+                <p className="mt-2 leading-5">Incluye copiar datos entre sistemas, revisar leads, asignar responsables,
+                preparar reportes, agendar manualmente, recordar seguimientos o responder preguntas repetidas.
+                Ejemplo: dos personas que invierten 3 horas cada una = 6 horas semanales. No incluyas el tiempo de
+                vender o atender personalmente que quieras conservar.</p>
+              </details>
+            </div>
+            <ShareEditor<Role> title="5. ¿Quién realiza ese trabajo y en qué proporción?"
+              help="Puedes elegir un ejemplo y afinar los porcentajes. Esto nos permite valorar correctamente el tiempo de cada persona."
+              keys={roleKeys} labels={roleNames} mix={roleMix}
+              onChange={mix=>setInput(v=>({...v,roleMix:mix,role:roleKeys.find(k=>mix[k]===Math.max(...Object.values(mix)))??"fundador"}))}
+              presets={[
+                {label:"Sólo fundador",values:{fundador:100}},
+                {label:"Equipo de ventas",values:{ventas:100}},
+                {label:"Operaciones",values:{operaciones:100}},
+                {label:"Equipo compartido",values:{fundador:25,director:25,ventas:25,operaciones:25}},
+              ]}/>
+            {input.leads===0?
+              <div className="rounded-xl border border-[#E0D6F3] bg-[#F8F4FF] p-4 text-sm text-[#66507C]">
+                <p className="font-semibold">6. Tu primera fuente de prospectos todavía está por definir.</p>
+                <p className="mt-2 text-xs leading-5">Al no recibir prospectos, no tiene sentido inventar porcentajes. Tu reporte presentará una estrategia de captación inicial.</p>
+              </div>:
+              <ShareEditor<SourceKey> title="6. ¿De dónde llegan tus prospectos actualmente?"
+                help="Puedes indicar varias fuentes y su proporción aproximada. Las recomendaciones priorizarán lo que ya funciona."
+                keys={sourceKeys} labels={channelNames} mix={channelMix}
+                onChange={mix=>setInput(v=>({...v,channelMix:mix,channel:sourceKeys.find(k=>mix[k]===Math.max(...Object.values(mix)))??"referidos"}))}
+                presets={[
+                  {label:"Sólo referidos",values:{referidos:100}},
+                  {label:"Redes + WhatsApp",values:{redes:50,whatsapp:50}},
+                  {label:"Digital y anuncios",values:{web:30,redes:30,anuncios:40}},
+                  {label:"Fuentes diversas",values:{referidos:25,web:20,redes:20,whatsapp:20,anuncios:10,prospeccion:5}}
+                ]}/>
+            }
             <Selector title="7. ¿Qué valor aproximado tiene una venta?" value={input.avgSale??"unknown"}
               onChange={v=>set("avgSale",v==="unknown"?null:Number(v))}
               items={[["unknown","No lo sé"],...sales.map(v=>[v,formatMoney(v,input.currency)])] as [number|string,string][]}/>
