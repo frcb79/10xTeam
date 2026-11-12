@@ -26,7 +26,7 @@ test("existing lead revenue is incremental conversion hypothesis, not existing t
  assert.deepEqual(r.inferred,[]);
 });
 test("currency has own rate assumptions, not an FX conversion",()=>{
- const r=buildReport({...defaultReportInput,currency:"USD",role:"operaciones",avgSale:null});
+ const r=buildReport({...defaultReportInput,currency:"USD",role:"operaciones",roleMix:{operaciones:100},avgSale:null});
  assert.equal(r.assumptions.avgSale,900);
  assert.equal(r.roleHourlyReference,16);
 });
@@ -40,4 +40,29 @@ test("invalid inputs rejected to protect financial claims",()=>{
  assert.throws(()=>buildReport({...defaultReportInput,manualHoursWeek:-1}));
  assert.throws(()=>buildReport({...defaultReportInput,leads:NaN}));
  assert.throws(()=>buildReport({...defaultReportInput,closeRate:101}));
+});
+
+test("multi-role mix uses actual weighted hourly cost instead of assuming founder does all work",()=>{
+ const r=buildReport({...defaultReportInput,manualHoursWeek:10,roleMix:{fundador:25,director:25,ventas:25,operaciones:25}});
+ assert.equal(r.roleHourlyReference,375);
+ assert.equal(r.scenarios.central.recoveredHoursMonth,17.3);
+ assert.equal(r.scenarios.central.capacityValueMonth,6495);
+ assert.equal(r.roleShare.fundador,25);
+});
+test("multi-channel mix is retained and clearly summarized for report",()=>{
+ const r=buildReport({...defaultReportInput,channelMix:{referidos:40,redes:20,whatsapp:30,prospeccion:10}});
+ assert.equal(r.channelSummary,"Referidos 40% · Redes 20% · WhatsApp 30% · Prospección directa 10%");
+ assert.throws(()=>buildReport({...defaultReportInput,channelMix:{referidos:60,redes:20}}),/sumar 100/);
+});
+test("expanded industries and growth goals generate tailored outputs",()=>{
+ const r=buildReport({...defaultReportInput,sector:"automotriz",goal:"citas"});
+ assert.ok(r.stages.includes("Prueba"));
+ assert.match(r.recommendations[0].title,/citas/);
+ const v=buildReport({...defaultReportInput,sector:"restaurantes",goal:"reactivacion"});
+ assert.ok(v.audiences.some(x=>/Comensales/.test(x)));
+ assert.ok(v.recommendations[0].kind==="needs_review");
+});
+test("invalid responsibility percentages cannot produce misleading cost estimate",()=>{
+ assert.throws(()=>buildReport({...defaultReportInput,roleMix:{fundador:70,operaciones:20}}),/sumar 100/);
+ assert.throws(()=>buildReport({...defaultReportInput,roleMix:{fundador:110,operaciones:-10}}),/fuera de rango/);
 });
