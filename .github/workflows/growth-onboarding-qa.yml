@@ -30,3 +30,7 @@ jobs:
         run: npm ci
       - name: Unit and contract tests
         run: npm test
+      - name: Typecheck
+        run: npx tsc --noEmit
+      - name: Build
+        run: npm run build
