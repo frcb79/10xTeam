@@ -37,6 +37,9 @@ const sectors:Record<ReportInput["sector"],string>={
   consultoria:"Consultoría", profesionales:"Servicios profesionales",
   financiero:"Servicios financieros", comercio:"Comercio",
   citas:"Servicios con citas", otros:"Otros negocios",
+  agencias:"Agencias y servicios digitales", inmobiliario:"Inmobiliaria",
+  automotriz:"Automotriz", salud:"Salud y bienestar", restaurantes:"Restaurantes",
+  educacion:"Educación", servicios_locales:"Servicios locales",
 };
 const colors = {
   violet:"text-[#7050DB]",
@@ -89,9 +92,9 @@ export default function PlatformPreview({input,report}:{
     <div className="border-b border-[#EAE7F0] bg-white">
       <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-3 px-4 py-4 md:px-7">
         <div className="flex items-center gap-3">
-          <div className="rounded-xl bg-[#211B39] px-3 py-1.5">
+          <div className="rounded-xl bg-black px-3 py-1.5">
             <Image src="/Logo_10xteam.png" alt="10xteam" width={114} height={46}
-              className="h-8 w-auto object-contain" priority/>
+              className="h-8 w-auto object-contain mix-blend-screen" priority/>
           </div>
           <span className="hidden border-l border-[#DFDCE5] pl-3 text-xs font-semibold uppercase tracking-widest text-[#766C86] sm:block">Growth OS</span>
         </div>
