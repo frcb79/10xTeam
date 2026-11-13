@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.css?v=10x2026">
+<link rel="stylesheet" href="./styles.css?v=10x20261112">
 <style>
 :root {
   --bg-deep: #060810;
@@ -391,7 +391,7 @@ body.video-background-mode .cinematic-step {
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"10xTeam","legalName":"CR Mexico Educativo, S.A. de C.V.","url":"https://10xteam.com.mx/","logo":"https://10xteam.com.mx/Logo_10xteam.png","email":"soporte@10xteam.com.mx"}</script>
 </head>
 <body>
-<a class="skip-link" href="#soluciones">Saltar a soluciones</a>
+<a class="skip-link" href="#soluciones" data-site-aria-es="Saltar a soluciones" data-site-aria-en="Skip to solutions" aria-label="Saltar a soluciones">Saltar a soluciones</a>
 
 <!-- Capa de Video -->
 <div class="video-stage">
@@ -441,9 +441,10 @@ body.video-background-mode .cinematic-step {
 
 <header class="topbar">
   <a class="brand" href="/" aria-label="10xTeam - Inicio"><img src="./Logo_10xteam.png" alt="10xTeam" width="140" height="56"></a>
-  <nav class="top-actions" aria-label="Soluciones 10xTeam">
+  <nav class="top-actions" aria-label="Soluciones 10xTeam" data-site-aria-es="Soluciones 10xTeam" data-site-aria-en="10xTeam solutions">
     <a class="top-link top-link-growth" href="https://growth.10xteam.com.mx">Growth</a>
     <a class="top-link top-link-dev" href="https://dev.10xteam.com.mx">Dev</a>
+    <button class="top-link top-link-lang" id="siteLangSwitch" type="button" aria-label="Switch to English" aria-pressed="false" title="English">EN</button>
   </nav>
 </header>
 
@@ -473,7 +474,7 @@ body.video-background-mode .cinematic-step {
         <h3 class="st-service-name">10xTeam Growth</h3>
         <p class="st-service-tagline">Un sistema para generar, gestionar y convertir demanda.</p>
         <p class="st-service-desc">Desde entender con precisión quién es tu cliente ideal hasta crear materiales, prospectar, dar seguimiento, operar conversaciones, medir resultados y priorizar qué hacer después.</p>
-        <div class="st-capabilities" aria-label="Capacidades de 10xTeam Growth">
+        <div class="st-capabilities" aria-label="Capacidades de 10xTeam Growth" data-site-aria-es="Capacidades de 10xTeam Growth" data-site-aria-en="10xTeam Growth capabilities">
           <span>Estrategia e ICP</span><span>Contenido y materiales</span><span>Prospección multicanal</span>
           <span>CRM y pipelines</span><span>Automatización y seguimiento</span><span>IA e inteligencia</span>
         </div>
@@ -491,7 +492,7 @@ body.video-background-mode .cinematic-step {
         <h3 class="st-service-name">10xTeam Dev</h3>
         <p class="st-service-tagline">Tecnología construida alrededor del negocio, no al revés.</p>
         <p class="st-service-desc">Diseñamos y desarrollamos productos digitales, aplicaciones, automatizaciones e integraciones con enfoque de negocio, velocidad y eficiencia desde el día cero.</p>
-        <div class="st-capabilities" aria-label="Capacidades de 10xTeam Dev">
+        <div class="st-capabilities" aria-label="Capacidades de 10xTeam Dev" data-site-aria-es="Capacidades de 10xTeam Dev" data-site-aria-en="10xTeam Dev capabilities">
           <span>Productos digitales</span><span>Apps y plataformas</span><span>MVPs</span>
           <span>Automatización</span><span>Integraciones</span><span>Equipos de desarrollo</span>
         </div>
@@ -515,7 +516,7 @@ body.video-background-mode .cinematic-step {
     </div>
     <div class="footer-col"><p class="footer-title">Soluciones</p><a href="https://growth.10xteam.com.mx">Growth</a><a href="https://dev.10xteam.com.mx">Dev</a></div>
     <div class="footer-col"><p class="footer-title">Contacto</p><a href="mailto:soporte@10xteam.com.mx">soporte@10xteam.com.mx</a></div>
-    <div class="footer-col"><p class="footer-title">Legal</p><a href="/legal/terminos">Términos y Condiciones</a><a href="/legal/aviso">Aviso de Privacidad</a></div>
+    <div class="footer-col"><p class="footer-title">Legal</p><a href="/legal/terminos" data-site-url-es="/legal/terminos" data-site-url-en="/legal/terms">Términos y Condiciones</a><a href="/legal/aviso" data-site-url-es="/legal/aviso" data-site-url-en="/legal/privacy">Aviso de Privacidad</a></div>
   </div>
   <div class="footer-bottom">
     <p>Operado por CR Mexico Educativo, S.A. de C.V.</p>
@@ -604,6 +605,7 @@ if (video) {
 
 document.getElementById("year").textContent = new Date().getFullYear();
 </script>
+<script src="./i18n/language.js" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
