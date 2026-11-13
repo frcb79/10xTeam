@@ -122,6 +122,6 @@ export function localizeGrowthHtml(source: string, lang: Language): string {
     '\n<link rel="canonical" href="https://growth.10xteam.com.mx/?lang=' + lang + '">' +
     '\n</head>');
   html = html.replace('<div class="tx-nav-actions">', '<div class="tx-nav-actions">' + languageControl(lang));
-  html = html.replace("</body>", (lang === "en" ? ENGLISH_RUNTIME : PREFERENCE_RUNTIME) + "\n</body>");
+  html = html.replace("</body>", PREFERENCE_RUNTIME + (lang === "en" ? "\n" + ENGLISH_RUNTIME : "") + "\n</body>");
   return html;
 }
