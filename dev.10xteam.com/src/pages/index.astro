@@ -424,7 +424,7 @@ const pageTitle = "10xTeam Dev | Custom Software, AI & Flexible Engineering";
                 <li>Guidance on the next steps toward a functional digital solution.</li>
               </ul>
               <p>We'll reach out within 24 hours to better understand your project and discuss how we can help.</p>
-              <p class="audit-closing"><strong class="text-gradient"><span class="audit-closing-first">No cost. No obligation.</span><span class="audit-closing-last">Just a smarter starting point.</span></strong></p>
+              <p class="audit-closing"><strong><span class="audit-closing-first">No cost. No obligation.</span><span class="audit-closing-last">Just a smarter starting point.</span></strong></p>
               <div class="audit-cta-area">
                 <a href="#contacto" class="btn-primary">Get My Free Project Assessment →</a>
               </div>
@@ -960,7 +960,7 @@ const pageTitle = "10xTeam Dev | Custom Software, AI & Flexible Engineering";
       .step p{font-size:0.9rem;color:var(--text-muted);line-height:1.7}
 
       /* ─── AUDIT SECTION ─── */
-      .section-audit { background: linear-gradient(180deg, rgba(59,130,246,0.02) 0%, transparent 100%); }
+      .section-audit { background:radial-gradient(ellipse 46% 64% at 82% 51%,rgba(27,46,83,0.2),transparent 85%),linear-gradient(180deg,rgba(59,130,246,0.02) 0%,transparent 100%); }
       .audit-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.12fr); gap: 2.25rem; align-items: center; }
       .audit-content h2 { line-height: 1.17; }
       .audit-heading-bottom { display: block; margin-top: 0.35em; }
@@ -968,12 +968,13 @@ const pageTitle = "10xTeam Dev | Custom Software, AI & Flexible Engineering";
       .audit-lead { font-size: 1.15rem; color: var(--text-color); margin-bottom: 1.5rem; }
       .audit-cta-area { margin-top: 2.5rem; }
       .audit-closing { margin-top: 0.5rem; line-height: 1.45; }
-      .audit-closing strong { font-size: clamp(0.78rem, 1.75vw, 1.2rem); letter-spacing: 0.01em; font-weight: 700; }
-      .audit-closing-first, .audit-closing-last { display: block; }
+      .audit-closing strong { display:block;font-size: clamp(0.9rem, 1.75vw, 1.2rem); letter-spacing:0.01em; font-weight:700; color:#f0f2f5; -webkit-text-fill-color:currentColor; }
+      .audit-closing-first, .audit-closing-last { display:block; color:#f0f2f5; -webkit-text-fill-color:currentColor; }
+      .audit-closing-last { color:#a9c9ff; -webkit-text-fill-color:#a9c9ff; }
       .audit-closing-last { white-space: nowrap; margin-top: 0.36rem; }
       .audit-visual { position: relative; }
       .audit-mockup { position: relative; padding: 0; border: 0; border-radius: 0; overflow: visible; background: transparent; box-shadow: none; }
-      .mockup-img { width: 100%; height: auto; display: block; border: 0; border-radius: 0; filter: contrast(1.08); mix-blend-mode: screen; }
+      .mockup-img { width:100%;height:auto;display:block;border:0;border-radius:0;filter:contrast(1.08);mix-blend-mode:screen;-webkit-mask-image:radial-gradient(ellipse at center,#000 65%,rgba(0,0,0,0.95) 76%,rgba(0,0,0,0.7) 88%,transparent 100%);mask-image:radial-gradient(ellipse at center,#000 65%,rgba(0,0,0,0.95) 76%,rgba(0,0,0,0.7) 88%,transparent 100%); }
 
       .mockup-overlay { position: absolute; bottom: 1.5rem; right: 1.5rem; }
       .mockup-tag { background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); padding: 0.5rem 1rem; border-radius: var(--radius-pill); font-size: 0.75rem; color: #fff; font-weight: 600; letter-spacing: 0.5px; border: 1px solid rgba(255,255,255,0.1); }
