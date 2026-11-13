@@ -100,8 +100,10 @@
     originalNodes.forEach(item => {
       item.node.textContent = item.prefix + (english ? translations[item.trimmed] : item.trimmed) + item.suffix;
     });
-    langSwitch.textContent = english ? 'ES' : 'EN';
-    langSwitch.title = english ? 'Español' : 'English';
+    langSwitch.querySelectorAll('[data-lang-code]').forEach(el => {
+      el.classList.toggle('is-active', el.getAttribute('data-lang-code') === (english ? 'en' : 'es'));
+    });
+    langSwitch.title = english ? 'Switch to Spanish' : 'Cambiar a inglés';
     langSwitch.setAttribute('aria-label', english ? 'Cambiar a español' : 'Switch to English');
     langSwitch.setAttribute('aria-pressed', english ? 'true' : 'false');
     const meta = metaText[english ? 'en' : 'es'];
