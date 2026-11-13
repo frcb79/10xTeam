@@ -60,6 +60,9 @@ const DYNAMIC_TRANSLATIONS: Record<string, string> = {
   "Reservando tu lugar…": "Reserving your spot…",
   "Quiero asegurar mi lugar →": "Secure my spot →",
   "No pudimos registrar tu lugar.": "We couldn't complete your registration.",
+  "$89 USD / mes": "$89 USD / month",
+  "$1,190 MXN / mes": "$1,190 MXN / month",
+  "/mes": "/month",
 };
 
 const ENGLISH_RUNTIME = [
@@ -74,6 +77,7 @@ const ENGLISH_RUNTIME = [
   "      var next=translations[key];",
   "      if(next&&next!==key)node.nodeValue=old.replace(key,next);",
   "      else {",
+  "        if(/^\\/\\s*[\\d,.]+\\s+lugares$/.test(key)){node.nodeValue=old.replace(/lugares$/,\'spots\');return;}",
   "        var m=key.match(/^(\\d+) (persona se registró|personas se registraron) en las últimas 24 horas\\.$/);",
   "        if(m)node.nodeValue=m[1]+(m[1]==='1'?' person signed up':' people signed up')+' in the last 24 hours.';",
   "      }",
