@@ -335,29 +335,38 @@ body.video-background-mode .cinematic-step {
 
 
 
-/* Language switch for the corporate landing. No cinematic styles are affected. */
-.top-link-lang{
+/* Subtle language utility, intentionally distinct from the Growth / Dev actions. */
+.lang-utility{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.22rem;
+  padding:.35rem .18rem;
+  min-height:40px;
   appearance:none;
-  cursor:pointer;
+  background:transparent;
+  border:0;
+  color:#94a3b8;
   font-family:inherit;
-  min-width:44px;
-  padding:.55rem .72rem;
-  background:rgba(148,163,184,.13);
-  border:1px solid rgba(148,163,184,.38);
-  color:#e8edf7;
-  font-size:.81rem;
-  letter-spacing:.04em;
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.01em;
+  white-space:nowrap;
+  cursor:pointer;
+  transition:color .18s ease;
 }
-.top-link-lang:hover,.top-link-lang:focus-visible{
-  background:rgba(148,163,184,.24);
-  border-color:rgba(226,232,240,.65);
-  color:#fff;
-}
+.lang-utility:hover,.lang-utility:focus-visible{color:#e9eef7;}
+.lang-utility:focus-visible{outline:2px solid #9ca3af;outline-offset:3px;border-radius:4px;}
+.lang-globe{font-size:.88rem;line-height:1;filter:grayscale(1);opacity:.78;margin-right:.12rem}
+.lang-code{color:#8692a9;font-weight:500}
+.lang-code.is-active{color:#f8fbff;font-weight:800;text-decoration:underline;text-decoration-color:#94a3b8;text-underline-offset:.21rem}
+.lang-separator{color:#566377;opacity:.8}
 @media(max-width:420px){
-  .top-actions{gap:.15rem}
-  .top-actions .top-link{padding:.48rem .6rem;font-size:.82rem;min-height:42px}
-  .top-actions .top-link-lang{padding:.48rem .5rem;min-width:38px}
-  .topbar .brand img{height:42px}
+  .top-actions{gap:.12rem}
+  .top-actions .top-link{padding:.42rem .5rem;font-size:.78rem;min-height:42px}
+  .top-actions .lang-utility{min-height:42px;padding:.28rem .04rem;font-size:.68rem;gap:.1rem}
+  .top-actions .lang-globe{font-size:.78rem;margin-right:.04rem}
+  .topbar .brand img{height:39px}
 }
 /* English headlines remain responsive; Spanish appearance stays as designed. */
 html[lang="en"] .hero-title-line{white-space:normal}
