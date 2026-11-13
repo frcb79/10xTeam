@@ -5,7 +5,7 @@
   const translations = Object.freeze({
   "Saltar a soluciones": "Skip to solutions",
   "CERO FRICCIÓN · RESULTADOS 10X": "LOW FRICTION · 10X RESULTS",
-  "Captamos demanda.": "We Capture Demand.",
+  "Generamos oportunidades.": "We Create Opportunities.",
   "INGENIERÍA & SOFTWARE 10X": "10X ENGINEERING & SOFTWARE",
   "Construimos tecnología.": "We Build Technology.",
   "SISTEMA 10XTEAM": "10XTEAM SYSTEM",
@@ -78,15 +78,15 @@
       title: '10xTeam | Growth, Inteligencia y Desarrollo Tecnológico',
       description: '10xTeam combina Growth, inteligencia y desarrollo tecnológico para ayudar a empresas a captar demanda, convertir oportunidades, automatizar operaciones y construir productos digitales.',
       socialTitle: '10xTeam | Growth, Inteligencia y Desarrollo Tecnológico',
-      socialDescription: 'Para empresas y negocios que quieren escalar. Captamos demanda, construimos tecnología y escalamos negocios.',
-      twitterDescription: 'Captamos demanda. Construimos tecnología. Escalamos negocios.'
+      socialDescription: 'Para empresas y negocios que quieren escalar. Generamos oportunidades, construimos tecnología y escalamos negocios.',
+      twitterDescription: 'Generamos oportunidades. Construimos tecnología. Escalamos negocios.'
     },
     en: {
       title: '10xTeam | Growth, AI & Software Development',
       description: '10xTeam brings together Growth, AI, and software development to help businesses generate demand, convert opportunities, automate operations, and build digital products.',
       socialTitle: '10xTeam | Growth, AI & Software Development',
-      socialDescription: 'For businesses ready to scale. We capture demand, build technology, and help businesses grow.',
-      twitterDescription: 'We capture demand. We build technology. We scale businesses.'
+      socialDescription: 'For businesses ready to scale. We create opportunities, build technology, and help businesses grow.',
+      twitterDescription: 'We create opportunities. We build technology. We scale businesses.'
     }
   };
   const setMeta = (selector, content) => {
