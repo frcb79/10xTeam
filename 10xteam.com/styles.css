@@ -334,3 +334,31 @@ body.video-background-mode .cinematic-step {
 
 
 
+
+/* Language switch for the corporate landing. No cinematic styles are affected. */
+.top-link-lang{
+  appearance:none;
+  cursor:pointer;
+  font-family:inherit;
+  min-width:44px;
+  padding:.55rem .72rem;
+  background:rgba(148,163,184,.13);
+  border:1px solid rgba(148,163,184,.38);
+  color:#e8edf7;
+  font-size:.81rem;
+  letter-spacing:.04em;
+}
+.top-link-lang:hover,.top-link-lang:focus-visible{
+  background:rgba(148,163,184,.24);
+  border-color:rgba(226,232,240,.65);
+  color:#fff;
+}
+@media(max-width:420px){
+  .top-actions{gap:.15rem}
+  .top-actions .top-link{padding:.48rem .6rem;font-size:.82rem;min-height:42px}
+  .top-actions .top-link-lang{padding:.48rem .5rem;min-width:38px}
+  .topbar .brand img{height:42px}
+}
+/* English headlines remain responsive; Spanish appearance stays as designed. */
+html[lang="en"] .hero-title-line{white-space:normal}
+html[lang="en"] .st-display-line{white-space:normal}
