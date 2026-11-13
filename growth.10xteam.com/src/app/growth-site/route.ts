@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { localizeGrowthHtml } from "./localize";
 
 const EARLY_ACCESS_STYLES = `
 <style>
@@ -170,10 +171,12 @@ function applyGrowthPatches(html: string): string {
   return out;
 }
 
-export async function GET() {
+export async function GET(request: Request) {
   const filePath = path.join(process.cwd(), "growth.10xteam_website.html");
   const html = await readFile(filePath, "utf8");
-  return new Response(applyGrowthPatches(html), {
+  const requestedLang = new URL(request.url).searchParams.get("lang");
+  const lang = requestedLang === "en" ? "en" : "es";
+  return new Response(localizeGrowthHtml(applyGrowthPatches(html), lang), {
     headers: {
       "content-type": "text/html; charset=utf-8",
       "cache-control": "public, max-age=0, s-maxage=300, stale-while-revalidate=600",
