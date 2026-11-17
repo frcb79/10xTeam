@@ -2194,6 +2194,38 @@ body {
   .txcard-b p { min-height: 0; }
 }
 </style>
+
+<style id="growth-hero-2026">
+/* Hero de Growth aislado: mantiene todas las secciones posteriores intactas. */
+.txhero{padding:clamp(54px,6vw,94px) 26px 76px;text-align:left;background-image:radial-gradient(ellipse 60% 75% at 82% 20%,rgba(123,92,255,.18),transparent 72%),radial-gradient(ellipse 42% 35% at 96% 96%,rgba(61,220,151,.09),transparent 78%);}
+.txhero-inner{max-width:1480px;margin:0 auto;}
+.txhero-grid{display:grid;grid-template-columns:minmax(0,1.07fr) minmax(0,.93fr);gap:clamp(22px,3.2vw,52px);align-items:center;}
+.txhero-copy{min-width:0;}
+.txhero .txhero-eyebrow{font-family:var(--tx-font-body);font-weight:700;color:#e4ebf6;letter-spacing:.08em;font-size:clamp(12px,1vw,14px);text-transform:uppercase;margin:0 0 22px;padding:0;border:0;background:none;display:flex;align-items:center;}
+.txhero .txhero-eyebrow .dot{width:9px;height:9px;box-shadow:0 0 18px rgba(61,220,151,.6);flex:0 0 auto;}
+.txhero h1{font-size:clamp(37px,4.15vw,68px);line-height:1.045;letter-spacing:-.045em;max-width:none;margin:0 0 24px;font-weight:700;}
+.txhero-title-line{display:block;white-space:nowrap;}
+.txhero .txhero-sub{font-size:clamp(16px,1.22vw,19px);line-height:1.55;color:#cbd2dd;max-width:650px;margin:0 0 20px;}
+.txhero .txhero-sub strong{font-weight:700;color:#f6f8fc;}
+.txhero-benefit{font-weight:700;font-size:clamp(16px,1.2vw,19px);line-height:1.5;color:#fff;margin:0 0 14px;}
+.txhero-outcome{font-size:clamp(16px,1.2vw,19px);line-height:1.55;color:#cbd2dd;max-width:650px;margin:0 0 26px;}
+.txhero .txhero-cta-row{display:flex;flex-direction:row;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:12px;margin:0 0 13px;}
+.txhero .txbtn-primary{padding:15px 19px;font-size:clamp(14px,1vw,16px);line-height:1.28;min-height:52px;justify-content:center;white-space:normal;box-shadow:0 8px 27px rgba(61,220,151,.16);}
+.txhero .txbtn-primary svg{flex:0 0 18px;}
+.txbtn-secondary{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:15px 21px;border:1px solid #5b6476;border-radius:12px;color:#f3f5f9;text-decoration:none;font-weight:650;font-size:clamp(14px,1vw,16px);transition:background .15s,border-color .15s;}
+.txbtn-secondary:hover{background:rgba(255,255,255,.05);border-color:#8f97a8;}
+.txhero .txhero-guarantee{font-size:clamp(12px,.95vw,14px);line-height:1.5;color:#aeb8ca;margin:0;display:flex;align-items:flex-start;gap:8px;}
+.txhero .txhero-guarantee span:first-child{color:var(--green);font-weight:700;}
+.txhero-visual{min-width:0;position:relative;}
+.txhero-visual:before{content:"";position:absolute;z-index:-1;inset:-36px -20px;background:radial-gradient(circle at 76% 19%,rgba(123,92,255,.27),transparent 50%),radial-gradient(circle at 42% 89%,rgba(61,220,151,.17),transparent 52%);filter:blur(26px);pointer-events:none;}
+.txhero-screen{width:100%;border-radius:20px;overflow:hidden;background:#151e2a;border:1px solid rgba(167,181,218,.45);box-shadow:0 24px 70px rgba(0,0,0,.44),0 0 0 4px rgba(123,92,255,.09);}
+.txhero-screen img{display:block;width:100%;height:auto;object-fit:contain;}
+.txhero-demo-note{font-size:11px;color:#8995a8;text-align:center;margin:12px 0 0;}
+@media(max-width:1180px){.txhero-grid{grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);gap:26px;}.txhero h1{font-size:clamp(36px,4.05vw,52px);}.txhero .txhero-sub,.txhero-benefit,.txhero-outcome{font-size:16px;}.txhero .txbtn-primary,.txbtn-secondary{padding:14px 16px;font-size:14px;}}
+@media(max-width:940px){.txhero{padding:60px 24px 64px;}.txhero-grid{grid-template-columns:1fr;gap:40px;}.txhero-copy{max-width:760px;}.txhero-visual{width:100%;max-width:780px;margin:0 auto;}.txhero h1{font-size:clamp(44px,7vw,62px);}.txhero .txhero-sub,.txhero-benefit,.txhero-outcome{font-size:17px;}}
+@media(max-width:620px){.txhero{padding:48px 20px 56px;}.txhero-grid{gap:34px;}.txhero h1{font-size:clamp(29px,8vw,44px);letter-spacing:-.04em;line-height:1.09;margin-bottom:20px;}.txhero .txhero-eyebrow{font-size:11px;letter-spacing:.045em;margin-bottom:20px;}.txhero .txhero-sub,.txhero-benefit,.txhero-outcome{font-size:16px;line-height:1.62;}.txhero .txhero-cta-row{flex-direction:column;align-items:stretch;gap:10px;}.txhero .txbtn-primary,.txbtn-secondary{width:100%;font-size:14px;min-height:53px;}.txhero .txhero-guarantee{font-size:12px;}.txhero-screen{border-radius:14px;}.txhero-demo-note{font-size:10px;}}
+@media(max-width:365px){.txhero{padding-left:15px;padding-right:15px;}.txhero h1{font-size:29px;letter-spacing:-.05em;}}
+</style>
 </head>
 <body>
 
@@ -2239,54 +2271,33 @@ body {
 <!-- ============================================================
    BLOQUE 1 – HERO + PROBLEMA
    ============================================================ -->
-<section class="txhero">
+<section class="txhero" aria-labelledby="growth-hero-heading">
   <div class="txhero-inner">
-    <div class="txhero-eyebrow">
-      <span class="dot"></span>
-      Prospección · Ventas · Contenido · Operación — todo en uno
-    </div>
-    <h1>
-      Deja de perder prospectos.<br>
-      <span class="accent">Incrementa clientes y ventas</span><br>
-      <span class="accent-green">sin contratar a nadie más.</span>
-    </h1>
-    <p class="txhero-sub">
-      10xTeam automatiza tu prospección, seguimiento, creación de contenido, soporte y cobro
-      en una sola plataforma con IA. Sin herramientas desconectadas. Sin equipo extra.
-      Tu negocio operando solo mientras tú cierras.
-    </p>
-    <div class="txhero-cta-row">
-      <a href="#early-access" class="txbtn-primary">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#08110D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Quiero asegurar mi lugar Early Adopter
-      </a>
-      <div class="txhero-guarantee">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.5 3.5L7 9.5 4 11l.5-3.5L2 5l3.5-.5L7 1z" fill="#3DDC97"/></svg>
-        Primera cita agendada en menos de 5 días o te devolvemos tu inversión de setup
+    <div class="txhero-grid">
+      <div class="txhero-copy">
+        <p class="txhero-eyebrow"><span class="dot" aria-hidden="true"></span>Tu negocio operando en automático</p>
+        <h1 id="growth-hero-heading">
+          <span class="txhero-title-line">Más Control,</span>
+          <span class="txhero-title-line accent">Más Oportunidades</span>
+          <span class="txhero-title-line accent-green">Más Clientes.</span>
+        </h1>
+        <p class="txhero-sub">10xTeam automatiza la prospección, el seguimiento de clientes, la creación de contenido, la atención, las citas, los cobros y mucho más. <strong>Todo conectado en una sola plataforma con inteligencia artificial.</strong></p>
+        <p class="txhero-benefit">Sin herramientas desconectadas. Sin equipo extra.</p>
+        <p class="txhero-outcome">Mientras 10xTeam trabaja por ti, tú te enfocas en cerrar ventas, definir la estrategia y hacer crecer tu negocio.</p>
+        <div class="txhero-cta-row">
+          <a href="#early-access" class="txbtn-primary">
+            <span>Activa mi plataforma en automático</span>
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#funcionalidades" class="txbtn-secondary">Ver cómo funciona</a>
+        </div>
+        <p class="txhero-guarantee"><span aria-hidden="true">✓</span> <span>Diagnóstico gratuito · Personalización automática · Sin compromiso</span></p>
       </div>
-    </div>
-    <div class="txhero-metrics">
-      <div class="txmetric">
-        <span class="txmetric-num">130+</span>
-        <div class="txmetric-lbl">funcionalidades en una sola plataforma</div>
-      </div>
-      <div class="txmetric">
-        <span class="txmetric-num">6</span>
-        <div class="txmetric-lbl">motores de IA trabajando simultáneamente</div>
-      </div>
-      <div class="txmetric">
-        <span class="txmetric-num">9+</span>
-        <div class="txmetric-lbl">herramientas que reemplazas pagando menos</div>
-      </div>
-      <div class="txmetric">
-        <span class="txmetric-num">
-          <svg class="tx-metric-signal" viewBox="0 0 24 24" stroke="currentColor" fill="none">
-            <path d="M4 6h16M6 6v12h12V6" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M8 14l3-3 2.2 1.8 2.8-3.1" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M16 7.2l2.4-.2-.2 2.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        <div class="txmetric-lbl">Crea contenido, prospecta y cierra</div>
+      <div class="txhero-visual">
+        <div class="txhero-screen">
+          <img src="/hero-growth-dashboard-demo.svg" alt="Vista demostrativa de 10xTeam Growth con datos ilustrativos" width="760" height="412" fetchpriority="high">
+        </div>
+        <p class="txhero-demo-note">Vista ilustrativa de la plataforma · Datos de ejemplo</p>
       </div>
     </div>
   </div>
