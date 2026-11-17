@@ -108,6 +108,31 @@ const PREFERENCE_RUNTIME = [
   "</script>",
 ].join("\n");
 
+/**
+ * Keep short phrase groups together so the headline copy wraps naturally when
+ * the dashboard becomes wider. Applied AFTER i18n so each language has its own
+ * typographic groups, without inserting hard line breaks on narrow screens.
+ */
+function polishHeroWrapping(html: string, lang: Language): string {
+  const start = html.indexOf('<section class="txhero"');
+  const end = start >= 0 ? html.indexOf("</section>", start) : -1;
+  if (start < 0 || end < 0) return html;
+  let hero = html.slice(start, end + "</section>".length);
+  const replacements: Array<[string, string]> = lang === "es"
+    ? [
+      ["la creación de contenido", 'la creación <span class="txhero-keep">de contenido</span>'],
+      ["Todo conectado en una", 'Todo conectado <span class="txhero-keep">en una</span>'],
+    ]
+    : [
+      ["a single AI-powered platform", 'a <span class="txhero-keep">single AI-powered</span> platform'],
+      ["setting strategy, and", 'setting <span class="txhero-keep">strategy, and</span>'],
+    ];
+  for (const [before, after] of replacements) {
+    hero = hero.replace(before, after);
+  }
+  return html.slice(0, start) + hero + html.slice(end + "</section>".length);
+}
+
 export function localizeGrowthHtml(source: string, lang: Language): string {
   let html = source;
   html = html.replace('<a href="#">Aviso de privacidad</a>', '<a href="https://10xteam.com.mx/legal/aviso">Aviso de privacidad</a>');
@@ -120,6 +145,7 @@ export function localizeGrowthHtml(source: string, lang: Language): string {
     html = html.replaceAll('href="https://10xteam.com.mx/legal/aviso"', 'href="https://10xteam.com.mx/legal/privacy"');
     html = html.replaceAll('href="https://10xteam.com.mx/legal/terminos"', 'href="https://10xteam.com.mx/legal/terms"');
   }
+  html = polishHeroWrapping(html, lang);
   html = html.replace("</head>", LANGUAGE_STYLES +
     '\n<link rel="alternate" hreflang="es-MX" href="https://growth.10xteam.com.mx/?lang=es">' +
     '\n<link rel="alternate" hreflang="en" href="https://growth.10xteam.com.mx/?lang=en">' +
