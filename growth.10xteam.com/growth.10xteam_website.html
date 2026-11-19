@@ -2261,49 +2261,76 @@ body {
 .txproblema-bridge p{max-width:1000px;font-size:18px;line-height:1.65;}
 .tx-catalogue-teaser{display:flex;justify-content:center;align-items:center;gap:10px;margin:30px auto 0;color:var(--tx-green);font-weight:700;font-size:16px;line-height:1.5;text-align:center;}
 .tx-catalogue-teaser .tx-catalogue-pending{font-size:11px;color:var(--tx-text-faint);font-weight:500;white-space:nowrap;background:var(--tx-surface-2);padding:4px 8px;border:1px solid var(--tx-border);border-radius:999px;}
-/* Integrations/device visual: entirely first-party visual language; no third-party trademarks. */
-.tx-connected{padding:60px 26px 80px;background:#0B0D12;}
-.tx-connected-inner{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);align-items:center;gap:clamp(24px,4vw,68px);}
-.tx-connected-copy{min-width:0;}
-.tx-connected-eyebrow{font-family:var(--tx-font-mono);font-size:12px;font-weight:650;letter-spacing:.1em;color:var(--tx-green);text-transform:uppercase;display:block;margin:0 0 14px;}
-.tx-connected h2{font-family:var(--tx-font-display);font-weight:700;font-size:clamp(28px,3vw,43px);line-height:1.12;letter-spacing:-.025em;color:var(--tx-text);margin:0 0 18px;}
-.tx-connected-copy>p{font-size:clamp(16px,1.45vw,18px);color:var(--tx-text-dim);line-height:1.65;margin:0 0 22px;}
-.tx-connected-caps{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
-.tx-connected-caps span{padding:9px 13px;font-size:13px;color:#dce6f5;background:#171d2b;border:1px solid #354058;border-radius:999px;white-space:nowrap;}
-.tx-connected-copy .tx-connected-note{font-size:12px;color:var(--tx-text-faint);margin:20px 0 0;line-height:1.6;}
-.tx-connected-visual{position:relative;min-height:350px;padding:28px 46px 28px 18px;display:flex;align-items:center;justify-content:center;}
-.tx-connected-glow{position:absolute;inset:8% 0 4% 6%;border-radius:50%;background:radial-gradient(ellipse at 50% 52%,rgba(123,92,255,.21),transparent 68%);pointer-events:none;}
-.tx-connected-computer{position:relative;width:min(100%,600px);z-index:1;margin-right:33px;}
-.tx-connected-monitor{border:10px solid #3B4558;border-bottom-width:17px;border-radius:15px;background:#131d2c;box-shadow:0 24px 65px rgba(0,0,0,.4),0 0 0 1px #64708a;overflow:hidden;aspect-ratio:16/9;}
-.tx-connected-top{height:36px;display:flex;align-items:center;gap:12px;padding:0 13px;color:#d8e0f1;background:#2A3549;border-bottom:1px solid #48546a;font-size:13px;font-weight:700;}
-.tx-connected-dots{letter-spacing:4px;color:#97a5bd;font-size:11px;}
-.tx-connected-dashboard{display:grid;grid-template-columns:18% 1fr;height:calc(100% - 36px);gap:0;}
-.tx-connected-sidebar{background:#28354a;border-right:1px solid #35445b;padding:18px 9px;display:flex;flex-direction:column;gap:14px;}
-.tx-connected-sidebar i{display:block;height:7px;background:#586982;border-radius:10px;width:90%;}
-.tx-connected-sidebar i:nth-child(2){width:65%;background:#31c696;}
-.tx-connected-sidebar i:nth-child(3){width:75%;}
-.tx-connected-sidebar i:nth-child(4){width:55%;}
-.tx-connected-dashboard-main{padding:14px;background:#f6f7fa;min-width:0;}
-.tx-connected-metric-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-bottom:14px;}
-.tx-connected-metric{height:51px;background:#fff;border-radius:8px;border:1px solid #e5e8f2;display:flex;flex-direction:column;justify-content:center;gap:7px;padding:10px;}
-.tx-connected-metric b{height:9px;border-radius:12px;width:60%;background:#7b5cff;}
-.tx-connected-metric i{height:5px;border-radius:12px;width:84%;background:#d3dbe9;}
-.tx-connected-metric:nth-child(2) b{background:#20ba93;}
-.tx-connected-metric:nth-child(3) b{background:#4489ef;}
-.tx-connected-trend{height:50%;border-radius:8px;background:linear-gradient(180deg,#fff,#f4f8ff);border:1px solid #e5e8f2;display:flex;align-items:end;justify-content:space-around;padding:20px 10px 12px;gap:10px;}
-.tx-connected-trend i{display:block;flex:1;max-width:26px;min-width:4px;border-radius:4px 4px 0 0;background:linear-gradient(#7f87f7,#3b8cf3);height:45%;}
-.tx-connected-trend i:nth-child(2){height:76%;}.tx-connected-trend i:nth-child(3){height:59%;}.tx-connected-trend i:nth-child(4){height:88%;}.tx-connected-trend i:nth-child(5){height:66%;}.tx-connected-trend i:nth-child(6){height:94%;}
-.tx-connected-stand{height:29px;width:22%;margin:0 auto;background:linear-gradient(#68768d,#293449);clip-path:polygon(37% 0,63% 0,75% 100%,25% 100%);}
-.tx-connected-base{height:7px;width:43%;margin:-1px auto 0;border-radius:12px;background:#657189;}
-.tx-connected-phone{position:absolute;z-index:2;right:4px;bottom:37px;width:24%;max-width:154px;min-width:90px;aspect-ratio:9/18;border:6px solid #4b566a;border-radius:20px;background:#f6f7fa;box-shadow:0 16px 32px rgba(0,0,0,.5);}
-.tx-connected-phone:before{content:"";position:absolute;top:5px;left:35%;right:35%;height:5px;border-radius:6px;background:#2a3240;}
-.tx-connected-phone-title{font-size:11px;color:#fff;background:#25324a;margin:16px 5px 0;padding:8px 5px;text-align:center;border-radius:5px;font-weight:700;}
-.tx-connected-phone-card{margin:10px 7px;background:#eef3fb;border-radius:7px;height:20%;border-left:3px solid #7b5cff;}
-.tx-connected-phone-card:nth-of-type(3){border-left-color:#22c895;}
-.tx-connected-phone-card:nth-of-type(4){border-left-color:#4f92ed;}
-.tx-connected-media-label{position:absolute;left:50%;bottom:1px;transform:translateX(-50%);font-size:10px;color:var(--tx-text-faint);white-space:nowrap;}
-@media(max-width:1100px){.txpain-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.tx-connected-inner{grid-template-columns:1fr;}.tx-connected-copy{max-width:760px;}.tx-connected-visual{max-width:720px;width:100%;margin:0 auto;}}
-@media(max-width:680px){.txproblema{padding:55px 18px 55px;}.txpain-grid{grid-template-columns:1fr;}.txpain-card{padding:20px;}.txproblema-bridge p{font-size:16px;}.tx-connected{padding:55px 18px 65px;}.tx-connected-visual{min-height:235px;padding:20px 26px 20px 5px;}.tx-connected-monitor{border-width:5px;border-bottom-width:10px;border-radius:9px;}.tx-connected-top{height:25px;font-size:9px;padding:0 7px;}.tx-connected-dashboard{height:calc(100% - 25px);}.tx-connected-dashboard-main{padding:8px;}.tx-connected-metric{height:30px;padding:6px;gap:4px;}.tx-connected-trend{padding:10px 6px 8px;gap:6px;}.tx-connected-phone{border-width:4px;border-radius:15px;right:0;bottom:33px;}.tx-connected-phone-title{font-size:8px;margin:12px 3px 0;padding:6px 2px;}.tx-connected-phone-card{margin:6px 4px;height:18%;}.tx-connected-media-label{bottom:0;font-size:9px;}.tx-catalogue-teaser{flex-direction:column;gap:6px;}}
+
+/* 25 modules visibly converge on a central first-party desktop/mobile concept. */
+.tx-ecosystem{padding:78px 16px 84px;background:#0B0D12;color:#f4f6fc;overflow:hidden;}
+.tx-ecosystem-inner{max-width:1600px;margin:auto;}
+.txeco-intro{text-align:center;max-width:960px;margin:0 auto 38px;}
+.txeco-eyebrow{display:block;font-family:var(--tx-font-mono);font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--tx-green);margin:0 0 14px;}
+.txeco-intro h2{font-family:var(--tx-font-display);font-size:clamp(30px,3.7vw,51px);line-height:1.1;letter-spacing:-.035em;margin:0 0 16px;color:#fff;}
+.txeco-intro>p{font-size:clamp(16px,1.55vw,19px);line-height:1.65;color:#b9c6d8;max-width:920px;margin:0 auto;}
+.txeco-sprite{position:absolute;width:0;height:0;overflow:hidden;}
+.txeco-mosaic{display:flex;flex-direction:column;gap:8px;position:relative;}
+.txeco-top,.txeco-bottom{display:grid;gap:8px;grid-template-columns:repeat(9,minmax(0,1fr));}
+.txeco-bottom{grid-template-columns:repeat(8,minmax(0,1fr));}
+.txeco-middle{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,5.7fr) minmax(0,2fr);gap:8px;min-height:355px;}
+.txeco-side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:8px;min-width:0;}
+.txeco-tile{--eco-accent:#5cb6fd;position:relative;background:linear-gradient(150deg,#192334,#111925);border:1px solid #35425a;border-radius:12px;min-height:104px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:12px 7px;min-width:0;box-shadow:inset 0 1px rgba(255,255,255,.04);transition:border-color .2s,background .2s,box-shadow .2s;animation:txeco-drift 9s ease-in-out infinite;animation-delay:var(--eco-delay);}
+.txeco-tile:hover{border-color:var(--eco-accent);background:#1c2b3b;box-shadow:0 0 22px rgba(95,134,255,.12);animation-play-state:paused;}
+.txeco-blue{--eco-accent:#5cb6fd}.txeco-violet{--eco-accent:#b98afd}.txeco-green{--eco-accent:#76e3b4}.txeco-teal{--eco-accent:#42d8d3}.txeco-amber{--eco-accent:#ffc266}
+.txeco-icon{width:43px;height:43px;border:1px solid color-mix(in srgb,var(--eco-accent),transparent 65%);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--eco-accent);background:color-mix(in srgb,var(--eco-accent),transparent 88%);}
+.txeco-name{font-size:clamp(11px,.95vw,14px);line-height:1.22;font-weight:650;min-width:0;max-width:100%;overflow-wrap:normal;hyphens:auto;color:#e7eef9;}
+.txeco-tile small{font-size:9px;color:#a0e6c5;margin-top:-7px;}
+.txeco-addon{background:linear-gradient(135deg,#173a34,#132b27);border-color:#32715b;}
+.txeco-core{position:relative;background:radial-gradient(ellipse at 50% 51%,rgba(103,92,216,.23),transparent 60%),linear-gradient(140deg,#15233a,#111a29 58%,#112a2e);border:1px solid #394b6b;border-radius:20px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;min-width:0;min-height:355px;padding:20px 24px 16px;}
+.txeco-flow{position:absolute;inset:0;width:100%;height:100%;opacity:.83;pointer-events:none;}
+.txeco-flow g{animation:txeco-flow 17s linear infinite;}
+.txeco-core-brand{z-index:1;font-size:15px;color:#d8e5fb;font-weight:700;letter-spacing:.02em;margin-bottom:14px;white-space:nowrap;}
+.txeco-core-brand strong{color:#80e7bd;font-weight:700;}
+.txeco-core-symbol{color:#84d9db;margin-right:6px;}
+.txeco-devices{position:relative;width:100%;max-width:550px;z-index:1;padding:0 34px 0 8px;}
+.txeco-laptop{width:89%;filter:drop-shadow(0 23px 21px rgba(0,0,0,.35));}
+.txeco-laptop-shell{aspect-ratio:16/10;background:#e8ecf4;border:8px solid #49566e;border-bottom-width:12px;border-radius:11px;overflow:hidden;}
+.txeco-screenbar{height:26px;background:#2a3854;display:flex;align-items:center;justify-content:space-between;padding:0 8px;color:#d7e1f5;font-size:9px;}
+.txeco-screenbar>span{color:#8f9db9;letter-spacing:2px;}
+.txeco-screengrid{height:calc(100% - 26px);display:grid;grid-template-columns:18% 1fr;}
+.txeco-screen-nav{background:#2f3b52;padding:12px 6px;display:flex;flex-direction:column;gap:11px;}
+.txeco-screen-nav>*{height:6px;width:84%;display:block;background:#65758e;border-radius:20px;}
+.txeco-screen-nav>b{background:#34caa6;width:67%;}
+.txeco-screen-content{padding:12px;background:#f3f6fa;}
+.txeco-screentitle{height:9px;width:37%;background:#bdc8db;border-radius:8px;margin-bottom:14px;}
+.txeco-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-bottom:13px;}
+.txeco-metrics>*{height:42px;background:linear-gradient(160deg,#dce8fc,#f8fbff);border-radius:7px;border:1px solid #d1dbee;}
+.txeco-metrics>*:nth-child(2){background:linear-gradient(160deg,#e1f9ed,#f6fff9);}
+.txeco-metrics>*:nth-child(3){background:linear-gradient(160deg,#ece5fd,#fefaff);}
+.txeco-chart{height:68px;display:flex;align-items:end;gap:9px;justify-content:space-around;background:#fff;border:1px solid #e3e9f1;border-radius:8px;padding:10px;}
+.txeco-chart>*{width:11%;background:#5098f2;border-radius:4px 4px 0 0;height:65%;}
+.txeco-chart>*:nth-child(2){height:95%;}.txeco-chart>*:nth-child(3){height:47%;}.txeco-chart>*:nth-child(4){height:83%;}.txeco-chart>*:nth-child(5){height:52%;}.txeco-chart>*:nth-child(6){height:78%;}.txeco-chart>*:nth-child(7){height:90%;}
+.txeco-laptop-base{height:11px;background:linear-gradient(#8b99ad,#485a75);border-radius:0 0 50% 50%;margin:0 -12px;clip-path:polygon(4% 0,96% 0,100% 100%,0 100%);}
+.txeco-phone{position:absolute;right:7px;bottom:5px;width:28%;height:80%;max-width:140px;background:#fbfdff;border:6px solid #566780;border-radius:21px;box-shadow:0 16px 22px rgba(0,0,0,.47);display:flex;flex-direction:column;align-items:center;padding:16px 5px 6px;gap:9px;}
+.txeco-phone-notch{position:absolute;top:5px;left:37%;width:26%;height:4px;border-radius:10px;background:#24314b;}
+.txeco-phone-logo{width:100%;font-weight:700;font-size:clamp(8px,.85vw,11px);text-align:center;color:white;background:#293b5c;border-radius:5px;padding:7px 0;}
+.txeco-phone-card{width:100%;height:19%;background:#e5edfb;border:1px solid #d9e2f1;border-left:3px solid #a179f8;border-radius:6px;}
+.txeco-phone-card:nth-last-child(2){border-left-color:#44c6a5;}
+.txeco-phone-card:nth-last-child(3){border-left-color:#489bf1;}
+.txeco-phone-dot{width:16%;height:4px;border-radius:10px;background:#aab7cb;margin-top:auto;}
+.txeco-core-caption{font-size:12px;color:#bdcbe0;margin:15px 0 0;z-index:1;text-align:center;line-height:1.4;}
+.txeco-footer{text-align:center;max-width:780px;margin:34px auto 0;}
+.txeco-catalog-cta{background:linear-gradient(110deg,#31e0a8,#66e9be);color:#12241e;font-size:16px;font-weight:800;line-height:1.35;border:0;border-radius:13px;padding:16px 25px;display:inline-flex;align-items:center;justify-content:center;gap:12px;opacity:.76;cursor:not-allowed;}
+.txeco-soon{display:block;font-size:11px;letter-spacing:.03em;color:#8fa7ba;margin:9px 0 0;}
+.txeco-footer-copy{font-size:16px;color:#c6d6e6;margin:16px auto 0;line-height:1.6;}
+.txeco-disclaimer{font-size:11px;color:#8d9aab;margin:12px auto 0;line-height:1.55;max-width:740px;}
+@keyframes txeco-drift{0%,100%{transform:translate(0,0)}50%{transform:translate(0,4px)}}
+@keyframes txeco-flow{to{stroke-dashoffset:-180}}
+@media(min-width:1101px){.txeco-toward-top{animation-name:txeco-move-up}.txeco-toward-bottom{animation-name:txeco-move-down}.txeco-toward-right{animation-name:txeco-move-right}.txeco-toward-left{animation-name:txeco-move-left}}
+@keyframes txeco-move-up{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes txeco-move-down{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+@keyframes txeco-move-right{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+@keyframes txeco-move-left{0%,100%{transform:translateX(0)}50%{transform:translateX(-5px)}}
+@media(max-width:1100px){.txeco-middle{grid-template-columns:1fr 2.8fr 1fr;min-height:300px;}.txeco-core{min-height:300px;padding:15px;}.txeco-tile{min-height:102px;}.txeco-top{grid-template-columns:repeat(5,minmax(0,1fr));}.txeco-bottom{grid-template-columns:repeat(4,minmax(0,1fr));}.txeco-side{grid-template-columns:1fr;grid-template-rows:repeat(4,minmax(0,1fr));}.txeco-middle{min-height:520px;}.txeco-core{min-height:520px;}}
+@media(max-width:680px){.tx-ecosystem{padding:54px 14px 62px;}.txeco-intro{margin-bottom:25px;}.txeco-intro h2{font-size:clamp(28px,7.2vw,37px);}.txeco-intro>p{font-size:15px;}.txeco-mosaic{gap:9px;}.txeco-middle{display:flex;flex-direction:column;min-height:0;gap:9px;order:-1;}.txeco-core{order:-1;min-height:290px;padding:18px 10px 12px;}.txeco-devices{max-width:520px;padding:0 30px 0 7px;}.txeco-laptop-shell{border-width:5px;border-bottom-width:8px;}.txeco-screenbar{height:22px;}.txeco-screengrid{height:calc(100% - 22px);}.txeco-screen-content{padding:7px;}.txeco-metrics>*{height:30px;}.txeco-chart{height:49px;}.txeco-phone{border-width:4px;border-radius:15px;padding:12px 4px 5px;gap:6px;}.txeco-core-caption{font-size:11px;}.txeco-top,.txeco-bottom,.txeco-side{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto;gap:7px;}.txeco-side{grid-template-columns:repeat(4,minmax(0,1fr));}.txeco-tile{min-height:82px;padding:9px 3px;gap:6px;border-radius:9px;}.txeco-icon{width:33px;height:33px;border-radius:9px;}.txeco-icon svg{width:21px;height:21px;}.txeco-name{font-size:10.5px;line-height:1.2;}.txeco-tile small{font-size:8px;}.txeco-footer{margin-top:24px;}.txeco-catalog-cta{font-size:14px;padding:14px 17px;}.txeco-footer-copy{font-size:14px;}}
+@media(min-width:681px) and (max-width:1100px){.txeco-core-brand{font-size:13px;}.txeco-top .txeco-tile,.txeco-bottom .txeco-tile{min-height:96px;}}
+@media(prefers-reduced-motion:reduce){.txeco-tile,.txeco-flow g{animation:none!important;transition:none!important;}}
 </style>
 </head>
 <body>
@@ -2594,52 +2621,82 @@ body {
         </div>
 
       </div>
-      <div class="tx-catalogue-teaser" aria-label="Catálogo de módulos y herramientas en preparación">
-        <span>Ver todos los módulos y herramientas</span>
-        <span class="tx-catalogue-pending">Próximamente</span>
-      </div>
     </div>
   </div>
 </section>
 
-<section class="tx-connected" id="plataforma-conectada">
-  <div class="tx-connected-inner">
-    <div class="tx-connected-copy">
-      <span class="tx-connected-eyebrow">Tu negocio, donde lo necesites</span>
-      <h2>Todo conectado, en escritorio y en móvil.</h2>
-      <p>Prospección, campañas, conversaciones, citas, contenido, cobros y seguimiento desde un mismo sistema. Menos herramientas aisladas y más control sobre tu operación.</p>
-      <div class="tx-connected-caps">
-        <span>Prospección</span>
-        <span>Publicidad</span>
-        <span>CRM</span>
-        <span>Atención</span>
-        <span>Contenido</span>
-        <span>Cobros</span>
-      </div>
-      <p class="tx-connected-note">Las funciones, integraciones y accesos dependen del plan, los complementos y la configuración autorizada.</p>
-    </div>
-    <div class="tx-connected-visual" role="img" aria-label="Ilustración conceptual de 10xTeam Growth visto en una computadora y un teléfono móvil">
-      <div class="tx-connected-glow" aria-hidden="true"></div>
-      <div class="tx-connected-computer" aria-hidden="true">
-        <div class="tx-connected-monitor">
-          <div class="tx-connected-top"><span class="tx-connected-dots">●●●</span>10xTeam Growth</div>
-          <div class="tx-connected-dashboard">
-            <div class="tx-connected-sidebar"><i></i><i></i><i></i><i></i><i></i></div>
-            <div class="tx-connected-dashboard-main">
-              <div class="tx-connected-metric-row"><div class="tx-connected-metric"><b></b><i></i></div><div class="tx-connected-metric"><b></b><i></i></div><div class="tx-connected-metric"><b></b><i></i></div></div>
-              <div class="tx-connected-trend"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<section class="tx-ecosystem" id="plataforma-conectada" aria-labelledby="tx-eco-title">
+  <div class="tx-ecosystem-inner">
+    <header class="txeco-intro">
+      <span class="txeco-eyebrow">Una plataforma, muchas soluciones</span>
+      <h2 id="tx-eco-title">Todo tu negocio conectado en un solo sistema.</h2>
+      <p>CRM, prospección, automatización, conversaciones, contenido, citas, cobros, reportes y mucho más. 10xteam reúne las herramientas clave para que tu negocio opere desde un solo lugar.</p>
+    </header>
+    <svg class="txeco-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><symbol id="txeco-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol><symbol id="txeco-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></symbol><symbol id="txeco-megaphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 16-7v16L3 13z"/><path d="M8 15v5h4v-4"/></symbol><symbol id="txeco-contact" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="9" r="2"/><path d="M8 16c1-3 7-3 8 0"/></symbol><symbol id="txeco-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></symbol><symbol id="txeco-workflow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="6" height="5" rx="1"/><rect x="16" y="4" width="6" height="5" rx="1"/><rect x="9" y="16" width="6" height="5" rx="1"/><path d="M8 6h8M5 9v4h7v3M19 9v4h-7"/></symbol><symbol id="txeco-messages" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h15v11H9l-5 4z"/><path d="M8 9h7M8 12h5"/></symbol><symbol id="txeco-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 0 1-11.5 7.2L3 20l1.9-5.4A8 8 0 1 1 20 11Z"/><path d="M9 10h6M9 13h4"/></symbol><symbol id="txeco-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18M8 15h3M14 15h3"/></symbol><symbol id="txeco-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="18" rx="2"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 11h6M9 15h6"/></symbol><symbol id="txeco-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></symbol><symbol id="txeco-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m9 10 6-3m-6 7 6 3"/></symbol><symbol id="txeco-filepen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v13H6z"/><path d="M15 3v4h4M9 12h6M9 16h5"/><path d="m14 20 4-4 2 2-4 4-3 1z"/></symbol><symbol id="txeco-bot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M9 3h6"/><circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/><path d="M9 17h6"/></symbol><symbol id="txeco-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol><symbol id="txeco-kanban" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M5 8h2M11 8h2M17 8h2M5 12h2M11 12h2"/></symbol><symbol id="txeco-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h5"/></symbol><symbol id="txeco-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3 6 7 .9-5 4.9 1.3 7-6.3-3.3-6.3 3.3 1.3-7-5-4.9L9 8z"/></symbol><symbol id="txeco-barchart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M6 16v-5h4v5M12 16V5h4v11M18 16V9h3v7"/></symbol><symbol id="txeco-linechart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19V4M3 19h18"/><path d="m6 15 5-6 4 3 5-7"/></symbol><symbol id="txeco-files" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h9l4 4v13H7z"/><path d="M16 3v4h4M4 7H3v14h12"/></symbol><symbol id="txeco-headset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13V11a8 8 0 0 1 16 0v2"/><rect x="3" y="12" width="4" height="7" rx="2"/><rect x="17" y="12" width="4" height="7" rx="2"/><path d="M19 19c0 2-3 3-6 3"/></symbol><symbol id="txeco-puzzle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h5v4a2 2 0 1 0 4 0V3h3v7h-4a2 2 0 1 0 0 4h4v7h-7v-4a2 2 0 1 0-4 0v4H3v-7h4a2 2 0 1 0 0-4H3V3z"/></symbol><symbol id="txeco-smartphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M10 5h4M11 19h2"/></symbol><symbol id="txeco-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5-9 5-9-5zM3 12l9 5 9-5M3 17l9 5 9-5"/></symbol></svg>
+    <div class="txeco-mosaic">
+      <div class="txeco-top"><div class="txeco-tile txeco-teal txeco-toward-bottom" style="--eco-delay:0s" title="CRM"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-grid"/></svg></span><span class="txeco-name">CRM</span></div>
+<div class="txeco-tile txeco-blue txeco-toward-bottom" style="--eco-delay:-4.55s" title="Prospección"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-search"/></svg></span><span class="txeco-name">Prospección</span></div>
+<div class="txeco-tile txeco-amber txeco-toward-bottom" style="--eco-delay:-0.65s" title="Publicidad digital"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-megaphone"/></svg></span><span class="txeco-name">Publicidad digital</span></div>
+<div class="txeco-tile txeco-blue txeco-toward-bottom" style="--eco-delay:-5.2s" title="Contactos"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-contact"/></svg></span><span class="txeco-name">Contactos</span></div>
+<div class="txeco-tile txeco-violet txeco-toward-bottom" style="--eco-delay:-1.3s" title="Embudos"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-filter"/></svg></span><span class="txeco-name">Embudos</span></div>
+<div class="txeco-tile txeco-teal txeco-toward-bottom" style="--eco-delay:-5.8500000000000005s" title="Automatizaciones"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-workflow"/></svg></span><span class="txeco-name">Automatizaciones</span></div>
+<div class="txeco-tile txeco-blue txeco-toward-bottom" style="--eco-delay:-1.9500000000000002s" title="Conversaciones"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-messages"/></svg></span><span class="txeco-name">Conversaciones</span></div>
+<div class="txeco-tile txeco-green txeco-toward-bottom" style="--eco-delay:-6.5s" title="WhatsApp y canales"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-message"/></svg></span><span class="txeco-name">WhatsApp y canales</span></div>
+<div class="txeco-tile txeco-amber txeco-toward-bottom" style="--eco-delay:-2.6s" title="Calendarios y citas"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-calendar"/></svg></span><span class="txeco-name">Calendarios y citas</span></div></div>
+      <div class="txeco-middle">
+        <div class="txeco-side txeco-side-left"><div class="txeco-tile txeco-violet txeco-toward-right" style="--eco-delay:-7.15s" title="Formularios"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-clipboard"/></svg></span><span class="txeco-name">Formularios</span></div>
+<div class="txeco-tile txeco-blue txeco-toward-right" style="--eco-delay:-3.25s" title="Sitios y landing pages"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-monitor"/></svg></span><span class="txeco-name">Sitios y landing pages</span></div>
+<div class="txeco-tile txeco-violet txeco-toward-right" style="--eco-delay:-7.800000000000001s" title="Redes sociales"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-share"/></svg></span><span class="txeco-name">Redes sociales</span></div>
+<div class="txeco-tile txeco-amber txeco-toward-right" style="--eco-delay:-3.9000000000000004s" title="Contenido con IA"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-filepen"/></svg></span><span class="txeco-name">Contenido con IA</span></div></div>
+        <div class="txeco-core">
+          <svg class="txeco-flow" viewBox="0 0 860 380" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="txeco-flow-color" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#9C71FF" stop-opacity=".65"/><stop offset="55%" stop-color="#36BFFA" stop-opacity=".5"/><stop offset="100%" stop-color="#2AE0B0" stop-opacity=".6"/></linearGradient></defs>
+            <g stroke="url(#txeco-flow-color)" stroke-width="2" stroke-dasharray="5 10" fill="none">
+              <path d="M0 75 C190 75 230 190 430 190"/>
+              <path d="M0 305 C190 305 240 190 430 190"/>
+              <path d="M860 75 C640 75 610 190 430 190"/>
+              <path d="M860 305 C650 305 600 190 430 190"/>
+              <path d="M430 0 V100"/>
+              <path d="M430 380 V285"/>
+            </g>
+            <circle cx="430" cy="190" r="135" fill="#7B5CFF" opacity=".07"/>
+          </svg>
+          <div class="txeco-core-brand"><span class="txeco-core-symbol" aria-hidden="true">✦</span>10xteam <strong>Growth</strong></div>
+          <div class="txeco-devices" role="img" aria-label="Representación de 10xteam Growth integrada en una computadora y un teléfono móvil">
+            <div class="txeco-laptop">
+              <div class="txeco-laptop-shell">
+                <div class="txeco-screenbar"><span aria-hidden="true">● ● ●</span><strong>10xteam Growth</strong></div>
+                <div class="txeco-screengrid"><div class="txeco-screen-nav"><b></b><i></i><i></i><i></i><i></i><i></i></div>
+                  <div class="txeco-screen-content"><div class="txeco-screentitle"></div><div class="txeco-metrics"><i></i><i></i><i></i></div>
+                    <div class="txeco-chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                  </div>
+                </div>
+              </div>
+              <div class="txeco-laptop-base"></div>
             </div>
+            <div class="txeco-phone"><div class="txeco-phone-notch"></div><div class="txeco-phone-logo">10xteam</div><div class="txeco-phone-card"></div><div class="txeco-phone-card"></div><div class="txeco-phone-card"></div><div class="txeco-phone-dot"></div></div>
           </div>
+          <div class="txeco-core-caption">Un ecosistema para vender, operar y crecer</div>
         </div>
-        <div class="tx-connected-stand"></div><div class="tx-connected-base"></div>
+        <div class="txeco-side txeco-side-right"><div class="txeco-tile txeco-violet txeco-toward-left" style="--eco-delay:0s" title="Agentes IA"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-bot"/></svg></span><span class="txeco-name">Agentes IA</span></div>
+<div class="txeco-tile txeco-blue txeco-toward-left" style="--eco-delay:-4.55s" title="Email marketing"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-mail"/></svg></span><span class="txeco-name">Email marketing</span></div>
+<div class="txeco-tile txeco-green txeco-toward-left" style="--eco-delay:-0.65s" title="Proyectos y tareas"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-kanban"/></svg></span><span class="txeco-name">Proyectos y tareas</span></div>
+<div class="txeco-tile txeco-teal txeco-toward-left" style="--eco-delay:-5.2s" title="Pagos y cobros"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-card"/></svg></span><span class="txeco-name">Pagos y cobros</span></div></div>
       </div>
-      <div class="tx-connected-phone" aria-hidden="true">
-        <div class="tx-connected-phone-title">10xteam</div>
-        <div class="tx-connected-phone-card"></div>
-        <div class="tx-connected-phone-card"></div>
-        <div class="tx-connected-phone-card"></div>
-      </div>
-      <div class="tx-connected-media-label">Ilustración conceptual · Capturas definitivas pendientes</div>
+      <div class="txeco-bottom"><div class="txeco-tile txeco-amber txeco-toward-top" style="--eco-delay:-1.3s" title="Reputación"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-star"/></svg></span><span class="txeco-name">Reputación</span></div>
+<div class="txeco-tile txeco-blue txeco-toward-top" style="--eco-delay:-5.8500000000000005s" title="Reportes"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-barchart"/></svg></span><span class="txeco-name">Reportes</span></div>
+<div class="txeco-tile txeco-teal txeco-toward-top" style="--eco-delay:-1.9500000000000002s" title="Analítica y ROI"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-linechart"/></svg></span><span class="txeco-name">Analítica y ROI</span></div>
+<div class="txeco-tile txeco-violet txeco-toward-top" style="--eco-delay:-6.5s" title="Documentos y firmas"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-files"/></svg></span><span class="txeco-name">Documentos y firmas</span></div>
+<div class="txeco-tile txeco-blue txeco-toward-top" style="--eco-delay:-2.6s" title="Soporte"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-headset"/></svg></span><span class="txeco-name">Soporte</span></div>
+<div class="txeco-tile txeco-violet txeco-toward-top" style="--eco-delay:-7.15s" title="Integraciones"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-puzzle"/></svg></span><span class="txeco-name">Integraciones</span></div>
+<div class="txeco-tile txeco-teal txeco-toward-top" style="--eco-delay:-3.25s" title="Acceso móvil"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-smartphone"/></svg></span><span class="txeco-name">Acceso móvil</span></div>
+<div class="txeco-tile txeco-green txeco-toward-top txeco-addon" style="--eco-delay:-7.800000000000001s" title="Complementos"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-layers"/></svg></span><span class="txeco-name">Complementos</span><small>Opcionales</small></div></div>
+    </div>
+    <div class="txeco-footer">
+      <button class="txeco-catalog-cta" type="button" disabled aria-disabled="true" title="Catálogo completo en preparación">Ver todos los módulos y herramientas <span aria-hidden="true">↗</span></button>
+      <span class="txeco-soon">Catálogo completo próximamente</span>
+      <p class="txeco-footer-copy">Explora todas las funcionalidades, ejemplos de uso y complementos de 10xteam.</p>
+      <p class="txeco-disclaimer">Representación conceptual. La disponibilidad de funcionalidades, integraciones y complementos depende del plan, habilitación y condiciones contratadas. Las vistas de escritorio y móvil son ilustrativas.</p>
     </div>
   </div>
 </section>
