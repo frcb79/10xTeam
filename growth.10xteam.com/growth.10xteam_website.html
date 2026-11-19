@@ -2332,6 +2332,69 @@ body {
 @media(min-width:681px) and (max-width:1100px){.txeco-core-brand{font-size:13px;}.txeco-top .txeco-tile,.txeco-bottom .txeco-tile{min-height:96px;}}
 @media(prefers-reduced-motion:reduce){.txeco-tile,.txeco-flow g{animation:none!important;transition:none!important;}}
 </style>
+
+<style id="txeco-compact-hub-v2">
+/* Approved 25-card ecosystem: compact modules, authentic brand marks and visible convergence. */
+.tx-ecosystem{padding:72px 16px 74px;}
+.txeco-mosaic{gap:12px;isolation:isolate;}
+.txeco-top,.txeco-bottom{gap:12px;position:relative;z-index:3;}
+.txeco-middle{gap:12px;min-height:290px;position:relative;}
+.txeco-side{gap:12px;position:relative;z-index:3;}
+.txeco-tile{width:calc(100% - 8px);min-height:83px;padding:8px 6px;gap:5px;border-radius:10px;justify-self:center;align-self:center;animation-duration:13s;}
+.txeco-icon{width:34px;height:34px;border-radius:9px;}
+.txeco-icon svg{width:21px;height:21px;}
+.txeco-name{font-size:clamp(10px,.84vw,12.5px);line-height:1.2;}
+.txeco-tile small{font-size:8px;margin-top:-5px;}
+.txeco-network{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible;}
+.txeco-network-line{fill:none;stroke:url(#txeco-network-gradient);stroke-width:2.05;stroke-dasharray:7 12;opacity:.78;animation:txeco-network-flow 16s linear infinite;animation-delay:var(--network-delay);}
+.txeco-network-line:nth-of-type(3n){stroke-width:1.4;opacity:.56;}
+@keyframes txeco-network-flow{to{stroke-dashoffset:-225;}}
+.txeco-core{min-height:290px;padding:14px 16px 12px;z-index:2;background:radial-gradient(ellipse at 50% 50%,rgba(91,91,189,.29),transparent 58%),linear-gradient(140deg,#15233a,#111a29 58%,#112a2e);}
+.txeco-flow{opacity:.97;}
+.txeco-flow-paths{animation:txeco-flow 18s linear infinite;}
+.txeco-core-brand{font-size:12px;margin:0 0 12px;letter-spacing:.015em;opacity:.82;}
+.txeco-devices{width:min(68%,318px);max-width:318px;padding:0 28px 0 6px;}
+.txeco-laptop{width:90%;filter:drop-shadow(0 14px 17px rgba(0,0,0,.38));}
+.txeco-laptop-shell{background:#0b1120;border-width:6px;border-bottom-width:9px;aspect-ratio:16/10;border-radius:9px;}
+.txeco-screenbar{height:22px;background:#26334d;font-size:8px;padding:0 6px;}
+.txeco-logo-screen{width:100%;height:calc(100% - 22px);display:flex;align-items:center;justify-content:center;padding:10px 12px;background:radial-gradient(ellipse at 50% 45%,rgba(107,99,220,.18),transparent 70%),linear-gradient(135deg,#0d1527,#131d30);}
+.txeco-logo-screen img{width:92%;height:auto;max-height:90%;object-fit:contain;display:block;}
+.txeco-laptop-base{height:8px;margin:0 -9px;}
+.txeco-phone{width:25%;height:73%;max-width:83px;min-width:48px;right:2px;bottom:1px;padding:10px 4px 6px;gap:0;border-width:4px;border-radius:13px;background:#0e182a;box-shadow:0 9px 18px rgba(0,0,0,.47);}
+.txeco-phone-notch{height:3px;top:4px;background:#4c5b77;}
+.txeco-phone-screen{width:100%;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,rgba(95,93,196,.2),transparent 65%),#111c2e;border-radius:5px;}
+.txeco-phone-screen img{display:block;width:77%;height:auto;max-height:68%;object-fit:contain;}
+.txeco-phone-dot{width:22%;height:3px;margin:4px auto 0;background:#64728d;}
+.txeco-core-caption{font-size:11px;margin:12px 0 0;}
+@media(max-width:1100px){
+ .txeco-network{display:none;}
+ .txeco-middle{min-height:430px;}
+ .txeco-core{min-height:430px;}
+ .txeco-tile{min-height:80px;width:calc(100% - 4px);}
+ .txeco-top,.txeco-bottom,.txeco-side{gap:8px;}
+ .txeco-devices{width:min(83%,330px);}
+}
+@media(max-width:680px){
+ .tx-ecosystem{padding:54px 14px 60px;}
+ .txeco-mosaic{gap:8px;}
+ .txeco-middle{min-height:0;gap:8px;}
+ .txeco-core{min-height:230px;padding:14px 6px 10px;}
+ .txeco-top,.txeco-bottom,.txeco-side{gap:7px;}
+ .txeco-tile{min-height:72px;width:calc(100% - 2px);padding:7px 2px;gap:4px;}
+ .txeco-icon{width:29px;height:29px;border-radius:8px;}
+ .txeco-icon svg{width:19px;height:19px;}
+ .txeco-name{font-size:10px;line-height:1.18;}
+ .txeco-devices{width:min(78%,290px);padding:0 22px 0 4px;}
+ .txeco-core-brand{font-size:11px;margin-bottom:10px;}
+ .txeco-core-caption{font-size:10px;}
+ .txeco-laptop-shell{border-width:4px;border-bottom-width:6px;}
+ .txeco-screenbar{height:17px;font-size:7px;}
+ .txeco-logo-screen{height:calc(100% - 17px);padding:5px 7px;}
+ .txeco-phone{border-width:3px;max-width:65px;min-width:43px;border-radius:12px;padding:8px 3px 4px;}
+}
+@media(prefers-reduced-motion:reduce){.txeco-network-line,.txeco-flow-paths{animation:none!important;}}
+</style>
+
 </head>
 <body>
 
@@ -2634,6 +2697,40 @@ body {
     </header>
     <svg class="txeco-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><symbol id="txeco-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol><symbol id="txeco-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></symbol><symbol id="txeco-megaphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 16-7v16L3 13z"/><path d="M8 15v5h4v-4"/></symbol><symbol id="txeco-contact" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="9" r="2"/><path d="M8 16c1-3 7-3 8 0"/></symbol><symbol id="txeco-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></symbol><symbol id="txeco-workflow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="6" height="5" rx="1"/><rect x="16" y="4" width="6" height="5" rx="1"/><rect x="9" y="16" width="6" height="5" rx="1"/><path d="M8 6h8M5 9v4h7v3M19 9v4h-7"/></symbol><symbol id="txeco-messages" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h15v11H9l-5 4z"/><path d="M8 9h7M8 12h5"/></symbol><symbol id="txeco-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 0 1-11.5 7.2L3 20l1.9-5.4A8 8 0 1 1 20 11Z"/><path d="M9 10h6M9 13h4"/></symbol><symbol id="txeco-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18M8 15h3M14 15h3"/></symbol><symbol id="txeco-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="18" rx="2"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 11h6M9 15h6"/></symbol><symbol id="txeco-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></symbol><symbol id="txeco-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m9 10 6-3m-6 7 6 3"/></symbol><symbol id="txeco-filepen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v13H6z"/><path d="M15 3v4h4M9 12h6M9 16h5"/><path d="m14 20 4-4 2 2-4 4-3 1z"/></symbol><symbol id="txeco-bot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M9 3h6"/><circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/><path d="M9 17h6"/></symbol><symbol id="txeco-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol><symbol id="txeco-kanban" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M5 8h2M11 8h2M17 8h2M5 12h2M11 12h2"/></symbol><symbol id="txeco-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h5"/></symbol><symbol id="txeco-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3 6 7 .9-5 4.9 1.3 7-6.3-3.3-6.3 3.3 1.3-7-5-4.9L9 8z"/></symbol><symbol id="txeco-barchart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M6 16v-5h4v5M12 16V5h4v11M18 16V9h3v7"/></symbol><symbol id="txeco-linechart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19V4M3 19h18"/><path d="m6 15 5-6 4 3 5-7"/></symbol><symbol id="txeco-files" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h9l4 4v13H7z"/><path d="M16 3v4h4M4 7H3v14h12"/></symbol><symbol id="txeco-headset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13V11a8 8 0 0 1 16 0v2"/><rect x="3" y="12" width="4" height="7" rx="2"/><rect x="17" y="12" width="4" height="7" rx="2"/><path d="M19 19c0 2-3 3-6 3"/></symbol><symbol id="txeco-puzzle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h5v4a2 2 0 1 0 4 0V3h3v7h-4a2 2 0 1 0 0 4h4v7h-7v-4a2 2 0 1 0-4 0v4H3v-7h4a2 2 0 1 0 0-4H3V3z"/></symbol><symbol id="txeco-smartphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M10 5h4M11 19h2"/></symbol><symbol id="txeco-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5-9 5-9-5zM3 12l9 5 9-5M3 17l9 5 9-5"/></symbol></svg>
     <div class="txeco-mosaic">
+      <svg class="txeco-network" viewBox="0 0 1600 580" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="txeco-network-gradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#8964FF" stop-opacity=".58"/>
+            <stop offset=".55" stop-color="#53ABFB" stop-opacity=".55"/>
+            <stop offset="1" stop-color="#22D6AA" stop-opacity=".65"/>
+          </linearGradient>
+        </defs>
+        <path class="txeco-network-line" d="M89 48 C89 121 800 242 800 291" style="--network-delay:0s" />
+        <path class="txeco-network-line" d="M267 48 C267 121 800 242 800 291" style="--network-delay:-0.55s" />
+        <path class="txeco-network-line" d="M444 48 C444 121 800 242 800 291" style="--network-delay:-1.1s" />
+        <path class="txeco-network-line" d="M622 48 C622 121 800 242 800 291" style="--network-delay:-1.6500000000000001s" />
+        <path class="txeco-network-line" d="M800 48 C800 121 800 242 800 291" style="--network-delay:-2.2s" />
+        <path class="txeco-network-line" d="M978 48 C978 121 800 242 800 291" style="--network-delay:-2.75s" />
+        <path class="txeco-network-line" d="M1156 48 C1156 121 800 242 800 291" style="--network-delay:-3.3000000000000003s" />
+        <path class="txeco-network-line" d="M1333 48 C1333 121 800 242 800 291" style="--network-delay:-3.8500000000000005s" />
+        <path class="txeco-network-line" d="M1511 48 C1511 121 800 242 800 291" style="--network-delay:-4.4s" />
+        <path class="txeco-network-line" d="M92 205 C304 219 616 277 800 291" style="--network-delay:0s" />
+        <path class="txeco-network-line" d="M245 205 C412 219 656 277 800 291" style="--network-delay:-0.55s" />
+        <path class="txeco-network-line" d="M92 365 C304 353 616 303 800 291" style="--network-delay:-1.1s" />
+        <path class="txeco-network-line" d="M245 365 C412 353 656 303 800 291" style="--network-delay:-1.6500000000000001s" />
+        <path class="txeco-network-line" d="M1355 205 C1189 219 944 277 800 291" style="--network-delay:-2.2s" />
+        <path class="txeco-network-line" d="M1510 205 C1297 219 985 277 800 291" style="--network-delay:-2.75s" />
+        <path class="txeco-network-line" d="M1355 365 C1189 353 944 303 800 291" style="--network-delay:-3.3000000000000003s" />
+        <path class="txeco-network-line" d="M1510 365 C1297 353 985 303 800 291" style="--network-delay:-3.8500000000000005s" />
+        <path class="txeco-network-line" d="M100 535 C100 462 800 340 800 291" style="--network-delay:-4.4s" />
+        <path class="txeco-network-line" d="M300 535 C300 462 800 340 800 291" style="--network-delay:0s" />
+        <path class="txeco-network-line" d="M500 535 C500 462 800 340 800 291" style="--network-delay:-0.55s" />
+        <path class="txeco-network-line" d="M700 535 C700 462 800 340 800 291" style="--network-delay:-1.1s" />
+        <path class="txeco-network-line" d="M900 535 C900 462 800 340 800 291" style="--network-delay:-1.6500000000000001s" />
+        <path class="txeco-network-line" d="M1100 535 C1100 462 800 340 800 291" style="--network-delay:-2.2s" />
+        <path class="txeco-network-line" d="M1300 535 C1300 462 800 340 800 291" style="--network-delay:-2.75s" />
+        <path class="txeco-network-line" d="M1500 535 C1500 462 800 340 800 291" style="--network-delay:-3.3000000000000003s" />
+      </svg>
       <div class="txeco-top"><div class="txeco-tile txeco-teal txeco-toward-bottom" style="--eco-delay:0s" title="CRM"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-grid"/></svg></span><span class="txeco-name">CRM</span></div>
 <div class="txeco-tile txeco-blue txeco-toward-bottom" style="--eco-delay:-4.55s" title="Prospección"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-search"/></svg></span><span class="txeco-name">Prospección</span></div>
 <div class="txeco-tile txeco-amber txeco-toward-bottom" style="--eco-delay:-0.65s" title="Publicidad digital"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-megaphone"/></svg></span><span class="txeco-name">Publicidad digital</span></div>
@@ -2649,32 +2746,57 @@ body {
 <div class="txeco-tile txeco-violet txeco-toward-right" style="--eco-delay:-7.800000000000001s" title="Redes sociales"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-share"/></svg></span><span class="txeco-name">Redes sociales</span></div>
 <div class="txeco-tile txeco-amber txeco-toward-right" style="--eco-delay:-3.9000000000000004s" title="Contenido con IA"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-filepen"/></svg></span><span class="txeco-name">Contenido con IA</span></div></div>
         <div class="txeco-core">
-          <svg class="txeco-flow" viewBox="0 0 860 380" preserveAspectRatio="none" aria-hidden="true">
-            <defs><linearGradient id="txeco-flow-color" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#9C71FF" stop-opacity=".65"/><stop offset="55%" stop-color="#36BFFA" stop-opacity=".5"/><stop offset="100%" stop-color="#2AE0B0" stop-opacity=".6"/></linearGradient></defs>
-            <g stroke="url(#txeco-flow-color)" stroke-width="2" stroke-dasharray="5 10" fill="none">
-              <path d="M0 75 C190 75 230 190 430 190"/>
-              <path d="M0 305 C190 305 240 190 430 190"/>
-              <path d="M860 75 C640 75 610 190 430 190"/>
-              <path d="M860 305 C650 305 600 190 430 190"/>
-              <path d="M430 0 V100"/>
-              <path d="M430 380 V285"/>
+          <svg class="txeco-flow" viewBox="0 0 860 370" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="txeco-flow-color" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#8E64FF" stop-opacity=".63"/>
+                <stop offset="50%" stop-color="#4CB2F5" stop-opacity=".58"/>
+                <stop offset="100%" stop-color="#22D6A6" stop-opacity=".64"/>
+              </linearGradient>
+            </defs>
+            <g class="txeco-flow-paths" stroke="url(#txeco-flow-color)" stroke-width="1.7" stroke-dasharray="6 12" fill="none">
+              <path d="M0 47 C160 47 190 182 430 182"/>
+              <path d="M860 47 C690 47 665 182 430 182"/>
+              <path d="M0 117 C160 117 190 182 430 182"/>
+              <path d="M860 117 C690 117 665 182 430 182"/>
+              <path d="M0 187 C160 187 190 182 430 182"/>
+              <path d="M860 187 C690 187 665 182 430 182"/>
+              <path d="M0 257 C160 257 190 182 430 182"/>
+              <path d="M860 257 C690 257 665 182 430 182"/>
+              <path d="M0 327 C160 327 190 182 430 182"/>
+              <path d="M860 327 C690 327 665 182 430 182"/>
+              <path d="M80 0 C80 92 430 108 430 182"/>
+              <path d="M80 370 C80 280 430 260 430 182"/>
+              <path d="M254 0 C254 92 430 108 430 182"/>
+              <path d="M254 370 C254 280 430 260 430 182"/>
+              <path d="M428 0 C428 92 430 108 430 182"/>
+              <path d="M428 370 C428 280 430 260 430 182"/>
+              <path d="M602 0 C602 92 430 108 430 182"/>
+              <path d="M602 370 C602 280 430 260 430 182"/>
+              <path d="M776 0 C776 92 430 108 430 182"/>
+              <path d="M776 370 C776 280 430 260 430 182"/>
             </g>
-            <circle cx="430" cy="190" r="135" fill="#7B5CFF" opacity=".07"/>
+            <circle cx="430" cy="182" r="112" fill="#7B5CFF" opacity=".075"/>
+            <circle cx="430" cy="182" r="87" fill="none" stroke="#5D8DE9" stroke-width="1.4" opacity=".18"/>
           </svg>
           <div class="txeco-core-brand"><span class="txeco-core-symbol" aria-hidden="true">✦</span>10xteam <strong>Growth</strong></div>
           <div class="txeco-devices" role="img" aria-label="Representación de 10xteam Growth integrada en una computadora y un teléfono móvil">
             <div class="txeco-laptop">
               <div class="txeco-laptop-shell">
                 <div class="txeco-screenbar"><span aria-hidden="true">● ● ●</span><strong>10xteam Growth</strong></div>
-                <div class="txeco-screengrid"><div class="txeco-screen-nav"><b></b><i></i><i></i><i></i><i></i><i></i></div>
-                  <div class="txeco-screen-content"><div class="txeco-screentitle"></div><div class="txeco-metrics"><i></i><i></i><i></i></div>
-                    <div class="txeco-chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-                  </div>
+                <div class="txeco-logo-screen">
+                  <img src="/Logo_10xteam.png" width="350" height="140" alt="" loading="lazy" decoding="async"/>
                 </div>
               </div>
               <div class="txeco-laptop-base"></div>
             </div>
-            <div class="txeco-phone"><div class="txeco-phone-notch"></div><div class="txeco-phone-logo">10xteam</div><div class="txeco-phone-card"></div><div class="txeco-phone-card"></div><div class="txeco-phone-card"></div><div class="txeco-phone-dot"></div></div>
+            <div class="txeco-phone">
+              <div class="txeco-phone-notch"></div>
+              <div class="txeco-phone-screen">
+                <img src="/favicon.png" width="120" height="144" alt="" loading="lazy" decoding="async"/>
+              </div>
+              <div class="txeco-phone-dot"></div>
+            </div>
           </div>
           <div class="txeco-core-caption">Un ecosistema para vender, operar y crecer</div>
         </div>
