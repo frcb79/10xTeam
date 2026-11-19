@@ -2236,11 +2236,13 @@ body {
 .tx-stage-label{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--tx-green);margin:0 0 12px;}
 .tx-stage-headline{font-family:var(--tx-font-display);font-size:clamp(23px,2.55vw,32px);line-height:1.19;letter-spacing:-.018em;margin:0 0 14px;max-width:740px;color:var(--tx-text);}
 .tx-stage-description{font-size:clamp(15px,1.35vw,17px);line-height:1.7;color:var(--tx-text-dim);margin:0 0 24px;max-width:780px;}
-.tx-tab-panel ul.tx-stage-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
+.tx-tab-panel ul.tx-stage-points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 22px;}
 .tx-tab-panel .tx-stage-points li{font-size:14px;line-height:1.57;padding-left:18px;}
 .tx-tab-panel .tx-stage-points li strong{display:block;color:var(--tx-text);font-weight:700;margin-bottom:5px;}
 .tx-tab-panel .tx-stage-points li::before{top:8px;}
 .tx-stage-media[hidden]{display:none!important;}
+.tx-stage-more{color:var(--tx-green);font-size:15px;line-height:1.5;font-weight:700;margin:22px 0 0;}
+.tx-stage-layout:has(.tx-stage-media:not([hidden])) .tx-stage-points{grid-template-columns:1fr;}
 .tx-stage-media img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--tx-border);}
 @media(max-width:900px){.tx-tab-panel ul.tx-stage-points{grid-template-columns:1fr;gap:16px;}.tx-stage-layout:has(.tx-stage-media:not([hidden])){grid-template-columns:1fr;}}
 @media(max-width:640px){.tx-tab-btn .tx-tab-name{display:block;font-size:12px;}.tx-tab-btn{padding:9px 11px;gap:6px;}.tx-tab-btn .tx-tab-icon{width:24px;height:24px;}.tx-tab-panel{padding:24px 20px;}.tx-stage-headline{font-size:clamp(23px,6vw,29px);}.tx-stage-description{font-size:15px;}}
@@ -2429,7 +2431,9 @@ body {
                 <li><strong>Diagnóstico estratégico.</strong> Define las necesidades de tu negocio y las prioridades de crecimiento.</li>
                 <li><strong>Perfil de cliente ideal.</strong> Organiza segmentos, necesidades y oportunidades de tu mercado.</li>
                 <li><strong>Ruta de acción.</strong> Identifica los primeros procesos que conviene activar y automatizar.</li>
+                <li><strong>Tendencias e inteligencia de mercado.</strong> Explora señales comerciales cuando estas capacidades estén habilitadas.</li>
               </ul>
+              <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
             </div>
             <!-- Foto real pendiente: Wizard y diagnóstico estratégico de 10xTeam. Se integrará sin filtros, recortes ni ediciones tras validarla. -->
             <div class="tx-stage-media" hidden data-shot="identifica"></div>
@@ -2446,7 +2450,9 @@ body {
                 <li><strong>Contactos organizados.</strong> Importa, clasifica y segmenta prospectos dentro del CRM.</li>
                 <li><strong>Campañas conectadas.</strong> Prepara secuencias de contacto mediante los canales habilitados.</li>
                 <li><strong>Seguimiento desde el inicio.</strong> Convierte cada contacto en una oportunidad con próximas acciones claras.</li>
+                <li><strong>Publicidad y captación.</strong> Conecta formularios, páginas y campañas publicitarias mediante canales autorizados.</li>
               </ul>
+              <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
             </div>
             <!-- Foto real pendiente: Prospección y listas de contactos (validar acceso a búsqueda de prospectos). Se integrará sin filtros, recortes ni ediciones tras validarla. -->
             <div class="tx-stage-media" hidden data-shot="prospecta"></div>
@@ -2463,7 +2469,9 @@ body {
                 <li><strong>Conversaciones en un solo lugar.</strong> Consulta mensajes e historial en la bandeja centralizada.</li>
                 <li><strong>Respuestas y seguimiento.</strong> Configura automatizaciones y asistencia de IA según tus canales activos.</li>
                 <li><strong>Más oportunidades de cita.</strong> Conecta conversaciones con calendarios y recordatorios.</li>
+                <li><strong>Chat y canales conectados.</strong> Recibe consultas desde tu sitio web y los canales que actives.</li>
               </ul>
+              <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
             </div>
             <!-- Foto real pendiente: Bandeja de conversaciones y automatización comercial. Se integrará sin filtros, recortes ni ediciones tras validarla. -->
             <div class="tx-stage-media" hidden data-shot="convierte"></div>
@@ -2480,7 +2488,9 @@ body {
                 <li><strong>Proceso comercial visible.</strong> Visualiza tus oportunidades y etapas de venta en el CRM.</li>
                 <li><strong>Citas y tareas coordinadas.</strong> Programa actividades para que las negociaciones avancen.</li>
                 <li><strong>Propuestas y cobros.</strong> Integra documentos y opciones de pago cuando estén habilitados.</li>
+                <li><strong>Documentos y firmas.</strong> Organiza cotizaciones y contratos relacionados con tus oportunidades.</li>
               </ul>
+              <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
             </div>
             <!-- Foto real pendiente: Pipeline de oportunidades, agenda y propuestas. Se integrará sin filtros, recortes ni ediciones tras validarla. -->
             <div class="tx-stage-media" hidden data-shot="cierra"></div>
@@ -2497,7 +2507,9 @@ body {
                 <li><strong>Seguimiento posventa.</strong> Programa mensajes y recordatorios después de cada compra.</li>
                 <li><strong>Reputación y confianza.</strong> Solicita reseñas y centraliza la gestión de tu reputación.</li>
                 <li><strong>Clientes que regresan.</strong> Segmenta tu base para campañas de reactivación y fidelización.</li>
+                <li><strong>Atención y soporte.</strong> Organiza solicitudes y tickets conforme a las funciones habilitadas.</li>
               </ul>
+              <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
             </div>
             <!-- Foto real pendiente: Reputación, reseñas y campañas de seguimiento. Se integrará sin filtros, recortes ni ediciones tras validarla. -->
             <div class="tx-stage-media" hidden data-shot="retén"></div>
@@ -2514,7 +2526,9 @@ body {
                 <li><strong>Contenido constante.</strong> Planifica publicaciones y prepara textos o materiales con apoyo de IA.</li>
                 <li><strong>Resultados visibles.</strong> Revisa campañas, oportunidades y evolución de tu operación comercial.</li>
                 <li><strong>Decisiones mejor informadas.</strong> Identifica qué acciones conviene repetir, ajustar o automatizar.</li>
+                <li><strong>Atribución y retorno.</strong> Analiza el origen de los prospectos y el rendimiento de las campañas conectadas.</li>
               </ul>
+              <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
             </div>
             <!-- Foto real pendiente: Social Planner y dashboard de reportes. Se integrará sin filtros, recortes ni ediciones tras validarla. -->
             <div class="tx-stage-media" hidden data-shot="escala"></div>
