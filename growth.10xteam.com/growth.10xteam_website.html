@@ -2229,28 +2229,46 @@ body {
 </style>
 
 <style id="growth-stages-2026">
-/* Stage-specific copy, reserved place for authentic product screenshots. */
+/* Six areas: full-width section headers followed by compact benefits + larger real screenshots. */
 .tx-cycle-section .tx-sub{max-width:820px;}
-.tx-stage-layout{display:grid;grid-template-columns:1fr;gap:28px;align-items:center;}
-.tx-stage-layout:has(.tx-stage-media:not([hidden])){grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);}
-.tx-stage-label{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--tx-green);margin:0 0 12px;}
-.tx-stage-headline{font-family:var(--tx-font-display);font-size:clamp(23px,2.55vw,32px);line-height:1.19;letter-spacing:-.018em;margin:0 0 14px;max-width:740px;color:var(--tx-text);}
-.tx-stage-description{font-size:clamp(15px,1.35vw,17px);line-height:1.7;color:var(--tx-text-dim);margin:0 0 24px;max-width:780px;}
-.tx-tab-panel ul.tx-stage-points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 22px;}
+.tx-stage-layout{display:flex;flex-direction:column;gap:0;min-width:0;}
+.tx-stage-header{width:100%;min-width:0;margin:0 0 26px;}
+.tx-stage-label{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--tx-green);margin:0 0 10px;}
+.tx-stage-headline{font-family:var(--tx-font-display);font-size:clamp(22px,2.22vw,29px);line-height:1.22;letter-spacing:-.027em;margin:0 0 12px;max-width:none;color:var(--tx-text);}
+.tx-stage-description{font-size:clamp(15px,1.35vw,17px);line-height:1.6;color:var(--tx-text-dim);margin:0;max-width:none;}
+@media(min-width:1080px){.tx-stage-headline{white-space:nowrap;}}
+.tx-stage-body{display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,.58fr);align-items:start;gap:clamp(22px,2.6vw,32px);width:100%;min-width:0;}
+.tx-stage-benefits{min-width:0;}
+.tx-tab-panel ul.tx-stage-points{display:grid;grid-template-columns:1fr;gap:16px;}
 .tx-tab-panel .tx-stage-points li{font-size:14px;line-height:1.57;padding-left:18px;}
 .tx-tab-panel .tx-stage-points li strong{display:block;color:var(--tx-text);font-weight:700;margin-bottom:5px;}
 .tx-tab-panel .tx-stage-points li::before{top:8px;}
-.tx-stage-media[hidden]{display:none!important;}
 .tx-stage-more{color:var(--tx-green);font-size:15px;line-height:1.5;font-weight:700;margin:22px 0 0;}
-.tx-stage-layout:has(.tx-stage-media:not([hidden])) .tx-stage-points{grid-template-columns:1fr;}
-.tx-stage-media{min-width:0;max-width:100%;}
+.tx-stage-media{min-width:0;max-width:100%;width:100%;}
+.tx-stage-media[hidden]{display:none!important;}
 .tx-stage-image-link{display:block;border-radius:12px;overflow:hidden;border:1px solid var(--tx-border);background:#f5f7fa;box-shadow:0 15px 36px rgba(0,0,0,.16);transition:box-shadow .2s ease,border-color .2s ease;}
 .tx-stage-image-link:hover{border-color:var(--tx-green);box-shadow:0 17px 40px rgba(0,0,0,.23);}
 .tx-stage-image-link:focus-visible{outline:3px solid var(--tx-green);outline-offset:3px;}
 .tx-stage-media img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#fff;}
 .tx-stage-shot-note{font-size:11px;line-height:1.45;color:var(--tx-text-dim);margin:10px 0 0;text-align:center;}
-@media(max-width:900px){.tx-tab-panel ul.tx-stage-points{grid-template-columns:1fr;gap:16px;}.tx-stage-layout:has(.tx-stage-media:not([hidden])){grid-template-columns:1fr;}}
-@media(max-width:640px){.tx-tab-btn .tx-tab-name{display:block;font-size:12px;}.tx-tab-btn{padding:9px 11px;gap:6px;}.tx-tab-btn .tx-tab-icon{width:24px;height:24px;}.tx-tab-panel{padding:24px 20px;}.tx-stage-headline{font-size:clamp(23px,6vw,29px);}.tx-stage-description{font-size:15px;}}
+@media(max-width:1079px){.tx-stage-headline{white-space:normal;}}
+@media(max-width:800px){
+ .tx-stage-header{margin-bottom:22px;}
+ .tx-stage-body{grid-template-columns:1fr;gap:22px;}
+ .tx-stage-media{order:-1;}
+ .tx-tab-panel ul.tx-stage-points{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+}
+@media(max-width:640px){
+ .tx-tab-btn .tx-tab-name{display:block;font-size:12px;}
+ .tx-tab-btn{padding:9px 11px;gap:6px;}
+ .tx-tab-btn .tx-tab-icon{width:24px;height:24px;}
+ .tx-tab-panel{padding:24px 20px;}
+ .tx-stage-headline{font-size:clamp(23px,6vw,29px);}
+ .tx-stage-description{font-size:15px;}
+ .tx-stage-header{margin-bottom:20px;}
+ .tx-stage-body{gap:20px;}
+ .tx-tab-panel ul.tx-stage-points{grid-template-columns:1fr;gap:16px;}
+}
 </style>
 
 <style id="growth-value-integrations-2026">
@@ -2581,144 +2599,162 @@ body {
 
         <div class="tx-tab-panel tx-active" data-panel="0">
           <div class="tx-stage-layout">
-            <div class="tx-stage-copy">
+            <div class="tx-stage-header">
               <p class="tx-stage-label">01 · Identifica</p>
               <h3 class="tx-stage-headline">Descubre quién es tu cliente ideal y dónde enfocar tus esfuerzos.</h3>
               <p class="tx-stage-description">Antes de invertir tiempo y presupuesto, entiende a quién quieres atraer, qué necesita y cómo puede ayudarte 10xTeam a organizar tu estrategia comercial.</p>
-              <ul class="tx-stage-points">
+            </div>
+            <div class="tx-stage-body">
+              <div class="tx-stage-benefits">
+                <ul class="tx-stage-points">
                 <li><strong>Diagnóstico estratégico.</strong> Define las necesidades de tu negocio y las prioridades de crecimiento.</li>
                 <li><strong>Perfil de cliente ideal.</strong> Organiza segmentos, necesidades y oportunidades de tu mercado.</li>
                 <li><strong>Ruta de acción.</strong> Identifica los primeros procesos que conviene activar y automatizar.</li>
                 <li><strong>Tendencias e inteligencia de mercado.</strong> Explora señales comerciales cuando estas capacidades estén habilitadas.</li>
               </ul>
-              <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
-            </div>
-            <!-- Foto real pendiente: Wizard y diagnóstico estratégico de 10xTeam. Se integrará sin filtros, recortes ni ediciones tras validarla. -->
-            <div class="tx-stage-media" data-shot="identifica">
+                <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
+              </div>
+              <div class="tx-stage-media" data-shot="identifica">
               <a class="tx-stage-image-link" href="/growth-stages/growth-identifica-demo.png" target="_blank" rel="noopener noreferrer" aria-label="Abrir captura de identifica en tamaño completo">
                 <img src="/growth-stages/growth-identifica-demo.png" alt="Panel de indicadores comerciales en la cuenta de demostración de 10xteam Growth" width="1360" height="765" loading="eager" decoding="async">
               </a>
               <p class="tx-stage-shot-note">Pantalla de demostración · Los datos ilustrativos no son resultados de clientes reales.</p>
+            </div>
             </div>
           </div>
         </div>
 
         <div class="tx-tab-panel" data-panel="1">
           <div class="tx-stage-layout">
-            <div class="tx-stage-copy">
+            <div class="tx-stage-header">
               <p class="tx-stage-label">02 · Prospecta</p>
               <h3 class="tx-stage-headline">Genera nuevas oportunidades y organiza tu prospección.</h3>
               <p class="tx-stage-description">Reúne tus contactos y fuentes comerciales en un mismo lugar, segmenta prospectos y prepara acciones de contacto para impulsar nuevas conversaciones.</p>
-              <ul class="tx-stage-points">
+            </div>
+            <div class="tx-stage-body">
+              <div class="tx-stage-benefits">
+                <ul class="tx-stage-points">
                 <li><strong>Contactos organizados.</strong> Importa, clasifica y segmenta prospectos dentro del CRM.</li>
                 <li><strong>Campañas conectadas.</strong> Prepara secuencias de contacto mediante los canales habilitados.</li>
                 <li><strong>Seguimiento desde el inicio.</strong> Convierte cada contacto en una oportunidad con próximas acciones claras.</li>
                 <li><strong>Publicidad y captación.</strong> Conecta formularios, páginas y campañas publicitarias mediante canales autorizados.</li>
               </ul>
-              <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
-            </div>
-            <!-- Foto real pendiente: Prospección y listas de contactos (validar acceso a búsqueda de prospectos). Se integrará sin filtros, recortes ni ediciones tras validarla. -->
-            <div class="tx-stage-media" data-shot="prospecta">
+                <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
+              </div>
+              <div class="tx-stage-media" data-shot="prospecta">
               <a class="tx-stage-image-link" href="/growth-stages/growth-prospecta.png" target="_blank" rel="noopener noreferrer" aria-label="Abrir captura de prospecta en tamaño completo">
                 <img src="/growth-stages/growth-prospecta.png" alt="Administrador de anuncios de la plataforma 10xteam Growth" width="1360" height="765" loading="lazy" decoding="async">
               </a>
               <p class="tx-stage-shot-note">Pantalla de demostración · Los datos ilustrativos no son resultados de clientes reales.</p>
+            </div>
             </div>
           </div>
         </div>
 
         <div class="tx-tab-panel" data-panel="2">
           <div class="tx-stage-layout">
-            <div class="tx-stage-copy">
+            <div class="tx-stage-header">
               <p class="tx-stage-label">03 · Convierte</p>
               <h3 class="tx-stage-headline">Responde, califica y da seguimiento a cada oportunidad.</h3>
               <p class="tx-stage-description">Centraliza conversaciones y automatiza respuestas, recordatorios y citas para mantener el interés de tus prospectos sin depender de tareas manuales.</p>
-              <ul class="tx-stage-points">
+            </div>
+            <div class="tx-stage-body">
+              <div class="tx-stage-benefits">
+                <ul class="tx-stage-points">
                 <li><strong>Conversaciones en un solo lugar.</strong> Consulta mensajes e historial en la bandeja centralizada.</li>
                 <li><strong>Respuestas y seguimiento.</strong> Configura automatizaciones y asistencia de IA según tus canales activos.</li>
                 <li><strong>Más oportunidades de cita.</strong> Conecta conversaciones con calendarios y recordatorios.</li>
                 <li><strong>Chat y canales conectados.</strong> Recibe consultas desde tu sitio web y los canales que actives.</li>
               </ul>
-              <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
-            </div>
-            <!-- Foto real pendiente: Bandeja de conversaciones y automatización comercial. Se integrará sin filtros, recortes ni ediciones tras validarla. -->
-            <div class="tx-stage-media" data-shot="convierte">
+                <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
+              </div>
+              <div class="tx-stage-media" data-shot="convierte">
               <a class="tx-stage-image-link" href="/growth-stages/growth-convierte-demo.png" target="_blank" rel="noopener noreferrer" aria-label="Abrir captura de convierte en tamaño completo">
                 <img src="/growth-stages/growth-convierte-demo.png" alt="Vista de configuración y ejemplo del chat comercial en 10xteam Growth" width="1360" height="765" loading="lazy" decoding="async">
               </a>
               <p class="tx-stage-shot-note">Pantalla de demostración · Los datos ilustrativos no son resultados de clientes reales.</p>
+            </div>
             </div>
           </div>
         </div>
 
         <div class="tx-tab-panel" data-panel="3">
           <div class="tx-stage-layout">
-            <div class="tx-stage-copy">
+            <div class="tx-stage-header">
               <p class="tx-stage-label">04 · Cierra</p>
               <h3 class="tx-stage-headline">Organiza tus ventas y avanza cada negociación.</h3>
               <p class="tx-stage-description">Ten claridad sobre quién está listo para comprar, qué falta por resolver y cuál es el siguiente paso para cerrar cada oportunidad.</p>
-              <ul class="tx-stage-points">
+            </div>
+            <div class="tx-stage-body">
+              <div class="tx-stage-benefits">
+                <ul class="tx-stage-points">
                 <li><strong>Proceso comercial visible.</strong> Visualiza tus oportunidades y etapas de venta en el CRM.</li>
                 <li><strong>Citas y tareas coordinadas.</strong> Programa actividades para que las negociaciones avancen.</li>
                 <li><strong>Propuestas y cobros.</strong> Integra documentos y opciones de pago cuando estén habilitados.</li>
                 <li><strong>Documentos y firmas.</strong> Organiza cotizaciones y contratos relacionados con tus oportunidades.</li>
               </ul>
-              <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
-            </div>
-            <!-- Foto real pendiente: Pipeline de oportunidades, agenda y propuestas. Se integrará sin filtros, recortes ni ediciones tras validarla. -->
-            <div class="tx-stage-media" data-shot="cierra">
+                <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
+              </div>
+              <div class="tx-stage-media" data-shot="cierra">
               <a class="tx-stage-image-link" href="/growth-stages/growth-cierra-demo.png" target="_blank" rel="noopener noreferrer" aria-label="Abrir captura de cierra en tamaño completo">
                 <img src="/growth-stages/growth-cierra-demo.png" alt="Pipeline comercial de demostración con oportunidades y distintas etapas de venta" width="1360" height="765" loading="lazy" decoding="async">
               </a>
               <p class="tx-stage-shot-note">Pantalla de demostración · Los datos ilustrativos no son resultados de clientes reales.</p>
+            </div>
             </div>
           </div>
         </div>
 
         <div class="tx-tab-panel" data-panel="4">
           <div class="tx-stage-layout">
-            <div class="tx-stage-copy">
+            <div class="tx-stage-header">
               <p class="tx-stage-label">05 · Retén</p>
               <h3 class="tx-stage-headline">Mantén la relación con tus clientes y genera nuevas ventas.</h3>
               <p class="tx-stage-description">Automatiza parte de la atención posterior a la venta y mantente presente con comunicaciones útiles, solicitudes de reseñas y campañas de reactivación.</p>
-              <ul class="tx-stage-points">
+            </div>
+            <div class="tx-stage-body">
+              <div class="tx-stage-benefits">
+                <ul class="tx-stage-points">
                 <li><strong>Seguimiento posventa.</strong> Programa mensajes y recordatorios después de cada compra.</li>
                 <li><strong>Reputación y confianza.</strong> Solicita reseñas y centraliza la gestión de tu reputación.</li>
                 <li><strong>Clientes que regresan.</strong> Segmenta tu base para campañas de reactivación y fidelización.</li>
                 <li><strong>Atención y soporte.</strong> Organiza solicitudes y tickets conforme a las funciones habilitadas.</li>
               </ul>
-              <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
-            </div>
-            <!-- Foto real pendiente: Reputación, reseñas y campañas de seguimiento. Se integrará sin filtros, recortes ni ediciones tras validarla. -->
-            <div class="tx-stage-media" data-shot="retén">
+                <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
+              </div>
+              <div class="tx-stage-media" data-shot="retén">
               <a class="tx-stage-image-link" href="/growth-stages/growth-reten.png" target="_blank" rel="noopener noreferrer" aria-label="Abrir captura de retén en tamaño completo">
                 <img src="/growth-stages/growth-reten.png" alt="Panel de reputación y reseñas de la plataforma 10xteam Growth" width="1360" height="765" loading="lazy" decoding="async">
               </a>
               <p class="tx-stage-shot-note">Pantalla de demostración · Los datos ilustrativos no son resultados de clientes reales.</p>
+            </div>
             </div>
           </div>
         </div>
 
         <div class="tx-tab-panel" data-panel="5">
           <div class="tx-stage-layout">
-            <div class="tx-stage-copy">
+            <div class="tx-stage-header">
               <p class="tx-stage-label">06 · Escala</p>
               <h3 class="tx-stage-headline">Crea contenido, analiza resultados y mejora continuamente.</h3>
               <p class="tx-stage-description">Coordina publicaciones, apóyate en IA para generar contenido y visualiza indicadores comerciales para invertir tu tiempo donde más valor produce.</p>
-              <ul class="tx-stage-points">
+            </div>
+            <div class="tx-stage-body">
+              <div class="tx-stage-benefits">
+                <ul class="tx-stage-points">
                 <li><strong>Contenido constante.</strong> Planifica publicaciones y prepara textos o materiales con apoyo de IA.</li>
                 <li><strong>Resultados visibles.</strong> Revisa campañas, oportunidades y evolución de tu operación comercial.</li>
                 <li><strong>Decisiones mejor informadas.</strong> Identifica qué acciones conviene repetir, ajustar o automatizar.</li>
                 <li><strong>Atribución y retorno.</strong> Analiza el origen de los prospectos y el rendimiento de las campañas conectadas.</li>
               </ul>
-              <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
-            </div>
-            <!-- Foto real pendiente: Social Planner y dashboard de reportes. Se integrará sin filtros, recortes ni ediciones tras validarla. -->
-            <div class="tx-stage-media" data-shot="escala">
+                <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
+              </div>
+              <div class="tx-stage-media" data-shot="escala">
               <a class="tx-stage-image-link" href="/growth-stages/growth-escala.png" target="_blank" rel="noopener noreferrer" aria-label="Abrir captura de escala en tamaño completo">
                 <img src="/growth-stages/growth-escala.png" alt="Conexión de redes sociales en el planificador de contenidos de 10xteam Growth" width="1360" height="765" loading="lazy" decoding="async">
               </a>
               <p class="tx-stage-shot-note">Pantalla de demostración · Los datos ilustrativos no son resultados de clientes reales.</p>
+            </div>
             </div>
           </div>
         </div>
