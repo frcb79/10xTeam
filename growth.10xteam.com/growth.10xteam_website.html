@@ -2243,7 +2243,12 @@ body {
 .tx-stage-media[hidden]{display:none!important;}
 .tx-stage-more{color:var(--tx-green);font-size:15px;line-height:1.5;font-weight:700;margin:22px 0 0;}
 .tx-stage-layout:has(.tx-stage-media:not([hidden])) .tx-stage-points{grid-template-columns:1fr;}
-.tx-stage-media img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--tx-border);}
+.tx-stage-media{min-width:0;max-width:100%;}
+.tx-stage-image-link{display:block;border-radius:12px;overflow:hidden;border:1px solid var(--tx-border);background:#f5f7fa;box-shadow:0 15px 36px rgba(0,0,0,.16);transition:box-shadow .2s ease,border-color .2s ease;}
+.tx-stage-image-link:hover{border-color:var(--tx-green);box-shadow:0 17px 40px rgba(0,0,0,.23);}
+.tx-stage-image-link:focus-visible{outline:3px solid var(--tx-green);outline-offset:3px;}
+.tx-stage-media img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#fff;}
+.tx-stage-shot-note{font-size:11px;line-height:1.45;color:var(--tx-text-dim);margin:10px 0 0;text-align:center;}
 @media(max-width:900px){.tx-tab-panel ul.tx-stage-points{grid-template-columns:1fr;gap:16px;}.tx-stage-layout:has(.tx-stage-media:not([hidden])){grid-template-columns:1fr;}}
 @media(max-width:640px){.tx-tab-btn .tx-tab-name{display:block;font-size:12px;}.tx-tab-btn{padding:9px 11px;gap:6px;}.tx-tab-btn .tx-tab-icon{width:24px;height:24px;}.tx-tab-panel{padding:24px 20px;}.tx-stage-headline{font-size:clamp(23px,6vw,29px);}.tx-stage-description{font-size:15px;}}
 </style>
@@ -2589,7 +2594,12 @@ body {
               <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
             </div>
             <!-- Foto real pendiente: Wizard y diagnóstico estratégico de 10xTeam. Se integrará sin filtros, recortes ni ediciones tras validarla. -->
-            <div class="tx-stage-media" hidden data-shot="identifica"></div>
+            <div class="tx-stage-media" data-shot="identifica">
+              <a class="tx-stage-image-link" href="/growth-stages/growth-identifica-demo.png" target="_blank" rel="noopener noreferrer" aria-label="Abrir captura de identifica en tamaño completo">
+                <img src="/growth-stages/growth-identifica-demo.png" alt="Panel de indicadores comerciales en la cuenta de demostración de 10xteam Growth" width="1360" height="765" loading="eager" decoding="async">
+              </a>
+              <p class="tx-stage-shot-note">Pantalla de demostración · Los datos ilustrativos no son resultados de clientes reales.</p>
+            </div>
           </div>
         </div>
 
@@ -2608,7 +2618,12 @@ body {
               <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
             </div>
             <!-- Foto real pendiente: Prospección y listas de contactos (validar acceso a búsqueda de prospectos). Se integrará sin filtros, recortes ni ediciones tras validarla. -->
-            <div class="tx-stage-media" hidden data-shot="prospecta"></div>
+            <div class="tx-stage-media" data-shot="prospecta">
+              <a class="tx-stage-image-link" href="/growth-stages/growth-prospecta.png" target="_blank" rel="noopener noreferrer" aria-label="Abrir captura de prospecta en tamaño completo">
+                <img src="/growth-stages/growth-prospecta.png" alt="Administrador de anuncios de la plataforma 10xteam Growth" width="1360" height="765" loading="lazy" decoding="async">
+              </a>
+              <p class="tx-stage-shot-note">Pantalla de demostración · Los datos ilustrativos no son resultados de clientes reales.</p>
+            </div>
           </div>
         </div>
 
@@ -2627,7 +2642,12 @@ body {
               <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
             </div>
             <!-- Foto real pendiente: Bandeja de conversaciones y automatización comercial. Se integrará sin filtros, recortes ni ediciones tras validarla. -->
-            <div class="tx-stage-media" hidden data-shot="convierte"></div>
+            <div class="tx-stage-media" data-shot="convierte">
+              <a class="tx-stage-image-link" href="/growth-stages/growth-convierte-demo.png" target="_blank" rel="noopener noreferrer" aria-label="Abrir captura de convierte en tamaño completo">
+                <img src="/growth-stages/growth-convierte-demo.png" alt="Vista de configuración y ejemplo del chat comercial en 10xteam Growth" width="1360" height="765" loading="lazy" decoding="async">
+              </a>
+              <p class="tx-stage-shot-note">Pantalla de demostración · Los datos ilustrativos no son resultados de clientes reales.</p>
+            </div>
           </div>
         </div>
 
@@ -2646,7 +2666,12 @@ body {
               <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
             </div>
             <!-- Foto real pendiente: Pipeline de oportunidades, agenda y propuestas. Se integrará sin filtros, recortes ni ediciones tras validarla. -->
-            <div class="tx-stage-media" hidden data-shot="cierra"></div>
+            <div class="tx-stage-media" data-shot="cierra">
+              <a class="tx-stage-image-link" href="/growth-stages/growth-cierra-demo.png" target="_blank" rel="noopener noreferrer" aria-label="Abrir captura de cierra en tamaño completo">
+                <img src="/growth-stages/growth-cierra-demo.png" alt="Pipeline comercial de demostración con oportunidades y distintas etapas de venta" width="1360" height="765" loading="lazy" decoding="async">
+              </a>
+              <p class="tx-stage-shot-note">Pantalla de demostración · Los datos ilustrativos no son resultados de clientes reales.</p>
+            </div>
           </div>
         </div>
 
@@ -2665,7 +2690,12 @@ body {
               <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
             </div>
             <!-- Foto real pendiente: Reputación, reseñas y campañas de seguimiento. Se integrará sin filtros, recortes ni ediciones tras validarla. -->
-            <div class="tx-stage-media" hidden data-shot="retén"></div>
+            <div class="tx-stage-media" data-shot="retén">
+              <a class="tx-stage-image-link" href="/growth-stages/growth-reten.png" target="_blank" rel="noopener noreferrer" aria-label="Abrir captura de retén en tamaño completo">
+                <img src="/growth-stages/growth-reten.png" alt="Panel de reputación y reseñas de la plataforma 10xteam Growth" width="1360" height="765" loading="lazy" decoding="async">
+              </a>
+              <p class="tx-stage-shot-note">Pantalla de demostración · Los datos ilustrativos no son resultados de clientes reales.</p>
+            </div>
           </div>
         </div>
 
@@ -2684,7 +2714,12 @@ body {
               <p class="tx-stage-more">Y muchas más funcionalidades para tu negocio.</p>
             </div>
             <!-- Foto real pendiente: Social Planner y dashboard de reportes. Se integrará sin filtros, recortes ni ediciones tras validarla. -->
-            <div class="tx-stage-media" hidden data-shot="escala"></div>
+            <div class="tx-stage-media" data-shot="escala">
+              <a class="tx-stage-image-link" href="/growth-stages/growth-escala.png" target="_blank" rel="noopener noreferrer" aria-label="Abrir captura de escala en tamaño completo">
+                <img src="/growth-stages/growth-escala.png" alt="Conexión de redes sociales en el planificador de contenidos de 10xteam Growth" width="1360" height="765" loading="lazy" decoding="async">
+              </a>
+              <p class="tx-stage-shot-note">Pantalla de demostración · Los datos ilustrativos no son resultados de clientes reales.</p>
+            </div>
           </div>
         </div>
 
