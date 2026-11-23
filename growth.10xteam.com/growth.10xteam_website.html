@@ -2545,6 +2545,13 @@ body {
   }
   @keyframes txeco-mobile-dash { to { stroke-dashoffset: -126; } }
 }
+/* Use the extra room on large phones without stretching a 120px hub across 220px. */
+@media (min-width: 480px) and (max-width: 680px) {
+  .txeco-core { height: 155px; min-height: 155px; max-height: 155px; }
+  .txeco-core-brand { font-size: 12px; }
+  .txeco-devices { width: min(78%, 148px); max-width: 148px; }
+  .txeco-core-caption { font-size: 9.5px; }
+}
 @media (max-width: 359px) {
   .txeco-middle { grid-template-columns: minmax(0, 1fr) minmax(98px, 1.03fr) minmax(0, 1fr); gap: 4px; }
   .txeco-top, .txeco-bottom { gap: 4px; }
@@ -2553,7 +2560,7 @@ body {
   .txeco-side .txeco-tile { min-height: 47px; padding: 3px 1px; }
   .txeco-icon { width: 19px; height: 19px; }
   .txeco-icon svg { width: 13px; height: 13px; }
-  .txeco-side .txeco-tile::after { font-size: 8.6px; }
+  .txeco-side .txeco-tile::after { font-size: 9px; }
   .txeco-core { height: 110px; min-height: 110px; max-height: 110px; padding: 6px 2px 5px; }
   .txeco-devices { width: min(88%, 94px); padding: 0 8px 0 2px; }
   .txeco-core-caption { font-size: 7.8px; }
