@@ -45,7 +45,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Toda la historia de cada cliente en un mismo lugar.",
+      "example": "Una marca de ropa encuentra conversaciones y compras anteriores sin buscar entre chats.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 2,
@@ -55,7 +58,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Que ninguna oportunidad se pierda durante el seguimiento.",
+      "example": "Un asesor ve cuáles prospectos pidieron cotización y cuáles siguen sin respuesta.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 3,
@@ -65,7 +71,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Permitir que tus clientes reserven sin coordinar horarios manualmente.",
+      "example": "Una clínica ofrece citas disponibles y envía recordatorios automáticos.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 4,
@@ -75,7 +84,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Crear páginas que convierten visitas en solicitudes o ventas.",
+      "example": "Un consultor lanza una página para captar solicitudes de diagnóstico.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 5,
@@ -85,7 +97,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Captar información sin pedir que te la envíen por mensaje.",
+      "example": "Una academia recibe formularios de inscripción y encuestas desde su sitio; los quizzes avanzados se revisan por separado.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 6,
@@ -95,7 +110,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Responder desde un solo lugar, sin perder el contexto.",
+      "example": "Una inmobiliaria recibe consultas en WhatsApp e Instagram y asigna cada conversación a un asesor.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 7,
@@ -105,7 +123,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Mantener el contacto con listas de clientes y prospectos.",
+      "example": "Una tienda envía novedades y ofertas a quienes aceptaron recibirlas.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 8,
@@ -115,7 +136,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Programar publicaciones y mantener activas tus redes.",
+      "example": "Una cafetería organiza su contenido semanal sin publicar manualmente cada día.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 9,
@@ -125,7 +149,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Hacer que las tareas repetitivas se ejecuten por sí solas.",
+      "example": "Si alguien solicita una cotización, se registra la oportunidad y se programa seguimiento.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 10,
@@ -135,7 +162,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Construir confianza y aumentar la visibilidad de tus reseñas.",
+      "example": "Un negocio pide opiniones tras completar un servicio y responde desde la plataforma.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 11,
@@ -145,7 +175,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Cobrar y dar seguimiento sin cambiar de sistema.",
+      "example": "Una academia envía un enlace de pago y registra el estado de la transacción.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 12,
@@ -155,7 +188,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Marco aprobado"
+      "availability": "Marco aprobado",
+      "benefit": "Vender productos sin montar varias herramientas separadas.",
+      "example": "Una marca de chocolates administra catálogo, pedidos y pagos desde su tienda.",
+      "costClarification": "Capacidades nativas elegibles incluidas; terceros, pagos y publicidad sujetos a su tarifa."
     },
     {
       "id": 13,
@@ -165,7 +201,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Entregar contenido, cursos y membresías en línea.",
+      "example": "Una escuela publica lecciones y abre un espacio de aprendizaje para alumnos.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 14,
@@ -175,7 +214,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Entender lo que funciona sin cruzar hojas de cálculo.",
+      "example": "Un negocio revisa prospectos, citas y oportunidades generadas por campaña.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 15,
@@ -185,7 +227,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Conectar sistemas para evitar doble captura de información.",
+      "example": "Una empresa conecta herramientas compatibles para actualizar datos entre procesos.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 16,
@@ -195,7 +240,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Gestionar conversaciones telefónicas y su seguimiento.",
+      "example": "Un asesor registra una llamada y conserva el contexto dentro de la ficha del cliente.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 17,
@@ -205,7 +253,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Organizar la captación y detectar oportunidades comerciales.",
+      "example": "Una empresa capta leads de formularios y anuncios y los clasifica en su CRM.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 18,
@@ -215,7 +266,10 @@
       "growth": "IA gratuita incluida",
       "scale": "IA gratuita incluida",
       "type": "core",
-      "availability": "Marco aprobado"
+      "availability": "Marco aprobado",
+      "benefit": "Preparar contenido y configuraciones más rápido con IA asistida.",
+      "example": "Un negocio utiliza un asistente para redactar un email o estructurar un workflow.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 19,
@@ -225,7 +279,10 @@
       "growth": "Por consumo",
       "scale": "Por consumo preferente",
       "type": "usage",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Usar IA conversacional y otras acciones según lo que necesites.",
+      "example": "Un agente atiende preguntas frecuentes y el uso elegible genera consumo.",
+      "costClarification": "Funciones elegibles por consumo; incluye configuración sólo cuando se indique."
     },
     {
       "id": 20,
@@ -235,7 +292,10 @@
       "growth": "Complemento completo",
       "scale": "Incluido",
       "type": "ops",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Coordinar entregas, tareas y responsables con visibilidad.",
+      "example": "Una agencia organiza pendientes por proyecto, responsable y fecha en un tablero.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 21,
@@ -245,7 +305,10 @@
       "growth": "Complemento completo",
       "scale": "Incluido",
       "type": "ops",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Dar seguimiento ordenado a solicitudes de soporte.",
+      "example": "Una empresa convierte correos en tickets y asigna prioridades de resolución.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 22,
@@ -255,7 +318,10 @@
       "growth": "Complemento",
       "scale": "Complemento preferente",
       "type": "addon",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Digitalizar pedidos y operaciones de restaurantes.",
+      "example": "Una cafetería prepara menús y recibe pedidos directos; su disponibilidad está por validar.",
+      "costClarification": "Módulo especializado; disponibilidad y precio pendientes."
     },
     {
       "id": 23,
@@ -265,7 +331,10 @@
       "growth": "Complemento",
       "scale": "Complemento preferente",
       "type": "addon",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Organizar visitas y servicios a domicilio.",
+      "example": "Una empresa de mantenimiento asigna técnicos, registra visitas y prepara cobros.",
+      "costClarification": "Módulo especializado; disponibilidad y precio pendientes."
     },
     {
       "id": 24,
@@ -275,7 +344,10 @@
       "growth": "Base incluida · extra opcional",
       "scale": "Base incluida · extra preferente",
       "type": "mixed",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Vender conocimiento con webinars y organizar eventos especiales.",
+      "example": "Un organizador vende entradas y utiliza QR para validar registros, si dispone del complemento.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 25,
@@ -285,7 +357,10 @@
       "growth": "Complemento",
       "scale": "Complemento preferente",
       "type": "addon",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Premiar la recompra y fomentar la recomendación.",
+      "example": "Una cafetería da puntos por compra y ofrece recompensas a clientes frecuentes.",
+      "costClarification": "Módulo especializado; disponibilidad y precio pendientes."
     },
     {
       "id": 26,
@@ -295,7 +370,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Convertir recomendaciones en un canal comercial medible.",
+      "example": "Una empresa asigna enlaces a sus afiliados y registra ventas referidas.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 27,
@@ -305,7 +383,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Preparar propuestas y obtener aprobaciones digitales.",
+      "example": "Un despacho comparte una cotización, recaba firma y da seguimiento al documento.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 28,
@@ -315,7 +396,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Adaptar el CRM a la información específica del negocio.",
+      "example": "Una inmobiliaria relaciona propiedades, clientes y oportunidades comerciales.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 29,
@@ -325,7 +409,10 @@
       "growth": "Base incluida · extra opcional",
       "scale": "Base incluida · extra preferente",
       "type": "mixed",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Dar acceso al cliente final a su información y contenidos.",
+      "example": "Una escuela habilita un portal para cursos y documentos; una app con marca es opcional.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 30,
@@ -335,7 +422,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Mejorar visibilidad digital sin perder el control del sitio.",
+      "example": "Un negocio publica artículos SEO y estudia su presencia en directorios con extras opcionales.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 31,
@@ -345,7 +435,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Trabajar en equipo con permisos adecuados.",
+      "example": "Un gerente restringe accesos sin habilitar productos que la empresa no contrató.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 32,
@@ -355,7 +448,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Reconocer avances y emitir constancias digitales.",
+      "example": "Una academia entrega certificados al completar un curso elegible.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 33,
@@ -365,7 +461,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Conectar campañas con prospectos reales y seguimiento comercial.",
+      "example": "Una clínica anuncia en Meta y Google y registra los contactos en su CRM; los anuncios se pagan aparte.",
+      "costClarification": "Presupuesto de anuncios y servicios de gestión no incluidos."
     },
     {
       "id": 34,
@@ -375,7 +474,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Mantener una identidad visual consistente entre equipos.",
+      "example": "Una marca comparte logotipo, colores y recursos para sus publicaciones.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 35,
@@ -385,7 +487,10 @@
       "growth": "Base incluida · IA por consumo",
       "scale": "Base incluida · IA preferente",
       "type": "mixed",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Identificar temas de interés y señales del mercado.",
+      "example": "Una tienda revisa tendencias para decidir qué contenido publicar; escucha avanzada depende de elegibilidad.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 36,
@@ -395,7 +500,10 @@
       "growth": "Por consumo",
       "scale": "Por consumo preferente",
       "type": "usage",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Analizar conversaciones para mejorar la venta.",
+      "example": "Un gerente detecta objeciones recurrentes en llamadas y prepara coaching al equipo.",
+      "costClarification": "Funciones elegibles por consumo; incluye configuración sólo cuando se indique."
     },
     {
       "id": 37,
@@ -405,7 +513,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Resolver pendientes entre colaboradores sin perder información.",
+      "example": "El equipo comenta una oportunidad y asigna la siguiente acción al vendedor.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 38,
@@ -415,7 +526,10 @@
       "growth": "Base incluida · extra opcional",
       "scale": "Base incluida · extra preferente",
       "type": "mixed",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Agendar servicios y gestionar alquileres opcionales.",
+      "example": "Una estética ofrece horarios de servicios; una empresa reserva equipos con Rentals cuando esté disponible.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 39,
@@ -425,7 +539,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Dar mayor visibilidad y acceso a cursos y comunidades.",
+      "example": "Una academia presenta cursos en experiencias de descubrimiento compatibles.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 40,
@@ -435,7 +552,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Crear formularios, evaluaciones y códigos QR útiles.",
+      "example": "Un evento utiliza un QR para registro; una escuela configura evaluaciones elegibles.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 41,
@@ -445,7 +565,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Saber qué campañas contribuyen a generar ventas.",
+      "example": "Una clínica compara contactos, citas y ventas atribuidas a distintos anuncios.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 42,
@@ -455,7 +578,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Catálogo provisional"
+      "availability": "Catálogo provisional",
+      "benefit": "Capturar consultas desde tu web y canales conectados.",
+      "example": "Un visitante pregunta desde el widget y el equipo recibe la conversación en su bandeja.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 43,
@@ -465,7 +591,10 @@
       "growth": "Incluido",
       "scale": "Incluido",
       "type": "core",
-      "availability": "Marco aprobado"
+      "availability": "Marco aprobado",
+      "benefit": "Distribuir productos en varios canales sin reconstruir catálogos.",
+      "example": "Una boutique conecta un catálogo elegible con Meta y Google Merchant; publicidad y terceros aparte.",
+      "costClarification": "Capacidades nativas elegibles incluidas; terceros, pagos y publicidad sujetos a su tarifa."
     },
     {
       "id": 44,
@@ -475,7 +604,10 @@
       "growth": "Incluido · consumo opcional",
       "scale": "Incluido · tarifa preferente",
       "type": "mixed",
-      "availability": "Marco aprobado"
+      "availability": "Marco aprobado",
+      "benefit": "Proteger la calidad de la base de datos y los envíos.",
+      "example": "Un negocio depura contactos y valida emails por consumo antes de una campaña.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
     },
     {
       "id": 45,
@@ -485,7 +617,10 @@
       "growth": "Por consumo",
       "scale": "Por consumo preferente",
       "type": "usage",
-      "availability": "Marco aprobado"
+      "availability": "Marco aprobado",
+      "benefit": "Delegar tareas inteligentes a agentes configurables.",
+      "example": "Un agente prioriza oportunidades sin seguimiento y propone tareas; su ejecución elegible tiene costo por uso.",
+      "costClarification": "Funciones elegibles por consumo; incluye configuración sólo cuando se indique."
     }
   ],
   "addons": [
@@ -661,5 +796,163 @@
       "detail": "Migraciones, gestión profesional, IP dedicada e integraciones complejas sujetos a cotización.",
       "tag": "Opcional"
     }
-  ]
+  ],
+  "scenarios": [
+    {
+      "id": "redes",
+      "title": "Vendo por Instagram y WhatsApp",
+      "lead": "Convierte conversaciones dispersas en una operación que vende y da seguimiento.",
+      "sector": "Marca de ropa, chocolates o alimentos",
+      "problem": "Muchas consultas llegan por distintos canales y es difícil recordar quién pidió qué.",
+      "steps": [
+        "Publicas campañas o contenido y recibes consultas.",
+        "Centralizas contactos y conversaciones en el CRM.",
+        "Automatizas seguimientos y compartes catálogo o enlace de pago.",
+        "Ves qué mensajes y acciones terminan generando ventas."
+      ],
+      "modules": [
+        6,
+        8,
+        9,
+        12,
+        33,
+        42,
+        43
+      ],
+      "image": "/growth-stages/growth-prospecta-v2.png",
+      "imageAlt": "Captura real de la subcuenta demo con la lista de contactos de 10xteam Growth",
+      "note": "El uso de WhatsApp, las acciones premium y los anuncios pueden generar cargos separados."
+    },
+    {
+      "id": "citas",
+      "title": "Tengo una clínica o negocio de servicios",
+      "lead": "Más citas coordinadas, menos mensajes manuales y seguimiento después de cada visita.",
+      "sector": "Clínica, estética, consultoría",
+      "problem": "Los prospectos preguntan por horarios, algunos no reservan y otros olvidan asistir.",
+      "steps": [
+        "Captas solicitudes desde anuncios, web o formulario.",
+        "El cliente elige una cita disponible.",
+        "Recibe recordatorios y el equipo da seguimiento.",
+        "Mides qué campañas generaron citas y ventas."
+      ],
+      "modules": [
+        3,
+        4,
+        5,
+        9,
+        14,
+        33,
+        41
+      ],
+      "image": "/growth-stages/growth-identifica-v2-alt.png",
+      "imageAlt": "Captura real de la plataforma demo con vista del pipeline comercial",
+      "note": "Ejemplo ilustrativo, no una garantía de citas o resultados."
+    },
+    {
+      "id": "inmobiliaria",
+      "title": "Gestiono un equipo de vendedores",
+      "lead": "Todos los prospectos, etapas y pendientes en un proceso comercial compartido.",
+      "sector": "Inmobiliaria, automotriz, broker",
+      "problem": "Las oportunidades se quedan en chats individuales y no hay visibilidad del seguimiento.",
+      "steps": [
+        "Entran prospectos desde publicidad y formularios.",
+        "Asignas cada lead al asesor correspondiente.",
+        "Visualizas etapas y tareas en el pipeline.",
+        "Revisas resultados y oportunidades sin seguimiento."
+      ],
+      "modules": [
+        1,
+        2,
+        6,
+        9,
+        14,
+        37,
+        41
+      ],
+      "image": "/growth-stages/growth-cierra-v2.png",
+      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
+      "note": "Las funciones de asignación y automatización dependen de la configuración efectiva."
+    },
+    {
+      "id": "retencion",
+      "title": "Quiero clientes que vuelvan",
+      "lead": "La venta no termina cuando cobras: puedes volver a comunicarte y fidelizar.",
+      "sector": "Cafetería, academia, comercio",
+      "problem": "Nuevos clientes compran una vez y el negocio no vuelve a contactarles.",
+      "steps": [
+        "Registras la compra o servicio.",
+        "Segmentas clientes por historial y preferencias.",
+        "Envías comunicaciones autorizadas y solicitas reseñas.",
+        "Activarás Lealtad cuando el complemento esté disponible."
+      ],
+      "modules": [
+        1,
+        7,
+        10,
+        11,
+        25,
+        35,
+        37
+      ],
+      "image": "/growth-stages/growth-reten.png",
+      "imageAlt": "Captura real del módulo de reputación y reseñas de 10xteam Growth",
+      "note": "Lealtad puede estar en acceso anticipado; email y mensajería podrían consumir saldo."
+    },
+    {
+      "id": "academia",
+      "title": "Vendo cursos y membresías",
+      "lead": "Capta alumnos, cobra y entrega contenido desde un mismo ecosistema.",
+      "sector": "Cursos, coaches, academias",
+      "problem": "El contenido, los pagos y la comunicación de alumnos viven en sistemas distintos.",
+      "steps": [
+        "Presentas una oferta y captas inscripciones.",
+        "Cobra a través de enlaces y checkout compatibles.",
+        "Los alumnos acceden a cursos y material.",
+        "Entregas certificados y continúas la relación."
+      ],
+      "modules": [
+        4,
+        7,
+        11,
+        13,
+        27,
+        29,
+        32
+      ],
+      "image": "/growth-stages/growth-escala-v2.png",
+      "imageAlt": "Captura real del sistema de campañas de correo en la demo Growth",
+      "note": "La app personalizada para consumidores es un complemento separado."
+    },
+    {
+      "id": "operacion",
+      "title": "Tengo servicios y equipo operativo",
+      "lead": "Organiza encargos, tareas, soporte y ejecución con visibilidad.",
+      "sector": "Agencias, empresas de mantenimiento",
+      "problem": "No es claro quién debe atender cada solicitud o cuándo vence.",
+      "steps": [
+        "Recibes la solicitud del cliente.",
+        "Registras responsable, prioridad y siguientes pasos.",
+        "Haces seguimiento desde proyectos y tickets compatibles.",
+        "Mides tiempos y detectas cuellos de botella."
+      ],
+      "modules": [
+        2,
+        9,
+        14,
+        20,
+        21,
+        23,
+        37
+      ],
+      "image": "/growth-stages/growth-cierra-demo.png",
+      "imageAlt": "Captura real de oportunidades comerciales en la plataforma demo Growth",
+      "note": "Ticketing completo y Proyectos están propuestos como incluidos en Scale y complementos en Growth; su control está por validar."
+    }
+  ],
+  "presentation": {
+    "comparisonMode": "table + benefits + contextual examples",
+    "images": "real GHL demo screenshots already on site",
+    "exampleDisclaimer": "Casos ilustrativos, no resultados, testimonios ni automatizaciones ya instaladas.",
+    "pricingState": "Precios finales pendientes de aprobación"
+  }
 }
