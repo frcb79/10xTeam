@@ -8,338 +8,351 @@
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<title>Planes, funcionalidades y complementos | 10xteam Growth OS</title>
-<meta name="description" content="Conoce toda la maquinaria de 10xteam Growth OS: compara Growth y Scale, explora 45 módulos, complementos, inteligencia artificial y servicios por consumo.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<title>Comparar Growth y Scale · Funcionalidades | 10xteam Growth OS</title>
+<meta name="description" content="Compara Growth y Scale función por función. 45 módulos, complementos, consumo, créditos y condiciones sin cargos escondidos.">
 <style>
-:root{--bg:#0b0d12;--surface:#14171f;--surface2:#1b1f2a;--border:#2a2f3d;--text:#f4f5f7;--muted:#a6acbb;--faint:#798093;--violet:#7b5cff;--green:#3ddc97;--display:'Space Grotesk',sans-serif;--body:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;color-scheme:dark}
+:root{--bg:#0b0d12;--surface:#14171f;--surface2:#1b1f2a;--border:#2b303e;--text:#f4f5f7;--muted:#a6acbb;--violet:#7b5cff;--green:#3ddc97;color-scheme:dark}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:104px}
-body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 var(--body);-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:89px}
+body{margin:0;color:var(--text);background:var(--bg);font:14px/1.65 Inter,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 button,input{font:inherit}
 button{cursor:pointer}
 button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--green);outline-offset:3px}
-.wrap{width:min(1190px,calc(100% - 48px));margin-inline:auto}
-.site-nav{position:sticky;top:0;z-index:30;border-bottom:1px solid rgba(255,255,255,.075);background:rgba(11,13,18,.93);backdrop-filter:blur(22px)}
-.nav-inner{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.brand{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-size:22px;font-weight:700;white-space:nowrap;letter-spacing:-1px}
-.brand-mark{display:grid;place-items:center;width:29px;height:29px;border-radius:9px;background:linear-gradient(145deg,#9b85ff,#7250ed);color:#fff;font-size:17px;font-weight:700;box-shadow:0 0 30px #7b5cff33}
-.brand small{font:600 10px var(--mono);color:var(--green);letter-spacing:1.8px;margin-left:4px}
-.nav-links{display:flex;align-items:center;gap:26px}
-.nav-links a{color:#b6bdca;font-size:12px;font-weight:600;white-space:nowrap;transition:color .2s}
-.nav-links a:hover{color:#fff}
-.nav-action{display:inline-flex;align-items:center;justify-content:center;border:1px solid #394051;border-radius:10px;padding:11px 16px;white-space:nowrap;font-size:12px;font-weight:700;color:#fff}
-.nav-action:hover{border-color:var(--violet);background:#7b5cff13}
-.hero{position:relative;overflow:hidden;background:radial-gradient(ellipse 60% 80% at 80% 6%,rgba(123,92,255,.17),transparent 78%),radial-gradient(ellipse 55% 55% at 13% 100%,rgba(61,220,151,.055),transparent 78%)}
-.hero:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(123,92,255,.044) 1px,transparent 1px),linear-gradient(90deg,rgba(123,92,255,.044) 1px,transparent 1px);background-size:55px 55px;mask-image:linear-gradient(to bottom,black,transparent)}
-.hero-inner{display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:76px;padding-top:100px;padding-bottom:88px;position:relative}
-.eyebrow{display:flex;align-items:center;gap:9px;color:var(--green);font:600 11px var(--mono);letter-spacing:1.9px;text-transform:uppercase}
-.eyebrow:before{content:"";height:6px;width:6px;background:var(--green);border-radius:50%;box-shadow:0 0 0 5px #3ddc9720}
-.hero h1{font:700 clamp(38px,4.55vw,66px)/1.1 var(--display);letter-spacing:-2.3px;margin:23px 0 24px;max-width:720px}
-.grad{background:linear-gradient(100deg,#d2c8ff,#8c71ff);-webkit-background-clip:text;background-clip:text;color:transparent}
-.grad-green{color:var(--green)}
-.hero-lead{color:#b5bbc9;font-size:16px;line-height:1.85;max-width:620px}
-.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:33px}
-.button-primary,.button-secondary{display:inline-flex;gap:9px;align-items:center;justify-content:center;border-radius:11px;padding:14px 21px;font-size:13px;font-weight:750;transition:transform .15s,background .15s}
-.button-primary{background:var(--green);color:#07160f;border:1px solid var(--green)}
-.button-primary:hover{background:#6ce9b3;transform:translateY(-2px)}
-.button-secondary{border:1px solid #363c4c;color:#e9eaf0;background:#171b2580}
-.button-secondary:hover{border-color:var(--violet);background:#7b5cff16}
-.hero-small{display:flex;gap:14px;align-items:center;margin-top:29px;color:#929cad;font-size:11px}
-.hero-small .dot{width:3px;height:3px;border-radius:50%;background:#637083}
-.machine{position:relative;min-width:0;transform:rotate(-1deg)}
-.machine-shadow{position:absolute;inset:20px -9px -10px;filter:blur(30px);background:#7b5cff20;border-radius:30px}
-.machine-panel{position:relative;border:1px solid #333346;background:linear-gradient(155deg,#1b1a28,#10141e 65%,#111a1a);box-shadow:0 24px 70px #0008;border-radius:24px;padding:23px;overflow:hidden}
-.machine-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:23px}
-.machine-top span{font:600 10px var(--mono);letter-spacing:1.5px;color:#bdb4ed;text-transform:uppercase}
-.machine-top i{width:7px;height:7px;border-radius:50%;display:block;background:var(--green);box-shadow:0 0 15px #3ddc9790}
-.machine-title{font:700 26px/1.15 var(--display);margin:0 0 7px}
-.machine-sub{color:#a0aabb;font-size:12px;margin:0 0 23px}
-.flowstep{display:flex;align-items:center;gap:14px;border:1px solid #303444;background:#1d222e;padding:14px 15px;border-radius:12px;margin:0 0 9px}
-.flowstep .num{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:#7b5cff20;color:#bbabff;font:600 11px var(--mono);flex-shrink:0}
-.flowstep strong{display:block;font-size:12px;font-weight:650}
-.flowstep small{display:block;color:#929cb1;font-size:11px}
-.flowstep .arrow{margin-left:auto;color:#687389}
-.machine-foot{border-radius:10px;padding:12px;margin-top:15px;background:#3ddc970e;border:1px solid #3ddc9723;color:#93e9c3;font:600 11px var(--mono)}
-.fine-banner{background:#151924;border-block:1px solid #292e3a}
-.fine-inner{display:flex;align-items:center;justify-content:center;gap:16px;padding:14px 0;color:#9fa9be;font-size:12px;text-align:center}
-.fine-banner strong{color:#cad1df}
-.section{padding:93px 0}
-.section-head{max-width:770px;margin:0 auto 42px;text-align:center}
-.section-head h2{font:700 clamp(30px,3.3vw,44px)/1.2 var(--display);letter-spacing:-1.25px;margin:15px 0 15px}
-.section-head p{margin:0;color:#a3adbf;font-size:15px;line-height:1.8}
-.plans-section{background:#10121a}
-.plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
-.plan{border:1px solid #303544;border-radius:23px;padding:31px;background:linear-gradient(160deg,#1b1e29,#141820);position:relative;display:flex;flex-direction:column}
-.plan.scale{border-color:#755edf;background:linear-gradient(150deg,#251f37,#161c25 73%);box-shadow:0 16px 70px #7b5cff13}
-.plan-ribbon{position:absolute;right:23px;top:-13px;background:var(--violet);color:#fff;padding:5px 13px;border-radius:8px;font:700 10px var(--mono);letter-spacing:.4px}
-.plan-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.plan-name{font:700 25px var(--display);letter-spacing:-.5px}
-.plan-tag{font:600 10px var(--mono);color:#a6a8cd;border:1px solid #424255;border-radius:50px;padding:6px 10px}
-.plan-desc{font-size:13px;color:#9faabc;min-height:43px;max-width:400px;margin:12px 0 24px}
-.plan-price-label{font:600 10px var(--mono);color:#8b95aa;text-transform:uppercase;letter-spacing:1.1px}
-.plan-price{margin:5px 0 4px;font:700 34px var(--display);letter-spacing:-1.2px}
-.plan-price-note{font-size:11px;color:#98a3b5}
-.plan-divider{height:1px;background:#343a49;margin:24px 0}
-.plan-benefits{list-style:none;padding:0;margin:0 0 24px;display:grid;gap:14px;flex:1}
-.plan-benefits li{display:flex;gap:11px;align-items:start;color:#d4d9e3;font-size:12px;line-height:1.6}
-.plan-benefits li:before{content:"✓";display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:#3ddc971a;color:var(--green);font-size:11px;flex-shrink:0}
-.plan-foot{font:400 11px/1.65 var(--body);color:#8a94a9;margin-top:17px}
-.plan-link{text-align:center;display:block;width:100%}
-.compare-note{border:1px solid #333a4b;background:#171c27;border-radius:13px;margin-top:22px;padding:17px 21px;display:flex;justify-content:space-between;align-items:center;gap:20px;color:#b7c0d1;font-size:12px}
-.compare-note strong{color:#fff}
-.compare-note a{color:var(--green);font-weight:700;white-space:nowrap}
-.catalog-toolbar{padding:21px;border:1px solid var(--border);border-radius:18px;background:#151923}
-.search-wrap{display:flex;align-items:center;gap:12px;border:1px solid #373e4f;border-radius:12px;padding:0 15px;background:#0e1119;height:51px}
-.search-wrap svg{width:17px;height:17px;stroke:#818ca2;flex-shrink:0}
-.search-wrap input{border:0;outline:none;background:transparent;color:#fff;width:100%;min-width:0;font-size:13px}
-.search-wrap input::placeholder{color:#6f798e}
-.filters{display:flex;gap:8px;overflow-x:auto;padding:16px 1px 3px;scrollbar-width:thin;scrollbar-color:#4d5365 transparent}
-.filter{border:1px solid #363d4b;border-radius:9px;padding:9px 13px;background:#1b202b;color:#a8b1c1;font-size:11px;font-weight:650;white-space:nowrap;flex:0 0 auto}
-.filter.active{background:#7b5cff22;border-color:#7b5cff;color:#e0d9ff}
-.results-row{display:flex;justify-content:space-between;gap:16px;margin:22px 0 15px;font:600 11px var(--mono);color:#8b96aa}
-.module-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.module-card{background:var(--surface);border:1px solid #303644;border-radius:16px;padding:23px;min-width:0;display:flex;flex-direction:column;transition:border-color .18s,transform .18s}
-.module-card:hover{border-color:#6052a9;transform:translateY(-2px)}
-.mod-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.mod-id{font:600 11px var(--mono);color:#7d85a0}
-.mod-state{font:600 9px var(--mono);color:#9eadd1;letter-spacing:.2px}
-.mod-category{display:inline-block;color:#8c91b5;font-size:10px;font-weight:650;margin:13px 0 5px}
-.module-card h3{font:700 17px/1.3 var(--display);margin:0 0 10px;letter-spacing:-.25px}
-.module-card .desc{font-size:12px;line-height:1.75;color:#a4adbf;margin:0 0 18px;flex:1}
-.mod-status{display:flex;flex-wrap:wrap;gap:6px}
-.chip{display:inline-flex;align-items:center;gap:5px;padding:6px 8px;border-radius:7px;background:#232839;color:#d3d9e9;font:600 10px/1.3 var(--body)}
-.chip b{color:#9c90ff;font-weight:750}
-.chip.scale b{color:#5cdf9c}
-.chip.variable{background:#283028}
-.card-detail{border-top:1px solid #303747;margin-top:16px;padding-top:13px;color:#8a96a9;font-size:11px;line-height:1.7}
-.empty{grid-column:1/-1;text-align:center;padding:45px;border:1px dashed #45495c;border-radius:15px;color:#9ba6b8}
-.addon-section{background:#10121a}
-.addon-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
-.addon{padding:23px;border-radius:16px;background:#171b26;border:1px solid #323748;display:flex;flex-direction:column;gap:13px;min-height:253px}
-.addon-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.addon-icon{height:37px;width:37px;display:grid;place-items:center;border-radius:11px;background:#7b5cff19;color:#beaaff;font:700 19px var(--display)}
-.pill{display:inline-block;border:1px solid #42485b;border-radius:50px;color:#b1bed2;font:600 10px var(--mono);padding:6px 9px;white-space:nowrap}
-.pill.early{border-color:#9b7d484d;background:#49351c77;color:#f0cc8e}
-.addon h3{font:700 17px/1.3 var(--display);margin:0}
-.addon p{margin:0;color:#9ca9be;font-size:12px;line-height:1.7;flex:1}
-.addon-price{border-top:1px solid #333748;padding-top:13px;display:flex;justify-content:space-between;gap:8px;font-size:11px}
-.addon-price span{color:#8c97aa}
-.addon-price strong{color:#dee8f1;font-weight:700;text-align:right}
-.addon-filter{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:25px}
-.pack-banner{margin-top:22px;border-radius:16px;border:1px solid #6958ae88;padding:25px 27px;background:linear-gradient(95deg,#231e35,#151f25);display:flex;align-items:center;justify-content:space-between;gap:20px}
-.pack-banner strong{display:block;font:700 19px var(--display)}
-.pack-banner p{margin:6px 0 0;color:#aeb6c8;font-size:12px}
-.pack-banner .pill{color:#decdfc;border-color:#8062e0}
-.cost-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.cost-card{border:1px solid #343947;background:#161b25;border-radius:15px;padding:22px}
-.cost-mark{display:inline-block;color:#9cebc8;font:600 10px var(--mono);margin-bottom:13px}
-.cost-card h3{font:700 16px/1.3 var(--display);margin:0 0 10px}
-.cost-card p{margin:0;color:#a3acbf;font-size:12px;line-height:1.7}
-.credit-illustration{margin-top:23px;display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:25px;border:1px solid #344353;border-radius:17px;background:linear-gradient(110deg,#142320,#151a27)}
-.credit-illustration h3{margin:5px 0 10px;font:700 22px var(--display)}
-.credit-illustration p{color:#a7b6c5;font-size:12px;margin:0;max-width:460px}
-.credit-flow{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
-.credit-flow span{border:1px solid #3d5155;border-radius:10px;padding:11px 14px;font-size:12px;font-weight:650;background:#1a292b}
-.credit-flow i{font-style:normal;color:var(--green)}
-.faq-section{background:#10121a}
-.faq-list{max-width:880px;margin:0 auto;display:grid;gap:11px}
-.faq-list details{border:1px solid #343a49;border-radius:13px;background:#171b25;padding:0 21px}
-.faq-list summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px 0;font-size:13px;font-weight:700;cursor:pointer}
-.faq-list summary::-webkit-details-marker{display:none}
-.faq-list summary:after{content:"+";font-size:23px;font-weight:400;color:var(--green)}
-.faq-list details[open] summary:after{content:"−"}
-.faq-list details p{color:#a9b3c3;font-size:12px;line-height:1.8;border-top:1px solid #2e3440;margin:0;padding:16px 0 22px}
-.final-cta{padding:70px 0;text-align:center;background:radial-gradient(ellipse 50% 100% at 50% 100%,#7b5cff20,transparent)}
-.final-cta h2{font:700 clamp(28px,3.3vw,42px)/1.2 var(--display);letter-spacing:-.9px;margin:15px 0}
-.final-cta p{color:#a3b0c3;margin:0 auto 25px;max-width:550px}
-.site-footer{border-top:1px solid #262b35;padding:30px 0 40px;color:#8290a2;font-size:11px}
-.footer-inner{display:flex;justify-content:space-between;gap:14px;align-items:center;flex-wrap:wrap}
-.footer-links{display:flex;gap:18px;flex-wrap:wrap}
-.footer-links a:hover{color:white}
-.visually-hidden{position:absolute;height:1px;width:1px;clip:rect(0,0,0,0);overflow:hidden;white-space:nowrap}
-@media(max-width:1060px){.nav-links{gap:13px}.nav-links a{font-size:11px}.hero-inner{gap:35px}.module-grid,.addon-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:780px){.nav-links{display:none}.hero-inner{grid-template-columns:1fr;gap:38px;padding-block:70px}.hero h1{max-width:630px}.machine{max-width:540px;width:100%;margin-inline:auto}.section{padding:70px 0}.cost-grid{grid-template-columns:1fr 1fr}.credit-illustration{grid-template-columns:1fr}.plan-grid{gap:14px}}
-@media(max-width:620px){.wrap{width:min(100% - 30px,1190px)}.nav-inner{min-height:65px}.brand{font-size:19px}.nav-action{font-size:10px;padding:10px 11px}.hero-inner{padding-top:61px;padding-bottom:55px}.hero h1{font-size:clamp(36px,10vw,49px);letter-spacing:-1.4px}.hero-lead{font-size:14px}.hero-small{gap:10px;flex-wrap:wrap}.machine-panel{padding:17px}.machine-title{font-size:21px}.plan-grid,.module-grid,.addon-grid,.cost-grid{grid-template-columns:1fr}.plan{padding:24px}.section-head h2{font-size:30px}.section-head{margin-bottom:31px}.section-head p{font-size:13px}.section{padding:56px 0}.catalog-toolbar{padding:13px}.module-card,.addon{padding:19px}.compare-note{flex-direction:column;align-items:flex-start}.pack-banner{align-items:flex-start;flex-direction:column}.fine-inner{gap:8px;flex-wrap:wrap;font-size:10px}.credit-illustration{padding:18px}.site-footer{padding:25px 0}.button-primary,.button-secondary{padding:13px 15px;font-size:12px}}
+.wrap{width:min(1130px,calc(100% - 44px));margin-inline:auto}
+.topnav{position:sticky;top:0;z-index:40;border-bottom:1px solid #292d39;background:#0b0d12f2;backdrop-filter:blur(18px)}
+.nav-inner{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:inline-flex;align-items:center;gap:8px;font:700 20px 'Space Grotesk',sans-serif;letter-spacing:-.8px;white-space:nowrap}
+.brand-symbol{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:var(--violet);font-size:20px}
+.brand small{font:600 10px 'JetBrains Mono',monospace;letter-spacing:1.2px;color:var(--green);margin-left:4px}
+.nav-links{display:flex;gap:25px;align-items:center}
+.nav-links a{font-size:12px;color:#a9b2c3;font-weight:600}
+.nav-links a:hover{color:white}
+.nav-return{border:1px solid #42485b;border-radius:9px;padding:9px 12px;font-size:12px;font-weight:700}
+.nav-return:hover{background:#222738}
+.hero{background:radial-gradient(ellipse 58% 90% at 84% 8%,#7b5cff22,transparent 72%);padding:69px 0 50px}
+.kicker{font:600 11px 'JetBrains Mono',monospace;letter-spacing:1.6px;color:var(--green);text-transform:uppercase}
+.hero h1{margin:14px 0 15px;font:700 clamp(34px,4vw,56px)/1.11 'Space Grotesk',sans-serif;letter-spacing:-1.9px;max-width:900px}
+.hero h1 em,.section-title em{color:#a995ff;font-style:normal}
+.lead{color:#b0b9c9;font-size:15px;line-height:1.82;max-width:800px;margin:0}
+.hero-foot{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:25px}
+.main-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:10px;padding:12px 17px;background:var(--green);color:#08140e;font-size:12px;font-weight:750}
+.main-btn:hover{background:#6ee5b3}
+.ghost-btn{padding:12px 17px;border-radius:10px;border:1px solid #3b4152;font-size:12px;font-weight:700;color:#d8dfec}
+.ghost-btn:hover{border-color:var(--violet)}
+.beta{font-size:11px;color:#9da7bb;border-left:2px solid var(--violet);padding-left:12px;margin-left:auto;max-width:300px}
+.section{padding:64px 0}
+.section.compact{padding-top:0}
+.section-title{font:700 clamp(25px,3vw,36px)/1.25 'Space Grotesk',sans-serif;letter-spacing:-.9px;margin:0 0 10px}
+.section-intro{color:#a8b3c6;font-size:13px;line-height:1.8;margin:0 0 26px;max-width:800px}
+.table-shell{border:1px solid var(--border);border-radius:15px;overflow:hidden;background:#11151d}
+.table-scroll{overflow-x:auto;scrollbar-color:#555c72 #151922}
+.matrix{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed}
+.matrix th,.matrix td{border-bottom:1px solid #292f3d;vertical-align:middle;padding:13px 18px}
+.matrix thead th{background:#191e2a;border-bottom:1px solid #3b4052;padding:23px 20px;text-align:center}
+.matrix thead th:first-child{text-align:left;background:#171b25}
+.matrix thead th:last-child{background:linear-gradient(180deg,#29203e,#1b1e2a)}
+.matrix th.feature-col{width:52%}
+.matrix th.plan-col{width:24%}
+.matrix .head-overline{display:block;color:#848da2;text-transform:uppercase;font:600 10px 'JetBrains Mono',monospace;letter-spacing:1px;margin-bottom:7px}
+.matrix .plan-title{display:block;font:700 26px/1.1 'Space Grotesk',sans-serif;color:#f4f5f7}
+.matrix .plan-price{display:block;font:600 14px 'Space Grotesk',sans-serif;color:#c3c8d3;margin-top:11px}
+.matrix .plan-advantage{display:block;font:500 11px Inter,sans-serif;color:#aab5c7;margin-top:5px}
+.matrix .primary-col{background:#141d1f}
+.matrix .diff-scale{background:#181723}
+.matrix .row-label{display:block;font-size:13px;font-weight:650;color:#e1e7ee;line-height:1.45}
+.matrix .row-note{display:block;color:#8f9aaf;font-size:11px;line-height:1.6;margin-top:3px}
+.matrix tbody td{text-align:center;color:#c6ccda;font-size:12px}
+.matrix tbody tr:not(.category-row):hover td{background:#2429368c}
+.matrix tbody tr:not(.category-row):hover th{background:#2227358c}
+.matrix tbody tr:last-child th,.matrix tbody tr:last-child td{border-bottom:0}
+.category-row th{padding:14px 19px;background:#202332;color:#e4e3ff;text-align:left;font:700 12px 'Space Grotesk',sans-serif;letter-spacing:.1px;border-bottom:1px solid #36364b}
+.category-row .count{font:500 10px 'JetBrains Mono',monospace;color:#929bb2;margin-left:9px}
+.category-row .toggle-group{border:0;background:none;color:#e4e3ff;font:inherit;padding:0;width:100%;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.category-row .toggle-group .chevron{font-size:18px;font-weight:400;color:#aeb7c7}
+.status{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:650;line-height:1.3;max-width:100%;text-align:left}
+.symbol{display:inline-grid;place-items:center;flex-shrink:0;width:20px;height:20px;border-radius:50%;background:#3ddc971b;color:var(--green);font-size:12px;font-weight:750}
+.status.extra .symbol{background:#8b74ff21;color:#b6a5ff}
+.status.consume .symbol{background:#e9c1791f;color:#e9c179}
+.status.pending .symbol{background:#52617b2a;color:#a4b1c5}
+.status-text{display:block;font-size:11px;font-weight:600}
+.status-hint{display:block;font-size:10px;font-weight:450;color:#8a96ab;margin-top:4px}
+.no-match{padding:37px 22px;text-align:center;color:#a8b5ca}
+.controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:space-between;padding:17px 19px;background:#151924;border-bottom:1px solid #303747}
+.searchbox{display:flex;align-items:center;gap:9px;border:1px solid #3a4051;background:#0d1118;padding:0 12px;border-radius:9px;min-width:280px;flex:1;max-width:480px}
+.searchbox span{font-size:19px;color:#98a1b4}
+.searchbox input{background:transparent;color:#fff;outline:0;border:0;height:44px;width:100%;min-width:0;font-size:12px}
+.searchbox input::placeholder{color:#7b8596}
+.filter-chips{display:flex;gap:7px;overflow-x:auto;margin:14px 0 18px;padding-bottom:4px;scrollbar-width:thin}
+.filter{border:1px solid #353b4b;background:#171c25;border-radius:8px;padding:8px 12px;color:#9ea9bc;white-space:nowrap;font-size:11px;font-weight:650}
+.filter.active{color:#ede9ff;border-color:#876cfb;background:#7b5cff21}
+.results{font:600 11px 'JetBrains Mono',monospace;color:#8e9bb0}
+.checkbox{display:flex;align-items:center;gap:8px;white-space:nowrap;color:#b5c0d1;font-size:11px;cursor:pointer}
+.checkbox input{accent-color:var(--violet);width:16px;height:16px}
+.note-line{color:#929fb3;font-size:11px;line-height:1.7;margin-top:15px}
+.note-line b{color:#d5dbe6}
+.info-toggle{background:none;color:#8fa3c7;border:0;font-size:10px;padding:3px 0;display:block;cursor:pointer;text-align:left}
+.info-toggle:hover{color:#d1c6ff;text-decoration:underline}
+.details-inline{display:none;color:#8f9bad;font-size:11px;line-height:1.65;margin-top:7px;font-weight:400}
+.details-inline.open{display:block}
+.section-muted{background:#10131a;border-top:1px solid #262b36;border-bottom:1px solid #262b36}
+.addon-header{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap}
+.plan-strip{background:linear-gradient(95deg,#171c27,#1f1933);border:1px solid #36374e;border-radius:11px;margin:20px 0 20px;padding:17px 19px;display:flex;gap:12px;align-items:center;justify-content:space-between;font-size:12px;color:#b5bdd0}
+.plan-strip b{color:#e7e6ff}
+.flag{display:inline-flex;border:1px solid #53506b;padding:4px 7px;border-radius:6px;font:600 9px 'JetBrains Mono',monospace;color:#c2b3ff;margin-left:8px;vertical-align:middle}
+.faq-item{border-bottom:1px solid #2a303d}
+.faq-item summary{padding:19px 0;cursor:pointer;font-size:13px;font-weight:650;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:after{content:"+";font-size:20px;color:var(--green)}
+.faq-item[open] summary:after{content:"−"}
+.faq-item p{color:#a8b3c3;font-size:12px;max-width:850px;line-height:1.85;margin:0;padding-bottom:19px}
+.footer-cta{padding:65px 0;text-align:center;background:radial-gradient(ellipse at 50% 120%,#7b5cff20,transparent 75%)}
+.footer-cta h2{font:700 clamp(28px,3.2vw,41px)/1.2 'Space Grotesk',sans-serif;margin:0 0 12px}
+.footer-cta p{color:#a7b2c5;font-size:13px;max-width:620px;margin:0 auto 22px}
+.footer{border-top:1px solid #292f3a;color:#8c98aa;padding:24px 0;font-size:11px}
+.footer-content{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+.footer-content a:hover{color:#fff}
+.only-mobile{display:none}
+@media(max-width:850px){.nav-links{display:none}.matrix th.feature-col{width:46%}.matrix th.plan-col{width:27%}.matrix th,.matrix td{padding:13px 12px}.beta{margin-left:0}.hero{padding-top:45px}}
+@media(max-width:560px){
+ .wrap{width:calc(100% - 26px)}
+ .nav-inner{min-height:60px}
+ .brand{font-size:18px}
+ .brand small{font-size:9px}
+ .nav-return{font-size:10px;padding:8px 10px}
+ .hero{padding:39px 0 36px}
+ .hero h1{font-size:33px;letter-spacing:-1.05px}
+ .lead{font-size:13px;line-height:1.75}
+ .hero-foot{align-items:stretch}
+ .beta{width:100%;max-width:100%;margin-top:2px}
+ .section{padding:45px 0}
+ .section-title{font-size:27px}
+ .section-intro{font-size:12px}
+ .controls{padding:12px;gap:9px}
+ .searchbox{min-width:100%;max-width:100%;flex-basis:100%}
+ .filter{font-size:10px;padding:8px 9px}
+ .table-scroll{overflow-x:visible}
+ .matrix{table-layout:fixed}
+ .matrix th.feature-col{width:43%}
+ .matrix th.plan-col{width:28.5%}
+ .matrix th,.matrix td{padding:11px 7px}
+ .matrix thead th{padding:15px 6px}
+ .matrix .plan-title{font-size:19px}
+ .matrix .plan-price{font-size:11px}
+ .matrix .plan-advantage{font-size:9px}
+ .matrix .head-overline{font-size:9px;letter-spacing:.3px}
+ .matrix .row-label{font-size:11px}
+ .matrix .row-note{font-size:9px}
+ .status{display:flex;flex-direction:column;gap:3px;text-align:center}
+ .status .symbol{width:18px;height:18px;font-size:11px}
+ .status-text{font-size:9px}
+ .status-hint{display:none}
+ .category-row th{font-size:11px;padding:11px}
+ .category-row .count{font-size:9px}
+ .info-toggle{font-size:10px}
+ .controls .checkbox{font-size:10px}
+ .only-mobile{display:inline}
+ .only-desktop{display:none}
+ .plan-strip{flex-direction:column;align-items:start}
+ .footer-content{justify-content:center;text-align:center}
+}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
 <body>
-<nav class="site-nav" aria-label="Navegación de planes">
-  <div class="wrap nav-inner">
-    <a class="brand" href="/" aria-label="10xteam Growth - inicio"><span class="brand-mark">×</span>10xteam <small>GROWTH</small></a>
-    <div class="nav-links">
-      <a href="#planes">Planes</a><a href="#funcionalidades">Funcionalidades</a><a href="#complementos">Complementos</a><a href="#consumos">Consumos</a><a href="#preguntas">Preguntas</a>
-    </div>
-    <a class="nav-action" href="/"><span aria-hidden="true">←</span>&nbsp; Volver a Growth</a>
-  </div>
+<nav class="topnav" aria-label="Navegación">
+ <div class="wrap nav-inner">
+  <a class="brand" href="/" aria-label="10xteam Growth - inicio"><span class="brand-symbol">×</span>10xteam <small>GROWTH</small></a>
+  <div class="nav-links"><a href="#comparador">Comparar planes</a><a href="#complementos">Complementos</a><a href="#consumos">Consumos y costos</a><a href="#preguntas">Preguntas</a></div>
+  <a class="nav-return" href="/">← Volver a Growth</a>
+ </div>
 </nav>
 <main>
-  <section class="hero">
-    <div class="wrap hero-inner">
-      <div>
-        <div class="eyebrow">CATÁLOGO COMPLETO · GROWTH OS</div>
-        <h1>Una plataforma. <span class="grad">Toda la maquinaria</span> para crecer.</h1>
-        <p class="hero-lead">Atrae clientes, responde mensajes, vende, automatiza tu trabajo y mide resultados. Explora todo lo que incluye 10xteam, sin descubrir cargos ocultos cuando empieces a utilizarlo.</p>
-        <div class="hero-ctas"><a href="#planes" class="button-primary">Comparar planes <span aria-hidden="true">↗</span></a><a href="#funcionalidades" class="button-secondary">Explorar 45 módulos <span aria-hidden="true">↓</span></a></div>
-        <div class="hero-small"><span>Todo el ecosistema en un solo lugar</span><span class="dot"></span><span>Complementos cuando los necesites</span></div>
-      </div>
-      <div class="machine" aria-label="Esquema del ciclo de crecimiento de 10xteam">
-        <div class="machine-shadow"></div>
-        <div class="machine-panel">
-          <div class="machine-top"><span>LA MAQUINARIA DE TU NEGOCIO</span><i aria-hidden="true"></i></div>
-          <h2 class="machine-title">De la primera visita a la recompra.</h2>
-          <p class="machine-sub">Los procesos funcionan mejor cuando están conectados.</p>
-          <div class="flowstep"><span class="num">01</span><span><strong>Atrae</strong><small>Redes, publicidad, prospección</small></span><span class="arrow">↗</span></div>
-          <div class="flowstep"><span class="num">02</span><span><strong>Conversa</strong><small>WhatsApp, chat, email y CRM</small></span><span class="arrow">↗</span></div>
-          <div class="flowstep"><span class="num">03</span><span><strong>Convierte</strong><small>Seguimiento, citas y ventas</small></span><span class="arrow">↗</span></div>
-          <div class="flowstep"><span class="num">04</span><span><strong>Retén y escala</strong><small>Automatización y análisis</small></span><span class="arrow">↗</span></div>
-          <div class="machine-foot">✦ Una sola plataforma · Múltiples formas de crecer</div>
-        </div>
-      </div>
+ <section class="hero">
+  <div class="wrap">
+   <div class="kicker">GROWTH OS · COMPARADOR DE PLANES</div>
+   <h1>Descubre <em>todo lo que incluye</em> tu plan.</h1>
+   <p class="lead">Compara función por función, conoce los complementos y entiende qué está incluido y qué se cobra por consumo. Toda la maquinaria de marketing, ventas y automatización, con costos claros desde el principio.</p>
+   <div class="hero-foot"><a class="main-btn" href="#comparador">Comparar Growth y Scale ↓</a><a class="ghost-btn" href="#complementos">Ver complementos</a><span class="beta">Primera versión en revisión. Los precios finales aún no están aprobados.</span></div>
+  </div>
+ </section>
+ <section class="section" id="comparador">
+  <div class="wrap">
+   <h2 class="section-title">Growth vs Scale. <em>Todo a la vista.</em></h2>
+   <p class="section-intro">45 módulos organizados por categoría. En cada fila verás si la capacidad está incluida, requiere un complemento o funciona por consumo. Pulsa el nombre para consultar su alcance.</p>
+   <div class="table-shell">
+    <div class="table-scroll">
+     <table class="matrix" aria-label="Comparación de funcionalidades Growth y Scale">
+      <thead>
+       <tr>
+        <th class="feature-col" scope="col"><span class="head-overline">COMPARADOR</span><span style="font:700 19px 'Space Grotesk',sans-serif">Funcionalidades</span><span class="plan-advantage">Qué incluye cada uno</span></th>
+        <th class="plan-col" scope="col"><span class="head-overline">PLAN</span><span class="plan-title">Growth</span><span class="plan-price">Precio por definir</span><span class="plan-advantage">1 negocio</span></th>
+        <th class="plan-col" scope="col"><span class="head-overline">PLAN</span><span class="plan-title" style="color:#d1c6ff">Scale</span><span class="plan-price">Precio por definir</span><span class="plan-advantage">Hasta 2 negocios</span></th>
+       </tr>
+      </thead>
+      <tbody id="key-differences"></tbody>
+     </table>
     </div>
-  </section>
-  <div class="fine-banner"><div class="wrap fine-inner"><strong>Versión de revisión del catálogo</strong><span>Precios finales y disponibilidad sujetos a validación. Este diseño no es una oferta comercial vigente.</span></div></div>
-  <section class="section plans-section" id="planes">
-    <div class="wrap">
-      <div class="section-head"><div class="eyebrow" style="justify-content:center">DOS FORMAS DE CRECER</div><h2>Todo lo que necesitas. <span class="grad">Elige cómo avanzar.</span></h2><p>La plataforma general es completa en ambos planes. Scale añade capacidad, mejores condiciones de consumo y beneficios operativos incluidos.</p></div>
-      <div class="plan-grid">
-        <article class="plan">
-          <div class="plan-head"><span class="plan-name">Growth</span><span class="plan-tag">Para empezar a escalar</span></div>
-          <p class="plan-desc">Trabaja marketing, ventas y atención desde un solo lugar.</p>
-          <span class="plan-price-label">Suscripción mensual</span><div class="plan-price">Por definir</div><span class="plan-price-note">Precio de lista y cupón Early Adopter en definición</span>
-          <div class="plan-divider"></div>
-          <ul class="plan-benefits">
-            <li>Plataforma general completa para captar, vender y fidelizar.</li>
-            <li>Una subcuenta de negocio.</li>
-            <li>WhatsApp disponible para activar cuando lo necesites.</li>
-            <li>Crédito mensual de uso incluido (monto por confirmar).</li>
-            <li>IA asistida gratuita y herramientas de IA elegibles por consumo.</li>
-            <li>Complementos especializados opcionales.</li>
-          </ul>
-          <a class="button-secondary plan-link" href="#funcionalidades">Explorar funcionalidades →</a>
-          <span class="plan-foot">Los servicios de uso variable, los complementos y los terceros se identifican por separado.</span>
-        </article>
-        <article class="plan scale">
-          <span class="plan-ribbon">MÁS CAPACIDAD</span>
-          <div class="plan-head"><span class="plan-name">Scale</span><span class="plan-tag">Condiciones preferentes</span></div>
-          <p class="plan-desc">Más capacidad de operación y mejor economía por uso.</p>
-          <span class="plan-price-label">Suscripción mensual</span><div class="plan-price">Por definir</div><span class="plan-price-note">Precio de lista y cupón Early Adopter en definición</span>
-          <div class="plan-divider"></div>
-          <ul class="plan-benefits">
-            <li>Todo el alcance general de Growth.</li>
-            <li>Hasta dos subcuentas, sin duplicar el crédito mensual.</li>
-            <li>WhatsApp activable cuando se utilice cada subcuenta.</li>
-            <li>Mayor bolsa mensual de uso incluida.</li>
-            <li>Tarifas preferentes para IA y servicios elegibles.</li>
-            <li>Ticketing y Proyectos completos (sujeto a validación de control).</li>
-            <li>Mejores condiciones en complementos y beneficios Early Adopter.</li>
-          </ul>
-          <a class="button-primary plan-link" href="#complementos">Descubrir ventajas Scale →</a>
-          <span class="plan-foot">La segunda cuenta tiene Wallet independiente. La modalidad de facturación agrupada está en validación.</span>
-        </article>
-      </div>
-      <div class="compare-note"><div><strong>¿Por qué no mostramos todavía cifras de suscripción?</strong><br>Estamos cerrando los precios, las bolsas y el esquema de cupones antes de publicarlos. No queremos promesas que cambien al contratar.</div><a href="#consumos">Ver cómo funciona el consumo ↗</a></div>
+    <div class="controls" id="buscador">
+     <label class="searchbox"><span aria-hidden="true">⌕</span><span class="sr-only" style="position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden">Buscar funcionalidades</span><input id="search-features" type="search" placeholder="Buscar CRM, WhatsApp, automatizaciones…" autocomplete="off"></label>
+     <label class="checkbox"><input type="checkbox" id="only-differences"> Mostrar sólo diferencias</label>
+     <span class="results" id="result-count" aria-live="polite">45 módulos</span>
     </div>
-  </section>
-  <section class="section" id="funcionalidades">
-    <div class="wrap">
-      <div class="section-head"><div class="eyebrow" style="justify-content:center">TODO LO QUE PUEDES HACER</div><h2>No son unas cuantas herramientas. <span class="grad">Es un sistema completo.</span></h2><p>Busca lo que necesitas o explora todas las áreas: desde conseguir clientes hasta automatizar la operación y medir lo que funciona.</p></div>
-      <div class="catalog-toolbar">
-        <label class="search-wrap"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="10.8" cy="10.8" r="6.7"></circle><path d="m16 16 5 5"></path></svg><span class="visually-hidden">Buscar funcionalidades</span><input id="feature-search" type="search" placeholder="Buscar CRM, WhatsApp, publicidad, ecommerce, automatización…" autocomplete="off"></label>
-        <div id="category-filters" class="filters" role="group" aria-label="Filtrar funcionalidades por categoría"></div>
-      </div>
-      <div class="results-row"><span id="results-count" aria-live="polite">Explorando capacidades…</span><span>Growth / Scale · estados comerciales provisionales</span></div>
-      <div id="module-list" class="module-grid" aria-label="Catálogo de 45 funcionalidades"></div>
-      <div class="compare-note" style="margin-top:19px"><div><strong>¿Qué significa “Incluido”?</strong><br>Acceso a la funcionalidad nativa elegible. Los envíos, acciones de IA, tarifas de terceros y complementos no quedan incluidos salvo que se indique expresamente.</div><a href="#consumos">Entender los cargos ↗</a></div>
+    <div class="wrap" style="width:calc(100% - 24px)">
+      <div class="filter-chips" id="category-filters" aria-label="Filtrar por categoría"></div>
     </div>
-  </section>
-  <section class="section addon-section" id="complementos">
-    <div class="wrap">
-      <div class="section-head"><div class="eyebrow" style="justify-content:center">CRECE CON TU NEGOCIO</div><h2>Suma capacidades <span class="grad">cuando las necesites.</span></h2><p>Funciones especializadas para negocios reales. Sin pagar por funcionalidades que no utilizas. Los complementos indicarán siempre lo que está incluido, lo que genera consumo y su disponibilidad real.</p></div>
-      <div id="addon-filters" class="addon-filter" role="group" aria-label="Filtrar complementos"></div>
-      <div id="addon-grid" class="addon-grid" aria-label="Complementos del catálogo"></div>
-      <div class="pack-banner"><div><strong>Paquete de complementos 10xteam</strong><p>Estudiamos una tarifa agrupada para negocios que utilizan varios módulos. No activa ni promete betas que todavía no estén disponibles.</p></div><span class="pill">PRECIO EN DEFINICIÓN</span></div>
+    <div class="table-scroll">
+     <table class="matrix" aria-label="Listado completo de módulos por plan">
+       <colgroup><col style="width:52%"><col style="width:24%"><col style="width:24%"></colgroup>
+       <thead class="visually-hidden-head"><tr><th scope="col">Funcionalidad</th><th scope="col">Growth</th><th scope="col">Scale</th></tr></thead>
+       <tbody id="feature-rows"></tbody>
+     </table>
     </div>
-  </section>
-  <section class="section" id="consumos">
-    <div class="wrap">
-      <div class="section-head"><div class="eyebrow" style="justify-content:center">COSTOS CLAROS, SIN SORPRESAS</div><h2>Tu plataforma incluye crédito. <span class="grad">Tú decides cómo utilizarlo.</span></h2><p>La renta abre la maquinaria; la Wallet cubre consumos elegibles. Antes de activar un servicio, verás si está incluido, si utiliza saldo o si tiene un cargo externo.</p></div>
-      <div id="cost-grid" class="cost-grid"></div>
-      <div class="credit-illustration">
-        <div><div class="eyebrow">WALLET 10XTEAM</div><h3>Un saldo. Más posibilidades.</h3><p>El crédito mensual sirve para servicios compatibles, no sólo IA. Los asistentes de IA gratuitos se incluyen sin descontar saldo ficticio. La cobertura exacta se verificará antes de contratar.</p></div>
-        <div class="credit-flow"><span>Crédito incluido</span><i aria-hidden="true">→</i><span>Consumo elegible</span><i aria-hidden="true">→</i><span>Saldo disponible</span></div>
-      </div>
+   </div>
+   <p class="note-line"><b>Cómo leer la tabla:</b> ✓ incluido · + complemento opcional · ◉ por consumo. Los precios pendientes se identificarán antes de abrir la contratación. Algunas capacidades siguen sujetas a permisos y disponibilidad real de Founder.</p>
+  </div>
+ </section>
+ <section class="section section-muted" id="complementos">
+  <div class="wrap">
+   <h2 class="section-title">Complementos. <em>Sólo lo que necesitas.</em></h2>
+   <p class="section-intro">Los módulos especializados se contratan por separado cuando corresponda. Una vez validados, mostraremos el precio mensual, la elegibilidad por plan y las condiciones de cada complemento.</p>
+   <div class="table-shell">
+    <div class="table-scroll">
+     <table class="matrix" aria-label="Complementos y condiciones por plan">
+       <thead><tr><th class="feature-col" scope="col"><span class="head-overline">CATÁLOGO DE COMPLEMENTOS</span><span style="font:700 18px 'Space Grotesk',sans-serif">Funcionalidad adicional</span></th><th class="plan-col" scope="col"><span class="plan-title">Growth</span><span class="plan-advantage">Precio estándar</span></th><th class="plan-col" scope="col"><span class="plan-title" style="color:#d1c6ff">Scale</span><span class="plan-advantage">Condiciones preferentes</span></th></tr></thead>
+       <tbody id="addon-rows"></tbody>
+     </table>
     </div>
-  </section>
-  <section class="section faq-section" id="preguntas">
-    <div class="wrap">
-      <div class="section-head"><div class="eyebrow" style="justify-content:center">PREGUNTAS FRECUENTES</div><h2>Todo claro <span class="grad">desde el principio.</span></h2><p>Queremos que sepas exactamente qué estás contratando y cuándo podría existir un cargo adicional.</p></div>
-      <div class="faq-list">
-        <details><summary>¿Los dos planes tienen CRM, tienda online, redes y automatizaciones?</summary><p>Sí. El marco comercial aprobado incluye la plataforma general en ambos planes, incluidos Ecommerce y Comercio Multicanal nativos elegibles. Las diferencias se concentran en capacidad, crédito de consumo, beneficios y complementos. Su disponibilidad técnica final se comprobará en Founder.</p></details>
-        <details><summary>¿WhatsApp está incluido? ¿También sus mensajes?</summary><p>WhatsApp está previsto en ambos planes y sólo se activa cuando el cliente lo necesite. La suscripción fija del canal se considera dentro de nuestro precio cuando está habilitado; las conversaciones o mensajes sujetos a tarifa utilizan crédito elegible o se cobran según consumo. Una segunda subcuenta no activa WhatsApp por sí sola.</p></details>
-        <details><summary>¿Qué pasa cuando termino mi crédito mensual?</summary><p>El sistema ofrecerá la modalidad de recarga o límite de gasto autorizada. No asumimos recargas ni cobros automáticos sin consentimiento; el comportamiento definitivo dependerá de la configuración y pruebas de Wallet.</p></details>
-        <details><summary>¿Scale incluye dos bolsas de crédito?</summary><p>No. La propuesta Scale incluye una bolsa mensual principal y derecho a una segunda subcuenta sin renta adicional. Cada subcuenta tiene Wallet y consumo independientes; no se promete saldo compartido ni una segunda bolsa recurrente automática.</p></details>
-        <details><summary>¿Qué ocurre con las funciones en beta o acceso anticipado?</summary><p>No se consideran disponibles hasta confirmar acceso efectivo. Podrás conocerlas o solicitar información, pero ninguna beta se anunciará como función ya entregada ni como parte activa de una suscripción sin comprobación.</p></details>
-        <details><summary>¿Puedo contratar un complemento y usarlo en mis dos subcuentas Scale?</summary><p>Esa es nuestra propuesta para complementos nativos compatibles y sin licencia separada por negocio. Debemos probar los permisos, el aprovisionamiento y las reglas de costo antes de convertirlo en una garantía comercial.</p></details>
-        <details><summary>¿Es lo mismo utilizar Ad Manager que contratar a una agencia de marketing?</summary><p>No. 10xteam permite gestionar campañas e información desde la plataforma, pero crear estrategias, producir contenido y administrar campañas por ti son servicios profesionales distintos que, de contratarse, se cotizan por separado. La inversión en anuncios tampoco está incluida.</p></details>
-        <details><summary>¿Cuándo se publicarán los precios y descuentos Early Adopter?</summary><p>Cuando terminemos la revisión de márgenes, compatibilidad de pagos y cupones. Los precios provisionales de trabajo no constituyen una oferta vigente. Antes de una compra mostraremos precio de lista, precio promocional, duración y renovación.</p></details>
-      </div>
+   </div>
+   <div class="plan-strip"><div><b>Pack de complementos:</b> evaluamos una tarifa agrupada para negocios que necesitan varios módulos completos.</div><span class="flag">PRECIO POR DEFINIR</span></div>
+  </div>
+ </section>
+ <section class="section" id="consumos">
+  <div class="wrap">
+   <h2 class="section-title">Servicios y consumo. <em>Sin letras pequeñas.</em></h2>
+   <p class="section-intro">Ambos planes incluyen crédito multipropósito; no todos los servicios usan las mismas unidades ni todos los cargos de terceros pasan por Wallet. Aquí distinguimos claramente lo incluido de lo adicional.</p>
+   <div class="table-shell">
+    <div class="table-scroll">
+     <table class="matrix" aria-label="Transparencia de consumo y costos">
+       <thead><tr><th class="feature-col" scope="col">Servicio</th><th class="plan-col" scope="col">Growth</th><th class="plan-col" scope="col">Scale</th></tr></thead>
+       <tbody id="usage-rows"></tbody>
+     </table>
     </div>
-  </section>
-  <section class="final-cta"><div class="wrap"><div class="eyebrow" style="justify-content:center">MENOS HERRAMIENTAS SUELTAS, MÁS RESULTADOS</div><h2>Haz más. <span class="grad-green">Sin contratar más complicaciones.</span></h2><p>Descubre qué podría automatizar tu negocio con una sola plataforma para marketing, ventas y operación.</p><a class="button-primary" href="/wizard">Conocer mi diagnóstico →</a></div></section>
+   </div>
+   <p class="note-line">El crédito incluido se aplicará únicamente a servicios compatibles; no descontaremos saldo ficticio por funciones gratuitas. Los gastos publicitarios y comisiones de terceros se mostrarán por separado.</p>
+  </div>
+ </section>
+ <section class="section section-muted" id="preguntas">
+  <div class="wrap">
+   <h2 class="section-title">Preguntas frecuentes</h2>
+   <p class="section-intro">Lo importante no es sólo qué incluye tu plan, sino cuándo existe un cargo adicional y quién lo autoriza.</p>
+   <div class="faq-item"><details><summary>¿Growth incluye todas las herramientas generales de la plataforma?</summary><p>El marco comercial prevé CRM, funnels, tienda, comercio multicanal, conversaciones, marketing y automatizaciones elegibles en ambos planes. Ticketing y Proyectos completos se proponen como complemento de Growth y beneficio de Scale, siempre que los controles nativos puedan separarlos sin degradar funciones básicas.</p></details></div>
+   <div class="faq-item"><details><summary>¿WhatsApp está incluido y sus mensajes también?</summary><p>La conexión está contemplada en ambos planes y se habilitaría cuando se solicite. El costo fijo se presupuestará en la renta al activarse; los mensajes y conversaciones sujetos a tarifa generan consumo. En Scale la segunda subcuenta no activa automáticamente WhatsApp.</p></details></div>
+   <div class="faq-item"><details><summary>¿Qué sucede con mi saldo de Wallet?</summary><p>La bolsa es un crédito mensual para servicios elegibles. Las reglas finales de renovación, recargas, topes, vencimiento y aplicación en cada subcuenta están pendientes de validación de Founder. No se prometen recargas sin autorización ni una bolsa compartida entre negocios.</p></details></div>
+   <div class="faq-item"><details><summary>¿Qué pasa con los módulos en beta?</summary><p>Los módulos beta o pendientes de validación se identifican claramente y no se consideran disponibles automáticamente. No se cobrarán como funcionalidades listas antes de confirmar su acceso y provisión.</p></details></div>
+   <div class="faq-item"><details><summary>¿Se incluye la gestión profesional de campañas y el presupuesto de anuncios?</summary><p>No. Las herramientas de campañas son distintas de contratar a un especialista o agencia para administrarlas. La inversión en anuncios, pasarelas y servicios profesionales es adicional cuando aplica.</p></details></div>
+   <div class="faq-item"><details><summary>¿Dónde veo los precios Early Adopter?</summary><p>Los precios de lista, cupones, créditos y renovaciones todavía no están aprobados definitivamente. Se mostrarán de forma transparente antes de iniciar el proceso de contratación.</p></details></div>
+  </div>
+ </section>
+ <section class="footer-cta"><div class="wrap"><h2>Una plataforma. Toda la maquinaria.</h2><p>Organiza tus clientes, automatiza procesos y haz más con el equipo que ya tienes.</p><a href="/wizard" class="main-btn">Conocer mi diagnóstico →</a></div></section>
 </main>
-<footer class="site-footer"><div class="wrap footer-inner"><div>© 2026 10xteam · Growth OS <span style="color:#617085">— Catálogo en revisión</span></div><div class="footer-links"><a href="/">Volver a Growth</a><a href="https://10xteam.com.mx/legal/terminos">Términos</a><a href="https://10xteam.com.mx/legal/aviso">Privacidad</a></div></div></footer>
+<footer class="footer"><div class="wrap footer-content"><div>© 2026 10xteam · Growth OS · Vista en revisión</div><div><a href="/">Growth</a> · <a href="https://10xteam.com.mx/legal/terminos">Términos</a> · <a href="https://10xteam.com.mx/legal/aviso">Privacidad</a></div></div></footer>
 <!--__PLANES_CATALOG__-->
 <script>
 (function(){
 "use strict";
-var root=document.getElementById("planes-data");
-if(!root){return;}
-var data=JSON.parse(root.textContent);
-var query="",selectedCategory="Todas",selectedAddon="Todos";
-var esc=function(value){return String(value==null?"":value).replace(/[&<>"']/g,function(ch){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch];});};
-var catBox=document.getElementById("category-filters");
-var addonBox=document.getElementById("addon-filters");
-var search=document.getElementById("feature-search");
-var modules=document.getElementById("module-list");
-var addons=document.getElementById("addon-grid");
-function filters(){
-  var list=["Todas"].concat(data.categories);
-  catBox.innerHTML=list.map(function(c){return '<button type="button" class="filter '+(selectedCategory===c?'active':'')+'" data-cat="'+esc(c)+'" aria-pressed="'+(selectedCategory===c)+'">'+esc(c)+'</button>';}).join("");
-  catBox.querySelectorAll("button").forEach(function(b){b.addEventListener("click",function(){selectedCategory=b.getAttribute("data-cat")||"Todas";filters();renderModules();});});
+var source=document.getElementById("planes-data");if(!source)return;
+var catalog=JSON.parse(source.textContent);
+var search=document.getElementById("search-features");
+var onlyDiff=document.getElementById("only-differences");
+var filteredCategory="Todas";
+var hiddenCategories=new Set();
+function escapeHtml(str){return String(str==null?"":str).replace(/[&<>"']/g,function(s){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[s]});}
+function shortStatus(value){
+ var x=String(value||"").toLowerCase();
+ if(x.indexOf("por consumo")!==-1||x.indexOf("por uso")!==-1)return "Por uso";
+ if(x.indexOf("complemento")!==-1)return x.indexOf("incluido")!==-1?"Incluido + extra":"Complemento";
+ if(x.indexOf("sin")!==-1&&x.indexOf("bolsa")!==-1)return "Sin bolsa extra";
+ if(x.indexOf("incluido")!==-1||x.indexOf("incluida")!==-1)return "Incluido";
+ if(x.indexOf("preferente")!==-1)return "Preferente";
+ if(x.indexOf("activable")!==-1)return "Activable";
+ if(x.indexOf("suscripción")!==-1)return "Otra suscripción";
+ return value;
 }
-function renderModules(){
- var q=query.toLocaleLowerCase("es").trim();
- var visible=data.modules.filter(function(m){
-  return (selectedCategory==="Todas"||selectedCategory===m.category) && (!q||[m.id,m.title,m.description,m.category,m.growth,m.scale].join(" ").toLocaleLowerCase("es").includes(q));
+function statusHtml(value){
+ var x=String(value||"");var low=x.toLowerCase();
+ var type=/consumo|uso/.test(low)?"consume":/complemento|precio|suscripción|cotizar|preferente/.test(low)?"extra":"included";
+ var char=type==="included"?"✓":type==="consume"?"◉":"+";
+ return '<span class="status '+type+'" title="'+escapeHtml(x)+'"><span class="symbol" aria-hidden="true">'+char+'</span><span class="status-text"><span class="only-desktop">'+escapeHtml(x)+'</span><span class="only-mobile">'+escapeHtml(shortStatus(x))+'</span></span></span>';
+}
+var basics=[
+ ["Subcuentas incluidas","1 negocio","Hasta 2 negocios"],
+ ["Crédito mensual","Bolsa incluida","Bolsa mayor incluida"],
+ ["WhatsApp","Activable","Activable en ambas"],
+ ["IA avanzada","Por consumo","Por consumo preferente"],
+ ["Ticketing completo","Complemento","Incluido"],
+ ["Proyectos completo","Complemento","Incluido"],
+ ["Precios de lista y cupones","Por definir","Por definir"]
+];
+document.getElementById("key-differences").innerHTML='<tr class="category-row"><th colspan="3">Diferencias principales</th></tr>'+basics.map(function(row){
+ return '<tr><th scope="row"><span class="row-label">'+escapeHtml(row[0])+'</span></th><td>'+statusHtml(row[1])+'</td><td>'+statusHtml(row[2])+'</td></tr>';
+}).join("");
+function categoryControls(){
+ var html=['<button type="button" class="filter '+(filteredCategory==="Todas"?"active":"")+'" data-category="Todas" aria-pressed="'+(filteredCategory==="Todas")+'">Todas las áreas</button>'];
+ catalog.categories.forEach(function(c){html.push('<button type="button" class="filter '+(filteredCategory===c?"active":"")+'" data-category="'+escapeHtml(c)+'" aria-pressed="'+(filteredCategory===c)+'">'+escapeHtml(c)+'</button>');});
+ var box=document.getElementById("category-filters");box.innerHTML=html.join("");
+ box.querySelectorAll("button").forEach(function(button){button.addEventListener("click",function(){filteredCategory=button.getAttribute("data-category");categoryControls();renderFeatures();});});
+}
+function renderFeatures(){
+ var q=(search.value||"").trim().toLocaleLowerCase("es-MX");
+ var modules=catalog.modules.filter(function(m){
+  var selected=filteredCategory==="Todas"||filteredCategory===m.category;
+  var matched=!q||[m.id,m.title,m.category,m.description,m.growth,m.scale].join(" ").toLocaleLowerCase("es-MX").indexOf(q)!==-1;
+  var diff=!onlyDiff.checked||m.growth!==m.scale;
+  return selected&&matched&&diff;
  });
- document.getElementById("results-count").textContent=visible.length+" de "+data.modules.length+" módulos";
- if(!visible.length){modules.innerHTML='<div class="empty">No encontramos módulos con esos filtros. Prueba otra palabra o categoría.</div>';return;}
- modules.innerHTML=visible.map(function(m){
-  var excerpt=m.description.length>155?m.description.slice(0,152).replace(/\s+\S*$/,"")+"…":m.description;
-  var status=(m.type==="addon"?"Complemento":m.type==="usage"?"Por consumo":m.type==="ops"?"Diferencia Scale":m.type==="mixed"?"Mixto":"Incluido");
-  return '<article class="module-card"><div class="mod-top"><span class="mod-id">MÓDULO '+String(m.id).padStart(2,"0")+'</span><span class="mod-state">'+esc(status)+'</span></div><span class="mod-category">'+esc(m.category)+'</span><h3>'+esc(m.title)+'</h3><p class="desc">'+esc(excerpt)+'</p><div class="mod-status"><span class="chip"><b>Growth</b> '+esc(m.growth)+'</span><span class="chip scale"><b>Scale</b> '+esc(m.scale)+'</span></div><div class="card-detail">'+esc(m.availability)+'. <details><summary>Ver alcance</summary><p>'+esc(m.description)+'</p></details></div></article>';
- }).join("");
-}
-function addonFilters(){
- var list=["Todos","Operación","Comercio","Soluciones","Especializados"];
- addonBox.innerHTML=list.map(function(x){return '<button type="button" class="filter '+(selectedAddon===x?'active':'')+'" data-addon="'+esc(x)+'" aria-pressed="'+(selectedAddon===x)+'">'+esc(x)+'</button>';}).join("");
- addonBox.querySelectorAll("button").forEach(function(b){b.addEventListener("click",function(){selectedAddon=b.getAttribute("data-addon")||"Todos";addonFilters();renderAddons();});});
+ var html=[];
+ catalog.categories.forEach(function(cat){
+  var rows=modules.filter(function(m){return m.category===cat});
+  if(!rows.length)return;
+  var isClosed=hiddenCategories.has(cat);
+  html.push('<tr class="category-row"><th colspan="3"><button class="toggle-group" type="button" data-group="'+escapeHtml(cat)+'" aria-expanded="'+(!isClosed)+'">'+escapeHtml(cat)+' <span class="count">'+rows.length+' funciones</span><span class="chevron" aria-hidden="true">'+(isClosed?"+":"−")+'</span></button></th></tr>');
+  if(isClosed)return;
+  rows.forEach(function(m){
+   var id="detail-"+m.id;
+   html.push('<tr><th scope="row"><span class="row-label">'+escapeHtml(m.title)+'</span><button type="button" class="info-toggle" aria-controls="'+id+'" aria-expanded="false">¿Qué hace?</button><span class="details-inline" id="'+id+'">'+escapeHtml(m.description)+'</span></th><td>'+statusHtml(m.growth)+'</td><td>'+statusHtml(m.scale)+'</td></tr>');
+  });
+ });
+ document.getElementById("feature-rows").innerHTML=html.length?html.join(""):'<tr><td class="no-match" colspan="3">No encontramos funciones para esos filtros. Prueba con otra palabra.</td></tr>';
+ document.getElementById("result-count").textContent=modules.length+" de "+catalog.modules.length+" funciones";
+ document.querySelectorAll(".toggle-group").forEach(function(btn){btn.addEventListener("click",function(){var key=btn.getAttribute("data-group");if(hiddenCategories.has(key)){hiddenCategories.delete(key);}else{hiddenCategories.add(key);}renderFeatures();});});
+ document.querySelectorAll(".info-toggle").forEach(function(btn){btn.addEventListener("click",function(){var target=document.getElementById(btn.getAttribute("aria-controls"));var open=target.classList.toggle("open");btn.setAttribute("aria-expanded",String(open));btn.textContent=open?"Ocultar detalle":"¿Qué hace?";});});
 }
 function renderAddons(){
- var vis=data.addons.filter(function(a){return selectedAddon==="Todos"||selectedAddon===a.group;});
- addons.innerHTML=vis.map(function(a){
-  var early=a.availability==="Acceso anticipado";
-  return '<article class="addon"><div class="addon-top"><div class="addon-icon" aria-hidden="true">'+(a.icon==="gift"?"✧":a.icon==="support"?"☷":a.icon==="project"?"▦":a.icon==="utensils"?"◈":a.icon==="layers"?"◇":"✦")+'</div><span class="pill '+(early?"early":"")+'">'+esc(a.availability)+'</span></div><h3>'+esc(a.name)+'</h3><p>'+esc(a.description)+'</p><div class="addon-price"><span>Growth: '+esc(a.growth)+'<br>Scale: '+esc(a.scale)+'</span><strong>Precio<br>por confirmar</strong></div></article>';
- }).join("");
+ var groups=["Operación","Comercio","Soluciones","Especializados"];
+ var result=[];
+ groups.forEach(function(group){
+  var list=catalog.addons.filter(function(a){return a.group===group});
+  if(!list.length)return;
+  result.push('<tr class="category-row"><th colspan="3">'+escapeHtml(group)+'</th></tr>');
+  list.forEach(function(a){
+   var note=a.availability==="Acceso anticipado"?"Acceso anticipado · precio por definir":a.availability+" · precio por definir";
+   result.push('<tr><th scope="row"><span class="row-label">'+escapeHtml(a.name)+'</span><span class="row-note">'+escapeHtml(a.description)+'</span><span class="row-note">'+escapeHtml(note)+'</span></th><td>'+statusHtml(a.growth)+'</td><td>'+statusHtml(a.scale)+'</td></tr>');
+  });
+ });
+ document.getElementById("addon-rows").innerHTML=result.join("");
 }
-function renderCost(){
- document.getElementById("cost-grid").innerHTML=data.consumption.map(function(c){return '<article class="cost-card"><span class="cost-mark">'+esc(c.tag)+'</span><h3>'+esc(c.name)+'</h3><p>'+esc(c.detail)+'</p></article>';}).join("");
+function renderUsage(){
+ var rows=catalog.consumption.map(function(c){
+  var status=c.tag==="Incluido"?"Incluido":c.tag==="Activación bajo solicitud"?"Activable":c.tag==="Cargo externo"?"Cargo externo":c.tag==="Opcional"?"Opcional":"Por consumo";
+  return '<tr><th scope="row"><span class="row-label">'+escapeHtml(c.name)+'</span><span class="row-note">'+escapeHtml(c.detail)+'</span></th><td>'+statusHtml(status)+'</td><td>'+statusHtml(status)+'</td></tr>';
+ });
+ document.getElementById("usage-rows").innerHTML=rows.join("");
 }
-search.addEventListener("input",function(e){query=e.target.value||"";renderModules();});
-filters();renderModules();addonFilters();renderAddons();renderCost();
+search.addEventListener("input",renderFeatures);
+onlyDiff.addEventListener("change",renderFeatures);
+categoryControls();renderFeatures();renderAddons();renderUsage();
 })();
 </script>
 </body>
