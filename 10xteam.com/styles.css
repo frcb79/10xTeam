@@ -371,3 +371,19 @@ body.video-background-mode .cinematic-step {
 /* English headlines remain responsive; Spanish appearance stays as designed. */
 html[lang="en"] .hero-title-line{white-space:normal}
 html[lang="en"] .st-display-line{white-space:normal}
+
+
+/* 10x ultra-small-mobile typography patch — no change to standard phones or tablets.
+   The Spanish three-line hero may wrap on <=365px to avoid clipping. */
+@media (max-width: 365px) {
+  .hero h1 {
+    font-size: clamp(23px, 7.05vw, 26px);
+    line-height: 1.12;
+    letter-spacing: -0.036em;
+  }
+  .hero-title-line {
+    white-space: normal;
+    text-wrap: balance;
+    overflow-wrap: normal;
+  }
+}
