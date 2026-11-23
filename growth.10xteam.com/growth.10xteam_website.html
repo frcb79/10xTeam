@@ -2424,227 +2424,140 @@ body {
 
 
 <style id="growth-responsive-polish-20261123">
-/* Keep the approved desktop composition. Tablet: two readable problem columns. */
+/* Responsive de problemas: una sola fuente de verdad, sin tocar desktop. */
 @media (min-width: 681px) and (max-width: 1100px) {
   .txpain-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   .txpain-card { min-width: 0; padding: 20px 18px; }
   .txpain-card > div:last-child { min-width: 0; }
 }
-
-/* Fix the late desktop three-column override and restore an uncluttered mobile layout. */
 @media (max-width: 680px) {
   .txproblema { padding: 54px 16px 58px; }
   .txproblema-inner { max-width: 520px; width: 100%; margin-inline: auto; }
   .txproblema-eyebrow { margin-bottom: 12px; font-size: 11px; }
   .txproblema h2 { font-size: clamp(24px, 6.7vw, 32px); line-height: 1.16; margin: 0 0 24px; }
   .txpain-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; width: 100%; }
-  .txpain-card {
-    display: grid;
-    grid-template-columns: 36px minmax(0, 1fr);
-    align-items: start;
-    gap: 12px;
-    padding: 16px 15px;
-    min-width: 0;
-    border-radius: 14px;
-  }
+  .txpain-card { display: grid; grid-template-columns: 36px minmax(0, 1fr); align-items: start; gap: 12px; padding: 16px 15px; min-width: 0; border-radius: 14px; }
   .txpain-card > div:last-child { min-width: 0; overflow-wrap: break-word; }
   .txpain-icon { width: 36px; height: 36px; font-size: 18px; border-radius: 9px; }
   .txpain-card h3 { font-size: 15px; line-height: 1.34; margin: 0 0 7px; }
   .txpain-card p { font-size: 13.5px; line-height: 1.55; margin: 0; }
   .txproblema-bridge { max-width: 520px; margin: 26px auto 0; }
   .txproblema-bridge p { max-width: 100%; font-size: 15px; line-height: 1.6; text-wrap: pretty; }
-
-  /* Mobile ecosystem: modules above and below a centered 10xteam hub.
-     display:contents exposes the 4+hub+4 middle tiles to the mosaic's flex flow. */
-  .txeco-network { display: none; }
-  .txeco-mosaic { position: relative; display: flex; flex-direction: column; gap: 14px; isolation: isolate; }
-  .txeco-mosaic::before {
-    content: "";
-    position: absolute;
-    top: 34px;
-    bottom: 40px;
-    left: 50%;
-    width: 2px;
-    transform: translateX(-50%);
-    background: linear-gradient(to bottom, transparent, rgba(111,113,247,.47) 30%, rgba(53,200,168,.52) 50%, rgba(111,113,247,.47) 70%, transparent);
-    opacity: .78;
-    pointer-events: none;
-    z-index: 0;
-  }
-  .txeco-middle { display: contents; }
-  .txeco-top, .txeco-bottom, .txeco-side {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    grid-template-rows: auto;
-    gap: 8px;
-  }
-  .txeco-top { order: 0; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .txeco-side-left { order: 1; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .txeco-core {
-    order: 2;
-    width: 100%;
-    min-height: 182px;
-    padding: 13px 10px 11px;
-    margin: 5px 0;
-    z-index: 3;
-    border-radius: 18px;
-    box-shadow: 0 12px 45px rgba(18,28,60,.3), 0 0 30px rgba(101,104,228,.13);
-  }
-  .txeco-side-right { order: 3; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .txeco-bottom { order: 4; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .txeco-tile { animation: none; width: 100%; max-width: none; min-height: 65px; padding: 7px 5px; }
-  .txeco-side-left .txeco-tile, .txeco-side-right .txeco-tile { max-width: none; justify-self: stretch; }
-  .txeco-name { overflow-wrap: anywhere; hyphens: auto; }
 }
 @media (max-width: 360px) {
   .txpain-card { grid-template-columns: 32px minmax(0, 1fr); padding: 14px 12px; gap: 10px; }
   .txpain-icon { width: 32px; height: 32px; font-size: 17px; }
   .txpain-card h3 { font-size: 14px; }
   .txpain-card p { font-size: 13px; }
-  .txeco-top, .txeco-bottom, .txeco-side { gap: 6px; }
-  .txeco-tile { min-height: 62px; padding: 6px 3px; }
 }
 </style>
 
 
 <style id="growth-mobile-compact-ecosystem-20261123">
-/* Compact mobile orbit: 8 modules top / 4 left / central 10xteam / 4 right / 8 bottom.
-   The ninth top item becomes a centered connector chip; all 25 original modules remain. */
-.txeco-mobile-network { display: none; }
-
+/* Mobile v3. One definitive mobile override, 25 modules retained.
+   8 top / 1 connector / 4 left / hub / 4 right / 8 bottom.
+   Short labels are only visual; full accessible names remain in the markup. */
+.txeco-mobile-network, .txeco-mobile-detail { display: none; }
 @media (max-width: 680px) {
-  .txeco-mosaic { gap: 7px; }
-  .txeco-mosaic::before { width: 1px; opacity: .5; top: 26px; bottom: 23px; }
-  .txeco-top, .txeco-bottom { order: initial; }
-  .txeco-top { order: 0; }
-  .txeco-middle {
-    order: 1;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(110px, 1.38fr) minmax(0, 1fr);
-    grid-template-rows: auto;
-    align-items: stretch;
-    gap: 6px;
-    min-height: 0;
-    position: relative;
-    z-index: 1;
-    width: 100%;
-  }
-  .txeco-bottom { order: 2; }
+  .tx-ecosystem { padding: 54px 12px 60px; }
+  .txeco-network { display: none; }
+  .txeco-mosaic { display: flex; flex-direction: column; gap: 8px; position: relative; isolation: isolate; }
   .txeco-top, .txeco-bottom {
-    display: grid;
+    position: relative; z-index: 2; display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-template-rows: auto;
-    gap: 5px;
+    grid-template-rows: auto; gap: 6px; width: 100%;
   }
-  /* The 9th top module is a compact connector between the regular 4x2 grid and the hub. */
+  .txeco-top { order: 0; }
   .txeco-top > .txeco-tile:nth-child(9) {
-    grid-column: 2 / span 2;
-    justify-self: center;
-    width: min(140px, 100%);
-    min-height: 26px;
-    padding: 3px 7px;
-    flex-direction: row;
-    gap: 5px;
-    border-radius: 14px;
+    grid-column: 2 / span 2; justify-self: center;
+    width: min(148px, 100%); min-height: 28px; padding: 4px 8px;
+    flex-direction: row; gap: 6px; border-radius: 12px;
   }
-  .txeco-top > .txeco-tile:nth-child(9) .txeco-icon { width: 16px; height: 16px; }
-  .txeco-top > .txeco-tile:nth-child(9) .txeco-icon svg { width: 11px; height: 11px; }
+  .txeco-top > .txeco-tile:nth-child(9) .txeco-icon { width: 17px; height: 17px; }
+  .txeco-top > .txeco-tile:nth-child(9) .txeco-icon svg { width: 12px; height: 12px; }
+  .txeco-middle {
+    order: 1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(102px, 1.04fr) minmax(0, 1fr);
+    grid-template-rows: auto; gap: 5px; align-items: center; position: relative;
+    width: 100%; min-height: 0; z-index: 2;
+  }
+  .txeco-bottom { order: 3; }
   .txeco-side {
-    display: grid;
+    position: relative; z-index: 2; display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: repeat(2, minmax(0, 1fr));
-    align-content: center;
-    align-items: stretch;
-    gap: 4px;
-    min-width: 0;
-    width: 100%;
-    position: relative;
-    z-index: 2;
+    grid-template-rows: repeat(2, minmax(50px, 1fr));
+    align-items: stretch; align-content: center; width: 100%; min-width: 0; gap: 4px;
   }
   .txeco-side-left { order: 0; }
-  .txeco-core { order: 1; }
   .txeco-side-right { order: 2; }
-  .txeco-tile, .txeco-side .txeco-tile {
-    width: 100%;
-    max-width: none;
-    min-height: 46px;
-    padding: 4px 2px;
-    gap: 3px;
-    border-radius: 7px;
-    animation: none;
-  }
-  .txeco-icon { width: 18px; height: 18px; border-radius: 5px; flex-shrink: 0; }
-  .txeco-icon svg { width: 12px; height: 12px; }
-  .txeco-name { font-size: 8.5px; line-height: 1.1; overflow-wrap: anywhere; hyphens: auto; }
-  .txeco-tile small { font-size: 7px; margin: 0; }
-
   .txeco-core {
-    min-height: 116px;
-    max-height: 126px;
-    width: 100%;
-    min-width: 0;
-    margin: 0;
-    padding: 8px 4px 7px;
-    border-radius: 12px;
-    z-index: 3;
-    justify-self: center;
-    align-self: center;
-    box-shadow: 0 8px 22px rgba(18,28,60,.28), 0 0 16px rgba(101,104,228,.13);
+    order: 1; position: relative; z-index: 3; width: 100%; min-width: 0;
+    min-height: 120px; height: 120px; max-height: 120px; margin: 0;
+    padding: 7px 4px 6px; align-self: center; justify-self: center;
+    border-radius: 12px; box-shadow: 0 7px 22px rgba(18,28,60,.3), 0 0 16px rgba(101,104,228,.12);
   }
-  .txeco-core-brand { font-size: 9.5px; margin: 0 0 3px; white-space: nowrap; }
+  .txeco-tile, .txeco-side .txeco-tile {
+    position: relative; z-index: 2; width: 100%; max-width: none; min-width: 0;
+    min-height: 57px; padding: 5px 3px; gap: 4px; border-radius: 8px;
+    justify-self: stretch; align-self: stretch; animation: none;
+  }
+  .txeco-side .txeco-tile { min-height: 50px; padding: 5px 2px; gap: 2px; }
+  .txeco-icon { width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0; }
+  .txeco-icon svg { width: 15px; height: 15px; }
+  .txeco-side .txeco-icon { width: 21px; height: 21px; }
+  .txeco-side .txeco-icon svg { width: 14px; height: 14px; }
+  .txeco-name { font-size: clamp(9.2px, 2.45vw, 10.8px); line-height: 1.17; overflow-wrap: anywhere; hyphens: auto; text-wrap: balance; }
+  .txeco-tile small { font-size: 7.5px; margin: 0; }
+  /* Side columns have half-width cells: concise mobile names avoid illegible 7px copy. */
+  .txeco-side .txeco-name {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+  .txeco-side .txeco-tile::after {
+    content: attr(data-mobile-label); display: block;
+    max-width: 100%; font-size: clamp(8.8px, 2.28vw, 10px);
+    line-height: 1.14; font-weight: 650; color: #e7eef9;
+    overflow-wrap: anywhere; text-wrap: balance; text-align: center;
+  }
+  .txeco-side .txeco-tile:focus-visible { outline: 2px solid #76e3b4; outline-offset: 2px; }
+  .txeco-core-brand { z-index: 2; font-size: 10px; margin: 0 0 4px; white-space: nowrap; }
   .txeco-core-symbol { margin-right: 3px; }
-  .txeco-devices { width: min(82%, 106px); max-width: 106px; padding: 0 11px 0 2px; }
+  .txeco-devices { width: min(86%, 108px); max-width: 108px; padding: 0 9px 0 2px; }
   .txeco-laptop-shell { border-width: 2px; border-bottom-width: 3px; border-radius: 5px; }
   .txeco-screenbar { height: 11px; font-size: 5px; padding: 0 3px; }
   .txeco-logo-screen { height: calc(100% - 11px); padding: 2px 3px; }
   .txeco-laptop-base { height: 4px; margin: 0 -4px; }
-  .txeco-phone {
-    width: 29%;
-    min-width: 22px;
-    max-width: 37px;
-    height: 68%;
-    right: 0;
-    bottom: 0;
-    border-width: 2px;
-    border-radius: 7px;
-    padding: 5px 2px 2px;
-  }
-  .txeco-core-caption { font-size: 8px; line-height: 1.15; margin: 3px 0 0; }
-  .txeco-flow { opacity: .36; }
-
+  .txeco-phone { width: 28%; min-width: 20px; max-width: 33px; height: 67%; right: 0; bottom: 0; border-width: 2px; border-radius: 7px; padding: 5px 2px 2px; }
+  .txeco-core-caption { z-index: 2; font-size: 8.4px; line-height: 1.2; margin: 4px 0 0; }
+  .txeco-flow { opacity: .24; }
+  /* Connectors must be above the opaque hub, otherwise they disappear before the logo. */
   .txeco-mobile-network {
-    display: block;
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    overflow: visible;
-    pointer-events: none;
+    display: block; position: absolute; inset: 0; width: 100%; height: 100%;
+    overflow: visible; z-index: 4; pointer-events: none; opacity: .75;
   }
   .txeco-mobile-network path {
-    fill: none;
-    stroke: url(#txeco-mobile-gradient);
-    stroke-width: 1.3;
-    stroke-dasharray: 4 8;
-    vector-effect: non-scaling-stroke;
-    opacity: .68;
-    animation: txeco-mobile-dash 14s linear infinite;
+    fill: none; stroke: url(#txeco-mobile-gradient);
+    stroke-width: 1.55; stroke-dasharray: 5 9; vector-effect: non-scaling-stroke;
+    opacity: .58; animation: txeco-mobile-dash 14s linear infinite;
   }
-  @keyframes txeco-mobile-dash { to { stroke-dashoffset: -120; } }
+  .txeco-mobile-detail {
+    display: block; order: 2; margin: 0 auto 2px; min-height: 18px;
+    color: #a6bfcb; text-align: center; font-size: 10.5px; line-height: 1.4;
+  }
+  @keyframes txeco-mobile-dash { to { stroke-dashoffset: -126; } }
 }
 @media (max-width: 359px) {
-  .txeco-middle { grid-template-columns: minmax(0, 1fr) minmax(100px, 1.18fr) minmax(0, 1fr); gap: 4px; }
+  .txeco-middle { grid-template-columns: minmax(0, 1fr) minmax(98px, 1.03fr) minmax(0, 1fr); gap: 4px; }
   .txeco-top, .txeco-bottom { gap: 4px; }
-  .txeco-side { gap: 3px; }
-  .txeco-tile, .txeco-side .txeco-tile { min-height: 43px; padding: 3px 1px; gap: 2px; }
-  .txeco-icon { width: 16px; height: 16px; }
-  .txeco-icon svg { width: 11px; height: 11px; }
-  .txeco-name { font-size: 7.7px; line-height: 1.1; }
-  .txeco-core { min-height: 110px; max-height: 120px; padding: 7px 2px 5px; }
-  .txeco-devices { width: min(86%, 94px); padding: 0 8px 0 2px; }
-  .txeco-core-caption { font-size: 7.4px; }
+  .txeco-side { gap: 3px; grid-template-rows: repeat(2, minmax(47px, 1fr)); }
+  .txeco-tile, .txeco-side .txeco-tile { min-height: 52px; padding: 4px 2px; gap: 2px; }
+  .txeco-side .txeco-tile { min-height: 47px; padding: 3px 1px; }
+  .txeco-icon { width: 19px; height: 19px; }
+  .txeco-icon svg { width: 13px; height: 13px; }
+  .txeco-side .txeco-tile::after { font-size: 8.6px; }
+  .txeco-core { height: 110px; min-height: 110px; max-height: 110px; padding: 6px 2px 5px; }
+  .txeco-devices { width: min(88%, 94px); padding: 0 8px 0 2px; }
+  .txeco-core-caption { font-size: 7.8px; }
+  .txeco-mobile-detail { font-size: 10px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .txeco-mobile-network path { animation: none !important; }
@@ -3060,10 +2973,10 @@ body {
           <path d="M902 185 C755 185 665 138 500 125"/>
           <path d="M740 185 C652 185 600 134 500 125"/>
         </svg>
-        <div class="txeco-side txeco-side-left"><div class="txeco-tile txeco-violet txeco-toward-right" style="--eco-delay:-7.15s" title="Formularios"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-clipboard"/></svg></span><span class="txeco-name">Formularios</span></div>
-<div class="txeco-tile txeco-blue txeco-toward-right" style="--eco-delay:-3.25s" title="Sitios y landing pages"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-monitor"/></svg></span><span class="txeco-name">Sitios y landing pages</span></div>
-<div class="txeco-tile txeco-violet txeco-toward-right" style="--eco-delay:-7.800000000000001s" title="Redes sociales"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-share"/></svg></span><span class="txeco-name">Redes sociales</span></div>
-<div class="txeco-tile txeco-amber txeco-toward-right" style="--eco-delay:-3.9000000000000004s" title="Contenido con IA"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-filepen"/></svg></span><span class="txeco-name">Contenido con IA</span></div></div>
+        <div class="txeco-side txeco-side-left"><div class="txeco-tile txeco-violet txeco-toward-right" style="--eco-delay:-7.15s" title="Formularios" data-mobile-label="Formularios"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-clipboard"/></svg></span><span class="txeco-name">Formularios</span></div>
+<div class="txeco-tile txeco-blue txeco-toward-right" style="--eco-delay:-3.25s" title="Sitios y landing pages" data-mobile-label="Páginas web"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-monitor"/></svg></span><span class="txeco-name">Sitios y landing pages</span></div>
+<div class="txeco-tile txeco-violet txeco-toward-right" style="--eco-delay:-7.800000000000001s" title="Redes sociales" data-mobile-label="Redes"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-share"/></svg></span><span class="txeco-name">Redes sociales</span></div>
+<div class="txeco-tile txeco-amber txeco-toward-right" style="--eco-delay:-3.9000000000000004s" title="Contenido con IA" data-mobile-label="Contenido IA"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-filepen"/></svg></span><span class="txeco-name">Contenido con IA</span></div></div>
         <div class="txeco-core">
           <svg class="txeco-flow" viewBox="0 0 860 370" preserveAspectRatio="none" aria-hidden="true" focusable="false">
             <defs>
@@ -3119,11 +3032,12 @@ body {
           </div>
           <div class="txeco-core-caption">Un ecosistema para vender, operar y crecer</div>
         </div>
-        <div class="txeco-side txeco-side-right"><div class="txeco-tile txeco-violet txeco-toward-left" style="--eco-delay:0s" title="Agentes IA"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-bot"/></svg></span><span class="txeco-name">Agentes IA</span></div>
-<div class="txeco-tile txeco-blue txeco-toward-left" style="--eco-delay:-4.55s" title="Email marketing"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-mail"/></svg></span><span class="txeco-name">Email marketing</span></div>
-<div class="txeco-tile txeco-green txeco-toward-left" style="--eco-delay:-0.65s" title="Proyectos y tareas"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-kanban"/></svg></span><span class="txeco-name">Proyectos y tareas</span></div>
-<div class="txeco-tile txeco-teal txeco-toward-left" style="--eco-delay:-5.2s" title="Pagos y cobros"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-card"/></svg></span><span class="txeco-name">Pagos y cobros</span></div></div>
+        <div class="txeco-side txeco-side-right"><div class="txeco-tile txeco-violet txeco-toward-left" style="--eco-delay:0s" title="Agentes IA" data-mobile-label="Agentes IA"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-bot"/></svg></span><span class="txeco-name">Agentes IA</span></div>
+<div class="txeco-tile txeco-blue txeco-toward-left" style="--eco-delay:-4.55s" title="Email marketing" data-mobile-label="Email"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-mail"/></svg></span><span class="txeco-name">Email marketing</span></div>
+<div class="txeco-tile txeco-green txeco-toward-left" style="--eco-delay:-0.65s" title="Proyectos y tareas" data-mobile-label="Tareas"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-kanban"/></svg></span><span class="txeco-name">Proyectos y tareas</span></div>
+<div class="txeco-tile txeco-teal txeco-toward-left" style="--eco-delay:-5.2s" title="Pagos y cobros" data-mobile-label="Pagos"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-card"/></svg></span><span class="txeco-name">Pagos y cobros</span></div></div>
       </div>
+      <p class="txeco-mobile-detail" id="txeco-mobile-detail" aria-live="polite" aria-atomic="true">Toca los iconos laterales para descubrir más herramientas.</p>
       <div class="txeco-bottom"><div class="txeco-tile txeco-amber txeco-toward-top" style="--eco-delay:-1.3s" title="Reputación"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-star"/></svg></span><span class="txeco-name">Reputación</span></div>
 <div class="txeco-tile txeco-blue txeco-toward-top" style="--eco-delay:-5.8500000000000005s" title="Reportes"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-barchart"/></svg></span><span class="txeco-name">Reportes</span></div>
 <div class="txeco-tile txeco-teal txeco-toward-top" style="--eco-delay:-1.9500000000000002s" title="Analítica y ROI"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-linechart"/></svg></span><span class="txeco-name">Analítica y ROI</span></div>
@@ -4230,5 +4144,28 @@ body {
 })();
 </script>
 
+<script id="txeco-mobile-tile-disclosure">
+(function(){
+  const label = document.getElementById('txeco-mobile-detail');
+  const tiles = Array.from(document.querySelectorAll('.txeco-side .txeco-tile'));
+  if (!label || tiles.length !== 8) return;
+  const mobile = window.matchMedia('(max-width: 680px)');
+  function renderMode(){
+    tiles.forEach(tile => {
+      if (mobile.matches) { tile.tabIndex = 0; tile.setAttribute('role','button'); tile.setAttribute('aria-controls','txeco-mobile-detail'); }
+      else { tile.removeAttribute('tabindex'); tile.removeAttribute('role'); tile.removeAttribute('aria-controls'); }
+    });
+  }
+  function show(tile){ if (mobile.matches) label.textContent = tile.getAttribute('title') || ''; }
+  tiles.forEach(tile => {
+    tile.addEventListener('click', () => show(tile));
+    tile.addEventListener('keydown', event => {
+      if (mobile.matches && (event.key === 'Enter' || event.key === ' ')) { event.preventDefault(); show(tile); }
+    });
+  });
+  renderMode();
+  mobile.addEventListener?.('change', renderMode);
+})();
+</script>
 </body>
 </html>
