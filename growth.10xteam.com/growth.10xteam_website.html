@@ -2422,6 +2422,91 @@ body {
 @media(prefers-reduced-motion:reduce){.txeco-network-line,.txeco-flow-paths{animation:none!important;}}
 </style>
 
+
+<style id="growth-responsive-polish-20261123">
+/* Keep the approved desktop composition. Tablet: two readable problem columns. */
+@media (min-width: 681px) and (max-width: 1100px) {
+  .txpain-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .txpain-card { min-width: 0; padding: 20px 18px; }
+  .txpain-card > div:last-child { min-width: 0; }
+}
+
+/* Fix the late desktop three-column override and restore an uncluttered mobile layout. */
+@media (max-width: 680px) {
+  .txproblema { padding: 54px 16px 58px; }
+  .txproblema-inner { max-width: 520px; width: 100%; margin-inline: auto; }
+  .txproblema-eyebrow { margin-bottom: 12px; font-size: 11px; }
+  .txproblema h2 { font-size: clamp(24px, 6.7vw, 32px); line-height: 1.16; margin: 0 0 24px; }
+  .txpain-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; width: 100%; }
+  .txpain-card {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr);
+    align-items: start;
+    gap: 12px;
+    padding: 16px 15px;
+    min-width: 0;
+    border-radius: 14px;
+  }
+  .txpain-card > div:last-child { min-width: 0; overflow-wrap: break-word; }
+  .txpain-icon { width: 36px; height: 36px; font-size: 18px; border-radius: 9px; }
+  .txpain-card h3 { font-size: 15px; line-height: 1.34; margin: 0 0 7px; }
+  .txpain-card p { font-size: 13.5px; line-height: 1.55; margin: 0; }
+  .txproblema-bridge { max-width: 520px; margin: 26px auto 0; }
+  .txproblema-bridge p { max-width: 100%; font-size: 15px; line-height: 1.6; text-wrap: pretty; }
+
+  /* Mobile ecosystem: modules above and below a centered 10xteam hub.
+     display:contents exposes the 4+hub+4 middle tiles to the mosaic's flex flow. */
+  .txeco-network { display: none; }
+  .txeco-mosaic { position: relative; display: flex; flex-direction: column; gap: 14px; isolation: isolate; }
+  .txeco-mosaic::before {
+    content: "";
+    position: absolute;
+    top: 34px;
+    bottom: 40px;
+    left: 50%;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom, transparent, rgba(111,113,247,.47) 30%, rgba(53,200,168,.52) 50%, rgba(111,113,247,.47) 70%, transparent);
+    opacity: .78;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .txeco-middle { display: contents; }
+  .txeco-top, .txeco-bottom, .txeco-side {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    grid-template-rows: auto;
+    gap: 8px;
+  }
+  .txeco-top { order: 0; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .txeco-side-left { order: 1; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .txeco-core {
+    order: 2;
+    width: 100%;
+    min-height: 182px;
+    padding: 13px 10px 11px;
+    margin: 5px 0;
+    z-index: 3;
+    border-radius: 18px;
+    box-shadow: 0 12px 45px rgba(18,28,60,.3), 0 0 30px rgba(101,104,228,.13);
+  }
+  .txeco-side-right { order: 3; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .txeco-bottom { order: 4; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .txeco-tile { animation: none; width: 100%; max-width: none; min-height: 65px; padding: 7px 5px; }
+  .txeco-side-left .txeco-tile, .txeco-side-right .txeco-tile { max-width: none; justify-self: stretch; }
+  .txeco-name { overflow-wrap: anywhere; hyphens: auto; }
+}
+@media (max-width: 360px) {
+  .txpain-card { grid-template-columns: 32px minmax(0, 1fr); padding: 14px 12px; gap: 10px; }
+  .txpain-icon { width: 32px; height: 32px; font-size: 17px; }
+  .txpain-card h3 { font-size: 14px; }
+  .txpain-card p { font-size: 13px; }
+  .txeco-top, .txeco-bottom, .txeco-side { gap: 6px; }
+  .txeco-tile { min-height: 62px; padding: 6px 3px; }
+}
+</style>
+
 </head>
 <body>
 
