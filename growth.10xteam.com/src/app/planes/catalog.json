@@ -1,0 +1,665 @@
+{
+  "version": "2026-11-23-primer-prototipo",
+  "provisional": true,
+  "intro": "Catálogo comercial basado en el documento maestro de continuidad del 19 de noviembre y decisiones aprobadas el 23 de noviembre de 2026. Los módulos descritos no certifican disponibilidad o permisos en Founder.",
+  "categories": [
+    "Prospección y marketing",
+    "Ventas y clientes",
+    "IA y automatización",
+    "Operación y administración",
+    "Experiencias y comunidades",
+    "Soluciones especializadas"
+  ],
+  "plans": [
+    {
+      "id": "growth",
+      "name": "Growth",
+      "subtitle": "Toda la maquinaria para hacer más con tu equipo actual",
+      "price": "Por confirmar",
+      "badge": "Para emprendedores y equipos en crecimiento",
+      "locations": "1 subcuenta",
+      "wallet": "Crédito mensual incluido · monto por confirmar",
+      "wa": "WhatsApp activable bajo solicitud",
+      "ai": "IA elegible por consumo",
+      "adds": "Complementos opcionales"
+    },
+    {
+      "id": "scale",
+      "name": "Scale",
+      "subtitle": "Más capacidad, mejores condiciones, varias operaciones",
+      "price": "Por confirmar",
+      "badge": "Mayor valor por uso",
+      "locations": "Hasta 2 subcuentas (propuesta)",
+      "wallet": "Mayor crédito mensual · monto por confirmar",
+      "wa": "WhatsApp activable por subcuenta",
+      "ai": "Consumo IA con tarifa preferente",
+      "adds": "Ticketing y Proyectos completos; otros beneficios sujetos a validación"
+    }
+  ],
+  "modules": [
+    {
+      "id": 1,
+      "title": "CRM y Contactos",
+      "category": "Ventas y clientes",
+      "description": "Contactos, perfiles, etiquetas, filtros, historial, segmentación, importación y manejo comercial.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 2,
+      "title": "Oportunidades y Pipelines",
+      "category": "Ventas y clientes",
+      "description": "Embudos, etapas, valor de oportunidades, asignación y cierre; columna vertebral del proceso comercial.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 3,
+      "title": "Calendarios y Citas",
+      "category": "Ventas y clientes",
+      "description": "Disponibilidad, reuniones, recordatorios, reservas y equipo. Services v2 se consolida en módulo 38.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 4,
+      "title": "Sitios Web y Funnels",
+      "category": "Prospección y marketing",
+      "description": "Páginas, landing pages, funnels, dominios y conversión de visitas a prospectos.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 5,
+      "title": "Formularios y encuestas",
+      "category": "Prospección y marketing",
+      "description": "El antiguo pendiente quedó formalmente resuelto: Forms, Surveys y QR ambos; Quizzes Scale.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 6,
+      "title": "Conversaciones y Mensajería",
+      "category": "Ventas y clientes",
+      "description": "Bandeja omnicanal para seguimiento comercial; cargos de mensajería separados.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 7,
+      "title": "Email Marketing",
+      "category": "Prospección y marketing",
+      "description": "Emails, campañas y seguimiento en ambos; segmentación sofisticada, A/B, Smart Send en Scale si existe granularidad.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 8,
+      "title": "Social Planner",
+      "category": "Prospección y marketing",
+      "description": "Programación, gestión social; Scale funciones avanzadas de publicación masiva, RSS, aprobaciones y workflows condicionados si configurables.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 9,
+      "title": "Workflows y Automatizaciones",
+      "category": "IA y automatización",
+      "description": "Acciones y seguimientos básicos Growth; lógica compleja, webhooks, premium actions en Scale.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 10,
+      "title": "Reputación y Reseñas",
+      "category": "Ventas y clientes",
+      "description": "Solicitar y administrar opiniones; Reviews AI automática en Scale o modalidad pagada.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 11,
+      "title": "Pagos y Facturación plataforma",
+      "category": "Ventas y clientes",
+      "description": "Links, cobros, suscripciones, gift cards, cupones, operaciones compatibles.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 12,
+      "title": "Tiendas online y ecommerce",
+      "category": "Ventas y clientes",
+      "description": "Se había propuesto Growth vender por links/funnels y Scale tienda completa; usuario cuestionó explícitamente negar todo Ecommerce a Growth.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Marco aprobado"
+    },
+    {
+      "id": 13,
+      "title": "Cursos, Membresías y Comunidades",
+      "category": "Experiencias y comunidades",
+      "description": "Creación y venta de cursos ambos; capacidades avanzadas de comunidades Scale.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 14,
+      "title": "Reportes y Analítica",
+      "category": "Operación y administración",
+      "description": "Dashboards básicos/avanzados nativos para ambos; KPI ejecutivos, alertas y comparativas propias para Scale.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 15,
+      "title": "Integraciones/API/Webhooks",
+      "category": "Operación y administración",
+      "description": "Conectores comunes Growth; API, webhooks premium e integraciones complejas Scale.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 16,
+      "title": "Telefonía y llamadas",
+      "category": "Operación y administración",
+      "description": "Entrantes/salientes, SMS, grabaciones y seguimiento; Scale Power Dialer, IVR, distribución y métricas avanzadas.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 17,
+      "title": "Prospección y generación de leads",
+      "category": "Prospección y marketing",
+      "description": "Captación, segmentación, lead scoring inicial, CRM, seguimiento; GHL Prospecting Premium opcional para ambos.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 18,
+      "title": "IA asistida",
+      "category": "IA y automatización",
+      "description": "Seis herramientas identificadas: Email AI, Calendar AI, Knowledge Base, Funnel/Website AI, Layout AI, Workflow AI Builder.",
+      "growth": "IA gratuita incluida",
+      "scale": "IA gratuita incluida",
+      "type": "core",
+      "availability": "Marco aprobado"
+    },
+    {
+      "id": 19,
+      "title": "Agentes IA y consumo",
+      "category": "IA y automatización",
+      "description": "Conversation/Voice/Reviews/Managed Agents/AskAI/AI Studio/Creator Studio/Content AI; Growth ×3, paquete ×2.5, Scale ×2.",
+      "growth": "Por consumo",
+      "scale": "Por consumo preferente",
+      "type": "usage",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 20,
+      "title": "Gestión de proyectos",
+      "category": "Operación y administración",
+      "description": "Tareas/fechas Growth; Scale espacios, carpetas, listas, Kanban, subtareas, colaboradores y vistas.",
+      "growth": "Complemento completo",
+      "scale": "Incluido",
+      "type": "ops",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 21,
+      "title": "Soporte y ticketing",
+      "category": "Ventas y clientes",
+      "description": "Email-to-ticket, prioridades, categorías, asignaciones ambos; SLA, alertas, escalado, métricas y workflows avanzados Scale.",
+      "growth": "Complemento completo",
+      "scale": "Incluido",
+      "type": "ops",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 22,
+      "title": "Restaurantes",
+      "category": "Soluciones especializadas",
+      "description": "Menús, pedidos directos, recoger, reparto propio, mesas, cocina, reservas, pagos, marketing; integración Uber Eats/Rappi futura.",
+      "growth": "Complemento",
+      "scale": "Complemento preferente",
+      "type": "addon",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 23,
+      "title": "Servicios en campo",
+      "category": "Soluciones especializadas",
+      "description": "Órdenes, presupuestos, técnicos, rutas, tiempos, visitas, checklists, pagos; operaciones domiciliarias.",
+      "growth": "Complemento",
+      "scale": "Complemento preferente",
+      "type": "addon",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 24,
+      "title": "Webinars y eventos",
+      "category": "Experiencias y comunidades",
+      "description": "Live/grabado/recurrente, páginas y CRM ambos. Eventos: boletaje, QR, check-in, agenda, speaker, app asistentes, networking.",
+      "growth": "Base incluida · extra opcional",
+      "scale": "Base incluida · extra preferente",
+      "type": "mixed",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 25,
+      "title": "Lealtad y recompensas",
+      "category": "Soluciones especializadas",
+      "description": "Puntos, recompensas, cumpleaños, QR, wallet, canjes, referidos consumidor, métricas.",
+      "growth": "Complemento",
+      "scale": "Complemento preferente",
+      "type": "addon",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 26,
+      "title": "Afiliados",
+      "category": "Experiencias y comunidades",
+      "description": "Links/clics/leads/ventas/comisiones Growth; recurrente, multinivel, productos, PayPal, workflows Scale.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 27,
+      "title": "Documentos, Propuestas y Contratos",
+      "category": "Ventas y clientes",
+      "description": "Cotizaciones, PDFs, templates, firmas múltiples, CRM merge, seguimiento y pagos; Scale workflows condicionales y cobros recurrentes automatizados.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 28,
+      "title": "Custom Objects",
+      "category": "Operación y administración",
+      "description": "Entidades personalizadas, relaciones, vistas, workflows, API, ejemplos propiedades/pólizas/vehículos.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 29,
+      "title": "Portales y Apps del cliente",
+      "category": "Experiencias y comunidades",
+      "description": "Customer Access Center ecommerce; Client Portal facturas/contratos/docs/cursos; app final branded ~US$65/mes; Client App Builder Scale básico, Growth complemento.",
+      "growth": "Base incluida · extra opcional",
+      "scale": "Base incluida · extra preferente",
+      "type": "mixed",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 30,
+      "title": "SEO, Blog, Listings, WordPress",
+      "category": "Prospección y marketing",
+      "description": "Search Atlas SEO avanzado, Online Listings directorios/mapas, hosting WordPress para webs ya en WP; AI Search Visibility en beta.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 31,
+      "title": "Usuarios, Permisos, Seguridad",
+      "category": "Operación y administración",
+      "description": "Roles, acceso, auditoría y gestión por usuario; cliente NO debe habilitar módulos/complementos contratables.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 32,
+      "title": "Certificados, Diplomas, Insignias",
+      "category": "Experiencias y comunidades",
+      "description": "Emisión, plantillas de marca, credenciales digitales, uso con cursos, workflows elegibles.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 33,
+      "title": "Ad Manager / Publicidad",
+      "category": "Prospección y marketing",
+      "description": "Campañas Meta Facebook/Instagram, Google Ads y LinkedIn Ads; leads al CRM, seguimiento y reportes; gestión profesional 10x opcional.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 34,
+      "title": "Biblioteca Multimedia y Brand Boards",
+      "category": "Operación y administración",
+      "description": "Archivos/carpeta, fotos/video/docs, Drive compatible, colores/logotipos/fonts, Brand Voice, importación web.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 35,
+      "title": "Tendencias e inteligencia social",
+      "category": "Prospección y marketing",
+      "description": "Tendencias Google/TikTok/YouTube/Pinterest; menciones, sentimiento, competencia, temas y alertas.",
+      "growth": "Base incluida · IA por consumo",
+      "scale": "Base incluida · IA preferente",
+      "type": "mixed",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 36,
+      "title": "Voice Intelligence",
+      "category": "IA y automatización",
+      "description": "Transcripción, resumen, objeciones, scorecards QA, próximos pasos y sugerencias al CRM.",
+      "growth": "Por consumo",
+      "scale": "Por consumo preferente",
+      "type": "usage",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 37,
+      "title": "Colaboración / Bandeja equipo",
+      "category": "Ventas y clientes",
+      "description": "Chat interno/grupo, menciones, notas, bandeja, asignación y comentarios compatibles de redes.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 38,
+      "title": "Servicios y alquileres",
+      "category": "Operación y administración",
+      "description": "Servicios: agenda, personal, salas, pagos; Rentals activos, inventario, horarios/días, depósitos, tarifas, reservas, QR.",
+      "growth": "Base incluida · extra opcional",
+      "scale": "Base incluida · extra preferente",
+      "type": "mixed",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 39,
+      "title": "GoKollab / descubrimiento",
+      "category": "Experiencias y comunidades",
+      "description": "Venta y descubrimiento voluntario de cursos; comunidades avanzadas conforme 13, Kollab Studio según acceso.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 40,
+      "title": "Quizzes y diagnósticos",
+      "category": "Operación y administración",
+      "description": "Lead forms, multipaso, lógica, QR para citas/pagos/reseñas; Scale scores, resultados y diagnósticos.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 41,
+      "title": "Atribución, Conversiones y ROAS",
+      "category": "Prospección y marketing",
+      "description": "First/latest attribution, UTM, CPL/CPA/ROAS, fuentes, ventas, Meta CAPI/Google conversiones.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 42,
+      "title": "Chat Widget Multicanal",
+      "category": "Prospección y marketing",
+      "description": "Web chat, WhatsApp, IG, FB Messenger, SMS/email; CRM, captación, asignación, IA por paquete.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional"
+    },
+    {
+      "id": 43,
+      "title": "Comercio multicanal",
+      "category": "Ventas y clientes",
+      "description": "GMC/Shopping, Meta Catalog, Shopify/WooCommerce, tienda, inventario, distribución de catálogo y pedidos.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Marco aprobado"
+    },
+    {
+      "id": 44,
+      "title": "Datos y entregabilidad",
+      "category": "Operación y administración",
+      "description": "Gestión de contactos, limpieza y deduplicación, dominios y reputación de envíos. Validación de correos por consumo, IP dedicada y servicios técnicos opcionales.",
+      "growth": "Incluido · consumo opcional",
+      "scale": "Incluido · tarifa preferente",
+      "type": "mixed",
+      "availability": "Marco aprobado"
+    },
+    {
+      "id": 45,
+      "title": "Agentes IA avanzados",
+      "category": "IA y automatización",
+      "description": "Agentes de HighLevel para analizar oportunidades, organizar tareas y ejecutar procesos programados. La ejecución elegible se cobra por consumo; no implica desarrollo personalizado incluido.",
+      "growth": "Por consumo",
+      "scale": "Por consumo preferente",
+      "type": "usage",
+      "availability": "Marco aprobado"
+    }
+  ],
+  "addons": [
+    {
+      "id": "ticketing",
+      "name": "Ticketing completo",
+      "group": "Operación",
+      "description": "Solicitudes, asignación, seguimiento y gestión de atención al cliente.",
+      "growth": "Complemento",
+      "scale": "Incluido",
+      "availability": "Validación técnica",
+      "icon": "support"
+    },
+    {
+      "id": "proyectos",
+      "name": "Proyectos completo",
+      "group": "Operación",
+      "description": "Espacios, tableros, responsables, fechas y ejecución colaborativa.",
+      "growth": "Complemento",
+      "scale": "Incluido",
+      "availability": "Validación técnica",
+      "icon": "project"
+    },
+    {
+      "id": "lealtad",
+      "name": "Lealtad y recompensas",
+      "group": "Comercio",
+      "description": "Puntos, recompensas y campañas para volver a vender a los mismos clientes.",
+      "growth": "Complemento",
+      "scale": "Promoción Early Adopter",
+      "availability": "Acceso anticipado",
+      "icon": "gift"
+    },
+    {
+      "id": "restaurantes",
+      "name": "Restaurantes",
+      "group": "Soluciones",
+      "description": "Menús, pedidos, servicio y operación digital del restaurante.",
+      "growth": "Complemento",
+      "scale": "Precio preferente",
+      "availability": "Acceso anticipado",
+      "icon": "utensils"
+    },
+    {
+      "id": "field",
+      "name": "Servicios en campo",
+      "group": "Soluciones",
+      "description": "Órdenes, visitas, asignación de técnicos y seguimiento del trabajo.",
+      "growth": "Complemento",
+      "scale": "Precio preferente",
+      "availability": "Por validar",
+      "icon": "tools"
+    },
+    {
+      "id": "eventos",
+      "name": "Eventos",
+      "group": "Soluciones",
+      "description": "Registro, boletaje, asistentes y experiencias de eventos.",
+      "growth": "Complemento",
+      "scale": "Precio preferente",
+      "availability": "Por validar",
+      "icon": "ticket"
+    },
+    {
+      "id": "alquileres",
+      "name": "Alquileres",
+      "group": "Soluciones",
+      "description": "Reservas y disponibilidad de activos, equipos o espacios.",
+      "growth": "Complemento",
+      "scale": "Precio preferente",
+      "availability": "Por validar",
+      "icon": "calendar"
+    },
+    {
+      "id": "branded",
+      "name": "App de cliente con tu marca",
+      "group": "Especializados",
+      "description": "Aplicación para tus consumidores finales, distinta a la app administrativa.",
+      "growth": "Complemento",
+      "scale": "Precio preferente",
+      "availability": "Por validar",
+      "icon": "phone"
+    },
+    {
+      "id": "prospect",
+      "name": "Prospección Premium",
+      "group": "Especializados",
+      "description": "Herramientas adicionales de descubrimiento y análisis comercial.",
+      "growth": "Complemento",
+      "scale": "Precio preferente",
+      "availability": "Por validar",
+      "icon": "target"
+    },
+    {
+      "id": "seo",
+      "name": "SEO avanzado",
+      "group": "Especializados",
+      "description": "Herramientas y servicios especializados de posicionamiento y visibilidad.",
+      "growth": "Complemento",
+      "scale": "Precio preferente",
+      "availability": "Por validar",
+      "icon": "search"
+    },
+    {
+      "id": "listings",
+      "name": "Presencia local y directorios",
+      "group": "Especializados",
+      "description": "Gestión de listados, presencia local y datos del negocio.",
+      "growth": "Complemento",
+      "scale": "Precio preferente",
+      "availability": "Por validar",
+      "icon": "pin"
+    },
+    {
+      "id": "wordpress",
+      "name": "WordPress administrado",
+      "group": "Especializados",
+      "description": "Hosting y servicios WordPress compatibles.",
+      "growth": "Complemento",
+      "scale": "Precio preferente",
+      "availability": "Por validar",
+      "icon": "globe"
+    },
+    {
+      "id": "ip",
+      "name": "IP dedicada y migración",
+      "group": "Especializados",
+      "description": "Entregabilidad avanzada, migración y limpieza especializada de datos.",
+      "growth": "Servicio técnico",
+      "scale": "Condiciones preferentes",
+      "availability": "Por cotizar",
+      "icon": "shield"
+    },
+    {
+      "id": "locations",
+      "name": "Subcuenta adicional",
+      "group": "Operación",
+      "description": "Otro negocio con sus permisos, configuración y Wallet independientes.",
+      "growth": "Otra suscripción Growth",
+      "scale": "Desde tercera cuenta · precio por definir",
+      "availability": "Por validar",
+      "icon": "layers"
+    }
+  ],
+  "consumption": [
+    {
+      "name": "Crédito del plan",
+      "detail": "Bolsa mensual multipropósito para servicios elegibles. Montos y reglas por definir.",
+      "tag": "Incluido"
+    },
+    {
+      "name": "WhatsApp",
+      "detail": "Conexión disponible al activar el canal; mensajes facturables según uso. Costo fijo se presupuestará según subcuentas habilitadas.",
+      "tag": "Activación bajo solicitud"
+    },
+    {
+      "name": "Agentes y otras IA",
+      "detail": "Acciones elegibles por consumo. Las herramientas de IA asistida gratuitas no descuentan crédito ficticio.",
+      "tag": "Por consumo"
+    },
+    {
+      "name": "SMS, llamadas y email",
+      "detail": "Tarifas variables según canal, país y volumen; detalles visibles antes de contratar.",
+      "tag": "Por consumo"
+    },
+    {
+      "name": "Publicidad y pasarelas",
+      "detail": "La inversión publicitaria y las comisiones de terceros no están incluidas en la renta.",
+      "tag": "Cargo externo"
+    },
+    {
+      "name": "Servicios especiales",
+      "detail": "Migraciones, gestión profesional, IP dedicada e integraciones complejas sujetos a cotización.",
+      "tag": "Opcional"
+    }
+  ]
+}
