@@ -160,30 +160,118 @@ button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{o
  .footer-content{justify-content:center;text-align:center}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* V3: simple plan comparison + contextual, real-screenshot examples */
+.hero{padding:62px 0 47px}
+.hero-disclaimer{color:#8190a9;font-size:10px;margin:18px 0 0}
+.examples-section{padding-top:53px;padding-bottom:59px;border-bottom:1px solid #272d3a;background:linear-gradient(180deg,#10121c,#0d1016)}
+.scenario-tabs{display:flex;align-items:stretch;gap:7px;overflow-x:auto;margin-bottom:0;padding-bottom:9px;scrollbar-color:#3b4051 transparent}
+.scenario-tab{border:1px solid #353949;background:#181c26;border-radius:9px;padding:10px 15px;white-space:nowrap;color:#aeb6c7;font-size:11px;font-weight:700;min-height:44px}
+.scenario-tab.active{border-color:#7b5cff;background:#7b5cff22;color:#f4efff}
+.scenario-tab:hover{border-color:#8d76ef;color:white}
+.scenario-panel{display:grid;grid-template-columns:1fr .95fr;gap:28px;background:linear-gradient(135deg,#191c28,#141921);border:1px solid #373749;border-radius:15px;padding:25px;min-height:435px;align-items:center}
+.scenario-left h3{font:700 clamp(22px,2.6vw,33px)/1.22 'Space Grotesk',sans-serif;letter-spacing:-.8px;margin:9px 0 10px}
+.scenario-left .scenario-lead{font-size:13px;color:#bdc6d6;line-height:1.75;margin:0 0 16px}
+.scenario-context{display:flex;gap:7px;flex-wrap:wrap;color:#a69cf6;font:600 10px 'JetBrains Mono',monospace;margin-bottom:12px}
+.scenario-steps{margin:16px 0;padding:0;list-style:none}
+.scenario-steps li{display:flex;gap:13px;align-items:start;font-size:12px;color:#ced5e3;padding:10px 0;border-bottom:1px solid #343849;line-height:1.6}
+.scenario-steps li:last-child{border-bottom:0}
+.scenario-steps li .step-n{width:22px;height:22px;display:grid;place-items:center;border:1px solid #5d508e;border-radius:7px;color:#bbaeff;font:600 10px 'JetBrains Mono',monospace;flex-shrink:0}
+.scenario-tools{margin-top:17px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.scenario-tools button{border:1px solid #6760a2;background:#7b5cff1f;color:#e0d8ff;border-radius:8px;padding:10px 13px;font-weight:700;font-size:11px}
+.scenario-tools button:hover{background:#7b5cff38}
+.scenario-tools small{color:#8f9db0;font-size:10px}
+.scenario-img{min-width:0}
+.scenario-img img{display:block;width:100%;height:auto;max-height:330px;object-fit:contain;border:1px solid #3c4251;border-radius:12px;background:#0d1118;box-shadow:0 22px 45px #0005}
+.scenario-caption{font-size:10px;line-height:1.6;color:#a2adc1;margin:11px 0}
+.scenario-note{padding:10px 12px;border-left:2px solid #8776d4;background:#7b5cff0b;font-size:10px;color:#b5bbcc;line-height:1.65}
+.examples-disclaimer{font-size:10px;line-height:1.7;color:#78859b;margin:12px 0 0}
+.matrix-caption{display:flex;justify-content:space-between;align-items:center;gap:13px;flex-wrap:wrap;padding:17px 19px;background:#171b26;border-bottom:1px solid #323848}
+.matrix-caption b{display:block;font-size:13px;color:#e8ebf4}
+.matrix-caption span{display:block;font-size:11px;color:#9eabbc;margin-top:3px}
+.matrix-actions{display:flex;gap:12px}
+.matrix-actions button{border:0;border-bottom:1px solid #7876b2;background:none;color:#c1b5ef;padding:5px 0;font-size:11px;font-weight:650}
+.matrix .row-note{margin-top:4px;max-width:570px}
+.matrix .feature-example-toggle{display:inline-block;margin-top:7px;border:0;background:none;color:#b5a2ff;font-size:10px;font-weight:700;padding:1px 0}
+.matrix .feature-example-toggle:hover{text-decoration:underline;color:#e7deff}
+.matrix .feature-example-toggle[aria-expanded=true]{color:#3ddc97}
+.matrix .detail-row td{padding:19px 24px;text-align:left;background:#101823}
+.matrix .detail-row[hidden]{display:none!important}
+.feature-explain{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.feature-explain strong{display:block;color:#91dec4;font:600 10px 'JetBrains Mono',monospace;letter-spacing:.4px;margin-bottom:5px}
+.feature-explain p{margin:0;color:#ccd4df;font-size:11px;line-height:1.75}
+.feature-explain .cost-note{grid-column:1/-1;border-top:1px solid #2f3642;padding-top:11px;color:#a7b3c5;font-size:10px}
+.feature-explain .cost-note b{color:#e8d5a1}
+.mobile-scroll-hint{display:none;color:#a7b3cb;font-size:10px;padding:8px 15px;background:#181c24}
+.addon-benefit{display:block;color:#b0bad0;font-size:11px;line-height:1.7;margin-top:6px}
+.addon-example{display:block;color:#8ea6b5;font-size:10px;line-height:1.65;margin-top:6px}
+.matrix .differentiation td:last-child{background:#7b5cff0b}
+.matrix .differentiation th{background:#1b1c28}
+.table-scroll{overflow-x:auto}
+.matrix tr:not(.category-row) th[scope=row]{background:#131822}
+.category-row .toggle-group{cursor:pointer}
+@media(max-width:780px){.scenario-panel{grid-template-columns:1fr}.scenario-img img{max-height:360px}}
+@media(max-width:560px){
+ .hero{padding:44px 0 35px}
+ .examples-section{padding:42px 0}
+ .scenario-panel{padding:15px;gap:14px;min-height:0}
+ .scenario-tab{font-size:10px;padding:9px 11px}
+ .scenario-left h3{font-size:24px}
+ .scenario-img img{max-height:250px}
+ .matrix-caption{padding:12px}
+ .matrix-actions{gap:11px}
+ .matrix-actions button{font-size:10px}
+ .mobile-scroll-hint{display:block}
+ .table-scroll{overflow-x:auto}
+ .matrix{min-width:575px}
+ .matrix th.feature-col{width:48%}
+ .matrix th.plan-col{width:26%}
+ .matrix colgroup col:first-child{width:48%!important}
+ .matrix colgroup col:nth-child(2),.matrix colgroup col:nth-child(3){width:26%!important}
+ .matrix tr:not(.category-row) th[scope=row]{position:sticky;left:0;z-index:2;box-shadow:5px 0 7px #0002}
+ .feature-explain{grid-template-columns:1fr}
+ .feature-explain .cost-note{grid-column:auto}
+ .matrix .detail-row td{padding:13px}
+ .matrix .status-hint{display:none}
+ .matrix .row-note{font-size:10px}
+}
+
 </style>
 </head>
 <body>
 <nav class="topnav" aria-label="Navegación">
  <div class="wrap nav-inner">
   <a class="brand" href="/" aria-label="10xteam Growth - inicio"><span class="brand-symbol">×</span>10xteam <small>GROWTH</small></a>
-  <div class="nav-links"><a href="#comparador">Comparar planes</a><a href="#complementos">Complementos</a><a href="#consumos">Consumos y costos</a><a href="#preguntas">Preguntas</a></div>
+  <div class="nav-links"><a href="#ejemplos">Ejemplos</a><a href="#comparador">Comparar planes</a><a href="#complementos">Complementos</a><a href="#consumos">Consumos y costos</a><a href="#preguntas">Preguntas</a></div>
   <a class="nav-return" href="/">← Volver a Growth</a>
  </div>
 </nav>
 <main>
  <section class="hero">
   <div class="wrap">
-   <div class="kicker">GROWTH OS · COMPARADOR DE PLANES</div>
-   <h1>Descubre <em>todo lo que incluye</em> tu plan.</h1>
-   <p class="lead">Compara función por función, conoce los complementos y entiende qué está incluido y qué se cobra por consumo. Toda la maquinaria de marketing, ventas y automatización, con costos claros desde el principio.</p>
-   <div class="hero-foot"><a class="main-btn" href="#comparador">Comparar Growth y Scale ↓</a><a class="ghost-btn" href="#complementos">Ver complementos</a><span class="beta">Primera versión en revisión. Los precios finales aún no están aprobados.</span></div>
+   <div class="kicker">COMPARA · DESCUBRE · ELIGE</div>
+   <h1>Una plataforma para <em>hacer mucho más</em> con tu negocio.</h1>
+   <p class="lead">Publica, atrae prospectos, atiende conversaciones, vende y automatiza el seguimiento. Aquí puedes conocer las herramientas, ver ejemplos de uso y comparar exactamente qué incluye cada plan.</p>
+   <div class="hero-foot"><a class="main-btn" href="#comparador">Comparar Growth y Scale ↓</a><a class="ghost-btn" href="#ejemplos">Ver cómo funciona en un negocio →</a></div>
+   <p class="hero-disclaimer">Primer diseño en revisión · Precios definitivos pendientes · Los casos mostrados son ilustrativos.</p>
+  </div>
+ </section>
+ <section class="section examples-section" id="ejemplos">
+  <div class="wrap">
+   <span class="kicker">PRIMERO, EL BENEFICIO</span>
+   <h2 class="section-title">¿Qué podrías hacer <em>en tu negocio?</em></h2>
+   <p class="section-intro">Elige un ejemplo. Verás cómo se conectan distintas herramientas en un mismo proceso, sin necesitar que conozcas sus nombres técnicos.</p>
+   <div class="scenario-tabs" id="scenario-tabs" role="tablist" aria-label="Ejemplos por tipo de negocio"></div>
+   <div class="scenario-panel" id="scenario-panel" aria-live="polite"></div>
+   <p class="examples-disclaimer">Ejemplos ilustrativos de uso, no testimonios ni resultados garantizados. Las capturas provienen de pantallas reales de la subcuenta de demostración de Growth, no de estos negocios ficticios.</p>
   </div>
  </section>
  <section class="section" id="comparador">
   <div class="wrap">
-   <h2 class="section-title">Growth vs Scale. <em>Todo a la vista.</em></h2>
-   <p class="section-intro">45 módulos organizados por categoría. En cada fila verás si la capacidad está incluida, requiere un complemento o funciona por consumo. Pulsa el nombre para consultar su alcance.</p>
+   <span class="kicker">EN RESUMEN Y EN DETALLE</span><h2 class="section-title">Growth vs Scale. <em>La diferencia se entiende.</em></h2>
+   <p class="section-intro">Ambos planes ofrecen una plataforma muy completa. Scale añade más capacidad, consumo preferente y algunos módulos operativos incluidos. Compara las diferencias principales y luego explora las 45 funciones con ejemplos concretos.</p>
    <div class="table-shell">
+    <div class="mobile-scroll-hint">← Desliza para comparar los planes →</div>
     <div class="table-scroll">
      <table class="matrix" aria-label="Comparación de funcionalidades Growth y Scale">
       <thead>
@@ -196,6 +284,7 @@ button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{o
       <tbody id="key-differences"></tbody>
      </table>
     </div>
+    <div class="matrix-caption"><div><b>Explora todas las capacidades</b><span>Haz clic en “Ver ejemplo” para conocer un uso concreto y los posibles cargos.</span></div><div class="matrix-actions"><button type="button" id="expand-all">Abrir categorías</button><button type="button" id="collapse-all">Cerrar categorías</button></div></div>
     <div class="controls" id="buscador">
      <label class="searchbox"><span aria-hidden="true">⌕</span><span class="sr-only" style="position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden">Buscar funcionalidades</span><input id="search-features" type="search" placeholder="Buscar CRM, WhatsApp, automatizaciones…" autocomplete="off"></label>
      <label class="checkbox"><input type="checkbox" id="only-differences"> Mostrar sólo diferencias</label>
@@ -204,6 +293,7 @@ button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{o
     <div class="wrap" style="width:calc(100% - 24px)">
       <div class="filter-chips" id="category-filters" aria-label="Filtrar por categoría"></div>
     </div>
+    <div class="mobile-scroll-hint">← Desliza la tabla horizontalmente para comparar →</div>
     <div class="table-scroll">
      <table class="matrix" aria-label="Listado completo de módulos por plan">
        <colgroup><col style="width:52%"><col style="width:24%"><col style="width:24%"></colgroup>
@@ -212,13 +302,13 @@ button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{o
      </table>
     </div>
    </div>
-   <p class="note-line"><b>Cómo leer la tabla:</b> ✓ incluido · + complemento opcional · ◉ por consumo. Los precios pendientes se identificarán antes de abrir la contratación. Algunas capacidades siguen sujetas a permisos y disponibilidad real de Founder.</p>
+   <p class="note-line"><b>Cómo leer la comparación:</b> ✓ incluido · + complemento opcional · ◉ por consumo. Las diferencias de subcuentas, bolsa y tarifas de IA están arriba. Las funciones beta, los terceros y los precios pendientes se identificarán antes de contratar.</p>
   </div>
  </section>
  <section class="section section-muted" id="complementos">
   <div class="wrap">
    <h2 class="section-title">Complementos. <em>Sólo lo que necesitas.</em></h2>
-   <p class="section-intro">Los módulos especializados se contratan por separado cuando corresponda. Una vez validados, mostraremos el precio mensual, la elegibilidad por plan y las condiciones de cada complemento.</p>
+   <p class="section-intro">Cada complemento es una solución completa para una necesidad concreta, no una función básica escondida. Comprueba para quién sirve, su ejemplo de uso, si está incluido en Scale y si está disponible o todavía en validación.</p>
    <div class="table-shell">
     <div class="table-scroll">
      <table class="matrix" aria-label="Complementos y condiciones por plan">
@@ -265,96 +355,98 @@ button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{o
 (function(){
 "use strict";
 var source=document.getElementById("planes-data");if(!source)return;
-var catalog=JSON.parse(source.textContent);
+var data=JSON.parse(source.textContent);
 var search=document.getElementById("search-features");
 var onlyDiff=document.getElementById("only-differences");
-var filteredCategory="Todas";
-var hiddenCategories=new Set();
-function escapeHtml(str){return String(str==null?"":str).replace(/[&<>"']/g,function(s){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[s]});}
-function shortStatus(value){
- var x=String(value||"").toLowerCase();
- if(x.indexOf("por consumo")!==-1||x.indexOf("por uso")!==-1)return x.indexOf("preferente")!==-1?"Uso pref.":"Por uso";
- if(x.indexOf("complemento")!==-1)return x.indexOf("incluido")!==-1?"Incluido + extra":"Complemento";
- if(x.indexOf("sin")!==-1&&x.indexOf("bolsa")!==-1)return "Sin bolsa extra";
- if(x.indexOf("incluido")!==-1||x.indexOf("incluida")!==-1)return "Incluido";
- if(x.indexOf("preferente")!==-1)return "Preferente";
- if(x.indexOf("activable")!==-1)return "Activable";
- if(x.indexOf("suscripción")!==-1)return "Otra suscripción";
- return value;
+var category="Todas", selectedIds=null;
+var collapsed=new Set(["IA y automatización","Operación y administración","Experiencias y comunidades","Soluciones especializadas"]);
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(k){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[k]});}
+function status(s){
+ var text=String(s||"");
+ var low=text.toLowerCase();
+ var type=/consumo|por uso/.test(low)?"consume":/complemento|suscripción|precio|cotizar|preferente/.test(low)?"extra":"included";
+ var symbol=type==="included"?"✓":type==="consume"?"◉":"+";
+ var short=low.includes("por consumo")?low.includes("preferente")?"Uso preferente":"Por consumo":low.includes("complemento completo")?"Complemento":low.includes("complemento")?"Complemento":low.includes("incluido")?"Incluido":low.includes("preferente")?"Preferente":text;
+ return '<span class="status '+type+'" title="'+esc(text)+'"><span class="symbol" aria-hidden="true">'+symbol+'</span><span class="status-text">'+esc(short)+'</span></span>';
 }
-function statusHtml(value){
- var x=String(value||"");var low=x.toLowerCase();
- var type=/consumo|uso/.test(low)?"consume":/complemento|precio|suscripción|cotizar|preferente/.test(low)?"extra":"included";
- var char=type==="included"?"✓":type==="consume"?"◉":"+";
- return '<span class="status '+type+'" title="'+escapeHtml(x)+'"><span class="symbol" aria-hidden="true">'+char+'</span><span class="status-text"><span class="only-desktop">'+escapeHtml(x)+'</span><span class="only-mobile">'+escapeHtml(shortStatus(x))+'</span></span></span>';
-}
-var basics=[
- ["Subcuentas incluidas","1 negocio","Hasta 2 negocios"],
- ["Crédito mensual","Bolsa incluida","Bolsa mayor incluida"],
- ["WhatsApp","Activable","Activable en ambas"],
- ["IA avanzada","Por consumo","Por consumo preferente"],
- ["Ticketing completo","Complemento","Incluido"],
- ["Proyectos completo","Complemento","Incluido"],
- ["Precios de lista y cupones","Por definir","Por definir"]
+var important=[
+ {label:"Negocios incluidos",growth:"1 subcuenta",scale:"Hasta 2 subcuentas",note:"Cada negocio tiene configuración y Wallet propias."},
+ {label:"Bolsa de consumo",growth:"Crédito mensual incluido",scale:"Mayor crédito incluido",note:"Importes finales por confirmar; la segunda subcuenta Scale no duplica la bolsa."},
+ {label:"Tarifa de IA elegible",growth:"Consumo ×3",scale:"Consumo ×2",note:"Multiplicadores comerciales provisionales sobre costo proveedor elegible."},
+ {label:"WhatsApp",growth:"Activable",scale:"Activable en ambas",note:"No se activa por defecto y la mensajería facturable se cobra por uso."},
+ {label:"Ticketing completo",growth:"Complemento",scale:"Incluido",note:"En Growth se mantienen las funciones básicas ya aprobadas; separación completa sujeta a Founder."},
+ {label:"Gestión de Proyectos completa",growth:"Complemento",scale:"Incluido",note:"Funcionalidad completa prevista en Scale, control de permisos pendiente de comprobar."},
+ {label:"Complementos adicionales",growth:"Precio estándar",scale:"Tarifa preferente",note:"Algunos módulos están en beta o pendientes de disponibilidad."}
 ];
-document.getElementById("key-differences").innerHTML='<tr class="category-row"><th colspan="3">Diferencias principales</th></tr>'+basics.map(function(row){
- return '<tr><th scope="row"><span class="row-label">'+escapeHtml(row[0])+'</span></th><td>'+statusHtml(row[1])+'</td><td>'+statusHtml(row[2])+'</td></tr>';
-}).join("");
-function categoryControls(){
- var html=['<button type="button" class="filter '+(filteredCategory==="Todas"?"active":"")+'" data-category="Todas" aria-pressed="'+(filteredCategory==="Todas")+'">Todas las áreas</button>'];
- catalog.categories.forEach(function(c){html.push('<button type="button" class="filter '+(filteredCategory===c?"active":"")+'" data-category="'+escapeHtml(c)+'" aria-pressed="'+(filteredCategory===c)+'">'+escapeHtml(c)+'</button>');});
- var box=document.getElementById("category-filters");box.innerHTML=html.join("");
- box.querySelectorAll("button").forEach(function(button){button.addEventListener("click",function(){filteredCategory=button.getAttribute("data-category");categoryControls();renderFeatures();});});
+document.getElementById("key-differences").innerHTML='<tr class="category-row"><th colspan="3">¿Qué cambia realmente al elegir Scale?</th></tr>'+important.map(function(f){return '<tr class="differentiation"><th scope="row"><span class="row-label">'+esc(f.label)+'</span><span class="row-note">'+esc(f.note)+'</span></th><td>'+status(f.growth)+'</td><td>'+status(f.scale)+'</td></tr>';}).join("");
+var categoryLabels={
+ "Prospección y marketing":"Atraer y encontrar clientes",
+ "Ventas y clientes":"Atender, vender y cobrar",
+ "IA y automatización":"Automatizar con inteligencia",
+ "Operación y administración":"Organizar y administrar",
+ "Experiencias y comunidades":"Formar y conectar clientes",
+ "Soluciones especializadas":"Operar negocios especializados"
+};
+function categoryButtons(){
+ var btns=["Todas"].concat(data.categories);
+ var parent=document.getElementById("category-filters");
+ parent.innerHTML=btns.map(function(c){var name=c==="Todas"?"Todas las funciones":categoryLabels[c]||c;return '<button class="filter '+(c===category?"active":"")+'" data-cat="'+esc(c)+'" aria-pressed="'+(c===category)+'">'+esc(name)+'</button>';}).join("");
+ parent.querySelectorAll("button").forEach(function(b){b.addEventListener("click",function(){category=b.getAttribute("data-cat");selectedIds=null;categoryButtons();renderModules();});});
 }
-function renderFeatures(){
+function renderModules(){
  var q=(search.value||"").trim().toLocaleLowerCase("es-MX");
- var modules=catalog.modules.filter(function(m){
-  var selected=filteredCategory==="Todas"||filteredCategory===m.category;
-  var matched=!q||[m.id,m.title,m.category,m.description,m.growth,m.scale].join(" ").toLocaleLowerCase("es-MX").indexOf(q)!==-1;
-  var diff=!onlyDiff.checked||m.growth!==m.scale;
-  return selected&&matched&&diff;
- });
- var html=[];
- catalog.categories.forEach(function(cat){
-  var rows=modules.filter(function(m){return m.category===cat});
-  if(!rows.length)return;
-  var isClosed=hiddenCategories.has(cat);
-  html.push('<tr class="category-row"><th colspan="3"><button class="toggle-group" type="button" data-group="'+escapeHtml(cat)+'" aria-expanded="'+(!isClosed)+'">'+escapeHtml(cat)+' <span class="count">'+rows.length+' funciones</span><span class="chevron" aria-hidden="true">'+(isClosed?"+":"−")+'</span></button></th></tr>');
-  if(isClosed)return;
-  rows.forEach(function(m){
-   var id="detail-"+m.id;
-   html.push('<tr><th scope="row"><span class="row-label">'+escapeHtml(m.title)+'</span><button type="button" class="info-toggle" aria-controls="'+id+'" aria-expanded="false">¿Qué hace?</button><span class="details-inline" id="'+id+'">'+escapeHtml(m.description)+'</span></th><td>'+statusHtml(m.growth)+'</td><td>'+statusHtml(m.scale)+'</td></tr>');
-  });
- });
- document.getElementById("feature-rows").innerHTML=html.length?html.join(""):'<tr><td class="no-match" colspan="3">No encontramos funciones para esos filtros. Prueba con otra palabra.</td></tr>';
- document.getElementById("result-count").textContent=modules.length+" de "+catalog.modules.length+" funciones";
- document.querySelectorAll(".toggle-group").forEach(function(btn){btn.addEventListener("click",function(){var key=btn.getAttribute("data-group");if(hiddenCategories.has(key)){hiddenCategories.delete(key);}else{hiddenCategories.add(key);}renderFeatures();});});
- document.querySelectorAll(".info-toggle").forEach(function(btn){btn.addEventListener("click",function(){var target=document.getElementById(btn.getAttribute("aria-controls"));var open=target.classList.toggle("open");btn.setAttribute("aria-expanded",String(open));btn.textContent=open?"Ocultar detalle":"¿Qué hace?";});});
+ var selected=data.modules.filter(function(m){return (category==="Todas"||m.category===category)&&(!selectedIds||selectedIds.indexOf(m.id)!==-1)&&(!onlyDiff.checked||m.growth!==m.scale)&&(!q||[m.title,m.description,m.benefit,m.example,m.growth,m.scale].join(" ").toLocaleLowerCase("es-MX").includes(q));});
+ var rows=[];
+ for(var i=0;i<data.categories.length;i++){
+   var group=data.categories[i],mods=selected.filter(function(m){return m.category===group;});
+   if(!mods.length)continue;
+   var expanded=(q||selectedIds)?true:!collapsed.has(group);
+   rows.push('<tr class="category-row"><th colspan="3"><button class="toggle-group" type="button" data-group="'+esc(group)+'" aria-expanded="'+expanded+'">'+esc(categoryLabels[group]||group)+' <span class="count">'+mods.length+' módulos</span><span class="chevron" aria-hidden="true">'+(expanded?"−":"+")+'</span></button></th></tr>');
+   if(!expanded)continue;
+   for(var j=0;j<mods.length;j++){
+    var m=mods[j],id="more-"+m.id;
+    rows.push('<tr class="feature-row"><th scope="row"><span class="row-label">'+esc(m.title)+'</span><span class="row-note">'+esc(m.benefit||m.description)+'</span><button class="feature-example-toggle" type="button" data-detail="'+id+'" aria-expanded="false" aria-controls="'+id+'">Ver ejemplo y detalle ↓</button></th><td>'+status(m.growth)+'</td><td>'+status(m.scale)+'</td></tr>');
+    rows.push('<tr class="detail-row" id="'+id+'" hidden><td colspan="3"><div class="feature-explain"><div><strong>EJEMPLO ILUSTRATIVO</strong><p>'+esc(m.example||"El negocio utiliza esta función en sus procesos diarios.")+'</p></div><div><strong>QUÉ HACE LA HERRAMIENTA</strong><p>'+esc(m.description)+'</p></div><div class="cost-note"><b>Costos y condiciones:</b> '+esc(m.costClarification||"Los consumos y servicios externos se muestran por separado.")+' <span style="color:#8e9bb2"> · Estado: '+esc(m.availability)+'</span></div></div></td></tr>');
+   }
+ }
+ document.getElementById("feature-rows").innerHTML=rows.length?rows.join(""):'<tr><td class="no-match" colspan="3">No encontramos funciones con estos filtros. Prueba otra categoría.</td></tr>';
+ document.getElementById("result-count").textContent=selected.length+" de "+data.modules.length+" módulos"+(selectedIds?" · selección del ejemplo":"");
+ document.querySelectorAll(".toggle-group").forEach(function(button){button.addEventListener("click",function(){var g=button.getAttribute("data-group");if(collapsed.has(g))collapsed.delete(g);else collapsed.add(g);if(q||selectedIds){search.value="";selectedIds=null;category="Todas";categoryButtons();}renderModules();});});
+ document.querySelectorAll(".feature-example-toggle").forEach(function(b){b.addEventListener("click",function(){var target=document.getElementById(b.getAttribute("data-detail"));if(!target)return;target.hidden=!target.hidden;b.setAttribute("aria-expanded",String(!target.hidden));b.textContent=target.hidden?"Ver ejemplo y detalle ↓":"Ocultar ejemplo ↑";});});
+}
+function renderScenarios(){
+ var wrapper=document.getElementById("scenario-tabs"),panel=document.getElementById("scenario-panel");
+ function select(s){
+  wrapper.querySelectorAll("button").forEach(function(b){var active=b.getAttribute("data-scenario")===s.id;b.classList.toggle("active",active);b.setAttribute("aria-selected",String(active));b.tabIndex=active?0:-1;});
+  var steps=s.steps.map(function(x,i){return '<li><span class="step-n">'+String(i+1).padStart(2,"0")+'</span><span>'+esc(x)+'</span></li>';}).join("");
+  panel.innerHTML='<div class="scenario-left"><div class="scenario-context">'+esc(s.sector)+'</div><h3>'+esc(s.title)+'</h3><p class="scenario-lead">'+esc(s.lead)+'</p><p class="row-note" style="margin:0;color:#8e9bb1">Situación: '+esc(s.problem)+'</p><ol class="scenario-steps">'+steps+'</ol><div class="scenario-tools"><button type="button" id="scenario-show-modules">Ver herramientas utilizadas ↓</button><small>'+s.modules.length+' módulos relacionados</small></div></div><div class="scenario-img"><img src="'+esc(s.image)+'" alt="'+esc(s.imageAlt)+'" width="1360" height="765" loading="lazy"><div class="scenario-caption">Captura real de la demo 10xteam Growth · pantalla relacionada, no del caso ilustrado</div><p class="scenario-note">'+esc(s.note)+'</p></div>';
+  document.getElementById("scenario-show-modules").addEventListener("click",function(){selectedIds=s.modules.slice();search.value="";onlyDiff.checked=false;category="Todas";categoryButtons();collapsed.clear();renderModules();document.getElementById("comparador").scrollIntoView({behavior:"smooth",block:"start"});});
+ }
+ wrapper.innerHTML=data.scenarios.map(function(s,i){return '<button type="button" class="scenario-tab'+(i===0?" active":"")+'" data-scenario="'+esc(s.id)+'" role="tab" aria-selected="'+(i===0)+'" tabindex="'+(i===0?"0":"-1")+'">'+esc(s.title)+'</button>';}).join("");
+ wrapper.querySelectorAll("button").forEach(function(b){b.addEventListener("click",function(){var item=data.scenarios.find(function(s){return s.id===b.getAttribute("data-scenario")});if(item)select(item);});});
+ select(data.scenarios[0]);
 }
 function renderAddons(){
- var groups=["Operación","Comercio","Soluciones","Especializados"];
- var result=[];
- groups.forEach(function(group){
-  var list=catalog.addons.filter(function(a){return a.group===group});
-  if(!list.length)return;
-  result.push('<tr class="category-row"><th colspan="3">'+escapeHtml(group)+'</th></tr>');
-  list.forEach(function(a){
-   var note=a.availability==="Acceso anticipado"?"Acceso anticipado · precio por definir":a.availability+" · precio por definir";
-   result.push('<tr><th scope="row"><span class="row-label">'+escapeHtml(a.name)+'</span><span class="row-note">'+escapeHtml(a.description)+'</span><span class="row-note">'+escapeHtml(note)+'</span></th><td>'+statusHtml(a.growth)+'</td><td>'+statusHtml(a.scale)+'</td></tr>');
+ var groupNames={Operación:"Organiza tu operación",Comercio:"Vende más veces",Soluciones:"Soluciones por industria",Especializados:"Servicios y herramientas especiales"};
+ var groups=["Operación","Comercio","Soluciones","Especializados"];var rows=[];
+ groups.forEach(function(g){
+  var items=data.addons.filter(function(a){return a.group===g;});if(!items.length)return;
+  rows.push('<tr class="category-row"><th colspan="3">'+esc(groupNames[g])+'</th></tr>');
+  items.forEach(function(a){
+   var detail=a.availability==="Acceso anticipado"?"Acceso anticipado":a.availability;
+   rows.push('<tr><th scope="row"><span class="row-label">'+esc(a.name)+'</span><span class="addon-benefit">'+esc(a.description)+'</span><span class="addon-example">Disponibilidad: '+esc(detail)+' · Precio final pendiente</span></th><td>'+status(a.growth)+'</td><td>'+status(a.scale)+'</td></tr>');
   });
  });
- document.getElementById("addon-rows").innerHTML=result.join("");
+ document.getElementById("addon-rows").innerHTML=rows.join("");
 }
 function renderUsage(){
- var rows=catalog.consumption.map(function(c){
-  var status=c.tag==="Incluido"?"Incluido":c.tag==="Activación bajo solicitud"?"Activable":c.tag==="Cargo externo"?"Cargo externo":c.tag==="Opcional"?"Opcional":"Por consumo";
-  return '<tr><th scope="row"><span class="row-label">'+escapeHtml(c.name)+'</span><span class="row-note">'+escapeHtml(c.detail)+'</span></th><td>'+statusHtml(status)+'</td><td>'+statusHtml(status)+'</td></tr>';
- });
- document.getElementById("usage-rows").innerHTML=rows.join("");
+ document.getElementById("usage-rows").innerHTML=data.consumption.map(function(c){return '<tr><th scope="row"><span class="row-label">'+esc(c.name)+'</span><span class="row-note">'+esc(c.detail)+'</span></th><td>'+status(c.tag==="Incluido"?"Incluido":c.tag==="Activación bajo solicitud"?"Activable":c.tag==="Cargo externo"?"Cargo externo":c.tag==="Opcional"?"Opcional":"Por consumo")+'</td><td>'+status(c.tag==="Incluido"?"Incluido":c.tag==="Activación bajo solicitud"?"Activable":c.tag==="Cargo externo"?"Cargo externo":c.tag==="Opcional"?"Opcional":"Por consumo")+'</td></tr>';}).join("");
 }
-search.addEventListener("input",renderFeatures);
-onlyDiff.addEventListener("change",renderFeatures);
-categoryControls();renderFeatures();renderAddons();renderUsage();
+search.addEventListener("input",function(){selectedIds=null;renderModules();});
+onlyDiff.addEventListener("change",function(){selectedIds=null;renderModules();});
+document.getElementById("expand-all").addEventListener("click",function(){collapsed.clear();renderModules();});
+document.getElementById("collapse-all").addEventListener("click",function(){collapsed=new Set(data.categories);renderModules();});
+categoryButtons();renderModules();renderScenarios();renderAddons();renderUsage();
 })();
 </script>
 </body>
