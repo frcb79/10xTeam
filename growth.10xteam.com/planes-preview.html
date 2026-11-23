@@ -136,6 +136,8 @@ button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{o
  .matrix{table-layout:fixed}
  .matrix th.feature-col{width:43%}
  .matrix th.plan-col{width:28.5%}
+ .matrix colgroup col:first-child{width:43%!important}
+ .matrix colgroup col:nth-child(2),.matrix colgroup col:nth-child(3){width:28.5%!important}
  .matrix th,.matrix td{padding:11px 7px}
  .matrix thead th{padding:15px 6px}
  .matrix .plan-title{font-size:19px}
@@ -271,7 +273,7 @@ var hiddenCategories=new Set();
 function escapeHtml(str){return String(str==null?"":str).replace(/[&<>"']/g,function(s){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[s]});}
 function shortStatus(value){
  var x=String(value||"").toLowerCase();
- if(x.indexOf("por consumo")!==-1||x.indexOf("por uso")!==-1)return "Por uso";
+ if(x.indexOf("por consumo")!==-1||x.indexOf("por uso")!==-1)return x.indexOf("preferente")!==-1?"Uso pref.":"Por uso";
  if(x.indexOf("complemento")!==-1)return x.indexOf("incluido")!==-1?"Incluido + extra":"Complemento";
  if(x.indexOf("sin")!==-1&&x.indexOf("bolsa")!==-1)return "Sin bolsa extra";
  if(x.indexOf("incluido")!==-1||x.indexOf("incluida")!==-1)return "Incluido";
