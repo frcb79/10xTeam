@@ -632,7 +632,8 @@
       "growth": "Complemento",
       "scale": "Incluido",
       "availability": "Validación técnica",
-      "icon": "support"
+      "icon": "support",
+      "example": "Una empresa recibe una queja por email, asigna responsable, registra prioridad y controla su resolución."
     },
     {
       "id": "proyectos",
@@ -642,7 +643,8 @@
       "growth": "Complemento",
       "scale": "Incluido",
       "availability": "Validación técnica",
-      "icon": "project"
+      "icon": "project",
+      "example": "Una agencia coordina entregas, tareas y responsables en un tablero de proyecto."
     },
     {
       "id": "lealtad",
@@ -652,7 +654,8 @@
       "growth": "Complemento",
       "scale": "Promoción Early Adopter",
       "availability": "Acceso anticipado",
-      "icon": "gift"
+      "icon": "gift",
+      "example": "Una cafetería premia las compras repetidas con puntos y una recompensa de cumpleaños."
     },
     {
       "id": "restaurantes",
@@ -662,7 +665,8 @@
       "growth": "Complemento",
       "scale": "Precio preferente",
       "availability": "Acceso anticipado",
-      "icon": "utensils"
+      "icon": "utensils",
+      "example": "Una cafetería muestra el menú digital, recibe pedidos directos y coordina reservas cuando el módulo esté habilitado."
     },
     {
       "id": "field",
@@ -672,7 +676,8 @@
       "growth": "Complemento",
       "scale": "Precio preferente",
       "availability": "Por validar",
-      "icon": "tools"
+      "icon": "tools",
+      "example": "Una empresa de aire acondicionado asigna técnico, registra una visita y prepara la factura."
     },
     {
       "id": "eventos",
@@ -682,7 +687,8 @@
       "growth": "Complemento",
       "scale": "Precio preferente",
       "availability": "Por validar",
-      "icon": "ticket"
+      "icon": "ticket",
+      "example": "Un congreso vende entradas y registra asistentes con códigos QR."
     },
     {
       "id": "alquileres",
@@ -692,7 +698,8 @@
       "growth": "Complemento",
       "scale": "Precio preferente",
       "availability": "Por validar",
-      "icon": "calendar"
+      "icon": "calendar",
+      "example": "Una empresa audiovisual administra reservas por día de cámaras y proyectores."
     },
     {
       "id": "branded",
@@ -702,7 +709,8 @@
       "growth": "Complemento",
       "scale": "Precio preferente",
       "availability": "Por validar",
-      "icon": "phone"
+      "icon": "phone",
+      "example": "Una academia ofrece a sus alumnos un acceso móvil con su propia marca."
     },
     {
       "id": "prospect",
@@ -712,7 +720,8 @@
       "growth": "Complemento",
       "scale": "Precio preferente",
       "availability": "Por validar",
-      "icon": "target"
+      "icon": "target",
+      "example": "Un consultor busca oportunidades comerciales y organiza una lista para iniciar prospección."
     },
     {
       "id": "seo",
@@ -722,7 +731,8 @@
       "growth": "Complemento",
       "scale": "Precio preferente",
       "availability": "Por validar",
-      "icon": "search"
+      "icon": "search",
+      "example": "Una marca revisa palabras clave y mejoras técnicas para su sitio."
     },
     {
       "id": "listings",
@@ -732,7 +742,8 @@
       "growth": "Complemento",
       "scale": "Precio preferente",
       "availability": "Por validar",
-      "icon": "pin"
+      "icon": "pin",
+      "example": "Una cadena pequeña mantiene horarios y datos consistentes en mapas y directorios."
     },
     {
       "id": "wordpress",
@@ -742,7 +753,8 @@
       "growth": "Complemento",
       "scale": "Precio preferente",
       "availability": "Por validar",
-      "icon": "globe"
+      "icon": "globe",
+      "example": "Una empresa mantiene su WordPress mientras conecta procesos comerciales compatibles."
     },
     {
       "id": "ip",
@@ -752,7 +764,8 @@
       "growth": "Servicio técnico",
       "scale": "Condiciones preferentes",
       "availability": "Por cotizar",
-      "icon": "shield"
+      "icon": "shield",
+      "example": "Un negocio con alto volumen de email necesita asesoría sobre reputación, dominios e IP dedicada."
     },
     {
       "id": "locations",
@@ -762,7 +775,8 @@
       "growth": "Otra suscripción Growth",
       "scale": "Desde tercera cuenta · precio por definir",
       "availability": "Por validar",
-      "icon": "layers"
+      "icon": "layers",
+      "example": "Una empresa abre un segundo negocio con su propio CRM, usuarios y Wallet."
     }
   ],
   "consumption": [
