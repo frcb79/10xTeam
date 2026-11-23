@@ -2509,44 +2509,145 @@ body {
 
 
 <style id="growth-mobile-compact-ecosystem-20261123">
-/* Compact mobile-only ecosystem tiles: preserve 25 names/icons and central 10xteam hub.
-   3 columns on ultra-narrow phones, 4 on typical phones, 5 on wide phones. */
+/* Compact mobile orbit: 8 modules top / 4 left / central 10xteam / 4 right / 8 bottom.
+   The ninth top item becomes a centered connector chip; all 25 original modules remain. */
+.txeco-mobile-network { display: none; }
+
 @media (max-width: 680px) {
-  .txeco-mosaic { gap: 10px; }
-  .txeco-top, .txeco-bottom, .txeco-side { gap: 6px; }
-  .txeco-top, .txeco-bottom, .txeco-side-left, .txeco-side-right {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .txeco-mosaic { gap: 7px; }
+  .txeco-mosaic::before { width: 1px; opacity: .5; top: 26px; bottom: 23px; }
+  .txeco-top, .txeco-bottom { order: initial; }
+  .txeco-top { order: 0; }
+  .txeco-middle {
+    order: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(110px, 1.38fr) minmax(0, 1fr);
+    grid-template-rows: auto;
+    align-items: stretch;
+    gap: 6px;
+    min-height: 0;
+    position: relative;
+    z-index: 1;
+    width: 100%;
   }
-  .txeco-tile {
-    min-height: 56px;
-    padding: 6px 3px;
+  .txeco-bottom { order: 2; }
+  .txeco-top, .txeco-bottom {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: auto;
+    gap: 5px;
+  }
+  /* The 9th top module is a compact connector between the regular 4x2 grid and the hub. */
+  .txeco-top > .txeco-tile:nth-child(9) {
+    grid-column: 2 / span 2;
+    justify-self: center;
+    width: min(140px, 100%);
+    min-height: 26px;
+    padding: 3px 7px;
+    flex-direction: row;
+    gap: 5px;
+    border-radius: 14px;
+  }
+  .txeco-top > .txeco-tile:nth-child(9) .txeco-icon { width: 16px; height: 16px; }
+  .txeco-top > .txeco-tile:nth-child(9) .txeco-icon svg { width: 11px; height: 11px; }
+  .txeco-side {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    align-content: center;
+    align-items: stretch;
     gap: 4px;
-    border-radius: 9px;
+    min-width: 0;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+  .txeco-side-left { order: 0; }
+  .txeco-core { order: 1; }
+  .txeco-side-right { order: 2; }
+  .txeco-tile, .txeco-side .txeco-tile {
     width: 100%;
     max-width: none;
+    min-height: 46px;
+    padding: 4px 2px;
+    gap: 3px;
+    border-radius: 7px;
+    animation: none;
   }
-  .txeco-icon { width: 23px; height: 23px; border-radius: 6px; flex-shrink: 0; }
-  .txeco-icon svg { width: 15px; height: 15px; }
-  .txeco-name { font-size: 9.5px; line-height: 1.12; max-width: 100%; overflow-wrap: anywhere; }
+  .txeco-icon { width: 18px; height: 18px; border-radius: 5px; flex-shrink: 0; }
+  .txeco-icon svg { width: 12px; height: 12px; }
+  .txeco-name { font-size: 8.5px; line-height: 1.1; overflow-wrap: anywhere; hyphens: auto; }
   .txeco-tile small { font-size: 7px; margin: 0; }
-  .txeco-core { min-height: 156px; padding: 10px 8px 8px; margin: 2px 0; }
-  .txeco-devices { width: min(48%, 170px); }
-  .txeco-core-caption { margin-top: 5px; font-size: 10px; }
-}
-@media (min-width: 420px) and (max-width: 680px) {
-  .txeco-top, .txeco-bottom, .txeco-side-left, .txeco-side-right {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+
+  .txeco-core {
+    min-height: 116px;
+    max-height: 126px;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 8px 4px 7px;
+    border-radius: 12px;
+    z-index: 3;
+    justify-self: center;
+    align-self: center;
+    box-shadow: 0 8px 22px rgba(18,28,60,.28), 0 0 16px rgba(101,104,228,.13);
   }
-  .txeco-tile { min-height: 58px; }
-  .txeco-name { font-size: 9.3px; }
+  .txeco-core-brand { font-size: 9.5px; margin: 0 0 3px; white-space: nowrap; }
+  .txeco-core-symbol { margin-right: 3px; }
+  .txeco-devices { width: min(82%, 106px); max-width: 106px; padding: 0 11px 0 2px; }
+  .txeco-laptop-shell { border-width: 2px; border-bottom-width: 3px; border-radius: 5px; }
+  .txeco-screenbar { height: 11px; font-size: 5px; padding: 0 3px; }
+  .txeco-logo-screen { height: calc(100% - 11px); padding: 2px 3px; }
+  .txeco-laptop-base { height: 4px; margin: 0 -4px; }
+  .txeco-phone {
+    width: 29%;
+    min-width: 22px;
+    max-width: 37px;
+    height: 68%;
+    right: 0;
+    bottom: 0;
+    border-width: 2px;
+    border-radius: 7px;
+    padding: 5px 2px 2px;
+  }
+  .txeco-core-caption { font-size: 8px; line-height: 1.15; margin: 3px 0 0; }
+  .txeco-flow { opacity: .36; }
+
+  .txeco-mobile-network {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: visible;
+    pointer-events: none;
+  }
+  .txeco-mobile-network path {
+    fill: none;
+    stroke: url(#txeco-mobile-gradient);
+    stroke-width: 1.3;
+    stroke-dasharray: 4 8;
+    vector-effect: non-scaling-stroke;
+    opacity: .68;
+    animation: txeco-mobile-dash 14s linear infinite;
+  }
+  @keyframes txeco-mobile-dash { to { stroke-dashoffset: -120; } }
 }
 @media (max-width: 359px) {
-  .txeco-top, .txeco-bottom, .txeco-side-left, .txeco-side-right {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .txeco-tile { min-height: 53px; }
-  .txeco-icon { width: 21px; height: 21px; }
-  .txeco-name { font-size: 9.6px; }
+  .txeco-middle { grid-template-columns: minmax(0, 1fr) minmax(100px, 1.18fr) minmax(0, 1fr); gap: 4px; }
+  .txeco-top, .txeco-bottom { gap: 4px; }
+  .txeco-side { gap: 3px; }
+  .txeco-tile, .txeco-side .txeco-tile { min-height: 43px; padding: 3px 1px; gap: 2px; }
+  .txeco-icon { width: 16px; height: 16px; }
+  .txeco-icon svg { width: 11px; height: 11px; }
+  .txeco-name { font-size: 7.7px; line-height: 1.1; }
+  .txeco-core { min-height: 110px; max-height: 120px; padding: 7px 2px 5px; }
+  .txeco-devices { width: min(86%, 94px); padding: 0 8px 0 2px; }
+  .txeco-core-caption { font-size: 7.4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .txeco-mobile-network path { animation: none !important; }
 }
 </style>
 
@@ -2944,6 +3045,21 @@ body {
 <div class="txeco-tile txeco-green txeco-toward-bottom" style="--eco-delay:-6.5s" title="WhatsApp y canales"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-message"/></svg></span><span class="txeco-name">WhatsApp y canales</span></div>
 <div class="txeco-tile txeco-amber txeco-toward-bottom" style="--eco-delay:-2.6s" title="Calendarios y citas"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-calendar"/></svg></span><span class="txeco-name">Calendarios y citas</span></div></div>
       <div class="txeco-middle">
+        <svg class="txeco-mobile-network" viewBox="0 0 1000 250" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <defs><linearGradient id="txeco-mobile-gradient" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#7b5cff" stop-opacity=".42"/>
+            <stop offset="52%" stop-color="#50bafd" stop-opacity=".78"/>
+            <stop offset="100%" stop-color="#36dbab" stop-opacity=".42"/>
+          </linearGradient></defs>
+          <path d="M98 65 C245 65 335 112 500 125"/>
+          <path d="M260 65 C348 65 400 116 500 125"/>
+          <path d="M98 185 C245 185 335 138 500 125"/>
+          <path d="M260 185 C348 185 400 134 500 125"/>
+          <path d="M902 65 C755 65 665 112 500 125"/>
+          <path d="M740 65 C652 65 600 116 500 125"/>
+          <path d="M902 185 C755 185 665 138 500 125"/>
+          <path d="M740 185 C652 185 600 134 500 125"/>
+        </svg>
         <div class="txeco-side txeco-side-left"><div class="txeco-tile txeco-violet txeco-toward-right" style="--eco-delay:-7.15s" title="Formularios"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-clipboard"/></svg></span><span class="txeco-name">Formularios</span></div>
 <div class="txeco-tile txeco-blue txeco-toward-right" style="--eco-delay:-3.25s" title="Sitios y landing pages"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-monitor"/></svg></span><span class="txeco-name">Sitios y landing pages</span></div>
 <div class="txeco-tile txeco-violet txeco-toward-right" style="--eco-delay:-7.800000000000001s" title="Redes sociales"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-share"/></svg></span><span class="txeco-name">Redes sociales</span></div>
