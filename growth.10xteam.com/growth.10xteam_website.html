@@ -2507,6 +2507,49 @@ body {
 }
 </style>
 
+
+<style id="growth-mobile-compact-ecosystem-20261123">
+/* Compact mobile-only ecosystem tiles: preserve 25 names/icons and central 10xteam hub.
+   3 columns on ultra-narrow phones, 4 on typical phones, 5 on wide phones. */
+@media (max-width: 680px) {
+  .txeco-mosaic { gap: 10px; }
+  .txeco-top, .txeco-bottom, .txeco-side { gap: 6px; }
+  .txeco-top, .txeco-bottom, .txeco-side-left, .txeco-side-right {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .txeco-tile {
+    min-height: 56px;
+    padding: 6px 3px;
+    gap: 4px;
+    border-radius: 9px;
+    width: 100%;
+    max-width: none;
+  }
+  .txeco-icon { width: 23px; height: 23px; border-radius: 6px; flex-shrink: 0; }
+  .txeco-icon svg { width: 15px; height: 15px; }
+  .txeco-name { font-size: 9.5px; line-height: 1.12; max-width: 100%; overflow-wrap: anywhere; }
+  .txeco-tile small { font-size: 7px; margin: 0; }
+  .txeco-core { min-height: 156px; padding: 10px 8px 8px; margin: 2px 0; }
+  .txeco-devices { width: min(48%, 170px); }
+  .txeco-core-caption { margin-top: 5px; font-size: 10px; }
+}
+@media (min-width: 420px) and (max-width: 680px) {
+  .txeco-top, .txeco-bottom, .txeco-side-left, .txeco-side-right {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+  .txeco-tile { min-height: 58px; }
+  .txeco-name { font-size: 9.3px; }
+}
+@media (max-width: 359px) {
+  .txeco-top, .txeco-bottom, .txeco-side-left, .txeco-side-right {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .txeco-tile { min-height: 53px; }
+  .txeco-icon { width: 21px; height: 21px; }
+  .txeco-name { font-size: 9.6px; }
+}
+</style>
+
 </head>
 <body>
 
