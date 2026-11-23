@@ -364,9 +364,9 @@ function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(k){retur
 function status(s){
  var text=String(s||"");
  var low=text.toLowerCase();
- var type=/consumo|por uso/.test(low)?"consume":/complemento|suscripción|precio|cotizar|preferente/.test(low)?"extra":"included";
+ var type=/consumo|por uso/.test(low)?"consume":/complemento|suscripción|precio|cotizar|preferente|cargo externo|opcional|por definir/.test(low)?"extra":"included";
  var symbol=type==="included"?"✓":type==="consume"?"◉":"+";
- var short=low.includes("por consumo")?low.includes("preferente")?"Uso preferente":"Por consumo":low.includes("complemento completo")?"Complemento":low.includes("complemento")?"Complemento":low.includes("incluido")?"Incluido":low.includes("preferente")?"Preferente":text;
+ var short=low.includes("cargo externo")?"Externo":low.includes("por definir")?"Por definir":low.includes("por consumo")?low.includes("preferente")?"Uso preferente":"Por consumo":low.includes("complemento completo")?"Complemento":low.includes("complemento")?"Complemento":low.includes("incluido")?"Incluido":low.includes("preferente")?"Preferente":text;
  return '<span class="status '+type+'" title="'+esc(text)+'"><span class="symbol" aria-hidden="true">'+symbol+'</span><span class="status-text">'+esc(short)+'</span></span>';
 }
 var important=[
@@ -434,7 +434,7 @@ function renderAddons(){
   rows.push('<tr class="category-row"><th colspan="3">'+esc(groupNames[g])+'</th></tr>');
   items.forEach(function(a){
    var detail=a.availability==="Acceso anticipado"?"Acceso anticipado":a.availability;
-   rows.push('<tr><th scope="row"><span class="row-label">'+esc(a.name)+'</span><span class="addon-benefit">'+esc(a.description)+'</span><span class="addon-example">Disponibilidad: '+esc(detail)+' · Precio final pendiente</span></th><td>'+status(a.growth)+'</td><td>'+status(a.scale)+'</td></tr>');
+   rows.push('<tr><th scope="row"><span class="row-label">'+esc(a.name)+'</span><span class="addon-benefit">'+esc(a.description)+'</span><span class="addon-example">Ejemplo: '+esc(a.example||"Aplicación según las necesidades del negocio")+'</span><span class="addon-example">Disponibilidad: '+esc(detail)+' · Precio final pendiente</span></th><td>'+status(a.growth)+'</td><td>'+status(a.scale)+'</td></tr>');
   });
  });
  document.getElementById("addon-rows").innerHTML=rows.join("");
