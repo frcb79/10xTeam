@@ -275,6 +275,28 @@ button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{o
 .scenario-prevnext span{font-size:11px;color:#a9b2c5}
 @media(max-width:560px){.industry-picker{padding:12px 11px 9px}.industry-picker-head{display:block}.industry-search{margin-top:11px;width:100%}.industry-groups{gap:5px}.industry-group{font-size:10px;padding:7px 8px}.industry-examples{gap:5px}.industry-examples .scenario-tab{padding:8px 9px;font-size:10px}.scenario-prevnext button{padding:8px;font-size:10px}}
 
+
+.solo-section{padding-top:24px;padding-bottom:46px}
+.solo-panel{border:1px solid #3a3b4d;border-radius:15px;padding:27px 30px;background:linear-gradient(125deg,#171a26,#131820);display:flex;flex-wrap:wrap;gap:25px;align-items:start}
+.solo-copy{flex:1 1 350px;min-width:0}
+.solo-copy .section-title{font-size:clamp(23px,2.6vw,32px);margin-top:9px}
+.solo-copy>p{font-size:13px;line-height:1.75;color:#bcc4d4;max-width:780px}
+.solo-muted{font-size:12px!important;line-height:1.65;color:#a3aec0!important}
+.solo-trigger{display:inline-flex;align-items:center;gap:9px;margin-top:8px;background:transparent;color:#d9d1ff;text-align:left;white-space:normal}
+.solo-copy .solo-disclaimer{font-size:10px;color:#9ca6ba;margin:13px 0 0}
+.solo-form{flex:1 1 310px;max-width:480px;min-width:0;display:grid;gap:8px;padding:20px;border:1px solid #363d4d;border-radius:12px;background:#0f141d}
+.solo-form[hidden]{display:none}
+.solo-form h3{font:700 19px 'Space Grotesk',sans-serif;margin:0 0 6px}
+.solo-form label{font-size:11px;font-weight:650;color:#d4dbea}
+.solo-form label span{font-weight:400;color:#a2aec2}
+.solo-form>input,.solo-form select{width:100%;border:1px solid #41495a;border-radius:8px;padding:10px 11px;background:#191e2a;color:#eff2fa;font:12px Inter,sans-serif}
+.solo-form .solo-consent{display:flex;gap:9px;align-items:start;line-height:1.6;margin:6px 0 4px}
+.solo-consent input{accent-color:#7b5cff;flex-shrink:0}
+.solo-consent a{text-decoration:underline;color:#c6b7ff}
+.solo-result{font-size:11px;line-height:1.7;margin:0;color:#a9e7c8}
+.solo-result.error{color:#f4b7b7}
+@media(max-width:560px){.solo-panel{padding:18px 15px;gap:15px}.solo-form{padding:14px;max-width:100%;flex-basis:100%}.solo-trigger{font-size:11px}.solo-section{padding-bottom:35px}}
+
 </style>
 </head>
 <body>
@@ -297,11 +319,11 @@ button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{o
  </section>
  <section class="section examples-section" id="ejemplos">
   <div class="wrap">
-   <span class="kicker">PRIMERO, EL BENEFICIO</span>
-   <h2 class="section-title">¿Qué podrías hacer <em>en tu negocio?</em></h2>
-   <p class="section-intro">Encuentra tu sector entre 30 ejemplos de negocio, o busca una necesidad concreta. Descubre cómo se conectan las herramientas para captar, vender, atender y fidelizar.</p>
+   <span class="kicker">DIFERENTES INDUSTRIAS. UNA MISMA PLATAFORMA.</span>
+   <h2 class="section-title">Tu industria. Tu negocio.<br><em>Tu siguiente nivel de crecimiento.</em></h2>
+   <p class="section-intro">Descubre cómo empresas, profesionales y equipos comerciales pueden captar más oportunidades, automatizar su operación y escalar con 10xteam. Explora 30 casos de uso y encuentra el que mejor representa a tu negocio.</p>
    <div class="industry-picker">
-    <div class="industry-picker-head"><div><strong>Encuentra tu negocio</strong><span id="scenario-count" aria-live="polite">30 ejemplos por industria</span></div><label class="industry-search"><span aria-hidden="true">⌕</span><input type="search" id="scenario-search" placeholder="Ej. seguros, gimnasio, restaurante..." aria-label="Buscar ejemplos de negocio" autocomplete="off"></label></div>
+    <div class="industry-picker-head"><div><strong>Encuentra tu negocio</strong><span id="scenario-count" aria-live="polite">30 ejemplos por industria</span></div><label class="industry-search"><span aria-hidden="true">⌕</span><input type="search" id="scenario-search" placeholder="Ej. inmobiliaria, crédito, comercio..." aria-label="Buscar ejemplos de negocio" autocomplete="off"></label></div>
     <div id="scenario-groups" class="industry-groups" role="group" aria-label="Categorías de negocios"></div>
     <div class="scenario-tabs industry-examples" id="scenario-tabs" role="group" aria-label="Ejemplos por tipo de negocio"></div>
    </div>
@@ -376,6 +398,32 @@ button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{o
     </div>
    </div>
    <p class="note-line">El crédito incluido se aplicará únicamente a servicios compatibles; no descontaremos saldo ficticio por funciones gratuitas. Los gastos publicitarios y comisiones de terceros se mostrarán por separado.</p>
+  </div>
+ </section>
+ <section class="section solo-section" id="independientes">
+  <div class="wrap">
+   <div class="solo-panel">
+    <div class="solo-copy">
+     <span class="kicker">CRECE A TU RITMO</span>
+     <h2 class="section-title">¿Trabajas por tu cuenta o estás <em>arrancando tu negocio?</em></h2>
+     <p>También queremos acompañarte. Estamos evaluando un programa especial para emprendedores, profesionales independientes y solopreneurs, con lo esencial para organizar tus clientes, vender y crecer paso a paso.</p>
+     <p class="solo-muted">Cuéntanos qué necesitas. Tu interés nos ayudará a diseñar una alternativa adecuada a esta etapa de tu negocio.</p>
+     <button class="ghost-btn solo-trigger" type="button" id="solo-open" aria-expanded="false" aria-controls="solo-form">Me interesa el programa para arrancar <span aria-hidden="true">↗</span></button>
+     <p class="solo-disclaimer">Registro de interés, sin costo ni compromiso. No es un plan disponible para contratar; su alcance y precio se definirán según la demanda.</p>
+    </div>
+    <form id="solo-form" class="solo-form" hidden>
+     <h3>Cuéntanos sobre tu negocio</h3>
+     <p class="solo-muted" id="solo-preview-note" hidden>Vista de prueba: el formulario no envía ni almacena tus datos.</p>
+     <label for="solo-name">Nombre</label><input id="solo-name" name="name" autocomplete="name" maxlength="160" required placeholder="Tu nombre">
+     <label for="solo-email">Correo electrónico</label><input id="solo-email" name="email" type="email" autocomplete="email" maxlength="200" required placeholder="tu@correo.com">
+     <label for="solo-business">¿A qué te dedicas?</label><input id="solo-business" name="business" maxlength="200" required placeholder="Ej. consultoría, comercio, asesoría">
+     <label for="solo-goal">¿Qué te gustaría resolver primero? <span>(opcional)</span></label>
+     <select id="solo-goal" name="goal"><option value="">Seleccionar</option><option value="captacion">Conseguir más clientes</option><option value="seguimiento">Organizar prospectos y seguimiento</option><option value="marketing">Publicar y hacer marketing</option><option value="automatizacion">Automatizar tareas y ahorrar tiempo</option><option value="ventas">Vender y cobrar en línea</option><option value="otro">Otra necesidad</option></select>
+     <label class="solo-consent"><input name="consent" type="checkbox" required><span>Acepto el <a href="https://10xteam.com.mx/legal/aviso" target="_blank" rel="noopener noreferrer">aviso de privacidad</a> y que 10xteam me contacte acerca de este programa.</span></label>
+     <button class="main-btn" id="solo-submit" type="submit">Registrar mi interés</button>
+     <p id="solo-result" class="solo-result" role="status" aria-live="polite"></p>
+    </form>
+   </div>
   </div>
  </section>
  <section class="section section-muted" id="preguntas">
@@ -472,13 +520,13 @@ function renderScenarios(){
   document.getElementById("scenario-next").addEventListener("click",function(){if(position<visible.length-1)select(visible[position+1]);});
  }
  function updateGroups(){
-  var groups=["Destacados","Todos"].concat(data.scenarioGroups||[]);
+  var groups=["Destacados"].concat(data.scenarioGroups||[]).concat(["Todos"]);
   groupBox.innerHTML=groups.map(function(g){var n=g==="Destacados"?data.scenarios.filter(function(s){return s.featured;}).length:g==="Todos"?data.scenarios.length:data.scenarios.filter(function(s){return s.group===g;}).length;return '<button class="industry-group" type="button" data-industry="'+esc(g)+'" aria-pressed="'+(g===selectedGroup)+'">'+esc(g)+'<span class="group-number">'+n+'</span></button>';}).join("");
   groupBox.querySelectorAll("button").forEach(function(b){b.addEventListener("click",function(){selectedGroup=b.getAttribute("data-industry");input.value="";selectedCase=null;updateGroups();refresh();});});
  }
  function refresh(){
   var q=normalize(input.value);
-  visible=data.scenarios.filter(function(s){return (q||selectedGroup==="Todos"||(selectedGroup==="Destacados"?s.featured:s.group===selectedGroup))&&(!q||q.split(/\s+/).every(function(term){var hay=normalize([s.title,s.sector,s.group,s.problem,s.lead,s.steps.join(" ")].join(" "));return hay.includes(term)||(term.length>4&&term.endsWith("s")&&hay.includes(term.slice(0,-1)));}));});
+  visible=data.scenarios.filter(function(s){return (q||selectedGroup==="Todos"||(selectedGroup==="Destacados"?s.featured:s.group===selectedGroup))&&(!q||q.split(/\s+/).every(function(term){var hay=normalize([s.title,s.sector,s.group,s.problem,s.lead,s.keywords||"",s.steps.join(" ")].join(" "));return hay.includes(term)||(term.length>4&&term.endsWith("s")&&hay.includes(term.slice(0,-1)));}));});
   count.textContent=visible.length+" de "+data.scenarios.length+" ejemplos de negocio";
   if(!visible.length){wrapper.innerHTML="";panel.innerHTML='<div class="scenario-empty"><strong>No encontramos ese ejemplo</strong>Prueba otra palabra o explora todos los negocios.<br><button id="scenario-reset" type="button">Ver todos los ejemplos</button></div>';document.getElementById("scenario-reset").addEventListener("click",function(){input.value="";selectedGroup="Todos";selectedCase=null;updateGroups();refresh();});return;}
   var chosen=visible.find(function(s){return s.id===selectedCase;})||visible[0];
@@ -509,7 +557,38 @@ search.addEventListener("input",function(){selectedIds=null;renderModules();});
 onlyDiff.addEventListener("change",function(){selectedIds=null;renderModules();});
 document.getElementById("expand-all").addEventListener("click",function(){collapsed.clear();renderModules();});
 document.getElementById("collapse-all").addEventListener("click",function(){collapsed=new Set(data.categories);renderModules();});
-categoryButtons();renderModules();renderScenarios();renderAddons();renderUsage();
+
+function initSoloInterest(){
+ var trigger=document.getElementById("solo-open"),form=document.getElementById("solo-form"),notice=document.getElementById("solo-preview-note"),result=document.getElementById("solo-result"),submit=document.getElementById("solo-submit");
+ if(!trigger||!form)return;
+ // Protected preview never sends any personal information to the existing contact endpoint.
+ var live=typeof location!=="undefined"&&location.protocol==="https:"&&location.hostname==="growth.10xteam.com";
+ notice.hidden=live;
+ trigger.addEventListener("click",function(){
+  form.hidden=!form.hidden;
+  trigger.setAttribute("aria-expanded",String(!form.hidden));
+  if(!form.hidden){var name=document.getElementById("solo-name");if(name)name.focus();}
+ });
+ form.addEventListener("submit",async function(e){
+  e.preventDefault();
+  if(!form.reportValidity())return;
+  result.classList.remove("error");result.textContent="";
+  if(!live){result.textContent="Prueba completada. En esta vista de revisión no se ha enviado ni guardado ningún dato.";return;}
+  var fields=new FormData(form);
+  var payload={name:String(fields.get("name")||"").trim(),email:String(fields.get("email")||"").trim(),source:"growth_contact",serviceType:"growth_solopreneur_interest",message:JSON.stringify({business:String(fields.get("business")||"").trim(),goal:String(fields.get("goal")||""),teamSize:1,consent:true,entryPoint:"planes_independientes"})};
+  submit.disabled=true;
+  try{
+   var response=await fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+   var json=await response.json();
+   if(!response.ok||json.ok!==true)throw Error("submission");
+   result.textContent="Gracias por tu interés. Te contactaremos cuando tengamos novedades sobre el programa.";
+   form.reset();
+  }catch(err){result.classList.add("error");result.textContent="No pudimos registrar tu interés. Inténtalo de nuevo más adelante.";}
+  finally{submit.disabled=false;}
+ });
+}
+
+categoryButtons();renderModules();renderScenarios();renderAddons();renderUsage();initSoloInterest();
 })();
 </script>
 </body>
