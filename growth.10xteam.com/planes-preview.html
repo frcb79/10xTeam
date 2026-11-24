@@ -417,6 +417,7 @@ button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{o
      <label for="solo-name">Nombre</label><input id="solo-name" name="name" autocomplete="name" maxlength="160" required placeholder="Tu nombre">
      <label for="solo-email">Correo electrónico</label><input id="solo-email" name="email" type="email" autocomplete="email" maxlength="200" required placeholder="tu@correo.com">
      <label for="solo-business">¿A qué te dedicas?</label><input id="solo-business" name="business" maxlength="200" required placeholder="Ej. consultoría, comercio, asesoría">
+     <label for="solo-team">¿Cuántas personas trabajan en tu negocio?</label><select id="solo-team" name="team" required><option value="">Seleccionar</option><option value="1">Solo yo</option><option value="2-5">2 a 5 personas</option><option value="6+">6 o más personas</option></select>
      <label for="solo-goal">¿Qué te gustaría resolver primero? <span>(opcional)</span></label>
      <select id="solo-goal" name="goal"><option value="">Seleccionar</option><option value="captacion">Conseguir más clientes</option><option value="seguimiento">Organizar prospectos y seguimiento</option><option value="marketing">Publicar y hacer marketing</option><option value="automatizacion">Automatizar tareas y ahorrar tiempo</option><option value="ventas">Vender y cobrar en línea</option><option value="otro">Otra necesidad</option></select>
      <label class="solo-consent"><input name="consent" type="checkbox" required><span>Acepto el <a href="https://10xteam.com.mx/legal/aviso" target="_blank" rel="noopener noreferrer">aviso de privacidad</a> y que 10xteam me contacte acerca de este programa.</span></label>
@@ -575,7 +576,7 @@ function initSoloInterest(){
   result.classList.remove("error");result.textContent="";
   if(!live){result.textContent="Prueba completada. En esta vista de revisión no se ha enviado ni guardado ningún dato.";return;}
   var fields=new FormData(form);
-  var payload={name:String(fields.get("name")||"").trim(),email:String(fields.get("email")||"").trim(),source:"growth_contact",serviceType:"growth_solopreneur_interest",message:JSON.stringify({business:String(fields.get("business")||"").trim(),goal:String(fields.get("goal")||""),teamSize:1,consent:true,entryPoint:"planes_independientes"})};
+  var payload={name:String(fields.get("name")||"").trim(),email:String(fields.get("email")||"").trim(),source:"growth_contact",serviceType:"growth_solopreneur_interest",message:JSON.stringify({business:String(fields.get("business")||"").trim(),goal:String(fields.get("goal")||""),teamSize:String(fields.get("team")||""),consent:true,entryPoint:"planes_independientes"})};
   submit.disabled=true;
   try{
    var response=await fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
