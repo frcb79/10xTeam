@@ -250,6 +250,31 @@ button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{o
 .status.external .symbol{background:#4d56642a;color:#b8c2d2}
 .status.pending .symbol{background:#4d56642a;color:#b8c2d2}
 
+
+.industry-picker{border:1px solid #33394a;border-radius:13px 13px 0 0;background:#141823;padding:17px 18px 10px}
+.industry-picker-head{display:flex;gap:18px;align-items:center;justify-content:space-between;margin-bottom:13px}
+.industry-picker-head strong{display:block;font-size:14px;color:#eff2fb}
+.industry-picker-head #scenario-count{display:block;font-size:11px;color:#a6b1c3;margin-top:4px}
+.industry-search{display:flex;align-items:center;gap:8px;border:1px solid #41475b;border-radius:9px;background:#0d1119;padding:0 11px;min-width:0;width:min(100%,350px);color:#a6b1c3}
+.industry-search input{width:100%;min-width:0;outline:none;border:0;background:transparent;color:#f4f6fb;font:inherit;font-size:12px;padding:12px 0}
+.industry-search input::placeholder{color:#a0aabb}
+.industry-groups{display:flex;gap:7px;flex-wrap:wrap;border-bottom:1px solid #33394a;padding-bottom:13px;margin-bottom:12px}
+.industry-group{font:600 11px Inter,sans-serif;padding:8px 11px;border-radius:7px;border:1px solid #3e4555;background:#1b202c;color:#c6cddd;text-align:left;cursor:pointer}
+.industry-group:hover,.industry-group[aria-pressed="true"]{border-color:#9579ff;background:#7b5cff26;color:#ede9ff}
+.industry-group .group-number{margin-left:5px;color:#aeb3c9;font-size:10px}
+.industry-examples{display:flex;flex-wrap:wrap;gap:7px;overflow:visible;padding-bottom:4px}
+.industry-examples .scenario-tab{white-space:normal;min-height:39px;text-align:left;padding:9px 12px;font-size:11px}
+.scenario-panel{border-radius:0 0 13px 13px;border-top:0}
+.scenario-empty{grid-column:1/-1;padding:30px;text-align:center;color:#a6b1c3}
+.scenario-empty strong{display:block;color:#edf0f7;margin-bottom:8px}
+.scenario-empty button{margin-top:15px;border:1px solid #8c72ff;border-radius:8px;background:#7b5cff22;padding:10px 16px;color:#e1d7ff;cursor:pointer}
+.scenario-origin{font-size:10px;color:#a4aec2;margin-top:12px;line-height:1.6}
+.scenario-prevnext{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:10px}
+.scenario-prevnext button{font:600 11px Inter,sans-serif;border:1px solid #424859;border-radius:8px;background:#1a1f2a;color:#c6cde0;padding:9px 12px;cursor:pointer}
+.scenario-prevnext button:disabled{opacity:.4;cursor:default}
+.scenario-prevnext span{font-size:11px;color:#a9b2c5}
+@media(max-width:560px){.industry-picker{padding:12px 11px 9px}.industry-picker-head{display:block}.industry-search{margin-top:11px;width:100%}.industry-groups{gap:5px}.industry-group{font-size:10px;padding:7px 8px}.industry-examples{gap:5px}.industry-examples .scenario-tab{padding:8px 9px;font-size:10px}.scenario-prevnext button{padding:8px;font-size:10px}}
+
 </style>
 </head>
 <body>
@@ -274,8 +299,12 @@ button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{o
   <div class="wrap">
    <span class="kicker">PRIMERO, EL BENEFICIO</span>
    <h2 class="section-title">¿Qué podrías hacer <em>en tu negocio?</em></h2>
-   <p class="section-intro">Elige un ejemplo. Verás cómo se conectan distintas herramientas en un mismo proceso, sin necesitar que conozcas sus nombres técnicos.</p>
-   <div class="scenario-tabs" id="scenario-tabs" role="group" aria-label="Ejemplos por tipo de negocio"></div>
+   <p class="section-intro">Encuentra tu sector entre 30 ejemplos de negocio, o busca una necesidad concreta. Descubre cómo se conectan las herramientas para captar, vender, atender y fidelizar.</p>
+   <div class="industry-picker">
+    <div class="industry-picker-head"><div><strong>Encuentra tu negocio</strong><span id="scenario-count" aria-live="polite">30 ejemplos por industria</span></div><label class="industry-search"><span aria-hidden="true">⌕</span><input type="search" id="scenario-search" placeholder="Ej. seguros, gimnasio, restaurante..." aria-label="Buscar ejemplos de negocio" autocomplete="off"></label></div>
+    <div id="scenario-groups" class="industry-groups" role="group" aria-label="Categorías de negocios"></div>
+    <div class="scenario-tabs industry-examples" id="scenario-tabs" role="group" aria-label="Ejemplos por tipo de negocio"></div>
+   </div>
    <div class="scenario-panel" id="scenario-panel" aria-live="polite"></div>
    <p class="examples-disclaimer">Ejemplos ilustrativos de uso, no testimonios ni resultados garantizados. Las capturas provienen de pantallas reales de la subcuenta de demostración de Growth, no de estos negocios ficticios.</p>
   </div>
@@ -429,16 +458,36 @@ function renderModules(){
  document.querySelectorAll(".feature-example-toggle").forEach(function(b){b.addEventListener("click",function(){var target=document.getElementById(b.getAttribute("data-detail"));if(!target)return;target.hidden=!target.hidden;b.setAttribute("aria-expanded",String(!target.hidden));b.textContent=target.hidden?"Ver ejemplo y detalle ↓":"Ocultar ejemplo ↑";});});
 }
 function renderScenarios(){
- var wrapper=document.getElementById("scenario-tabs"),panel=document.getElementById("scenario-panel");
+ var wrapper=document.getElementById("scenario-tabs"),panel=document.getElementById("scenario-panel"),groupBox=document.getElementById("scenario-groups"),input=document.getElementById("scenario-search"),count=document.getElementById("scenario-count");
+ var selectedGroup="Destacados",selectedCase=null,visible=[];
+ function normalize(x){return String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("es-MX").trim();}
  function select(s){
+  selectedCase=s.id;
   wrapper.querySelectorAll("button").forEach(function(b){var active=b.getAttribute("data-scenario")===s.id;b.classList.toggle("active",active);b.setAttribute("aria-pressed",String(active));});
   var steps=s.steps.map(function(x,i){return '<li><span class="step-n">'+String(i+1).padStart(2,"0")+'</span><span>'+esc(x)+'</span></li>';}).join("");
-  panel.innerHTML='<div class="scenario-left"><div class="scenario-context">'+esc(s.sector)+'</div><h3>'+esc(s.title)+'</h3><p class="scenario-lead">'+esc(s.lead)+'</p><p class="row-note" style="margin:0;color:#8e9bb1">Situación: '+esc(s.problem)+'</p><ol class="scenario-steps">'+steps+'</ol><div class="scenario-tools"><button type="button" id="scenario-show-modules">Ver herramientas utilizadas ↓</button><small>'+s.modules.length+' módulos relacionados</small></div></div><div class="scenario-img"><img src="'+esc(s.image)+'" alt="'+esc(s.imageAlt)+'" width="1360" height="765" loading="lazy"><div class="scenario-caption">Captura real de la demo 10xteam Growth · pantalla relacionada, no del caso ilustrado</div><p class="scenario-note">'+esc(s.note)+'</p></div>';
-  document.getElementById("scenario-show-modules").addEventListener("click",function(){selectedIds=s.modules.slice();search.value="";onlyDiff.checked=false;category="Todas";categoryButtons();collapsed.clear();renderModules();document.getElementById("comparador").scrollIntoView({behavior:"smooth",block:"start"});});
+  var position=visible.findIndex(function(x){return x.id===s.id;});
+  panel.innerHTML='<div class="scenario-left"><div class="scenario-context">'+esc(s.sector)+'</div><h3>'+esc(s.title)+'</h3><p class="scenario-lead">'+esc(s.lead)+'</p><p class="row-note" style="margin:0;color:#a6b2c7">Situación: '+esc(s.problem)+'</p><ol class="scenario-steps">'+steps+'</ol><div class="scenario-tools"><button type="button" id="scenario-show-modules">Ver herramientas utilizadas ↓</button><small>'+s.modules.length+' módulos relacionados</small></div><p class="scenario-origin">'+esc(s.origin||"Ejemplo ilustrativo de 10xteam")+'. Requiere configuración y validación de disponibilidad.</p></div><div class="scenario-img"><img src="'+esc(s.image)+'" alt="'+esc(s.imageAlt)+'" width="1360" height="765" loading="lazy"><div class="scenario-caption">Captura real de la demo 10xteam Growth · pantalla relacionada, no del caso ilustrado</div><p class="scenario-note">'+esc(s.note)+'</p><div class="scenario-prevnext"><button type="button" id="scenario-prev" '+(position<=0?"disabled":"")+' aria-label="Ejemplo anterior">← Anterior</button><span>'+(position+1)+' / '+visible.length+'</span><button type="button" id="scenario-next" '+(position>=visible.length-1?"disabled":"")+' aria-label="Ejemplo siguiente">Siguiente →</button></div></div>';
+  document.getElementById("scenario-show-modules").addEventListener("click",function(){selectedIds=s.modules.slice();search.value="";onlyDiff.checked=false;category="Todas";categoryButtons();collapsed.clear();renderModules();document.getElementById("buscador").scrollIntoView({behavior:"smooth",block:"start"});});
+  document.getElementById("scenario-prev").addEventListener("click",function(){if(position>0)select(visible[position-1]);});
+  document.getElementById("scenario-next").addEventListener("click",function(){if(position<visible.length-1)select(visible[position+1]);});
  }
- wrapper.innerHTML=data.scenarios.map(function(s,i){return '<button type="button" class="scenario-tab'+(i===0?" active":"")+'" data-scenario="'+esc(s.id)+'" aria-pressed="'+(i===0)+'">'+esc(s.title)+'</button>';}).join("");
- wrapper.querySelectorAll("button").forEach(function(b){b.addEventListener("click",function(){var item=data.scenarios.find(function(s){return s.id===b.getAttribute("data-scenario")});if(item)select(item);});});
- select(data.scenarios[0]);
+ function updateGroups(){
+  var groups=["Destacados","Todos"].concat(data.scenarioGroups||[]);
+  groupBox.innerHTML=groups.map(function(g){var n=g==="Destacados"?data.scenarios.filter(function(s){return s.featured;}).length:g==="Todos"?data.scenarios.length:data.scenarios.filter(function(s){return s.group===g;}).length;return '<button class="industry-group" type="button" data-industry="'+esc(g)+'" aria-pressed="'+(g===selectedGroup)+'">'+esc(g)+'<span class="group-number">'+n+'</span></button>';}).join("");
+  groupBox.querySelectorAll("button").forEach(function(b){b.addEventListener("click",function(){selectedGroup=b.getAttribute("data-industry");input.value="";selectedCase=null;updateGroups();refresh();});});
+ }
+ function refresh(){
+  var q=normalize(input.value);
+  visible=data.scenarios.filter(function(s){return (q||selectedGroup==="Todos"||(selectedGroup==="Destacados"?s.featured:s.group===selectedGroup))&&(!q||normalize([s.title,s.sector,s.group,s.problem,s.lead,s.steps.join(" ")].join(" ")).includes(q));});
+  count.textContent=visible.length+" de "+data.scenarios.length+" ejemplos de negocio";
+  if(!visible.length){wrapper.innerHTML="";panel.innerHTML='<div class="scenario-empty"><strong>No encontramos ese ejemplo</strong>Prueba otra palabra o explora todos los negocios.<br><button id="scenario-reset" type="button">Ver todos los ejemplos</button></div>';document.getElementById("scenario-reset").addEventListener("click",function(){input.value="";selectedGroup="Todos";selectedCase=null;updateGroups();refresh();});return;}
+  var chosen=visible.find(function(s){return s.id===selectedCase;})||visible[0];
+  wrapper.innerHTML=visible.map(function(s){return '<button type="button" class="scenario-tab'+(s.id===chosen.id?" active":"")+'" data-scenario="'+esc(s.id)+'" aria-pressed="'+(s.id===chosen.id)+'">'+esc(s.title)+'</button>';}).join("");
+  wrapper.querySelectorAll("button").forEach(function(b){b.addEventListener("click",function(){var s=visible.find(function(x){return x.id===b.getAttribute("data-scenario");});if(s)select(s);});});
+  select(chosen);
+ }
+ input.addEventListener("input",function(){selectedGroup="Todos";selectedCase=null;updateGroups();refresh();});
+ updateGroups();refresh();
 }
 function renderAddons(){
  var groupNames={Operación:"Organiza tu operación",Comercio:"Vende más veces",Soluciones:"Soluciones por industria",Especializados:"Servicios y herramientas especiales"};
