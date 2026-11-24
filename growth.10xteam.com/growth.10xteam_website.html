@@ -2493,103 +2493,21 @@ body {
 @media(prefers-reduced-motion:reduce){.txshow-pulse{animation:none}.txshow-section .txeco-tile{transition:none}}
 </style>
 <style id="growth-savings-calculator-premium-v4">
-/* Focused 10xteam calculator: 8 selectable reference apps, two counters, plan and answer. */
-.txsave-section{position:relative;overflow:hidden;background:linear-gradient(158deg,#0c1220 0%,#101c2b 62%,#0c1723 100%);color:#edf7ff;padding:65px 16px 53px}
-.txsave-section:before{content:"";position:absolute;right:-100px;top:-220px;width:580px;height:580px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(52,187,147,.11),transparent 68%)}
-.txsave-wrap{max-width:1120px;margin:0 auto;position:relative}
-.txsave-intro{text-align:center;max-width:830px;margin:0 auto 29px}
-.txsave-eyebrow{font-size:11px;font-weight:850;letter-spacing:.13em;text-transform:uppercase;color:#8decc9;display:block;margin-bottom:11px}
-.txsave-intro h2{font-size:clamp(29px,3.5vw,44px);font-family:var(--tx-font-display);line-height:1.14;letter-spacing:-.034em;margin:0 0 10px;color:#fbfdff}
-.txsave-intro p{font-size:14.5px;line-height:1.5;color:#b7c9d9;margin:0}
-.txsave-shell{display:grid;grid-template-columns:minmax(0,1.42fr) minmax(315px,.84fr);align-items:stretch;gap:19px}
-.txsave-left,.txsave-right{min-width:0;border:1px solid rgba(130,161,192,.25);border-radius:20px;box-shadow:0 16px 48px rgba(1,5,18,.21)}
-.txsave-left{background:linear-gradient(140deg,#152235,#111d2d);padding:22px}
-.txsave-right{background:radial-gradient(circle at 83% 0%,rgba(77,210,160,.12),transparent 50%),linear-gradient(150deg,#15283a,#102435);padding:25px 25px 22px;display:flex;flex-direction:column}
-.txsave-title-row{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:14px}
-.txsave-kicker{font-size:9.5px;font-weight:900;letter-spacing:.095em;color:#87e6c0}
-.txsave-title-row h3{font-size:17px;line-height:1.2;margin:4px 0 0;color:white}
-.txsave-selected-count{font-size:10px;font-weight:750;color:#b1d9ca;border:1px solid #39675e;background:#163b36;padding:6px 9px;border-radius:999px;white-space:nowrap}
-.txsave-apps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
-.txsave-app{position:relative;display:flex;align-items:center;flex-direction:column;text-align:center;justify-content:center;gap:6px;min-width:0;min-height:97px;padding:10px 4px 8px;border:1px solid #35475d;border-radius:12px;background:#0e1a2a;color:#e6f0fb;cursor:pointer;font-family:inherit;transition:background .16s,box-shadow .16s,border-color .16s}
-.txsave-app:hover{background:#1c2e43;box-shadow:0 0 18px rgba(97,194,214,.09)}
-.txsave-app.is-selected{background:linear-gradient(145deg,#1b403b,#16332f);border-color:#65d1ac;box-shadow:inset 0 1px rgba(170,255,213,.1)}
-.txsave-logo{position:relative;display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:#f0f6ff;box-shadow:0 3px 10px rgba(1,5,14,.18);overflow:hidden}
-.txsave-logo>span{color:#34516b;font-size:15px;font-weight:900}
-.txsave-logo img{position:absolute;inset:4px;width:26px;height:26px;object-fit:contain}
-.txsave-app-body{display:flex;flex-direction:column;gap:2px;min-width:0;align-items:center}
-.txsave-app-body strong{font-size:11.5px;line-height:1.12;font-weight:800;color:#f6faff;white-space:normal}
-.txsave-app-body small{font-size:9px;line-height:1.1;color:#9bb4c8;white-space:nowrap}
-.txsave-app-check{position:absolute;right:6px;top:6px;display:grid;place-items:center;width:15px;height:15px;background:#6fe5b8;color:#0c3026;font-size:10px;font-weight:850;border-radius:50%;opacity:0}
-.txsave-app.is-selected .txsave-app-check{opacity:1}
-.txsave-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
-.txsave-stepper-field{display:flex;flex-direction:column;gap:8px;min-width:0}
-.txsave-stepper-field label{font-size:11px;color:#c1d4e7;font-weight:750;line-height:1.3}
-.txsave-stepper-field label span{display:inline;cursor:help;color:#83e8c5}
-.txsave-stepper{height:44px;width:100%;display:flex;align-items:center;justify-content:space-between;border:1px solid #445b75;background:#0c1928;border-radius:10px;overflow:hidden}
-.txsave-stepper button{height:44px;width:43px;border:0;background:none;color:#dcecff;font-size:22px;cursor:pointer;flex:0 0 43px}
-.txsave-stepper button:hover{background:#243c4d}
-.txsave-stepper output{font-size:20px;font-weight:850;font-variant-numeric:tabular-nums}
-.txsave-plan-row{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:17px}
-.txsave-plan-row>span{font-size:12px;color:#c4d5e7;font-weight:750}
-.txsave-plan-toggle{display:flex;gap:4px;background:#0d1928;border:1px solid #38536a;padding:4px;border-radius:10px}
-.txsave-plan-toggle button{display:flex;align-items:center;flex-direction:column;gap:3px;min-width:97px;padding:8px 13px;color:#b7cadc;background:none;border:0;border-radius:7px;cursor:pointer;font-size:12px;font-weight:850;font-family:inherit}
-.txsave-plan-toggle button small{font-size:9px;color:inherit;opacity:.78;font-weight:600}
-.txsave-plan-toggle button.is-selected{background:#265a4a;color:#ddffed;box-shadow:0 2px 7px rgba(0,0,0,.13)}
-.txsave-adjust{margin-top:14px;border-top:1px solid #304255}
-.txsave-adjust summary{font-size:10.5px;color:#94d9c4;cursor:pointer;padding:12px 0 2px;display:flex;align-items:center;justify-content:space-between;list-style:none}
-.txsave-adjust summary::-webkit-details-marker{display:none}
-.txsave-adjust[open] summary span{transform:rotate(45deg)}
-.txsave-adjust-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:13px 0 3px}
-.txsave-adjust-grid label{display:flex;flex-direction:column;gap:5px;font-size:10px;color:#bfcedc;min-width:0}
-.txsave-adjust-grid input{width:100%;min-width:0;background:#091525;border:1px solid #4a6179;border-radius:7px;padding:8px 6px;font:inherit;font-size:12px;color:#fff}
-.txsave-result-title{display:flex;align-items:center;gap:9px;font-size:11px;color:#b4dbcf;letter-spacing:.095em;font-weight:850;margin-bottom:24px}
-.txsave-result-mark{display:grid;place-items:center;width:30px;height:30px;background:#255e4d;color:#b5ffe3;border:1px solid #508776;border-radius:9px;font-size:19px}
-.txsave-mxn{margin-left:auto;color:#7aacc3;border:1px solid #365565;border-radius:999px;padding:4px 8px;font-size:9px;letter-spacing:.06em}
-.txsave-price-row{display:flex;gap:10px;align-items:baseline;justify-content:space-between;color:#c5d5e2;font-size:12px;line-height:1.35}
-.txsave-price-row strong{color:#f9fcff;font-variant-numeric:tabular-nums;font-size:20px;line-height:1.25;letter-spacing:-.03em;white-space:nowrap}
-.txsave-price-ours{margin-top:18px}
-.txsave-price-ours b{color:#80edc3}
-.txsave-bars{margin-top:9px;background:#26384c;border-radius:100px;height:8px;overflow:hidden}
-.txsave-bars>div{width:0;height:100%;border-radius:100px;transition:width .28s ease}
-.txsave-bar-apps{background:linear-gradient(90deg,#6a83b3,#9ab3d9)}
-.txsave-bar-growth{background:linear-gradient(90deg,#21ad87,#8df1c7)}
-.txsave-plan-detail{font-size:10px;color:#a0c6bb;margin-top:8px;line-height:1.4}
-.txsave-annual{display:flex;flex-direction:column;gap:8px;margin:26px 0 19px;padding:23px 18px;border-radius:16px;border:1px solid #3e9379;background:radial-gradient(circle at 95% 0%,rgba(123,255,193,.15),transparent 60%),linear-gradient(135deg,#184c44,#153b43)}
-.txsave-annual>span{font-size:12px;font-weight:800;color:#c3f4dc}
-.txsave-annual strong{font-size:clamp(31px,3.7vw,44px);letter-spacing:-.046em;line-height:1.05;font-weight:850;color:#9cfed4;font-variant-numeric:tabular-nums}
-.txsave-annual small{font-size:11px;color:#b8ded2;line-height:1.4}
-.txsave-annual.is-negative{background:#322a35;border-color:#907887}
-.txsave-annual.is-negative strong{color:#ffd8ca}
-.txsave-cta{display:block;text-align:center;text-decoration:none;border-radius:11px;background:linear-gradient(90deg,#65dfaf,#86eec0);color:#0f3027!important;font-size:13px;font-weight:850;padding:14px 10px;margin-top:auto}
-.txsave-cta span{margin-left:9px}
-.txsave-source{font-size:10px;line-height:1.55;color:#a4b6c7;margin:18px auto 0;text-align:center;max-width:980px}
-.txsave-source a{color:#91e8c7;text-underline-offset:2px}
-.txsave-app:focus-visible,.txsave-stepper button:focus-visible,.txsave-plan-toggle button:focus-visible,.txsave-adjust summary:focus-visible{outline:2px solid #9bf7d4;outline-offset:2px}
-@media(max-width:950px){.txsave-shell{grid-template-columns:1fr;max-width:670px;margin:auto}.txsave-right{min-height:0}.txsave-annual{margin:18px 0}.txsave-result-title{margin-bottom:17px}}
-@media(max-width:550px){
- .txsave-section{padding:50px 12px 43px}
- .txsave-intro{margin-bottom:24px}
- .txsave-intro h2{font-size:clamp(26px,6.8vw,34px)}
- .txsave-intro p{font-size:13px}
- .txsave-left,.txsave-right{border-radius:15px;padding:16px}
- .txsave-shell{gap:12px}
- .txsave-apps{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
- .txsave-app{min-height:84px;padding:9px 2px 6px;gap:5px;border-radius:9px}
- .txsave-logo{width:29px;height:29px;border-radius:8px}
- .txsave-logo img{width:23px;height:23px;inset:3px}
- .txsave-app-body strong{font-size:10px}
- .txsave-app-body small{font-size:8px}
- .txsave-app-check{width:13px;height:13px;font-size:9px;right:4px;top:4px}
- .txsave-controls{gap:10px}
- .txsave-stepper button{width:39px;flex-basis:39px}
- .txsave-plan-row{gap:9px}
- .txsave-plan-toggle button{min-width:78px;padding:8px 9px}
- .txsave-result-title{margin-bottom:16px}
- .txsave-annual{padding:18px;margin:20px 0 15px}
- .txsave-adjust-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(max-width:360px){.txsave-apps{grid-template-columns:repeat(4,minmax(0,1fr))}.txsave-app-body strong{font-size:9px}.txsave-app-body small{font-size:7.5px}.txsave-plan-toggle button{min-width:73px}.txsave-price-row strong{font-size:18px}}
-@media(prefers-reduced-motion:reduce){.txsave-app,.txsave-bars>div{transition:none!important}}
+.txvalue-section{background:radial-gradient(ellipse at 85% 42%,#14392f 0%,#102330 28%,#0b1420 65%);color:#ecf6ff;padding:50px 15px 43px;overflow:hidden}.txvalue-wrap{max-width:1120px;margin:auto}.txvalue-intro{text-align:center;margin:0 auto 21px;max-width:850px}.txvalue-eyebrow{display:block;text-transform:uppercase;letter-spacing:.13em;font-size:11px;font-weight:850;color:#8fe9c8;margin-bottom:9px}.txvalue-intro h2{font-family:var(--tx-font-display);font-size:clamp(27px,3.6vw,43px);letter-spacing:-.04em;line-height:1.14;margin:0 0 11px;color:#fff}.txvalue-intro h2 em{font-style:normal;color:#91f2cc}.txvalue-intro p{font-size:14px;line-height:1.5;color:#afc4d6;margin:0}
+.txvalue-marquee{position:relative;overflow:hidden;border-block:1px solid #304a57;background:#1327329c;padding:10px 0;margin:0 auto 21px;mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}.txvalue-marquee-track{display:flex;width:max-content;animation:txvalue-scroll 48s linear infinite}.txvalue-marquee:hover .txvalue-marquee-track,.txvalue-marquee:focus-within .txvalue-marquee-track{animation-play-state:paused}.txvalue-strip{display:flex;align-items:center;flex-shrink:0}.txvalue-strip>span{white-space:nowrap;color:#cee6ec;font-size:11px;font-weight:720;display:flex;align-items:center;gap:17px;padding:0 15px}.txvalue-strip i{font-style:normal;color:#77debc;font-size:10px}@keyframes txvalue-scroll{to{transform:translateX(-50%)}}
+.txvalue-shell{display:grid;grid-template-columns:minmax(0,1.33fr) minmax(310px,.9fr);gap:16px;align-items:stretch}.txvalue-inputs,.txvalue-result{border:1px solid #384e62;border-radius:17px;min-width:0;box-sizing:border-box;box-shadow:0 15px 40px #02061145}.txvalue-inputs{background:linear-gradient(145deg,#19283a,#101c2c);padding:19px}.txvalue-result{display:flex;flex-direction:column;background:linear-gradient(150deg,#142b36,#112432 60%,#112b2c);padding:19px}
+.txvalue-app-header{display:flex;justify-content:space-between;align-items:end;gap:8px;margin-bottom:12px}.txvalue-kicker{color:#82ddbf;font-size:9px;letter-spacing:.12em;font-weight:850}.txvalue-app-header h3{font-size:16px;color:#fff;margin:4px 0 0}.txvalue-link{background:none;border:0;padding:5px 0;color:#9ff4d5;font-size:11px;font-weight:750;cursor:pointer;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.txvalue-apps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.txvalue-app{display:flex;align-items:center;position:relative;min-width:0;min-height:37px;gap:7px;padding:6px 7px;border:1px solid #3b4e62;border-radius:8px;background:#111d2c;color:#c5d5e5;font:inherit;font-size:11px;text-align:left;line-height:1.17;cursor:pointer;transition:border-color .15s,background .15s}.txvalue-app>span:nth-child(2){flex:1;min-width:0;font-weight:720;overflow-wrap:anywhere}.txvalue-icon{width:23px;height:23px;flex:0 0 23px;display:grid;place-items:center;background:#253b53;border-radius:6px;color:#a4c4ef;font-size:15px;font-weight:850}.txvalue-app i{font-size:10px;font-style:normal;color:#adffdc;opacity:0;flex:0 0 9px}.txvalue-app.is-selected{background:#1c3d3a;border-color:#65bd9c;color:#f0fff9}.txvalue-app.is-selected .txvalue-icon{background:#27564b;color:#a3f7d8}.txvalue-app.is-selected i{opacity:1}.txvalue-app:hover{border-color:#85e7c6}.txvalue-divider{height:1px;background:#32485b;margin:15px 0}
+.txvalue-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.txvalue-field{min-width:0;display:flex;flex-direction:column;gap:7px}.txvalue-field>span{font-size:11px;font-weight:750;color:#c6d7e6}.txvalue-stepper{display:flex;justify-content:space-between;align-items:center;height:39px;background:#0d1928;border:1px solid #445b72;border-radius:9px}.txvalue-stepper button{height:38px;width:39px;border:0;background:none;color:#e6f4ff;font-size:20px;cursor:pointer}.txvalue-stepper button:hover{background:#213d49}.txvalue-stepper output{font-size:18px;font-weight:850;font-variant-numeric:tabular-nums}
+.txvalue-plan-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:14px 0 0}.txvalue-plan-row>span{font-size:11px;font-weight:750;color:#c8d9e9}.txvalue-plan{display:flex;gap:3px;background:#0e1928;border:1px solid #3d5267;padding:3px;border-radius:9px}.txvalue-plan button{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:89px;background:none;border:0;border-radius:6px;padding:7px 10px;color:#b9cdde;font:inherit;font-size:12px;font-weight:800;cursor:pointer}.txvalue-plan button small{font-size:9px;opacity:.83;font-weight:550}.txvalue-plan button.is-selected{background:#285747;color:#dcffeb}.txvalue-scenario{margin-top:12px;font-size:10px;color:#91abbc;line-height:1.4}
+.txvalue-result-top{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:10px;font-weight:850;letter-spacing:.08em;color:#b8e7d9;margin-bottom:17px}.txvalue-result-top>span:last-child{font-size:9px;border:1px solid #426273;color:#9ccbd7;padding:3px 7px;border-radius:999px}.txvalue-money-row{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#bfd4e1;font-size:12px}.txvalue-money-row>span{display:flex;flex-wrap:wrap;align-items:center;gap:4px;min-width:0}.txvalue-money-row small{font-size:9px;color:#a4bbcc}.txvalue-money-row>strong{font-size:19px;color:#fff;letter-spacing:-.035em;font-variant-numeric:tabular-nums;white-space:nowrap}.txvalue-brand-row{margin-top:13px}.txvalue-brand-row img{object-fit:contain;width:14px;height:18px}.txvalue-brand-row b{font-size:12px;color:#a6f8d6}.txvalue-track{height:7px;background:#293e50;border-radius:99px;overflow:hidden;margin-top:7px}.txvalue-track i{display:block;height:100%;width:0;background:linear-gradient(90deg,#6681a8,#a4bbd8);border-radius:99px;transition:width .25s}.txvalue-track-brand i{background:linear-gradient(90deg,#25b89a,#89f1c6)}.txvalue-account-note{font-size:10px;line-height:1.35;color:#a9cbbd;margin:7px 0 0}
+.txvalue-savings{margin:16px 0 12px;padding:14px 13px 12px;background:linear-gradient(135deg,#20564a,#164443);border:1px solid #478f79;border-radius:12px}.txvalue-savings-top{display:flex;justify-content:space-between;align-items:center;gap:7px;color:#c4f3df;font-size:11px;font-weight:750}.txvalue-savings-top>strong{font-size:11px;color:#b1f5d5}.txvalue-savings>strong{display:block;font-size:clamp(29px,3.4vw,40px);line-height:1.07;letter-spacing:-.045em;color:#a4ffd6;font-variant-numeric:tabular-nums;margin:6px 0}.txvalue-savings>small{color:#c1dfd5;font-size:10px;line-height:1.3;display:block}.txvalue-savings.is-negative{background:#30313a;border-color:#74616e}.txvalue-savings.is-negative>strong{color:#ffd9d0}
+.txvalue-labor{padding:11px 0 0;border-top:1px solid #3b5860;margin-bottom:13px}.txvalue-labor-title{display:flex;align-items:center;justify-content:space-between;gap:7px;font-size:11px;color:#d0e4e6;font-weight:750}.txvalue-sim{font-size:8px;letter-spacing:.065em;color:#a3c5c7}.txvalue-labor-values{display:grid;grid-template-columns:.9fr 1.1fr;gap:12px;margin-top:9px}.txvalue-labor-values>div{display:flex;flex-direction:column;gap:2px}.txvalue-labor-values strong{font-size:23px;font-weight:850;line-height:1.05;color:#e3f9f2;letter-spacing:-.04em;font-variant-numeric:tabular-nums}.txvalue-labor-values small{font-size:10px;color:#b8ccd5;line-height:1.3}.txvalue-labor p{font-size:9px;line-height:1.4;margin:8px 0 0;color:#95b4be}.txvalue-cta{display:block;text-align:center;text-decoration:none;background:linear-gradient(90deg,#59dfac,#84efc2);color:#0b3226!important;font-size:13px;font-weight:850;padding:12px 10px;border-radius:10px;margin-top:auto}.txvalue-cta span{margin-left:7px}.txvalue-source{color:#9cb0c2;text-align:center;font-size:10px;line-height:1.45;max-width:960px;margin:15px auto 0}
+.txvalue-app:focus-visible,.txvalue-stepper button:focus-visible,.txvalue-plan button:focus-visible,.txvalue-link:focus-visible{outline:2px solid #a3f5d3;outline-offset:2px}
+@media(max-width:900px){.txvalue-shell{grid-template-columns:1fr;max-width:620px;margin:auto}.txvalue-apps{grid-template-columns:repeat(3,minmax(0,1fr))}.txvalue-result{padding:19px}}
+@media(max-width:540px){.txvalue-section{padding:39px 10px 34px}.txvalue-intro{margin-bottom:16px}.txvalue-intro h2{font-size:clamp(25px,6.9vw,34px)}.txvalue-intro p{font-size:12.5px}.txvalue-marquee{margin-bottom:15px;padding:8px 0}.txvalue-shell{gap:11px}.txvalue-inputs,.txvalue-result{padding:13px;border-radius:13px}.txvalue-apps{gap:5px}.txvalue-app{min-height:37px;padding:5px 3px;gap:4px;font-size:9.5px}.txvalue-icon{width:17px;height:18px;flex-basis:17px;font-size:12px;border-radius:4px}.txvalue-app i{font-size:8px;flex-basis:7px}.txvalue-app-header h3{font-size:15px}.txvalue-link{font-size:10px}.txvalue-controls{gap:9px}.txvalue-plan button{min-width:72px;padding:6px 8px}.txvalue-scenario{font-size:9px}.txvalue-money-row>strong{font-size:18px}.txvalue-result-top{margin-bottom:12px}.txvalue-savings{margin-top:13px}}
+@media(max-width:345px){.txvalue-app{font-size:9px;gap:3px}.txvalue-icon{width:15px;flex-basis:15px}.txvalue-inputs,.txvalue-result{padding:11px}.txvalue-plan button{min-width:67px}}
+@media(prefers-reduced-motion:reduce){.txvalue-marquee-track{animation:none}.txvalue-marquee{overflow-x:auto;mask-image:none}.txvalue-track i,.txvalue-app{transition:none}}
 </style>
 </head>
 <body>
@@ -2980,88 +2898,35 @@ body {
  </div>
 </section>
 
-<section id="calculadora-ahorro" class="txsave-section" aria-labelledby="txsave-title">
- <div class="txsave-wrap">
-  <header class="txsave-intro">
-   <span class="txsave-eyebrow">Calculadora de ahorro</span>
-   <h2 id="txsave-title">¿Cuánto pagarías por todas estas aplicaciones?</h2>
-   <p>Selecciona tus herramientas y descubre el valor de tener tu operación conectada.</p>
-  </header>
-  <div class="txsave-shell">
-   <div class="txsave-left">
-    <div class="txsave-title-row"><div><span class="txsave-kicker">01 · HERRAMIENTAS</span><h3>¿Cuáles utilizas?</h3></div><span class="txsave-selected-count" id="txsave-selected-count">4 seleccionadas</span></div>
-    <div class="txsave-apps" role="group" aria-label="Aplicaciones para comparar"><button class="txsave-app is-selected" type="button" data-app="crm" aria-pressed="true" title="Salesforce: referencia de MXN $445 por usuario/mes">
-  <span class="txsave-logo"><span aria-hidden="true">S</span><img src="https://www.google.com/s2/favicons?sz=64&domain=salesforce.com" alt="" loading="lazy" width="30" height="30" referrerpolicy="no-referrer"></span>
-  <span class="txsave-app-body"><strong>CRM</strong><small>Salesforce</small></span>
-  <span class="txsave-app-check" aria-hidden="true">✓</span>
- </button>
-<button class="txsave-app is-selected" type="button" data-app="tasks" aria-pressed="true" title="Asana: referencia de MXN $240 por usuario/mes">
-  <span class="txsave-logo"><span aria-hidden="true">A</span><img src="https://www.google.com/s2/favicons?sz=64&domain=asana.com" alt="" loading="lazy" width="30" height="30" referrerpolicy="no-referrer"></span>
-  <span class="txsave-app-body"><strong>Proyectos</strong><small>Asana</small></span>
-  <span class="txsave-app-check" aria-hidden="true">✓</span>
- </button>
-<button class="txsave-app is-selected" type="button" data-app="ai" aria-pressed="true" title="ChatGPT: referencia de MXN $356 por usuario/mes">
-  <span class="txsave-logo"><span aria-hidden="true">C</span><img src="https://www.google.com/s2/favicons?sz=64&domain=chatgpt.com" alt="" loading="lazy" width="30" height="30" referrerpolicy="no-referrer"></span>
-  <span class="txsave-app-body"><strong>IA</strong><small>ChatGPT</small></span>
-  <span class="txsave-app-check" aria-hidden="true">✓</span>
- </button>
-<button class="txsave-app is-selected" type="button" data-app="calendar" aria-pressed="true" title="Calendly: referencia de MXN $214 por usuario/mes">
-  <span class="txsave-logo"><span aria-hidden="true">C</span><img src="https://www.google.com/s2/favicons?sz=64&domain=calendly.com" alt="" loading="lazy" width="30" height="30" referrerpolicy="no-referrer"></span>
-  <span class="txsave-app-body"><strong>Citas</strong><small>Calendly</small></span>
-  <span class="txsave-app-check" aria-hidden="true">✓</span>
- </button>
-<button class="txsave-app " type="button" data-app="web" aria-pressed="false" title="Wix: referencia de MXN $516 por usuario/mes">
-  <span class="txsave-logo"><span aria-hidden="true">W</span><img src="https://www.google.com/s2/favicons?sz=64&domain=wix.com" alt="" loading="lazy" width="30" height="30" referrerpolicy="no-referrer"></span>
-  <span class="txsave-app-body"><strong>Páginas web</strong><small>Wix</small></span>
-  <span class="txsave-app-check" aria-hidden="true">✓</span>
- </button>
-<button class="txsave-app " type="button" data-app="team" aria-pressed="false" title="Slack: referencia de MXN $169 por usuario/mes">
-  <span class="txsave-logo"><span aria-hidden="true">S</span><img src="https://www.google.com/s2/favicons?sz=64&domain=slack.com" alt="" loading="lazy" width="30" height="30" referrerpolicy="no-referrer"></span>
-  <span class="txsave-app-body"><strong>Comunicación</strong><small>Slack</small></span>
-  <span class="txsave-app-check" aria-hidden="true">✓</span>
- </button>
-<button class="txsave-app " type="button" data-app="files" aria-pressed="false" title="Google Drive: referencia de MXN $231 por usuario/mes">
-  <span class="txsave-logo"><span aria-hidden="true">G</span><img src="https://www.google.com/s2/favicons?sz=64&domain=drive.google.com" alt="" loading="lazy" width="30" height="30" referrerpolicy="no-referrer"></span>
-  <span class="txsave-app-body"><strong>Archivos</strong><small>Google Drive</small></span>
-  <span class="txsave-app-check" aria-hidden="true">✓</span>
- </button>
-<button class="txsave-app " type="button" data-app="boards" aria-pressed="false" title="Miro: referencia de MXN $178 por usuario/mes">
-  <span class="txsave-logo"><span aria-hidden="true">M</span><img src="https://www.google.com/s2/favicons?sz=64&domain=miro.com" alt="" loading="lazy" width="30" height="30" referrerpolicy="no-referrer"></span>
-  <span class="txsave-app-body"><strong>Pizarras</strong><small>Miro</small></span>
-  <span class="txsave-app-check" aria-hidden="true">✓</span>
- </button></div>
-    <div class="txsave-controls">
-      <div class="txsave-stepper-field"><label id="txsave-people-label">Personas en tu equipo</label><div class="txsave-stepper" role="group" aria-labelledby="txsave-people-label">
-       <button type="button" id="txsave-people-minus" aria-label="Reducir personas">−</button><output id="txsave-people">5</output><button type="button" id="txsave-people-plus" aria-label="Aumentar personas">+</button>
-      </div></div>
-      <div class="txsave-stepper-field"><label id="txsave-brands-label">Negocios o marcas <span title="Para estimar varias cuentas, solo el CRM se multiplica por marca. Las otras licencias se consideran compartidas por el mismo equipo." aria-label="Hipótesis de licencias externas por marcas">ⓘ</span></label><div class="txsave-stepper" role="group" aria-labelledby="txsave-brands-label">
-       <button type="button" id="txsave-brands-minus" aria-label="Reducir marcas">−</button><output id="txsave-brands">1</output><button type="button" id="txsave-brands-plus" aria-label="Aumentar marcas">+</button>
-      </div></div>
+<section id="calculadora-ahorro" class="txvalue-section" aria-labelledby="txvalue-title">
+ <div class="txvalue-wrap">
+  <header class="txvalue-intro"><span class="txvalue-eyebrow">Una inversión. Mucho más valor.</span><h2 id="txvalue-title">Menos aplicaciones. <em>Más capacidad para crecer.</em></h2><p>Compara cuánto invertirías en herramientas separadas y cuánto podrías recuperar al conectar tu operación.</p></header>
+  <div class="txvalue-marquee" aria-label="Capacidades de 10xteam" tabindex="0"><div class="txvalue-marquee-track"><div class="txvalue-strip"><span>CRM<i aria-hidden="true">✦</i></span><span>Emailing<i aria-hidden="true">✦</i></span><span>Chatbot<i aria-hidden="true">✦</i></span><span>Posting<i aria-hidden="true">✦</i></span><span>Ad manager<i aria-hidden="true">✦</i></span><span>Redes sociales<i aria-hidden="true">✦</i></span><span>Secuencias<i aria-hidden="true">✦</i></span><span>Automatizaciones<i aria-hidden="true">✦</i></span><span>Agenda y citas<i aria-hidden="true">✦</i></span><span>Formularios<i aria-hidden="true">✦</i></span><span>Landing pages<i aria-hidden="true">✦</i></span><span>Páginas web<i aria-hidden="true">✦</i></span><span>Conversaciones<i aria-hidden="true">✦</i></span><span>Analítica<i aria-hidden="true">✦</i></span><span>Reportes<i aria-hidden="true">✦</i></span><span>Embudos<i aria-hidden="true">✦</i></span><span>Pipeline<i aria-hidden="true">✦</i></span><span>IA<i aria-hidden="true">✦</i></span><span>Leads<i aria-hidden="true">✦</i></span><span>Cobros<i aria-hidden="true">✦</i></span><span>Tareas<i aria-hidden="true">✦</i></span><span>Reputación<i aria-hidden="true">✦</i></span><span>Integraciones<i aria-hidden="true">✦</i></span><span>WhatsApp<i aria-hidden="true">✦</i></span></div><div class="txvalue-strip" aria-hidden="true"><span>CRM<i aria-hidden="true">✦</i></span><span>Emailing<i aria-hidden="true">✦</i></span><span>Chatbot<i aria-hidden="true">✦</i></span><span>Posting<i aria-hidden="true">✦</i></span><span>Ad manager<i aria-hidden="true">✦</i></span><span>Redes sociales<i aria-hidden="true">✦</i></span><span>Secuencias<i aria-hidden="true">✦</i></span><span>Automatizaciones<i aria-hidden="true">✦</i></span><span>Agenda y citas<i aria-hidden="true">✦</i></span><span>Formularios<i aria-hidden="true">✦</i></span><span>Landing pages<i aria-hidden="true">✦</i></span><span>Páginas web<i aria-hidden="true">✦</i></span><span>Conversaciones<i aria-hidden="true">✦</i></span><span>Analítica<i aria-hidden="true">✦</i></span><span>Reportes<i aria-hidden="true">✦</i></span><span>Embudos<i aria-hidden="true">✦</i></span><span>Pipeline<i aria-hidden="true">✦</i></span><span>IA<i aria-hidden="true">✦</i></span><span>Leads<i aria-hidden="true">✦</i></span><span>Cobros<i aria-hidden="true">✦</i></span><span>Tareas<i aria-hidden="true">✦</i></span><span>Reputación<i aria-hidden="true">✦</i></span><span>Integraciones<i aria-hidden="true">✦</i></span><span>WhatsApp<i aria-hidden="true">✦</i></span></div></div></div>
+  <div class="txvalue-shell">
+   <div class="txvalue-inputs">
+    <div class="txvalue-app-header"><div><span class="txvalue-kicker">01 / TU OPERACIÓN</span><h3>¿Qué herramientas utilizas?</h3></div><button type="button" id="txvalue-all" class="txvalue-link">Seleccionar todas</button></div>
+    <div class="txvalue-apps" role="group" aria-label="Capacidades de software para comparar"><button class="txvalue-app is-selected" type="button" data-capability="0" data-rate-group="crm" aria-pressed="true"><span class="txvalue-icon" aria-hidden="true">◎</span><span>CRM</span><i aria-hidden="true">✓</i></button><button class="txvalue-app is-selected" type="button" data-capability="1" data-rate-group="crm" aria-pressed="true"><span class="txvalue-icon" aria-hidden="true">▥</span><span>Embudos</span><i aria-hidden="true">✓</i></button><button class="txvalue-app is-selected" type="button" data-capability="2" data-rate-group="email" aria-pressed="true"><span class="txvalue-icon" aria-hidden="true">✉</span><span>Emailing</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" type="button" data-capability="3" data-rate-group="email" aria-pressed="false"><span class="txvalue-icon" aria-hidden="true">↪</span><span>Secuencias</span><i aria-hidden="true">✓</i></button><button class="txvalue-app is-selected" type="button" data-capability="4" data-rate-group="chat" aria-pressed="true"><span class="txvalue-icon" aria-hidden="true">◉</span><span>Chatbot</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" type="button" data-capability="5" data-rate-group="chat" aria-pressed="false"><span class="txvalue-icon" aria-hidden="true">▤</span><span>Conversaciones</span><i aria-hidden="true">✓</i></button><button class="txvalue-app is-selected" type="button" data-capability="6" data-rate-group="ai" aria-pressed="true"><span class="txvalue-icon" aria-hidden="true">✦</span><span>IA</span><i aria-hidden="true">✓</i></button><button class="txvalue-app is-selected" type="button" data-capability="7" data-rate-group="auto" aria-pressed="true"><span class="txvalue-icon" aria-hidden="true">⚡</span><span>Automatizaciones</span><i aria-hidden="true">✓</i></button><button class="txvalue-app is-selected" type="button" data-capability="8" data-rate-group="calendar" aria-pressed="true"><span class="txvalue-icon" aria-hidden="true">▦</span><span>Agenda y citas</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" type="button" data-capability="9" data-rate-group="forms" aria-pressed="false"><span class="txvalue-icon" aria-hidden="true">☷</span><span>Formularios</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" type="button" data-capability="10" data-rate-group="web" aria-pressed="false"><span class="txvalue-icon" aria-hidden="true">▣</span><span>Landing pages</span><i aria-hidden="true">✓</i></button><button class="txvalue-app is-selected" type="button" data-capability="11" data-rate-group="web" aria-pressed="true"><span class="txvalue-icon" aria-hidden="true">▧</span><span>Páginas web</span><i aria-hidden="true">✓</i></button><button class="txvalue-app is-selected" type="button" data-capability="12" data-rate-group="social" aria-pressed="true"><span class="txvalue-icon" aria-hidden="true">◌</span><span>Redes sociales</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" type="button" data-capability="13" data-rate-group="social" aria-pressed="false"><span class="txvalue-icon" aria-hidden="true">↗</span><span>Posting</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" type="button" data-capability="14" data-rate-group="ads" aria-pressed="false"><span class="txvalue-icon" aria-hidden="true">◈</span><span>Ad manager</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" type="button" data-capability="15" data-rate-group="crm" aria-pressed="false"><span class="txvalue-icon" aria-hidden="true">▥</span><span>Analítica y reportes</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" type="button" data-capability="16" data-rate-group="tasks" aria-pressed="false"><span class="txvalue-icon" aria-hidden="true">✓</span><span>Tareas</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" type="button" data-capability="17" data-rate-group="reviews" aria-pressed="false"><span class="txvalue-icon" aria-hidden="true">☆</span><span>Reputación</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" type="button" data-capability="18" data-rate-group="sign" aria-pressed="false"><span class="txvalue-icon" aria-hidden="true">✎</span><span>Documentos y firmas</span><i aria-hidden="true">✓</i></button></div>
+    <div class="txvalue-divider"></div>
+    <div class="txvalue-controls">
+      <div class="txvalue-field"><span id="txvalue-people-label">Personas por negocio</span><div class="txvalue-stepper" role="group" aria-labelledby="txvalue-people-label"><button type="button" id="txvalue-people-minus" aria-label="Quitar una persona">−</button><output id="txvalue-people">5</output><button type="button" id="txvalue-people-plus" aria-label="Agregar una persona">+</button></div></div>
+      <div class="txvalue-field"><span id="txvalue-brands-label">Negocios / marcas</span><div class="txvalue-stepper" role="group" aria-labelledby="txvalue-brands-label"><button type="button" id="txvalue-brands-minus" aria-label="Quitar un negocio">−</button><output id="txvalue-brands">1</output><button type="button" id="txvalue-brands-plus" aria-label="Agregar un negocio">+</button></div></div>
     </div>
-    <div class="txsave-plan-row"><span>Tu plan 10xteam</span><div class="txsave-plan-toggle" role="group" aria-label="Plan">
-      <button type="button" data-plan="growth" class="is-selected" aria-pressed="true">Growth <small>1 negocio</small></button>
-      <button type="button" data-plan="scale" aria-pressed="false">Scale <small>3 negocios</small></button>
-    </div></div>
-    <details class="txsave-adjust"><summary>¿Pagas otra tarifa? Personaliza las referencias <span aria-hidden="true">+</span></summary>
-       <div class="txsave-adjust-grid"><label><span>CRM</span><input type="number" data-rate="crm" min="0" max="100000" step="1" inputmode="decimal" value="445" aria-label="Costo mensual por persona Salesforce en MXN"></label><label><span>Proyectos</span><input type="number" data-rate="tasks" min="0" max="100000" step="1" inputmode="decimal" value="240" aria-label="Costo mensual por persona Asana en MXN"></label><label><span>IA</span><input type="number" data-rate="ai" min="0" max="100000" step="1" inputmode="decimal" value="356" aria-label="Costo mensual por persona ChatGPT en MXN"></label><label><span>Citas</span><input type="number" data-rate="calendar" min="0" max="100000" step="1" inputmode="decimal" value="214" aria-label="Costo mensual por persona Calendly en MXN"></label><label><span>Páginas web</span><input type="number" data-rate="web" min="0" max="100000" step="1" inputmode="decimal" value="516" aria-label="Costo mensual por persona Wix en MXN"></label><label><span>Comunicación</span><input type="number" data-rate="team" min="0" max="100000" step="1" inputmode="decimal" value="169" aria-label="Costo mensual por persona Slack en MXN"></label><label><span>Archivos</span><input type="number" data-rate="files" min="0" max="100000" step="1" inputmode="decimal" value="231" aria-label="Costo mensual por persona Google Drive en MXN"></label><label><span>Pizarras</span><input type="number" data-rate="boards" min="0" max="100000" step="1" inputmode="decimal" value="178" aria-label="Costo mensual por persona Miro en MXN"></label></div>
-    </details>
+    <div class="txvalue-plan-row"><span>Compara con</span><div class="txvalue-plan" role="group" aria-label="Plan 10xteam"><button type="button" data-plan="growth" class="is-selected" aria-pressed="true">Growth <small>1 negocio</small></button><button type="button" data-plan="scale" aria-pressed="false">Scale <small>3 negocios</small></button></div></div>
+    <div class="txvalue-scenario" id="txvalue-scenario">5 personas · 1 negocio · licencias independientes por negocio</div>
    </div>
-   <aside class="txsave-right">
-    <div class="txsave-result-title"><span class="txsave-result-mark" aria-hidden="true">✦</span><span>TU COMPARACIÓN</span><span class="txsave-mxn">MXN</span></div>
-    <div class="txsave-price-row"><span>Apps por separado</span><strong id="txsave-current">—</strong></div>
-    <div class="txsave-bars"><div class="txsave-bar-apps" id="txsave-bar-apps"></div></div>
-    <div class="txsave-price-row txsave-price-ours"><span>10xteam <b id="txsave-plan-name">Growth</b></span><strong id="txsave-ours">—</strong></div>
-    <div class="txsave-bars"><div class="txsave-bar-growth" id="txsave-bar-growth"></div></div>
-    <div class="txsave-plan-detail" id="txsave-plan-detail">1 negocio incluido · Activación prorrateada</div>
-    <div class="txsave-annual" id="txsave-annual-box">
-      <span id="txsave-annual-label">Ahorro anual estimado</span>
-      <strong id="txsave-annual">—</strong>
-      <small id="txsave-result-caption">5 personas · 1 negocio</small>
-    </div>
-    <a class="txsave-cta" href="#early-access">Descubrir mi potencial de ahorro <span aria-hidden="true">↗</span></a>
+   <aside class="txvalue-result" aria-label="Comparación estimada">
+     <div class="txvalue-result-top"><span>02 / TU AHORRO POTENCIAL</span><span>MXN</span></div>
+     <div class="txvalue-money-row"><span>Apps por separado <small id="txvalue-stack-count">—</small></span><strong id="txvalue-external">—</strong></div>
+     <div class="txvalue-track"><i id="txvalue-bar-external"></i></div>
+     <div class="txvalue-money-row txvalue-brand-row"><span><img src="/favicon.png" width="17" height="21" alt=""><b id="txvalue-plan-label">10xteam Growth</b></span><strong id="txvalue-internal">—</strong></div>
+     <div class="txvalue-track txvalue-track-brand"><i id="txvalue-bar-internal"></i></div>
+     <div class="txvalue-account-note" id="txvalue-plan-note">—</div>
+     <div class="txvalue-savings" id="txvalue-savings-box"><div class="txvalue-savings-top"><span id="txvalue-saving-title">Ahorro estimado en el primer año</span><strong id="txvalue-pct">—</strong></div><strong id="txvalue-saving">—</strong><small id="txvalue-saving-caption">Incluye activación inicial prorrateada.</small></div>
+     <div class="txvalue-labor"><div class="txvalue-labor-title"><span>Capacidad operativa recuperable</span><span class="txvalue-sim">SIMULACIÓN</span></div><div class="txvalue-labor-values"><div><strong id="txvalue-hours">—</strong><small>horas / mes</small></div><div><strong id="txvalue-fte">—</strong><small>equiv. personas de tiempo completo</small></div></div><p>Ejemplo: recuperar 1 h/semana por grupo de herramientas y negocio. Jornada de 40 h; no implica reducir plantilla.</p></div>
+     <a href="#early-access" class="txvalue-cta">Quiero crecer con 10xteam <span aria-hidden="true">↗</span></a>
    </aside>
   </div>
-  <p class="txsave-source">Precios de referencia obtenidos de páginas web y publicidad en línea (<a href="https://www.bitrix24.mx/brand/buy1-get35.php" target="_blank" rel="noopener noreferrer">marzo de 2026</a>). Estimación de licencias; consumos variables y diferencias funcionales no incluidos.</p>
+  <p class="txvalue-source">Precios obtenidos de páginas web y publicidad en línea. Estimación con licencias pagadas separadas por negocio (TC ilustrativo $18 MXN/USD); no incluye consumos variables ni impuestos.</p>
  </div>
 </section>
 
@@ -4076,49 +3941,47 @@ body {
 
 <script id="txsave-calculator-v4">
 (function(){
-  var root=document.getElementById('calculadora-ahorro');if(!root)return;
-  var $=function(id){return document.getElementById(id);};
-  var appButtons=Array.from(root.querySelectorAll('[data-app]'));
-  var rateInputs=Array.from(root.querySelectorAll('[data-rate]'));
-  var money=function(n){return new Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0}).format(n)};
-  var safe=function(n){return Number.isFinite(n)?Math.max(0,n):0};
-  var parse=function(t){return safe(Number(String(t||'').replace(/[^\d.]/g,'')))};
-  var people=5,brands=1,plan='growth';
-  function planCosts(){
-    var cards=document.querySelectorAll('.plans .card'),card=cards[plan==='growth'?0:1];
-    var price=parse(card&&card.querySelector('.price[data-price-mxn]')&&card.querySelector('.price[data-price-mxn]').getAttribute('data-price-mxn'));
-    var setup=parse(card&&card.querySelector('.setup b')&&card.querySelector('.setup b').textContent);
-    var included=plan==='growth'?1:3;
-    var extra=Math.max(0,brands-included);
-    var extraFee=parse(document.querySelector('.addon-subcuenta-price')?.textContent)||1190;
-    return {price:price,setup:setup,included:included,extra:extra,extraFee:extraFee,monthly:price+extra*extraFee};
-  }
-  function update(){
-    var active=appButtons.filter(function(b){return b.getAttribute('aria-pressed')==='true'});
-    var rates={};rateInputs.forEach(function(r){rates[r.dataset.rate]=safe(Number(r.value))});
-    // One shared team across brands; CRM is the only example charged once per brand.
-    var outside=people*active.reduce(function(sum,b){return sum+(rates[b.dataset.app]||0)*(b.dataset.app==='crm'?brands:1)},0);
-    var pc=planCosts(),inside=pc.monthly+pc.setup/12,annual=12*(outside-pc.monthly)-pc.setup;
-    var missing=!active.length||!pc.price;
-    var max=Math.max(outside,inside,1);
-    $('txsave-selected-count').textContent=active.length+' '+(active.length===1?'seleccionada':'seleccionadas');
-    $('txsave-people').textContent=people;$('txsave-brands').textContent=brands;$('txsave-plan-name').textContent=plan==='growth'?'Growth':'Scale';
-    $('txsave-current').textContent=active.length?money(outside)+'/mes':'—';
-    $('txsave-ours').textContent=pc.price?money(inside)+'/mes':'Consultar precio';
-    $('txsave-bar-apps').style.width=(active.length?Math.min(100,100*outside/max):0)+'%';
-    $('txsave-bar-growth').style.width=(pc.price?Math.min(100,100*inside/max):0)+'%';
-    $('txsave-plan-detail').textContent=pc.included+' '+(pc.included===1?'negocio incluido':'negocios incluidos')+(pc.extra?' + '+pc.extra+' adicional(es) × '+money(pc.extraFee)+'/mes':'')+' · Activación prorrateada';
-    var box=$('txsave-annual-box');box.classList.toggle('is-negative',missing||annual<0);
-    $('txsave-annual-label').textContent=missing?'Selecciona aplicaciones para comparar':annual>=0?'Ahorro anual estimado':'Diferencia anual estimada';
-    $('txsave-annual').textContent=missing?'—':(annual<0?'−':'')+money(Math.abs(annual));
-    $('txsave-result-caption').textContent=missing?'Elige las aplicaciones que pagas.':people+' '+(people===1?'persona':'personas')+' · '+brands+' '+(brands===1?'marca':'marcas')+' · '+(annual<0?'Las licencias externas son más económicas en este escenario.':'Ahorro ilustrativo; consumos variables aparte.');
-  }
-  appButtons.forEach(function(b){b.addEventListener('click',function(){var on=b.getAttribute('aria-pressed')==='true';b.setAttribute('aria-pressed',String(!on));b.classList.toggle('is-selected',!on);update()})});
-  function counter(id,delta,key){$(id).addEventListener('click',function(){if(key==='people')people=Math.max(1,Math.min(50,people+delta));else brands=Math.max(1,Math.min(20,brands+delta));update()})}
-  counter('txsave-people-minus',-1,'people');counter('txsave-people-plus',1,'people');counter('txsave-brands-minus',-1,'brands');counter('txsave-brands-plus',1,'brands');
-  root.querySelectorAll('[data-plan]').forEach(function(b){b.addEventListener('click',function(){plan=b.dataset.plan;root.querySelectorAll('[data-plan]').forEach(function(x){x.classList.toggle('is-selected',x===b);x.setAttribute('aria-pressed',String(x===b))});update()})});
-  rateInputs.forEach(function(x){x.addEventListener('input',update)});
-  update();
+ const root=document.getElementById('calculadora-ahorro');if(!root)return;
+ const $=id=>document.getElementById(id),buttons=[...root.querySelectorAll('[data-capability]')];
+ const rates={"crm":{"mxn":445,"unit":"seat","source":"https://www.bitrix24.mx/brand/buy1-get35.php","basis":"Salesforce, Mar 2026"},"email":{"mxn":234,"unit":"business","source":"https://mailchimp.com/pricing/marketing/","basis":"Mailchimp Essentials from USD 13/month"},"chat":{"mxn":702,"unit":"business","source":"https://help.manychat.com/en/articles/17742197-pro-plan","basis":"Manychat Pro USD 39/month"},"ai":{"mxn":356,"unit":"seat","source":"https://www.bitrix24.mx/brand/buy1-get35.php","basis":"ChatGPT, Mar 2026"},"auto":{"mxn":359.82,"unit":"business","source":"https://zapier.com/pricing","basis":"Zapier Professional from USD 19.99/month"},"calendar":{"mxn":214,"unit":"seat","source":"https://www.bitrix24.mx/brand/buy1-get35.php","basis":"Calendly, Mar 2026"},"forms":{"mxn":522,"unit":"business","source":"https://www.typeform.com/pricing","basis":"Typeform Basic USD 29/month reference"},"web":{"mxn":516,"unit":"business","source":"https://www.bitrix24.mx/brand/buy1-get35.php","basis":"Wix, Mar 2026; one site subscription conservatively"},"social":{"mxn":108,"unit":"business","source":"https://support.buffer.com/en-us/articles/buffer-pricing-and-features-6pJrOPuzIt","basis":"Buffer Essentials USD 6/month, one social channel"},"ads":{"mxn":882,"unit":"business","source":"https://adespresso.com/pricing/","basis":"AdEspresso Starter USD 49/month, excludes ad spend"},"tasks":{"mxn":240,"unit":"seat","source":"https://www.bitrix24.mx/brand/buy1-get35.php","basis":"Asana, Mar 2026"},"reviews":{"mxn":1350,"unit":"business","source":"https://get.nicejob.com/pricing?tab=suite","basis":"NiceJob Reviews USD 75/month"},"sign":{"mxn":342,"unit":"seat","source":"https://www.pandadoc.com/pricing/","basis":"PandaDoc Starter USD 19/seat/month billed annually"}};
+ const money=n=>new Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0}).format(n);
+ const parse=t=>Number(String(t||'').replace(/[^\d.]/g,''))||0;
+ // Price values are provisional public-page offer, consistently MXN regardless of page currency switch.
+ const cards=[...document.querySelectorAll('.plans .card')];
+ const plans=cards.map((card,i)=>({monthly:parse(card.querySelector('.price[data-price-mxn]')?.getAttribute('data-price-mxn')),setup:parse(card.querySelector('.setup .usd-secondary')?.getAttribute('data-mxn')||card.querySelector('.setup b')?.textContent),included:i===0?1:3}));
+ const extraFee=1190;
+ let people=5,brands=1,plan='growth';
+ function update(){
+  const active=buttons.filter(b=>b.getAttribute('aria-pressed')==='true'),groups=[...new Set(active.map(b=>b.dataset.rateGroup))];
+  // Standalone paid licenses replicated for independent brands, with no duplicate charge for capabilities within one subscription.
+  const outside=brands*groups.reduce((sum,g)=>sum+rates[g].mxn*(rates[g].unit==='seat'?people:1),0);
+  const p=plans[plan==='growth'?0:1]||{monthly:0,setup:0,included:1};
+  const extras=Math.max(0,brands-p.included),monthly=p.monthly+extras*extraFee,inside=monthly+p.setup/12,annual=12*outside-12*monthly-p.setup;
+  const missing=!groups.length||!p.monthly,max=Math.max(outside,inside,1),pct=outside>0?Math.round(100*(outside-inside)/outside):0;
+  $('txvalue-people').textContent=people;$('txvalue-brands').textContent=brands;
+  $('txvalue-scenario').textContent=people+' '+(people===1?'persona':'personas')+' por negocio · '+brands+' '+(brands===1?'negocio':'negocios')+' · '+active.length+' capacidades seleccionadas';
+  $('txvalue-all').textContent=active.length===buttons.length?'Limpiar selección':'Seleccionar todas';
+  $('txvalue-stack-count').textContent='('+groups.length+' licencias por negocio)';
+  $('txvalue-external').textContent=groups.length?money(outside)+'/mes':'—';
+  $('txvalue-plan-label').textContent=plan==='growth'?'10xteam Growth':'10xteam Scale';
+  $('txvalue-internal').textContent=p.monthly?money(inside)+'/mes':'Consultar';
+  $('txvalue-plan-note').textContent=p.included+' '+(p.included===1?'negocio incluido':'negocios incluidos')+(extras?' + '+extras+' adicional(es) × '+money(extraFee)+'/mes':'')+' · activación prorrateada';
+  $('txvalue-bar-external').style.width=(groups.length?100*outside/max:0)+'%';$('txvalue-bar-internal').style.width=(p.monthly?100*inside/max:0)+'%';
+  $('txvalue-savings-box').classList.toggle('is-negative',missing||annual<0);
+  $('txvalue-saving-title').textContent=missing?'Elige las capacidades':annual>=0?'Ahorro estimado en el primer año':'Mayor inversión anual con 10xteam';
+  $('txvalue-pct').textContent=missing||annual<0?'':pct+'% menos';
+  $('txvalue-saving').textContent=missing?'—':money(Math.abs(annual));
+  $('txvalue-saving-caption').textContent=missing?'Selecciona las herramientas que utilizas.':annual<0?'En este escenario las licencias separadas cuestan menos.':'Incluye activación inicial · consumos aparte.';
+  // Hypothetical capacity, not a measured labor reduction: 1 hour per unique group per week per brand.
+  const weekly=brands*Math.min(groups.length,people*40),hours=weekly*52/12,fte=weekly/40;
+  $('txvalue-hours').textContent=groups.length?Math.round(hours).toLocaleString('es-MX'):'0';
+  $('txvalue-fte').textContent=fte.toLocaleString('es-MX',{maximumFractionDigits:2,minimumFractionDigits:0});
+ }
+ function select(b,on){b.setAttribute('aria-pressed',String(on));b.classList.toggle('is-selected',on)}
+ buttons.forEach(b=>b.addEventListener('click',()=>{select(b,b.getAttribute('aria-pressed')!=='true');update()}));
+ $('txvalue-all').addEventListener('click',()=>{const all=buttons.every(b=>b.getAttribute('aria-pressed')==='true');buttons.forEach(b=>select(b,!all));update()});
+ [['txvalue-people-minus',-1,'p'],['txvalue-people-plus',1,'p'],['txvalue-brands-minus',-1,'b'],['txvalue-brands-plus',1,'b']].forEach(([id,delta,key])=>$(id).addEventListener('click',()=>{if(key==='p')people=Math.max(1,Math.min(50,people+delta));else brands=Math.max(1,Math.min(20,brands+delta));update()}));
+ root.querySelectorAll('[data-plan]').forEach(b=>b.addEventListener('click',()=>{plan=b.dataset.plan;root.querySelectorAll('[data-plan]').forEach(x=>select(x,x===b));update()}));update();
 })();
 </script>
 <script id="txshow-live-routes-v6">
