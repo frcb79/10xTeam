@@ -478,7 +478,7 @@ function renderScenarios(){
  }
  function refresh(){
   var q=normalize(input.value);
-  visible=data.scenarios.filter(function(s){return (q||selectedGroup==="Todos"||(selectedGroup==="Destacados"?s.featured:s.group===selectedGroup))&&(!q||normalize([s.title,s.sector,s.group,s.problem,s.lead,s.steps.join(" ")].join(" ")).includes(q));});
+  visible=data.scenarios.filter(function(s){return (q||selectedGroup==="Todos"||(selectedGroup==="Destacados"?s.featured:s.group===selectedGroup))&&(!q||q.split(/\s+/).every(function(term){var hay=normalize([s.title,s.sector,s.group,s.problem,s.lead,s.steps.join(" ")].join(" "));return hay.includes(term)||(term.length>4&&term.endsWith("s")&&hay.includes(term.slice(0,-1)));}));});
   count.textContent=visible.length+" de "+data.scenarios.length+" ejemplos de negocio";
   if(!visible.length){wrapper.innerHTML="";panel.innerHTML='<div class="scenario-empty"><strong>No encontramos ese ejemplo</strong>Prueba otra palabra o explora todos los negocios.<br><button id="scenario-reset" type="button">Ver todos los ejemplos</button></div>';document.getElementById("scenario-reset").addEventListener("click",function(){input.value="";selectedGroup="Todos";selectedCase=null;updateGroups();refresh();});return;}
   var chosen=visible.find(function(s){return s.id===selectedCase;})||visible[0];
