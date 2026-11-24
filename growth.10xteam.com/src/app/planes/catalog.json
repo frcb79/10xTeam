@@ -813,479 +813,9 @@
   ],
   "scenarios": [
     {
-      "id": "redes",
-      "title": "Vendo por Instagram y WhatsApp",
-      "lead": "Convierte conversaciones dispersas en una operación que vende y da seguimiento.",
-      "sector": "Marca de ropa, chocolates o alimentos",
-      "problem": "Muchas consultas llegan por distintos canales y es difícil recordar quién pidió qué.",
-      "steps": [
-        "Publicas campañas o contenido y recibes consultas.",
-        "Centralizas contactos y conversaciones en el CRM.",
-        "Automatizas seguimientos y compartes catálogo o enlace de pago.",
-        "Ves qué mensajes y acciones terminan generando ventas."
-      ],
-      "modules": [
-        6,
-        8,
-        9,
-        12,
-        33,
-        42,
-        43
-      ],
-      "image": "/growth-stages/growth-prospecta-v2.png",
-      "imageAlt": "Captura real de la subcuenta demo con la lista de contactos de 10xteam Growth",
-      "note": "El uso de WhatsApp, las acciones premium y los anuncios pueden generar cargos separados.",
-      "group": "Comercio y creadores",
-      "featured": true,
-      "origin": "Adaptación ilustrativa de capacidades de HighLevel",
-      "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000005063"
-      ]
-    },
-    {
-      "id": "citas",
-      "title": "Tengo una clínica o negocio de servicios",
-      "lead": "Más citas coordinadas, menos mensajes manuales y seguimiento después de cada visita.",
-      "sector": "Clínica, estética, consultoría",
-      "problem": "Los prospectos preguntan por horarios, algunos no reservan y otros olvidan asistir.",
-      "steps": [
-        "Captas solicitudes desde anuncios, web o formulario.",
-        "El cliente elige una cita disponible.",
-        "Recibe recordatorios y el equipo da seguimiento.",
-        "Mides qué campañas generaron citas y ventas."
-      ],
-      "modules": [
-        3,
-        4,
-        5,
-        9,
-        14,
-        33,
-        41
-      ],
-      "image": "/growth-stages/growth-identifica-v2-alt.png",
-      "imageAlt": "Captura real de la plataforma demo con vista del pipeline comercial",
-      "note": "Ejemplo ilustrativo, no una garantía de citas o resultados.",
-      "group": "Salud, belleza y bienestar",
-      "featured": true,
-      "origin": "Adaptación ilustrativa de capacidades de HighLevel",
-      "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000000960-industry-playbook-health-wellness-business"
-      ]
-    },
-    {
-      "id": "inmobiliaria",
-      "title": "Gestiono un equipo de vendedores",
-      "lead": "Todos los prospectos, etapas y pendientes en un proceso comercial compartido.",
-      "sector": "Inmobiliaria, automotriz, broker",
-      "problem": "Las oportunidades se quedan en chats individuales y no hay visibilidad del seguimiento.",
-      "steps": [
-        "Entran prospectos desde publicidad y formularios.",
-        "Asignas cada lead al asesor correspondiente.",
-        "Visualizas etapas y tareas en el pipeline.",
-        "Revisas resultados y oportunidades sin seguimiento."
-      ],
-      "modules": [
-        1,
-        2,
-        6,
-        9,
-        14,
-        37,
-        41
-      ],
-      "image": "/growth-stages/growth-cierra-v2.png",
-      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
-      "note": "Las funciones de asignación y automatización dependen de la configuración efectiva.",
-      "group": "Inmobiliario y automotriz",
-      "featured": true,
-      "origin": "Adaptación ilustrativa de capacidades de HighLevel",
-      "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000001982-understanding-pipelines"
-      ]
-    },
-    {
-      "id": "retencion",
-      "title": "Quiero clientes que vuelvan",
-      "lead": "La venta no termina cuando cobras: puedes volver a comunicarte y fidelizar.",
-      "sector": "Cafetería, academia, comercio",
-      "problem": "Nuevos clientes compran una vez y el negocio no vuelve a contactarles.",
-      "steps": [
-        "Registras la compra o servicio.",
-        "Segmentas clientes por historial y preferencias.",
-        "Envías comunicaciones autorizadas y solicitas reseñas.",
-        "Activarás Lealtad cuando el complemento esté disponible."
-      ],
-      "modules": [
-        1,
-        7,
-        10,
-        11,
-        25,
-        35,
-        37
-      ],
-      "image": "/growth-stages/growth-reten.png",
-      "imageAlt": "Captura real del módulo de reputación y reseñas de 10xteam Growth",
-      "note": "Lealtad puede estar en acceso anticipado; email y mensajería podrían consumir saldo.",
-      "group": "Comercio y creadores",
-      "featured": true,
-      "origin": "Adaptación ilustrativa de capacidades de HighLevel",
-      "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000009221"
-      ]
-    },
-    {
-      "id": "academia",
-      "title": "Vendo cursos y membresías",
-      "lead": "Capta alumnos, cobra y entrega contenido desde un mismo ecosistema.",
-      "sector": "Cursos, coaches, academias",
-      "problem": "El contenido, los pagos y la comunicación de alumnos viven en sistemas distintos.",
-      "steps": [
-        "Presentas una oferta y captas inscripciones.",
-        "Cobra a través de enlaces y checkout compatibles.",
-        "Los alumnos acceden a cursos y material.",
-        "Entregas certificados y continúas la relación."
-      ],
-      "modules": [
-        4,
-        7,
-        11,
-        13,
-        27,
-        29,
-        32
-      ],
-      "image": "/growth-stages/growth-escala-v2.png",
-      "imageAlt": "Captura real del sistema de campañas de correo en la demo Growth",
-      "note": "La app personalizada para consumidores es un complemento separado.",
-      "group": "Turismo, eventos y formación",
-      "featured": true,
-      "origin": "Adaptación ilustrativa de capacidades de HighLevel",
-      "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000000958-industry-playbook-coaching-consultation-agency"
-      ]
-    },
-    {
-      "id": "operacion",
-      "title": "Tengo servicios y equipo operativo",
-      "lead": "Organiza encargos, tareas, soporte y ejecución con visibilidad.",
-      "sector": "Agencias, empresas de mantenimiento",
-      "problem": "No es claro quién debe atender cada solicitud o cuándo vence.",
-      "steps": [
-        "Recibes la solicitud del cliente.",
-        "Registras responsable, prioridad y siguientes pasos.",
-        "Haces seguimiento desde proyectos y tickets compatibles.",
-        "Mides tiempos y detectas cuellos de botella."
-      ],
-      "modules": [
-        2,
-        9,
-        14,
-        20,
-        21,
-        23,
-        37
-      ],
-      "image": "/growth-stages/growth-cierra-demo.png",
-      "imageAlt": "Captura real de oportunidades comerciales en la plataforma demo Growth",
-      "note": "Ticketing completo y Proyectos están propuestos como incluidos en Scale y complementos en Growth; su control está por validar.",
-      "group": "Servicios y operación",
-      "featured": true,
-      "origin": "Adaptación ilustrativa de capacidades de HighLevel",
-      "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000000961-industry-playbook-home-service-business"
-      ]
-    },
-    {
-      "id": "dentista",
-      "group": "Salud, belleza y bienestar",
-      "title": "Dentistas y consultorios dentales",
-      "lead": "Convierte las consultas en citas y organiza el regreso de tus pacientes.",
-      "sector": "Odontología",
-      "problem": "Se pierden llamadas y los pacientes olvidan citas o revisiones.",
-      "steps": [
-        "Recibe consultas de anuncios y del sitio.",
-        "Ofrece horarios y confirma la cita.",
-        "Envía recordatorios y opciones de reprogramación.",
-        "Solicita reseñas y envía recordatorios de revisiones según autorización."
-      ],
-      "modules": [
-        3,
-        5,
-        6,
-        9,
-        10,
-        16,
-        42
-      ],
-      "image": "/growth-stages/growth-identifica-v2-alt.png",
-      "imageAlt": "Captura real de la plataforma demo con vista del pipeline comercial",
-      "note": "Mensajería e IA elegible por consumo; no sustituye un expediente clínico.",
-      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
-      "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000000955-industry-playbook-dental-practice-dentistry"
-      ],
-      "featured": false
-    },
-    {
-      "id": "fisioterapia",
-      "group": "Salud, belleza y bienestar",
-      "title": "Fisioterapia y rehabilitación",
-      "lead": "Organiza sesiones, disponibilidad y seguimiento administrativo.",
-      "sector": "Fisioterapeutas y quiroprácticos",
-      "problem": "Coordinar varias sesiones por teléfono consume tiempo.",
-      "steps": [
-        "Publica tus servicios y horarios.",
-        "Reserva la primera sesión y confirma asistencia.",
-        "Programa recordatorios de próximas citas.",
-        "Revisa ocupación y seguimiento de pacientes."
-      ],
-      "modules": [
-        3,
-        4,
-        6,
-        9,
-        14,
-        38
-      ],
-      "image": "/growth-stages/growth-identifica-v2-alt.png",
-      "imageAlt": "Captura real de la plataforma demo con vista del pipeline comercial",
-      "note": "No es un sistema clínico; el tratamiento de datos sensibles exige cumplimiento aplicable.",
-      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
-      "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000000960-industry-playbook-health-wellness-business"
-      ],
-      "featured": false
-    },
-    {
-      "id": "belleza",
-      "group": "Salud, belleza y bienestar",
-      "title": "Salones de belleza, barberías y uñas",
-      "lead": "Deja que los clientes reserven y regresen sin perseguirlos por chat.",
-      "sector": "Estilistas, salones y barberías",
-      "problem": "Los horarios, cambios y confirmaciones ocupan gran parte del día.",
-      "steps": [
-        "Publica tus servicios y trabajos en redes.",
-        "Deja elegir servicio, profesional y horario.",
-        "Confirma citas y cobra anticipos compatibles.",
-        "Invita a reservar de nuevo tras el servicio."
-      ],
-      "modules": [
-        3,
-        8,
-        9,
-        10,
-        11,
-        38
-      ],
-      "image": "/growth-stages/growth-reten.png",
-      "imageAlt": "Captura real del módulo de reputación y reseñas de 10xteam Growth",
-      "note": "Pagos y comunicaciones sujetos a las condiciones de sus proveedores.",
-      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
-      "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000000957-industry-playbook-hair-nail-salon"
-      ],
-      "featured": false
-    },
-    {
-      "id": "gimnasio",
-      "group": "Salud, belleza y bienestar",
-      "title": "Gimnasios y estudios de entrenamiento",
-      "lead": "Convierte interesados en miembros y mantén el contacto.",
-      "sector": "Gimnasios, yoga y entrenamiento",
-      "problem": "Las pruebas gratuitas y solicitudes no siempre reciben seguimiento.",
-      "steps": [
-        "Promociona una clase de prueba con un formulario.",
-        "Organiza reservas y notifica al entrenador.",
-        "Presenta planes y enlaces de pago compatibles.",
-        "Segmenta miembros inactivos para campañas autorizadas de regreso."
-      ],
-      "modules": [
-        3,
-        4,
-        5,
-        7,
-        9,
-        11,
-        14,
-        33
-      ],
-      "image": "/growth-stages/growth-escala-v2.png",
-      "imageAlt": "Captura real del sistema de campañas de correo en la demo Growth",
-      "note": "No implica control físico de acceso ni software especializado de entrenamiento.",
-      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
-      "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/48001079561-gym-snapshot"
-      ],
-      "featured": false
-    },
-    {
-      "id": "creditos",
-      "group": "Finanzas y servicios profesionales",
-      "title": "Brokers de crédito y asesores hipotecarios",
-      "lead": "Da seguimiento a cada solicitud desde el primer contacto hasta la decisión.",
-      "sector": "Intermediarios de crédito",
-      "problem": "Los prospectos llegan por varios canales y faltan recordatorios de documentos.",
-      "steps": [
-        "Capta prospectos con un formulario de datos básicos.",
-        "Agenda una llamada de perfilamiento.",
-        "Organiza etapas y tareas de seguimiento comercial.",
-        "Envía actualizaciones autorizadas y mide el origen de las solicitudes."
-      ],
-      "modules": [
-        1,
-        2,
-        3,
-        5,
-        6,
-        9,
-        14,
-        27,
-        41
-      ],
-      "image": "/growth-stages/growth-cierra-v2.png",
-      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
-      "note": "Ejemplo adaptado: no realiza scoring, consulta de buró, originación ni aprobación financiera.",
-      "origin": "Adaptación comercial de 10xteam basada en documentación de HighLevel",
-      "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000000959-industry-playbook-financial-service-business"
-      ],
-      "featured": false
-    },
-    {
-      "id": "seguros",
-      "group": "Finanzas y servicios profesionales",
-      "title": "Agentes y corredores de seguros",
-      "lead": "No pierdas solicitudes de cotización ni oportunidades de renovación.",
-      "sector": "Seguros de auto, hogar y negocios",
-      "problem": "Las solicitudes y fechas de renovación quedan dispersas.",
-      "steps": [
-        "Recibe solicitudes de cotización por web o anuncios.",
-        "Agenda asesoría y registra la oportunidad.",
-        "Programa recordatorios de renovación.",
-        "Revisa la cartera comercial y el seguimiento de cada cliente."
-      ],
-      "modules": [
-        1,
-        2,
-        3,
-        5,
-        7,
-        9,
-        14,
-        33
-      ],
-      "image": "/growth-stages/growth-cierra-v2.png",
-      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
-      "note": "El cálculo, emisión y gestión técnica de pólizas requieren sistemas o procesos propios.",
-      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
-      "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000002464-property-and-casualty-insurance-snapshot"
-      ],
-      "featured": false
-    },
-    {
-      "id": "contadores",
-      "group": "Finanzas y servicios profesionales",
-      "title": "Contadores y despachos fiscales",
-      "lead": "Simplifica la captación de clientes y las consultas recurrentes.",
-      "sector": "Contabilidad y servicios fiscales",
-      "problem": "Es difícil coordinar consultas y mantener informados a los clientes.",
-      "steps": [
-        "Publica servicios y capta solicitudes.",
-        "Reserva asesorías y envía confirmaciones.",
-        "Comparte propuestas y enlaces de pago compatibles.",
-        "Envía recordatorios administrativos y novedades autorizadas."
-      ],
-      "modules": [
-        3,
-        4,
-        5,
-        7,
-        9,
-        11,
-        27,
-        42
-      ],
-      "image": "/growth-stages/growth-escala-v2.png",
-      "imageAlt": "Captura real del sistema de campañas de correo en la demo Growth",
-      "note": "No sustituye software contable, declaraciones fiscales ni expedientes tributarios.",
-      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
-      "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000002462-bookkeeper-snapshot"
-      ],
-      "featured": false
-    },
-    {
-      "id": "abogados",
-      "group": "Finanzas y servicios profesionales",
-      "title": "Abogados y despachos jurídicos",
-      "lead": "Organiza consultas iniciales y seguimiento comercial.",
-      "sector": "Servicios legales",
-      "problem": "Las consultas llegan a diferentes personas y se pierden respuestas.",
-      "steps": [
-        "Centraliza solicitudes de consulta.",
-        "Agenda una reunión con el abogado adecuado.",
-        "Registra el avance comercial y comparte la propuesta.",
-        "Automatiza recordatorios administrativos y comunicaciones autorizadas."
-      ],
-      "modules": [
-        1,
-        2,
-        3,
-        6,
-        9,
-        11,
-        27,
-        42
-      ],
-      "image": "/growth-stages/growth-cierra-v2.png",
-      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
-      "note": "No sustituye gestión de expedientes jurídicos ni asesoría legal; evita datos sensibles innecesarios.",
-      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
-      "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000000963-industry-playbook-legal-practice"
-      ],
-      "featured": false
-    },
-    {
-      "id": "consultoria",
-      "group": "Finanzas y servicios profesionales",
-      "title": "Consultores y coaches",
-      "lead": "Califica interesados y convierte sesiones iniciales en proyectos.",
-      "sector": "Consultoría, coaching y servicios B2B",
-      "problem": "Se invierte mucho tiempo en llamadas con prospectos que no encajan.",
-      "steps": [
-        "Capta solicitudes con preguntas de perfilamiento.",
-        "Agenda sesiones iniciales y confirma asistencia.",
-        "Envía propuesta y sigue el cierre.",
-        "Activa bienvenida, materiales y seguimiento de clientes."
-      ],
-      "modules": [
-        2,
-        3,
-        5,
-        9,
-        11,
-        13,
-        27,
-        29
-      ],
-      "image": "/growth-stages/growth-cierra-v2.png",
-      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
-      "note": "La contratación y prestación de consultoría siguen bajo responsabilidad del negocio.",
-      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
-      "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000000958-industry-playbook-coaching-consultation-agency"
-      ],
-      "featured": false
-    },
-    {
       "id": "propiedades",
       "group": "Inmobiliario y automotriz",
-      "title": "Agentes inmobiliarios",
+      "title": "Agencias inmobiliarias",
       "lead": "Organiza consultas de propiedades y visitas comerciales.",
       "sector": "Venta y renta inmobiliaria",
       "problem": "Se acumulan mensajes preguntando por inmuebles y faltan citas de seguimiento.",
@@ -1312,12 +842,46 @@
       "sources": [
         "https://help.gohighlevel.com/support/solutions/articles/155000000966-industry-playbook-real-estate-agency"
       ],
-      "featured": false
+      "featured": true,
+      "keywords": "Agentes inmobiliarios "
+    },
+    {
+      "id": "distribuidores",
+      "group": "Servicios profesionales",
+      "title": "Distribuidoras y empresas B2B",
+      "lead": "Organiza cuentas comerciales, cotizaciones y recompra.",
+      "sector": "Distribución y ventas mayoristas",
+      "problem": "Cada vendedor mantiene sus propias conversaciones y cotizaciones.",
+      "steps": [
+        "Capta solicitudes de catálogo o cotización.",
+        "Asigna responsables y registra oportunidades.",
+        "Comparte propuestas y programa seguimiento.",
+        "Identifica cuentas con pedidos recurrentes para contactar con autorización."
+      ],
+      "modules": [
+        1,
+        2,
+        5,
+        6,
+        7,
+        9,
+        14,
+        27
+      ],
+      "image": "/growth-stages/growth-cierra-v2.png",
+      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
+      "note": "Adaptación de CRM y pipelines; no reemplaza ERP, logística ni inventario mayorista.",
+      "origin": "Adaptación comercial de 10xteam basada en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000001982-understanding-pipelines"
+      ],
+      "featured": true,
+      "keywords": "Distribuidores y vendedores B2B "
     },
     {
       "id": "autos",
       "group": "Inmobiliario y automotriz",
-      "title": "Agencias y vendedores de autos",
+      "title": "Agencias automotrices y equipos de ventas",
       "lead": "Convierte consultas de vehículos en citas y pruebas de manejo.",
       "sector": "Autos nuevos y seminuevos",
       "problem": "Los vendedores reciben mensajes de distintas campañas sin una vista común.",
@@ -1345,43 +909,176 @@
       "sources": [
         "https://help.gohighlevel.com/support/solutions/articles/155000001982-understanding-pipelines"
       ],
-      "featured": false
+      "featured": true,
+      "keywords": "Agencias y vendedores de autos vendedor autos automóviles"
     },
     {
-      "id": "detailing",
-      "group": "Inmobiliario y automotriz",
-      "title": "Estética automotriz y detailing",
-      "lead": "Llena la agenda de servicios y fomenta visitas repetidas.",
-      "sector": "Lavado, pulido y cuidado automotriz",
-      "problem": "Las cotizaciones y confirmaciones se hacen manualmente por teléfono.",
+      "id": "citas",
+      "title": "Clínicas y centros médicos",
+      "lead": "Más citas coordinadas, menos mensajes manuales y seguimiento después de cada visita.",
+      "sector": "Clínica, estética, consultoría",
+      "problem": "Los prospectos preguntan por horarios, algunos no reservan y otros olvidan asistir.",
       "steps": [
-        "Muestra paquetes de servicios en tu web y redes.",
-        "Recibe solicitudes y agenda servicios.",
-        "Confirma horarios y anticipos compatibles.",
-        "Envía solicitudes de reseñas y recordatorios de regreso."
+        "Captas solicitudes desde anuncios, web o formulario.",
+        "El cliente elige una cita disponible.",
+        "Recibe recordatorios y el equipo da seguimiento.",
+        "Mides qué campañas generaron citas y ventas."
       ],
       "modules": [
         3,
         4,
-        8,
+        5,
         9,
-        10,
-        11,
-        38
+        14,
+        33,
+        41
       ],
-      "image": "/growth-stages/growth-reten.png",
-      "imageAlt": "Captura real del módulo de reputación y reseñas de 10xteam Growth",
-      "note": "El caso utiliza reservas y seguimiento; no presupone un sistema de taller completo.",
+      "image": "/growth-stages/growth-identifica-v2-alt.png",
+      "imageAlt": "Captura real de la plataforma demo con vista del pipeline comercial",
+      "note": "Ejemplo ilustrativo, no una garantía de citas o resultados.",
+      "group": "Salud y bienestar",
+      "featured": true,
+      "origin": "Adaptación ilustrativa de capacidades de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000000960-industry-playbook-health-wellness-business"
+      ],
+      "keywords": "Tengo una clínica o negocio de servicios clínica médico consultorio"
+    },
+    {
+      "id": "creditos",
+      "group": "Servicios profesionales",
+      "title": "Despachos financieros y brokers de crédito",
+      "lead": "Da seguimiento a cada solicitud desde el primer contacto hasta la decisión.",
+      "sector": "Intermediarios de crédito",
+      "problem": "Los prospectos llegan por varios canales y faltan recordatorios de documentos.",
+      "steps": [
+        "Capta prospectos con un formulario de datos básicos.",
+        "Agenda una llamada de perfilamiento.",
+        "Organiza etapas y tareas de seguimiento comercial.",
+        "Envía actualizaciones autorizadas y mide el origen de las solicitudes."
+      ],
+      "modules": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        9,
+        14,
+        27,
+        41
+      ],
+      "image": "/growth-stages/growth-cierra-v2.png",
+      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
+      "note": "Ejemplo adaptado: no realiza scoring, consulta de buró, originación ni aprobación financiera.",
+      "origin": "Adaptación comercial de 10xteam basada en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000000959-industry-playbook-financial-service-business"
+      ],
+      "featured": true,
+      "keywords": "Brokers de crédito y asesores hipotecarios crédito créditos financiero financiera broker hipoteca hipotecario"
+    },
+    {
+      "id": "carritos",
+      "group": "Comercio y marcas",
+      "title": "Marcas de productos y ecommerce",
+      "lead": "Recupera compras incompletas y convierte compradores en clientes recurrentes.",
+      "sector": "Ropa, chocolates, café y productos de consumo",
+      "problem": "Una persona inicia el pago, pero abandona el carrito.",
+      "steps": [
+        "Publica productos y conecta el catálogo elegible.",
+        "Detecta checkout abandonado si existe un correo válido.",
+        "Envía seguimiento autorizado con un workflow.",
+        "Mide compras y crea campañas de recompra."
+      ],
+      "modules": [
+        7,
+        9,
+        11,
+        12,
+        14,
+        41,
+        43
+      ],
+      "image": "/growth-stages/growth-escala-v2.png",
+      "imageAlt": "Captura real del sistema de campañas de correo en la demo Growth",
+      "note": "El activador documentado requiere email válido y tienda nativa o integración compatible; no garantiza ventas.",
       "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
       "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000002460-automotive-detailing-snapshot"
+        "https://help.gohighlevel.com/support/solutions/articles/155000007380-workflow-triggers-abandoned-checkout-trigger-for-e-commerce-stores"
       ],
-      "featured": false
+      "featured": true,
+      "keywords": "Tiendas online y marcas de productos "
+    },
+    {
+      "id": "consultoria",
+      "group": "Servicios profesionales",
+      "title": "Firmas de consultoría y coaching",
+      "lead": "Califica interesados y convierte sesiones iniciales en proyectos.",
+      "sector": "Consultoría, coaching y servicios B2B",
+      "problem": "Se invierte mucho tiempo en llamadas con prospectos que no encajan.",
+      "steps": [
+        "Capta solicitudes con preguntas de perfilamiento.",
+        "Agenda sesiones iniciales y confirma asistencia.",
+        "Envía propuesta y sigue el cierre.",
+        "Activa bienvenida, materiales y seguimiento de clientes."
+      ],
+      "modules": [
+        2,
+        3,
+        5,
+        9,
+        11,
+        13,
+        27,
+        29
+      ],
+      "image": "/growth-stages/growth-cierra-v2.png",
+      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
+      "note": "La contratación y prestación de consultoría siguen bajo responsabilidad del negocio.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000000958-industry-playbook-coaching-consultation-agency"
+      ],
+      "featured": true,
+      "keywords": "Consultores y coaches consultor independiente solopreneur coach"
+    },
+    {
+      "id": "academia",
+      "title": "Academias y centros de formación",
+      "lead": "Capta alumnos, cobra y entrega contenido desde un mismo ecosistema.",
+      "sector": "Cursos, coaches, academias",
+      "problem": "El contenido, los pagos y la comunicación de alumnos viven en sistemas distintos.",
+      "steps": [
+        "Presentas una oferta y captas inscripciones.",
+        "Cobra a través de enlaces y checkout compatibles.",
+        "Los alumnos acceden a cursos y material.",
+        "Entregas certificados y continúas la relación."
+      ],
+      "modules": [
+        4,
+        7,
+        11,
+        13,
+        27,
+        29,
+        32
+      ],
+      "image": "/growth-stages/growth-escala-v2.png",
+      "imageAlt": "Captura real del sistema de campañas de correo en la demo Growth",
+      "note": "La app personalizada para consumidores es un complemento separado.",
+      "group": "Educación y eventos",
+      "featured": true,
+      "origin": "Adaptación ilustrativa de capacidades de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000000958-industry-playbook-coaching-consultation-agency"
+      ],
+      "keywords": "Vendo cursos y membresías "
     },
     {
       "id": "climatizacion",
-      "group": "Servicios y operación",
-      "title": "Climatización y aire acondicionado",
+      "group": "Servicios y operaciones",
+      "title": "Empresas de climatización y mantenimiento",
       "lead": "De la solicitud de mantenimiento a la visita y seguimiento.",
       "sector": "Instalación y mantenimiento HVAC",
       "problem": "Las solicitudes llegan mientras los técnicos están trabajando.",
@@ -1408,12 +1105,465 @@
       "sources": [
         "https://help.gohighlevel.com/support/solutions/articles/155000009560-highlevel-industries-create-sub-accounts-built-for-your-client-s-industry"
       ],
-      "featured": false
+      "featured": true,
+      "keywords": "Climatización y aire acondicionado aire acondicionado HVAC técnico"
+    },
+    {
+      "id": "restaurante",
+      "group": "Restaurantes y hospitalidad",
+      "title": "Grupos restauranteros, bares y cafeterías",
+      "lead": "Lleva pedidos, promociones y clientes recurrentes a una misma estrategia.",
+      "sector": "Alimentos y bebidas",
+      "problem": "Los clientes llegan por distintos canales y no existe una estrategia de recompra.",
+      "steps": [
+        "Publica menús, promociones y canales de contacto.",
+        "Capta reservas o consultas compatibles.",
+        "Si se habilita Restaurantes, usa pedidos y reservas del módulo especializado.",
+        "Solicita reseñas y comunica nuevas ofertas."
+      ],
+      "modules": [
+        3,
+        4,
+        7,
+        8,
+        10,
+        22,
+        25,
+        42
+      ],
+      "image": "/growth-stages/growth-reten.png",
+      "imageAlt": "Captura real del módulo de reputación y reseñas de 10xteam Growth",
+      "note": "Restaurantes y Lealtad requieren validación de acceso; no promete integración con Rappi o Uber Eats.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000009560-highlevel-industries-create-sub-accounts-built-for-your-client-s-industry"
+      ],
+      "featured": true,
+      "keywords": "Restaurantes, bares y cafeterías restaurante cafetería café bar"
+    },
+    {
+      "id": "seguros",
+      "group": "Servicios profesionales",
+      "title": "Agencias y corredores de seguros",
+      "lead": "No pierdas solicitudes de cotización ni oportunidades de renovación.",
+      "sector": "Seguros de auto, hogar y negocios",
+      "problem": "Las solicitudes y fechas de renovación quedan dispersas.",
+      "steps": [
+        "Recibe solicitudes de cotización por web o anuncios.",
+        "Agenda asesoría y registra la oportunidad.",
+        "Programa recordatorios de renovación.",
+        "Revisa la cartera comercial y el seguimiento de cada cliente."
+      ],
+      "modules": [
+        1,
+        2,
+        3,
+        5,
+        7,
+        9,
+        14,
+        33
+      ],
+      "image": "/growth-stages/growth-cierra-v2.png",
+      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
+      "note": "El cálculo, emisión y gestión técnica de pólizas requieren sistemas o procesos propios.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000002464-property-and-casualty-insurance-snapshot"
+      ],
+      "featured": false,
+      "keywords": "Agentes y corredores de seguros "
+    },
+    {
+      "id": "contadores",
+      "group": "Servicios profesionales",
+      "title": "Despachos contables y fiscales",
+      "lead": "Simplifica la captación de clientes y las consultas recurrentes.",
+      "sector": "Contabilidad y servicios fiscales",
+      "problem": "Es difícil coordinar consultas y mantener informados a los clientes.",
+      "steps": [
+        "Publica servicios y capta solicitudes.",
+        "Reserva asesorías y envía confirmaciones.",
+        "Comparte propuestas y enlaces de pago compatibles.",
+        "Envía recordatorios administrativos y novedades autorizadas."
+      ],
+      "modules": [
+        3,
+        4,
+        5,
+        7,
+        9,
+        11,
+        27,
+        42
+      ],
+      "image": "/growth-stages/growth-escala-v2.png",
+      "imageAlt": "Captura real del sistema de campañas de correo en la demo Growth",
+      "note": "No sustituye software contable, declaraciones fiscales ni expedientes tributarios.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000002462-bookkeeper-snapshot"
+      ],
+      "featured": false,
+      "keywords": "Contadores y despachos fiscales contador contabilidad fiscal"
+    },
+    {
+      "id": "abogados",
+      "group": "Servicios profesionales",
+      "title": "Firmas y despachos jurídicos",
+      "lead": "Organiza consultas iniciales y seguimiento comercial.",
+      "sector": "Servicios legales",
+      "problem": "Las consultas llegan a diferentes personas y se pierden respuestas.",
+      "steps": [
+        "Centraliza solicitudes de consulta.",
+        "Agenda una reunión con el abogado adecuado.",
+        "Registra el avance comercial y comparte la propuesta.",
+        "Automatiza recordatorios administrativos y comunicaciones autorizadas."
+      ],
+      "modules": [
+        1,
+        2,
+        3,
+        6,
+        9,
+        11,
+        27,
+        42
+      ],
+      "image": "/growth-stages/growth-cierra-v2.png",
+      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
+      "note": "No sustituye gestión de expedientes jurídicos ni asesoría legal; evita datos sensibles innecesarios.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000000963-industry-playbook-legal-practice"
+      ],
+      "featured": false,
+      "keywords": "Abogados y despachos jurídicos abogado legal"
+    },
+    {
+      "id": "inmobiliaria",
+      "title": "Equipos comerciales y redes de asesores",
+      "lead": "Todos los prospectos, etapas y pendientes en un proceso comercial compartido.",
+      "sector": "Inmobiliaria, automotriz, broker",
+      "problem": "Las oportunidades se quedan en chats individuales y no hay visibilidad del seguimiento.",
+      "steps": [
+        "Entran prospectos desde publicidad y formularios.",
+        "Asignas cada lead al asesor correspondiente.",
+        "Visualizas etapas y tareas en el pipeline.",
+        "Revisas resultados y oportunidades sin seguimiento."
+      ],
+      "modules": [
+        1,
+        2,
+        6,
+        9,
+        14,
+        37,
+        41
+      ],
+      "image": "/growth-stages/growth-cierra-v2.png",
+      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
+      "note": "Las funciones de asignación y automatización dependen de la configuración efectiva.",
+      "group": "Inmobiliario y automotriz",
+      "featured": false,
+      "origin": "Adaptación ilustrativa de capacidades de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000001982-understanding-pipelines"
+      ],
+      "keywords": "Gestiono un equipo de vendedores "
+    },
+    {
+      "id": "detailing",
+      "group": "Inmobiliario y automotriz",
+      "title": "Centros de estética automotriz y detailing",
+      "lead": "Llena la agenda de servicios y fomenta visitas repetidas.",
+      "sector": "Lavado, pulido y cuidado automotriz",
+      "problem": "Las cotizaciones y confirmaciones se hacen manualmente por teléfono.",
+      "steps": [
+        "Muestra paquetes de servicios en tu web y redes.",
+        "Recibe solicitudes y agenda servicios.",
+        "Confirma horarios y anticipos compatibles.",
+        "Envía solicitudes de reseñas y recordatorios de regreso."
+      ],
+      "modules": [
+        3,
+        4,
+        8,
+        9,
+        10,
+        11,
+        38
+      ],
+      "image": "/growth-stages/growth-reten.png",
+      "imageAlt": "Captura real del módulo de reputación y reseñas de 10xteam Growth",
+      "note": "El caso utiliza reservas y seguimiento; no presupone un sistema de taller completo.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000002460-automotive-detailing-snapshot"
+      ],
+      "featured": false,
+      "keywords": "Estética automotriz y detailing "
+    },
+    {
+      "id": "redes",
+      "title": "Marcas que venden por Instagram y WhatsApp",
+      "lead": "Convierte conversaciones dispersas en una operación que vende y da seguimiento.",
+      "sector": "Marca de ropa, chocolates o alimentos",
+      "problem": "Muchas consultas llegan por distintos canales y es difícil recordar quién pidió qué.",
+      "steps": [
+        "Publicas campañas o contenido y recibes consultas.",
+        "Centralizas contactos y conversaciones en el CRM.",
+        "Automatizas seguimientos y compartes catálogo o enlace de pago.",
+        "Ves qué mensajes y acciones terminan generando ventas."
+      ],
+      "modules": [
+        6,
+        8,
+        9,
+        12,
+        33,
+        42,
+        43
+      ],
+      "image": "/growth-stages/growth-prospecta-v2.png",
+      "imageAlt": "Captura real de la subcuenta demo con la lista de contactos de 10xteam Growth",
+      "note": "El uso de WhatsApp, las acciones premium y los anuncios pueden generar cargos separados.",
+      "group": "Comercio y marcas",
+      "featured": false,
+      "origin": "Adaptación ilustrativa de capacidades de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000005063"
+      ],
+      "keywords": "Vendo por Instagram y WhatsApp emprendedor independiente solopreneur redes venta"
+    },
+    {
+      "id": "retencion",
+      "title": "Negocios con clientes recurrentes",
+      "lead": "La venta no termina cuando cobras: puedes volver a comunicarte y fidelizar.",
+      "sector": "Cafetería, academia, comercio",
+      "problem": "Nuevos clientes compran una vez y el negocio no vuelve a contactarles.",
+      "steps": [
+        "Registras la compra o servicio.",
+        "Segmentas clientes por historial y preferencias.",
+        "Envías comunicaciones autorizadas y solicitas reseñas.",
+        "Activarás Lealtad cuando el complemento esté disponible."
+      ],
+      "modules": [
+        1,
+        7,
+        10,
+        11,
+        25,
+        35,
+        37
+      ],
+      "image": "/growth-stages/growth-reten.png",
+      "imageAlt": "Captura real del módulo de reputación y reseñas de 10xteam Growth",
+      "note": "Lealtad puede estar en acceso anticipado; email y mensajería podrían consumir saldo.",
+      "group": "Comercio y marcas",
+      "featured": false,
+      "origin": "Adaptación ilustrativa de capacidades de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000009221"
+      ],
+      "keywords": "Quiero clientes que vuelvan "
+    },
+    {
+      "id": "creadores",
+      "group": "Comercio y marcas",
+      "title": "Creadores de contenido y marcas personales",
+      "lead": "Organiza publicaciones y convierte tu audiencia en contactos propios.",
+      "sector": "Creadores y marcas personales",
+      "problem": "Publicar en varias redes y responder mensajes consume gran parte de la jornada.",
+      "steps": [
+        "Conecta los perfiles compatibles y programa contenido.",
+        "Dirige interesados hacia formularios o páginas de oferta.",
+        "Segmenta suscriptores y envía novedades autorizadas.",
+        "Vende cursos o servicios con pagos compatibles."
+      ],
+      "modules": [
+        4,
+        5,
+        7,
+        8,
+        11,
+        13,
+        34,
+        35
+      ],
+      "image": "/growth-stages/growth-escala-v2.png",
+      "imageAlt": "Captura real del sistema de campañas de correo en la demo Growth",
+      "note": "Adaptación del Social Planner y cursos; no incluye monetización automática de seguidores ni métricas de todas las redes.",
+      "origin": "Adaptación comercial de 10xteam basada en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000005063"
+      ],
+      "featured": false,
+      "keywords": "Creadores de contenido e influencers influencer solopreneur independiente emprendedor"
+    },
+    {
+      "id": "dentista",
+      "group": "Salud y bienestar",
+      "title": "Clínicas dentales",
+      "lead": "Convierte las consultas en citas y organiza el regreso de tus pacientes.",
+      "sector": "Odontología",
+      "problem": "Se pierden llamadas y los pacientes olvidan citas o revisiones.",
+      "steps": [
+        "Recibe consultas de anuncios y del sitio.",
+        "Ofrece horarios y confirma la cita.",
+        "Envía recordatorios y opciones de reprogramación.",
+        "Solicita reseñas y envía recordatorios de revisiones según autorización."
+      ],
+      "modules": [
+        3,
+        5,
+        6,
+        9,
+        10,
+        16,
+        42
+      ],
+      "image": "/growth-stages/growth-identifica-v2-alt.png",
+      "imageAlt": "Captura real de la plataforma demo con vista del pipeline comercial",
+      "note": "Mensajería e IA elegible por consumo; no sustituye un expediente clínico.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000000955-industry-playbook-dental-practice-dentistry"
+      ],
+      "featured": false,
+      "keywords": "Dentistas y consultorios dentales dentista odontología"
+    },
+    {
+      "id": "fisioterapia",
+      "group": "Salud y bienestar",
+      "title": "Centros de fisioterapia y rehabilitación",
+      "lead": "Organiza sesiones, disponibilidad y seguimiento administrativo.",
+      "sector": "Fisioterapeutas y quiroprácticos",
+      "problem": "Coordinar varias sesiones por teléfono consume tiempo.",
+      "steps": [
+        "Publica tus servicios y horarios.",
+        "Reserva la primera sesión y confirma asistencia.",
+        "Programa recordatorios de próximas citas.",
+        "Revisa ocupación y seguimiento de pacientes."
+      ],
+      "modules": [
+        3,
+        4,
+        6,
+        9,
+        14,
+        38
+      ],
+      "image": "/growth-stages/growth-identifica-v2-alt.png",
+      "imageAlt": "Captura real de la plataforma demo con vista del pipeline comercial",
+      "note": "No es un sistema clínico; el tratamiento de datos sensibles exige cumplimiento aplicable.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000000960-industry-playbook-health-wellness-business"
+      ],
+      "featured": false,
+      "keywords": "Fisioterapia y rehabilitación "
+    },
+    {
+      "id": "belleza",
+      "group": "Salud y bienestar",
+      "title": "Salones de belleza y centros estéticos",
+      "lead": "Deja que los clientes reserven y regresen sin perseguirlos por chat.",
+      "sector": "Estilistas, salones y barberías",
+      "problem": "Los horarios, cambios y confirmaciones ocupan gran parte del día.",
+      "steps": [
+        "Publica tus servicios y trabajos en redes.",
+        "Deja elegir servicio, profesional y horario.",
+        "Confirma citas y cobra anticipos compatibles.",
+        "Invita a reservar de nuevo tras el servicio."
+      ],
+      "modules": [
+        3,
+        8,
+        9,
+        10,
+        11,
+        38
+      ],
+      "image": "/growth-stages/growth-reten.png",
+      "imageAlt": "Captura real del módulo de reputación y reseñas de 10xteam Growth",
+      "note": "Pagos y comunicaciones sujetos a las condiciones de sus proveedores.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000000957-industry-playbook-hair-nail-salon"
+      ],
+      "featured": false,
+      "keywords": "Salones de belleza, barberías y uñas barbería uñas peluquería estilista"
+    },
+    {
+      "id": "gimnasio",
+      "group": "Salud y bienestar",
+      "title": "Gimnasios y estudios de entrenamiento",
+      "lead": "Convierte interesados en miembros y mantén el contacto.",
+      "sector": "Gimnasios, yoga y entrenamiento",
+      "problem": "Las pruebas gratuitas y solicitudes no siempre reciben seguimiento.",
+      "steps": [
+        "Promociona una clase de prueba con un formulario.",
+        "Organiza reservas y notifica al entrenador.",
+        "Presenta planes y enlaces de pago compatibles.",
+        "Segmenta miembros inactivos para campañas autorizadas de regreso."
+      ],
+      "modules": [
+        3,
+        4,
+        5,
+        7,
+        9,
+        11,
+        14,
+        33
+      ],
+      "image": "/growth-stages/growth-escala-v2.png",
+      "imageAlt": "Captura real del sistema de campañas de correo en la demo Growth",
+      "note": "No implica control físico de acceso ni software especializado de entrenamiento.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/48001079561-gym-snapshot"
+      ],
+      "featured": false,
+      "keywords": "Gimnasios y estudios de entrenamiento "
+    },
+    {
+      "id": "operacion",
+      "title": "Empresas de servicios con equipo operativo",
+      "lead": "Organiza encargos, tareas, soporte y ejecución con visibilidad.",
+      "sector": "Agencias, empresas de mantenimiento",
+      "problem": "No es claro quién debe atender cada solicitud o cuándo vence.",
+      "steps": [
+        "Recibes la solicitud del cliente.",
+        "Registras responsable, prioridad y siguientes pasos.",
+        "Haces seguimiento desde proyectos y tickets compatibles.",
+        "Mides tiempos y detectas cuellos de botella."
+      ],
+      "modules": [
+        2,
+        9,
+        14,
+        20,
+        21,
+        23,
+        37
+      ],
+      "image": "/growth-stages/growth-cierra-demo.png",
+      "imageAlt": "Captura real de oportunidades comerciales en la plataforma demo Growth",
+      "note": "Ticketing completo y Proyectos están propuestos como incluidos en Scale y complementos en Growth; su control está por validar.",
+      "group": "Servicios y operaciones",
+      "featured": false,
+      "origin": "Adaptación ilustrativa de capacidades de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000000961-industry-playbook-home-service-business"
+      ],
+      "keywords": "Tengo servicios y equipo operativo "
     },
     {
       "id": "plomeria",
-      "group": "Servicios y operación",
-      "title": "Plomeros y reparaciones a domicilio",
+      "group": "Servicios y operaciones",
+      "title": "Empresas de instalaciones y reparaciones",
       "lead": "Recibe solicitudes sin perder oportunidades mientras estás en servicio.",
       "sector": "Plomería y reparaciones",
       "problem": "Las llamadas sin respuesta se convierten en trabajos perdidos.",
@@ -1440,11 +1590,12 @@
       "sources": [
         "https://help.gohighlevel.com/support/solutions/articles/155000000961-industry-playbook-home-service-business"
       ],
-      "featured": false
+      "featured": false,
+      "keywords": "Plomeros y reparaciones a domicilio plomero plomería fontanero"
     },
     {
       "id": "limpieza",
-      "group": "Servicios y operación",
+      "group": "Servicios y operaciones",
       "title": "Empresas de limpieza",
       "lead": "Organiza cotizaciones y reservas de servicios recurrentes.",
       "sector": "Limpieza residencial y comercial",
@@ -1472,12 +1623,13 @@
       "sources": [
         "https://help.gohighlevel.com/support/solutions/articles/155000009560-highlevel-industries-create-sub-accounts-built-for-your-client-s-industry"
       ],
-      "featured": false
+      "featured": false,
+      "keywords": "Empresas de limpieza "
     },
     {
       "id": "jardineria",
-      "group": "Servicios y operación",
-      "title": "Jardinería y mantenimiento de exteriores",
+      "group": "Servicios y operaciones",
+      "title": "Empresas de jardinería y paisajismo",
       "lead": "Organiza solicitudes estacionales y trabajos recurrentes.",
       "sector": "Jardinería y paisajismo",
       "problem": "Es difícil recordar cuándo vuelve a necesitar servicio cada cliente.",
@@ -1504,43 +1656,76 @@
       "sources": [
         "https://help.gohighlevel.com/support/solutions/articles/155000009560-highlevel-industries-create-sub-accounts-built-for-your-client-s-industry"
       ],
-      "featured": false
+      "featured": false,
+      "keywords": "Jardinería y mantenimiento de exteriores "
     },
     {
-      "id": "restaurante",
-      "group": "Comercio y creadores",
-      "title": "Restaurantes, bares y cafeterías",
-      "lead": "Lleva pedidos, promociones y clientes recurrentes a una misma estrategia.",
-      "sector": "Alimentos y bebidas",
-      "problem": "Los clientes llegan por distintos canales y no existe una estrategia de recompra.",
+      "id": "rentas",
+      "group": "Servicios y operaciones",
+      "title": "Empresas de alquiler de equipos y espacios",
+      "lead": "Centraliza solicitudes de renta y disponibilidad.",
+      "sector": "Equipos audiovisuales, salones y espacios",
+      "problem": "Las fechas y solicitudes de renta se coordinan manualmente.",
       "steps": [
-        "Publica menús, promociones y canales de contacto.",
-        "Capta reservas o consultas compatibles.",
-        "Si se habilita Restaurantes, usa pedidos y reservas del módulo especializado.",
-        "Solicita reseñas y comunica nuevas ofertas."
+        "Publica tus activos y recibe solicitudes.",
+        "Confirma fechas y cotiza el servicio.",
+        "Con Rentals habilitado, administra listados y opciones de reserva.",
+        "Da seguimiento a pagos y devolución según tu proceso."
       ],
       "modules": [
         3,
         4,
-        7,
-        8,
-        10,
-        22,
-        25,
-        42
+        6,
+        9,
+        11,
+        27,
+        38
       ],
-      "image": "/growth-stages/growth-reten.png",
-      "imageAlt": "Captura real del módulo de reputación y reseñas de 10xteam Growth",
-      "note": "Restaurantes y Lealtad requieren validación de acceso; no promete integración con Rappi o Uber Eats.",
+      "image": "/growth-stages/growth-cierra-demo.png",
+      "imageAlt": "Captura real de oportunidades comerciales en la plataforma demo Growth",
+      "note": "Rentals requiere validación del complemento y sus reglas de disponibilidad; no es gestión de flota.",
       "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
       "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000009560-highlevel-industries-create-sub-accounts-built-for-your-client-s-industry"
+        "https://help.gohighlevel.com/support/solutions/articles/155000008000-using-snapshots-to-copy-rental-listings-and-categories"
       ],
-      "featured": false
+      "featured": false,
+      "keywords": "Alquiler de equipos y espacios "
+    },
+    {
+      "id": "congresos",
+      "group": "Educación y eventos",
+      "title": "Organizadores de eventos y congresos",
+      "lead": "Capta asistentes y organiza su experiencia.",
+      "sector": "Conferencias, congresos y ferias",
+      "problem": "Inscripciones, comunicaciones y check-in están en sistemas distintos.",
+      "steps": [
+        "Presenta el evento y capta interesados.",
+        "Si Eventos está habilitado, configura boletos y registros.",
+        "Envía confirmaciones y gestiona ingreso mediante QR compatible.",
+        "Continúa la relación comercial con asistentes autorizados."
+      ],
+      "modules": [
+        4,
+        7,
+        9,
+        11,
+        24,
+        29,
+        40
+      ],
+      "image": "/growth-stages/growth-escala-v2.png",
+      "imageAlt": "Captura real del sistema de campañas de correo en la demo Growth",
+      "note": "Eventos es un complemento sujeto a disponibilidad; no equivale a calendarios de citas.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000009809-event-management-ticketing-full-guide"
+      ],
+      "featured": false,
+      "keywords": "Organizadores de eventos y congresos "
     },
     {
       "id": "viajes",
-      "group": "Turismo, eventos y formación",
+      "group": "Restaurantes y hospitalidad",
       "title": "Agencias de viajes",
       "lead": "Organiza solicitudes de itinerario y cotizaciones.",
       "sector": "Agencias turísticas",
@@ -1568,11 +1753,12 @@
       "sources": [
         "https://help.gohighlevel.com/support/solutions/articles/155000002465-travel-agency-snapshot"
       ],
-      "featured": false
+      "featured": false,
+      "keywords": "Agencias de viajes "
     },
     {
       "id": "hoteles",
-      "group": "Turismo, eventos y formación",
+      "group": "Restaurantes y hospitalidad",
       "title": "Hoteles boutique y alojamientos",
       "lead": "Convierte consultas de estancia en oportunidades directas.",
       "sector": "Hoteles pequeños y hospedaje",
@@ -1600,164 +1786,8 @@
       "sources": [
         "https://help.gohighlevel.com/support/solutions/articles/155000002465-travel-agency-snapshot"
       ],
-      "featured": false
-    },
-    {
-      "id": "congresos",
-      "group": "Turismo, eventos y formación",
-      "title": "Organizadores de eventos y congresos",
-      "lead": "Capta asistentes y organiza su experiencia.",
-      "sector": "Conferencias, congresos y ferias",
-      "problem": "Inscripciones, comunicaciones y check-in están en sistemas distintos.",
-      "steps": [
-        "Presenta el evento y capta interesados.",
-        "Si Eventos está habilitado, configura boletos y registros.",
-        "Envía confirmaciones y gestiona ingreso mediante QR compatible.",
-        "Continúa la relación comercial con asistentes autorizados."
-      ],
-      "modules": [
-        4,
-        7,
-        9,
-        11,
-        24,
-        29,
-        40
-      ],
-      "image": "/growth-stages/growth-escala-v2.png",
-      "imageAlt": "Captura real del sistema de campañas de correo en la demo Growth",
-      "note": "Eventos es un complemento sujeto a disponibilidad; no equivale a calendarios de citas.",
-      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
-      "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000009809-event-management-ticketing-full-guide"
-      ],
-      "featured": false
-    },
-    {
-      "id": "rentas",
-      "group": "Turismo, eventos y formación",
-      "title": "Alquiler de equipos y espacios",
-      "lead": "Centraliza solicitudes de renta y disponibilidad.",
-      "sector": "Equipos audiovisuales, salones y espacios",
-      "problem": "Las fechas y solicitudes de renta se coordinan manualmente.",
-      "steps": [
-        "Publica tus activos y recibe solicitudes.",
-        "Confirma fechas y cotiza el servicio.",
-        "Con Rentals habilitado, administra listados y opciones de reserva.",
-        "Da seguimiento a pagos y devolución según tu proceso."
-      ],
-      "modules": [
-        3,
-        4,
-        6,
-        9,
-        11,
-        27,
-        38
-      ],
-      "image": "/growth-stages/growth-cierra-demo.png",
-      "imageAlt": "Captura real de oportunidades comerciales en la plataforma demo Growth",
-      "note": "Rentals requiere validación del complemento y sus reglas de disponibilidad; no es gestión de flota.",
-      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
-      "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000008000-using-snapshots-to-copy-rental-listings-and-categories"
-      ],
-      "featured": false
-    },
-    {
-      "id": "carritos",
-      "group": "Comercio y creadores",
-      "title": "Tiendas online y marcas de productos",
-      "lead": "Recupera compras incompletas y convierte compradores en clientes recurrentes.",
-      "sector": "Ropa, chocolates, café y productos de consumo",
-      "problem": "Una persona inicia el pago, pero abandona el carrito.",
-      "steps": [
-        "Publica productos y conecta el catálogo elegible.",
-        "Detecta checkout abandonado si existe un correo válido.",
-        "Envía seguimiento autorizado con un workflow.",
-        "Mide compras y crea campañas de recompra."
-      ],
-      "modules": [
-        7,
-        9,
-        11,
-        12,
-        14,
-        41,
-        43
-      ],
-      "image": "/growth-stages/growth-escala-v2.png",
-      "imageAlt": "Captura real del sistema de campañas de correo en la demo Growth",
-      "note": "El activador documentado requiere email válido y tienda nativa o integración compatible; no garantiza ventas.",
-      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
-      "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000007380-workflow-triggers-abandoned-checkout-trigger-for-e-commerce-stores"
-      ],
-      "featured": false
-    },
-    {
-      "id": "creadores",
-      "group": "Comercio y creadores",
-      "title": "Creadores de contenido e influencers",
-      "lead": "Organiza publicaciones y convierte tu audiencia en contactos propios.",
-      "sector": "Creadores y marcas personales",
-      "problem": "Publicar en varias redes y responder mensajes consume gran parte de la jornada.",
-      "steps": [
-        "Conecta los perfiles compatibles y programa contenido.",
-        "Dirige interesados hacia formularios o páginas de oferta.",
-        "Segmenta suscriptores y envía novedades autorizadas.",
-        "Vende cursos o servicios con pagos compatibles."
-      ],
-      "modules": [
-        4,
-        5,
-        7,
-        8,
-        11,
-        13,
-        34,
-        35
-      ],
-      "image": "/growth-stages/growth-escala-v2.png",
-      "imageAlt": "Captura real del sistema de campañas de correo en la demo Growth",
-      "note": "Adaptación del Social Planner y cursos; no incluye monetización automática de seguidores ni métricas de todas las redes.",
-      "origin": "Adaptación comercial de 10xteam basada en documentación de HighLevel",
-      "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000005063"
-      ],
-      "featured": false
-    },
-    {
-      "id": "distribuidores",
-      "group": "Finanzas y servicios profesionales",
-      "title": "Distribuidores y vendedores B2B",
-      "lead": "Organiza cuentas comerciales, cotizaciones y recompra.",
-      "sector": "Distribución y ventas mayoristas",
-      "problem": "Cada vendedor mantiene sus propias conversaciones y cotizaciones.",
-      "steps": [
-        "Capta solicitudes de catálogo o cotización.",
-        "Asigna responsables y registra oportunidades.",
-        "Comparte propuestas y programa seguimiento.",
-        "Identifica cuentas con pedidos recurrentes para contactar con autorización."
-      ],
-      "modules": [
-        1,
-        2,
-        5,
-        6,
-        7,
-        9,
-        14,
-        27
-      ],
-      "image": "/growth-stages/growth-cierra-v2.png",
-      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
-      "note": "Adaptación de CRM y pipelines; no reemplaza ERP, logística ni inventario mayorista.",
-      "origin": "Adaptación comercial de 10xteam basada en documentación de HighLevel",
-      "sources": [
-        "https://help.gohighlevel.com/support/solutions/articles/155000001982-understanding-pipelines"
-      ],
-      "featured": false
+      "featured": false,
+      "keywords": "Hoteles boutique y alojamientos "
     }
   ],
   "presentation": {
@@ -1772,14 +1802,42 @@
         "https://help.gohighlevel.com/support/solutions/folders/48000670531",
         "https://help.gohighlevel.com/support/solutions/folders/155000000149"
       ]
+    },
+    "positioning": {
+      "segment": "Negocios establecidos y empresas en crecimiento, sin excluir independientes, emprendedores y solopreneurs.",
+      "featuredOrder": [
+        "propiedades",
+        "distribuidores",
+        "autos",
+        "citas",
+        "creditos",
+        "carritos",
+        "consultoria",
+        "academia",
+        "climatizacion",
+        "restaurante"
+      ],
+      "solopreneurInterest": {
+        "status": "discovery_only",
+        "serviceType": "growth_solopreneur_interest",
+        "source": "growth_contact",
+        "offer": "Programa para emprendedores e independientes en exploración; sin precio, acceso, descuento ni plan confirmado.",
+        "metrics": [
+          "solicitudes únicas por email",
+          "sector y objetivo",
+          "evolución de interés semanal"
+        ],
+        "preview": "simulate only; no external submissions"
+      }
     }
   },
   "scenarioGroups": [
-    "Comercio y creadores",
-    "Salud, belleza y bienestar",
-    "Finanzas y servicios profesionales",
+    "Servicios profesionales",
     "Inmobiliario y automotriz",
-    "Servicios y operación",
-    "Turismo, eventos y formación"
+    "Comercio y marcas",
+    "Salud y bienestar",
+    "Servicios y operaciones",
+    "Educación y eventos",
+    "Restaurantes y hospitalidad"
   ]
 }
