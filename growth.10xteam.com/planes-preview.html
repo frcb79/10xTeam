@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0B0D12">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<title>Comparar Growth y Scale · Funcionalidades | 10xteam Growth OS</title>
+<meta name="description" content="Compara Growth y Scale función por función. 45 módulos, complementos, consumo, créditos y condiciones sin cargos escondidos.">
+<style>
+:root{--bg:#0b0d12;--surface:#14171f;--surface2:#1b1f2a;--border:#2b303e;--text:#f4f5f7;--muted:#a6acbb;--violet:#7b5cff;--green:#3ddc97;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:89px}
+body{margin:0;color:var(--text);background:var(--bg);font:14px/1.65 Inter,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.wrap{width:min(1130px,calc(100% - 44px));margin-inline:auto}
+.topnav{position:sticky;top:0;z-index:40;border-bottom:1px solid #292d39;background:#0b0d12f2;backdrop-filter:blur(18px)}
+.nav-inner{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:inline-flex;align-items:center;gap:8px;font:700 20px 'Space Grotesk',sans-serif;letter-spacing:-.8px;white-space:nowrap}
+.brand-symbol{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:var(--violet);font-size:20px}
+.brand small{font:600 10px 'JetBrains Mono',monospace;letter-spacing:1.2px;color:var(--green);margin-left:4px}
+.nav-links{display:flex;gap:25px;align-items:center}
+.nav-links a{font-size:12px;color:#a9b2c3;font-weight:600}
+.nav-links a:hover{color:white}
+.nav-return{border:1px solid #42485b;border-radius:9px;padding:9px 12px;font-size:12px;font-weight:700}
+.nav-return:hover{background:#222738}
+.hero{background:radial-gradient(ellipse 58% 90% at 84% 8%,#7b5cff22,transparent 72%);padding:69px 0 50px}
+.kicker{font:600 11px 'JetBrains Mono',monospace;letter-spacing:1.6px;color:var(--green);text-transform:uppercase}
+.hero h1{margin:14px 0 15px;font:700 clamp(34px,4vw,56px)/1.11 'Space Grotesk',sans-serif;letter-spacing:-1.9px;max-width:900px}
+.hero h1 em,.section-title em{color:#a995ff;font-style:normal}
+.lead{color:#b0b9c9;font-size:15px;line-height:1.82;max-width:800px;margin:0}
+.hero-foot{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:25px}
+.main-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:10px;padding:12px 17px;background:var(--green);color:#08140e;font-size:12px;font-weight:750}
+.main-btn:hover{background:#6ee5b3}
+.ghost-btn{padding:12px 17px;border-radius:10px;border:1px solid #3b4152;font-size:12px;font-weight:700;color:#d8dfec}
+.ghost-btn:hover{border-color:var(--violet)}
+.beta{font-size:11px;color:#9da7bb;border-left:2px solid var(--violet);padding-left:12px;margin-left:auto;max-width:300px}
+.section{padding:64px 0}
+.section.compact{padding-top:0}
+.section-title{font:700 clamp(25px,3vw,36px)/1.25 'Space Grotesk',sans-serif;letter-spacing:-.9px;margin:0 0 10px}
+.section-intro{color:#a8b3c6;font-size:13px;line-height:1.8;margin:0 0 26px;max-width:800px}
+.table-shell{border:1px solid var(--border);border-radius:15px;overflow:hidden;background:#11151d}
+.table-scroll{overflow-x:auto;scrollbar-color:#555c72 #151922}
+.matrix{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed}
+.matrix th,.matrix td{border-bottom:1px solid #292f3d;vertical-align:middle;padding:13px 18px}
+.matrix thead th{background:#191e2a;border-bottom:1px solid #3b4052;padding:23px 20px;text-align:center}
+.matrix thead th:first-child{text-align:left;background:#171b25}
+.matrix thead th:last-child{background:linear-gradient(180deg,#29203e,#1b1e2a)}
+.matrix th.feature-col{width:52%}
+.matrix th.plan-col{width:24%}
+.matrix .head-overline{display:block;color:#848da2;text-transform:uppercase;font:600 10px 'JetBrains Mono',monospace;letter-spacing:1px;margin-bottom:7px}
+.matrix .plan-title{display:block;font:700 26px/1.1 'Space Grotesk',sans-serif;color:#f4f5f7}
+.matrix .plan-price{display:block;font:600 14px 'Space Grotesk',sans-serif;color:#c3c8d3;margin-top:11px}
+.matrix .plan-advantage{display:block;font:500 11px Inter,sans-serif;color:#aab5c7;margin-top:5px}
+.matrix .primary-col{background:#141d1f}
+.matrix .diff-scale{background:#181723}
+.matrix .row-label{display:block;font-size:13px;font-weight:650;color:#e1e7ee;line-height:1.45}
+.matrix .row-note{display:block;color:#8f9aaf;font-size:11px;line-height:1.6;margin-top:3px}
+.matrix tbody td{text-align:center;color:#c6ccda;font-size:12px}
+.matrix tbody tr:not(.category-row):hover td{background:#2429368c}
+.matrix tbody tr:not(.category-row):hover th{background:#2227358c}
+.matrix tbody tr:last-child th,.matrix tbody tr:last-child td{border-bottom:0}
+.category-row th{padding:14px 19px;background:#202332;color:#e4e3ff;text-align:left;font:700 12px 'Space Grotesk',sans-serif;letter-spacing:.1px;border-bottom:1px solid #36364b}
+.category-row .count{font:500 10px 'JetBrains Mono',monospace;color:#929bb2;margin-left:9px}
+.category-row .toggle-group{border:0;background:none;color:#e4e3ff;font:inherit;padding:0;width:100%;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.category-row .toggle-group .chevron{font-size:18px;font-weight:400;color:#aeb7c7}
+.status{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:650;line-height:1.3;max-width:100%;text-align:left}
+.symbol{display:inline-grid;place-items:center;flex-shrink:0;width:20px;height:20px;border-radius:50%;background:#3ddc971b;color:var(--green);font-size:12px;font-weight:750}
+.status.extra .symbol{background:#8b74ff21;color:#b6a5ff}
+.status.consume .symbol{background:#e9c1791f;color:#e9c179}
+.status.pending .symbol{background:#52617b2a;color:#a4b1c5}
+.status-text{display:block;font-size:11px;font-weight:600}
+.status-hint{display:block;font-size:10px;font-weight:450;color:#8a96ab;margin-top:4px}
+.no-match{padding:37px 22px;text-align:center;color:#a8b5ca}
+.controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:space-between;padding:17px 19px;background:#151924;border-bottom:1px solid #303747}
+.searchbox{display:flex;align-items:center;gap:9px;border:1px solid #3a4051;background:#0d1118;padding:0 12px;border-radius:9px;min-width:280px;flex:1;max-width:480px}
+.searchbox span{font-size:19px;color:#98a1b4}
+.searchbox input{background:transparent;color:#fff;outline:0;border:0;height:44px;width:100%;min-width:0;font-size:12px}
+.searchbox input::placeholder{color:#7b8596}
+.filter-chips{display:flex;gap:7px;overflow-x:auto;margin:14px 0 18px;padding-bottom:4px;scrollbar-width:thin}
+.filter{border:1px solid #353b4b;background:#171c25;border-radius:8px;padding:8px 12px;color:#9ea9bc;white-space:nowrap;font-size:11px;font-weight:650}
+.filter.active{color:#ede9ff;border-color:#876cfb;background:#7b5cff21}
+.results{font:600 11px 'JetBrains Mono',monospace;color:#8e9bb0}
+.checkbox{display:flex;align-items:center;gap:8px;white-space:nowrap;color:#b5c0d1;font-size:11px;cursor:pointer}
+.checkbox input{accent-color:var(--violet);width:16px;height:16px}
+.note-line{color:#929fb3;font-size:11px;line-height:1.7;margin-top:15px}
+.note-line b{color:#d5dbe6}
+.info-toggle{background:none;color:#8fa3c7;border:0;font-size:10px;padding:3px 0;display:block;cursor:pointer;text-align:left}
+.info-toggle:hover{color:#d1c6ff;text-decoration:underline}
+.details-inline{display:none;color:#8f9bad;font-size:11px;line-height:1.65;margin-top:7px;font-weight:400}
+.details-inline.open{display:block}
+.section-muted{background:#10131a;border-top:1px solid #262b36;border-bottom:1px solid #262b36}
+.addon-header{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap}
+.plan-strip{background:linear-gradient(95deg,#171c27,#1f1933);border:1px solid #36374e;border-radius:11px;margin:20px 0 20px;padding:17px 19px;display:flex;gap:12px;align-items:center;justify-content:space-between;font-size:12px;color:#b5bdd0}
+.plan-strip b{color:#e7e6ff}
+.flag{display:inline-flex;border:1px solid #53506b;padding:4px 7px;border-radius:6px;font:600 9px 'JetBrains Mono',monospace;color:#c2b3ff;margin-left:8px;vertical-align:middle}
+.faq-item{border-bottom:1px solid #2a303d}
+.faq-item summary{padding:19px 0;cursor:pointer;font-size:13px;font-weight:650;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:after{content:"+";font-size:20px;color:var(--green)}
+.faq-item[open] summary:after{content:"−"}
+.faq-item p{color:#a8b3c3;font-size:12px;max-width:850px;line-height:1.85;margin:0;padding-bottom:19px}
+.footer-cta{padding:65px 0;text-align:center;background:radial-gradient(ellipse at 50% 120%,#7b5cff20,transparent 75%)}
+.footer-cta h2{font:700 clamp(28px,3.2vw,41px)/1.2 'Space Grotesk',sans-serif;margin:0 0 12px}
+.footer-cta p{color:#a7b2c5;font-size:13px;max-width:620px;margin:0 auto 22px}
+.footer{border-top:1px solid #292f3a;color:#8c98aa;padding:24px 0;font-size:11px}
+.footer-content{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+.footer-content a:hover{color:#fff}
+.only-mobile{display:none}
+@media(max-width:850px){.nav-links{display:none}.matrix th.feature-col{width:46%}.matrix th.plan-col{width:27%}.matrix th,.matrix td{padding:13px 12px}.beta{margin-left:0}.hero{padding-top:45px}}
+@media(max-width:560px){
+ .wrap{width:calc(100% - 26px)}
+ .nav-inner{min-height:60px}
+ .brand{font-size:18px}
+ .brand small{font-size:9px}
+ .nav-return{font-size:10px;padding:8px 10px}
+ .hero{padding:39px 0 36px}
+ .hero h1{font-size:33px;letter-spacing:-1.05px}
+ .lead{font-size:13px;line-height:1.75}
+ .hero-foot{align-items:stretch}
+ .beta{width:100%;max-width:100%;margin-top:2px}
+ .section{padding:45px 0}
+ .section-title{font-size:27px}
+ .section-intro{font-size:12px}
+ .controls{padding:12px;gap:9px}
+ .searchbox{min-width:100%;max-width:100%;flex-basis:100%}
+ .filter{font-size:10px;padding:8px 9px}
+ .table-scroll{overflow-x:visible}
+ .matrix{table-layout:fixed}
+ .matrix th.feature-col{width:43%}
+ .matrix th.plan-col{width:28.5%}
+ .matrix colgroup col:first-child{width:43%!important}
+ .matrix colgroup col:nth-child(2),.matrix colgroup col:nth-child(3){width:28.5%!important}
+ .matrix th,.matrix td{padding:11px 7px}
+ .matrix thead th{padding:15px 6px}
+ .matrix .plan-title{font-size:19px}
+ .matrix .plan-price{font-size:11px}
+ .matrix .plan-advantage{font-size:9px}
+ .matrix .head-overline{font-size:9px;letter-spacing:.3px}
+ .matrix .row-label{font-size:11px}
+ .matrix .row-note{font-size:9px}
+ .status{display:flex;flex-direction:column;gap:3px;text-align:center}
+ .status .symbol{width:18px;height:18px;font-size:11px}
+ .status-text{font-size:9px}
+ .status-hint{display:none}
+ .category-row th{font-size:11px;padding:11px}
+ .category-row .count{font-size:9px}
+ .info-toggle{font-size:10px}
+ .controls .checkbox{font-size:10px}
+ .only-mobile{display:inline}
+ .only-desktop{display:none}
+ .plan-strip{flex-direction:column;align-items:start}
+ .footer-content{justify-content:center;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* V3: simple plan comparison + contextual, real-screenshot examples */
+.hero{padding:62px 0 47px}
+.hero-disclaimer{color:#8190a9;font-size:10px;margin:18px 0 0}
+.examples-section{padding-top:53px;padding-bottom:59px;border-bottom:1px solid #272d3a;background:linear-gradient(180deg,#10121c,#0d1016)}
+.scenario-tabs{display:flex;align-items:stretch;gap:7px;overflow-x:auto;margin-bottom:0;padding-bottom:9px;scrollbar-color:#3b4051 transparent}
+.scenario-tab{border:1px solid #353949;background:#181c26;border-radius:9px;padding:10px 15px;white-space:nowrap;color:#aeb6c7;font-size:11px;font-weight:700;min-height:44px}
+.scenario-tab.active{border-color:#7b5cff;background:#7b5cff22;color:#f4efff}
+.scenario-tab:hover{border-color:#8d76ef;color:white}
+.scenario-panel{display:grid;grid-template-columns:1fr .95fr;gap:28px;background:linear-gradient(135deg,#191c28,#141921);border:1px solid #373749;border-radius:15px;padding:25px;min-height:435px;align-items:center}
+.scenario-left h3{font:700 clamp(22px,2.6vw,33px)/1.22 'Space Grotesk',sans-serif;letter-spacing:-.8px;margin:9px 0 10px}
+.scenario-left .scenario-lead{font-size:13px;color:#bdc6d6;line-height:1.75;margin:0 0 16px}
+.scenario-context{display:flex;gap:7px;flex-wrap:wrap;color:#a69cf6;font:600 10px 'JetBrains Mono',monospace;margin-bottom:12px}
+.scenario-steps{margin:16px 0;padding:0;list-style:none}
+.scenario-steps li{display:flex;gap:13px;align-items:start;font-size:12px;color:#ced5e3;padding:10px 0;border-bottom:1px solid #343849;line-height:1.6}
+.scenario-steps li:last-child{border-bottom:0}
+.scenario-steps li .step-n{width:22px;height:22px;display:grid;place-items:center;border:1px solid #5d508e;border-radius:7px;color:#bbaeff;font:600 10px 'JetBrains Mono',monospace;flex-shrink:0}
+.scenario-tools{margin-top:17px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.scenario-tools button{border:1px solid #6760a2;background:#7b5cff1f;color:#e0d8ff;border-radius:8px;padding:10px 13px;font-weight:700;font-size:11px}
+.scenario-tools button:hover{background:#7b5cff38}
+.scenario-tools small{color:#8f9db0;font-size:10px}
+.scenario-img{min-width:0}
+.scenario-img img{display:block;width:100%;height:auto;max-height:330px;object-fit:contain;border:1px solid #3c4251;border-radius:12px;background:#0d1118;box-shadow:0 22px 45px #0005}
+.scenario-caption{font-size:10px;line-height:1.6;color:#a2adc1;margin:11px 0}
+.scenario-note{padding:10px 12px;border-left:2px solid #8776d4;background:#7b5cff0b;font-size:10px;color:#b5bbcc;line-height:1.65}
+.examples-disclaimer{font-size:10px;line-height:1.7;color:#78859b;margin:12px 0 0}
+.matrix-caption{display:flex;justify-content:space-between;align-items:center;gap:13px;flex-wrap:wrap;padding:17px 19px;background:#171b26;border-bottom:1px solid #323848}
+.matrix-caption b{display:block;font-size:13px;color:#e8ebf4}
+.matrix-caption span{display:block;font-size:11px;color:#9eabbc;margin-top:3px}
+.matrix-actions{display:flex;gap:12px}
+.matrix-actions button{border:0;border-bottom:1px solid #7876b2;background:none;color:#c1b5ef;padding:5px 0;font-size:11px;font-weight:650}
+.matrix .row-note{margin-top:4px;max-width:570px}
+.matrix .feature-example-toggle{display:inline-block;margin-top:7px;border:0;background:none;color:#b5a2ff;font-size:10px;font-weight:700;padding:1px 0}
+.matrix .feature-example-toggle:hover{text-decoration:underline;color:#e7deff}
+.matrix .feature-example-toggle[aria-expanded=true]{color:#3ddc97}
+.matrix .detail-row td{padding:19px 24px;text-align:left;background:#101823}
+.matrix .detail-row[hidden]{display:none!important}
+.feature-explain{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.feature-explain strong{display:block;color:#91dec4;font:600 10px 'JetBrains Mono',monospace;letter-spacing:.4px;margin-bottom:5px}
+.feature-explain p{margin:0;color:#ccd4df;font-size:11px;line-height:1.75}
+.feature-explain .cost-note{grid-column:1/-1;border-top:1px solid #2f3642;padding-top:11px;color:#a7b3c5;font-size:10px}
+.feature-explain .cost-note b{color:#e8d5a1}
+.mobile-scroll-hint{display:none;color:#a7b3cb;font-size:10px;padding:8px 15px;background:#181c24}
+.addon-benefit{display:block;color:#b0bad0;font-size:11px;line-height:1.7;margin-top:6px}
+.addon-example{display:block;color:#8ea6b5;font-size:10px;line-height:1.65;margin-top:6px}
+.matrix .differentiation td:last-child{background:#7b5cff0b}
+.matrix .differentiation th{background:#1b1c28}
+.table-scroll{overflow-x:auto}
+.matrix tr:not(.category-row) th[scope=row]{background:#131822}
+.category-row .toggle-group{cursor:pointer}
+@media(max-width:780px){.scenario-panel{grid-template-columns:1fr}.scenario-img img{max-height:360px}}
+@media(max-width:560px){
+ .hero{padding:44px 0 35px}
+ .examples-section{padding:42px 0}
+ .scenario-panel{padding:15px;gap:14px;min-height:0}
+ .scenario-tab{font-size:10px;padding:9px 11px}
+ .scenario-left h3{font-size:24px}
+ .scenario-img img{max-height:250px}
+ .matrix-caption{padding:12px}
+ .matrix-actions{gap:11px}
+ .matrix-actions button{font-size:10px}
+ .mobile-scroll-hint{display:block}
+ .table-scroll{overflow-x:auto}
+ .matrix{min-width:0;width:100%}
+ .matrix th.feature-col{width:43%}
+ .matrix th.plan-col{width:28.5%}
+ .matrix colgroup col:first-child{width:43%!important}
+ .matrix colgroup col:nth-child(2),.matrix colgroup col:nth-child(3){width:28.5%!important}
+ .matrix th,.matrix td{padding:10px 5px;overflow-wrap:anywhere}
+ .matrix thead th{padding:11px 5px}
+ .matrix .status{display:flex;flex-direction:column;gap:3px;text-align:center;align-items:center}
+ .matrix .status-text{font-size:9px;line-height:1.25;overflow-wrap:anywhere}
+ .matrix tr:not(.category-row) th[scope=row]{position:static;box-shadow:none}
+ .matrix .row-label{font-size:11px;line-height:1.35}
+ .matrix .row-note{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;font-size:9px;line-height:1.4}
+ .matrix .plan-title{font-size:18px}
+ .matrix .plan-advantage{font-size:9px}
+ .matrix .plan-price{font-size:10px}
+ .feature-explain{grid-template-columns:1fr}
+ .feature-explain .cost-note{grid-column:auto}
+ .matrix .detail-row td{padding:13px}
+ .matrix .status-hint{display:none}
+ .matrix .row-note{font-size:9px}
+}
+
+
+.status.pref .symbol{background:#7b5cff23;color:#c7b9ff}
+.status.external .symbol{background:#4d56642a;color:#b8c2d2}
+.status.pending .symbol{background:#4d56642a;color:#b8c2d2}
+
+
+.industry-picker{border:1px solid #33394a;border-radius:13px 13px 0 0;background:#141823;padding:17px 18px 10px}
+.industry-picker-head{display:flex;gap:18px;align-items:center;justify-content:space-between;margin-bottom:13px}
+.industry-picker-head strong{display:block;font-size:14px;color:#eff2fb}
+.industry-picker-head #scenario-count{display:block;font-size:11px;color:#a6b1c3;margin-top:4px}
+.industry-search{display:flex;align-items:center;gap:8px;border:1px solid #41475b;border-radius:9px;background:#0d1119;padding:0 11px;min-width:0;width:min(100%,350px);color:#a6b1c3}
+.industry-search input{width:100%;min-width:0;outline:none;border:0;background:transparent;color:#f4f6fb;font:inherit;font-size:12px;padding:12px 0}
+.industry-search input::placeholder{color:#a0aabb}
+.industry-groups{display:flex;gap:7px;flex-wrap:wrap;border-bottom:1px solid #33394a;padding-bottom:13px;margin-bottom:12px}
+.industry-group{font:600 11px Inter,sans-serif;padding:8px 11px;border-radius:7px;border:1px solid #3e4555;background:#1b202c;color:#c6cddd;text-align:left;cursor:pointer}
+.industry-group:hover,.industry-group[aria-pressed="true"]{border-color:#9579ff;background:#7b5cff26;color:#ede9ff}
+.industry-group .group-number{margin-left:5px;color:#aeb3c9;font-size:10px}
+.industry-examples{display:flex;flex-wrap:wrap;gap:7px;overflow:visible;padding-bottom:4px}
+.industry-examples .scenario-tab{white-space:normal;min-height:39px;text-align:left;padding:9px 12px;font-size:11px}
+.scenario-panel{border-radius:0 0 13px 13px;border-top:0}
+.scenario-empty{grid-column:1/-1;padding:30px;text-align:center;color:#a6b1c3}
+.scenario-empty strong{display:block;color:#edf0f7;margin-bottom:8px}
+.scenario-empty button{margin-top:15px;border:1px solid #8c72ff;border-radius:8px;background:#7b5cff22;padding:10px 16px;color:#e1d7ff;cursor:pointer}
+.scenario-origin{font-size:10px;color:#a4aec2;margin-top:12px;line-height:1.6}
+.scenario-prevnext{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:10px}
+.scenario-prevnext button{font:600 11px Inter,sans-serif;border:1px solid #424859;border-radius:8px;background:#1a1f2a;color:#c6cde0;padding:9px 12px;cursor:pointer}
+.scenario-prevnext button:disabled{opacity:.4;cursor:default}
+.scenario-prevnext span{font-size:11px;color:#a9b2c5}
+@media(max-width:560px){.industry-picker{padding:12px 11px 9px}.industry-picker-head{display:block}.industry-search{margin-top:11px;width:100%}.industry-groups{gap:5px}.industry-group{font-size:10px;padding:7px 8px}.industry-examples{gap:5px}.industry-examples .scenario-tab{padding:8px 9px;font-size:10px}.scenario-prevnext button{padding:8px;font-size:10px}}
+
+
+.solo-section{padding-top:24px;padding-bottom:46px}
+.solo-panel{border:1px solid #3a3b4d;border-radius:15px;padding:27px 30px;background:linear-gradient(125deg,#171a26,#131820);display:flex;flex-wrap:wrap;gap:25px;align-items:start}
+.solo-copy{flex:1 1 350px;min-width:0}
+.solo-copy .section-title{font-size:clamp(23px,2.6vw,32px);margin-top:9px}
+.solo-copy>p{font-size:13px;line-height:1.75;color:#bcc4d4;max-width:780px}
+.solo-muted{font-size:12px!important;line-height:1.65;color:#a3aec0!important}
+.solo-trigger{display:inline-flex;align-items:center;gap:9px;margin-top:8px;background:transparent;color:#d9d1ff;text-align:left;white-space:normal}
+.solo-copy .solo-disclaimer{font-size:10px;color:#9ca6ba;margin:13px 0 0}
+.solo-form{flex:1 1 310px;max-width:480px;min-width:0;display:grid;gap:8px;padding:20px;border:1px solid #363d4d;border-radius:12px;background:#0f141d}
+.solo-form[hidden]{display:none}
+.solo-form h3{font:700 19px 'Space Grotesk',sans-serif;margin:0 0 6px}
+.solo-form label{font-size:11px;font-weight:650;color:#d4dbea}
+.solo-form label span{font-weight:400;color:#a2aec2}
+.solo-form>input,.solo-form select{width:100%;border:1px solid #41495a;border-radius:8px;padding:10px 11px;background:#191e2a;color:#eff2fa;font:12px Inter,sans-serif}
+.solo-form .solo-consent{display:flex;gap:9px;align-items:start;line-height:1.6;margin:6px 0 4px}
+.solo-consent input{accent-color:#7b5cff;flex-shrink:0}
+.solo-consent a{text-decoration:underline;color:#c6b7ff}
+.solo-result{font-size:11px;line-height:1.7;margin:0;color:#a9e7c8}
+.solo-result.error{color:#f4b7b7}
+@media(max-width:560px){.solo-panel{padding:18px 15px;gap:15px}.solo-form{padding:14px;max-width:100%;flex-basis:100%}.solo-trigger{font-size:11px}.solo-section{padding-bottom:35px}}
+
+</style>
+</head>
+<body>
+<nav class="topnav" aria-label="Navegación">
+ <div class="wrap nav-inner">
+  <a class="brand" href="/" aria-label="10xteam Growth - inicio"><span class="brand-symbol">×</span>10xteam <small>GROWTH</small></a>
+  <div class="nav-links"><a href="#ejemplos">Ejemplos</a><a href="#comparador">Comparar planes</a><a href="#complementos">Complementos</a><a href="#consumos">Consumos y costos</a><a href="#preguntas">Preguntas</a></div>
+  <a class="nav-return" href="/">← Volver a Growth</a>
+ </div>
+</nav>
+<main>
+ <section class="hero">
+  <div class="wrap">
+   <div class="kicker">COMPARA · DESCUBRE · ELIGE</div>
+   <h1>Una plataforma para <em>hacer mucho más</em> con tu negocio.</h1>
+   <p class="lead">Publica, atrae prospectos, atiende conversaciones, vende y automatiza el seguimiento. Aquí puedes conocer las herramientas, ver ejemplos de uso y comparar exactamente qué incluye cada plan.</p>
+   <div class="hero-foot"><a class="main-btn" href="#comparador">Comparar Growth y Scale ↓</a><a class="ghost-btn" href="#ejemplos">Ver cómo funciona en un negocio →</a></div>
+   <p class="hero-disclaimer">Primer diseño en revisión · Precios definitivos pendientes · Los casos mostrados son ilustrativos.</p>
+  </div>
+ </section>
+ <section class="section examples-section" id="ejemplos">
+  <div class="wrap">
+   <span class="kicker">DIFERENTES INDUSTRIAS. UNA MISMA PLATAFORMA.</span>
+   <h2 class="section-title">Tu industria. Tu negocio.<br><em>Tu siguiente nivel de crecimiento.</em></h2>
+   <p class="section-intro">Descubre cómo empresas, profesionales y equipos comerciales pueden captar más oportunidades, automatizar su operación y escalar con 10xteam. Explora 30 casos de uso y encuentra el que mejor representa a tu negocio.</p>
+   <div class="industry-picker">
+    <div class="industry-picker-head"><div><strong>Encuentra tu negocio</strong><span id="scenario-count" aria-live="polite">30 ejemplos por industria</span></div><label class="industry-search"><span aria-hidden="true">⌕</span><input type="search" id="scenario-search" placeholder="Ej. inmobiliaria, crédito, comercio..." aria-label="Buscar ejemplos de negocio" autocomplete="off"></label></div>
+    <div id="scenario-groups" class="industry-groups" role="group" aria-label="Categorías de negocios"></div>
+    <div class="scenario-tabs industry-examples" id="scenario-tabs" role="group" aria-label="Ejemplos por tipo de negocio"></div>
+   </div>
+   <div class="scenario-panel" id="scenario-panel" aria-live="polite"></div>
+   <p class="examples-disclaimer">Ejemplos ilustrativos de uso, no testimonios ni resultados garantizados. Las capturas provienen de pantallas reales de la subcuenta de demostración de Growth, no de estos negocios ficticios.</p>
+  </div>
+ </section>
+ <section class="section" id="comparador">
+  <div class="wrap">
+   <span class="kicker">EN RESUMEN Y EN DETALLE</span><h2 class="section-title">Growth vs Scale. <em>La diferencia se entiende.</em></h2>
+   <p class="section-intro">Ambos planes ofrecen una plataforma muy completa. Scale añade más capacidad, consumo preferente y algunos módulos operativos incluidos. Compara las diferencias principales y luego explora las 45 funciones con ejemplos concretos.</p>
+   <div class="table-shell">
+    <div class="mobile-scroll-hint">A la izquierda verás el beneficio; a la derecha, Growth y Scale.</div>
+    <div class="table-scroll">
+     <table class="matrix" aria-label="Comparación de funcionalidades Growth y Scale">
+      <thead>
+       <tr>
+        <th class="feature-col" scope="col"><span class="head-overline">COMPARADOR</span><span style="font:700 19px 'Space Grotesk',sans-serif">Funcionalidades</span><span class="plan-advantage">Qué incluye cada uno</span></th>
+        <th class="plan-col" scope="col"><span class="head-overline">PLAN</span><span class="plan-title">Growth</span><span class="plan-price">Precio por definir</span><span class="plan-advantage">1 negocio</span></th>
+        <th class="plan-col" scope="col"><span class="head-overline">PLAN</span><span class="plan-title" style="color:#d1c6ff">Scale</span><span class="plan-price">Precio por definir</span><span class="plan-advantage">Hasta 2 negocios</span></th>
+       </tr>
+      </thead>
+      <tbody id="key-differences"></tbody>
+     </table>
+    </div>
+    <div class="matrix-caption"><div><b>Explora todas las capacidades</b><span>Haz clic en “Ver ejemplo” para conocer un uso concreto y los posibles cargos.</span></div><div class="matrix-actions"><button type="button" id="expand-all">Abrir categorías</button><button type="button" id="collapse-all">Cerrar categorías</button></div></div>
+    <div class="controls" id="buscador">
+     <label class="searchbox"><span aria-hidden="true">⌕</span><span class="sr-only" style="position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden">Buscar funcionalidades</span><input id="search-features" type="search" placeholder="Buscar CRM, WhatsApp, automatizaciones…" autocomplete="off"></label>
+     <label class="checkbox"><input type="checkbox" id="only-differences"> Mostrar sólo diferencias</label>
+     <span class="results" id="result-count" aria-live="polite">45 módulos</span>
+    </div>
+    <div class="wrap" style="width:calc(100% - 24px)">
+      <div class="filter-chips" id="category-filters" aria-label="Filtrar por categoría"></div>
+    </div>
+    <div class="mobile-scroll-hint">Compara las tres columnas y abre los ejemplos tocando cada función.</div>
+    <div class="table-scroll">
+     <table class="matrix" aria-label="Listado completo de módulos por plan">
+       <colgroup><col style="width:52%"><col style="width:24%"><col style="width:24%"></colgroup>
+       <thead><tr><th scope="col">Funcionalidad y beneficio</th><th scope="col">Growth</th><th scope="col">Scale</th></tr></thead>
+       <tbody id="feature-rows"></tbody>
+     </table>
+    </div>
+   </div>
+   <p class="note-line"><b>Cómo leer la comparación:</b> ✓ incluido · + complemento opcional · ◉ por consumo. Las diferencias de subcuentas, bolsa y tarifas de IA están arriba. Las funciones beta, los terceros y los precios pendientes se identificarán antes de contratar.</p>
+  </div>
+ </section>
+ <section class="section section-muted" id="complementos">
+  <div class="wrap">
+   <h2 class="section-title">Complementos. <em>Sólo lo que necesitas.</em></h2>
+   <p class="section-intro">Cada complemento es una solución completa para una necesidad concreta, no una función básica escondida. Comprueba para quién sirve, su ejemplo de uso, si está incluido en Scale y si está disponible o todavía en validación.</p>
+   <div class="table-shell">
+    <div class="table-scroll">
+     <table class="matrix" aria-label="Complementos y condiciones por plan">
+       <thead><tr><th class="feature-col" scope="col"><span class="head-overline">CATÁLOGO DE COMPLEMENTOS</span><span style="font:700 18px 'Space Grotesk',sans-serif">Funcionalidad adicional</span></th><th class="plan-col" scope="col"><span class="plan-title">Growth</span><span class="plan-advantage">Precio estándar</span></th><th class="plan-col" scope="col"><span class="plan-title" style="color:#d1c6ff">Scale</span><span class="plan-advantage">Condiciones preferentes</span></th></tr></thead>
+       <tbody id="addon-rows"></tbody>
+     </table>
+    </div>
+   </div>
+   <div class="plan-strip"><div><b>Pack de complementos:</b> evaluamos una tarifa agrupada para negocios que necesitan varios módulos completos.</div><span class="flag">PRECIO POR DEFINIR</span></div>
+  </div>
+ </section>
+ <section class="section" id="consumos">
+  <div class="wrap">
+   <h2 class="section-title">Servicios y consumo. <em>Sin letras pequeñas.</em></h2>
+   <p class="section-intro">Ambos planes incluyen crédito multipropósito; no todos los servicios usan las mismas unidades ni todos los cargos de terceros pasan por Wallet. Aquí distinguimos claramente lo incluido de lo adicional.</p>
+   <div class="table-shell">
+    <div class="table-scroll">
+     <table class="matrix" aria-label="Transparencia de consumo y costos">
+       <thead><tr><th class="feature-col" scope="col">Servicio</th><th class="plan-col" scope="col">Growth</th><th class="plan-col" scope="col">Scale</th></tr></thead>
+       <tbody id="usage-rows"></tbody>
+     </table>
+    </div>
+   </div>
+   <p class="note-line">El crédito incluido se aplicará únicamente a servicios compatibles; no descontaremos saldo ficticio por funciones gratuitas. Los gastos publicitarios y comisiones de terceros se mostrarán por separado.</p>
+  </div>
+ </section>
+ <section class="section solo-section" id="independientes">
+  <div class="wrap">
+   <div class="solo-panel">
+    <div class="solo-copy">
+     <span class="kicker">CRECE A TU RITMO</span>
+     <h2 class="section-title">¿Trabajas por tu cuenta o estás <em>arrancando tu negocio?</em></h2>
+     <p>También queremos acompañarte. Estamos evaluando un programa especial para emprendedores, profesionales independientes y solopreneurs, con lo esencial para organizar tus clientes, vender y crecer paso a paso.</p>
+     <p class="solo-muted">Cuéntanos qué necesitas. Tu interés nos ayudará a diseñar una alternativa adecuada a esta etapa de tu negocio.</p>
+     <button class="ghost-btn solo-trigger" type="button" id="solo-open" aria-expanded="false" aria-controls="solo-form">Me interesa el programa para arrancar <span aria-hidden="true">↗</span></button>
+     <p class="solo-disclaimer">Registro de interés, sin costo ni compromiso. No es un plan disponible para contratar; su alcance y precio se definirán según la demanda.</p>
+    </div>
+    <form id="solo-form" class="solo-form" hidden>
+     <h3>Cuéntanos sobre tu negocio</h3>
+     <p class="solo-muted" id="solo-preview-note" hidden>Vista de prueba: el formulario no envía ni almacena tus datos.</p>
+     <label for="solo-name">Nombre</label><input id="solo-name" name="name" autocomplete="name" maxlength="160" required placeholder="Tu nombre">
+     <label for="solo-email">Correo electrónico</label><input id="solo-email" name="email" type="email" autocomplete="email" maxlength="200" required placeholder="tu@correo.com">
+     <label for="solo-business">¿A qué te dedicas?</label><input id="solo-business" name="business" maxlength="200" required placeholder="Ej. consultoría, comercio, asesoría">
+     <label for="solo-team">¿Cuántas personas trabajan en tu negocio?</label><select id="solo-team" name="team" required><option value="">Seleccionar</option><option value="1">Solo yo</option><option value="2-5">2 a 5 personas</option><option value="6+">6 o más personas</option></select>
+     <label for="solo-goal">¿Qué te gustaría resolver primero? <span>(opcional)</span></label>
+     <select id="solo-goal" name="goal"><option value="">Seleccionar</option><option value="captacion">Conseguir más clientes</option><option value="seguimiento">Organizar prospectos y seguimiento</option><option value="marketing">Publicar y hacer marketing</option><option value="automatizacion">Automatizar tareas y ahorrar tiempo</option><option value="ventas">Vender y cobrar en línea</option><option value="otro">Otra necesidad</option></select>
+     <label class="solo-consent"><input name="consent" type="checkbox" required><span>Acepto el <a href="https://10xteam.com.mx/legal/aviso" target="_blank" rel="noopener noreferrer">aviso de privacidad</a> y que 10xteam me contacte acerca de este programa.</span></label>
+     <button class="main-btn" id="solo-submit" type="submit">Registrar mi interés</button>
+     <p id="solo-result" class="solo-result" role="status" aria-live="polite"></p>
+    </form>
+   </div>
+  </div>
+ </section>
+ <section class="section section-muted" id="preguntas">
+  <div class="wrap">
+   <h2 class="section-title">Preguntas frecuentes</h2>
+   <p class="section-intro">Lo importante no es sólo qué incluye tu plan, sino cuándo existe un cargo adicional y quién lo autoriza.</p>
+   <div class="faq-item"><details><summary>¿Growth incluye todas las herramientas generales de la plataforma?</summary><p>El marco comercial prevé CRM, funnels, tienda, comercio multicanal, conversaciones, marketing y automatizaciones elegibles en ambos planes. Ticketing y Proyectos completos se proponen como complemento de Growth y beneficio de Scale, siempre que los controles nativos puedan separarlos sin degradar funciones básicas.</p></details></div>
+   <div class="faq-item"><details><summary>¿WhatsApp está incluido y sus mensajes también?</summary><p>La conexión está contemplada en ambos planes y se habilitaría cuando se solicite. El costo fijo se presupuestará en la renta al activarse; los mensajes y conversaciones sujetos a tarifa generan consumo. En Scale la segunda subcuenta no activa automáticamente WhatsApp.</p></details></div>
+   <div class="faq-item"><details><summary>¿Qué sucede con mi saldo de Wallet?</summary><p>La bolsa es un crédito mensual para servicios elegibles. Las reglas finales de renovación, recargas, topes, vencimiento y aplicación en cada subcuenta están pendientes de validación de Founder. No se prometen recargas sin autorización ni una bolsa compartida entre negocios.</p></details></div>
+   <div class="faq-item"><details><summary>¿Qué pasa con los módulos en beta?</summary><p>Los módulos beta o pendientes de validación se identifican claramente y no se consideran disponibles automáticamente. No se cobrarán como funcionalidades listas antes de confirmar su acceso y provisión.</p></details></div>
+   <div class="faq-item"><details><summary>¿Se incluye la gestión profesional de campañas y el presupuesto de anuncios?</summary><p>No. Las herramientas de campañas son distintas de contratar a un especialista o agencia para administrarlas. La inversión en anuncios, pasarelas y servicios profesionales es adicional cuando aplica.</p></details></div>
+   <div class="faq-item"><details><summary>¿Dónde veo los precios Early Adopter?</summary><p>Los precios de lista, cupones, créditos y renovaciones todavía no están aprobados definitivamente. Se mostrarán de forma transparente antes de iniciar el proceso de contratación.</p></details></div>
+  </div>
+ </section>
+ <section class="footer-cta"><div class="wrap"><h2>Una plataforma. Toda la maquinaria.</h2><p>Organiza tus clientes, automatiza procesos y haz más con el equipo que ya tienes.</p><a href="/wizard" class="main-btn">Conocer mi diagnóstico →</a></div></section>
+</main>
+<footer class="footer"><div class="wrap footer-content"><div>© 2026 10xteam · Growth OS · Vista en revisión</div><div><a href="/">Growth</a> · <a href="https://10xteam.com.mx/legal/terminos">Términos</a> · <a href="https://10xteam.com.mx/legal/aviso">Privacidad</a></div></div></footer>
+<!--__PLANES_CATALOG__-->
+<script>
+(function(){
+"use strict";
+var source=document.getElementById("planes-data");if(!source)return;
+var data=JSON.parse(source.textContent);
+var search=document.getElementById("search-features");
+var onlyDiff=document.getElementById("only-differences");
+var category="Todas", selectedIds=null;
+var collapsed=new Set(["IA y automatización","Operación y administración","Experiencias y comunidades","Soluciones especializadas"]);
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(k){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[k]});}
+function status(s){
+ var text=String(s||"");
+ var low=text.toLowerCase();
+ var type=/consumo|por uso/.test(low)?"consume":/cargo externo/.test(low)?"external":/por definir/.test(low)?"pending":/complemento|suscripción|cotizar|opcional/.test(low)?"extra":/preferente/.test(low)?"pref":"included";
+ var symbol=type==="included"?"✓":type==="consume"?"◉":type==="pref"?"↘":type==="external"?"↗":type==="pending"?"—":"+";
+ var short=low.includes("consumo ×")?text:low.includes("mayor crédito")||low.includes("bolsa mayor")?"Bolsa mayor":low.includes("crédito mensual incluido")?"Bolsa incluida":low.includes("cargo externo")?"Externo":low.includes("por definir")?"Por definir":low.includes("base incluida")&&low.includes("consumo")?"Base + uso":low.includes("base incluida")?"Base + extras":low.includes("por consumo")?low.includes("preferente")?"Uso preferente":"Por consumo":low.includes("por uso")?"Por uso":low.includes("complemento completo")?"Complemento":low.includes("complemento")?"Complemento":low.includes("incluido")||low.includes("incluida")?"Incluido":low.includes("preferente")?"Preferente":text;
+ return '<span class="status '+type+'" title="'+esc(text)+'"><span class="symbol" aria-hidden="true">'+symbol+'</span><span class="status-text">'+esc(short)+'</span></span>';
+}
+var important=[
+ {label:"Negocios incluidos",growth:"1 subcuenta",scale:"Hasta 2 subcuentas",note:"Cada negocio tiene configuración y Wallet propias."},
+ {label:"Bolsa de consumo",growth:"Crédito mensual incluido",scale:"Mayor crédito incluido",note:"Importes finales por confirmar; la segunda subcuenta Scale no duplica la bolsa."},
+ {label:"Tarifa de IA elegible",growth:"Consumo ×3",scale:"Consumo ×2",note:"Multiplicadores comerciales provisionales sobre costo proveedor elegible."},
+ {label:"WhatsApp",growth:"Activable",scale:"Activable en ambas",note:"No se activa por defecto y la mensajería facturable se cobra por uso."},
+ {label:"Ticketing completo",growth:"Complemento",scale:"Incluido",note:"En Growth se mantienen las funciones básicas ya aprobadas; separación completa sujeta a Founder."},
+ {label:"Gestión de Proyectos completa",growth:"Complemento",scale:"Incluido",note:"Funcionalidad completa prevista en Scale, control de permisos pendiente de comprobar."},
+ {label:"Complementos adicionales",growth:"Precio estándar",scale:"Tarifa preferente",note:"Algunos módulos están en beta o pendientes de disponibilidad."}
+];
+document.getElementById("key-differences").innerHTML='<tr class="category-row"><th colspan="3">¿Qué cambia realmente al elegir Scale?</th></tr>'+important.map(function(f){return '<tr class="differentiation"><th scope="row"><span class="row-label">'+esc(f.label)+'</span><span class="row-note">'+esc(f.note)+'</span></th><td>'+status(f.growth)+'</td><td>'+status(f.scale)+'</td></tr>';}).join("");
+var categoryLabels={
+ "Prospección y marketing":"Atraer y encontrar clientes",
+ "Ventas y clientes":"Atender, vender y cobrar",
+ "IA y automatización":"Automatizar con inteligencia",
+ "Operación y administración":"Organizar y administrar",
+ "Experiencias y comunidades":"Formar y conectar clientes",
+ "Soluciones especializadas":"Operar negocios especializados"
+};
+function categoryButtons(){
+ var btns=["Todas"].concat(data.categories);
+ var parent=document.getElementById("category-filters");
+ parent.innerHTML=btns.map(function(c){var name=c==="Todas"?"Todas las funciones":categoryLabels[c]||c;return '<button class="filter '+(c===category?"active":"")+'" data-cat="'+esc(c)+'" aria-pressed="'+(c===category)+'">'+esc(name)+'</button>';}).join("");
+ parent.querySelectorAll("button").forEach(function(b){b.addEventListener("click",function(){category=b.getAttribute("data-cat");selectedIds=null;categoryButtons();renderModules();});});
+}
+function renderModules(){
+ var q=(search.value||"").trim().toLocaleLowerCase("es-MX");
+ var selected=data.modules.filter(function(m){return (category==="Todas"||m.category===category)&&(!selectedIds||selectedIds.indexOf(m.id)!==-1)&&(!onlyDiff.checked||m.growth!==m.scale)&&(!q||[m.title,m.description,m.benefit,m.example,m.growth,m.scale].join(" ").toLocaleLowerCase("es-MX").includes(q));});
+ var rows=[];
+ for(var i=0;i<data.categories.length;i++){
+   var group=data.categories[i],mods=selected.filter(function(m){return m.category===group;});
+   if(!mods.length)continue;
+   var expanded=(q||selectedIds)?true:!collapsed.has(group);
+   rows.push('<tr class="category-row"><th colspan="3"><button class="toggle-group" type="button" data-group="'+esc(group)+'" aria-expanded="'+expanded+'">'+esc(categoryLabels[group]||group)+' <span class="count">'+mods.length+' módulos</span><span class="chevron" aria-hidden="true">'+(expanded?"−":"+")+'</span></button></th></tr>');
+   if(!expanded)continue;
+   for(var j=0;j<mods.length;j++){
+    var m=mods[j],id="more-"+m.id;
+    rows.push('<tr class="feature-row"><th scope="row"><span class="row-label">'+esc(m.title)+'</span><span class="row-note">'+esc(m.benefit||m.description)+'</span><button class="feature-example-toggle" type="button" data-detail="'+id+'" aria-expanded="false" aria-controls="'+id+'">Ver ejemplo y detalle ↓</button></th><td>'+status(m.growth)+'</td><td>'+status(m.scale)+'</td></tr>');
+    rows.push('<tr class="detail-row" id="'+id+'" hidden><td colspan="3"><div class="feature-explain"><div><strong>EJEMPLO ILUSTRATIVO</strong><p>'+esc(m.example||"El negocio utiliza esta función en sus procesos diarios.")+'</p></div><div><strong>QUÉ HACE LA HERRAMIENTA</strong><p>'+esc(m.description)+'</p></div><div class="cost-note"><b>Costos y condiciones:</b> '+esc(m.costClarification||"Los consumos y servicios externos se muestran por separado.")+' <span style="color:#8e9bb2"> · Estado: '+esc(m.availability)+'</span></div></div></td></tr>');
+   }
+ }
+ document.getElementById("feature-rows").innerHTML=rows.length?rows.join(""):'<tr><td class="no-match" colspan="3">No encontramos funciones con estos filtros. Prueba otra categoría.</td></tr>';
+ document.getElementById("result-count").textContent=selected.length+" de "+data.modules.length+" módulos"+(selectedIds?" · selección del ejemplo":"");
+ document.querySelectorAll(".toggle-group").forEach(function(button){button.addEventListener("click",function(){var g=button.getAttribute("data-group");if(collapsed.has(g))collapsed.delete(g);else collapsed.add(g);if(q||selectedIds){search.value="";selectedIds=null;category="Todas";categoryButtons();}renderModules();});});
+ document.querySelectorAll(".feature-example-toggle").forEach(function(b){b.addEventListener("click",function(){var target=document.getElementById(b.getAttribute("data-detail"));if(!target)return;target.hidden=!target.hidden;b.setAttribute("aria-expanded",String(!target.hidden));b.textContent=target.hidden?"Ver ejemplo y detalle ↓":"Ocultar ejemplo ↑";});});
+}
+function renderScenarios(){
+ var wrapper=document.getElementById("scenario-tabs"),panel=document.getElementById("scenario-panel"),groupBox=document.getElementById("scenario-groups"),input=document.getElementById("scenario-search"),count=document.getElementById("scenario-count");
+ var selectedGroup="Destacados",selectedCase=null,visible=[];
+ function normalize(x){return String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("es-MX").trim();}
+ function select(s){
+  selectedCase=s.id;
+  wrapper.querySelectorAll("button").forEach(function(b){var active=b.getAttribute("data-scenario")===s.id;b.classList.toggle("active",active);b.setAttribute("aria-pressed",String(active));});
+  var steps=s.steps.map(function(x,i){return '<li><span class="step-n">'+String(i+1).padStart(2,"0")+'</span><span>'+esc(x)+'</span></li>';}).join("");
+  var position=visible.findIndex(function(x){return x.id===s.id;});
+  panel.innerHTML='<div class="scenario-left"><div class="scenario-context">'+esc(s.sector)+'</div><h3>'+esc(s.title)+'</h3><p class="scenario-lead">'+esc(s.lead)+'</p><p class="row-note" style="margin:0;color:#a6b2c7">Situación: '+esc(s.problem)+'</p><ol class="scenario-steps">'+steps+'</ol><div class="scenario-tools"><button type="button" id="scenario-show-modules">Ver herramientas utilizadas ↓</button><small>'+s.modules.length+' módulos relacionados</small></div><p class="scenario-origin">'+esc(s.origin||"Ejemplo ilustrativo de 10xteam")+'. Requiere configuración y validación de disponibilidad.</p></div><div class="scenario-img"><img src="'+esc(s.image)+'" alt="'+esc(s.imageAlt)+'" width="1360" height="765" loading="lazy"><div class="scenario-caption">Captura real de la demo 10xteam Growth · pantalla relacionada, no del caso ilustrado</div><p class="scenario-note">'+esc(s.note)+'</p><div class="scenario-prevnext"><button type="button" id="scenario-prev" '+(position<=0?"disabled":"")+' aria-label="Ejemplo anterior">← Anterior</button><span>'+(position+1)+' / '+visible.length+'</span><button type="button" id="scenario-next" '+(position>=visible.length-1?"disabled":"")+' aria-label="Ejemplo siguiente">Siguiente →</button></div></div>';
+  document.getElementById("scenario-show-modules").addEventListener("click",function(){selectedIds=s.modules.slice();search.value="";onlyDiff.checked=false;category="Todas";categoryButtons();collapsed.clear();renderModules();document.getElementById("buscador").scrollIntoView({behavior:"smooth",block:"start"});});
+  document.getElementById("scenario-prev").addEventListener("click",function(){if(position>0)select(visible[position-1]);});
+  document.getElementById("scenario-next").addEventListener("click",function(){if(position<visible.length-1)select(visible[position+1]);});
+ }
+ function updateGroups(){
+  var groups=["Destacados"].concat(data.scenarioGroups||[]).concat(["Todos"]);
+  groupBox.innerHTML=groups.map(function(g){var n=g==="Destacados"?data.scenarios.filter(function(s){return s.featured;}).length:g==="Todos"?data.scenarios.length:data.scenarios.filter(function(s){return s.group===g;}).length;return '<button class="industry-group" type="button" data-industry="'+esc(g)+'" aria-pressed="'+(g===selectedGroup)+'">'+esc(g)+'<span class="group-number">'+n+'</span></button>';}).join("");
+  groupBox.querySelectorAll("button").forEach(function(b){b.addEventListener("click",function(){selectedGroup=b.getAttribute("data-industry");input.value="";selectedCase=null;updateGroups();refresh();});});
+ }
+ function refresh(){
+  var q=normalize(input.value);
+  visible=data.scenarios.filter(function(s){return (q||selectedGroup==="Todos"||(selectedGroup==="Destacados"?s.featured:s.group===selectedGroup))&&(!q||q.split(/\s+/).every(function(term){var hay=normalize([s.title,s.sector,s.group,s.problem,s.lead,s.keywords||"",s.steps.join(" ")].join(" "));return hay.includes(term)||(term.length>4&&term.endsWith("s")&&hay.includes(term.slice(0,-1)));}));});
+  count.textContent=visible.length+" de "+data.scenarios.length+" ejemplos de negocio";
+  if(!visible.length){wrapper.innerHTML="";panel.innerHTML='<div class="scenario-empty"><strong>No encontramos ese ejemplo</strong>Prueba otra palabra o explora todos los negocios.<br><button id="scenario-reset" type="button">Ver todos los ejemplos</button></div>';document.getElementById("scenario-reset").addEventListener("click",function(){input.value="";selectedGroup="Todos";selectedCase=null;updateGroups();refresh();});return;}
+  var chosen=visible.find(function(s){return s.id===selectedCase;})||visible[0];
+  wrapper.innerHTML=visible.map(function(s){return '<button type="button" class="scenario-tab'+(s.id===chosen.id?" active":"")+'" data-scenario="'+esc(s.id)+'" aria-pressed="'+(s.id===chosen.id)+'">'+esc(s.title)+'</button>';}).join("");
+  wrapper.querySelectorAll("button").forEach(function(b){b.addEventListener("click",function(){var s=visible.find(function(x){return x.id===b.getAttribute("data-scenario");});if(s)select(s);});});
+  select(chosen);
+ }
+ input.addEventListener("input",function(){selectedGroup="Todos";selectedCase=null;updateGroups();refresh();});
+ updateGroups();refresh();
+}
+function renderAddons(){
+ var groupNames={Operación:"Organiza tu operación",Comercio:"Vende más veces",Soluciones:"Soluciones por industria",Especializados:"Servicios y herramientas especiales"};
+ var groups=["Operación","Comercio","Soluciones","Especializados"];var rows=[];
+ groups.forEach(function(g){
+  var items=data.addons.filter(function(a){return a.group===g;});if(!items.length)return;
+  rows.push('<tr class="category-row"><th colspan="3">'+esc(groupNames[g])+'</th></tr>');
+  items.forEach(function(a){
+   var detail=a.availability==="Acceso anticipado"?"Acceso anticipado":a.availability;
+   rows.push('<tr><th scope="row"><span class="row-label">'+esc(a.name)+'</span><span class="addon-benefit">'+esc(a.description)+'</span><span class="addon-example">Ejemplo: '+esc(a.example||"Aplicación según las necesidades del negocio")+'</span><span class="addon-example">Disponibilidad: '+esc(detail)+' · Precio final pendiente</span></th><td>'+status(a.growth)+'</td><td>'+status(a.scale)+'</td></tr>');
+  });
+ });
+ document.getElementById("addon-rows").innerHTML=rows.join("");
+}
+function renderUsage(){
+ document.getElementById("usage-rows").innerHTML=data.consumption.map(function(c){return '<tr><th scope="row"><span class="row-label">'+esc(c.name)+'</span><span class="row-note">'+esc(c.detail)+'</span></th><td>'+status(c.tag==="Incluido"?"Incluido":c.tag==="Activación bajo solicitud"?"Activable":c.tag==="Cargo externo"?"Cargo externo":c.tag==="Opcional"?"Opcional":"Por consumo")+'</td><td>'+status(c.tag==="Incluido"?"Incluido":c.tag==="Activación bajo solicitud"?"Activable":c.tag==="Cargo externo"?"Cargo externo":c.tag==="Opcional"?"Opcional":"Por consumo")+'</td></tr>';}).join("");
+}
+search.addEventListener("input",function(){selectedIds=null;renderModules();});
+onlyDiff.addEventListener("change",function(){selectedIds=null;renderModules();});
+document.getElementById("expand-all").addEventListener("click",function(){collapsed.clear();renderModules();});
+document.getElementById("collapse-all").addEventListener("click",function(){collapsed=new Set(data.categories);renderModules();});
+
+function initSoloInterest(){
+ var trigger=document.getElementById("solo-open"),form=document.getElementById("solo-form"),notice=document.getElementById("solo-preview-note"),result=document.getElementById("solo-result"),submit=document.getElementById("solo-submit");
+ if(!trigger||!form)return;
+ // Protected preview never sends any personal information to the existing contact endpoint.
+ var live=typeof location!=="undefined"&&location.protocol==="https:"&&location.hostname==="growth.10xteam.com";
+ notice.hidden=live;
+ trigger.addEventListener("click",function(){
+  form.hidden=!form.hidden;
+  trigger.setAttribute("aria-expanded",String(!form.hidden));
+  if(!form.hidden){var name=document.getElementById("solo-name");if(name)name.focus();}
+ });
+ form.addEventListener("submit",async function(e){
+  e.preventDefault();
+  if(!form.reportValidity())return;
+  result.classList.remove("error");result.textContent="";
+  if(!live){result.textContent="Prueba completada. En esta vista de revisión no se ha enviado ni guardado ningún dato.";return;}
+  var fields=new FormData(form);
+  var payload={name:String(fields.get("name")||"").trim(),email:String(fields.get("email")||"").trim(),source:"growth_contact",serviceType:"growth_solopreneur_interest",message:JSON.stringify({business:String(fields.get("business")||"").trim(),goal:String(fields.get("goal")||""),teamSize:String(fields.get("team")||""),consent:true,entryPoint:"planes_independientes"})};
+  submit.disabled=true;
+  try{
+   var response=await fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+   var json=await response.json();
+   if(!response.ok||json.ok!==true)throw Error("submission");
+   result.textContent="Gracias por tu interés. Te contactaremos cuando tengamos novedades sobre el programa.";
+   form.reset();
+  }catch(err){result.classList.add("error");result.textContent="No pudimos registrar tu interés. Inténtalo de nuevo más adelante.";}
+  finally{submit.disabled=false;}
+ });
+}
+
+categoryButtons();renderModules();renderScenarios();renderAddons();renderUsage();initSoloInterest();
+})();
+</script>
+</body>
+</html>

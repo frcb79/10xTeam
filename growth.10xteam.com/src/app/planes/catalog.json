@@ -1,0 +1,1843 @@
+{
+  "version": "2026-11-23-primer-prototipo",
+  "provisional": true,
+  "intro": "Catálogo comercial basado en el documento maestro de continuidad del 19 de noviembre y decisiones aprobadas el 23 de noviembre de 2026. Los módulos descritos no certifican disponibilidad o permisos en Founder.",
+  "categories": [
+    "Prospección y marketing",
+    "Ventas y clientes",
+    "IA y automatización",
+    "Operación y administración",
+    "Experiencias y comunidades",
+    "Soluciones especializadas"
+  ],
+  "plans": [
+    {
+      "id": "growth",
+      "name": "Growth",
+      "subtitle": "Toda la maquinaria para hacer más con tu equipo actual",
+      "price": "Por confirmar",
+      "badge": "Para emprendedores y equipos en crecimiento",
+      "locations": "1 subcuenta",
+      "wallet": "Crédito mensual incluido · monto por confirmar",
+      "wa": "WhatsApp activable bajo solicitud",
+      "ai": "IA elegible por consumo",
+      "adds": "Complementos opcionales"
+    },
+    {
+      "id": "scale",
+      "name": "Scale",
+      "subtitle": "Más capacidad, mejores condiciones, varias operaciones",
+      "price": "Por confirmar",
+      "badge": "Mayor valor por uso",
+      "locations": "Hasta 2 subcuentas (propuesta)",
+      "wallet": "Mayor crédito mensual · monto por confirmar",
+      "wa": "WhatsApp activable por subcuenta",
+      "ai": "Consumo IA con tarifa preferente",
+      "adds": "Ticketing y Proyectos completos; otros beneficios sujetos a validación"
+    }
+  ],
+  "modules": [
+    {
+      "id": 1,
+      "title": "CRM y Contactos",
+      "category": "Ventas y clientes",
+      "description": "Contactos, perfiles, etiquetas, filtros, historial, segmentación, importación y manejo comercial.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Toda la historia de cada cliente en un mismo lugar.",
+      "example": "Una marca de ropa encuentra conversaciones y compras anteriores sin buscar entre chats.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 2,
+      "title": "Oportunidades y Pipelines",
+      "category": "Ventas y clientes",
+      "description": "Embudos, etapas, valor de oportunidades, asignación y cierre; columna vertebral del proceso comercial.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Que ninguna oportunidad se pierda durante el seguimiento.",
+      "example": "Un asesor ve cuáles prospectos pidieron cotización y cuáles siguen sin respuesta.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 3,
+      "title": "Calendarios y Citas",
+      "category": "Ventas y clientes",
+      "description": "Disponibilidad, reuniones, recordatorios, reservas y equipo. Services v2 se consolida en módulo 38.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Permitir que tus clientes reserven sin coordinar horarios manualmente.",
+      "example": "Una clínica ofrece citas disponibles y envía recordatorios automáticos.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 4,
+      "title": "Sitios Web y Funnels",
+      "category": "Prospección y marketing",
+      "description": "Páginas, landing pages, funnels, dominios y conversión de visitas a prospectos.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Crear páginas que convierten visitas en solicitudes o ventas.",
+      "example": "Un consultor lanza una página para captar solicitudes de diagnóstico.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 5,
+      "title": "Formularios y encuestas",
+      "category": "Prospección y marketing",
+      "description": "El antiguo pendiente quedó formalmente resuelto: Forms, Surveys y QR ambos; Quizzes Scale.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Captar información sin pedir que te la envíen por mensaje.",
+      "example": "Una academia recibe formularios de inscripción y encuestas desde su sitio; los quizzes avanzados se revisan por separado.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 6,
+      "title": "Conversaciones y Mensajería",
+      "category": "Ventas y clientes",
+      "description": "Bandeja omnicanal para seguimiento comercial; cargos de mensajería separados.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Responder desde un solo lugar, sin perder el contexto.",
+      "example": "Una inmobiliaria recibe consultas en WhatsApp e Instagram y asigna cada conversación a un asesor.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 7,
+      "title": "Email Marketing",
+      "category": "Prospección y marketing",
+      "description": "Emails, campañas y seguimiento en ambos; segmentación sofisticada, A/B, Smart Send en Scale si existe granularidad.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Mantener el contacto con listas de clientes y prospectos.",
+      "example": "Una tienda envía novedades y ofertas a quienes aceptaron recibirlas.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 8,
+      "title": "Social Planner",
+      "category": "Prospección y marketing",
+      "description": "Programación, gestión social; Scale funciones avanzadas de publicación masiva, RSS, aprobaciones y workflows condicionados si configurables.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Programar publicaciones y mantener activas tus redes.",
+      "example": "Una cafetería organiza su contenido semanal sin publicar manualmente cada día.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 9,
+      "title": "Workflows y Automatizaciones",
+      "category": "IA y automatización",
+      "description": "Acciones y seguimientos básicos Growth; lógica compleja, webhooks, premium actions en Scale.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Hacer que las tareas repetitivas se ejecuten por sí solas.",
+      "example": "Si alguien solicita una cotización, se registra la oportunidad y se programa seguimiento.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 10,
+      "title": "Reputación y Reseñas",
+      "category": "Ventas y clientes",
+      "description": "Solicitar y administrar opiniones; Reviews AI automática en Scale o modalidad pagada.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Construir confianza y aumentar la visibilidad de tus reseñas.",
+      "example": "Un negocio pide opiniones tras completar un servicio y responde desde la plataforma.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 11,
+      "title": "Pagos y Facturación plataforma",
+      "category": "Ventas y clientes",
+      "description": "Links, cobros, suscripciones, gift cards, cupones, operaciones compatibles.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Cobrar y dar seguimiento sin cambiar de sistema.",
+      "example": "Una academia envía un enlace de pago y registra el estado de la transacción.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 12,
+      "title": "Tiendas online y ecommerce",
+      "category": "Ventas y clientes",
+      "description": "Se había propuesto Growth vender por links/funnels y Scale tienda completa; usuario cuestionó explícitamente negar todo Ecommerce a Growth.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Marco aprobado",
+      "benefit": "Vender productos sin montar varias herramientas separadas.",
+      "example": "Una marca de chocolates administra catálogo, pedidos y pagos desde su tienda.",
+      "costClarification": "Capacidades nativas elegibles incluidas; terceros, pagos y publicidad sujetos a su tarifa."
+    },
+    {
+      "id": 13,
+      "title": "Cursos, Membresías y Comunidades",
+      "category": "Experiencias y comunidades",
+      "description": "Creación y venta de cursos ambos; capacidades avanzadas de comunidades Scale.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Entregar contenido, cursos y membresías en línea.",
+      "example": "Una escuela publica lecciones y abre un espacio de aprendizaje para alumnos.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 14,
+      "title": "Reportes y Analítica",
+      "category": "Operación y administración",
+      "description": "Dashboards básicos/avanzados nativos para ambos; KPI ejecutivos, alertas y comparativas propias para Scale.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Entender lo que funciona sin cruzar hojas de cálculo.",
+      "example": "Un negocio revisa prospectos, citas y oportunidades generadas por campaña.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 15,
+      "title": "Integraciones/API/Webhooks",
+      "category": "Operación y administración",
+      "description": "Conectores comunes Growth; API, webhooks premium e integraciones complejas Scale.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Conectar sistemas para evitar doble captura de información.",
+      "example": "Una empresa conecta herramientas compatibles para actualizar datos entre procesos.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 16,
+      "title": "Telefonía y llamadas",
+      "category": "Operación y administración",
+      "description": "Entrantes/salientes, SMS, grabaciones y seguimiento; Scale Power Dialer, IVR, distribución y métricas avanzadas.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Gestionar conversaciones telefónicas y su seguimiento.",
+      "example": "Un asesor registra una llamada y conserva el contexto dentro de la ficha del cliente.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 17,
+      "title": "Prospección y generación de leads",
+      "category": "Prospección y marketing",
+      "description": "Captación, segmentación, lead scoring inicial, CRM, seguimiento; GHL Prospecting Premium opcional para ambos.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Organizar la captación y detectar oportunidades comerciales.",
+      "example": "Una empresa capta leads de formularios y anuncios y los clasifica en su CRM.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 18,
+      "title": "IA asistida",
+      "category": "IA y automatización",
+      "description": "Seis herramientas identificadas: Email AI, Calendar AI, Knowledge Base, Funnel/Website AI, Layout AI, Workflow AI Builder.",
+      "growth": "IA gratuita incluida",
+      "scale": "IA gratuita incluida",
+      "type": "core",
+      "availability": "Marco aprobado",
+      "benefit": "Preparar contenido y configuraciones más rápido con IA asistida.",
+      "example": "Un negocio utiliza un asistente para redactar un email o estructurar un workflow.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 19,
+      "title": "Agentes IA y consumo",
+      "category": "IA y automatización",
+      "description": "Conversation/Voice/Reviews/Managed Agents/AskAI/AI Studio/Creator Studio/Content AI; Growth ×3, paquete ×2.5, Scale ×2.",
+      "growth": "Por consumo",
+      "scale": "Por consumo preferente",
+      "type": "usage",
+      "availability": "Catálogo provisional",
+      "benefit": "Usar IA conversacional y otras acciones según lo que necesites.",
+      "example": "Un agente atiende preguntas frecuentes y el uso elegible genera consumo.",
+      "costClarification": "Funciones elegibles por consumo; incluye configuración sólo cuando se indique."
+    },
+    {
+      "id": 20,
+      "title": "Gestión de proyectos",
+      "category": "Operación y administración",
+      "description": "Tareas/fechas Growth; Scale espacios, carpetas, listas, Kanban, subtareas, colaboradores y vistas.",
+      "growth": "Complemento completo",
+      "scale": "Incluido",
+      "type": "ops",
+      "availability": "Catálogo provisional",
+      "benefit": "Coordinar entregas, tareas y responsables con visibilidad.",
+      "example": "Una agencia organiza pendientes por proyecto, responsable y fecha en un tablero.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 21,
+      "title": "Soporte y ticketing",
+      "category": "Ventas y clientes",
+      "description": "Email-to-ticket, prioridades, categorías, asignaciones ambos; SLA, alertas, escalado, métricas y workflows avanzados Scale.",
+      "growth": "Complemento completo",
+      "scale": "Incluido",
+      "type": "ops",
+      "availability": "Catálogo provisional",
+      "benefit": "Dar seguimiento ordenado a solicitudes de soporte.",
+      "example": "Una empresa convierte correos en tickets y asigna prioridades de resolución.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 22,
+      "title": "Restaurantes",
+      "category": "Soluciones especializadas",
+      "description": "Menús, pedidos directos, recoger, reparto propio, mesas, cocina, reservas, pagos, marketing; integración Uber Eats/Rappi futura.",
+      "growth": "Complemento",
+      "scale": "Complemento preferente",
+      "type": "addon",
+      "availability": "Catálogo provisional",
+      "benefit": "Digitalizar pedidos y operaciones de restaurantes.",
+      "example": "Una cafetería prepara menús y recibe pedidos directos; su disponibilidad está por validar.",
+      "costClarification": "Módulo especializado; disponibilidad y precio pendientes."
+    },
+    {
+      "id": 23,
+      "title": "Servicios en campo",
+      "category": "Soluciones especializadas",
+      "description": "Órdenes, presupuestos, técnicos, rutas, tiempos, visitas, checklists, pagos; operaciones domiciliarias.",
+      "growth": "Complemento",
+      "scale": "Complemento preferente",
+      "type": "addon",
+      "availability": "Catálogo provisional",
+      "benefit": "Organizar visitas y servicios a domicilio.",
+      "example": "Una empresa de mantenimiento asigna técnicos, registra visitas y prepara cobros.",
+      "costClarification": "Módulo especializado; disponibilidad y precio pendientes."
+    },
+    {
+      "id": 24,
+      "title": "Webinars y eventos",
+      "category": "Experiencias y comunidades",
+      "description": "Live/grabado/recurrente, páginas y CRM ambos. Eventos: boletaje, QR, check-in, agenda, speaker, app asistentes, networking.",
+      "growth": "Base incluida · extra opcional",
+      "scale": "Base incluida · extra preferente",
+      "type": "mixed",
+      "availability": "Catálogo provisional",
+      "benefit": "Vender conocimiento con webinars y organizar eventos especiales.",
+      "example": "Un organizador vende entradas y utiliza QR para validar registros, si dispone del complemento.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 25,
+      "title": "Lealtad y recompensas",
+      "category": "Soluciones especializadas",
+      "description": "Puntos, recompensas, cumpleaños, QR, wallet, canjes, referidos consumidor, métricas.",
+      "growth": "Complemento",
+      "scale": "Complemento preferente",
+      "type": "addon",
+      "availability": "Catálogo provisional",
+      "benefit": "Premiar la recompra y fomentar la recomendación.",
+      "example": "Una cafetería da puntos por compra y ofrece recompensas a clientes frecuentes.",
+      "costClarification": "Módulo especializado; disponibilidad y precio pendientes."
+    },
+    {
+      "id": 26,
+      "title": "Afiliados",
+      "category": "Experiencias y comunidades",
+      "description": "Links/clics/leads/ventas/comisiones Growth; recurrente, multinivel, productos, PayPal, workflows Scale.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Convertir recomendaciones en un canal comercial medible.",
+      "example": "Una empresa asigna enlaces a sus afiliados y registra ventas referidas.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 27,
+      "title": "Documentos, Propuestas y Contratos",
+      "category": "Ventas y clientes",
+      "description": "Cotizaciones, PDFs, templates, firmas múltiples, CRM merge, seguimiento y pagos; Scale workflows condicionales y cobros recurrentes automatizados.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Preparar propuestas y obtener aprobaciones digitales.",
+      "example": "Un despacho comparte una cotización, recaba firma y da seguimiento al documento.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 28,
+      "title": "Custom Objects",
+      "category": "Operación y administración",
+      "description": "Entidades personalizadas, relaciones, vistas, workflows, API, ejemplos propiedades/pólizas/vehículos.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Adaptar el CRM a la información específica del negocio.",
+      "example": "Una inmobiliaria relaciona propiedades, clientes y oportunidades comerciales.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 29,
+      "title": "Portales y Apps del cliente",
+      "category": "Experiencias y comunidades",
+      "description": "Customer Access Center ecommerce; Client Portal facturas/contratos/docs/cursos; app final branded ~US$65/mes; Client App Builder Scale básico, Growth complemento.",
+      "growth": "Base incluida · extra opcional",
+      "scale": "Base incluida · extra preferente",
+      "type": "mixed",
+      "availability": "Catálogo provisional",
+      "benefit": "Dar acceso al cliente final a su información y contenidos.",
+      "example": "Una escuela habilita un portal para cursos y documentos; una app con marca es opcional.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 30,
+      "title": "SEO, Blog, Listings, WordPress",
+      "category": "Prospección y marketing",
+      "description": "Search Atlas SEO avanzado, Online Listings directorios/mapas, hosting WordPress para webs ya en WP; AI Search Visibility en beta.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Mejorar visibilidad digital sin perder el control del sitio.",
+      "example": "Un negocio publica artículos SEO y estudia su presencia en directorios con extras opcionales.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 31,
+      "title": "Usuarios, Permisos, Seguridad",
+      "category": "Operación y administración",
+      "description": "Roles, acceso, auditoría y gestión por usuario; cliente NO debe habilitar módulos/complementos contratables.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Trabajar en equipo con permisos adecuados.",
+      "example": "Un gerente restringe accesos sin habilitar productos que la empresa no contrató.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 32,
+      "title": "Certificados, Diplomas, Insignias",
+      "category": "Experiencias y comunidades",
+      "description": "Emisión, plantillas de marca, credenciales digitales, uso con cursos, workflows elegibles.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Reconocer avances y emitir constancias digitales.",
+      "example": "Una academia entrega certificados al completar un curso elegible.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 33,
+      "title": "Ad Manager / Publicidad",
+      "category": "Prospección y marketing",
+      "description": "Campañas Meta Facebook/Instagram, Google Ads y LinkedIn Ads; leads al CRM, seguimiento y reportes; gestión profesional 10x opcional.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Conectar campañas con prospectos reales y seguimiento comercial.",
+      "example": "Una clínica anuncia en Meta y Google y registra los contactos en su CRM; los anuncios se pagan aparte.",
+      "costClarification": "Presupuesto de anuncios y servicios de gestión no incluidos."
+    },
+    {
+      "id": 34,
+      "title": "Biblioteca Multimedia y Brand Boards",
+      "category": "Operación y administración",
+      "description": "Archivos/carpeta, fotos/video/docs, Drive compatible, colores/logotipos/fonts, Brand Voice, importación web.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Mantener una identidad visual consistente entre equipos.",
+      "example": "Una marca comparte logotipo, colores y recursos para sus publicaciones.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 35,
+      "title": "Tendencias e inteligencia social",
+      "category": "Prospección y marketing",
+      "description": "Tendencias Google/TikTok/YouTube/Pinterest; menciones, sentimiento, competencia, temas y alertas.",
+      "growth": "Base incluida · IA por consumo",
+      "scale": "Base incluida · IA preferente",
+      "type": "mixed",
+      "availability": "Catálogo provisional",
+      "benefit": "Identificar temas de interés y señales del mercado.",
+      "example": "Una tienda revisa tendencias para decidir qué contenido publicar; escucha avanzada depende de elegibilidad.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 36,
+      "title": "Voice Intelligence",
+      "category": "IA y automatización",
+      "description": "Transcripción, resumen, objeciones, scorecards QA, próximos pasos y sugerencias al CRM.",
+      "growth": "Por consumo",
+      "scale": "Por consumo preferente",
+      "type": "usage",
+      "availability": "Catálogo provisional",
+      "benefit": "Analizar conversaciones para mejorar la venta.",
+      "example": "Un gerente detecta objeciones recurrentes en llamadas y prepara coaching al equipo.",
+      "costClarification": "Funciones elegibles por consumo; incluye configuración sólo cuando se indique."
+    },
+    {
+      "id": 37,
+      "title": "Colaboración / Bandeja equipo",
+      "category": "Ventas y clientes",
+      "description": "Chat interno/grupo, menciones, notas, bandeja, asignación y comentarios compatibles de redes.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Resolver pendientes entre colaboradores sin perder información.",
+      "example": "El equipo comenta una oportunidad y asigna la siguiente acción al vendedor.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 38,
+      "title": "Servicios y alquileres",
+      "category": "Operación y administración",
+      "description": "Servicios: agenda, personal, salas, pagos; Rentals activos, inventario, horarios/días, depósitos, tarifas, reservas, QR.",
+      "growth": "Base incluida · extra opcional",
+      "scale": "Base incluida · extra preferente",
+      "type": "mixed",
+      "availability": "Catálogo provisional",
+      "benefit": "Agendar servicios y gestionar alquileres opcionales.",
+      "example": "Una estética ofrece horarios de servicios; una empresa reserva equipos con Rentals cuando esté disponible.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 39,
+      "title": "GoKollab / descubrimiento",
+      "category": "Experiencias y comunidades",
+      "description": "Venta y descubrimiento voluntario de cursos; comunidades avanzadas conforme 13, Kollab Studio según acceso.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Dar mayor visibilidad y acceso a cursos y comunidades.",
+      "example": "Una academia presenta cursos en experiencias de descubrimiento compatibles.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 40,
+      "title": "Quizzes y diagnósticos",
+      "category": "Operación y administración",
+      "description": "Lead forms, multipaso, lógica, QR para citas/pagos/reseñas; Scale scores, resultados y diagnósticos.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Crear formularios, evaluaciones y códigos QR útiles.",
+      "example": "Un evento utiliza un QR para registro; una escuela configura evaluaciones elegibles.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 41,
+      "title": "Atribución, Conversiones y ROAS",
+      "category": "Prospección y marketing",
+      "description": "First/latest attribution, UTM, CPL/CPA/ROAS, fuentes, ventas, Meta CAPI/Google conversiones.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Saber qué campañas contribuyen a generar ventas.",
+      "example": "Una clínica compara contactos, citas y ventas atribuidas a distintos anuncios.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 42,
+      "title": "Chat Widget Multicanal",
+      "category": "Prospección y marketing",
+      "description": "Web chat, WhatsApp, IG, FB Messenger, SMS/email; CRM, captación, asignación, IA por paquete.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Catálogo provisional",
+      "benefit": "Capturar consultas desde tu web y canales conectados.",
+      "example": "Un visitante pregunta desde el widget y el equipo recibe la conversación en su bandeja.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 43,
+      "title": "Comercio multicanal",
+      "category": "Ventas y clientes",
+      "description": "GMC/Shopping, Meta Catalog, Shopify/WooCommerce, tienda, inventario, distribución de catálogo y pedidos.",
+      "growth": "Incluido",
+      "scale": "Incluido",
+      "type": "core",
+      "availability": "Marco aprobado",
+      "benefit": "Distribuir productos en varios canales sin reconstruir catálogos.",
+      "example": "Una boutique conecta un catálogo elegible con Meta y Google Merchant; publicidad y terceros aparte.",
+      "costClarification": "Capacidades nativas elegibles incluidas; terceros, pagos y publicidad sujetos a su tarifa."
+    },
+    {
+      "id": 44,
+      "title": "Datos y entregabilidad",
+      "category": "Operación y administración",
+      "description": "Gestión de contactos, limpieza y deduplicación, dominios y reputación de envíos. Validación de correos por consumo, IP dedicada y servicios técnicos opcionales.",
+      "growth": "Incluido · consumo opcional",
+      "scale": "Incluido · tarifa preferente",
+      "type": "mixed",
+      "availability": "Marco aprobado",
+      "benefit": "Proteger la calidad de la base de datos y los envíos.",
+      "example": "Un negocio depura contactos y valida emails por consumo antes de una campaña.",
+      "costClarification": "Las funciones con uso variable o servicios externos se cobran aparte cuando corresponda."
+    },
+    {
+      "id": 45,
+      "title": "Agentes IA avanzados",
+      "category": "IA y automatización",
+      "description": "Agentes de HighLevel para analizar oportunidades, organizar tareas y ejecutar procesos programados. La ejecución elegible se cobra por consumo; no implica desarrollo personalizado incluido.",
+      "growth": "Por consumo",
+      "scale": "Por consumo preferente",
+      "type": "usage",
+      "availability": "Marco aprobado",
+      "benefit": "Delegar tareas inteligentes a agentes configurables.",
+      "example": "Un agente prioriza oportunidades sin seguimiento y propone tareas; su ejecución elegible tiene costo por uso.",
+      "costClarification": "Funciones elegibles por consumo; incluye configuración sólo cuando se indique."
+    }
+  ],
+  "addons": [
+    {
+      "id": "ticketing",
+      "name": "Ticketing completo",
+      "group": "Operación",
+      "description": "Solicitudes, asignación, seguimiento y gestión de atención al cliente.",
+      "growth": "Complemento",
+      "scale": "Incluido",
+      "availability": "Validación técnica",
+      "icon": "support",
+      "example": "Una empresa recibe una queja por email, asigna responsable, registra prioridad y controla su resolución."
+    },
+    {
+      "id": "proyectos",
+      "name": "Proyectos completo",
+      "group": "Operación",
+      "description": "Espacios, tableros, responsables, fechas y ejecución colaborativa.",
+      "growth": "Complemento",
+      "scale": "Incluido",
+      "availability": "Validación técnica",
+      "icon": "project",
+      "example": "Una agencia coordina entregas, tareas y responsables en un tablero de proyecto."
+    },
+    {
+      "id": "lealtad",
+      "name": "Lealtad y recompensas",
+      "group": "Comercio",
+      "description": "Puntos, recompensas y campañas para volver a vender a los mismos clientes.",
+      "growth": "Complemento",
+      "scale": "Promoción Early Adopter",
+      "availability": "Acceso anticipado",
+      "icon": "gift",
+      "example": "Una cafetería premia las compras repetidas con puntos y una recompensa de cumpleaños."
+    },
+    {
+      "id": "restaurantes",
+      "name": "Restaurantes",
+      "group": "Soluciones",
+      "description": "Menús, pedidos, servicio y operación digital del restaurante.",
+      "growth": "Complemento",
+      "scale": "Precio preferente",
+      "availability": "Acceso anticipado",
+      "icon": "utensils",
+      "example": "Una cafetería muestra el menú digital, recibe pedidos directos y coordina reservas cuando el módulo esté habilitado."
+    },
+    {
+      "id": "field",
+      "name": "Servicios en campo",
+      "group": "Soluciones",
+      "description": "Órdenes, visitas, asignación de técnicos y seguimiento del trabajo.",
+      "growth": "Complemento",
+      "scale": "Precio preferente",
+      "availability": "Por validar",
+      "icon": "tools",
+      "example": "Una empresa de aire acondicionado asigna técnico, registra una visita y prepara la factura."
+    },
+    {
+      "id": "eventos",
+      "name": "Eventos",
+      "group": "Soluciones",
+      "description": "Registro, boletaje, asistentes y experiencias de eventos.",
+      "growth": "Complemento",
+      "scale": "Precio preferente",
+      "availability": "Por validar",
+      "icon": "ticket",
+      "example": "Un congreso vende entradas y registra asistentes con códigos QR."
+    },
+    {
+      "id": "alquileres",
+      "name": "Alquileres",
+      "group": "Soluciones",
+      "description": "Reservas y disponibilidad de activos, equipos o espacios.",
+      "growth": "Complemento",
+      "scale": "Precio preferente",
+      "availability": "Por validar",
+      "icon": "calendar",
+      "example": "Una empresa audiovisual administra reservas por día de cámaras y proyectores."
+    },
+    {
+      "id": "branded",
+      "name": "App de cliente con tu marca",
+      "group": "Especializados",
+      "description": "Aplicación para tus consumidores finales, distinta a la app administrativa.",
+      "growth": "Complemento",
+      "scale": "Precio preferente",
+      "availability": "Por validar",
+      "icon": "phone",
+      "example": "Una academia ofrece a sus alumnos un acceso móvil con su propia marca."
+    },
+    {
+      "id": "prospect",
+      "name": "Prospección Premium",
+      "group": "Especializados",
+      "description": "Herramientas adicionales de descubrimiento y análisis comercial.",
+      "growth": "Complemento",
+      "scale": "Precio preferente",
+      "availability": "Por validar",
+      "icon": "target",
+      "example": "Un consultor busca oportunidades comerciales y organiza una lista para iniciar prospección."
+    },
+    {
+      "id": "seo",
+      "name": "SEO avanzado",
+      "group": "Especializados",
+      "description": "Herramientas y servicios especializados de posicionamiento y visibilidad.",
+      "growth": "Complemento",
+      "scale": "Precio preferente",
+      "availability": "Por validar",
+      "icon": "search",
+      "example": "Una marca revisa palabras clave y mejoras técnicas para su sitio."
+    },
+    {
+      "id": "listings",
+      "name": "Presencia local y directorios",
+      "group": "Especializados",
+      "description": "Gestión de listados, presencia local y datos del negocio.",
+      "growth": "Complemento",
+      "scale": "Precio preferente",
+      "availability": "Por validar",
+      "icon": "pin",
+      "example": "Una cadena pequeña mantiene horarios y datos consistentes en mapas y directorios."
+    },
+    {
+      "id": "wordpress",
+      "name": "WordPress administrado",
+      "group": "Especializados",
+      "description": "Hosting y servicios WordPress compatibles.",
+      "growth": "Complemento",
+      "scale": "Precio preferente",
+      "availability": "Por validar",
+      "icon": "globe",
+      "example": "Una empresa mantiene su WordPress mientras conecta procesos comerciales compatibles."
+    },
+    {
+      "id": "ip",
+      "name": "IP dedicada y migración",
+      "group": "Especializados",
+      "description": "Entregabilidad avanzada, migración y limpieza especializada de datos.",
+      "growth": "Servicio técnico",
+      "scale": "Condiciones preferentes",
+      "availability": "Por cotizar",
+      "icon": "shield",
+      "example": "Un negocio con alto volumen de email necesita asesoría sobre reputación, dominios e IP dedicada."
+    },
+    {
+      "id": "locations",
+      "name": "Subcuenta adicional",
+      "group": "Operación",
+      "description": "Otro negocio con sus permisos, configuración y Wallet independientes.",
+      "growth": "Otra suscripción Growth",
+      "scale": "Desde tercera cuenta · precio por definir",
+      "availability": "Por validar",
+      "icon": "layers",
+      "example": "Una empresa abre un segundo negocio con su propio CRM, usuarios y Wallet."
+    }
+  ],
+  "consumption": [
+    {
+      "name": "Crédito del plan",
+      "detail": "Bolsa mensual multipropósito para servicios elegibles. Montos y reglas por definir.",
+      "tag": "Incluido"
+    },
+    {
+      "name": "WhatsApp",
+      "detail": "Conexión disponible al activar el canal; mensajes facturables según uso. Costo fijo se presupuestará según subcuentas habilitadas.",
+      "tag": "Activación bajo solicitud"
+    },
+    {
+      "name": "Agentes y otras IA",
+      "detail": "Acciones elegibles por consumo. Las herramientas de IA asistida gratuitas no descuentan crédito ficticio.",
+      "tag": "Por consumo"
+    },
+    {
+      "name": "SMS, llamadas y email",
+      "detail": "Tarifas variables según canal, país y volumen; detalles visibles antes de contratar.",
+      "tag": "Por consumo"
+    },
+    {
+      "name": "Publicidad y pasarelas",
+      "detail": "La inversión publicitaria y las comisiones de terceros no están incluidas en la renta.",
+      "tag": "Cargo externo"
+    },
+    {
+      "name": "Servicios especiales",
+      "detail": "Migraciones, gestión profesional, IP dedicada e integraciones complejas sujetos a cotización.",
+      "tag": "Opcional"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "propiedades",
+      "group": "Inmobiliario y automotriz",
+      "title": "Agencias inmobiliarias",
+      "lead": "Organiza consultas de propiedades y visitas comerciales.",
+      "sector": "Venta y renta inmobiliaria",
+      "problem": "Se acumulan mensajes preguntando por inmuebles y faltan citas de seguimiento.",
+      "steps": [
+        "Capta interesados con páginas y formularios.",
+        "Registra preferencias y asigna asesor.",
+        "Confirma visitas y mantiene etapas de negociación.",
+        "Mide el seguimiento y las oportunidades que llegan a cierre."
+      ],
+      "modules": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        9,
+        41
+      ],
+      "image": "/growth-stages/growth-cierra-v2.png",
+      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
+      "note": "No sustituye un MLS, administración inmobiliaria ni validación legal de operaciones.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000000966-industry-playbook-real-estate-agency"
+      ],
+      "featured": true,
+      "keywords": "Agentes inmobiliarios "
+    },
+    {
+      "id": "distribuidores",
+      "group": "Servicios profesionales",
+      "title": "Distribuidoras y empresas B2B",
+      "lead": "Organiza cuentas comerciales, cotizaciones y recompra.",
+      "sector": "Distribución y ventas mayoristas",
+      "problem": "Cada vendedor mantiene sus propias conversaciones y cotizaciones.",
+      "steps": [
+        "Capta solicitudes de catálogo o cotización.",
+        "Asigna responsables y registra oportunidades.",
+        "Comparte propuestas y programa seguimiento.",
+        "Identifica cuentas con pedidos recurrentes para contactar con autorización."
+      ],
+      "modules": [
+        1,
+        2,
+        5,
+        6,
+        7,
+        9,
+        14,
+        27
+      ],
+      "image": "/growth-stages/growth-cierra-v2.png",
+      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
+      "note": "Adaptación de CRM y pipelines; no reemplaza ERP, logística ni inventario mayorista.",
+      "origin": "Adaptación comercial de 10xteam basada en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000001982-understanding-pipelines"
+      ],
+      "featured": true,
+      "keywords": "Distribuidores y vendedores B2B "
+    },
+    {
+      "id": "autos",
+      "group": "Inmobiliario y automotriz",
+      "title": "Agencias automotrices y equipos de ventas",
+      "lead": "Convierte consultas de vehículos en citas y pruebas de manejo.",
+      "sector": "Autos nuevos y seminuevos",
+      "problem": "Los vendedores reciben mensajes de distintas campañas sin una vista común.",
+      "steps": [
+        "Publica vehículos y campañas para recibir solicitudes.",
+        "Centraliza conversaciones y asigna asesor.",
+        "Agenda visitas o pruebas de manejo.",
+        "Registra negociación y seguimiento de cada oportunidad."
+      ],
+      "modules": [
+        1,
+        2,
+        3,
+        6,
+        8,
+        9,
+        14,
+        33,
+        41
+      ],
+      "image": "/growth-stages/growth-cierra-v2.png",
+      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
+      "note": "Adaptación comercial; no incluye DMS, inventario automotriz especializado ni financiamiento.",
+      "origin": "Adaptación comercial de 10xteam basada en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000001982-understanding-pipelines"
+      ],
+      "featured": true,
+      "keywords": "Agencias y vendedores de autos vendedor autos automóviles"
+    },
+    {
+      "id": "citas",
+      "title": "Clínicas y centros médicos",
+      "lead": "Más citas coordinadas, menos mensajes manuales y seguimiento después de cada visita.",
+      "sector": "Clínica, estética, consultoría",
+      "problem": "Los prospectos preguntan por horarios, algunos no reservan y otros olvidan asistir.",
+      "steps": [
+        "Captas solicitudes desde anuncios, web o formulario.",
+        "El cliente elige una cita disponible.",
+        "Recibe recordatorios y el equipo da seguimiento.",
+        "Mides qué campañas generaron citas y ventas."
+      ],
+      "modules": [
+        3,
+        4,
+        5,
+        9,
+        14,
+        33,
+        41
+      ],
+      "image": "/growth-stages/growth-identifica-v2-alt.png",
+      "imageAlt": "Captura real de la plataforma demo con vista del pipeline comercial",
+      "note": "Ejemplo ilustrativo, no una garantía de citas o resultados.",
+      "group": "Salud y bienestar",
+      "featured": true,
+      "origin": "Adaptación ilustrativa de capacidades de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000000960-industry-playbook-health-wellness-business"
+      ],
+      "keywords": "Tengo una clínica o negocio de servicios clínica médico consultorio"
+    },
+    {
+      "id": "creditos",
+      "group": "Servicios profesionales",
+      "title": "Despachos financieros y brokers de crédito",
+      "lead": "Da seguimiento a cada solicitud desde el primer contacto hasta la decisión.",
+      "sector": "Intermediarios de crédito",
+      "problem": "Los prospectos llegan por varios canales y faltan recordatorios de documentos.",
+      "steps": [
+        "Capta prospectos con un formulario de datos básicos.",
+        "Agenda una llamada de perfilamiento.",
+        "Organiza etapas y tareas de seguimiento comercial.",
+        "Envía actualizaciones autorizadas y mide el origen de las solicitudes."
+      ],
+      "modules": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        9,
+        14,
+        27,
+        41
+      ],
+      "image": "/growth-stages/growth-cierra-v2.png",
+      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
+      "note": "Ejemplo adaptado: no realiza scoring, consulta de buró, originación ni aprobación financiera.",
+      "origin": "Adaptación comercial de 10xteam basada en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000000959-industry-playbook-financial-service-business"
+      ],
+      "featured": true,
+      "keywords": "Brokers de crédito y asesores hipotecarios crédito créditos financiero financiera broker hipoteca hipotecario"
+    },
+    {
+      "id": "carritos",
+      "group": "Comercio y marcas",
+      "title": "Marcas de productos y ecommerce",
+      "lead": "Recupera compras incompletas y convierte compradores en clientes recurrentes.",
+      "sector": "Ropa, chocolates, café y productos de consumo",
+      "problem": "Una persona inicia el pago, pero abandona el carrito.",
+      "steps": [
+        "Publica productos y conecta el catálogo elegible.",
+        "Detecta checkout abandonado si existe un correo válido.",
+        "Envía seguimiento autorizado con un workflow.",
+        "Mide compras y crea campañas de recompra."
+      ],
+      "modules": [
+        7,
+        9,
+        11,
+        12,
+        14,
+        41,
+        43
+      ],
+      "image": "/growth-stages/growth-escala-v2.png",
+      "imageAlt": "Captura real del sistema de campañas de correo en la demo Growth",
+      "note": "El activador documentado requiere email válido y tienda nativa o integración compatible; no garantiza ventas.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000007380-workflow-triggers-abandoned-checkout-trigger-for-e-commerce-stores"
+      ],
+      "featured": true,
+      "keywords": "Tiendas online y marcas de productos "
+    },
+    {
+      "id": "consultoria",
+      "group": "Servicios profesionales",
+      "title": "Firmas de consultoría y coaching",
+      "lead": "Califica interesados y convierte sesiones iniciales en proyectos.",
+      "sector": "Consultoría, coaching y servicios B2B",
+      "problem": "Se invierte mucho tiempo en llamadas con prospectos que no encajan.",
+      "steps": [
+        "Capta solicitudes con preguntas de perfilamiento.",
+        "Agenda sesiones iniciales y confirma asistencia.",
+        "Envía propuesta y sigue el cierre.",
+        "Activa bienvenida, materiales y seguimiento de clientes."
+      ],
+      "modules": [
+        2,
+        3,
+        5,
+        9,
+        11,
+        13,
+        27,
+        29
+      ],
+      "image": "/growth-stages/growth-cierra-v2.png",
+      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
+      "note": "La contratación y prestación de consultoría siguen bajo responsabilidad del negocio.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000000958-industry-playbook-coaching-consultation-agency"
+      ],
+      "featured": true,
+      "keywords": "Consultores y coaches consultor independiente solopreneur coach"
+    },
+    {
+      "id": "academia",
+      "title": "Academias y centros de formación",
+      "lead": "Capta alumnos, cobra y entrega contenido desde un mismo ecosistema.",
+      "sector": "Cursos, coaches, academias",
+      "problem": "El contenido, los pagos y la comunicación de alumnos viven en sistemas distintos.",
+      "steps": [
+        "Presentas una oferta y captas inscripciones.",
+        "Cobra a través de enlaces y checkout compatibles.",
+        "Los alumnos acceden a cursos y material.",
+        "Entregas certificados y continúas la relación."
+      ],
+      "modules": [
+        4,
+        7,
+        11,
+        13,
+        27,
+        29,
+        32
+      ],
+      "image": "/growth-stages/growth-escala-v2.png",
+      "imageAlt": "Captura real del sistema de campañas de correo en la demo Growth",
+      "note": "La app personalizada para consumidores es un complemento separado.",
+      "group": "Educación y eventos",
+      "featured": true,
+      "origin": "Adaptación ilustrativa de capacidades de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000000958-industry-playbook-coaching-consultation-agency"
+      ],
+      "keywords": "Vendo cursos y membresías "
+    },
+    {
+      "id": "climatizacion",
+      "group": "Servicios y operaciones",
+      "title": "Empresas de climatización y mantenimiento",
+      "lead": "De la solicitud de mantenimiento a la visita y seguimiento.",
+      "sector": "Instalación y mantenimiento HVAC",
+      "problem": "Las solicitudes llegan mientras los técnicos están trabajando.",
+      "steps": [
+        "Recibe solicitudes y datos básicos del servicio.",
+        "Agenda visita o cotización y asigna un responsable.",
+        "Si se habilita Servicios en campo, organiza trabajos y técnicos.",
+        "Confirma el cierre y programa seguimiento de mantenimiento."
+      ],
+      "modules": [
+        2,
+        3,
+        5,
+        6,
+        9,
+        10,
+        23,
+        27
+      ],
+      "image": "/growth-stages/growth-cierra-demo.png",
+      "imageAlt": "Captura real de oportunidades comerciales en la plataforma demo Growth",
+      "note": "Servicios en campo es un complemento sujeto a disponibilidad; no se promete acceso automático.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000009560-highlevel-industries-create-sub-accounts-built-for-your-client-s-industry"
+      ],
+      "featured": true,
+      "keywords": "Climatización y aire acondicionado aire acondicionado HVAC técnico"
+    },
+    {
+      "id": "restaurante",
+      "group": "Restaurantes y hospitalidad",
+      "title": "Grupos restauranteros, bares y cafeterías",
+      "lead": "Lleva pedidos, promociones y clientes recurrentes a una misma estrategia.",
+      "sector": "Alimentos y bebidas",
+      "problem": "Los clientes llegan por distintos canales y no existe una estrategia de recompra.",
+      "steps": [
+        "Publica menús, promociones y canales de contacto.",
+        "Capta reservas o consultas compatibles.",
+        "Si se habilita Restaurantes, usa pedidos y reservas del módulo especializado.",
+        "Solicita reseñas y comunica nuevas ofertas."
+      ],
+      "modules": [
+        3,
+        4,
+        7,
+        8,
+        10,
+        22,
+        25,
+        42
+      ],
+      "image": "/growth-stages/growth-reten.png",
+      "imageAlt": "Captura real del módulo de reputación y reseñas de 10xteam Growth",
+      "note": "Restaurantes y Lealtad requieren validación de acceso; no promete integración con Rappi o Uber Eats.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000009560-highlevel-industries-create-sub-accounts-built-for-your-client-s-industry"
+      ],
+      "featured": true,
+      "keywords": "Restaurantes, bares y cafeterías restaurante cafetería café bar"
+    },
+    {
+      "id": "seguros",
+      "group": "Servicios profesionales",
+      "title": "Agencias y corredores de seguros",
+      "lead": "No pierdas solicitudes de cotización ni oportunidades de renovación.",
+      "sector": "Seguros de auto, hogar y negocios",
+      "problem": "Las solicitudes y fechas de renovación quedan dispersas.",
+      "steps": [
+        "Recibe solicitudes de cotización por web o anuncios.",
+        "Agenda asesoría y registra la oportunidad.",
+        "Programa recordatorios de renovación.",
+        "Revisa la cartera comercial y el seguimiento de cada cliente."
+      ],
+      "modules": [
+        1,
+        2,
+        3,
+        5,
+        7,
+        9,
+        14,
+        33
+      ],
+      "image": "/growth-stages/growth-cierra-v2.png",
+      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
+      "note": "El cálculo, emisión y gestión técnica de pólizas requieren sistemas o procesos propios.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000002464-property-and-casualty-insurance-snapshot"
+      ],
+      "featured": false,
+      "keywords": "Agentes y corredores de seguros "
+    },
+    {
+      "id": "contadores",
+      "group": "Servicios profesionales",
+      "title": "Despachos contables y fiscales",
+      "lead": "Simplifica la captación de clientes y las consultas recurrentes.",
+      "sector": "Contabilidad y servicios fiscales",
+      "problem": "Es difícil coordinar consultas y mantener informados a los clientes.",
+      "steps": [
+        "Publica servicios y capta solicitudes.",
+        "Reserva asesorías y envía confirmaciones.",
+        "Comparte propuestas y enlaces de pago compatibles.",
+        "Envía recordatorios administrativos y novedades autorizadas."
+      ],
+      "modules": [
+        3,
+        4,
+        5,
+        7,
+        9,
+        11,
+        27,
+        42
+      ],
+      "image": "/growth-stages/growth-escala-v2.png",
+      "imageAlt": "Captura real del sistema de campañas de correo en la demo Growth",
+      "note": "No sustituye software contable, declaraciones fiscales ni expedientes tributarios.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000002462-bookkeeper-snapshot"
+      ],
+      "featured": false,
+      "keywords": "Contadores y despachos fiscales contador contabilidad fiscal"
+    },
+    {
+      "id": "abogados",
+      "group": "Servicios profesionales",
+      "title": "Firmas y despachos jurídicos",
+      "lead": "Organiza consultas iniciales y seguimiento comercial.",
+      "sector": "Servicios legales",
+      "problem": "Las consultas llegan a diferentes personas y se pierden respuestas.",
+      "steps": [
+        "Centraliza solicitudes de consulta.",
+        "Agenda una reunión con el abogado adecuado.",
+        "Registra el avance comercial y comparte la propuesta.",
+        "Automatiza recordatorios administrativos y comunicaciones autorizadas."
+      ],
+      "modules": [
+        1,
+        2,
+        3,
+        6,
+        9,
+        11,
+        27,
+        42
+      ],
+      "image": "/growth-stages/growth-cierra-v2.png",
+      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
+      "note": "No sustituye gestión de expedientes jurídicos ni asesoría legal; evita datos sensibles innecesarios.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000000963-industry-playbook-legal-practice"
+      ],
+      "featured": false,
+      "keywords": "Abogados y despachos jurídicos abogado legal"
+    },
+    {
+      "id": "inmobiliaria",
+      "title": "Equipos comerciales y redes de asesores",
+      "lead": "Todos los prospectos, etapas y pendientes en un proceso comercial compartido.",
+      "sector": "Inmobiliaria, automotriz, broker",
+      "problem": "Las oportunidades se quedan en chats individuales y no hay visibilidad del seguimiento.",
+      "steps": [
+        "Entran prospectos desde publicidad y formularios.",
+        "Asignas cada lead al asesor correspondiente.",
+        "Visualizas etapas y tareas en el pipeline.",
+        "Revisas resultados y oportunidades sin seguimiento."
+      ],
+      "modules": [
+        1,
+        2,
+        6,
+        9,
+        14,
+        37,
+        41
+      ],
+      "image": "/growth-stages/growth-cierra-v2.png",
+      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
+      "note": "Las funciones de asignación y automatización dependen de la configuración efectiva.",
+      "group": "Inmobiliario y automotriz",
+      "featured": false,
+      "origin": "Adaptación ilustrativa de capacidades de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000001982-understanding-pipelines"
+      ],
+      "keywords": "Gestiono un equipo de vendedores "
+    },
+    {
+      "id": "detailing",
+      "group": "Inmobiliario y automotriz",
+      "title": "Centros de estética automotriz y detailing",
+      "lead": "Llena la agenda de servicios y fomenta visitas repetidas.",
+      "sector": "Lavado, pulido y cuidado automotriz",
+      "problem": "Las cotizaciones y confirmaciones se hacen manualmente por teléfono.",
+      "steps": [
+        "Muestra paquetes de servicios en tu web y redes.",
+        "Recibe solicitudes y agenda servicios.",
+        "Confirma horarios y anticipos compatibles.",
+        "Envía solicitudes de reseñas y recordatorios de regreso."
+      ],
+      "modules": [
+        3,
+        4,
+        8,
+        9,
+        10,
+        11,
+        38
+      ],
+      "image": "/growth-stages/growth-reten.png",
+      "imageAlt": "Captura real del módulo de reputación y reseñas de 10xteam Growth",
+      "note": "El caso utiliza reservas y seguimiento; no presupone un sistema de taller completo.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000002460-automotive-detailing-snapshot"
+      ],
+      "featured": false,
+      "keywords": "Estética automotriz y detailing "
+    },
+    {
+      "id": "redes",
+      "title": "Marcas que venden por Instagram y WhatsApp",
+      "lead": "Convierte conversaciones dispersas en una operación que vende y da seguimiento.",
+      "sector": "Marca de ropa, chocolates o alimentos",
+      "problem": "Muchas consultas llegan por distintos canales y es difícil recordar quién pidió qué.",
+      "steps": [
+        "Publicas campañas o contenido y recibes consultas.",
+        "Centralizas contactos y conversaciones en el CRM.",
+        "Automatizas seguimientos y compartes catálogo o enlace de pago.",
+        "Ves qué mensajes y acciones terminan generando ventas."
+      ],
+      "modules": [
+        6,
+        8,
+        9,
+        12,
+        33,
+        42,
+        43
+      ],
+      "image": "/growth-stages/growth-prospecta-v2.png",
+      "imageAlt": "Captura real de la subcuenta demo con la lista de contactos de 10xteam Growth",
+      "note": "El uso de WhatsApp, las acciones premium y los anuncios pueden generar cargos separados.",
+      "group": "Comercio y marcas",
+      "featured": false,
+      "origin": "Adaptación ilustrativa de capacidades de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000005063"
+      ],
+      "keywords": "Vendo por Instagram y WhatsApp emprendedor independiente solopreneur redes venta"
+    },
+    {
+      "id": "retencion",
+      "title": "Negocios con clientes recurrentes",
+      "lead": "La venta no termina cuando cobras: puedes volver a comunicarte y fidelizar.",
+      "sector": "Cafetería, academia, comercio",
+      "problem": "Nuevos clientes compran una vez y el negocio no vuelve a contactarles.",
+      "steps": [
+        "Registras la compra o servicio.",
+        "Segmentas clientes por historial y preferencias.",
+        "Envías comunicaciones autorizadas y solicitas reseñas.",
+        "Activarás Lealtad cuando el complemento esté disponible."
+      ],
+      "modules": [
+        1,
+        7,
+        10,
+        11,
+        25,
+        35,
+        37
+      ],
+      "image": "/growth-stages/growth-reten.png",
+      "imageAlt": "Captura real del módulo de reputación y reseñas de 10xteam Growth",
+      "note": "Lealtad puede estar en acceso anticipado; email y mensajería podrían consumir saldo.",
+      "group": "Comercio y marcas",
+      "featured": false,
+      "origin": "Adaptación ilustrativa de capacidades de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000009221"
+      ],
+      "keywords": "Quiero clientes que vuelvan "
+    },
+    {
+      "id": "creadores",
+      "group": "Comercio y marcas",
+      "title": "Creadores de contenido y marcas personales",
+      "lead": "Organiza publicaciones y convierte tu audiencia en contactos propios.",
+      "sector": "Creadores y marcas personales",
+      "problem": "Publicar en varias redes y responder mensajes consume gran parte de la jornada.",
+      "steps": [
+        "Conecta los perfiles compatibles y programa contenido.",
+        "Dirige interesados hacia formularios o páginas de oferta.",
+        "Segmenta suscriptores y envía novedades autorizadas.",
+        "Vende cursos o servicios con pagos compatibles."
+      ],
+      "modules": [
+        4,
+        5,
+        7,
+        8,
+        11,
+        13,
+        34,
+        35
+      ],
+      "image": "/growth-stages/growth-escala-v2.png",
+      "imageAlt": "Captura real del sistema de campañas de correo en la demo Growth",
+      "note": "Adaptación del Social Planner y cursos; no incluye monetización automática de seguidores ni métricas de todas las redes.",
+      "origin": "Adaptación comercial de 10xteam basada en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000005063"
+      ],
+      "featured": false,
+      "keywords": "Creadores de contenido e influencers influencer solopreneur independiente emprendedor"
+    },
+    {
+      "id": "dentista",
+      "group": "Salud y bienestar",
+      "title": "Clínicas dentales",
+      "lead": "Convierte las consultas en citas y organiza el regreso de tus pacientes.",
+      "sector": "Odontología",
+      "problem": "Se pierden llamadas y los pacientes olvidan citas o revisiones.",
+      "steps": [
+        "Recibe consultas de anuncios y del sitio.",
+        "Ofrece horarios y confirma la cita.",
+        "Envía recordatorios y opciones de reprogramación.",
+        "Solicita reseñas y envía recordatorios de revisiones según autorización."
+      ],
+      "modules": [
+        3,
+        5,
+        6,
+        9,
+        10,
+        16,
+        42
+      ],
+      "image": "/growth-stages/growth-identifica-v2-alt.png",
+      "imageAlt": "Captura real de la plataforma demo con vista del pipeline comercial",
+      "note": "Mensajería e IA elegible por consumo; no sustituye un expediente clínico.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000000955-industry-playbook-dental-practice-dentistry"
+      ],
+      "featured": false,
+      "keywords": "Dentistas y consultorios dentales dentista odontología"
+    },
+    {
+      "id": "fisioterapia",
+      "group": "Salud y bienestar",
+      "title": "Centros de fisioterapia y rehabilitación",
+      "lead": "Organiza sesiones, disponibilidad y seguimiento administrativo.",
+      "sector": "Fisioterapeutas y quiroprácticos",
+      "problem": "Coordinar varias sesiones por teléfono consume tiempo.",
+      "steps": [
+        "Publica tus servicios y horarios.",
+        "Reserva la primera sesión y confirma asistencia.",
+        "Programa recordatorios de próximas citas.",
+        "Revisa ocupación y seguimiento de pacientes."
+      ],
+      "modules": [
+        3,
+        4,
+        6,
+        9,
+        14,
+        38
+      ],
+      "image": "/growth-stages/growth-identifica-v2-alt.png",
+      "imageAlt": "Captura real de la plataforma demo con vista del pipeline comercial",
+      "note": "No es un sistema clínico; el tratamiento de datos sensibles exige cumplimiento aplicable.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000000960-industry-playbook-health-wellness-business"
+      ],
+      "featured": false,
+      "keywords": "Fisioterapia y rehabilitación "
+    },
+    {
+      "id": "belleza",
+      "group": "Salud y bienestar",
+      "title": "Salones de belleza y centros estéticos",
+      "lead": "Deja que los clientes reserven y regresen sin perseguirlos por chat.",
+      "sector": "Estilistas, salones y barberías",
+      "problem": "Los horarios, cambios y confirmaciones ocupan gran parte del día.",
+      "steps": [
+        "Publica tus servicios y trabajos en redes.",
+        "Deja elegir servicio, profesional y horario.",
+        "Confirma citas y cobra anticipos compatibles.",
+        "Invita a reservar de nuevo tras el servicio."
+      ],
+      "modules": [
+        3,
+        8,
+        9,
+        10,
+        11,
+        38
+      ],
+      "image": "/growth-stages/growth-reten.png",
+      "imageAlt": "Captura real del módulo de reputación y reseñas de 10xteam Growth",
+      "note": "Pagos y comunicaciones sujetos a las condiciones de sus proveedores.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000000957-industry-playbook-hair-nail-salon"
+      ],
+      "featured": false,
+      "keywords": "Salones de belleza, barberías y uñas barbería uñas peluquería estilista"
+    },
+    {
+      "id": "gimnasio",
+      "group": "Salud y bienestar",
+      "title": "Gimnasios y estudios de entrenamiento",
+      "lead": "Convierte interesados en miembros y mantén el contacto.",
+      "sector": "Gimnasios, yoga y entrenamiento",
+      "problem": "Las pruebas gratuitas y solicitudes no siempre reciben seguimiento.",
+      "steps": [
+        "Promociona una clase de prueba con un formulario.",
+        "Organiza reservas y notifica al entrenador.",
+        "Presenta planes y enlaces de pago compatibles.",
+        "Segmenta miembros inactivos para campañas autorizadas de regreso."
+      ],
+      "modules": [
+        3,
+        4,
+        5,
+        7,
+        9,
+        11,
+        14,
+        33
+      ],
+      "image": "/growth-stages/growth-escala-v2.png",
+      "imageAlt": "Captura real del sistema de campañas de correo en la demo Growth",
+      "note": "No implica control físico de acceso ni software especializado de entrenamiento.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/48001079561-gym-snapshot"
+      ],
+      "featured": false,
+      "keywords": "Gimnasios y estudios de entrenamiento "
+    },
+    {
+      "id": "operacion",
+      "title": "Empresas de servicios con equipo operativo",
+      "lead": "Organiza encargos, tareas, soporte y ejecución con visibilidad.",
+      "sector": "Agencias, empresas de mantenimiento",
+      "problem": "No es claro quién debe atender cada solicitud o cuándo vence.",
+      "steps": [
+        "Recibes la solicitud del cliente.",
+        "Registras responsable, prioridad y siguientes pasos.",
+        "Haces seguimiento desde proyectos y tickets compatibles.",
+        "Mides tiempos y detectas cuellos de botella."
+      ],
+      "modules": [
+        2,
+        9,
+        14,
+        20,
+        21,
+        23,
+        37
+      ],
+      "image": "/growth-stages/growth-cierra-demo.png",
+      "imageAlt": "Captura real de oportunidades comerciales en la plataforma demo Growth",
+      "note": "Ticketing completo y Proyectos están propuestos como incluidos en Scale y complementos en Growth; su control está por validar.",
+      "group": "Servicios y operaciones",
+      "featured": false,
+      "origin": "Adaptación ilustrativa de capacidades de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000000961-industry-playbook-home-service-business"
+      ],
+      "keywords": "Tengo servicios y equipo operativo "
+    },
+    {
+      "id": "plomeria",
+      "group": "Servicios y operaciones",
+      "title": "Empresas de instalaciones y reparaciones",
+      "lead": "Recibe solicitudes sin perder oportunidades mientras estás en servicio.",
+      "sector": "Plomería y reparaciones",
+      "problem": "Las llamadas sin respuesta se convierten en trabajos perdidos.",
+      "steps": [
+        "Recibe solicitudes por formulario o canales conectados.",
+        "Recupera llamadas perdidas con respuesta compatible.",
+        "Agenda la visita y prepara una cotización.",
+        "Solicita reseña y conserva historial comercial."
+      ],
+      "modules": [
+        3,
+        5,
+        6,
+        9,
+        10,
+        16,
+        23,
+        27
+      ],
+      "image": "/growth-stages/growth-cierra-demo.png",
+      "imageAlt": "Captura real de oportunidades comerciales en la plataforma demo Growth",
+      "note": "La respuesta automática requiere canal y configuración; módulo de campo opcional y por validar.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000000961-industry-playbook-home-service-business"
+      ],
+      "featured": false,
+      "keywords": "Plomeros y reparaciones a domicilio plomero plomería fontanero"
+    },
+    {
+      "id": "limpieza",
+      "group": "Servicios y operaciones",
+      "title": "Empresas de limpieza",
+      "lead": "Organiza cotizaciones y reservas de servicios recurrentes.",
+      "sector": "Limpieza residencial y comercial",
+      "problem": "Los clientes piden presupuestos y cambios de horario por separado.",
+      "steps": [
+        "Captura necesidades básicas de limpieza.",
+        "Agenda evaluación y comparte propuesta.",
+        "Confirma visitas y recordatorios periódicos.",
+        "Conserva el seguimiento de renovaciones y nuevas solicitudes."
+      ],
+      "modules": [
+        1,
+        2,
+        3,
+        5,
+        9,
+        11,
+        23,
+        27
+      ],
+      "image": "/growth-stages/growth-cierra-demo.png",
+      "imageAlt": "Captura real de oportunidades comerciales en la plataforma demo Growth",
+      "note": "La asignación operativa avanzada requiere validar el complemento de servicios en campo.",
+      "origin": "Adaptación comercial de 10xteam basada en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000009560-highlevel-industries-create-sub-accounts-built-for-your-client-s-industry"
+      ],
+      "featured": false,
+      "keywords": "Empresas de limpieza "
+    },
+    {
+      "id": "jardineria",
+      "group": "Servicios y operaciones",
+      "title": "Empresas de jardinería y paisajismo",
+      "lead": "Organiza solicitudes estacionales y trabajos recurrentes.",
+      "sector": "Jardinería y paisajismo",
+      "problem": "Es difícil recordar cuándo vuelve a necesitar servicio cada cliente.",
+      "steps": [
+        "Capta solicitudes desde web y campañas.",
+        "Agenda una visita de evaluación.",
+        "Prepara propuesta y seguimiento del trabajo.",
+        "Envía recordatorios estacionales a clientes autorizados."
+      ],
+      "modules": [
+        2,
+        3,
+        5,
+        7,
+        9,
+        23,
+        27,
+        33
+      ],
+      "image": "/growth-stages/growth-cierra-demo.png",
+      "imageAlt": "Captura real de oportunidades comerciales en la plataforma demo Growth",
+      "note": "No implica optimización de rutas ni otras capacidades no verificadas; Field Services opcional.",
+      "origin": "Adaptación comercial de 10xteam basada en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000009560-highlevel-industries-create-sub-accounts-built-for-your-client-s-industry"
+      ],
+      "featured": false,
+      "keywords": "Jardinería y mantenimiento de exteriores "
+    },
+    {
+      "id": "rentas",
+      "group": "Servicios y operaciones",
+      "title": "Empresas de alquiler de equipos y espacios",
+      "lead": "Centraliza solicitudes de renta y disponibilidad.",
+      "sector": "Equipos audiovisuales, salones y espacios",
+      "problem": "Las fechas y solicitudes de renta se coordinan manualmente.",
+      "steps": [
+        "Publica tus activos y recibe solicitudes.",
+        "Confirma fechas y cotiza el servicio.",
+        "Con Rentals habilitado, administra listados y opciones de reserva.",
+        "Da seguimiento a pagos y devolución según tu proceso."
+      ],
+      "modules": [
+        3,
+        4,
+        6,
+        9,
+        11,
+        27,
+        38
+      ],
+      "image": "/growth-stages/growth-cierra-demo.png",
+      "imageAlt": "Captura real de oportunidades comerciales en la plataforma demo Growth",
+      "note": "Rentals requiere validación del complemento y sus reglas de disponibilidad; no es gestión de flota.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000008000-using-snapshots-to-copy-rental-listings-and-categories"
+      ],
+      "featured": false,
+      "keywords": "Alquiler de equipos y espacios "
+    },
+    {
+      "id": "congresos",
+      "group": "Educación y eventos",
+      "title": "Organizadores de eventos y congresos",
+      "lead": "Capta asistentes y organiza su experiencia.",
+      "sector": "Conferencias, congresos y ferias",
+      "problem": "Inscripciones, comunicaciones y check-in están en sistemas distintos.",
+      "steps": [
+        "Presenta el evento y capta interesados.",
+        "Si Eventos está habilitado, configura boletos y registros.",
+        "Envía confirmaciones y gestiona ingreso mediante QR compatible.",
+        "Continúa la relación comercial con asistentes autorizados."
+      ],
+      "modules": [
+        4,
+        7,
+        9,
+        11,
+        24,
+        29,
+        40
+      ],
+      "image": "/growth-stages/growth-escala-v2.png",
+      "imageAlt": "Captura real del sistema de campañas de correo en la demo Growth",
+      "note": "Eventos es un complemento sujeto a disponibilidad; no equivale a calendarios de citas.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000009809-event-management-ticketing-full-guide"
+      ],
+      "featured": false,
+      "keywords": "Organizadores de eventos y congresos "
+    },
+    {
+      "id": "viajes",
+      "group": "Restaurantes y hospitalidad",
+      "title": "Agencias de viajes",
+      "lead": "Organiza solicitudes de itinerario y cotizaciones.",
+      "sector": "Agencias turísticas",
+      "problem": "Los viajeros consultan distintos destinos y no siempre reciben respuesta a tiempo.",
+      "steps": [
+        "Capta consultas con preferencias de viaje.",
+        "Agenda una llamada y prepara propuestas.",
+        "Da seguimiento a cotizaciones por canales autorizados.",
+        "Segmenta clientes para futuras temporadas."
+      ],
+      "modules": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        9,
+        27
+      ],
+      "image": "/growth-stages/growth-cierra-v2.png",
+      "imageAlt": "Captura real del pipeline de oportunidades de demostración en 10xteam Growth",
+      "note": "No sustituye motores de reservación, emisión de boletos ni sistemas GDS.",
+      "origin": "Caso ilustrativo inspirado en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000002465-travel-agency-snapshot"
+      ],
+      "featured": false,
+      "keywords": "Agencias de viajes "
+    },
+    {
+      "id": "hoteles",
+      "group": "Restaurantes y hospitalidad",
+      "title": "Hoteles boutique y alojamientos",
+      "lead": "Convierte consultas de estancia en oportunidades directas.",
+      "sector": "Hoteles pequeños y hospedaje",
+      "problem": "Las consultas de disponibilidad quedan repartidas entre correo y redes.",
+      "steps": [
+        "Muestra el alojamiento y capta consultas desde tu sitio.",
+        "Centraliza los mensajes y da seguimiento a solicitudes.",
+        "Comparte enlaces o propuestas según tu operación.",
+        "Solicita reseñas y envía promociones autorizadas de regreso."
+      ],
+      "modules": [
+        1,
+        4,
+        6,
+        7,
+        9,
+        10,
+        27,
+        42
+      ],
+      "image": "/growth-stages/growth-reten.png",
+      "imageAlt": "Captura real del módulo de reputación y reseñas de 10xteam Growth",
+      "note": "Adaptación: no reemplaza PMS, channel manager ni inventario hotelero sincronizado.",
+      "origin": "Adaptación comercial de 10xteam basada en documentación de HighLevel",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/articles/155000002465-travel-agency-snapshot"
+      ],
+      "featured": false,
+      "keywords": "Hoteles boutique y alojamientos "
+    }
+  ],
+  "presentation": {
+    "comparisonMode": "table + benefits + contextual examples",
+    "images": "real GHL demo screenshots already on site",
+    "exampleDisclaimer": "Casos ilustrativos, no resultados, testimonios ni automatizaciones ya instaladas.",
+    "pricingState": "Precios finales pendientes de aprobación",
+    "scenarioResearch": {
+      "date": "2026-11-23",
+      "scope": "30 ejemplos ilustrativos; 6 originales y 24 nuevos, con fuente oficial y adaptación señalada; no equivale a snapshots instalados ni casos de éxito.",
+      "sources": [
+        "https://help.gohighlevel.com/support/solutions/folders/48000670531",
+        "https://help.gohighlevel.com/support/solutions/folders/155000000149"
+      ]
+    },
+    "positioning": {
+      "segment": "Negocios establecidos y empresas en crecimiento, sin excluir independientes, emprendedores y solopreneurs.",
+      "featuredOrder": [
+        "propiedades",
+        "distribuidores",
+        "autos",
+        "citas",
+        "creditos",
+        "carritos",
+        "consultoria",
+        "academia",
+        "climatizacion",
+        "restaurante"
+      ],
+      "solopreneurInterest": {
+        "status": "discovery_only",
+        "serviceType": "growth_solopreneur_interest",
+        "source": "growth_contact",
+        "offer": "Programa para emprendedores e independientes en exploración; sin precio, acceso, descuento ni plan confirmado.",
+        "metrics": [
+          "solicitudes únicas por email",
+          "sector y objetivo",
+          "evolución de interés semanal"
+        ],
+        "preview": "simulate only; no external submissions"
+      }
+    }
+  },
+  "scenarioGroups": [
+    "Servicios profesionales",
+    "Inmobiliario y automotriz",
+    "Comercio y marcas",
+    "Salud y bienestar",
+    "Servicios y operaciones",
+    "Educación y eventos",
+    "Restaurantes y hospitalidad"
+  ]
+}
