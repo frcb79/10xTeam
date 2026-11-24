@@ -223,17 +223,26 @@ button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{o
  .matrix-actions button{font-size:10px}
  .mobile-scroll-hint{display:block}
  .table-scroll{overflow-x:auto}
- .matrix{min-width:575px}
- .matrix th.feature-col{width:48%}
- .matrix th.plan-col{width:26%}
- .matrix colgroup col:first-child{width:48%!important}
- .matrix colgroup col:nth-child(2),.matrix colgroup col:nth-child(3){width:26%!important}
- .matrix tr:not(.category-row) th[scope=row]{position:sticky;left:0;z-index:2;box-shadow:5px 0 7px #0002}
+ .matrix{min-width:0;width:100%}
+ .matrix th.feature-col{width:43%}
+ .matrix th.plan-col{width:28.5%}
+ .matrix colgroup col:first-child{width:43%!important}
+ .matrix colgroup col:nth-child(2),.matrix colgroup col:nth-child(3){width:28.5%!important}
+ .matrix th,.matrix td{padding:10px 5px;overflow-wrap:anywhere}
+ .matrix thead th{padding:11px 5px}
+ .matrix .status{display:flex;flex-direction:column;gap:3px;text-align:center;align-items:center}
+ .matrix .status-text{font-size:9px;line-height:1.25;overflow-wrap:anywhere}
+ .matrix tr:not(.category-row) th[scope=row]{position:static;box-shadow:none}
+ .matrix .row-label{font-size:11px;line-height:1.35}
+ .matrix .row-note{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;font-size:9px;line-height:1.4}
+ .matrix .plan-title{font-size:18px}
+ .matrix .plan-advantage{font-size:9px}
+ .matrix .plan-price{font-size:10px}
  .feature-explain{grid-template-columns:1fr}
  .feature-explain .cost-note{grid-column:auto}
  .matrix .detail-row td{padding:13px}
  .matrix .status-hint{display:none}
- .matrix .row-note{font-size:10px}
+ .matrix .row-note{font-size:9px}
 }
 
 </style>
@@ -271,7 +280,7 @@ button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{o
    <span class="kicker">EN RESUMEN Y EN DETALLE</span><h2 class="section-title">Growth vs Scale. <em>La diferencia se entiende.</em></h2>
    <p class="section-intro">Ambos planes ofrecen una plataforma muy completa. Scale añade más capacidad, consumo preferente y algunos módulos operativos incluidos. Compara las diferencias principales y luego explora las 45 funciones con ejemplos concretos.</p>
    <div class="table-shell">
-    <div class="mobile-scroll-hint">← Desliza para comparar los planes →</div>
+    <div class="mobile-scroll-hint">A la izquierda verás el beneficio; a la derecha, Growth y Scale.</div>
     <div class="table-scroll">
      <table class="matrix" aria-label="Comparación de funcionalidades Growth y Scale">
       <thead>
@@ -293,11 +302,11 @@ button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{o
     <div class="wrap" style="width:calc(100% - 24px)">
       <div class="filter-chips" id="category-filters" aria-label="Filtrar por categoría"></div>
     </div>
-    <div class="mobile-scroll-hint">← Desliza la tabla horizontalmente para comparar →</div>
+    <div class="mobile-scroll-hint">Compara las tres columnas y abre los ejemplos tocando cada función.</div>
     <div class="table-scroll">
      <table class="matrix" aria-label="Listado completo de módulos por plan">
        <colgroup><col style="width:52%"><col style="width:24%"><col style="width:24%"></colgroup>
-       <thead class="visually-hidden-head"><tr><th scope="col">Funcionalidad</th><th scope="col">Growth</th><th scope="col">Scale</th></tr></thead>
+       <thead><tr><th scope="col">Funcionalidad y beneficio</th><th scope="col">Growth</th><th scope="col">Scale</th></tr></thead>
        <tbody id="feature-rows"></tbody>
      </table>
     </div>
@@ -366,7 +375,7 @@ function status(s){
  var low=text.toLowerCase();
  var type=/consumo|por uso/.test(low)?"consume":/complemento|suscripción|precio|cotizar|preferente|cargo externo|opcional|por definir/.test(low)?"extra":"included";
  var symbol=type==="included"?"✓":type==="consume"?"◉":"+";
- var short=low.includes("cargo externo")?"Externo":low.includes("por definir")?"Por definir":low.includes("por consumo")?low.includes("preferente")?"Uso preferente":"Por consumo":low.includes("complemento completo")?"Complemento":low.includes("complemento")?"Complemento":low.includes("incluido")?"Incluido":low.includes("preferente")?"Preferente":text;
+ var short=low.includes("cargo externo")?"Externo":low.includes("por definir")?"Por definir":low.includes("por consumo")?low.includes("preferente")?"Uso preferente":"Por consumo":low.includes("por uso")?"Por uso":low.includes("consumo ×")?"Por consumo":low.includes("complemento completo")?"Complemento":low.includes("complemento")?"Complemento":low.includes("base incluida")?"Base + extras":low.includes("incluido")||low.includes("incluida")?"Incluido":low.includes("preferente")?"Preferente":text;
  return '<span class="status '+type+'" title="'+esc(text)+'"><span class="symbol" aria-hidden="true">'+symbol+'</span><span class="status-text">'+esc(short)+'</span></span>';
 }
 var important=[
