@@ -2456,136 +2456,41 @@ body {
 
 
 <style id="txorbit-portrait-v2-20261123">
-/* v5: balanced tool orbit with 25 original cards + more-modules indicator.
-   Desktop: 7 top / 6 left / compact vertical hub / 6 right / 7 bottom.
-   Mobile: 4+3 on top/bottom and 6 single-column side rows. */
-.txshow-section{background:radial-gradient(ellipse at 50% 51%,rgba(62,80,160,.2),transparent 52%),linear-gradient(170deg,#0b0e15,#0e1420);color:#eff5ff;padding:51px 15px 49px;overflow:hidden}
-.txshow-wrap{max-width:1240px;margin:0 auto}
-.txshow-intro{text-align:center;max-width:850px;margin:0 auto 22px}
-.txshow-eyebrow{display:block;color:#82e9be;text-transform:uppercase;letter-spacing:.115em;font-size:11px;font-weight:800;margin:0 0 9px}
-.txshow-intro h2{font-family:var(--tx-font-display);color:#fff;font-size:clamp(29px,3.6vw,44px);line-height:1.12;letter-spacing:-.039em;margin:0 0 11px}
-.txshow-intro p{font-size:clamp(13px,1.2vw,16px);color:#b9c8d9;line-height:1.5;margin:0}
-.txshow-scene{position:relative;isolation:isolate;display:flex;flex-direction:column;max-width:1185px;margin:auto;gap:13px}
-.txshow-network{position:absolute;z-index:1;pointer-events:none;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 4px rgba(97,190,220,.29))}
-.txshow-network-mobile{display:none}
-.txshow-paths{fill:none;stroke-width:1.65;stroke-dasharray:7 10;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:.8;animation:txshow-wireflow 18s linear infinite}
-@keyframes txshow-wireflow{to{stroke-dashoffset:-220}}
-.txshow-top,.txshow-bottom{position:relative;z-index:2;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:9px;width:100%}
-.txshow-mid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,258px) minmax(0,1fr);gap:clamp(15px,2.4vw,34px);align-items:center;min-height:294px}
-.txshow-side{position:relative;z-index:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,67px);gap:11px;align-content:center;max-width:318px;min-width:0;width:100%}
+.txshow-section{background:radial-gradient(ellipse at 50% 48%,#172b48 0%,#101b2c 26%,#0b1019 65%);color:#eff5ff;padding:50px 15px 42px;overflow:hidden}
+.txshow-wrap{max-width:1200px;margin:auto}.txshow-intro{text-align:center;max-width:850px;margin:0 auto 24px}.txshow-eyebrow{display:block;color:#82e9be;text-transform:uppercase;letter-spacing:.115em;font-size:11px;font-weight:800;margin-bottom:9px}.txshow-intro h2{font-family:var(--tx-font-display);color:white;font-size:clamp(27px,3.6vw,43px);line-height:1.12;letter-spacing:-.039em;margin:0 0 11px}.txshow-intro p{font-size:clamp(13px,1.2vw,16px);color:#b9c8d9;line-height:1.5;margin:0}
+.txshow-scene{position:relative;isolation:isolate;display:flex;flex-direction:column;max-width:1090px;margin:auto;gap:24px}
+.txshow-network{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible}
+.txshow-wire{fill:none;stroke:#63dccc;stroke-width:1.2;opacity:.33;vector-effect:non-scaling-stroke}
+.txshow-pulse{fill:none;stroke:#84ffe0;stroke-width:1.7;stroke-dasharray:7 13;stroke-linecap:round;opacity:.88;vector-effect:non-scaling-stroke;animation:txshow-travel 2.8s linear infinite;filter:drop-shadow(0 0 3px #45b8b8)}
+@keyframes txshow-travel{to{stroke-dashoffset:-40}}
+.txshow-top,.txshow-bottom{position:relative;z-index:2;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:9px;width:100%;max-width:1050px;align-self:center}
+.txshow-mid{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,240px) minmax(0,1fr);gap:clamp(24px,4vw,54px);align-items:center;min-height:272px}
+.txshow-side{position:relative;z-index:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,65px);gap:19px 12px;max-width:276px;width:100%;min-width:0}
 .txshow-side-left{justify-self:end}.txshow-side-right{justify-self:start}
-.txshow-section .txeco-tile{position:relative;z-index:2;animation:none!important;transition:border-color .18s,transform .18s,box-shadow .18s;width:100%;max-width:none;min-width:0;align-self:stretch;justify-self:stretch;min-height:67px;padding:6px 5px;gap:4px;border-radius:11px}
-.txshow-section .txeco-tile:hover{transform:translateY(-2px);border-color:var(--eco-accent);box-shadow:0 0 22px rgba(94,189,212,.12)}
-.txshow-side .txeco-tile{min-height:67px;gap:5px}
-.txshow-section .txeco-icon{width:26px;height:26px;border-radius:8px;flex-shrink:0}
-.txshow-section .txeco-icon svg{width:17px;height:17px}
-.txshow-section .txeco-name{font-size:clamp(10px,.87vw,11.5px);font-weight:680;line-height:1.17;text-wrap:balance;overflow-wrap:anywhere}
-.txshow-section .txeco-tile small{font-size:8px;margin:0}
-.txshow-extra{background:linear-gradient(135deg,#2a2343,#1a2541)!important;border-style:dashed!important;border-color:#8171b6!important}
-.txshow-extra .txeco-name{color:#c7b6ff}
-.txshow-hub{position:relative;z-index:3;height:292px;width:100%;min-width:0;display:flex;flex-direction:column;justify-content:space-between;align-items:center;gap:10px;padding:18px 13px 14px;background:radial-gradient(ellipse at 50% 48%,rgba(101,104,238,.31),transparent 67%),linear-gradient(150deg,#15243c,#0e192b 65%,#15362f);border:1px solid #608098;border-radius:22px;box-shadow:0 13px 50px rgba(0,0,0,.45),0 0 0 4px rgba(103,147,222,.08),0 0 42px rgba(54,204,178,.11);overflow:hidden}
-.txshow-hub::before{content:"";position:absolute;inset:6px;border:1px solid rgba(152,202,232,.18);border-radius:17px;pointer-events:none}
-.txshow-hub-top{position:relative;z-index:2;display:flex;align-items:center;gap:7px;white-space:nowrap;font-size:clamp(14px,1.32vw,18px);letter-spacing:-.025em;color:white}
-.txshow-hub-top em{font-style:normal;color:#85e9b9}
-.txshow-spark{font-size:19px;color:#74e5b7}
-.txshow-computer{position:relative;z-index:2;width:94%;height:197px;margin:auto;display:flex;align-items:center;justify-content:flex-start}
-.txshow-laptop{position:relative;width:91%;height:145px;background:#e9f1fb;border:6px solid #536d8c;border-bottom-width:10px;border-radius:10px;box-shadow:0 17px 28px rgba(0,0,0,.39)}
-.txshow-laptop-top{background:#273a58;height:19px;display:flex;gap:4px;align-items:center;padding:0 9px}
-.txshow-laptop-top i{width:4px;height:4px;border-radius:50%;background:#8ca4c0}
-.txshow-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100% - 19px);gap:17px;background:radial-gradient(circle at 50% 36%,#fff,#dce8f5)}
-.txshow-screen>strong{font-family:var(--tx-font-display);font-size:clamp(21px,2.2vw,31px);font-weight:800;letter-spacing:-.065em;line-height:1;color:#172c43;white-space:nowrap}
-.txshow-preview-bars{display:flex;gap:6px;width:70%}.txshow-preview-bars b{height:25px;flex:1;border-radius:5px;background:#bad3ec;border-top:4px solid #72a3d8}.txshow-preview-bars b:nth-child(2){background:#d0f0e6;border-color:#58c8a3}.txshow-preview-bars b:nth-child(3){background:#e6defc;border-color:#9784d9}
+.txshow-section .txeco-tile{position:relative;z-index:2;width:100%;min-width:0;max-width:none;height:65px;min-height:65px;padding:5px 4px;gap:4px;box-sizing:border-box;align-self:stretch;justify-self:stretch;border-radius:10px;animation:none!important;transition:transform .2s,border-color .2s;overflow:visible}
+.txshow-section .txeco-tile:hover{transform:translateY(-2px);border-color:var(--eco-accent)}.txshow-section .txeco-tile:before{content:none!important}.txshow-section .txeco-icon{width:25px;height:25px;border-radius:7px;flex-shrink:0}.txshow-section .txeco-icon svg{width:17px;height:17px}.txshow-section .txeco-name{font-size:clamp(9.8px,.87vw,11.5px);font-weight:680;line-height:1.15;text-align:center;text-wrap:balance;overflow-wrap:anywhere}.txshow-section .txeco-tile small{font-size:8px;margin:0}.txshow-extra{background:linear-gradient(135deg,#2a2343,#1a2541)!important;border-style:dashed!important;border-color:#8171b6!important}
+.txshow-hub{position:relative;z-index:3;height:272px;width:100%;min-width:0;display:grid;place-items:center;padding:13px;box-sizing:border-box;background:radial-gradient(ellipse at 50% 45%,#26395e,#142337 65%,#122e2a);border:1px solid #6486a0;border-radius:22px;box-shadow:0 13px 50px #0007,0 0 32px #46c3bd1c;overflow:hidden}.txshow-hub:before{content:"";position:absolute;inset:6px;border:1px solid #a7dbec25;border-radius:17px;pointer-events:none}
+.txshow-computer{position:relative;width:96%;height:190px;display:flex;align-items:center;justify-content:flex-start}
+.txshow-laptop{position:relative;width:91%;height:142px;background:#e9f1fb;border:6px solid #526b89;border-bottom-width:9px;border-radius:10px;box-shadow:0 14px 26px #0007;box-sizing:border-box}
+.txshow-laptop-top{background:#273a58;height:17px;display:flex;gap:4px;align-items:center;padding:0 9px}.txshow-laptop-top i{width:4px;height:4px;border-radius:50%;background:#8ca4c0}
+.txshow-screen{height:calc(100% - 17px);display:grid;place-items:center;background:radial-gradient(ellipse,#fff,#edf4fd)}.txshow-screen img{display:block;width:84%;height:auto;object-fit:contain;max-height:70%}
 .txshow-laptop-base{position:absolute;top:100%;left:-7%;right:-7%;height:7px;background:linear-gradient(#8da2be,#5c6f8c);clip-path:polygon(6% 0,94% 0,100% 100%,0 100%);border-radius:0 0 10px 10px}
-.txshow-phone{position:absolute;right:-1px;bottom:8px;width:30%;height:124px;display:flex;flex-direction:column;align-items:center;gap:8px;padding:19px 4px 6px;border:4px solid #586f8e;border-radius:15px;background:linear-gradient(#f7faff,#e9f1fc);box-shadow:0 12px 21px rgba(0,0,0,.43)}
-.txshow-phone-notch{position:absolute;top:6px;left:38%;height:3px;width:24%;border-radius:20px;background:#344b68}
-.txshow-phone strong{font-family:var(--tx-font-display);font-size:11px;letter-spacing:-.07em;color:#213c61;white-space:nowrap}
-.txshow-phone span{width:90%;height:15px;background:#d2e0f2;border-radius:4px;border-left:3px solid #55b9e0}
-.txshow-phone span:nth-last-child(2){border-color:#59c7aa}
-.txshow-footnote{font-size:11px;text-align:center;color:#95adbf;line-height:1.55;margin:18px auto 0;max-width:700px}
-
-/* Short, visible final segments bridge the six side modules into the central system. */
-.txshow-side-left .txeco-tile:nth-child(even)::before,
-.txshow-side-right .txeco-tile:nth-child(odd)::before{
- content:"";position:absolute;top:50%;width:clamp(15px,2.4vw,34px);
- border-top:2px dashed rgba(113,225,194,.8);height:0;pointer-events:none;
- filter:drop-shadow(0 0 4px rgba(110,207,216,.65));
-}
-.txshow-side-left .txeco-tile:nth-child(even)::before{right:calc(-1 * clamp(15px,2.4vw,34px))}
-.txshow-side-right .txeco-tile:nth-child(odd)::before{left:calc(-1 * clamp(15px,2.4vw,34px))}
-@media(max-width:920px){
- .txshow-scene{gap:9px}
- .txshow-mid{grid-template-columns:minmax(0,1fr) minmax(180px,225px) minmax(0,1fr);gap:12px;min-height:275px}
- .txshow-hub{height:274px;padding:15px 8px 11px}
- .txshow-computer{height:190px}
- .txshow-laptop{height:137px}
- .txshow-side{gap:7px;grid-template-rows:repeat(3,67px)}
- .txshow-side .txeco-tile{min-height:67px}
- .txshow-top,.txshow-bottom{gap:6px}
- .txshow-section .txeco-name{font-size:9.8px}
-}
+.txshow-phone{position:absolute;right:-1px;bottom:6px;width:29%;height:112px;display:grid;place-items:center;border:4px solid #586f8e;border-radius:14px;background:#f4f8ff;box-shadow:0 12px 21px #0007;box-sizing:border-box}.txshow-phone-notch{position:absolute;top:6px;left:38%;height:3px;width:24%;border-radius:20px;background:#344b68}.txshow-phone img{display:block;width:57%;height:auto;max-height:65%;object-fit:contain}
+.txshow-footnote{font-size:10.5px;text-align:center;color:#9bb0c2;line-height:1.5;margin:20px auto 0;max-width:700px}
+@media(max-width:920px){.txshow-scene{gap:22px}.txshow-mid{grid-template-columns:minmax(0,1fr) minmax(170px,215px) minmax(0,1fr);gap:26px;min-height:253px}.txshow-hub{height:253px;padding:9px}.txshow-side{gap:17px 8px}.txshow-top,.txshow-bottom{gap:6px}.txshow-section .txeco-name{font-size:9.5px}}
 @media(max-width:680px){
- .txshow-section{padding:43px 10px 42px}
- .txshow-intro{margin-bottom:19px}
- .txshow-intro h2{font-size:clamp(25px,6.55vw,35px)}
- .txshow-intro p{font-size:12.5px}
- .txshow-scene{gap:10px}
- .txshow-network-desktop{display:none}
- .txshow-network-mobile{display:block}
- .txshow-paths{stroke-width:1.85;stroke-dasharray:5 7;opacity:.9;animation-duration:15s}
- .txshow-top,.txshow-bottom{display:flex;flex-wrap:wrap;justify-content:center;gap:4px}
- .txshow-top>.txeco-tile,.txshow-bottom>.txeco-tile{flex:0 0 calc((100% - 12px)/4);width:calc((100% - 12px)/4)}
- .txshow-mid{grid-template-columns:minmax(0,1fr) minmax(124px,1.45fr) minmax(0,1fr);gap:9px;min-height:232px}
- .txshow-side{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:repeat(6,minmax(0,1fr));height:230px;max-width:none;gap:4px;align-content:stretch}
- .txshow-section .txeco-tile{min-height:44px;padding:4px 2px;gap:3px;border-radius:7px}
- .txshow-side .txeco-tile{min-height:0;padding:3px 2px;display:flex;flex-direction:row;justify-content:flex-start;align-items:center;gap:4px}
- .txshow-section .txeco-icon{width:19px;height:19px;border-radius:6px}
- .txshow-section .txeco-icon svg{width:13px;height:13px}
- .txshow-side .txeco-icon{width:17px;height:17px;flex:0 0 17px}
- .txshow-side .txeco-icon svg{width:12px;height:12px}
- .txshow-section .txeco-name{display:none}
- .txshow-section .txeco-tile:after{content:attr(data-short);display:block;font-size:clamp(8.5px,2.2vw,10px);font-weight:700;line-height:1.1;text-align:center;color:#eaf5ff;overflow-wrap:anywhere;max-width:100%}
- .txshow-side .txeco-tile:after{text-align:left;font-size:clamp(8.2px,2.15vw,10px)}
-
- .txshow-side-left .txeco-tile:nth-child(n)::before,
- .txshow-side-right .txeco-tile:nth-child(n)::before{
-  display:block;width:9px;border-top-width:1.5px;top:50%;
- }
- .txshow-side-left .txeco-tile:nth-child(n)::before{right:-9px;left:auto}
- .txshow-side-right .txeco-tile:nth-child(n)::before{left:-9px;right:auto}
-
- .txshow-section .txeco-tile small{display:none}
- .txshow-hub{height:232px;min-height:232px;border-radius:16px;padding:13px 5px 10px;gap:5px}
- .txshow-hub:before{inset:4px;border-radius:12px}
- .txshow-hub-top{font-size:clamp(10.5px,2.8vw,13px);gap:3px}
- .txshow-spark{font-size:14px}
- .txshow-computer{width:96%;height:165px}
- .txshow-laptop{height:111px;border-width:4px;border-bottom-width:7px;border-radius:7px}
- .txshow-laptop-top{height:13px;padding:0 5px}
- .txshow-screen{height:calc(100% - 13px);gap:10px}
- .txshow-screen>strong{font-size:clamp(16px,4.2vw,22px)}
- .txshow-preview-bars{gap:3px}
- .txshow-preview-bars b{height:13px;border-top-width:2px;border-radius:3px}
- .txshow-phone{height:91px;border-width:3px;border-radius:10px;gap:4px;padding:14px 2px 4px;bottom:7px}
- .txshow-phone strong{font-size:7.5px}
- .txshow-phone span{height:9px;border-left-width:2px}
- .txshow-phone-notch{top:3px;height:2px}
- .txshow-footnote{margin-top:13px;font-size:10px}
+.txshow-section{padding:37px 8px 33px}.txshow-intro{margin-bottom:17px}.txshow-intro h2{font-size:clamp(24px,6.5vw,34px)}.txshow-intro p{font-size:12.5px}.txshow-scene{gap:17px;max-width:470px}.txshow-top,.txshow-bottom{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;max-width:320px}.txshow-top>.txeco-tile,.txshow-bottom>.txeco-tile{flex:0 0 calc((100% - 30px)/4);width:calc((100% - 30px)/4)}
+.txshow-mid{grid-template-columns:minmax(0,1fr) minmax(111px,1.24fr) minmax(0,1fr);gap:12px;min-height:216px;align-items:center}
+.txshow-side{grid-template-columns:minmax(0,1fr);grid-template-rows:repeat(6,31px);max-width:79px;gap:6px;align-content:center}
+.txshow-section .txeco-tile{height:42px;min-height:42px;padding:3px 2px;gap:3px;border-radius:7px}
+.txshow-side .txeco-tile{height:31px;min-height:31px;display:flex;flex-direction:row;justify-content:center;align-items:center;gap:3px;padding:2px 1px}
+.txshow-section .txeco-icon{width:18px;height:18px;border-radius:5px}.txshow-section .txeco-icon svg{width:12px;height:12px}.txshow-side .txeco-icon{width:15px;height:15px;flex:0 0 15px}.txshow-side .txeco-icon svg{width:10px;height:10px}
+.txshow-section .txeco-name{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+.txshow-section .txeco-tile:after{content:attr(data-short);display:block;color:#ecf6ff;font-size:clamp(8px,2.2vw,9.5px);font-weight:720;line-height:1.08;text-align:center;overflow-wrap:anywhere;max-width:100%}.txshow-side .txeco-tile:after{font-size:clamp(7.8px,2vw,9px);text-align:left}.txshow-section .txeco-tile small{display:none}
+.txshow-hub{height:216px;padding:5px;border-radius:16px}.txshow-hub:before{inset:4px;border-radius:12px}.txshow-computer{height:155px;width:96%}.txshow-laptop{height:109px;border-width:4px;border-bottom-width:7px;border-radius:7px}.txshow-laptop-top{height:13px;padding:0 5px}.txshow-screen{height:calc(100% - 13px)}.txshow-screen img{width:91%}.txshow-phone{height:84px;border-width:3px;border-radius:9px;bottom:6px}.txshow-phone-notch{top:4px;height:2px}.txshow-footnote{margin-top:14px;font-size:10px}
 }
-@media(max-width:359px){
- .txshow-section{padding:36px 8px}
- .txshow-intro{margin-bottom:15px}
- .txshow-scene{gap:8px}
- .txshow-top>.txeco-tile,.txshow-bottom>.txeco-tile{min-height:42px}
- .txshow-mid{grid-template-columns:minmax(0,1fr) minmax(120px,1.46fr) minmax(0,1fr);gap:5px;min-height:224px}
- .txshow-side{height:218px;gap:3px}
- .txshow-section .txeco-tile:after{font-size:8.2px}
- .txshow-side .txeco-tile:after{font-size:8px}
- .txshow-hub{height:224px;min-height:224px;padding:11px 3px 7px}
- .txshow-computer{height:157px}
- .txshow-laptop{height:101px}
- .txshow-phone{height:84px}
-}
-@media(prefers-reduced-motion:reduce){.txshow-paths{animation:none!important}.txshow-section .txeco-tile{transition:none!important}}
+@media(max-width:359px){.txshow-mid{gap:8px;grid-template-columns:minmax(0,1fr) minmax(103px,1.3fr) minmax(0,1fr);min-height:208px}.txshow-hub{height:208px}.txshow-side{max-width:69px;grid-template-rows:repeat(6,29px);gap:6px}.txshow-side .txeco-tile{height:29px;min-height:29px}.txshow-section .txeco-tile:after{font-size:7.8px}.txshow-side .txeco-tile:after{font-size:7.4px}.txshow-scene{gap:13px}}
+@media(prefers-reduced-motion:reduce){.txshow-pulse{animation:none}.txshow-section .txeco-tile{transition:none}}
 </style>
 <style id="growth-savings-calculator-premium-v4">
 /* Focused 10xteam calculator: 8 selectable reference apps, two counters, plan and answer. */
@@ -3036,14 +2941,7 @@ body {
   </header>
   <svg class="txeco-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><symbol id="txeco-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol><symbol id="txeco-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></symbol><symbol id="txeco-megaphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 16-7v16L3 13z"/><path d="M8 15v5h4v-4"/></symbol><symbol id="txeco-contact" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="9" r="2"/><path d="M8 16c1-3 7-3 8 0"/></symbol><symbol id="txeco-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></symbol><symbol id="txeco-workflow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="6" height="5" rx="1"/><rect x="16" y="4" width="6" height="5" rx="1"/><rect x="9" y="16" width="6" height="5" rx="1"/><path d="M8 6h8M5 9v4h7v3M19 9v4h-7"/></symbol><symbol id="txeco-messages" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h15v11H9l-5 4z"/><path d="M8 9h7M8 12h5"/></symbol><symbol id="txeco-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 0 1-11.5 7.2L3 20l1.9-5.4A8 8 0 1 1 20 11Z"/><path d="M9 10h6M9 13h4"/></symbol><symbol id="txeco-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18M8 15h3M14 15h3"/></symbol><symbol id="txeco-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="18" rx="2"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 11h6M9 15h6"/></symbol><symbol id="txeco-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></symbol><symbol id="txeco-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m9 10 6-3m-6 7 6 3"/></symbol><symbol id="txeco-filepen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v13H6z"/><path d="M15 3v4h4M9 12h6M9 16h5"/><path d="m14 20 4-4 2 2-4 4-3 1z"/></symbol><symbol id="txeco-bot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M9 3h6"/><circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/><path d="M9 17h6"/></symbol><symbol id="txeco-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol><symbol id="txeco-kanban" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M5 8h2M11 8h2M17 8h2M5 12h2M11 12h2"/></symbol><symbol id="txeco-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h5"/></symbol><symbol id="txeco-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3 6 7 .9-5 4.9 1.3 7-6.3-3.3-6.3 3.3 1.3-7-5-4.9L9 8z"/></symbol><symbol id="txeco-barchart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M6 16v-5h4v5M12 16V5h4v11M18 16V9h3v7"/></symbol><symbol id="txeco-linechart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19V4M3 19h18"/><path d="m6 15 5-6 4 3 5-7"/></symbol><symbol id="txeco-files" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h9l4 4v13H7z"/><path d="M16 3v4h4M4 7H3v14h12"/></symbol><symbol id="txeco-headset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13V11a8 8 0 0 1 16 0v2"/><rect x="3" y="12" width="4" height="7" rx="2"/><rect x="17" y="12" width="4" height="7" rx="2"/><path d="M19 19c0 2-3 3-6 3"/></symbol><symbol id="txeco-puzzle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h5v4a2 2 0 1 0 4 0V3h3v7h-4a2 2 0 1 0 0 4h4v7h-7v-4a2 2 0 1 0-4 0v4H3v-7h4a2 2 0 1 0 0-4H3V3z"/></symbol><symbol id="txeco-smartphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M10 5h4M11 19h2"/></symbol><symbol id="txeco-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5-9 5-9-5zM3 12l9 5 9-5M3 17l9 5 9-5"/></symbol></svg>
   <div class="txshow-scene" aria-label="25 herramientas conectadas alrededor de 10xteam Growth">
-   <svg class="txshow-network txshow-network-desktop" viewBox="0 0 1200 490" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <defs><linearGradient id="txshow-line-d" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6a86ff"/><stop offset="53%" stop-color="#75d9dd"/><stop offset="100%" stop-color="#67e9b1"/></linearGradient></defs>
-    <g stroke="url(#txshow-line-d)" class="txshow-paths"><path d="M78 63 Q78 94 600 162"/><path d="M78 421 Q78 380 600 322"/><path d="M252 63 Q252 94 600 162"/><path d="M252 421 Q252 380 600 322"/><path d="M426 63 Q426 94 600 162"/><path d="M426 421 Q426 380 600 322"/><path d="M600 63 Q600 94 600 162"/><path d="M600 421 Q600 380 600 322"/><path d="M774 63 Q774 94 600 162"/><path d="M774 421 Q774 380 600 322"/><path d="M948 63 Q948 94 600 162"/><path d="M948 421 Q948 380 600 322"/><path d="M1122 63 Q1122 94 600 162"/><path d="M1122 421 Q1122 380 600 322"/><path d="M408 146 C445 146 449 232 475 242"/><path d="M792 146 C758 146 751 232 725 242"/><path d="M408 185 C445 185 449 232 475 242"/><path d="M792 185 C758 185 751 232 725 242"/><path d="M408 224 C445 224 449 232 475 242"/><path d="M792 224 C758 224 751 232 725 242"/><path d="M408 263 C445 263 449 232 475 242"/><path d="M792 263 C758 263 751 232 725 242"/><path d="M408 302 C445 302 449 232 475 242"/><path d="M792 302 C758 302 751 232 725 242"/><path d="M408 341 C445 341 449 232 475 242"/><path d="M792 341 C758 341 751 232 725 242"/></g>
-   </svg>
-   <svg class="txshow-network txshow-network-mobile" viewBox="0 0 1000 490" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <defs><linearGradient id="txshow-line-m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8598ff"/><stop offset="50%" stop-color="#5ec9ff"/><stop offset="100%" stop-color="#69e9b6"/></linearGradient></defs>
-    <g stroke="url(#txshow-line-m)" class="txshow-paths"><path d="M120 90 Q120 105 500 141"/><path d="M365 90 Q365 105 500 141"/><path d="M610 90 Q610 105 500 141"/><path d="M855 90 Q855 105 500 141"/><path d="M120 402 Q120 379 500 344"/><path d="M365 402 Q365 379 500 344"/><path d="M610 402 Q610 379 500 344"/><path d="M855 402 Q855 379 500 344"/><path d="M286 143 Q334 143 372 241"/><path d="M714 143 Q666 143 628 241"/><path d="M286 181 Q334 181 372 241"/><path d="M714 181 Q666 181 628 241"/><path d="M286 219 Q334 219 372 241"/><path d="M714 219 Q666 219 628 241"/><path d="M286 257 Q334 257 372 241"/><path d="M714 257 Q666 257 628 241"/><path d="M286 295 Q334 295 372 241"/><path d="M714 295 Q666 295 628 241"/><path d="M286 333 Q334 333 372 241"/><path d="M714 333 Q666 333 628 241"/></g>
-   </svg>
+   <svg class="txshow-network" id="txshow-live-network" aria-hidden="true" focusable="false"></svg>
    <div class="txshow-top"><div class="txeco-tile txeco-teal txeco-toward-bottom" style="--eco-delay:0s" title="CRM" data-short="CRM"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-grid"/></svg></span><span class="txeco-name">CRM</span></div>
 <div class="txeco-tile txeco-blue txeco-toward-bottom" style="--eco-delay:-4.55s" title="Prospección" data-short="Prospección"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-search"/></svg></span><span class="txeco-name">Prospección</span></div>
 <div class="txeco-tile txeco-amber txeco-toward-bottom" style="--eco-delay:-0.65s" title="Publicidad digital" data-short="Ads"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-megaphone"/></svg></span><span class="txeco-name">Publicidad digital</span></div>
@@ -3058,11 +2956,10 @@ body {
 <div class="txeco-tile txeco-blue txeco-toward-right" style="--eco-delay:-3.25s" title="Sitios y landing pages" data-short="Web"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-monitor"/></svg></span><span class="txeco-name">Sitios y landing pages</span></div>
 <div class="txeco-tile txeco-violet txeco-toward-right" style="--eco-delay:-7.800000000000001s" title="Redes sociales" data-short="Redes"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-share"/></svg></span><span class="txeco-name">Redes sociales</span></div>
 <div class="txeco-tile txeco-amber txeco-toward-right" style="--eco-delay:-3.9000000000000004s" title="Contenido con IA" data-short="Contenido IA"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-filepen"/></svg></span><span class="txeco-name">Contenido con IA</span></div></div>
-    <div class="txshow-hub" aria-label="10xteam Growth, plataforma central">
-      <div class="txshow-hub-top"><span aria-hidden="true" class="txshow-spark">✦</span><strong>10xteam <em>Growth</em></strong></div>
-      <div class="txshow-computer" role="img" aria-label="Computadora y móvil con la marca 10xteam">
-        <div class="txshow-laptop"><div class="txshow-laptop-top"><i></i><i></i><i></i></div><div class="txshow-screen"><strong>10xteam</strong><div class="txshow-preview-bars" aria-hidden="true"><b></b><b></b><b></b></div></div><div class="txshow-laptop-base"></div></div>
-        <div class="txshow-phone"><div class="txshow-phone-notch"></div><strong>10xteam</strong><span></span><span></span><span></span></div>
+    <div class="txshow-hub" aria-label="10xteam Growth">
+      <div class="txshow-computer" role="img" aria-label="Laptop con logo oficial 10xteam y celular con símbolo oficial X">
+        <div class="txshow-laptop"><div class="txshow-laptop-top"><i></i><i></i><i></i></div><div class="txshow-screen"><img src="/Logo_10xteam.png" alt="" width="240" height="96" loading="lazy"></div><div class="txshow-laptop-base"></div></div>
+        <div class="txshow-phone"><div class="txshow-phone-notch"></div><img src="/favicon.png" alt="" width="70" height="90" loading="lazy"></div>
       </div>
     </div>
     <div class="txshow-side txshow-side-right"><div class="txeco-tile txeco-violet txeco-toward-left" style="--eco-delay:0s" title="Agentes IA" data-short="Agentes IA"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-bot"/></svg></span><span class="txeco-name">Agentes IA</span></div>
@@ -4222,6 +4119,51 @@ body {
   root.querySelectorAll('[data-plan]').forEach(function(b){b.addEventListener('click',function(){plan=b.dataset.plan;root.querySelectorAll('[data-plan]').forEach(function(x){x.classList.toggle('is-selected',x===b);x.setAttribute('aria-pressed',String(x===b))});update()})});
   rateInputs.forEach(function(x){x.addEventListener('input',update)});
   update();
+})();
+</script>
+<script id="txshow-live-routes-v6">
+(function(){
+ const scene=document.querySelector('.txshow-scene'),svg=document.getElementById('txshow-live-network'),hub=scene?.querySelector('.txshow-hub');
+ if(!scene||!svg||!hub)return;
+ const ns='http://www.w3.org/2000/svg';
+ function draw(){
+  const base=scene.getBoundingClientRect(),h=hub.getBoundingClientRect();if(!base.width||!base.height)return;
+  const rel=r=>({l:r.left-base.left,r:r.right-base.left,t:r.top-base.top,b:r.bottom-base.top,x:(r.left+r.right)/2-base.left,y:(r.top+r.bottom)/2-base.top,w:r.width,h:r.height});
+  const H=rel(h),mob=window.matchMedia('(max-width:680px)').matches;
+  svg.setAttribute('viewBox','0 0 '+base.width+' '+base.height);svg.replaceChildren();
+  function route(d,idx){['txshow-wire','txshow-pulse'].forEach(cl=>{let p=document.createElementNS(ns,'path');p.setAttribute('d',d);p.setAttribute('class',cl);if(cl==='txshow-pulse'){p.style.animationDelay=(-(idx%13)*.19)+'s';p.style.animationDuration=(2.45+(idx%5)*.15)+'s'}svg.appendChild(p)})}
+  let idx=0;
+  ['top','bottom','left','right'].forEach(zone=>{
+   let sel=zone==='top'||zone==='bottom'?'.txshow-'+zone:'.txshow-side-'+zone;
+   let arr=Array.from(scene.querySelectorAll(sel+' .txeco-tile'));
+   arr.forEach((tile,i)=>{
+    const R=rel(tile.getBoundingClientRect()),a=(i+1)/(arr.length+1);let d;
+    if(zone==='top'||zone==='bottom'){
+      const isTop=zone==='top',endY=isTop?H.t:H.b,endX=H.l+H.w*(.12+.76*a);
+      const y=isTop?R.b:R.t,delta=endY-y;
+      d='M '+R.x+' '+y+' C '+R.x+' '+(y+delta*.50)+' '+endX+' '+(endY-delta*.34)+' '+endX+' '+endY;
+    }else{
+      const L=zone==='left',endX=L?H.l:H.r;
+      const endY=H.t+H.h*(.08+.84*a);
+      const outer=!mob&&(L?i%2===0:i%2===1);
+      if(outer){
+        const y=R.b,escape=y+6+(i%3)*1.3;
+        const midX=L?endX-13:endX+13;
+        d='M '+R.x+' '+y+' Q '+R.x+' '+escape+' '+(R.x+(L?8:-8))+' '+escape+' L '+midX+' '+escape+' Q '+endX+' '+escape+' '+endX+' '+endY;
+      }else{
+        const x=L?R.r:R.l,delta=endX-x;
+        d='M '+x+' '+R.y+' C '+(x+delta*.52)+' '+R.y+' '+(endX-delta*.40)+' '+endY+' '+endX+' '+endY;
+      }
+    }
+    route(d,idx++);
+   });
+  });
+  scene.dataset.connectionCount=String(idx);
+ }
+ let frame;const schedule=()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(draw)};
+ if('ResizeObserver'in window)new ResizeObserver(schedule).observe(scene);
+ window.addEventListener('resize',schedule,{passive:true});window.addEventListener('load',schedule,{once:true});
+ if(document.fonts?.ready)document.fonts.ready.then(schedule);schedule();
 })();
 </script>
 </body>
