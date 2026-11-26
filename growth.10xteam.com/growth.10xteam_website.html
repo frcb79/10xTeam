@@ -2519,6 +2519,30 @@ body {
 .txv10-total{grid-column:1/-1;min-width:0;border-top:1px solid #45636a;padding:12px 0 8px;margin:0 0 7px}.txv10-heading{display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px;margin-bottom:11px}.txv10-heading>strong{font-size:14px;color:#e6fcf1;margin-right:auto}.txv10-heading>span{font-size:10px;color:#abd8c9;font-weight:700}.txv10-metrics{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:12px}.txv10-metrics>div{min-width:0;display:flex;flex-direction:column;gap:5px;border-left:1px solid #3c5960;padding-left:12px}.txv10-metrics>div:first-child{border:0;padding:0}.txv10-metrics span{font-size:10px;color:#b6cbd8;line-height:1.2}.txv10-metrics strong{font-size:clamp(18px,2.4vw,26px);line-height:1.05;color:#a5f4d1;letter-spacing:-.04em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}.txv10-note{font-size:10px;line-height:1.4;color:#a3b9c8;margin:10px 0 0}.txv10-note span{color:#c9e5de;font-weight:700}
 @media(max-width:680px){.txv10-heading{gap:4px 8px}.txv10-heading>strong{flex-basis:100%;font-size:13px}.txv10-metrics{gap:7px;grid-template-columns:1.25fr .9fr .9fr}.txv10-metrics>div{padding-left:7px}.txv10-metrics span{font-size:9px}.txv10-metrics strong{font-size:clamp(16px,4.5vw,21px)}.txv10-note{font-size:9px}}
 </style>
+<style id="growth-navigation-solo-approved">
+.tx-nav-inner{max-width:1400px;position:relative;padding-inline:clamp(14px,2vw,28px);gap:clamp(10px,1.5vw,22px)}
+.tx-nav-links{gap:3px}
+.tx-nav-links a{padding-inline:9px;white-space:nowrap}
+.tx-nav-mobile{display:none}
+.tx-nav-mobile summary{display:grid;place-items:center;width:34px;height:34px;list-style:none;color:#e8edf5;border:1px solid #39404e;border-radius:8px;cursor:pointer;flex-shrink:0}
+.tx-nav-mobile summary::-webkit-details-marker{display:none}
+.tx-nav-mobile summary:focus-visible,.tx-nav-mobile a:focus-visible,.tx-solo-invite a:focus-visible{outline:2px solid #b7a6ff;outline-offset:3px}
+.tx-nav-mobile-links{display:flex;flex-direction:column;position:absolute;right:14px;top:calc(100% + 6px);min-width:205px;max-width:calc(100vw - 28px);padding:6px;background:#14171f;border:1px solid #353c4c;border-radius:11px;box-shadow:0 12px 30px #0008;z-index:121}
+.tx-nav-mobile-links a{color:#e1e5ee;padding:11px 12px;font-size:13px;text-decoration:none;border-radius:7px}
+.tx-nav-mobile-links a:hover{background:#7b5cff22}
+.tx-nav-mobile:not([open]) .tx-nav-mobile-links{display:none}
+.tx-nav-actions{flex-shrink:0}
+#funcionalidades,#calculadora-ahorro,#resultados,#precios,#faq,#independientes{scroll-margin-top:86px}
+.tx-solo-invite{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:5px 12px;max-width:880px;margin:0 auto;padding:12px 18px;color:#aab3c4;font-size:12px;text-align:center}
+.tx-solo-invite strong{font-weight:650;color:#e4e7ee}
+.tx-solo-invite a{color:#bbaaff;font-weight:650;text-decoration:none;white-space:nowrap}
+.tx-solo-invite a:hover{text-decoration:underline}
+.tx-solo-section .solo-copy .section-title{font-size:clamp(26px,3vw,38px)}
+.tx-solo-section .solo-copy .solo-tagline{color:#e1e5ee;font-weight:650}
+@media(max-width:1100px){.tx-nav-links{display:none}.tx-nav-mobile{display:block}}
+@media(max-width:620px){.tx-nav-inner{padding-inline:12px;min-height:60px}.tx-nav-cta{white-space:nowrap}.tx-nav-mobile summary{width:30px;height:32px}.tx-nav-mobile-links{right:12px}.tx-solo-invite{padding:10px 16px;font-size:11.5px;gap:3px 8px}}
+@media(max-width:380px){.tx-nav-cta{padding-inline:8px}.tx-nav-logo img{max-width:88px;height:auto}}
+</style>
 </head>
 <body>
 
@@ -2529,13 +2553,25 @@ body {
     <a class="tx-nav-logo" href="https://10xteam.com.mx" aria-label="10xTeam - Inicio"><img src="/Logo_10xteam.png" alt="10xTeam" width="140" height="56" loading="eager"></a>
     <div class="tx-nav-links">
       <a href="#funcionalidades">Funcionalidades</a>
-      <a href="#precios">Precios</a>
-      <a href="#resultados">Casos de uso</a>
+      <a href="#calculadora-ahorro">Calcula tu ahorro</a>
+      <a href="#resultados">Soluciones</a>
+      <a href="#precios">Planes</a>
       <a href="#faq">FAQ</a>
     </div>
     <div class="tx-nav-actions">
       <a class="tx-nav-login" href="/wizard">Acceder</a>
       <a class="tx-nav-cta" href="#early-access">Únete al Early Access</a>
+      <details class="tx-nav-mobile" id="tx-nav-mobile">
+        <summary aria-label="Menú de navegación"><svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></summary>
+        <div class="tx-nav-mobile-links">
+          <a href="#funcionalidades">Funcionalidades</a>
+      <a href="#calculadora-ahorro">Calcula tu ahorro</a>
+      <a href="#resultados">Soluciones</a>
+      <a href="#precios">Planes</a>
+      <a href="#faq">FAQ</a>
+          <a href="/wizard">Acceder</a>
+        </div>
+      </details>
     </div>
   </div>
 </nav>
@@ -2568,18 +2604,18 @@ body {
   <div class="txhero-inner">
     <div class="txhero-grid">
       <div class="txhero-copy">
-        <p class="txhero-eyebrow"><span class="dot" aria-hidden="true"></span>Tu negocio operando en automático</p>
+        <p class="txhero-eyebrow"><span class="dot" aria-hidden="true"></span>El motor de crecimiento de tu negocio</p>
         <h1 id="growth-hero-heading">
-          <span class="txhero-title-line">Más Control,</span>
-          <span class="txhero-title-line accent">Más Oportunidades,</span>
+          <span class="txhero-title-line">Más Control.</span>
+          <span class="txhero-title-line accent">Más Oportunidades.</span>
           <span class="txhero-title-line accent-green">Más Clientes.</span>
         </h1>
-        <p class="txhero-sub">10xTeam automatiza la prospección, el seguimiento de clientes, la creación de contenido, la atención, las citas, los cobros y mucho más. <strong>Todo conectado en una sola plataforma con inteligencia artificial.</strong></p>
-        <p class="txhero-benefit">Sin herramientas desconectadas. Sin equipo extra.</p>
-        <p class="txhero-outcome">Mientras 10xTeam trabaja por ti, tú te enfocas en cerrar ventas, definir la estrategia y hacer crecer tu negocio.</p>
+        <p class="txhero-sub">Mientras 10xteam trabaja por ti, tú te enfocas en lo que realmente importa: cerrar más ventas, tomar mejores decisiones y hacer crecer tu negocio.</p>
+        <p class="txhero-benefit">Menos trabajo manual. Más capacidad para crecer.</p>
+        <p class="txhero-outcome">Automatiza tu prospección, marketing, seguimiento, contenido, atención, citas y cobros. <strong>Todo conectado en una sola plataforma con inteligencia artificial.</strong></p>
         <div class="txhero-cta-row">
           <a href="#early-access" class="txbtn-primary">
-            <span>Activa mi plataforma en automático</span>
+            <span>Quiero hacer crecer mi negocio</span>
             <svg aria-hidden="true" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
           <a href="#funcionalidades" class="txbtn-secondary">Ver cómo funciona</a>
@@ -2803,6 +2839,8 @@ body {
     </div>
   </div>
 </section>
+
+<aside class="tx-solo-invite" aria-label="Orientación para emprendedores"><strong>¿Estás empezando y necesitas algo más sencillo?</strong><span>Cuéntanos qué necesita tu negocio.</span><a href="#independientes">Escríbenos →</a></aside>
 
 <section class="txshow-section" id="plataforma-conectada" aria-labelledby="tx-eco-title">
  <div class="txshow-wrap">
@@ -3140,11 +3178,11 @@ body {
   <div class="tx-wrap">
    <div class="solo-panel">
     <div class="solo-copy">
-     <span class="kicker">LOS GRANDES NEGOCIOS TAMBIÉN EMPIEZAN PEQUEÑOS</span>
-     <h2 class="section-title">Tu negocio puede ser de una persona. <em>Tu potencial, no.</em></h2>
-     <p>Si eres emprendedor, profesional independiente o solopreneur, estamos explorando un programa especial para ayudarte a arrancar, organizar tu negocio y crecer con nosotros.</p>
-     
-     <button class="ghost-btn solo-trigger" type="button" id="solo-open" aria-expanded="false" aria-controls="solo-form">Quiero conocer el programa <span aria-hidden="true">↗</span></button>
+     <span class="kicker">10xTEAM SOLO · PROGRAMA EN DESARROLLO</span>
+     <h2 class="section-title">¿Trabajas por tu cuenta? <em>No tienes que crecer solo.</em></h2>
+     <p>Estamos preparando un programa especial para emprendedores, profesionales independientes y solopreneurs que quieren acceder a herramientas de crecimiento, organizar su negocio y multiplicar su capacidad de trabajo.</p>
+     <p class="solo-tagline">Tu negocio puede ser de una persona. Tu potencial, no.</p>
+     <button class="ghost-btn solo-trigger" type="button" id="solo-open" aria-expanded="false" aria-controls="solo-form">Quiero formar parte del programa <span aria-hidden="true">↗</span></button>
      <p class="solo-disclaimer">Registra tu interés. Sin costo ni compromiso. Programa en evaluación.</p>
     </div>
     <form id="solo-form" class="solo-form" hidden>
@@ -3359,5 +3397,8 @@ initSoloInterest();
  const saving=12*(outside-promo),laborYear=labor*12,benefit=saving+laborYear;
  return {groups,advanced,scale,plan,verticalCount,fee,extraBusiness,promo,regular,outside,hours,labor,saving,laborYear,benefit,days:hours*12/8,standardYear:6*(promo+regular),addonOutside,benchmarkCount:comparable.length,comparable};
 });</script>
+<script id="growth-nav-mobile-approved">
+(function(){var menu=document.getElementById("tx-nav-mobile");if(!menu)return;var summary=menu.querySelector("summary");menu.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){menu.open=false;});});document.addEventListener("click",function(e){if(menu.open&&!menu.contains(e.target))menu.open=false;});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&menu.open){menu.open=false;if(summary)summary.focus();}});if(window.matchMedia){var mq=window.matchMedia("(min-width:1101px)");if(mq.addEventListener)mq.addEventListener("change",function(e){if(e.matches)menu.open=false;});}})();
+</script>
 </body>
 </html>

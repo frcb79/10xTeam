@@ -10,6 +10,7 @@ export async function GET(request: Request) {
     .replace(/<title>[^<]*<\/title>/, "<title>10xteam Growth | " + title + "</title>")
     .replace(/<meta name="description" content="[^"]*">/, '<meta name="description" content="' + title + '">')
     .replaceAll('href="https://growth.10xteam.com.mx/?lang=', 'href="https://growth.10xteam.com.mx/pricing-canon?lang=')
-    .replaceAll('href="/"', 'href="/?lang=' + lang + '"');
+    .replaceAll('href="/"', 'href="/?lang=' + lang + '"')
+    .replaceAll('href="/#independientes"', 'href="/?lang=' + lang + '#independientes"');
   return new Response(html, {headers: {"content-type":"text/html; charset=utf-8", "cache-control":"no-store"}});
 }
