@@ -2491,19 +2491,10 @@ body {
  .txshow-inner-top,.txshow-inner-bottom{display:flex;position:relative;z-index:2;flex-direction:column;justify-content:space-between;align-items:center;align-self:stretch;padding-block:calc((var(--tile-h) + var(--outer-gap))/2);width:var(--tile-w);box-sizing:border-box}
  .txshow-inner-top{grid-column:2;grid-row:1}.txshow-inner-bottom{grid-column:4;grid-row:1}
 }
-/* Refine only the central devices; preserve card grid, hub geometry and paths. */
-.txshow-computer{width:95%;isolation:isolate}
-.txshow-laptop{width:86%;height:auto;aspect-ratio:16/10;border-color:#64768d;border-width:clamp(3px,.45vw,5px);border-bottom-width:clamp(5px,.65vw,8px);background:#090f1b;box-shadow:0 10px 19px #0008,inset 0 0 0 1px #162439;transform:translateY(-3px)}
-.txshow-laptop-top{height:10%;min-height:5px;background:#172437;justify-content:center;padding:0}
-.txshow-laptop-top i{display:none}
-.txshow-laptop-top i:first-child{display:block;width:3px;height:3px;background:#7890a8}
-.txshow-screen{height:90%;background:radial-gradient(ellipse at 48% 43%,#1e2b46,#0b1221 78%);overflow:hidden}
-.txshow-screen img{width:79%;max-height:76%;height:auto;transform:translate(-5%,-7%);object-fit:contain}
-.txshow-laptop-base{height:clamp(3px,.55vw,7px);background:linear-gradient(180deg,#a7b5c9,#657a96 50%,#35465d);left:-6%;right:-6%}
-.txshow-phone{width:28%;aspect-ratio:9/17;bottom:4%;right:0;border:clamp(2px,.35vw,4px) solid #71849b;border-radius:clamp(6px,1vw,13px);background:radial-gradient(ellipse at 50% 45%,#25334d,#0b1221 80%);box-shadow:0 7px 14px #0009,inset 0 0 0 1px #152238;z-index:1}
-.txshow-phone-notch{top:5%;height:clamp(2px,.25vw,3px);background:#8193aa}
-.txshow-phone img{width:65%;height:auto;max-height:63%;object-fit:contain}
-@media(max-width:680px){.txshow-computer{width:96%;height:76px}.txshow-laptop{border-width:3px;border-bottom-width:5px;border-radius:6px}.txshow-phone{width:28%;border-width:2px;bottom:6%}.txshow-screen img{width:82%}}
+/* Brand-only hub: preserve the grid, hub dimensions and connection geometry. */
+.txshow-brandmark{display:grid;place-items:center;width:100%;height:100%;min-height:0;position:relative}
+.txshow-brandmark img{display:block;width:55%;height:76%;max-width:116px;max-height:132px;object-fit:contain;filter:drop-shadow(0 4px 16px rgba(126,111,235,.25))}
+@media(max-width:680px){.txshow-brandmark img{width:60%;height:80%;max-width:66px;max-height:70px}}
 </style>
 <style id="growth-savings-calculator-premium-v4">
 .txvalue-section{background:radial-gradient(ellipse at 85% 42%,#14392f 0%,#102330 28%,#0b1420 65%);color:#ecf6ff;padding:50px 15px 43px;overflow:hidden}.txvalue-wrap{max-width:1120px;margin:auto}.txvalue-intro{text-align:center;margin:0 auto 21px;max-width:850px}.txvalue-eyebrow{display:block;text-transform:uppercase;letter-spacing:.13em;font-size:11px;font-weight:850;color:#8fe9c8;margin-bottom:9px}.txvalue-intro h2{font-family:var(--tx-font-display);font-size:clamp(27px,3.6vw,43px);letter-spacing:-.04em;line-height:1.14;margin:0 0 11px;color:#fff}.txvalue-intro h2 em{font-style:normal;color:#91f2cc}.txvalue-intro p{font-size:14px;line-height:1.5;color:#afc4d6;margin:0}
@@ -2605,63 +2596,7 @@ body {
   </div>
 </section>
 
-<section class="txproblema">
-  <div class="txproblema-inner">
-    <span class="txproblema-eyebrow">El problema que resolvemos</span>
-    <h2>¿Te identificas con alguno de estos?</h2>
-    <div class="txpain-grid">
-      <div class="txpain-card">
-        <div class="txpain-icon">🎯</div>
-        <div>
-          <h3>¿Necesitas más prospectos calificados?</h3>
-          <p>No basta con tener un buen producto. Si no hay un flujo constante de prospectos calificados entrando, el crecimiento se estanca sin importar qué tan bueno sea tu equipo de ventas.</p>
-        </div>
-      </div>
-      <div class="txpain-card">
-        <div class="txpain-icon">🧊</div>
-        <div>
-          <h3>¿Se enfrían por falta de seguimiento, mala gestión o falta de rapidez?</h3>
-          <p>El 78% de las ventas van al vendedor que responde primero. Si tu seguimiento es manual, lento o inconsistente, estás regalando clientes a tu competencia todos los días.</p>
-        </div>
-      </div>
-      <div class="txpain-card">
-        <div class="txpain-icon">🔌</div>
-        <div>
-          <h3>¿Usas plataformas desconectadas?</h3>
-          <p>CRM por aquí, email marketing por allá, WhatsApp en el teléfono, redes sociales en otra app, creación de contenido con otra herramienta, reportes en Excel. Cada uno cuesta, ninguno se habla.</p>
-        </div>
-      </div>
-      <div class="txpain-card">
-        <div class="txpain-icon">⏳</div>
-        <div>
-          <h3>¿Tu equipo pierde horas en tareas repetitivas o te faltan manos para hacerlas?</h3>
-          <p>Capturar datos, enviar seguimientos, publicar en redes, generar reportes… Si alguien en tu equipo hace esto manualmente, estás pagando salario de persona para trabajo de software.</p>
-        </div>
-      </div>
-      <div class="txpain-card">
-        <div class="txpain-icon">📉</div>
-        <div>
-          <h3>¿No sabes exactamente dónde se caen tus ventas?</h3>
-          <p>Sin visibilidad del embudo completo, no puedes mejorar lo que no ves. Las ventas se pierden en algún punto del proceso — y sin datos, solo puedes adivinar dónde.</p>
-        </div>
-      </div>
-      <div class="txpain-card">
-        <div class="txpain-icon">📣</div>
-        <div>
-          <h3>¿Tu marca no genera contenido constante porque no hay tiempo ni equipo?</h3>
-          <p>El contenido es el combustible de la prospección moderna. Si no publicas con consistencia, no existes para tus prospectos — pero crearlo manualmente consume horas que no tienes.</p>
-        </div>
-      </div>
-    </div>
-    <div class="txproblema-bridge">
-      <p>
-        <b>10xTeam existe para resolver exactamente eso.</b> No con una herramienta más que agregar a tu stack, sino
-        <span>reemplazando todo lo que tienes desconectado</span> con un sistema integrado que prospecta, vende, crea
-        contenido y opera solo — mientras tú te enfocas en cerrar y recibir ingresos.
-      </p>
-    </div>
-  </div>
-</section>
+
 
 <!-- ============================================================
    BLOQUE 3 – CICLO (pestañas)  +  BLOQUE 4 – COMPARACIÓN
@@ -2894,10 +2829,7 @@ body {
 <div class="txeco-tile txeco-violet txeco-toward-right" style="--eco-delay:-7.800000000000001s" title="Redes sociales" data-short="Redes"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-share"/></svg></span><span class="txeco-name">Redes sociales</span></div>
 </div>
     <div class="txshow-hub" aria-label="10xteam Growth">
-      <div class="txshow-computer" role="img" aria-label="Laptop con logo oficial 10xteam y celular con símbolo oficial X">
-        <div class="txshow-laptop"><div class="txshow-laptop-top"><i></i><i></i><i></i></div><div class="txshow-screen"><img src="/Logo_10xteam.png" alt="" width="240" height="96" loading="lazy"></div><div class="txshow-laptop-base"></div></div>
-        <div class="txshow-phone"><div class="txshow-phone-notch"></div><img src="/favicon.png" alt="" width="70" height="90" loading="lazy"></div>
-      </div>
+      <div class="txshow-brandmark" role="img" aria-label="Símbolo X oficial de 10xteam"><img src="/favicon.png" alt="" width="448" height="579" loading="eager" decoding="async"></div>
     </div>
     <div class="txshow-side txshow-side-right">
 <div class="txeco-tile txeco-blue txeco-toward-left" style="--eco-delay:-4.55s" title="Email marketing" data-short="Email"><span class="txeco-icon"><svg width="26" height="26" aria-hidden="true"><use href="#txeco-mail"/></svg></span><span class="txeco-name">Email marketing</span></div>
@@ -2915,6 +2847,64 @@ body {
   </div>
   <p class="txshow-footnote">26 tarjetas representativas de un catálogo mucho más amplio. La disponibilidad de cada función y complemento depende del plan.</p>
  </div>
+</section>
+
+<section class="txproblema">
+  <div class="txproblema-inner">
+    <span class="txproblema-eyebrow">El problema que resolvemos</span>
+    <h2>¿Te identificas con alguno de estos?</h2>
+    <div class="txpain-grid">
+      <div class="txpain-card">
+        <div class="txpain-icon">🎯</div>
+        <div>
+          <h3>¿Necesitas más prospectos calificados?</h3>
+          <p>No basta con tener un buen producto. Si no hay un flujo constante de prospectos calificados entrando, el crecimiento se estanca sin importar qué tan bueno sea tu equipo de ventas.</p>
+        </div>
+      </div>
+      <div class="txpain-card">
+        <div class="txpain-icon">🧊</div>
+        <div>
+          <h3>¿Se enfrían por falta de seguimiento, mala gestión o falta de rapidez?</h3>
+          <p>El 78% de las ventas van al vendedor que responde primero. Si tu seguimiento es manual, lento o inconsistente, estás regalando clientes a tu competencia todos los días.</p>
+        </div>
+      </div>
+      <div class="txpain-card">
+        <div class="txpain-icon">🔌</div>
+        <div>
+          <h3>¿Usas plataformas desconectadas?</h3>
+          <p>CRM por aquí, email marketing por allá, WhatsApp en el teléfono, redes sociales en otra app, creación de contenido con otra herramienta, reportes en Excel. Cada uno cuesta, ninguno se habla.</p>
+        </div>
+      </div>
+      <div class="txpain-card">
+        <div class="txpain-icon">⏳</div>
+        <div>
+          <h3>¿Tu equipo pierde horas en tareas repetitivas o te faltan manos para hacerlas?</h3>
+          <p>Capturar datos, enviar seguimientos, publicar en redes, generar reportes… Si alguien en tu equipo hace esto manualmente, estás pagando salario de persona para trabajo de software.</p>
+        </div>
+      </div>
+      <div class="txpain-card">
+        <div class="txpain-icon">📉</div>
+        <div>
+          <h3>¿No sabes exactamente dónde se caen tus ventas?</h3>
+          <p>Sin visibilidad del embudo completo, no puedes mejorar lo que no ves. Las ventas se pierden en algún punto del proceso — y sin datos, solo puedes adivinar dónde.</p>
+        </div>
+      </div>
+      <div class="txpain-card">
+        <div class="txpain-icon">📣</div>
+        <div>
+          <h3>¿Tu marca no genera contenido constante porque no hay tiempo ni equipo?</h3>
+          <p>El contenido es el combustible de la prospección moderna. Si no publicas con consistencia, no existes para tus prospectos — pero crearlo manualmente consume horas que no tienes.</p>
+        </div>
+      </div>
+    </div>
+    <div class="txproblema-bridge">
+      <p>
+        <b>10xTeam existe para resolver exactamente eso.</b> No con una herramienta más que agregar a tu stack, sino
+        <span>reemplazando todo lo que tienes desconectado</span> con un sistema integrado que prospecta, vende, crea
+        contenido y opera solo — mientras tú te enfocas en cerrar y recibir ingresos.
+      </p>
+    </div>
+  </div>
 </section>
 
 <section id="calculadora-ahorro" class="txvalue-section" aria-labelledby="txvalue-title">
@@ -2993,13 +2983,15 @@ body {
 @media(min-width:851px) and (max-width:1080px){#calculadora-ahorro .txvalue-controls{grid-template-columns:minmax(0,.75fr) minmax(0,.9fr) minmax(0,1.3fr)}#calculadora-ahorro .txv16-time-fields{grid-template-columns:1fr}#calculadora-ahorro .txvalue-stepper button{width:23px;flex-basis:23px}}
 @media(max-width:480px){#calculadora-ahorro .txvalue-controls{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 10px}#calculadora-ahorro .txv14-time{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.5fr);align-items:center;gap:4px 6px}#calculadora-ahorro .txv16-time-fields{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}#calculadora-ahorro .txv16-unit{grid-column:2}#calculadora-ahorro .txvalue-stepper button{width:32px;flex-basis:32px}}
 /* V17: explicit salary label and narrower numeric input. */
-#calculadora-ahorro .txv16-time-fields{grid-template-columns:minmax(0,1fr) minmax(0,86px);align-items:end}
+#calculadora-ahorro .txv14-time{max-width:224px}
+#calculadora-ahorro .txv16-time-fields{grid-template-columns:minmax(0,1fr) minmax(0,91px);align-items:end;max-width:224px}
 #calculadora-ahorro .txv16-time-fields label:last-child{gap:3px}
 #calculadora-ahorro .txv17-salary-label{font-size:9px;line-height:1.1;white-space:normal;color:#b7cbd8}
-#calculadora-ahorro #txv14-salary{width:100%;max-width:86px}
-#calculadora-ahorro .txv16-unit{max-width:86px;align-self:flex-end}
-@media(min-width:851px) and (max-width:1080px){#calculadora-ahorro .txv16-time-fields{grid-template-columns:1fr}#calculadora-ahorro .txv16-time-fields label:last-child{max-width:86px}}
-@media(max-width:480px){#calculadora-ahorro .txv16-time-fields{grid-template-columns:minmax(0,1fr) minmax(0,76px)}#calculadora-ahorro #txv14-salary{max-width:76px}#calculadora-ahorro .txv16-unit{justify-self:end}}
+#calculadora-ahorro #txv14-salary{width:100%;max-width:91px;font-variant-numeric:tabular-nums}
+#calculadora-ahorro .txv16-unit{max-width:91px;align-self:flex-end}
+@media(min-width:1081px){#calculadora-ahorro .txvalue-controls{grid-template-columns:minmax(0,.75fr) minmax(0,.95fr) minmax(0,1.4fr)}}
+@media(min-width:851px) and (max-width:1080px){#calculadora-ahorro .txv16-time-fields{grid-template-columns:1fr;max-width:138px}#calculadora-ahorro .txv16-time-fields label:last-child{max-width:91px}}
+@media(max-width:480px){#calculadora-ahorro .txv14-time{max-width:none}#calculadora-ahorro .txv16-time-fields{grid-template-columns:minmax(0,1fr) minmax(0,84px);max-width:210px}#calculadora-ahorro #txv14-salary{max-width:84px}#calculadora-ahorro .txv16-unit{justify-self:end}}
 </style><div class="txvalue-wrap">
   <header class="txvalue-intro"><span class="txvalue-eyebrow">Una inversión. Mucho más valor.</span><h2 id="txvalue-title">Calcula tus ahorros</h2><p>Compara tu operación actual con una plataforma completa.</p></header>
   <div class="txvalue-marquee" aria-label="Capacidades de 10xteam" tabindex="0"><div class="txvalue-marquee-track"><div class="txvalue-strip"><span>CRM<i aria-hidden="true">✦</i></span><span>Emailing<i aria-hidden="true">✦</i></span><span>Chatbot<i aria-hidden="true">✦</i></span><span>WhatsApp con IA<i aria-hidden="true">✦</i></span><span>Campañas WhatsApp<i aria-hidden="true">✦</i></span><span>Conexión de redes<i aria-hidden="true">✦</i></span><span>Posting<i aria-hidden="true">✦</i></span><span>Ad manager<i aria-hidden="true">✦</i></span><span>Secuencias<i aria-hidden="true">✦</i></span><span>Automatizaciones<i aria-hidden="true">✦</i></span><span>Agenda y citas<i aria-hidden="true">✦</i></span><span>Formularios<i aria-hidden="true">✦</i></span><span>Landing pages<i aria-hidden="true">✦</i></span><span>Páginas web<i aria-hidden="true">✦</i></span><span>Conversaciones<i aria-hidden="true">✦</i></span><span>Analítica<i aria-hidden="true">✦</i></span><span>Reportes<i aria-hidden="true">✦</i></span><span>Embudos<i aria-hidden="true">✦</i></span><span>Pipeline<i aria-hidden="true">✦</i></span><span>IA de contenido<i aria-hidden="true">✦</i></span><span>Leads<i aria-hidden="true">✦</i></span><span>Cobros<i aria-hidden="true">✦</i></span><span>Proyectos<i aria-hidden="true">✦</i></span><span>Ticketing<i aria-hidden="true">✦</i></span><span>Servicing<i aria-hidden="true">✦</i></span><span>Restaurantes<i aria-hidden="true">✦</i></span><span>Llamadas IA<i aria-hidden="true">✦</i></span><span>Reputación<i aria-hidden="true">✦</i></span></div><div class="txvalue-strip" aria-hidden="true"><span>CRM<i aria-hidden="true">✦</i></span><span>Emailing<i aria-hidden="true">✦</i></span><span>Chatbot<i aria-hidden="true">✦</i></span><span>WhatsApp con IA<i aria-hidden="true">✦</i></span><span>Campañas WhatsApp<i aria-hidden="true">✦</i></span><span>Conexión de redes<i aria-hidden="true">✦</i></span><span>Posting<i aria-hidden="true">✦</i></span><span>Ad manager<i aria-hidden="true">✦</i></span><span>Secuencias<i aria-hidden="true">✦</i></span><span>Automatizaciones<i aria-hidden="true">✦</i></span><span>Agenda y citas<i aria-hidden="true">✦</i></span><span>Formularios<i aria-hidden="true">✦</i></span><span>Landing pages<i aria-hidden="true">✦</i></span><span>Páginas web<i aria-hidden="true">✦</i></span><span>Conversaciones<i aria-hidden="true">✦</i></span><span>Analítica<i aria-hidden="true">✦</i></span><span>Reportes<i aria-hidden="true">✦</i></span><span>Embudos<i aria-hidden="true">✦</i></span><span>Pipeline<i aria-hidden="true">✦</i></span><span>IA de contenido<i aria-hidden="true">✦</i></span><span>Leads<i aria-hidden="true">✦</i></span><span>Cobros<i aria-hidden="true">✦</i></span><span>Proyectos<i aria-hidden="true">✦</i></span><span>Ticketing<i aria-hidden="true">✦</i></span><span>Servicing<i aria-hidden="true">✦</i></span><span>Restaurantes<i aria-hidden="true">✦</i></span><span>Llamadas IA<i aria-hidden="true">✦</i></span><span>Reputación<i aria-hidden="true">✦</i></span></div></div></div>
@@ -3007,7 +2999,7 @@ body {
    <div class="txvalue-inputs"><div class="txvalue-controls"><div class="txvalue-field"><span id="txvalue-brands-label">Número de Negocios</span><div class="txvalue-stepper" role="group" aria-labelledby="txvalue-brands-label"><button type="button" id="txvalue-brands-minus" aria-label="Quitar un negocio">−</button><output id="txvalue-brands">1</output><button type="button" id="txvalue-brands-plus" aria-label="Agregar un negocio">+</button></div></div>
       <div class="txvalue-field"><span id="txvalue-people-label">Usuarios por negocio</span><div class="txvalue-stepper" role="group" aria-labelledby="txvalue-people-label"><button type="button" id="txvalue-people-minus" aria-label="Quitar una persona">−</button><output id="txvalue-people">5</output><button type="button" id="txvalue-people-plus" aria-label="Agregar una persona">+</button></div></div>
       
-    <div class="txvalue-field txv14-time"><span id="txv16-time-label">¿Cuánto vale tu tiempo?</span><div class="txv16-time-fields" role="group" aria-labelledby="txv16-time-label"><label><span class="txv16-sr">Perfil</span><select id="txv14-role"><option value="60000">Founder / Director</option><option value="30000" selected>Gerente / Operaciones</option><option value="20000">Ejecutivo / Especialista</option><option value="12000">Asistente / Junior</option></select></label><label><span class="txv17-salary-label">Salario mensual</span><input id="txv14-salary" type="number" min="0" max="10000000" step="1000" value="30000" inputmode="numeric"></label></div><small class="txv16-unit">MXN/mes</small></div></div><div class="txvalue-plan-row"><span>Plan recomendado</span><strong id="txv9-auto-plan">Growth · 1 negocio</strong></div><div class="txvalue-app-header"><div><span class="txvalue-kicker">01 / TU OPERACIÓN</span><h3>Selecciona tus necesidades</h3></div><button type="button" id="txvalue-all" class="txvalue-link">Seleccionar todas</button></div>
+    <div class="txvalue-field txv14-time"><span id="txv16-time-label">¿Cuánto vale tu tiempo?</span><div class="txv16-time-fields" role="group" aria-labelledby="txv16-time-label"><label><span class="txv16-sr">Perfil</span><select id="txv14-role"><option value="60000">Founder / Director</option><option value="30000" selected>Gerente / Operaciones</option><option value="20000">Ejecutivo / Especialista</option><option value="12000">Asistente / Junior</option></select></label><label><span class="txv17-salary-label">Sueldo mensual</span><input id="txv14-salary" type="text" inputmode="numeric" autocomplete="off" maxlength="15" value="$30,000" aria-label="Sueldo mensual"></label></div><small class="txv16-unit">MXN/mes</small></div></div><div class="txvalue-plan-row"><span>Plan recomendado</span><strong id="txv9-auto-plan">Growth · 1 negocio</strong></div><div class="txvalue-app-header"><div><span class="txvalue-kicker">01 / TU OPERACIÓN</span><h3>Selecciona tus necesidades</h3></div><button type="button" id="txvalue-all" class="txvalue-link">Seleccionar todas</button></div>
     
     <div class="txvalue-apps" role="group" aria-label="Capacidades de software para comparar"><button class="txvalue-app is-selected" type="button" data-capability="0" data-rate-group="crm" aria-pressed="true"><span class="txvalue-icon" aria-hidden="true">◎</span><span>CRM</span><i aria-hidden="true">✓</i></button><button class="txvalue-app is-selected" type="button" data-capability="1" data-rate-group="crm" aria-pressed="true"><span class="txvalue-icon" aria-hidden="true">▥</span><span>Embudos</span><i aria-hidden="true">✓</i></button><button class="txvalue-app is-selected" type="button" data-capability="2" data-rate-group="email" aria-pressed="true"><span class="txvalue-icon" aria-hidden="true">✉</span><span>Emailing</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" type="button" data-capability="3" data-rate-group="email" aria-pressed="false"><span class="txvalue-icon" aria-hidden="true">↪</span><span>Secuencias</span><i aria-hidden="true">✓</i></button><button class="txvalue-app is-selected" type="button" data-capability="4" data-rate-group="chat" aria-pressed="true" title="Licencia compartida de mensajería; WhatsApp e IA sujetos a consumo y habilitación."><span class="txvalue-icon" aria-hidden="true">◉</span><span>Chatbot</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" type="button" data-capability="5" data-rate-group="chat" aria-pressed="false" title="Licencia compartida de mensajería; WhatsApp e IA sujetos a consumo y habilitación."><span class="txvalue-icon" aria-hidden="true">▤</span><span>Conversaciones unificadas</span><i aria-hidden="true">✓</i></button><button class="txvalue-app is-selected" type="button" data-capability="6" data-rate-group="ai" aria-pressed="true" title="Referencia parcial: una licencia de IA de contenido por negocio."><span class="txvalue-icon" aria-hidden="true">✦</span><span>IA de contenido</span><i aria-hidden="true">✓</i></button><button class="txvalue-app is-selected" type="button" data-capability="7" data-rate-group="auto" aria-pressed="true"><span class="txvalue-icon" aria-hidden="true">⚡</span><span>Automatizaciones</span><i aria-hidden="true">✓</i></button><button class="txvalue-app is-selected" type="button" data-capability="8" data-rate-group="calendar" aria-pressed="true"><span class="txvalue-icon" aria-hidden="true">▦</span><span>Agenda y citas</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" type="button" data-capability="9" data-rate-group="forms" aria-pressed="false"><span class="txvalue-icon" aria-hidden="true">☷</span><span>Formularios</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" type="button" data-capability="10" data-rate-group="web" aria-pressed="false"><span class="txvalue-icon" aria-hidden="true">▣</span><span>Landing pages</span><i aria-hidden="true">✓</i></button><button class="txvalue-app is-selected" type="button" data-capability="11" data-rate-group="web" aria-pressed="true"><span class="txvalue-icon" aria-hidden="true">▧</span><span>Páginas web</span><i aria-hidden="true">✓</i></button><button class="txvalue-app is-selected" type="button" data-capability="12" data-rate-group="social" aria-pressed="true" title="Referencia: tres perfiles sociales de pago por negocio (tarifa anual)."><span class="txvalue-icon" aria-hidden="true">◌</span><span>Redes sociales</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" type="button" data-capability="13" data-rate-group="social" aria-pressed="false" title="Referencia: tres perfiles sociales de pago por negocio (tarifa anual)."><span class="txvalue-icon" aria-hidden="true">↗</span><span>Posting</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" type="button" data-capability="14" data-rate-group="ads" aria-pressed="false" title="Referencia: AdEspresso Starter US$49/mes. No incluye inversión publicitaria."><span class="txvalue-icon" aria-hidden="true">◈</span><span>Ad manager</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" type="button" data-capability="15" data-rate-group="crm" aria-pressed="false"><span class="txvalue-icon" aria-hidden="true">▥</span><span>Analítica y reportes</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" type="button" data-capability="16" data-rate-group="tasks" aria-pressed="false"><span class="txvalue-icon" aria-hidden="true">✓</span><span>Tareas y seguimiento</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" type="button" data-capability="17" data-rate-group="reviews" aria-pressed="false"><span class="txvalue-icon" aria-hidden="true">☆</span><span>Reputación</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" type="button" data-capability="18" data-rate-group="sign" aria-pressed="false"><span class="txvalue-icon" aria-hidden="true">✎</span><span>Documentos y firmas</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" data-capability="19" data-rate-group="social" aria-pressed="false" title="Referencia: tres perfiles sociales de pago por negocio (tarifa anual)."><span class="txvalue-icon" aria-hidden="true">⌘</span><span>Conexión de redes</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" data-capability="20" data-rate-group="chat" aria-pressed="false" title="Licencia compartida de mensajería; WhatsApp e IA sujetos a consumo y habilitación."><span class="txvalue-icon" aria-hidden="true">◉</span><span>WhatsApp con IA</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" data-capability="21" data-rate-group="chat" aria-pressed="false" title="Licencia compartida de mensajería; WhatsApp e IA sujetos a consumo y habilitación."><span class="txvalue-icon" aria-hidden="true">↗</span><span>Campañas WhatsApp</span><i aria-hidden="true">✓</i></button><button class="txvalue-app" data-capability="22" data-rate-group="tasks" aria-pressed="false"><span class="txvalue-icon" aria-hidden="true">▤</span><span>Proyectos</span><i aria-hidden="true">✓</i></button></div><div class="txv7-extras"><div class="txv7-extra-head"><strong>Más herramientas para tu negocio</strong><span>Según plan y disponibilidad</span></div><div class="txv7-extra-grid"><button type="button" data-extra="ticket" aria-pressed="false" title="Referencia parcial de licencia pagada: $342 MXN/mes, un negocio."><span aria-hidden="true">✦</span>Ticketing y servicing</button><button type="button" data-extra="quiz" aria-pressed="false" title="Referencia parcial de licencia pagada: $486 MXN/mes, un negocio."><span aria-hidden="true">✦</span>Quizzes y diagnósticos</button><button type="button" data-extra="objects" aria-pressed="false"><span aria-hidden="true">✦</span>CRM personalizado</button><button type="button" data-extra="socialIntel" aria-pressed="false"><span aria-hidden="true">✦</span>Inteligencia social</button><button type="button" data-extra="voiceIntel" aria-pressed="false"><span aria-hidden="true">✦</span>Análisis de llamadas IA</button><button type="button" data-extra="aiCapacity" aria-pressed="false"><span aria-hidden="true">✦</span>Mayor capacidad de IA</button><button type="button" data-extra="appBuilder" aria-pressed="false"><span aria-hidden="true">✦</span>Creación de apps (Beta)</button><button type="button" data-extra="voice" aria-pressed="false"><span aria-hidden="true">✦</span>Llamadas con IA</button></div><div class="txv7-extra-head" style="margin-top:9px"><strong>Complementos especializados</strong></div><div class="txv7-extra-grid"><button type="button" data-extra="restaurant" aria-pressed="false"><span aria-hidden="true">✦</span>Restaurantes</button><button type="button" data-extra="field" aria-pressed="false" title="Referencia parcial de licencia pagada: $522 MXN/mes, un negocio."><span aria-hidden="true">✦</span>Servicios en campo</button><button type="button" data-extra="events" aria-pressed="false"><span aria-hidden="true">✦</span>Eventos y boletaje</button><button type="button" data-extra="loyalty" aria-pressed="false" title="Referencia parcial de licencia pagada: $375 MXN/mes, un negocio."><span aria-hidden="true">✦</span>Lealtad y referidos</button><button type="button" data-extra="rental" aria-pressed="false" title="Referencia parcial de licencia pagada: $522 MXN/mes, un negocio."><span aria-hidden="true">✦</span>Alquileres y reservas</button></div></div>
     
@@ -3034,75 +3026,42 @@ body {
    BLOQUE 2 – TESTIMONIOS (6 tarjetas)
    ============================================================ -->
 <section class="txsocial" id="resultados">
-  <div class="txsocial-inner">
-    <span class="txsocial-eyebrow">Por qué confiar en 10xTeam</span>
-    <h2>Infraestructura probada.<br>Metodología propia. Resultados reales.</h2>
-    <p class="txsocial-sub">
-      Construimos herramientas que ya generan resultados para miles de negocios, potenciadas con nuestra propia capa de inteligencia y metodología.
-    </p>
-    <div class="txsocial-grid">
-      <!-- A-1 -->
-      <div class="txcard-a">
-        <div class="txcard-a-top">
-          <div class="txcard-a-icon">🌎</div>
-          <div class="txcard-a-copy">
-            <div class="txcard-a-num">60,000 <span>negocios</span></div>
-            <h3>La infraestructura ya es usada por las agencias más exitosas del mundo</h3>
-          </div>
-        </div>
-        <p>La plataforma sobre la que corre 10xTeam es la misma que utilizan más de 60,000 agencias y negocios en Norteamérica para escalar sus operaciones de ventas y marketing. Nosotros somos la capa de inteligencia y metodología encima de ella, adaptada para México y LATAM.</p>
-        <div class="txcard-a-tag">✦ Infraestructura validada</div>
-      </div>
-      <!-- A-2 -->
-      <div class="txcard-a">
-        <div class="txcard-a-top">
-          <div class="txcard-a-icon">🤖</div>
-          <div class="txcard-a-copy">
-            <div class="txcard-a-num">6 <span>motores de IA</span></div>
-            <h3>No dependes de un solo modelo de IA — usamos los mejores para cada tarea</h3>
-          </div>
-        </div>
-        <p>Claude, ChatGPT, Gemini y muchas otras enrutadas inteligentemente según la tarea específica. Mientras otras plataformas te atan a un solo proveedor, nuestro Prompt Maestro elige el mejor modelo para cada acción — sin que tengas que saber nada de IA.</p>
-        <div class="txcard-a-tag">✦ Tecnología de punta</div>
-      </div>
-      <!-- A-3 -->
-      <div class="txcard-a">
-        <div class="txcard-a-top">
-          <div class="txcard-a-icon">🧠</div>
-          <div class="txcard-a-copy">
-            <div class="txcard-a-num">10x <span>metodología propia</span></div>
-            <h3>El Diagnóstico Estratégico 10x — una capacidad que ninguna plataforma tiene</h3>
-          </div>
-        </div>
-        <p>El Wizard ICP, el Diagnóstico Estratégico y el Prompt Maestro son metodologías desarrolladas por 10xTeam, basadas en los principios de growth que usan las empresas más avanzadas de Silicon Valley — ahora accesibles para cualquier negocio en LATAM.</p>
-        <div class="txcard-a-tag">✦ Metodología exclusiva</div>
-      </div>
-      <!-- B-1 -->
-      <div class="txcard-b">
-        <div class="txcard-b-scenario">Escenario típico · Clínica o consultorio</div>
-        <div class="txcard-b-quote">No sabía que estaba perdiendo el 60% de mis prospectos simplemente porque nadie les daba seguimiento antes de que encontraran otra opción</div>
-        <p>Un consultorio que recibe 40 prospectos al mes por redes sociales, con respuesta manual de más de 2 horas, pierde en promedio 24 de ellos antes de lograr una cita. Con respuesta automática en menos de 2 minutos, la tasa de conversión a cita puede triplicarse sin contratar a nadie más.</p>
-        <div class="txcard-b-result"><div class="rnum">3×</div><div class="rlbl">más citas agendadas con el mismo volumen de prospectos</div></div>
-      </div>
-      <!-- B-2 -->
-      <div class="txcard-b">
-        <div class="txcard-b-scenario">Escenario típico · Agencia o despacho</div>
-        <div class="txcard-b-quote">Tenía 5 herramientas distintas y ninguna me decía exactamente en qué parte del proceso se estaban cayendo los clientes potenciales</div>
-        <p>Una agencia con 3 vendedores que gestiona prospectos en WhatsApp, email y llamadas por separado, sin CRM integrado, pierde visibilidad del 70% de su embudo. Con todo centralizado y automatizado, recupera en promedio 12 horas semanales de trabajo operativo por persona — horas que van directo a cerrar. En 10xTeam tienes usuarios ilimitados.</p>
-        <div class="txcard-b-result"><div class="rnum">12 hrs</div><div class="rlbl">semanales recuperadas por vendedor para enfocarse en cerrar</div></div>
-      </div>
-      <!-- B-3 -->
-      <div class="txcard-b">
-        <div class="txcard-b-scenario">Escenario típico · Comercio o retail</div>
-        <div class="txcard-b-quote">Pagaba por email marketing, WhatsApp Business, diseño gráfico y redes sociales por separado. Al sumarlo, me di cuenta de que gastaba más en herramientas que en publicidad</div>
-        <p>Un negocio de retail que paga por separado CRM, email marketing, gestión de redes y WhatsApp Business gasta al menos 3x mas en herramientas desconectadas. Con 10xTeam, tienes 130+ funciones incluidas en un plan que cuesta menos que cualquiera de esas herramientas sueltas.</p>
-        <div class="txcard-b-result"><div class="rnum">$6,000</div><div class="rlbl">MXN/mes en herramientas que 10xTeam reemplaza en un solo plan</div></div>
-      </div>
-    </div>
-    <p class="txsocial-note">
-      <b>Somos transparentes:</b> estamos en fase de lanzamiento en México y LATAM. Los escenarios proyectados están basados en datos reales de operaciones similares, no en promesas vacías. Si eres de los primeros en sumarte, <span class="early">tu precio queda garantizado de por vida</span>.
-    </p>
-  </div>
+<style id="growth-results-verticals-v1">
+#resultados .txsocial-sub{margin-bottom:22px;max-width:760px}
+#resultados .txresults-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 auto 10px}
+#resultados .txresults-metric{background:#14171f;border:1px solid #262b38;border-radius:13px;padding:17px 12px;text-align:center}
+#resultados .txresults-metric strong{display:block;color:#3ddc97;font:700 clamp(24px,3vw,38px)/1.1 'JetBrains Mono',monospace}
+#resultados .txresults-metric span{display:block;color:#bdc3d0;font-size:12px;line-height:1.35;margin-top:7px}
+#resultados .txresults-source{font-size:11px;line-height:1.5;text-align:center;color:#9a9ca8;margin:0 auto 34px;max-width:780px}
+#resultados .txresults-heading{text-align:center;margin:0 0 6px;font-size:clamp(23px,3vw,31px);color:#f2f1ed}
+#resultados .txresults-intro{text-align:center;margin:0 auto 20px;color:#9a9ca8;font-size:14px;max-width:720px;line-height:1.5}
+#resultados .txsocial-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+#resultados .txcard-b{padding:17px;gap:9px;min-width:0;grid-template-rows:auto auto 1fr auto;box-sizing:border-box}
+#resultados .txresults-vertical{display:flex;align-items:center;gap:9px;color:#9adbc4;font-size:12px;font-weight:600;line-height:1.25}
+#resultados .txresults-vertical span:first-child{font-size:21px}
+#resultados .txcard-b h3{font-size:16px;line-height:1.25;margin:0;color:#f2f1ed}
+#resultados .txcard-b p{min-height:0;margin:0;font-size:13px;line-height:1.5;color:#aab0bd}
+#resultados .txresults-flow{font-size:11px;line-height:1.4;color:#b3ecd6;padding:8px 9px;border:1px solid #365e54;border-radius:8px;background:#1b312d;margin:0}
+#resultados .txsocial-note{margin:16px auto 0;color:#9a9ca8;max-width:760px}
+@media(max-width:860px){#resultados .txsocial-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){#resultados .txresults-metrics{gap:5px}#resultados .txresults-metric{padding:12px 4px}#resultados .txresults-metric span{font-size:10px}#resultados .txresults-source{margin-bottom:25px}#resultados .txsocial-grid{grid-template-columns:1fr;gap:9px}#resultados .txcard-b{padding:13px;gap:6px}}
+</style>
+<div class="txsocial-inner">
+<span class="txsocial-eyebrow">Infraestructura probada</span>
+<h2>Tecnología probada. Infraestructura global.<br>Una nueva forma de crecer.</h2>
+<p class="txsocial-sub">10xteam Growth conecta marketing, ventas y operación sobre una infraestructura tecnológica utilizada por negocios de todo el mundo.</p>
+<div class="txresults-metrics"><div class="txresults-metric"><strong>1M+</strong><span>Negocios en la plataforma base</span></div><div class="txresults-metric"><strong>194M</strong><span>Prospectos generados al mes</span></div><div class="txresults-metric"><strong>19M</strong><span>Conversaciones al mes</span></div></div>
+<p class="txresults-source">Cifras globales reportadas por nuestro proveedor tecnológico el 3 de marzo de 2026. No representan clientes ni resultados propios de 10xteam.</p>
+<h3 class="txresults-heading">Un sistema. Muchas formas de crecer.</h3>
+<p class="txresults-intro">Cada negocio vende de forma distinta. Conecta las herramientas que necesitas para transformar oportunidades en relaciones duraderas.</p>
+<div class="txsocial-grid"><article class="txcard-b"><div class="txresults-vertical"><span aria-hidden="true">🏥</span><span>Clínicas y bienestar</span></div><h3>Convierte consultas en citas</h3><p>Recibe preguntas desde redes y web, responde, agenda citas y envía recordatorios. Después de la visita, solicita una reseña y facilita la siguiente cita.</p><div class="txresults-flow">Captación → cita → seguimiento</div></article>
+<article class="txcard-b"><div class="txresults-vertical"><span aria-hidden="true">🏡</span><span>Inmobiliarias, brokers y autos</span></div><h3>Da seguimiento a cada oportunidad</h3><p>Organiza prospectos por interés, asigna un asesor, automatiza seguimientos y visualiza en qué etapa está cada oportunidad, desde la consulta hasta el cierre.</p><div class="txresults-flow">Prospecto → asesor → cierre</div></article>
+<article class="txcard-b"><div class="txresults-vertical"><span aria-hidden="true">💼</span><span>Despachos, consultores y agencias</span></div><h3>De la reunión al contrato</h3><p>Capta clientes con landing pages, agenda reuniones, envía propuestas y documentos para firma, y centraliza el seguimiento comercial y los cobros compatibles.</p><div class="txresults-flow">Reunión → propuesta → cobro</div></article>
+<article class="txcard-b"><div class="txresults-vertical"><span aria-hidden="true">🛍️</span><span>Comercios y ecommerce</span></div><h3>Vuelve a vender a tus clientes</h3><p>Conecta campañas, catálogo y pedidos según tus canales; segmenta clientes, automatiza comunicaciones posteriores a la compra y crea campañas de recompra.</p><div class="txresults-flow">Campaña → venta → recompra</div></article>
+<article class="txcard-b"><div class="txresults-vertical"><span aria-hidden="true">🎓</span><span>Academias y creadores</span></div><h3>Convierte tu conocimiento en negocio</h3><p>Promociona cursos y talleres, capta interesados, gestiona inscripciones y pagos compatibles, y ofrece contenidos, membresías o certificados desde un mismo entorno.</p><div class="txresults-flow">Interés → inscripción → comunidad</div></article>
+<article class="txcard-b"><div class="txresults-vertical"><span aria-hidden="true">🛠️</span><span>Servicios locales y técnicos</span></div><h3>Organiza la demanda sin perder tiempo</h3><p>Recibe solicitudes, clasifica necesidades, agenda servicios, envía cotizaciones y recordatorios, y solicita reseñas al finalizar cada atención.</p><div class="txresults-flow">Solicitud → servicio → reseña</div></article></div>
+<p class="txsocial-note">Ejemplos ilustrativos de uso. Las funciones, integraciones y consumos dependen del plan, la configuración y la disponibilidad.</p>
+</div>
 </section>
 
 <!-- ============================================================
@@ -4112,9 +4071,10 @@ initSoloInterest();
  const en=doc.documentElement.lang.toLowerCase().startsWith("en"),T=(es,enText)=>en?enText:es,root=doc.getElementById("calculadora-ahorro");if(!root)return;
  const $=id=>doc.getElementById(id),buttons=[...root.querySelectorAll("[data-capability]")],extras=[...root.querySelectorAll("[data-extra]")],money=n=>new Intl.NumberFormat(en?"en-US":"es-MX",{style:"currency",currency:"MXN",maximumFractionDigits:0}).format(n);
  let people=5,brands=1;const salary=$("txv14-salary"),role=$("txv14-role");
+ const salaryNumber=value=>Math.min(10000000,Number(String(value).replace(/[^0-9]/g,""))||0),salaryFormat=value=>"$"+salaryNumber(value).toLocaleString("en-US");
  function select(b,on){b.setAttribute("aria-pressed",String(on));b.classList.toggle("is-selected",on)}
  function update(){
- const active=buttons.filter(b=>b.getAttribute("aria-pressed")==="true"),selected=extras.filter(b=>b.getAttribute("aria-pressed")==="true").map(b=>b.dataset.extra),q=calc(brands,people,active.map(b=>({id:b.dataset.capability,group:b.dataset.rateGroup})),selected,salary.value,rates),missing=!q.groups.length&&!q.benchmarkCount,max=Math.max(q.outside,q.promo,1);
+ const active=buttons.filter(b=>b.getAttribute("aria-pressed")==="true"),selected=extras.filter(b=>b.getAttribute("aria-pressed")==="true").map(b=>b.dataset.extra),q=calc(brands,people,active.map(b=>({id:b.dataset.capability,group:b.dataset.rateGroup})),selected,salaryNumber(salary.value),rates),missing=!q.groups.length&&!q.benchmarkCount,max=Math.max(q.outside,q.promo,1);
  $("txvalue-people").textContent=people;$("txvalue-brands").textContent=brands;$("txvalue-scenario").textContent=people+" "+T("usuarios por negocio","users per business")+" · "+brands+" "+T("negocio(s)","business(es)")+" · "+active.length+T(" capacidades"," capabilities");
  $("txvalue-all").textContent=active.length===buttons.length?T("Limpiar selección","Clear selection"):T("Seleccionar todas","Select all");
  $("txvalue-stack-count").textContent="("+q.groups.length+T(" grupos base"," base groups")+(q.benchmarkCount?" + "+q.benchmarkCount+T(" extras"," add-ons"):"")+")";
@@ -4136,7 +4096,7 @@ initSoloInterest();
  extras.forEach(b=>b.addEventListener("click",()=>{select(b,b.getAttribute("aria-pressed")!=="true");update()}));
  $("txvalue-all").addEventListener("click",()=>{const all=buttons.every(b=>b.getAttribute("aria-pressed")==="true");buttons.forEach(b=>select(b,!all));update()});
  [["txvalue-people-minus",-1,"p"],["txvalue-people-plus",1,"p"],["txvalue-brands-minus",-1,"b"],["txvalue-brands-plus",1,"b"]].forEach(([id,delta,key])=>$(id).addEventListener("click",()=>{if(key==="p")people=Math.max(1,Math.min(50,people+delta));else brands=Math.max(1,Math.min(20,brands+delta));update()}));
- role.addEventListener("change",()=>{salary.value=role.value;update()});salary.addEventListener("input",update);update();
+ role.addEventListener("change",()=>{salary.value=salaryFormat(role.value);update()});salary.addEventListener("input",()=>{const raw=salary.value,pos=salary.selectionStart??raw.length,before=raw.slice(0,pos).replace(/[^0-9]/g,"").length;salary.value=salaryFormat(raw);let cursor=1,seen=0;while(cursor<salary.value.length&&seen<before){if(/[0-9]/.test(salary.value[cursor]))seen++;cursor++}salary.setSelectionRange(cursor,cursor);update()});salary.addEventListener("focus",()=>salary.select());update();
 })(document,{"crm":{"mxn":450,"unit":"seat","source":"https://www.salesforce.com/crm/pricing/","basis":"Starter USD25/user/mo; CRM, pipeline, reports","checked":"2026-11-25"},"email":{"mxn":234,"unit":"business","source":"https://mailchimp.com/pricing/marketing/","basis":"Essentials from USD13/month","checked":"2026-11-25"},"chat":{"mxn":522,"unit":"business","source":"https://manychat.com/pricing","basis":"Pro USD29/mo billed annually, 2,500 active contacts; 3 channels, 3 users","checked":"2026-11-25"},"ai":{"mxn":360,"unit":"business","source":"https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus","basis":"One ChatGPT Plus content subscription per business; partial comparison","checked":"2026-11-25"},"auto":{"mxn":359.82,"unit":"business","source":"https://zapier.com/pricing","basis":"Professional from USD19.99/mo","checked":"2026-11-25"},"calendar":{"mxn":180,"unit":"seat","source":"https://calendly.com/pricing","basis":"Standard USD10/seat/mo billed annually","checked":"2026-11-25"},"forms":{"mxn":450,"unit":"business","source":"https://www.typeform.com/pricing","basis":"Basic USD25/mo annual","checked":"2026-11-25"},"web":{"mxn":306,"unit":"business","source":"https://www.wix.com/blog/wix-premium-plans","basis":"Light USD17/mo annual, one site","checked":"2026-11-25"},"social":{"mxn":270,"unit":"business","source":"https://buffer.com/pricing","basis":"Essentials USD5/channel/mo annual, three channels","checked":"2026-11-25"},"ads":{"mxn":882,"unit":"business","source":"https://adespresso.com/pricing/","basis":"Starter USD49/mo, unlimited ad accounts, assumes independent accounts","checked":"2026-11-25"},"tasks":{"mxn":197.82,"unit":"seat","source":"https://asana.com/pricing","basis":"Starter USD10.99/user/mo annual","checked":"2026-11-25"},"reviews":{"mxn":1710,"unit":"business","source":"https://get.nicejob.com/pricing","basis":"Starter USD95/mo","checked":"2026-11-25"},"sign":{"mxn":342,"unit":"seat","source":"https://www.pandadoc.com/pricing/","basis":"Starter USD19/seat/mo annual","checked":"2026-11-25"}},function calc(brands,people,active,selected,salary,rates){
  const groups=[...new Set(active.map(x=>x.group))];const advanced=active.some(x=>x.id==="22")||selected.some(x=>["ticket","quiz","objects","socialIntel","voiceIntel","aiCapacity","appBuilder"].includes(x));
  const scale=brands>1||advanced,plan=scale?"Scale":"Growth",verticalCount=selected.filter(x=>["restaurant","field","events","loyalty","rental"].includes(x)).length,fee=scale?(verticalCount<=2?0:490):[0,390,780,890,1280,1290][verticalCount];
