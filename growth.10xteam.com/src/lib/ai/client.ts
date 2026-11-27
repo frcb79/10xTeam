@@ -2,16 +2,16 @@ import Anthropic from "@anthropic-ai/sdk";
 import OpenAI from "openai";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { resolveTaskConfig } from "@/config/ai.config";
-import { checkUsageLimit, trackAIUsage } from "@/lib/ai/usage";
+import { reserveAIUsage, settleAIUsage } from "@/lib/ai/usage";
 import { createServiceClient } from "@/lib/supabase/service";
 import type { AIResponse, AITask } from "@/types/ai.types";
 
 const anthropic = process.env.ANTHROPIC_API_KEY
-  ? new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+  ? new Anthropic({ maxRetries: 0, apiKey: process.env.ANTHROPIC_API_KEY })
   : null;
 
 const openai = process.env.OPENAI_API_KEY
-  ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+  ? new OpenAI({ maxRetries: 0, apiKey: process.env.OPENAI_API_KEY })
   : null;
 
 const google = process.env.GOOGLE_AI_API_KEY
@@ -19,21 +19,10 @@ const google = process.env.GOOGLE_AI_API_KEY
   : null;
 
 const deepseek = process.env.DEEPSEEK_API_KEY
-  ? new OpenAI({ apiKey: process.env.DEEPSEEK_API_KEY, baseURL: "https://api.deepseek.com/v1" })
+  ? new OpenAI({ maxRetries: 0, apiKey: process.env.DEEPSEEK_API_KEY, baseURL: "https://api.deepseek.com/v1" })
   : null;
 
-const FALLBACK_PRICE_MAP: Record<string, { input: number; output: number }> = {
-  "anthropic:claude-haiku-4-5": { input: 0.8, output: 4.0 },
-  "anthropic:claude-sonnet-4-5": { input: 3.0, output: 15.0 },
-  "anthropic:claude-opus-5": { input: 5.0, output: 25.0 },
-  "openai:gpt-4o-mini": { input: 0.15, output: 0.6 },
-  "openai:gpt-4o": { input: 2.5, output: 10.0 },
-  "google:gemini-1.5-flash": { input: 0.075, output: 0.3 },
-  "google:gemini-1.5-pro": { input: 1.25, output: 5.0 },
-  "deepseek:deepseek-chat": { input: 0.14, output: 0.28 },
-};
-
-let runtimePriceMap = { ...FALLBACK_PRICE_MAP };
+let runtimePriceMap: Record<string, { input: number; output: number }> = {};
 let pricingCacheExpiresAt = 0;
 
 const PRICING_CACHE_TTL_MS = 5 * 60 * 1000;
@@ -46,10 +35,10 @@ export async function generateWithAI(params: {
   businessId?: string;
   metadata?: Record<string, unknown>;
 }): Promise<AIResponse<string>> {
-  const { task, systemPrompt, userPrompt, outputSchema, businessId = "dev-local", metadata = {} } = params;
+  const { task, systemPrompt, userPrompt, outputSchema, businessId = "dev-local" } = params;
   const config = resolveTaskConfig(task);
 
-  await refreshPricingFromDB();
+
 
   // Sin proveedor de desarrollo, conservar mocks para instalaciones locales sin credenciales.
   // Con AI_DEV_PROVIDER configurado, ejecutar ese proveedor real para validar la experiencia.
@@ -63,14 +52,14 @@ export async function generateWithAI(params: {
     };
   }
 
-  const usageLimit = await checkUsageLimit(businessId);
-  if (!usageLimit.canProceed) {
-    throw new Error(
-      `AI usage limit reached. Current: $${usageLimit.currentCostUSD.toFixed(4)} / ` +
-        `Limit: $${usageLimit.limitUSD.toFixed(2)}. ${usageLimit.message}`
-    );
+  if (process.env.AI_PAID_EXECUTION_ENABLED !== "true" || businessId === "dev-local") {
+    throw new Error("IA de pago desactivada para este registro.");
   }
-
+  await refreshPricingFromDB();
+  // A UTF-8 byte upper bound plus message/schema overhead is conservative for text-only requests.
+  const inputBound = Buffer.byteLength(systemPrompt + userPrompt + JSON.stringify(outputSchema ?? {})) + 2048;
+  const maxCost = estimateCost(config.provider,config.model,inputBound,config.maxOutputTokens);
+  const reservation = await reserveAIUsage({businessId,provider:config.provider,model:config.model,task,maxCost});
   let aiResponse: AIResponse<string>;
 
   switch (config.provider) {
@@ -190,16 +179,7 @@ export async function generateWithAI(params: {
       throw new Error(`Unknown provider for task ${task}`);
   }
 
-  await trackAIUsage({
-    businessId,
-    provider: aiResponse.provider,
-    model: aiResponse.model,
-    task,
-    inputTokens: aiResponse.usage.inputTokens,
-    outputTokens: aiResponse.usage.outputTokens,
-    costUSD: aiResponse.usage.costUSD,
-    metadata,
-  });
+  await settleAIUsage(reservation,businessId,aiResponse.usage.inputTokens,aiResponse.usage.outputTokens,aiResponse.usage.costUSD);
 
   return aiResponse;
 }
@@ -211,7 +191,7 @@ function estimateCost(
   outputTokens: number
 ): number {
   const pricing = runtimePriceMap[`${provider}:${model}`];
-  if (!pricing) return 0;
+  if (!pricing || !Number.isFinite(pricing.input) || !Number.isFinite(pricing.output) || pricing.input <= 0 || pricing.output <= 0) throw new Error("Tarifa de IA pendiente de verificar.");
 
   const inputCost = (inputTokens / 1_000_000) * pricing.input;
   const outputCost = (outputTokens / 1_000_000) * pricing.output;
@@ -225,7 +205,7 @@ async function refreshPricingFromDB(): Promise<void> {
   const supabase = createServiceClient();
   if (!supabase) {
     pricingCacheExpiresAt = now + PRICING_CACHE_TTL_MS;
-    runtimePriceMap = { ...FALLBACK_PRICE_MAP };
+    runtimePriceMap = {};
     return;
   }
 
@@ -236,7 +216,7 @@ async function refreshPricingFromDB(): Promise<void> {
 
   if (error || !data || data.length === 0) {
     pricingCacheExpiresAt = now + PRICING_CACHE_TTL_MS;
-    runtimePriceMap = { ...FALLBACK_PRICE_MAP };
+    runtimePriceMap = {};
     return;
   }
 
@@ -251,7 +231,6 @@ async function refreshPricingFromDB(): Promise<void> {
   }
 
   runtimePriceMap = {
-    ...FALLBACK_PRICE_MAP,
     ...dbPrices,
   };
   pricingCacheExpiresAt = now + PRICING_CACHE_TTL_MS;

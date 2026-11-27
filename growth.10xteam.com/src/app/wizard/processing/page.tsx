@@ -1,5 +1,2 @@
-import { ProcessingScreen } from "@/components/wizard/ProcessingScreen";
-
-export default function ProcessingPage() {
-  return <ProcessingScreen />;
-}
+import { redirect } from "next/navigation";
+export default function ProcessingPage() { redirect("/wizard/complete"); }

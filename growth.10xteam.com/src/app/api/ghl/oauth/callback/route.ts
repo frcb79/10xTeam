@@ -1,60 +1,61 @@
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+import { actor, db, requireSession } from "@/lib/onboarding/store";
+import { equalSecret, hash, seal, HttpError } from "@/lib/onboarding/security";
+import { failure } from "@/lib/onboarding/http";
 import { exchangeAuthorizationCode } from "@/lib/ghl/client";
-import { encodeGhlSession, GHL_SESSION_COOKIE } from "@/lib/ghl/session";
-import { upsertGhlSession } from "@/lib/ghl/repository";
-
+import { assertBoundLocation, oauthSettings } from "@/lib/ghl/oauth-context";
 export async function GET(request: Request) {
-  const url = new URL(request.url);
-  const code = url.searchParams.get("code");
-
-  if (!code) {
-    return NextResponse.json({ error: "Missing OAuth code." }, { status: 400 });
-  }
-
-  const clientId = process.env.GHL_CLIENT_ID;
-  const clientSecret = process.env.GHL_CLIENT_SECRET;
-  const redirectUri = process.env.GHL_REDIRECT_URI;
-
-  if (!clientId || !clientSecret || !redirectUri) {
-    return NextResponse.json(
-      {
-        error:
-          "Missing GHL OAuth env vars. Required: GHL_CLIENT_ID, GHL_CLIENT_SECRET, GHL_REDIRECT_URI.",
-      },
-      { status: 500 },
-    );
-  }
-
   try {
-    const session = await exchangeAuthorizationCode({
-      code,
-      clientId,
-      clientSecret,
-      redirectUri,
-      userType: "Company",
+    const url = new URL(request.url);
+    const state = url.searchParams.get("state") ?? "";
+    const jar = await cookies();
+    if (
+      !state ||
+      !equalSecret(state, jar.get("10x_oauth_state")?.value ?? "") ||
+      !url.searchParams.get("code")
+    )
+      throw new HttpError(403, "Solicitud de conexión no reconocida.");
+    const config = oauthSettings();
+    const a = await actor();
+    if (!a.userId) throw new HttpError(401, "Inicia sesión.");
+    const now = new Date().toISOString();
+    const { data, error } = await db()
+      .from("onboarding_oauth_states")
+      .update({ consumed_at: now })
+      .eq("nonce_hash", hash(state))
+      .eq("actor_id", a.userId)
+      .is("consumed_at", null)
+      .gt("expires_at", now)
+      .select("session_id")
+      .maybeSingle();
+    jar.delete("10x_oauth_state");
+    if (error || !data)
+      throw new HttpError(403, "La autorización expiró o ya se utilizó.");
+    const s = await requireSession(a, data.session_id);
+    if (a.userId !== s.owner_user_id)
+      throw new HttpError(403, "Se requiere acceso del titular.");
+    const token = await exchangeAuthorizationCode({
+      ...config,
+      code: url.searchParams.get("code")!,
+      userType: "Location",
     });
-
-    await upsertGhlSession(session);
-
-    const response = NextResponse.redirect(new URL("/dashboard?ghl=connected", url.origin));
-    response.cookies.set(GHL_SESSION_COOKIE, encodeGhlSession(session), {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      path: "/",
-      maxAge: 60 * 60 * 24 * 30,
-    });
-
-    return response;
-  } catch (error) {
-    return NextResponse.json(
-      {
-        error:
-          error instanceof Error
-            ? error.message
-            : "Could not complete GHL OAuth callback.",
-      },
-      { status: 500 },
+    assertBoundLocation(s, token);
+    const { error: write } = await db()
+      .from("onboarding_credentials")
+      .upsert({
+        session_id: s.id,
+        ciphertext: seal(token, s.id),
+        expires_at: token.expiresAt,
+        updated_at: now,
+        refresh_lock_at: null,
+      });
+    if (write) throw new HttpError(503, "No se pudo guardar la conexión.");
+    jar.delete("ghl_oauth_v1");
+    return NextResponse.redirect(
+      new URL("/wizard/complete", config.redirectUri),
     );
+  } catch (e) {
+    return failure(e);
   }
 }

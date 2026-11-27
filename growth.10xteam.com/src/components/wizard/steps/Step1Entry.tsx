@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { useWizard } from "@/hooks/useWizard";
 import { ICPScoreMeter } from "@/components/wizard/ICPScoreMeter";
@@ -15,7 +16,7 @@ interface PrefillResponse {
 }
 
 export function Step1Entry() {
-  const { state, setWebsiteUrl, setScrapedContent, goNext, setError, setStatus } = useWizard();
+  const { state, remote, setWebsiteUrl, setScrapedContent, goNext, setError, setStatus } = useWizard();
   const [url, setUrl] = useState(state.websiteUrl ?? "");
   const [loading, setLoading] = useState(false);
   const [phase, setPhase] = useState<"idle" | "reading" | "analyzing" | "done" | "error">("idle");
@@ -57,7 +58,7 @@ export function Step1Entry() {
 
       const prefill = await prefillResponse.json() as PrefillResponse;
       setScrapedContent(scrapedContent, prefill.confidence);
-      sessionStorage.setItem("wizard_prefill", JSON.stringify(prefill));
+      sessionStorage.setItem("wizard_prefill:" + remote.view?.session.id, JSON.stringify(prefill));
       setPhase("done");
 
       window.setTimeout(() => goNext(), 650);
@@ -78,6 +79,7 @@ export function Step1Entry() {
   return (
     <div className="grid gap-8 md:grid-cols-[1.15fr_0.85fr] md:items-start">
       <section className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.25)] md:p-8">
+        <Link href="/wizard/access" className="float-right text-sm text-cyan-300 underline">Retomar con mi cuenta</Link>
         <p className="text-xs uppercase tracking-[0.22em] text-cyan-300">Paso 1 · Inicio</p>
         <h2 className="mt-3 text-3xl font-semibold text-stone-50 md:text-4xl">Arranquemos con tu negocio</h2>
         <p className="mt-4 max-w-2xl text-sm leading-6 text-stone-300">

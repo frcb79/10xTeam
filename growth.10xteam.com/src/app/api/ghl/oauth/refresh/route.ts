@@ -1,71 +1,54 @@
-import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
+import { actor, requireSession, db } from "@/lib/onboarding/store";
+import { sameOrigin, unseal, seal, HttpError } from "@/lib/onboarding/security";
+import { json, failure } from "@/lib/onboarding/http";
+import { oauthSettings, assertBoundLocation } from "@/lib/ghl/oauth-context";
 import { refreshAccessToken } from "@/lib/ghl/client";
-import { decodeGhlSession, encodeGhlSession, GHL_SESSION_COOKIE } from "@/lib/ghl/session";
-import { upsertGhlSession } from "@/lib/ghl/repository";
-
-export async function POST() {
-  const clientId = process.env.GHL_CLIENT_ID;
-  const clientSecret = process.env.GHL_CLIENT_SECRET;
-  const redirectUri = process.env.GHL_REDIRECT_URI;
-
-  if (!clientId || !clientSecret || !redirectUri) {
-    return NextResponse.json(
-      {
-        error:
-          "Missing GHL OAuth env vars. Required: GHL_CLIENT_ID, GHL_CLIENT_SECRET, GHL_REDIRECT_URI.",
-      },
-      { status: 500 },
-    );
-  }
-
-  const cookieStore = await cookies();
-  const raw = cookieStore.get(GHL_SESSION_COOKIE)?.value;
-  if (!raw) {
-    return NextResponse.json({ error: "No GHL session found." }, { status: 401 });
-  }
-
-  const existing = decodeGhlSession(raw);
-  if (!existing?.refreshToken) {
-    return NextResponse.json({ error: "Invalid GHL session." }, { status: 401 });
-  }
-
+import type { GhlOAuthSession } from "@/types/ghl.types";
+export async function POST(request: Request) {
   try {
-    const refreshed = await refreshAccessToken({
-      refreshToken: existing.refreshToken,
-      clientId,
-      clientSecret,
-      redirectUri,
-      userType: "Company",
+    sameOrigin(request);
+    const a = await actor();
+    const s = await requireSession(a);
+    if (!a.userId || a.userId !== s.owner_user_id)
+      throw new HttpError(403, "Se requiere acceso del titular.");
+    const config = oauthSettings();
+    const now = new Date().toISOString();
+    const { data, error } = await db()
+      .from("onboarding_credentials")
+      .update({ refresh_lock_at: now })
+      .eq("session_id", s.id)
+      .is("refresh_lock_at", null)
+      .select("ciphertext")
+      .maybeSingle();
+    if (error || !data)
+      throw new HttpError(
+        409,
+        "La conexión requiere revisión o una nueva autorización.",
+      );
+    const previous = unseal<GhlOAuthSession>(data.ciphertext, s.id);
+    assertBoundLocation(s, previous);
+    const token = await refreshAccessToken({
+      ...config,
+      refreshToken: previous.refreshToken,
+      userType: "Location",
     });
-
-    const mergedSession = {
-      ...refreshed,
-      companyId: refreshed.companyId ?? existing.companyId,
-      locationId: refreshed.locationId ?? existing.locationId,
-      userId: refreshed.userId ?? existing.userId,
-      userType: refreshed.userType ?? existing.userType,
-      scope: refreshed.scope ?? existing.scope,
-    };
-
-    await upsertGhlSession(mergedSession);
-
-    const response = NextResponse.json({ ok: true, expiresAt: mergedSession.expiresAt });
-    response.cookies.set(GHL_SESSION_COOKIE, encodeGhlSession(mergedSession), {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      path: "/",
-      maxAge: 60 * 60 * 24 * 30,
-    });
-
-    return response;
-  } catch (error) {
-    return NextResponse.json(
-      {
-        error: error instanceof Error ? error.message : "Could not refresh GHL token.",
-      },
-      { status: 500 },
-    );
+    assertBoundLocation(s, token);
+    const { data: stored, error: write } = await db()
+      .from("onboarding_credentials")
+      .update({
+        ciphertext: seal(token, s.id),
+        expires_at: token.expiresAt,
+        updated_at: now,
+        refresh_lock_at: null,
+      })
+      .eq("session_id", s.id)
+      .eq("refresh_lock_at", now)
+      .select("session_id")
+      .maybeSingle();
+    if (write || !stored)
+      throw new HttpError(503, "Se requiere volver a autorizar la conexión.");
+    return json({ ok: true, expiresAt: token.expiresAt });
+  } catch (e) {
+    return failure(e);
   }
 }

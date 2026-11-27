@@ -18,7 +18,7 @@ interface AIICPFields {
   uniqueMechanism: string;
 }
 
-const DEFAULT_CHANNELS: ChannelType[] = ["linkedin", "whatsapp", "email"];
+const DEFAULT_CHANNELS: ChannelType[] = [];
 
 export async function generateICPCard(answers: WizardAnswers, businessId?: string): Promise<{
   icpCard: ICPCard;
@@ -64,8 +64,8 @@ export async function generateICPCard(answers: WizardAnswers, businessId?: strin
       trigger: parsedAIFields?.trigger || `Cuando ${step3.mainPain.toLowerCase()} afecta conversion o ingresos.`,
       mainPain: step3.mainPain,
       costOfInaction: step3.costOfInaction,
-      topFear: parsedAIFields?.topFear || "Seguir invirtiendo sin lograr pipeline predecible.",
-      previousSolutionsTried: parsedAIFields?.previousSolutionsTried || "Acciones tacticas aisladas sin sistema de seguimiento.",
+      topFear: parsedAIFields?.topFear || "Pendiente de confirmar con el cliente.",
+      previousSolutionsTried: parsedAIFields?.previousSolutionsTried || "Pendiente de confirmar con el cliente.",
       uniqueMechanism: parsedAIFields?.uniqueMechanism || step4.uniqueDifferentiator,
       channels: step5?.activeChannels?.length ? step5.activeChannels.map((channel) => channel.channel) : DEFAULT_CHANNELS,
       promise: parsedAIFields?.promise || step3.mainOutcome,

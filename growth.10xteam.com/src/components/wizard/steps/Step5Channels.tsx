@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useWizard } from "@/hooks/useWizard";
 import type { ChannelConfig, ContentFormat, CustomFlow, FunnelFlow } from "@/types/wizard.types";
 
@@ -53,24 +53,19 @@ export function Step5Channels() {
   const [selectedChannels, setSelectedChannels] = useState<string[]>(
     current?.activeChannels
       ?.filter((channel) => channel.channel !== "custom")
-      .map((channel) => channel.channel) ?? ["linkedin", "whatsapp"]
+      .map((channel) => channel.channel) ?? []
   );
   const [customChannels, setCustomChannels] = useState<string[]>(initialCustomChannels);
   const [customChannelInput, setCustomChannelInput] = useState("");
   const [preferredContactMethod, setPreferredContactMethod] = useState<ChannelConfig["channel"]>(
     current?.preferredContactMethod ?? "whatsapp"
   );
-  const [selectedFlows, setSelectedFlows] = useState<FunnelFlow[]>(current?.selectedFlows ?? ["cold_prospect"]);
+  const [selectedFlows, setSelectedFlows] = useState<FunnelFlow[]>(current?.selectedFlows ?? []);
   const [customFlows, setCustomFlows] = useState<CustomFlow[]>(current?.customFlows ?? []);
   const [customFlowName, setCustomFlowName] = useState("");
   const [customFlowDescription, setCustomFlowDescription] = useState("");
   const [customFlowStage, setCustomFlowStage] = useState("");
   const [customFlowGoal, setCustomFlowGoal] = useState("");
-
-  const valid = useMemo(
-    () => selectedChannels.length + customChannels.length > 0 && selectedFlows.length > 0,
-    [selectedChannels, customChannels, selectedFlows]
-  );
 
   const toggleChannel = (channel: string) => {
     setSelectedChannels((prev) =>
@@ -119,7 +114,7 @@ export function Step5Channels() {
   };
 
   const handleContinue = () => {
-    if (!valid) return;
+
 
     updateStep5({
       activeChannels: [
@@ -280,7 +275,7 @@ export function Step5Channels() {
 
       <div className="mt-6 flex flex-wrap gap-3">
         <button type="button" onClick={goPrev} className="rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-stone-200">Atrás</button>
-        <button type="button" onClick={handleContinue} disabled={!valid} className="rounded-full bg-cyan-300 px-5 py-2.5 text-sm font-semibold text-stone-950 disabled:cursor-not-allowed disabled:opacity-50">Continuar a economia</button>
+        <button type="button" onClick={handleContinue}  className="rounded-full bg-cyan-300 px-5 py-2.5 text-sm font-semibold text-stone-950 disabled:cursor-not-allowed disabled:opacity-50">Continuar a economia</button>
       </div>
     </div>
   );

@@ -1,60 +1,28 @@
-import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
-import { decodeGhlSession, GHL_SESSION_COOKIE } from "@/lib/ghl/session";
-import { getGhlSessionByContext } from "@/lib/ghl/repository";
-
+import { actor, requireSession, db } from "@/lib/onboarding/store";
+import { failure, json } from "@/lib/onboarding/http";
 export async function GET(request: Request) {
-  const url = new URL(request.url);
-  const companyId = url.searchParams.get("companyId");
-  const locationId = url.searchParams.get("locationId");
-
-  if (companyId || locationId) {
-    const persisted = await getGhlSessionByContext({ companyId, locationId });
-    if (persisted) {
-      return NextResponse.json({
-        connected: true,
-        source: "supabase",
-        expiresAt: persisted.expiresAt,
-        userType: persisted.userType,
-        companyId: persisted.companyId ?? null,
-        locationId: persisted.locationId ?? null,
-      });
-    }
-  }
-
-  const cookieStore = await cookies();
-  const raw = cookieStore.get(GHL_SESSION_COOKIE)?.value;
-  if (!raw) {
-    return NextResponse.json({ connected: false, source: "none" });
-  }
-
-  const session = decodeGhlSession(raw);
-  if (!session) {
-    return NextResponse.json({ connected: false, source: "none" });
-  }
-
-  const persistedFromCookie = await getGhlSessionByContext({
-    companyId: session.companyId,
-    locationId: session.locationId,
-  });
-
-  if (persistedFromCookie) {
-    return NextResponse.json({
-      connected: true,
-      source: "supabase",
-      expiresAt: persistedFromCookie.expiresAt,
-      userType: persistedFromCookie.userType,
-      companyId: persistedFromCookie.companyId ?? null,
-      locationId: persistedFromCookie.locationId ?? null,
+  try {
+    const a = await actor();
+    const s = await requireSession(a);
+    const query = new URL(request.url).searchParams;
+    if (
+      !a.userId ||
+      query.has("companyId") ||
+      (query.has("locationId") &&
+        query.get("locationId") !== s.provision.locationId)
+    )
+      return json({ connected: false }, 403);
+    const { data, error } = await db()
+      .from("onboarding_credentials")
+      .select("expires_at")
+      .eq("session_id", s.id)
+      .maybeSingle();
+    if (error) return json({ error: "No se pudo comprobar la conexión." }, 503);
+    return json({
+      connected: Boolean(data && Date.parse(data.expires_at) > Date.now()),
+      expiresAt: data?.expires_at ?? null,
     });
+  } catch (e) {
+    return failure(e);
   }
-
-  return NextResponse.json({
-    connected: true,
-    source: "cookie",
-    expiresAt: session.expiresAt,
-    userType: session.userType,
-    companyId: session.companyId ?? null,
-    locationId: session.locationId ?? null,
-  });
 }

@@ -1,6 +1,5 @@
 import { generateWithAI } from "@/lib/ai/client";
 import { generateICPCard } from "@/lib/diagnostics/icp";
-import { upsertDiagnosticRecord } from "@/lib/diagnostics/repository";
 import { calculateOpportunity } from "@/lib/utils/opportunity";
 import type { DiagnosticNarratives, DiagnosticRecord, DiagnosticReport } from "@/types/diagnostic.types";
 import type { GeneratedOutputs, WizardAnswers } from "@/types/wizard.types";
@@ -108,8 +107,6 @@ export async function generateDiagnosticReport(
     report,
   };
 
-  const persisted = await upsertDiagnosticRecord(record);
-  if (!persisted) throw new Error("Could not persist the diagnostic report.");
   return record;
 }
 

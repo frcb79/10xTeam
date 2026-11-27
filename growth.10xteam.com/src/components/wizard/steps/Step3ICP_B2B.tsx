@@ -158,7 +158,7 @@ export function Step3ICP_B2B() {
   const [primaryDecisionMaker, setPrimaryDecisionMaker] = useState(current?.primaryDecisionMaker ?? "");
   const [mainPain, setMainPain] = useState(current?.mainPain ?? "");
   const [mainOutcome, setMainOutcome] = useState(current?.mainOutcome ?? "");
-  const [companySizeRange, setCompanySizeRange] = useState(current?.companySizeRange ?? "21-50");
+  const [companySizeRange, setCompanySizeRange] = useState(current?.companySizeRange ?? "unknown");
 
   const handleContinue = () => {
     updateStep3B2B({
@@ -196,7 +196,7 @@ export function Step3ICP_B2B() {
         <label className="block text-sm text-stone-300">
           Tamaño de empresa cliente (si aplica)
           <select value={companySizeRange} onChange={(e) => setCompanySizeRange(e.target.value as typeof companySizeRange)} className="wizard-select mt-2 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none focus:border-cyan-300/60">
-            <option value="1-5">1–5</option>
+            <option value="unknown">Por confirmar</option><option value="1-5">1–5</option>
             <option value="6-20">6–20</option>
             <option value="21-50">21–50</option>
             <option value="51-200">51–200</option>

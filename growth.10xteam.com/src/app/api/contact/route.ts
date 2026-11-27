@@ -41,6 +41,7 @@ export async function OPTIONS(request: Request) {
 export async function POST(request: Request) {
   const origin = request.headers.get("origin");
   const headers = corsHeaders(origin);
+  if (!origin || (!ALLOWED_ORIGINS.includes(origin) && origin !== new URL(request.url).origin)) return NextResponse.json({error:"Origen no permitido."},{status:403});
 
   try {
     const body = (await request.json()) as ContactRequestBody;
@@ -52,7 +53,7 @@ export async function POST(request: Request) {
       typeof body.serviceType === "string" ? body.serviceType.trim().slice(0, 80) : undefined;
     const message =
       typeof body.message === "string" ? body.message.trim().slice(0, MAX_MESSAGE_LENGTH) : undefined;
-    const source = body.source === "growth_contact" ? "growth_contact" : "dev_contact";
+    const source = origin === new URL(request.url).origin ? "growth_contact" : "dev_contact";
 
     if (!name || !email || !EMAIL_PATTERN.test(email)) {
       return NextResponse.json(

@@ -61,7 +61,7 @@ export interface InfluencerProfile {
   keyArgument: string;
 }
 
-export type CompanySizeRange =
+export type CompanySizeRange = "unknown"
   | "1-5"
   | "6-20"
   | "21-50"
@@ -113,7 +113,7 @@ export interface Step3B2CAnswers {
   paysFromOwnPocket: boolean;
 }
 
-export type SalesCycleDuration =
+export type SalesCycleDuration = "unknown"
   | "same_day"
   | "1-7_days"
   | "1-4_weeks"
@@ -156,15 +156,15 @@ export interface Step5Answers {
   customFlows: CustomFlow[];
 }
 
-export type OwnerRole = "owner_operator" | "has_team" | "uses_agencies";
+export type OwnerRole = "unknown" | "owner_operator" | "has_team" | "uses_agencies";
 
-export type ManualMarketingHours =
+export type ManualMarketingHours = "unknown"
   | "less_2hrs"
   | "2_5hrs"
   | "5_10hrs"
   | "more_10hrs";
 
-export type LeadResponseTime =
+export type LeadResponseTime = "unknown"
   | "under_5min"
   | "5_30min"
   | "30min_2hrs"
@@ -184,7 +184,7 @@ export type RenewalFrequency =
   | "semiannual"
   | "annual";
 
-export type MonthlyNewClients = "1_3" | "4_10" | "11_20" | "20_plus";
+export type MonthlyNewClients = "unknown" | "1_3" | "4_10" | "11_20" | "20_plus";
 
 export type AcquisitionCostBand =
   | "under_500"
