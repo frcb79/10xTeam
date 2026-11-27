@@ -2317,6 +2317,12 @@ body {
 .txproblema h2{margin-bottom:34px;}
 .txproblema-bridge{max-width:1040px;margin-top:36px;}
 .txproblema-bridge p{max-width:1000px;font-size:18px;line-height:1.65;}
+/* Restore responsive columns after desktop override; no fixed card heights. */
+.txproblema .txpain-card{min-width:0;box-sizing:border-box;}
+.txproblema .txpain-card>div:last-child{min-width:0;overflow-wrap:anywhere;}
+@media(max-width:1100px){.txproblema .txpain-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:680px){.txproblema{padding:48px 16px 46px;}.txproblema .txpain-grid{grid-template-columns:minmax(0,1fr);gap:12px;}.txproblema .txpain-card{padding:18px 16px;gap:12px;}.txproblema .txproblema-bridge p{font-size:16px;}}
+
 .tx-catalogue-teaser{display:flex;justify-content:center;align-items:center;gap:10px;margin:30px auto 0;color:var(--tx-green);font-weight:700;font-size:16px;line-height:1.5;text-align:center;}
 .tx-catalogue-teaser .tx-catalogue-pending{font-size:11px;color:var(--tx-text-faint);font-weight:500;white-space:nowrap;background:var(--tx-surface-2);padding:4px 8px;border:1px solid var(--tx-border);border-radius:999px;}
 
